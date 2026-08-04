@@ -3,6 +3,7 @@ name: Validación LegalAIZ.it
 on:
   push:
   pull_request:
+  workflow_dispatch:
 
 jobs:
   smoke:
@@ -23,7 +24,7 @@ jobs:
           LEGAL_APP_ENV: demo
           LEGAL_RUNTIME_DIR: ${{ runner.temp }}/legalaiz-runtime
           LEGAL_ALLOW_DEMO_ACCOUNTS: 'true'
-          LEGAL_DEMO_PASSWORD: LegalAIZDemo2026!
+          LEGAL_DEMO_PASSWORD: 'LegalAIZDemo2026!'
           LEGAL_REQUIRE_MFA_ROLES: ''
           LEGAL_GITHUB_LITE_ASSETS: 'true'
         run: |
@@ -31,10 +32,7 @@ jobs:
           PID=$!
           trap 'kill $PID || true' EXIT
           for i in {1..30}; do
-            python - <<'PY' && exit 0 || true
-import urllib.request
-urllib.request.urlopen('http://127.0.0.1:8765/api/live', timeout=2).read()
-PY
+            python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/api/live', timeout=2).read()" && exit 0 || true
             sleep 1
           done
           cat /tmp/legalaiz.log
