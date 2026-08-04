@@ -1,0 +1,41 @@
+name: Validación LegalAIZ.it
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+      - name: Validar sintaxis
+        run: python -m compileall -q .
+      - name: Smoke HTTP
+        env:
+          LEGAL_PROFILE: local
+          LEGAL_APP_ENV: demo
+          LEGAL_RUNTIME_DIR: ${{ runner.temp }}/legalaiz-runtime
+          LEGAL_ALLOW_DEMO_ACCOUNTS: 'true'
+          LEGAL_DEMO_PASSWORD: LegalAIZDemo2026!
+          LEGAL_REQUIRE_MFA_ROLES: ''
+          LEGAL_GITHUB_LITE_ASSETS: 'true'
+        run: |
+          python run.py --lan --no-browser > /tmp/legalaiz.log 2>&1 &
+          PID=$!
+          trap 'kill $PID || true' EXIT
+          for i in {1..30}; do
+            python - <<'PY' && exit 0 || true
+import urllib.request
+urllib.request.urlopen('http://127.0.0.1:8765/api/live', timeout=2).read()
+PY
+            sleep 1
+          done
+          cat /tmp/legalaiz.log
+          exit 1
