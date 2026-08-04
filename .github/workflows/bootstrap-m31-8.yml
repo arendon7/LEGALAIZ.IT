@@ -1,0 +1,99 @@
+name: Publicar LegalAIZ.it M31.8
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/bootstrap-m31-8.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Obtener repositorio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Preparar decodificador
+        run: python -m pip install --quiet pillow
+
+      - name: Recuperar paquete verificado
+        env:
+          EXPECTED_SHA256: 8eacac346892b8ef545e8fe21bc562f65425076b01e9181b2f7f990c6c52cef8
+        run: |
+          python <<'PY'
+          from pathlib import Path
+          from urllib.request import Request, urlopen
+          from urllib.error import HTTPError, URLError
+          from PIL import Image
+          import hashlib
+          import io
+          import struct
+
+          base = "https://media.canva.com/v2/image-resize/format:PNG/{dims}quality:100/uri:ifs%3A%2F%2FM%2Fabeb32e6-3167-4f08-90a7-a0e494fd4865/watermark:F{query}"
+          query_full = "?csig=AAAAAAAAAAAAAAAAAAAAAL9EPYTfrdqtVBiLwNFubTgrez7-RcCXaoyyIGk_NDq_&exp=1785896900&osig=AAAAAAAAAAAAAAAAAAAAAAOhztcoHTqZckm3xMVrU6sk8vKz3ndJ2IF8aE3BWae4&signer=media-rpc&x-canva-quality=thumbnail"
+          query_plain = "?csig=AAAAAAAAAAAAAAAAAAAAAL9EPYTfrdqtVBiLwNFubTgrez7-RcCXaoyyIGk_NDq_&exp=1785896900&osig=AAAAAAAAAAAAAAAAAAAAAAOhztcoHTqZckm3xMVrU6sk8vKz3ndJ2IF8aE3BWae4&signer=media-rpc"
+          candidates = [
+              base.format(dims="height:385/width:1024/", query=query_full),
+              base.format(dims="height:385/width:1024/", query=query_plain),
+              base.format(dims="width:1024/", query=query_full),
+              base.format(dims="height:385/", query=query_full),
+              base.format(dims="height:75/width:200/", query=query_full),
+          ]
+
+          expected = __import__('os').environ['EXPECTED_SHA256']
+          errors = []
+          for index, url in enumerate(candidates, 1):
+              try:
+                  req = Request(url, headers={"User-Agent": "GitHub-Actions-LegalAIZ"})
+                  with urlopen(req, timeout=40) as response:
+                      content = response.read()
+                  image = Image.open(io.BytesIO(content)).convert("RGB")
+                  raw = image.tobytes()
+                  print(f"Candidato {index}: {image.size[0]}x{image.size[1]}, {len(content)} bytes")
+                  if raw[:4] != b"LZA1":
+                      errors.append(f"Candidato {index}: encabezado ausente")
+                      continue
+                  length = struct.unpack(">Q", raw[4:12])[0]
+                  archive = raw[12:12 + length]
+                  digest = hashlib.sha256(archive).hexdigest()
+                  if digest != expected:
+                      errors.append(f"Candidato {index}: SHA {digest}")
+                      continue
+                  Path('/tmp/legalaiz.tar.xz').write_bytes(archive)
+                  print(f"Paquete recuperado y verificado: {digest}")
+                  break
+              except (HTTPError, URLError, OSError, ValueError) as exc:
+                  errors.append(f"Candidato {index}: {exc}")
+          else:
+              raise SystemExit("No fue posible recuperar el paquete: " + " | ".join(errors))
+          PY
+
+      - name: Publicar árbol fuente
+        run: |
+          rm -rf /tmp/legalaiz-unpack
+          mkdir -p /tmp/legalaiz-unpack
+          tar -xJf /tmp/legalaiz.tar.xz -C /tmp/legalaiz-unpack
+          rsync -a --delete --exclude='.git' /tmp/legalaiz-unpack/legalaiz_runtime_repo_text/ ./
+          rm -rf .bootstrap
+          rm -f .github/workflows/bootstrap-m31-8.yml
+
+      - name: Validar sintaxis
+        env:
+          LEGAL_PROFILE: local
+          LEGAL_APP_ENV: demo
+          LEGAL_GITHUB_LITE_ASSETS: 'true'
+        run: python -m compileall -q .
+
+      - name: Confirmar publicación
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "feat: publicar LegalAIZ.it M31.8 v5.0.7"
+          git push
