@@ -1,0 +1,495 @@
+{
+  "version": "2.35",
+  "notice": "Materiales aprobados para uso profesional controlado, sujetos a revisión específica del caso y a las compuertas de riesgo, vigencia y consistencia.",
+  "products": [
+    {
+      "product_code": "CO-TR-001",
+      "title": "Chequeo SAST + inscripción verificada",
+      "documents": [
+        {
+          "template_id": "TPL-CO-TR-001-SAST-REPORT",
+          "kind": "sast_report",
+          "title": "Informe de coincidencia preliminar SAST",
+          "docx": "CO-TR-001/CO-TR-001_sast_report_MUESTRA.docx",
+          "pdf": "CO-TR-001/CO-TR-001_sast_report_MUESTRA.pdf",
+          "status": "Muestra IA no canónica",
+          "preview": "CO-TR-001/CO-TR-001_sast_report_MUESTRA_PORTADA.png"
+        }
+      ]
+    },
+    {
+      "product_code": "CO-TR-002",
+      "title": "Fotomulta no notificada",
+      "documents": [
+        {
+          "template_id": "TPL-CO-TR-002-TRAFFIC-REQUEST",
+          "kind": "traffic_request",
+          "title": "Solicitud integral de expediente y reclamación por notificación",
+          "docx": "CO-TR-002/CO-TR-002_traffic_request_MUESTRA.docx",
+          "pdf": "CO-TR-002/CO-TR-002_traffic_request_MUESTRA.pdf",
+          "status": "Muestra IA no canónica",
+          "preview": "CO-TR-002/CO-TR-002_traffic_request_MUESTRA_PORTADA.png"
+        }
+      ]
+    },
+    {
+      "product_code": "CO-LA-001",
+      "title": "Liquidación laboral + reclamación",
+      "documents": [
+        {
+          "template_id": "TPL-CO-LA-001-CALCULATION",
+          "kind": "calculation",
+          "title": "Informe desglosado de liquidación laboral",
+          "docx": "CO-LA-001/CO-LA-001_calculation_MUESTRA.docx",
+          "pdf": "CO-LA-001/CO-LA-001_calculation_MUESTRA.pdf",
+          "status": "Muestra IA no canónica",
+          "preview": "CO-LA-001/CO-LA-001_calculation_MUESTRA_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-LA-001-CLAIM",
+          "kind": "claim",
+          "title": "Reclamación directa de acreencias laborales",
+          "docx": "CO-LA-001/CO-LA-001_claim_MUESTRA.docx",
+          "pdf": "CO-LA-001/CO-LA-001_claim_MUESTRA.pdf",
+          "status": "Muestra IA no canónica",
+          "preview": "CO-LA-001/CO-LA-001_claim_MUESTRA_PORTADA.png"
+        }
+      ]
+    },
+    {
+      "product_code": "CO-LA-002",
+      "title": "Contrato de trabajo personalizado",
+      "documents": [
+        {
+          "template_id": "TPL-CO-LA-002-EMPLOYMENT-CONTRACT",
+          "kind": "employment_contract",
+          "title": "Contrato de trabajo personalizado",
+          "docx": "CO-LA-002/CO-LA-002_employment_contract_MUESTRA.docx",
+          "pdf": "CO-LA-002/CO-LA-002_employment_contract_MUESTRA.pdf",
+          "status": "Muestra IA no canónica",
+          "preview": "CO-LA-002/CO-LA-002_employment_contract_MUESTRA_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-LA-002-EMPLOYMENT-ANNEX",
+          "kind": "employment_annex",
+          "title": "Anexo de cargo, funciones y módulos laborales",
+          "docx": "CO-LA-002/CO-LA-002_employment_annex_MUESTRA.docx",
+          "pdf": "CO-LA-002/CO-LA-002_employment_annex_MUESTRA.pdf",
+          "status": "Muestra IA no canónica",
+          "preview": "CO-LA-002/CO-LA-002_employment_annex_MUESTRA_PORTADA.png"
+        }
+      ]
+    },
+    {
+      "product_code": "CO-EM-003",
+      "title": "Contrato de prestación de servicios",
+      "documents": [
+        {
+          "template_id": "TPL-CO-EM-003-CONTRACT",
+          "kind": "contract",
+          "title": "Contrato de prestación de servicios independientes",
+          "docx": "CO-EM-003/CO-EM-003_contract_MUESTRA.docx",
+          "pdf": "CO-EM-003/CO-EM-003_contract_MUESTRA.pdf",
+          "status": "Muestra IA no canónica",
+          "preview": "CO-EM-003/CO-EM-003_contract_MUESTRA_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-EM-003-SCOPE",
+          "kind": "scope",
+          "title": "Anexo No. 1 — Alcance, entregables y cronograma",
+          "docx": "CO-EM-003/CO-EM-003_scope_MUESTRA.docx",
+          "pdf": "CO-EM-003/CO-EM-003_scope_MUESTRA.pdf",
+          "status": "Muestra IA no canónica",
+          "preview": "CO-EM-003/CO-EM-003_scope_MUESTRA_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-EM-003-NDA",
+          "kind": "confidentiality",
+          "title": "Anexo No. 2A — Confidencialidad y seguridad de la información",
+          "docx": "CO-EM-003/CO-EM-003_confidentiality_MUESTRA.docx",
+          "pdf": "CO-EM-003/CO-EM-003_confidentiality_MUESTRA.pdf",
+          "status": "Muestra IA no canónica",
+          "preview": "CO-EM-003/CO-EM-003_confidentiality_MUESTRA_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-EM-003-IP",
+          "kind": "intellectual_property",
+          "title": "Anexo No. 2B — Propiedad intelectual y entregables",
+          "docx": "CO-EM-003/CO-EM-003_intellectual_property_MUESTRA.docx",
+          "pdf": "CO-EM-003/CO-EM-003_intellectual_property_MUESTRA.pdf",
+          "status": "Muestra IA no canónica",
+          "preview": "CO-EM-003/CO-EM-003_intellectual_property_MUESTRA_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-EM-003-DATA",
+          "kind": "data_processing",
+          "title": "Anexo No. 2C — Tratamiento de datos personales",
+          "docx": "CO-EM-003/CO-EM-003_data_processing_MUESTRA.docx",
+          "pdf": "CO-EM-003/CO-EM-003_data_processing_MUESTRA.pdf",
+          "status": "Muestra IA no canónica",
+          "preview": "CO-EM-003/CO-EM-003_data_processing_MUESTRA_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-EM-003-CLOSURE",
+          "kind": "closure",
+          "title": "Acta de cierre y liquidación documental",
+          "docx": "CO-EM-003/CO-EM-003_closure_MUESTRA.docx",
+          "pdf": "CO-EM-003/CO-EM-003_closure_MUESTRA.pdf",
+          "status": "Muestra IA no canónica",
+          "preview": "CO-EM-003/CO-EM-003_closure_MUESTRA_PORTADA.png"
+        }
+      ]
+    },
+    {
+      "product_code": "CO-EM-004",
+      "title": "Confidencialidad y propiedad intelectual",
+      "documents": [
+        {
+          "template_id": "TPL-CO-EM-004-NDA",
+          "kind": "nda",
+          "title": "Acuerdo de confidencialidad y propiedad intelectual",
+          "docx": "CO-EM-004/CO-EM-004_nda_MUESTRA.docx",
+          "pdf": "CO-EM-004/CO-EM-004_nda_MUESTRA.pdf",
+          "status": "Muestra IA no canónica",
+          "preview": "CO-EM-004/CO-EM-004_nda_MUESTRA_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-EM-004-INCIDENT-PROTOCOL",
+          "kind": "incident_protocol",
+          "title": "Protocolo de incidentes, devolución y cierre",
+          "docx": "CO-EM-004/CO-EM-004_incident_protocol_MUESTRA.docx",
+          "pdf": "CO-EM-004/CO-EM-004_incident_protocol_MUESTRA.pdf",
+          "status": "Muestra IA no canónica",
+          "preview": "CO-EM-004/CO-EM-004_incident_protocol_MUESTRA_PORTADA.png"
+        }
+      ]
+    },
+    {
+      "product_code": "CO-AR-001",
+      "title": "Arrendamiento de vivienda urbana",
+      "documents": [
+        {
+          "template_id": "TPL-CO-AR-001-LEASE-CONTRACT",
+          "kind": "lease_contract",
+          "title": "Contrato de arrendamiento de vivienda urbana",
+          "docx": "CO-AR-001/CO-AR-001_lease_contract_MUESTRA.docx",
+          "pdf": "CO-AR-001/CO-AR-001_lease_contract_MUESTRA.pdf",
+          "status": "Muestra IA no canónica",
+          "preview": "CO-AR-001/CO-AR-001_lease_contract_MUESTRA_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-AR-001-LEASE-INVENTORY",
+          "kind": "lease_inventory",
+          "title": "Inventario del inmueble y evidencia de estado",
+          "docx": "CO-AR-001/CO-AR-001_lease_inventory_MUESTRA.docx",
+          "pdf": "CO-AR-001/CO-AR-001_lease_inventory_MUESTRA.pdf",
+          "status": "Muestra IA no canónica",
+          "preview": "CO-AR-001/CO-AR-001_lease_inventory_MUESTRA_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-AR-001-DELIVERY-ACT",
+          "kind": "delivery_act",
+          "title": "Acta de entrega del inmueble",
+          "docx": "CO-AR-001/CO-AR-001_delivery_act_MUESTRA.docx",
+          "pdf": "CO-AR-001/CO-AR-001_delivery_act_MUESTRA.pdf",
+          "status": "Muestra IA no canónica",
+          "preview": "CO-AR-001/CO-AR-001_delivery_act_MUESTRA_PORTADA.png"
+        }
+      ]
+    },
+    {
+      "product_code": "CO-SA-001",
+      "title": "Derecho de petición a EPS o IPS",
+      "documents": [
+        {
+          "template_id": "TPL-CO-SA-001-HEALTH-PETITION",
+          "kind": "health_petition",
+          "title": "Derecho de petición ante EPS o IPS",
+          "docx": "CO-SA-001/CO-SA-001_health_petition_MUESTRA.docx",
+          "pdf": "CO-SA-001/CO-SA-001_health_petition_MUESTRA.pdf",
+          "status": "Muestra IA no canónica",
+          "preview": "CO-SA-001/CO-SA-001_health_petition_MUESTRA_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-SA-001-EVIDENCE-INDEX",
+          "kind": "evidence_index",
+          "title": "Índice de soportes y control de radicación",
+          "docx": "CO-SA-001/CO-SA-001_evidence_index_MUESTRA.docx",
+          "pdf": "CO-SA-001/CO-SA-001_evidence_index_MUESTRA.pdf",
+          "status": "Muestra IA no canónica",
+          "preview": "CO-SA-001/CO-SA-001_evidence_index_MUESTRA_PORTADA.png"
+        }
+      ]
+    },
+    {
+      "product_code": "CO-CD-001",
+      "title": "Centrales de riesgo y hábeas data financiero",
+      "documents": [
+        {
+          "kind": "habeas_consultation",
+          "title": "Consulta integral del dato, fuente, usuarios y soportes",
+          "docx": "CO-CD-001/CO-CD-001_habeas_consultation_V232.docx",
+          "pdf": "CO-CD-001/CO-CD-001_habeas_consultation_V232.pdf",
+          "preview": "CO-CD-001/CO-CD-001_habeas_consultation_V232_PORTADA.png",
+          "status_id": "matured_candidate",
+          "status": "Muestra madurada v2.32",
+          "validation_status": "Aprobación multietapa por responsable único completada",
+          "professional_use": true,
+          "version_label": "2.32"
+        },
+        {
+          "kind": "habeas_claim",
+          "title": "Reclamo integral de hábeas data financiero",
+          "docx": "CO-CD-001/CO-CD-001_habeas_claim_V232.docx",
+          "pdf": "CO-CD-001/CO-CD-001_habeas_claim_V232.pdf",
+          "preview": "CO-CD-001/CO-CD-001_habeas_claim_V232_PORTADA.png",
+          "status_id": "matured_candidate",
+          "status": "Muestra madurada v2.32",
+          "validation_status": "Aprobación multietapa por responsable único completada",
+          "professional_use": true,
+          "version_label": "2.32"
+        },
+        {
+          "kind": "habeas_reiteration",
+          "title": "Reiteración, leyenda y control de silencio",
+          "docx": "CO-CD-001/CO-CD-001_habeas_reiteration_V232.docx",
+          "pdf": "CO-CD-001/CO-CD-001_habeas_reiteration_V232.pdf",
+          "preview": "CO-CD-001/CO-CD-001_habeas_reiteration_V232_PORTADA.png",
+          "status_id": "matured_candidate",
+          "status": "Muestra madurada v2.32",
+          "validation_status": "Aprobación multietapa por responsable único completada",
+          "professional_use": true,
+          "version_label": "2.32"
+        },
+        {
+          "kind": "habeas_authority_escalation",
+          "title": "Ruta y borrador de escalamiento ante autoridad",
+          "docx": "CO-CD-001/CO-CD-001_habeas_authority_escalation_V232.docx",
+          "pdf": "CO-CD-001/CO-CD-001_habeas_authority_escalation_V232.pdf",
+          "preview": "CO-CD-001/CO-CD-001_habeas_authority_escalation_V232_PORTADA.png",
+          "status_id": "matured_candidate",
+          "status": "Muestra madurada v2.32",
+          "validation_status": "Aprobación multietapa por responsable único completada",
+          "professional_use": true,
+          "version_label": "2.32"
+        },
+        {
+          "kind": "habeas_evidence_matrix",
+          "title": "Matriz de evidencia, responsables y trazabilidad",
+          "docx": "CO-CD-001/CO-CD-001_habeas_evidence_matrix_V232.docx",
+          "pdf": "CO-CD-001/CO-CD-001_habeas_evidence_matrix_V232.pdf",
+          "preview": "CO-CD-001/CO-CD-001_habeas_evidence_matrix_V232_PORTADA.png",
+          "status_id": "matured_candidate",
+          "status": "Muestra madurada v2.32",
+          "validation_status": "Aprobación multietapa por responsable único completada",
+          "professional_use": true,
+          "version_label": "2.32"
+        },
+        {
+          "kind": "habeas_deadline_calendar",
+          "title": "Calendario de términos, permanencia y caducidad",
+          "docx": "CO-CD-001/CO-CD-001_habeas_deadline_calendar_V232.docx",
+          "pdf": "CO-CD-001/CO-CD-001_habeas_deadline_calendar_V232.pdf",
+          "preview": "CO-CD-001/CO-CD-001_habeas_deadline_calendar_V232_PORTADA.png",
+          "status_id": "matured_candidate",
+          "status": "Muestra madurada v2.32",
+          "validation_status": "Aprobación multietapa por responsable único completada",
+          "professional_use": true,
+          "version_label": "2.32"
+        },
+        {
+          "kind": "identity_theft_protocol",
+          "title": "Protocolo de suplantación, alertas y preservación",
+          "docx": "CO-CD-001/CO-CD-001_identity_theft_protocol_V232.docx",
+          "pdf": "CO-CD-001/CO-CD-001_identity_theft_protocol_V232.pdf",
+          "preview": "CO-CD-001/CO-CD-001_identity_theft_protocol_V232_PORTADA.png",
+          "status_id": "matured_candidate",
+          "status": "Muestra madurada v2.32",
+          "validation_status": "Aprobación multietapa por responsable único completada",
+          "professional_use": true,
+          "version_label": "2.32"
+        }
+      ],
+      "status": "Muestra madurada v2.32",
+      "professional_use": true
+    },
+    {
+      "product_code": "CO-CD-003",
+      "title": "Garantía, retracto y reversión del pago — producto madurado v2.33",
+      "documents": [
+        {
+          "template_id": "TPL-CO-CD-003-V233-01",
+          "kind": "consumer_mechanism_diagnosis",
+          "title": "Diagnóstico jurídico del mecanismo de consumo",
+          "docx": "CO-CD-003/CO-CD-003_consumer_mechanism_diagnosis_V233.docx",
+          "pdf": "CO-CD-003/CO-CD-003_consumer_mechanism_diagnosis_V233.pdf",
+          "status": "Candidato interno madurado v2.33",
+          "preview": "CO-CD-003/CO-CD-003_consumer_mechanism_diagnosis_V233_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-CD-003-V233-02",
+          "kind": "warranty_claim",
+          "title": "Reclamación directa de garantía legal",
+          "docx": "CO-CD-003/CO-CD-003_warranty_claim_V233.docx",
+          "pdf": "CO-CD-003/CO-CD-003_warranty_claim_V233.pdf",
+          "status": "Candidato interno madurado v2.33",
+          "preview": "CO-CD-003/CO-CD-003_warranty_claim_V233_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-CD-003-V233-03",
+          "kind": "withdrawal_notice",
+          "title": "Comunicación de ejercicio del derecho de retracto",
+          "docx": "CO-CD-003/CO-CD-003_withdrawal_notice_V233.docx",
+          "pdf": "CO-CD-003/CO-CD-003_withdrawal_notice_V233.pdf",
+          "status": "Candidato interno madurado v2.33",
+          "preview": "CO-CD-003/CO-CD-003_withdrawal_notice_V233_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-CD-003-V233-04",
+          "kind": "payment_reversal_request",
+          "title": "Solicitud coordinada de reversión del pago",
+          "docx": "CO-CD-003/CO-CD-003_payment_reversal_request_V233.docx",
+          "pdf": "CO-CD-003/CO-CD-003_payment_reversal_request_V233.pdf",
+          "status": "Candidato interno madurado v2.33",
+          "preview": "CO-CD-003/CO-CD-003_payment_reversal_request_V233_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-CD-003-V233-05",
+          "kind": "recurring_debit_revocation",
+          "title": "Revocación de débito periódico y control de cargos",
+          "docx": "CO-CD-003/CO-CD-003_recurring_debit_revocation_V233.docx",
+          "pdf": "CO-CD-003/CO-CD-003_recurring_debit_revocation_V233.pdf",
+          "status": "Candidato interno madurado v2.33",
+          "preview": "CO-CD-003/CO-CD-003_recurring_debit_revocation_V233_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-CD-003-V233-06",
+          "kind": "ecommerce_non_delivery_termination",
+          "title": "Terminación por falta de entrega y devolución",
+          "docx": "CO-CD-003/CO-CD-003_ecommerce_non_delivery_termination_V233.docx",
+          "pdf": "CO-CD-003/CO-CD-003_ecommerce_non_delivery_termination_V233.pdf",
+          "status": "Candidato interno madurado v2.33",
+          "preview": "CO-CD-003/CO-CD-003_ecommerce_non_delivery_termination_V233_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-CD-003-V233-07",
+          "kind": "consumer_evidence_matrix",
+          "title": "Matriz de evidencia, pretensiones y destinatarios",
+          "docx": "CO-CD-003/CO-CD-003_consumer_evidence_matrix_V233.docx",
+          "pdf": "CO-CD-003/CO-CD-003_consumer_evidence_matrix_V233.pdf",
+          "status": "Candidato interno madurado v2.33",
+          "preview": "CO-CD-003/CO-CD-003_consumer_evidence_matrix_V233_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-CD-003-V233-08",
+          "kind": "consumer_deadline_calendar",
+          "title": "Calendario de términos y actuaciones de consumo",
+          "docx": "CO-CD-003/CO-CD-003_consumer_deadline_calendar_V233.docx",
+          "pdf": "CO-CD-003/CO-CD-003_consumer_deadline_calendar_V233.pdf",
+          "status": "Candidato interno madurado v2.33",
+          "preview": "CO-CD-003/CO-CD-003_consumer_deadline_calendar_V233_PORTADA.png"
+        }
+      ]
+    },
+    {
+      "product_code": "CO-CD-004",
+      "title": "Cobro, acuerdo de pago y pagaré — producto madurado v2.34",
+      "documents": [
+        {
+          "template_id": "TPL-CO-CD-004-V234-01",
+          "kind": "debt_diagnostic",
+          "title": "Diagnóstico de obligación, título y ruta de cobro",
+          "docx": "CO-CD-004/CO-CD-004_debt_diagnostic_V234.docx",
+          "pdf": "CO-CD-004/CO-CD-004_debt_diagnostic_V234.pdf",
+          "status": "Candidato interno madurado v2.34",
+          "preview": "CO-CD-004/CO-CD-004_debt_diagnostic_V234_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-CD-004-V234-02",
+          "kind": "account_statement",
+          "title": "Estado de cuenta conciliable y liquidación preliminar",
+          "docx": "CO-CD-004/CO-CD-004_account_statement_V234.docx",
+          "pdf": "CO-CD-004/CO-CD-004_account_statement_V234.pdf",
+          "status": "Candidato interno madurado v2.34",
+          "preview": "CO-CD-004/CO-CD-004_account_statement_V234_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-CD-004-V234-03",
+          "kind": "collection_letter",
+          "title": "Requerimiento de pago y propuesta de solución",
+          "docx": "CO-CD-004/CO-CD-004_collection_letter_V234.docx",
+          "pdf": "CO-CD-004/CO-CD-004_collection_letter_V234.pdf",
+          "status": "Candidato interno madurado v2.34",
+          "preview": "CO-CD-004/CO-CD-004_collection_letter_V234_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-CD-004-V234-04",
+          "kind": "payment_agreement",
+          "title": "Acuerdo de pago integral",
+          "docx": "CO-CD-004/CO-CD-004_payment_agreement_V234.docx",
+          "pdf": "CO-CD-004/CO-CD-004_payment_agreement_V234.pdf",
+          "status": "Candidato interno madurado v2.34",
+          "preview": "CO-CD-004/CO-CD-004_payment_agreement_V234_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-CD-004-V234-05",
+          "kind": "payment_schedule",
+          "title": "Cronograma e imputación de cuotas",
+          "docx": "CO-CD-004/CO-CD-004_payment_schedule_V234.docx",
+          "pdf": "CO-CD-004/CO-CD-004_payment_schedule_V234.pdf",
+          "status": "Candidato interno madurado v2.34",
+          "preview": "CO-CD-004/CO-CD-004_payment_schedule_V234_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-CD-004-V234-06",
+          "kind": "promissory_note",
+          "title": "Pagaré diligenciado y controlado",
+          "docx": "CO-CD-004/CO-CD-004_promissory_note_V234.docx",
+          "pdf": "CO-CD-004/CO-CD-004_promissory_note_V234.pdf",
+          "status": "Candidato interno madurado v2.34",
+          "preview": "CO-CD-004/CO-CD-004_promissory_note_V234_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-CD-004-V234-07",
+          "kind": "instruction_letter",
+          "title": "Carta de instrucciones para pagaré",
+          "docx": "CO-CD-004/CO-CD-004_instruction_letter_V234.docx",
+          "pdf": "CO-CD-004/CO-CD-004_instruction_letter_V234.pdf",
+          "status": "Candidato interno madurado v2.34",
+          "preview": "CO-CD-004/CO-CD-004_instruction_letter_V234_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-CD-004-V234-08",
+          "kind": "payment_receipt",
+          "title": "Recibo de pago y actualización de saldo",
+          "docx": "CO-CD-004/CO-CD-004_payment_receipt_V234.docx",
+          "pdf": "CO-CD-004/CO-CD-004_payment_receipt_V234.pdf",
+          "status": "Candidato interno madurado v2.34",
+          "preview": "CO-CD-004/CO-CD-004_payment_receipt_V234_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-CD-004-V234-09",
+          "kind": "settlement_certificate",
+          "title": "Paz y salvo o constancia de cierre condicionada",
+          "docx": "CO-CD-004/CO-CD-004_settlement_certificate_V234.docx",
+          "pdf": "CO-CD-004/CO-CD-004_settlement_certificate_V234.pdf",
+          "status": "Candidato interno madurado v2.34",
+          "preview": "CO-CD-004/CO-CD-004_settlement_certificate_V234_PORTADA.png"
+        },
+        {
+          "template_id": "TPL-CO-CD-004-V234-10",
+          "kind": "collection_evidence_matrix",
+          "title": "Matriz de evidencia, comunicaciones y trazabilidad",
+          "docx": "CO-CD-004/CO-CD-004_collection_evidence_matrix_V234.docx",
+          "pdf": "CO-CD-004/CO-CD-004_collection_evidence_matrix_V234.pdf",
+          "status": "Candidato interno madurado v2.34",
+          "preview": "CO-CD-004/CO-CD-004_collection_evidence_matrix_V234_PORTADA.png"
+        }
+      ]
+    }
+  ],
+  "container_version": "2.35",
+  "approval_model": "multi_stage_single_responsible",
+  "approval_date": "2026-07-28",
+  "approval_disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+}

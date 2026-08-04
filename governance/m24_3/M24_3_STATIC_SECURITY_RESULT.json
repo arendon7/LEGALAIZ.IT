@@ -1,0 +1,8 @@
+{
+  "schema": "legalaizit-m24-3-static-security-v1",
+  "findings": [],
+  "high_or_critical": 0,
+  "passed": true,
+  "milestone": "M24.3",
+  "build_id": "M24.3-PILOT-VALIDATION-AND-DUAL-APPROVAL-ON-M21.1-2026-08-01"
+}

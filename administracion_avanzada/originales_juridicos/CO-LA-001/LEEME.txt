@@ -1,0 +1,8 @@
+CO-LA-001 · Liquidación laboral
+
+Entregables esperados:
+- [OBLIGATORIO] Paquete jurídico consolidado · .docx, .pdf · pistas: liquidacion, laboral, paquete_09
+- [OBLIGATORIO] Calculadora y parámetros · .xlsx · pistas: calculadora, liquidacion, parametros
+- [OBLIGATORIO] Formulario, reglas y escenarios · .docx, .xlsx, .pdf · pistas: formulario, reglas, escenarios
+
+No cambie el contenido para ajustarlo al sistema. Debe conservarse el binario recibido.

@@ -1,0 +1,77 @@
+{
+  "version": "2.59",
+  "product_id": "CO-TR-001",
+  "matrix": [
+    {
+      "area": "evaluación",
+      "controls": [
+        "12 escenarios canónicos",
+        "13 escenarios negativos",
+        "límites inclusivos",
+        "normalización",
+        "riesgo rojo",
+        "firmeza"
+      ]
+    },
+    {
+      "area": "documentos",
+      "controls": [
+        "4 tipos",
+        "paquete consolidado",
+        "OOXML válido",
+        "sin centinelas",
+        "versión visible"
+      ]
+    },
+    {
+      "area": "gobierno",
+      "controls": [
+        "revisiones inmutables",
+        "comparación",
+        "hashes",
+        "auditoría",
+        "aprobación dual",
+        "comentarios"
+      ]
+    },
+    {
+      "area": "API",
+      "controls": [
+        "autenticación",
+        "RBAC",
+        "errores seguros",
+        "sin rutas locales"
+      ]
+    },
+    {
+      "area": "instalación",
+      "controls": [
+        "SHA base v2.58",
+        "dry-run",
+        "conflictos",
+        "respaldo",
+        "preservación"
+      ]
+    },
+    {
+      "area": "fuentes",
+      "controls": [
+        "dominios oficiales",
+        "vigencia",
+        "estado procesal",
+        "firmeza",
+        "revalidación"
+      ]
+    },
+    {
+      "area": "QA visual",
+      "controls": [
+        "4 escenarios",
+        "render completo",
+        "accesibilidad",
+        "tablas",
+        "encabezados y pies"
+      ]
+    }
+  ]
+}

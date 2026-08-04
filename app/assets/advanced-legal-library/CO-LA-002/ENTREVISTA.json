@@ -1,0 +1,675 @@
+{
+  "version": "2.24",
+  "intro": "Responde con datos confirmados. El sistema selecciona la modalidad real, verifica límites legales y activa únicamente los anexos necesarios.",
+  "sections": [
+    "Partes",
+    "Alcance",
+    "Modalidad",
+    "Cargo",
+    "Lugar",
+    "Jornada",
+    "Prueba",
+    "Compensación",
+    "Cumplimiento",
+    "Protecciones",
+    "Anexos"
+  ],
+  "questions": [
+    {
+      "id": "employer_name",
+      "label": "Nombre o razón social del empleador",
+      "type": "text",
+      "required": true,
+      "section": "Partes",
+      "min_length": 3,
+      "help": {
+        "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+        "how_to_answer": "Responde con el dato confirmado para “Nombre o razón social del empleador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "employer_id",
+      "label": "NIT o identificación del empleador",
+      "type": "text",
+      "required": true,
+      "section": "Partes",
+      "min_length": 5,
+      "help": {
+        "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+        "how_to_answer": "Responde con el dato confirmado para “NIT o identificación del empleador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "employer_address",
+      "label": "Domicilio y dirección del empleador",
+      "type": "text",
+      "required": true,
+      "section": "Partes",
+      "min_length": 5,
+      "help": {
+        "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+        "how_to_answer": "Responde con el dato confirmado para “Domicilio y dirección del empleador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "employer_representative",
+      "label": "Representante o persona que firma por el empleador",
+      "type": "text",
+      "required": true,
+      "section": "Partes",
+      "min_length": 3,
+      "help": {
+        "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+        "how_to_answer": "Responde con el dato confirmado para “Representante o persona que firma por el empleador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "worker_name",
+      "label": "Nombre completo del trabajador",
+      "type": "text",
+      "required": true,
+      "section": "Partes",
+      "min_length": 3,
+      "help": {
+        "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+        "how_to_answer": "Responde con el dato confirmado para “Nombre completo del trabajador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "worker_id",
+      "label": "Documento de identidad del trabajador",
+      "type": "text",
+      "required": true,
+      "section": "Partes",
+      "min_length": 5,
+      "help": {
+        "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+        "how_to_answer": "Responde con el dato confirmado para “Documento de identidad del trabajador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "worker_address",
+      "label": "Domicilio y dirección del trabajador",
+      "type": "text",
+      "required": true,
+      "section": "Partes",
+      "min_length": 5,
+      "help": {
+        "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+        "how_to_answer": "Responde con el dato confirmado para “Domicilio y dirección del trabajador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "worker_email",
+      "label": "Correo del trabajador",
+      "type": "text",
+      "required": true,
+      "section": "Partes",
+      "format": "email",
+      "help": {
+        "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+        "how_to_answer": "Responde con el dato confirmado para “Correo del trabajador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "worker_age_status",
+      "label": "Condición de edad del trabajador",
+      "type": "select",
+      "required": true,
+      "section": "Alcance",
+      "options": [
+        "Mayor de edad",
+        "Menor de edad",
+        "No confirmado"
+      ],
+      "help": {
+        "why_asked": "Determina si el caso está dentro del producto estándar o requiere un tratamiento especial.",
+        "how_to_answer": "Responde con el dato confirmado para “Condición de edad del trabajador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "public_or_crossborder",
+      "label": "¿Es servidor público, trabajador oficial, expatriado o laborará principalmente fuera de Colombia?",
+      "type": "select",
+      "required": true,
+      "section": "Alcance",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "help": {
+        "why_asked": "Determina si el caso está dentro del producto estándar o requiere un tratamiento especial.",
+        "how_to_answer": "Responde con el dato confirmado para “¿Es servidor público, trabajador oficial, expatriado o laborará principalmente fuera de Colombia?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "collective_regime",
+      "label": "¿La relación está cubierta por convención colectiva, pacto, laudo o régimen especial?",
+      "type": "select",
+      "required": true,
+      "section": "Alcance",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "help": {
+        "why_asked": "Determina si el caso está dentro del producto estándar o requiere un tratamiento especial.",
+        "how_to_answer": "Responde con el dato confirmado para “¿La relación está cubierta por convención colectiva, pacto, laudo o régimen especial?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "need_type",
+      "label": "Naturaleza real de la necesidad",
+      "type": "select",
+      "required": true,
+      "section": "Modalidad",
+      "options": [
+        "Permanente",
+        "Temporal con fecha cierta",
+        "Obra o labor específica"
+      ],
+      "help": {
+        "why_asked": "Permite seleccionar la modalidad contractual según la necesidad real y controlar su duración.",
+        "how_to_answer": "Responde con el dato confirmado para “Naturaleza real de la necesidad”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "start_date",
+      "label": "Fecha real de inicio",
+      "type": "date",
+      "required": true,
+      "section": "Modalidad",
+      "help": {
+        "why_asked": "Permite seleccionar la modalidad contractual según la necesidad real y controlar su duración.",
+        "how_to_answer": "Responde con el dato confirmado para “Fecha real de inicio”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "end_date",
+      "label": "Fecha de terminación propuesta",
+      "type": "date",
+      "required": false,
+      "section": "Modalidad",
+      "show_if": {
+        "field": "need_type",
+        "equals": "Temporal con fecha cierta"
+      },
+      "after_field": "start_date",
+      "help": {
+        "why_asked": "Permite seleccionar la modalidad contractual según la necesidad real y controlar su duración.",
+        "how_to_answer": "Responde con el dato confirmado para “Fecha de terminación propuesta”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "prior_fixed_term_months",
+      "label": "Meses acumulados de contratos fijos desde la vigencia de la Ley 2466 de 2025",
+      "type": "number",
+      "required": false,
+      "section": "Modalidad",
+      "show_if": {
+        "field": "need_type",
+        "equals": "Temporal con fecha cierta"
+      },
+      "min": 0,
+      "max": 48,
+      "help": {
+        "why_asked": "Permite seleccionar la modalidad contractual según la necesidad real y controlar su duración.",
+        "how_to_answer": "Responde con el dato confirmado para “Meses acumulados de contratos fijos desde la vigencia de la Ley 2466 de 2025”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "work_description",
+      "label": "Descripción precisa de la obra o labor",
+      "type": "textarea",
+      "required": false,
+      "section": "Modalidad",
+      "show_if": {
+        "field": "need_type",
+        "equals": "Obra o labor específica"
+      },
+      "help": {
+        "why_asked": "Permite seleccionar la modalidad contractual según la necesidad real y controlar su duración.",
+        "how_to_answer": "Responde con el dato confirmado para “Descripción precisa de la obra o labor”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "completion_milestone",
+      "label": "Hito objetivo y verificable de terminación",
+      "type": "textarea",
+      "required": false,
+      "section": "Modalidad",
+      "show_if": {
+        "field": "need_type",
+        "equals": "Obra o labor específica"
+      },
+      "help": {
+        "why_asked": "Permite seleccionar la modalidad contractual según la necesidad real y controlar su duración.",
+        "how_to_answer": "Responde con el dato confirmado para “Hito objetivo y verificable de terminación”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "job_title",
+      "label": "Denominación del cargo",
+      "type": "text",
+      "required": true,
+      "section": "Cargo",
+      "min_length": 3,
+      "help": {
+        "why_asked": "Define el servicio personal, las funciones y los límites razonables del cargo.",
+        "how_to_answer": "Responde con el dato confirmado para “Denominación del cargo”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "role_clear",
+      "label": "¿Las funciones y responsabilidades están detalladas en un anexo?",
+      "type": "select",
+      "required": true,
+      "section": "Cargo",
+      "options": [
+        "Sí",
+        "No",
+        "En construcción"
+      ],
+      "help": {
+        "why_asked": "Define el servicio personal, las funciones y los límites razonables del cargo.",
+        "how_to_answer": "Responde con el dato confirmado para “¿Las funciones y responsabilidades están detalladas en un anexo?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "workplace",
+      "label": "Lugar principal de trabajo",
+      "type": "text",
+      "required": true,
+      "section": "Lugar",
+      "min_length": 3,
+      "help": {
+        "why_asked": "Determina el lugar y la figura aplicable al trabajo presencial o no presencial.",
+        "how_to_answer": "Responde con el dato confirmado para “Lugar principal de trabajo”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "remote",
+      "label": "Forma de ejecución del trabajo",
+      "type": "select",
+      "required": true,
+      "section": "Lugar",
+      "options": [
+        "Presencial",
+        "Teletrabajo suplementario",
+        "Teletrabajo autónomo",
+        "Trabajo remoto integral",
+        "Trabajo en casa temporal",
+        "Híbrido por acuerdo"
+      ],
+      "help": {
+        "why_asked": "Determina el lugar y la figura aplicable al trabajo presencial o no presencial.",
+        "how_to_answer": "Responde con el dato confirmado para “Forma de ejecución del trabajo”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "remote_compliance_ready",
+      "label": "¿Se documentaron ARL, SG-SST, equipos, desconexión y lugar autorizado?",
+      "type": "select",
+      "required": false,
+      "section": "Lugar",
+      "options": [
+        "Sí",
+        "No",
+        "En proceso"
+      ],
+      "show_if": {
+        "field": "remote",
+        "equals": "Trabajo remoto integral"
+      },
+      "help": {
+        "why_asked": "Determina el lugar y la figura aplicable al trabajo presencial o no presencial.",
+        "how_to_answer": "Responde con el dato confirmado para “¿Se documentaron ARL, SG-SST, equipos, desconexión y lugar autorizado?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "weekly_hours",
+      "label": "Horas ordinarias semanales",
+      "type": "number",
+      "required": true,
+      "section": "Jornada",
+      "min": 1,
+      "max": 60,
+      "help": {
+        "why_asked": "Permite verificar la jornada ordinaria, descansos, nocturnidad y trabajo suplementario.",
+        "how_to_answer": "Responde con el dato confirmado para “Horas ordinarias semanales”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "max_daily_hours",
+      "label": "Máximo de horas ordinarias en un día",
+      "type": "number",
+      "required": true,
+      "section": "Jornada",
+      "min": 1,
+      "max": 16,
+      "help": {
+        "why_asked": "Permite verificar la jornada ordinaria, descansos, nocturnidad y trabajo suplementario.",
+        "how_to_answer": "Responde con el dato confirmado para “Máximo de horas ordinarias en un día”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "night_work",
+      "label": "¿El horario incluye trabajo desde las 7:00 p. m. hasta las 6:00 a. m.?",
+      "type": "select",
+      "required": true,
+      "section": "Jornada",
+      "options": [
+        "No",
+        "Sí",
+        "Ocasional"
+      ],
+      "help": {
+        "why_asked": "Permite verificar la jornada ordinaria, descansos, nocturnidad y trabajo suplementario.",
+        "how_to_answer": "Responde con el dato confirmado para “¿El horario incluye trabajo desde las 7:00 p. m. hasta las 6:00 a. m.?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "planned_overtime_daily",
+      "label": "Horas extra máximas previstas por día",
+      "type": "number",
+      "required": true,
+      "section": "Jornada",
+      "min": 0,
+      "max": 8,
+      "help": {
+        "why_asked": "Permite verificar la jornada ordinaria, descansos, nocturnidad y trabajo suplementario.",
+        "how_to_answer": "Responde con el dato confirmado para “Horas extra máximas previstas por día”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "planned_overtime_weekly",
+      "label": "Horas extra máximas previstas por semana",
+      "type": "number",
+      "required": true,
+      "section": "Jornada",
+      "min": 0,
+      "max": 30,
+      "help": {
+        "why_asked": "Permite verificar la jornada ordinaria, descansos, nocturnidad y trabajo suplementario.",
+        "how_to_answer": "Responde con el dato confirmado para “Horas extra máximas previstas por semana”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "probation",
+      "label": "¿Se pactará período de prueba escrito?",
+      "type": "select",
+      "required": true,
+      "section": "Prueba",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "help": {
+        "why_asked": "Controla que el período de prueba sea escrito y respete los límites aplicables.",
+        "how_to_answer": "Responde con el dato confirmado para “¿Se pactará período de prueba escrito?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "probation_months",
+      "label": "Duración del período de prueba en meses",
+      "type": "number",
+      "required": false,
+      "section": "Prueba",
+      "show_if": {
+        "field": "probation",
+        "equals": "Sí"
+      },
+      "min": 0.1,
+      "max": 3,
+      "help": {
+        "why_asked": "Controla que el período de prueba sea escrito y respete los límites aplicables.",
+        "how_to_answer": "Responde con el dato confirmado para “Duración del período de prueba en meses”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "monthly_salary",
+      "label": "Salario básico mensual acordado (COP)",
+      "type": "number",
+      "required": true,
+      "section": "Compensación",
+      "min": 1,
+      "help": {
+        "why_asked": "Permite validar salario, pagos variables, beneficios y descuentos.",
+        "how_to_answer": "Responde con el dato confirmado para “Salario básico mensual acordado (COP)”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "salary_type",
+      "label": "Tipo de salario",
+      "type": "select",
+      "required": true,
+      "section": "Compensación",
+      "options": [
+        "Ordinario",
+        "Integral"
+      ],
+      "help": {
+        "why_asked": "Permite validar salario, pagos variables, beneficios y descuentos.",
+        "how_to_answer": "Responde con el dato confirmado para “Tipo de salario”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "variable_payments",
+      "label": "¿Habrá comisiones, bonos o pagos variables?",
+      "type": "select",
+      "required": true,
+      "section": "Compensación",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "help": {
+        "why_asked": "Permite validar salario, pagos variables, beneficios y descuentos.",
+        "how_to_answer": "Responde con el dato confirmado para “¿Habrá comisiones, bonos o pagos variables?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "variable_formula_clear",
+      "label": "¿La fórmula, causación, período y pago están definidos?",
+      "type": "select",
+      "required": false,
+      "section": "Compensación",
+      "options": [
+        "Sí",
+        "No",
+        "En construcción"
+      ],
+      "show_if": {
+        "field": "variable_payments",
+        "equals": "Sí"
+      },
+      "help": {
+        "why_asked": "Permite validar salario, pagos variables, beneficios y descuentos.",
+        "how_to_answer": "Responde con el dato confirmado para “¿La fórmula, causación, período y pago están definidos?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "automatic_deductions",
+      "label": "¿Se pretende autorizar descuentos generales o automáticos por daños, pérdidas o faltantes?",
+      "type": "select",
+      "required": true,
+      "section": "Compensación",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "help": {
+        "why_asked": "Permite validar salario, pagos variables, beneficios y descuentos.",
+        "how_to_answer": "Responde con el dato confirmado para “¿Se pretende autorizar descuentos generales o automáticos por daños, pérdidas o faltantes?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "social_security_plan_confirmed",
+      "label": "¿Está definido el proceso de afiliación y aportes a seguridad social y parafiscales?",
+      "type": "select",
+      "required": true,
+      "section": "Cumplimiento",
+      "options": [
+        "Sí",
+        "No",
+        "En proceso"
+      ],
+      "help": {
+        "why_asked": "Verifica afiliaciones, examen ocupacional y controles previos al inicio.",
+        "how_to_answer": "Responde con el dato confirmado para “¿Está definido el proceso de afiliación y aportes a seguridad social y parafiscales?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "occupational_exam_ready",
+      "label": "¿Está programada la evaluación médica ocupacional de ingreso?",
+      "type": "select",
+      "required": true,
+      "section": "Cumplimiento",
+      "options": [
+        "Sí",
+        "No",
+        "En proceso"
+      ],
+      "help": {
+        "why_asked": "Verifica afiliaciones, examen ocupacional y controles previos al inicio.",
+        "how_to_answer": "Responde con el dato confirmado para “¿Está programada la evaluación médica ocupacional de ingreso?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "special_protection",
+      "label": "¿Existe embarazo, discapacidad, condición de salud, fuero, calidad de cuidador u otra protección conocida?",
+      "type": "select",
+      "required": true,
+      "section": "Protecciones",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "help": {
+        "why_asked": "Evita decisiones discriminatorias y activa ajustes o análisis reforzado cuando corresponde.",
+        "how_to_answer": "Responde con el dato confirmado para “¿Existe embarazo, discapacidad, condición de salud, fuero, calidad de cuidador u otra protección conocida?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "protected_status_decision",
+      "label": "¿La decisión de contratar o las condiciones dependen negativamente de esa protección?",
+      "type": "select",
+      "required": false,
+      "section": "Protecciones",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "show_if": {
+        "field": "special_protection",
+        "equals": "Sí"
+      },
+      "help": {
+        "why_asked": "Evita decisiones discriminatorias y activa ajustes o análisis reforzado cuando corresponde.",
+        "how_to_answer": "Responde con el dato confirmado para “¿La decisión de contratar o las condiciones dependen negativamente de esa protección?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "reasonable_adjustments",
+      "label": "¿Se evaluaron ajustes razonables y medidas de no discriminación?",
+      "type": "select",
+      "required": false,
+      "section": "Protecciones",
+      "options": [
+        "Sí",
+        "No",
+        "En proceso"
+      ],
+      "show_if": {
+        "field": "special_protection",
+        "equals": "Sí"
+      },
+      "help": {
+        "why_asked": "Evita decisiones discriminatorias y activa ajustes o análisis reforzado cuando corresponde.",
+        "how_to_answer": "Responde con el dato confirmado para “¿Se evaluaron ajustes razonables y medidas de no discriminación?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "work_equipment",
+      "label": "¿El empleador entregará equipos, herramientas, accesos o credenciales?",
+      "type": "select",
+      "required": true,
+      "section": "Anexos",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "help": {
+        "why_asked": "Activa únicamente los anexos documentales necesarios para el cargo y sus riesgos.",
+        "how_to_answer": "Responde con el dato confirmado para “¿El empleador entregará equipos, herramientas, accesos o credenciales?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "personal_data",
+      "label": "¿Se tratarán datos sensibles, biométricos o de monitoreo intensivo?",
+      "type": "select",
+      "required": true,
+      "section": "Anexos",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "help": {
+        "why_asked": "Activa únicamente los anexos documentales necesarios para el cargo y sus riesgos.",
+        "how_to_answer": "Responde con el dato confirmado para “¿Se tratarán datos sensibles, biométricos o de monitoreo intensivo?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "ip_relevant",
+      "label": "¿El cargo creará software, diseños, contenidos, invenciones u otros activos de PI?",
+      "type": "select",
+      "required": true,
+      "section": "Anexos",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "help": {
+        "why_asked": "Activa únicamente los anexos documentales necesarios para el cargo y sus riesgos.",
+        "how_to_answer": "Responde con el dato confirmado para “¿El cargo creará software, diseños, contenidos, invenciones u otros activos de PI?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "confidential_information",
+      "label": "¿El cargo tendrá acceso a secretos empresariales o información confidencial relevante?",
+      "type": "select",
+      "required": true,
+      "section": "Anexos",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "help": {
+        "why_asked": "Activa únicamente los anexos documentales necesarios para el cargo y sus riesgos.",
+        "how_to_answer": "Responde con el dato confirmado para “¿El cargo tendrá acceso a secretos empresariales o información confidencial relevante?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    },
+    {
+      "id": "exclusivity_clause",
+      "label": "¿Se pretende pactar exclusividad o restricción de actividades externas?",
+      "type": "select",
+      "required": true,
+      "section": "Anexos",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "help": {
+        "why_asked": "Activa únicamente los anexos documentales necesarios para el cargo y sus riesgos.",
+        "how_to_answer": "Responde con el dato confirmado para “¿Se pretende pactar exclusividad o restricción de actividades externas?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+      }
+    }
+  ],
+  "confirmation_required": true
+}

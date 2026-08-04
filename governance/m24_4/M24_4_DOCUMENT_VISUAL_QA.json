@@ -1,0 +1,232 @@
+{
+  "schema": "legalaizit-m24-4-document-visual-qa-v1",
+  "documents": 11,
+  "total_pages": 112,
+  "visually_inspected_pages": 112,
+  "page_count_matches": true,
+  "preflight_passed": true,
+  "visual_findings": [],
+  "status": "passed",
+  "products": [
+    {
+      "product_code": "CO-AR-001",
+      "pdf": "M24-CO-AR-001-10-SUCCESS_Documento_Final.pdf",
+      "pages": 10,
+      "rendered_docx_pages": 10,
+      "page_counts_match": true,
+      "preflight_returncode": 0,
+      "preflight": {
+        "path": "governance/m24_4/validated_documents/CO-AR-001/M24-CO-AR-001-10-SUCCESS_Documento_Final.pdf",
+        "ok_open": true,
+        "encrypted": false,
+        "pages": 10,
+        "likely_scanned": false,
+        "xfa_present": false,
+        "warnings": [],
+        "pdffonts_excerpt": null
+      },
+      "visual_inspected": true,
+      "visual_findings": []
+    },
+    {
+      "product_code": "CO-CD-001",
+      "pdf": "M24-CO-CD-001-10-SUCCESS_Documento_Final.pdf",
+      "pages": 7,
+      "rendered_docx_pages": 7,
+      "page_counts_match": true,
+      "preflight_returncode": 0,
+      "preflight": {
+        "path": "governance/m24_4/validated_documents/CO-CD-001/M24-CO-CD-001-10-SUCCESS_Documento_Final.pdf",
+        "ok_open": true,
+        "encrypted": false,
+        "pages": 7,
+        "likely_scanned": false,
+        "xfa_present": false,
+        "warnings": [],
+        "pdffonts_excerpt": null
+      },
+      "visual_inspected": true,
+      "visual_findings": []
+    },
+    {
+      "product_code": "CO-CD-003",
+      "pdf": "M24-CO-CD-003-10-SUCCESS_Documento_Final.pdf",
+      "pages": 8,
+      "rendered_docx_pages": 8,
+      "page_counts_match": true,
+      "preflight_returncode": 0,
+      "preflight": {
+        "path": "governance/m24_4/validated_documents/CO-CD-003/M24-CO-CD-003-10-SUCCESS_Documento_Final.pdf",
+        "ok_open": true,
+        "encrypted": false,
+        "pages": 8,
+        "likely_scanned": false,
+        "xfa_present": false,
+        "warnings": [],
+        "pdffonts_excerpt": null
+      },
+      "visual_inspected": true,
+      "visual_findings": []
+    },
+    {
+      "product_code": "CO-CD-004",
+      "pdf": "M24-CO-CD-004-10-SUCCESS_Documento_Final.pdf",
+      "pages": 11,
+      "rendered_docx_pages": 11,
+      "page_counts_match": true,
+      "preflight_returncode": 0,
+      "preflight": {
+        "path": "governance/m24_4/validated_documents/CO-CD-004/M24-CO-CD-004-10-SUCCESS_Documento_Final.pdf",
+        "ok_open": true,
+        "encrypted": false,
+        "pages": 11,
+        "likely_scanned": false,
+        "xfa_present": false,
+        "warnings": [],
+        "pdffonts_excerpt": null
+      },
+      "visual_inspected": true,
+      "visual_findings": []
+    },
+    {
+      "product_code": "CO-EM-003",
+      "pdf": "M24-CO-EM-003-10-SUCCESS_Documento_Final.pdf",
+      "pages": 14,
+      "rendered_docx_pages": 14,
+      "page_counts_match": true,
+      "preflight_returncode": 0,
+      "preflight": {
+        "path": "governance/m24_4/validated_documents/CO-EM-003/M24-CO-EM-003-10-SUCCESS_Documento_Final.pdf",
+        "ok_open": true,
+        "encrypted": false,
+        "pages": 14,
+        "likely_scanned": false,
+        "xfa_present": false,
+        "warnings": [],
+        "pdffonts_excerpt": null
+      },
+      "visual_inspected": true,
+      "visual_findings": []
+    },
+    {
+      "product_code": "CO-EM-004",
+      "pdf": "M24-CO-EM-004-10-SUCCESS_Documento_Final.pdf",
+      "pages": 11,
+      "rendered_docx_pages": 11,
+      "page_counts_match": true,
+      "preflight_returncode": 0,
+      "preflight": {
+        "path": "governance/m24_4/validated_documents/CO-EM-004/M24-CO-EM-004-10-SUCCESS_Documento_Final.pdf",
+        "ok_open": true,
+        "encrypted": false,
+        "pages": 11,
+        "likely_scanned": false,
+        "xfa_present": false,
+        "warnings": [],
+        "pdffonts_excerpt": null
+      },
+      "visual_inspected": true,
+      "visual_findings": []
+    },
+    {
+      "product_code": "CO-LA-001",
+      "pdf": "M24-CO-LA-001-10-SUCCESS_Documento_Final.pdf",
+      "pages": 5,
+      "rendered_docx_pages": 5,
+      "page_counts_match": true,
+      "preflight_returncode": 0,
+      "preflight": {
+        "path": "governance/m24_4/validated_documents/CO-LA-001/M24-CO-LA-001-10-SUCCESS_Documento_Final.pdf",
+        "ok_open": true,
+        "encrypted": false,
+        "pages": 5,
+        "likely_scanned": false,
+        "xfa_present": false,
+        "warnings": [],
+        "pdffonts_excerpt": null
+      },
+      "visual_inspected": true,
+      "visual_findings": []
+    },
+    {
+      "product_code": "CO-LA-002",
+      "pdf": "M24-CO-LA-002-10-SUCCESS_Documento_Final.pdf",
+      "pages": 16,
+      "rendered_docx_pages": 16,
+      "page_counts_match": true,
+      "preflight_returncode": 0,
+      "preflight": {
+        "path": "governance/m24_4/validated_documents/CO-LA-002/M24-CO-LA-002-10-SUCCESS_Documento_Final.pdf",
+        "ok_open": true,
+        "encrypted": false,
+        "pages": 16,
+        "likely_scanned": false,
+        "xfa_present": false,
+        "warnings": [],
+        "pdffonts_excerpt": null
+      },
+      "visual_inspected": true,
+      "visual_findings": []
+    },
+    {
+      "product_code": "CO-SA-001",
+      "pdf": "M24-CO-SA-001-10-SUCCESS_Documento_Final.pdf",
+      "pages": 6,
+      "rendered_docx_pages": 6,
+      "page_counts_match": true,
+      "preflight_returncode": 0,
+      "preflight": {
+        "path": "governance/m24_4/validated_documents/CO-SA-001/M24-CO-SA-001-10-SUCCESS_Documento_Final.pdf",
+        "ok_open": true,
+        "encrypted": false,
+        "pages": 6,
+        "likely_scanned": false,
+        "xfa_present": false,
+        "warnings": [],
+        "pdffonts_excerpt": null
+      },
+      "visual_inspected": true,
+      "visual_findings": []
+    },
+    {
+      "product_code": "CO-TR-001",
+      "pdf": "M24-CO-TR-001-10-SUCCESS_Documento_Final.pdf",
+      "pages": 11,
+      "rendered_docx_pages": 11,
+      "page_counts_match": true,
+      "preflight_returncode": 0,
+      "preflight": {
+        "path": "governance/m24_4/validated_documents/CO-TR-001/M24-CO-TR-001-10-SUCCESS_Documento_Final.pdf",
+        "ok_open": true,
+        "encrypted": false,
+        "pages": 11,
+        "likely_scanned": false,
+        "xfa_present": false,
+        "warnings": [],
+        "pdffonts_excerpt": null
+      },
+      "visual_inspected": true,
+      "visual_findings": []
+    },
+    {
+      "product_code": "CO-TR-002",
+      "pdf": "M24-CO-TR-002-10-SUCCESS_Documento_Final.pdf",
+      "pages": 13,
+      "rendered_docx_pages": 13,
+      "page_counts_match": true,
+      "preflight_returncode": 0,
+      "preflight": {
+        "path": "governance/m24_4/validated_documents/CO-TR-002/M24-CO-TR-002-10-SUCCESS_Documento_Final.pdf",
+        "ok_open": true,
+        "encrypted": false,
+        "pages": 13,
+        "likely_scanned": false,
+        "xfa_present": false,
+        "warnings": [],
+        "pdffonts_excerpt": null
+      },
+      "visual_inspected": true,
+      "visual_findings": []
+    }
+  ]
+}

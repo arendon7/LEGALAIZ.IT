@@ -1,0 +1,2726 @@
+[
+  {
+    "template_id": "TPL-CO-SA-001-HEALTH-PETITION",
+    "product_code": "CO-SA-001",
+    "kind": "health_petition",
+    "title": "Derecho de petición integral ante EPS o IPS",
+    "subtitle": "Maduración integral CO-SA-001 v2.31",
+    "filename_suffix": "derecho_peticion_integral_salud",
+    "version_label": "2.31-factory",
+    "canonical_status": "Candidato interno madurado; pendiente cotejo jurídico final y aprobación dual",
+    "source_package": "LegalAIZit_Paquete_06_Derecho_Peticion_EPS_IPS_Consolidado_v231",
+    "variables": [
+      {
+        "id": "petitioner_name",
+        "label": "Nombre completo de quien presenta la petición",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "petitioner_id",
+        "label": "Identificación de quien presenta la petición",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo electrónico para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "address",
+        "label": "Dirección de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio del peticionario",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "notification_channel",
+        "label": "Canal preferido de respuesta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "patient_name",
+        "label": "Nombre completo del paciente",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "patient_id",
+        "label": "Identificación del paciente",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "patient_status",
+        "label": "Situación jurídica del paciente",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "relationship_to_patient",
+        "label": "Relación de quien presenta con el paciente",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de representación o legitimación disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "entity_type",
+        "label": "Tipo de entidad destinataria",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "entity",
+        "label": "Nombre de la entidad destinataria",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "entity_city",
+        "label": "Ciudad o municipio de la entidad",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "filing_channel",
+        "label": "Canal previsto para radicar",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "request_type",
+        "label": "Necesidad principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "request_detail",
+        "label": "Hechos y solicitud concreta",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "medical_support",
+        "label": "Orden, fórmula, historia o soporte médico disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prescription_date",
+        "label": "Fecha de la orden o fórmula médica",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "requested_outcome",
+        "label": "Resultado concreto que solicita a la entidad",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "urgent",
+        "label": "¿Existe riesgo vital o urgencia médica inmediata?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "deterioration",
+        "label": "Nivel de deterioro o afectación actual",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "priority_condition",
+        "label": "Condición de especial protección o priorización",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "continuity_risk",
+        "label": "¿Hay riesgo de interrupción de tratamiento o continuidad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "immediate_attention_sought",
+        "label": "¿Ya buscó atención asistencial inmediata cuando era necesaria?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "medical_record_scope",
+        "label": "Alcance exacto de la historia clínica solicitada",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "secure_delivery",
+        "label": "¿Se solicitó entrega por canal seguro y reservado?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "third_party_authorization",
+        "label": "Autorización o base de acceso del tercero",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "deceased_access_purpose",
+        "label": "Finalidad concreta y legítima del acceso a la historia del paciente fallecido",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "prior_request",
+        "label": "¿Existe petición o radicado previo?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_request_date",
+        "label": "Fecha de la petición previa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_radicado",
+        "label": "Número o constancia del radicado previo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta recibida frente a la petición previa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de la respuesta recibida",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "response_quality",
+        "label": "Calidad de la respuesta recibida",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "tutela_active",
+        "label": "¿Existe tutela o proceso judicial activo sobre los mismos hechos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "supersalud_case_active",
+        "label": "¿Existe PQRD o actuación activa ante Supersalud?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "filing_date",
+        "label": "Fecha prevista de radicación de esta petición",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos contienen solo datos personales y clínicos necesarios?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que los hechos, nombres, fechas y soportes fueron revisados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "SA-S1",
+      "SA-S2",
+      "SA-S3",
+      "SA-S4",
+      "SA-S5",
+      "SA-S6",
+      "SA-S7",
+      "SA-S8",
+      "SA-S9",
+      "SA-S10",
+      "SA-S11",
+      "SA-S12",
+      "SA-S13"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-SA-001-HEALTH-PETITION-B01",
+        "type": "section",
+        "heading": "1. Destinatario e identificación",
+        "text": "Señores {{entity}} — {{entity_type}}, {{entity_city}}. Peticionario: {{petitioner_name}}, identificación {{petitioner_id}}, quien actúa como {{acting_capacity}}.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S1",
+          "SA-S2",
+          "SA-S3",
+          "SA-S4",
+          "SA-S5",
+          "SA-S6",
+          "SA-S7",
+          "SA-S8",
+          "SA-S9",
+          "SA-S10",
+          "SA-S11",
+          "SA-S12",
+          "SA-S13"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-HEALTH-PETITION-B02",
+        "type": "section",
+        "heading": "2. Paciente y legitimación",
+        "text": "Paciente {{patient_name}}, identificación {{patient_id}}. Situación: {{patient_status}}. Relación: {{relationship_to_patient}}. Soporte: {{representation_support}}.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S1",
+          "SA-S4",
+          "SA-S5",
+          "SA-S7",
+          "SA-S12"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-HEALTH-PETITION-B03",
+        "type": "section",
+        "heading": "3. Hechos y solicitud",
+        "text": "{{request_detail}}",
+        "bullets": [
+          "Tipo: {{request_type}}.",
+          "Resultado solicitado: {{requested_outcome}}.",
+          "Soporte médico: {{medical_support}}.",
+          "Continuidad: {{continuity_risk}}."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S1",
+          "SA-S2",
+          "SA-S3",
+          "SA-S4",
+          "SA-S5",
+          "SA-S6",
+          "SA-S7",
+          "SA-S8",
+          "SA-S9",
+          "SA-S10",
+          "SA-S11",
+          "SA-S12",
+          "SA-S13"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-HEALTH-PETITION-B04",
+        "type": "section",
+        "heading": "4. Peticiones",
+        "text": "",
+        "bullets": [
+          "Responder de fondo, clara, precisa, congruente y efectivamente.",
+          "Adoptar la actuación concreta solicitada o explicar motivadamente la decisión.",
+          "Informar responsable, prestador, fecha, lugar y pasos cuando aplique.",
+          "Preservar continuidad y priorización acreditadas."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S2",
+          "SA-S4",
+          "SA-S9",
+          "SA-S11"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-HEALTH-PETITION-B05",
+        "type": "section",
+        "heading": "5. Término y prioridad",
+        "text": "Aplicar el término legal correspondiente al tipo de petición y atención prioritaria cuando proceda, sin sustituir atención de urgencias.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S2",
+          "SA-S9"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-HEALTH-PETITION-B06",
+        "type": "section",
+        "heading": "6. Notificaciones y anexos",
+        "text": "Canal: {{notification_channel}}. Correo: {{email}}. Dirección: {{address}}, {{city}}.",
+        "bullets": [
+          "Documento de identidad.",
+          "Soporte de legitimación cuando aplique.",
+          "Orden o soporte médico pertinente.",
+          "Radicados y respuestas previas."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S1",
+          "SA-S2",
+          "SA-S3",
+          "SA-S4",
+          "SA-S5",
+          "SA-S6",
+          "SA-S7",
+          "SA-S8",
+          "SA-S9",
+          "SA-S10",
+          "SA-S11",
+          "SA-S12",
+          "SA-S13"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-HEALTH-PETITION-CONTROL",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse la información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de control; no puede eliminarse desde el editor."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-SA-001-MEDICAL-RECORD-REQUEST",
+    "product_code": "CO-SA-001",
+    "kind": "medical_record_request",
+    "title": "Solicitud de historia clínica y entrega segura",
+    "subtitle": "Maduración integral CO-SA-001 v2.31",
+    "filename_suffix": "solicitud_historia_clinica_segura",
+    "version_label": "2.31-factory",
+    "canonical_status": "Candidato interno madurado; pendiente cotejo jurídico final y aprobación dual",
+    "source_package": "LegalAIZit_Paquete_06_Derecho_Peticion_EPS_IPS_Consolidado_v231",
+    "variables": [
+      {
+        "id": "petitioner_name",
+        "label": "Nombre completo de quien presenta la petición",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "petitioner_id",
+        "label": "Identificación de quien presenta la petición",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo electrónico para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "address",
+        "label": "Dirección de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio del peticionario",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "notification_channel",
+        "label": "Canal preferido de respuesta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "patient_name",
+        "label": "Nombre completo del paciente",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "patient_id",
+        "label": "Identificación del paciente",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "patient_status",
+        "label": "Situación jurídica del paciente",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "relationship_to_patient",
+        "label": "Relación de quien presenta con el paciente",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de representación o legitimación disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "entity_type",
+        "label": "Tipo de entidad destinataria",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "entity",
+        "label": "Nombre de la entidad destinataria",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "entity_city",
+        "label": "Ciudad o municipio de la entidad",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "filing_channel",
+        "label": "Canal previsto para radicar",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "request_type",
+        "label": "Necesidad principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "request_detail",
+        "label": "Hechos y solicitud concreta",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "medical_support",
+        "label": "Orden, fórmula, historia o soporte médico disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prescription_date",
+        "label": "Fecha de la orden o fórmula médica",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "requested_outcome",
+        "label": "Resultado concreto que solicita a la entidad",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "urgent",
+        "label": "¿Existe riesgo vital o urgencia médica inmediata?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "deterioration",
+        "label": "Nivel de deterioro o afectación actual",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "priority_condition",
+        "label": "Condición de especial protección o priorización",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "continuity_risk",
+        "label": "¿Hay riesgo de interrupción de tratamiento o continuidad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "immediate_attention_sought",
+        "label": "¿Ya buscó atención asistencial inmediata cuando era necesaria?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "medical_record_scope",
+        "label": "Alcance exacto de la historia clínica solicitada",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "secure_delivery",
+        "label": "¿Se solicitó entrega por canal seguro y reservado?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "third_party_authorization",
+        "label": "Autorización o base de acceso del tercero",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "deceased_access_purpose",
+        "label": "Finalidad concreta y legítima del acceso a la historia del paciente fallecido",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "prior_request",
+        "label": "¿Existe petición o radicado previo?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_request_date",
+        "label": "Fecha de la petición previa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_radicado",
+        "label": "Número o constancia del radicado previo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta recibida frente a la petición previa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de la respuesta recibida",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "response_quality",
+        "label": "Calidad de la respuesta recibida",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "tutela_active",
+        "label": "¿Existe tutela o proceso judicial activo sobre los mismos hechos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "supersalud_case_active",
+        "label": "¿Existe PQRD o actuación activa ante Supersalud?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "filing_date",
+        "label": "Fecha prevista de radicación de esta petición",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos contienen solo datos personales y clínicos necesarios?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que los hechos, nombres, fechas y soportes fueron revisados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "SA-S1",
+      "SA-S2",
+      "SA-S3",
+      "SA-S4",
+      "SA-S5",
+      "SA-S6",
+      "SA-S7",
+      "SA-S8",
+      "SA-S9",
+      "SA-S10",
+      "SA-S11",
+      "SA-S12",
+      "SA-S13"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-SA-001-MEDICAL-RECORD-REQUEST-B01",
+        "type": "section",
+        "heading": "1. Identificación y legitimación",
+        "text": "Paciente {{patient_name}} — solicitante {{petitioner_name}}, calidad {{acting_capacity}}, soporte {{representation_support}}.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S4",
+          "SA-S5",
+          "SA-S7",
+          "SA-S12"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-MEDICAL-RECORD-REQUEST-B02",
+        "type": "section",
+        "heading": "2. Alcance delimitado",
+        "text": "{{medical_record_scope}}",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S1",
+          "SA-S2",
+          "SA-S3",
+          "SA-S4",
+          "SA-S5",
+          "SA-S6",
+          "SA-S7",
+          "SA-S8",
+          "SA-S9",
+          "SA-S10",
+          "SA-S11",
+          "SA-S12",
+          "SA-S13"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-MEDICAL-RECORD-REQUEST-B03",
+        "type": "section",
+        "heading": "3. Solicitudes de entrega segura",
+        "text": "",
+        "bullets": [
+          "Verificar identidad y legitimación.",
+          "Entregar copia íntegra del alcance pedido por canal seguro.",
+          "Informar índice, período y constancia de entrega.",
+          "No divulgar datos a terceros no autorizados."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S5",
+          "SA-S6",
+          "SA-S7",
+          "SA-S8"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-MEDICAL-RECORD-REQUEST-B04",
+        "type": "section",
+        "heading": "4. Finalidad y minimización",
+        "text": "Finalidad: {{deceased_access_purpose}}. Minimización confirmada: {{data_minimized}}.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S7",
+          "SA-S12"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-MEDICAL-RECORD-REQUEST-CONTROL",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse la información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de control; no puede eliminarse desde el editor."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-SA-001-HEALTH-REITERATION",
+    "product_code": "CO-SA-001",
+    "kind": "health_reiteration",
+    "title": "Reiteración por falta o insuficiencia de respuesta",
+    "subtitle": "Maduración integral CO-SA-001 v2.31",
+    "filename_suffix": "reiteracion_peticion_salud",
+    "version_label": "2.31-factory",
+    "canonical_status": "Candidato interno madurado; pendiente cotejo jurídico final y aprobación dual",
+    "source_package": "LegalAIZit_Paquete_06_Derecho_Peticion_EPS_IPS_Consolidado_v231",
+    "variables": [
+      {
+        "id": "petitioner_name",
+        "label": "Nombre completo de quien presenta la petición",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "petitioner_id",
+        "label": "Identificación de quien presenta la petición",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo electrónico para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "address",
+        "label": "Dirección de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio del peticionario",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "notification_channel",
+        "label": "Canal preferido de respuesta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "patient_name",
+        "label": "Nombre completo del paciente",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "patient_id",
+        "label": "Identificación del paciente",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "patient_status",
+        "label": "Situación jurídica del paciente",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "relationship_to_patient",
+        "label": "Relación de quien presenta con el paciente",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de representación o legitimación disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "entity_type",
+        "label": "Tipo de entidad destinataria",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "entity",
+        "label": "Nombre de la entidad destinataria",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "entity_city",
+        "label": "Ciudad o municipio de la entidad",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "filing_channel",
+        "label": "Canal previsto para radicar",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "request_type",
+        "label": "Necesidad principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "request_detail",
+        "label": "Hechos y solicitud concreta",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "medical_support",
+        "label": "Orden, fórmula, historia o soporte médico disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prescription_date",
+        "label": "Fecha de la orden o fórmula médica",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "requested_outcome",
+        "label": "Resultado concreto que solicita a la entidad",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "urgent",
+        "label": "¿Existe riesgo vital o urgencia médica inmediata?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "deterioration",
+        "label": "Nivel de deterioro o afectación actual",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "priority_condition",
+        "label": "Condición de especial protección o priorización",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "continuity_risk",
+        "label": "¿Hay riesgo de interrupción de tratamiento o continuidad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "immediate_attention_sought",
+        "label": "¿Ya buscó atención asistencial inmediata cuando era necesaria?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "medical_record_scope",
+        "label": "Alcance exacto de la historia clínica solicitada",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "secure_delivery",
+        "label": "¿Se solicitó entrega por canal seguro y reservado?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "third_party_authorization",
+        "label": "Autorización o base de acceso del tercero",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "deceased_access_purpose",
+        "label": "Finalidad concreta y legítima del acceso a la historia del paciente fallecido",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "prior_request",
+        "label": "¿Existe petición o radicado previo?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_request_date",
+        "label": "Fecha de la petición previa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_radicado",
+        "label": "Número o constancia del radicado previo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta recibida frente a la petición previa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de la respuesta recibida",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "response_quality",
+        "label": "Calidad de la respuesta recibida",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "tutela_active",
+        "label": "¿Existe tutela o proceso judicial activo sobre los mismos hechos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "supersalud_case_active",
+        "label": "¿Existe PQRD o actuación activa ante Supersalud?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "filing_date",
+        "label": "Fecha prevista de radicación de esta petición",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos contienen solo datos personales y clínicos necesarios?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que los hechos, nombres, fechas y soportes fueron revisados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "SA-S1",
+      "SA-S2",
+      "SA-S3",
+      "SA-S4",
+      "SA-S5",
+      "SA-S6",
+      "SA-S7",
+      "SA-S8",
+      "SA-S9",
+      "SA-S10",
+      "SA-S11",
+      "SA-S12",
+      "SA-S13"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-SA-001-HEALTH-REITERATION-B01",
+        "type": "section",
+        "heading": "1. Antecedente",
+        "text": "Petición previa de fecha {{prior_request_date}}, radicado {{prior_radicado}}. Respuesta: {{response_received}} — calidad {{response_quality}}.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S1",
+          "SA-S2",
+          "SA-S3",
+          "SA-S4",
+          "SA-S5",
+          "SA-S6",
+          "SA-S7",
+          "SA-S8",
+          "SA-S9",
+          "SA-S10",
+          "SA-S11",
+          "SA-S12",
+          "SA-S13"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-HEALTH-REITERATION-B02",
+        "type": "section",
+        "heading": "2. Puntos pendientes",
+        "text": "{{request_detail}}",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S1",
+          "SA-S2",
+          "SA-S3",
+          "SA-S4",
+          "SA-S5",
+          "SA-S6",
+          "SA-S7",
+          "SA-S8",
+          "SA-S9",
+          "SA-S10",
+          "SA-S11",
+          "SA-S12",
+          "SA-S13"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-HEALTH-REITERATION-B03",
+        "type": "section",
+        "heading": "3. Reiteración",
+        "text": "",
+        "bullets": [
+          "Responder cada punto no resuelto.",
+          "Explicar de forma clara y congruente la decisión.",
+          "Notificar efectivamente la respuesta.",
+          "Conservar trazabilidad del radicado previo."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S2",
+          "SA-S11"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-HEALTH-REITERATION-CONTROL",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse la información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de control; no puede eliminarse desde el editor."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-SA-001-SUPERSALUD-ESCALATION",
+    "product_code": "CO-SA-001",
+    "kind": "supersalud_escalation",
+    "title": "Ruta y borrador de PQRD ante Supersalud",
+    "subtitle": "Maduración integral CO-SA-001 v2.31",
+    "filename_suffix": "ruta_pqrd_supersalud",
+    "version_label": "2.31-factory",
+    "canonical_status": "Candidato interno madurado; pendiente cotejo jurídico final y aprobación dual",
+    "source_package": "LegalAIZit_Paquete_06_Derecho_Peticion_EPS_IPS_Consolidado_v231",
+    "variables": [
+      {
+        "id": "petitioner_name",
+        "label": "Nombre completo de quien presenta la petición",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "petitioner_id",
+        "label": "Identificación de quien presenta la petición",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo electrónico para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "address",
+        "label": "Dirección de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio del peticionario",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "notification_channel",
+        "label": "Canal preferido de respuesta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "patient_name",
+        "label": "Nombre completo del paciente",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "patient_id",
+        "label": "Identificación del paciente",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "patient_status",
+        "label": "Situación jurídica del paciente",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "relationship_to_patient",
+        "label": "Relación de quien presenta con el paciente",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de representación o legitimación disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "entity_type",
+        "label": "Tipo de entidad destinataria",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "entity",
+        "label": "Nombre de la entidad destinataria",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "entity_city",
+        "label": "Ciudad o municipio de la entidad",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "filing_channel",
+        "label": "Canal previsto para radicar",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "request_type",
+        "label": "Necesidad principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "request_detail",
+        "label": "Hechos y solicitud concreta",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "medical_support",
+        "label": "Orden, fórmula, historia o soporte médico disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prescription_date",
+        "label": "Fecha de la orden o fórmula médica",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "requested_outcome",
+        "label": "Resultado concreto que solicita a la entidad",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "urgent",
+        "label": "¿Existe riesgo vital o urgencia médica inmediata?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "deterioration",
+        "label": "Nivel de deterioro o afectación actual",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "priority_condition",
+        "label": "Condición de especial protección o priorización",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "continuity_risk",
+        "label": "¿Hay riesgo de interrupción de tratamiento o continuidad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "immediate_attention_sought",
+        "label": "¿Ya buscó atención asistencial inmediata cuando era necesaria?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "medical_record_scope",
+        "label": "Alcance exacto de la historia clínica solicitada",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "secure_delivery",
+        "label": "¿Se solicitó entrega por canal seguro y reservado?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "third_party_authorization",
+        "label": "Autorización o base de acceso del tercero",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "deceased_access_purpose",
+        "label": "Finalidad concreta y legítima del acceso a la historia del paciente fallecido",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "prior_request",
+        "label": "¿Existe petición o radicado previo?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_request_date",
+        "label": "Fecha de la petición previa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_radicado",
+        "label": "Número o constancia del radicado previo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta recibida frente a la petición previa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de la respuesta recibida",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "response_quality",
+        "label": "Calidad de la respuesta recibida",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "tutela_active",
+        "label": "¿Existe tutela o proceso judicial activo sobre los mismos hechos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "supersalud_case_active",
+        "label": "¿Existe PQRD o actuación activa ante Supersalud?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "filing_date",
+        "label": "Fecha prevista de radicación de esta petición",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos contienen solo datos personales y clínicos necesarios?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que los hechos, nombres, fechas y soportes fueron revisados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "SA-S1",
+      "SA-S2",
+      "SA-S3",
+      "SA-S4",
+      "SA-S5",
+      "SA-S6",
+      "SA-S7",
+      "SA-S8",
+      "SA-S9",
+      "SA-S10",
+      "SA-S11",
+      "SA-S12",
+      "SA-S13"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-SA-001-SUPERSALUD-ESCALATION-B01",
+        "type": "section",
+        "heading": "1. Identificación de la barrera",
+        "text": "Entidad: {{entity}}. Solicitud: {{request_type}}. Radicado previo: {{prior_radicado}}.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S1",
+          "SA-S2",
+          "SA-S3",
+          "SA-S4",
+          "SA-S5",
+          "SA-S6",
+          "SA-S7",
+          "SA-S8",
+          "SA-S9",
+          "SA-S10",
+          "SA-S11",
+          "SA-S12",
+          "SA-S13"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-SUPERSALUD-ESCALATION-B02",
+        "type": "section",
+        "heading": "2. Cronología y evidencia",
+        "text": "{{request_detail}}",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S1",
+          "SA-S2",
+          "SA-S3",
+          "SA-S4",
+          "SA-S5",
+          "SA-S6",
+          "SA-S7",
+          "SA-S8",
+          "SA-S9",
+          "SA-S10",
+          "SA-S11",
+          "SA-S12",
+          "SA-S13"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-SUPERSALUD-ESCALATION-B03",
+        "type": "section",
+        "heading": "3. Solicitud administrativa",
+        "text": "",
+        "bullets": [
+          "Registrar y clasificar la PQRD.",
+          "Requerir información a la entidad dentro de competencias.",
+          "Informar número de radicado, estado y canales.",
+          "No duplicar tutela o actuación activa sin revisión."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S9",
+          "SA-S11",
+          "SA-S13"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-SUPERSALUD-ESCALATION-CONTROL",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse la información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de control; no puede eliminarse desde el editor."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-SA-001-HEALTH-EVIDENCE-INDEX",
+    "product_code": "CO-SA-001",
+    "kind": "health_evidence_index",
+    "title": "Matriz de soportes, legitimación y privacidad",
+    "subtitle": "Maduración integral CO-SA-001 v2.31",
+    "filename_suffix": "matriz_soportes_legitimacion",
+    "version_label": "2.31-factory",
+    "canonical_status": "Candidato interno madurado; pendiente cotejo jurídico final y aprobación dual",
+    "source_package": "LegalAIZit_Paquete_06_Derecho_Peticion_EPS_IPS_Consolidado_v231",
+    "variables": [
+      {
+        "id": "petitioner_name",
+        "label": "Nombre completo de quien presenta la petición",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "petitioner_id",
+        "label": "Identificación de quien presenta la petición",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo electrónico para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "address",
+        "label": "Dirección de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio del peticionario",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "notification_channel",
+        "label": "Canal preferido de respuesta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "patient_name",
+        "label": "Nombre completo del paciente",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "patient_id",
+        "label": "Identificación del paciente",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "patient_status",
+        "label": "Situación jurídica del paciente",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "relationship_to_patient",
+        "label": "Relación de quien presenta con el paciente",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de representación o legitimación disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "entity_type",
+        "label": "Tipo de entidad destinataria",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "entity",
+        "label": "Nombre de la entidad destinataria",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "entity_city",
+        "label": "Ciudad o municipio de la entidad",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "filing_channel",
+        "label": "Canal previsto para radicar",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "request_type",
+        "label": "Necesidad principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "request_detail",
+        "label": "Hechos y solicitud concreta",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "medical_support",
+        "label": "Orden, fórmula, historia o soporte médico disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prescription_date",
+        "label": "Fecha de la orden o fórmula médica",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "requested_outcome",
+        "label": "Resultado concreto que solicita a la entidad",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "urgent",
+        "label": "¿Existe riesgo vital o urgencia médica inmediata?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "deterioration",
+        "label": "Nivel de deterioro o afectación actual",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "priority_condition",
+        "label": "Condición de especial protección o priorización",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "continuity_risk",
+        "label": "¿Hay riesgo de interrupción de tratamiento o continuidad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "immediate_attention_sought",
+        "label": "¿Ya buscó atención asistencial inmediata cuando era necesaria?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "medical_record_scope",
+        "label": "Alcance exacto de la historia clínica solicitada",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "secure_delivery",
+        "label": "¿Se solicitó entrega por canal seguro y reservado?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "third_party_authorization",
+        "label": "Autorización o base de acceso del tercero",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "deceased_access_purpose",
+        "label": "Finalidad concreta y legítima del acceso a la historia del paciente fallecido",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "prior_request",
+        "label": "¿Existe petición o radicado previo?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_request_date",
+        "label": "Fecha de la petición previa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_radicado",
+        "label": "Número o constancia del radicado previo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta recibida frente a la petición previa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de la respuesta recibida",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "response_quality",
+        "label": "Calidad de la respuesta recibida",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "tutela_active",
+        "label": "¿Existe tutela o proceso judicial activo sobre los mismos hechos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "supersalud_case_active",
+        "label": "¿Existe PQRD o actuación activa ante Supersalud?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "filing_date",
+        "label": "Fecha prevista de radicación de esta petición",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos contienen solo datos personales y clínicos necesarios?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que los hechos, nombres, fechas y soportes fueron revisados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "SA-S1",
+      "SA-S2",
+      "SA-S3",
+      "SA-S4",
+      "SA-S5",
+      "SA-S6",
+      "SA-S7",
+      "SA-S8",
+      "SA-S9",
+      "SA-S10",
+      "SA-S11",
+      "SA-S12",
+      "SA-S13"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-SA-001-HEALTH-EVIDENCE-INDEX-B01",
+        "type": "section",
+        "heading": "1. Identidad y legitimación",
+        "text": "Peticionario {{petitioner_name}} / paciente {{patient_name}} / calidad {{acting_capacity}} / soporte {{representation_support}}.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S1",
+          "SA-S2",
+          "SA-S3",
+          "SA-S4",
+          "SA-S5",
+          "SA-S6",
+          "SA-S7",
+          "SA-S8",
+          "SA-S9",
+          "SA-S10",
+          "SA-S11",
+          "SA-S12",
+          "SA-S13"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-HEALTH-EVIDENCE-INDEX-B02",
+        "type": "section",
+        "heading": "2. Evidencia principal",
+        "text": "",
+        "bullets": [
+          "Identidad del peticionario y paciente.",
+          "Orden, fórmula o soporte pertinente.",
+          "Petición y radicado previos.",
+          "Respuesta, negación o autorización.",
+          "Soporte de representación o finalidad."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S1",
+          "SA-S2",
+          "SA-S3",
+          "SA-S4",
+          "SA-S5",
+          "SA-S6",
+          "SA-S7",
+          "SA-S8",
+          "SA-S9",
+          "SA-S10",
+          "SA-S11",
+          "SA-S12",
+          "SA-S13"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-HEALTH-EVIDENCE-INDEX-B03",
+        "type": "section",
+        "heading": "3. Privacidad",
+        "text": "",
+        "bullets": [
+          "Minimizar datos.",
+          "Usar canal seguro.",
+          "Mantener archivos legibles e íntegros.",
+          "Registrar origen, fecha y responsable."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S5",
+          "SA-S6",
+          "SA-S7",
+          "SA-S8"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-HEALTH-EVIDENCE-INDEX-CONTROL",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse la información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de control; no puede eliminarse desde el editor."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-SA-001-HEALTH-DEADLINE-CALENDAR",
+    "product_code": "CO-SA-001",
+    "kind": "health_deadline_calendar",
+    "title": "Calendario preliminar de términos y seguimiento",
+    "subtitle": "Maduración integral CO-SA-001 v2.31",
+    "filename_suffix": "calendario_terminos_salud",
+    "version_label": "2.31-factory",
+    "canonical_status": "Candidato interno madurado; pendiente cotejo jurídico final y aprobación dual",
+    "source_package": "LegalAIZit_Paquete_06_Derecho_Peticion_EPS_IPS_Consolidado_v231",
+    "variables": [
+      {
+        "id": "petitioner_name",
+        "label": "Nombre completo de quien presenta la petición",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "petitioner_id",
+        "label": "Identificación de quien presenta la petición",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo electrónico para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "address",
+        "label": "Dirección de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio del peticionario",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "notification_channel",
+        "label": "Canal preferido de respuesta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "patient_name",
+        "label": "Nombre completo del paciente",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "patient_id",
+        "label": "Identificación del paciente",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "patient_status",
+        "label": "Situación jurídica del paciente",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "relationship_to_patient",
+        "label": "Relación de quien presenta con el paciente",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de representación o legitimación disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "entity_type",
+        "label": "Tipo de entidad destinataria",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "entity",
+        "label": "Nombre de la entidad destinataria",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "entity_city",
+        "label": "Ciudad o municipio de la entidad",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "filing_channel",
+        "label": "Canal previsto para radicar",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "request_type",
+        "label": "Necesidad principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "request_detail",
+        "label": "Hechos y solicitud concreta",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "medical_support",
+        "label": "Orden, fórmula, historia o soporte médico disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prescription_date",
+        "label": "Fecha de la orden o fórmula médica",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "requested_outcome",
+        "label": "Resultado concreto que solicita a la entidad",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "urgent",
+        "label": "¿Existe riesgo vital o urgencia médica inmediata?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "deterioration",
+        "label": "Nivel de deterioro o afectación actual",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "priority_condition",
+        "label": "Condición de especial protección o priorización",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "continuity_risk",
+        "label": "¿Hay riesgo de interrupción de tratamiento o continuidad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "immediate_attention_sought",
+        "label": "¿Ya buscó atención asistencial inmediata cuando era necesaria?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "medical_record_scope",
+        "label": "Alcance exacto de la historia clínica solicitada",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "secure_delivery",
+        "label": "¿Se solicitó entrega por canal seguro y reservado?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "third_party_authorization",
+        "label": "Autorización o base de acceso del tercero",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "deceased_access_purpose",
+        "label": "Finalidad concreta y legítima del acceso a la historia del paciente fallecido",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "prior_request",
+        "label": "¿Existe petición o radicado previo?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_request_date",
+        "label": "Fecha de la petición previa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_radicado",
+        "label": "Número o constancia del radicado previo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta recibida frente a la petición previa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de la respuesta recibida",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "response_quality",
+        "label": "Calidad de la respuesta recibida",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "tutela_active",
+        "label": "¿Existe tutela o proceso judicial activo sobre los mismos hechos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "supersalud_case_active",
+        "label": "¿Existe PQRD o actuación activa ante Supersalud?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "filing_date",
+        "label": "Fecha prevista de radicación de esta petición",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos contienen solo datos personales y clínicos necesarios?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que los hechos, nombres, fechas y soportes fueron revisados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "SA-S1",
+      "SA-S2",
+      "SA-S3",
+      "SA-S4",
+      "SA-S5",
+      "SA-S6",
+      "SA-S7",
+      "SA-S8",
+      "SA-S9",
+      "SA-S10",
+      "SA-S11",
+      "SA-S12",
+      "SA-S13"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-SA-001-HEALTH-DEADLINE-CALENDAR-B01",
+        "type": "section",
+        "heading": "1. Fecha base",
+        "text": "Radicación prevista: {{filing_date}}. Tipo: {{request_type}}.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S1",
+          "SA-S2",
+          "SA-S3",
+          "SA-S4",
+          "SA-S5",
+          "SA-S6",
+          "SA-S7",
+          "SA-S8",
+          "SA-S9",
+          "SA-S10",
+          "SA-S11",
+          "SA-S12",
+          "SA-S13"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-HEALTH-DEADLINE-CALENDAR-B02",
+        "type": "section",
+        "heading": "2. Término preliminar",
+        "text": "El sistema calcula días hábiles de lunes a viernes y no descuenta festivos. Verificar traslado, extensión y norma especial.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S2",
+          "SA-S3"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-HEALTH-DEADLINE-CALENDAR-B03",
+        "type": "section",
+        "heading": "3. Seguimiento",
+        "text": "",
+        "bullets": [
+          "Guardar constancia de radicación.",
+          "Registrar fecha y canal de respuesta.",
+          "Comparar respuesta con cada petición.",
+          "Escalar solo después de verificar el expediente."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S1",
+          "SA-S2",
+          "SA-S3",
+          "SA-S4",
+          "SA-S5",
+          "SA-S6",
+          "SA-S7",
+          "SA-S8",
+          "SA-S9",
+          "SA-S10",
+          "SA-S11",
+          "SA-S12",
+          "SA-S13"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-HEALTH-DEADLINE-CALENDAR-CONTROL",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse la información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de control; no puede eliminarse desde el editor."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-SA-001-HEALTH-FILING-GUIDE",
+    "product_code": "CO-SA-001",
+    "kind": "health_filing_guide",
+    "title": "Guía de radicación, privacidad y seguimiento",
+    "subtitle": "Maduración integral CO-SA-001 v2.31",
+    "filename_suffix": "guia_radicacion_salud",
+    "version_label": "2.31-factory",
+    "canonical_status": "Candidato interno madurado; pendiente cotejo jurídico final y aprobación dual",
+    "source_package": "LegalAIZit_Paquete_06_Derecho_Peticion_EPS_IPS_Consolidado_v231",
+    "variables": [
+      {
+        "id": "petitioner_name",
+        "label": "Nombre completo de quien presenta la petición",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "petitioner_id",
+        "label": "Identificación de quien presenta la petición",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo electrónico para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "address",
+        "label": "Dirección de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio del peticionario",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "notification_channel",
+        "label": "Canal preferido de respuesta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "patient_name",
+        "label": "Nombre completo del paciente",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "patient_id",
+        "label": "Identificación del paciente",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "patient_status",
+        "label": "Situación jurídica del paciente",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "relationship_to_patient",
+        "label": "Relación de quien presenta con el paciente",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de representación o legitimación disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "entity_type",
+        "label": "Tipo de entidad destinataria",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "entity",
+        "label": "Nombre de la entidad destinataria",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "entity_city",
+        "label": "Ciudad o municipio de la entidad",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "filing_channel",
+        "label": "Canal previsto para radicar",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "request_type",
+        "label": "Necesidad principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "request_detail",
+        "label": "Hechos y solicitud concreta",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "medical_support",
+        "label": "Orden, fórmula, historia o soporte médico disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prescription_date",
+        "label": "Fecha de la orden o fórmula médica",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "requested_outcome",
+        "label": "Resultado concreto que solicita a la entidad",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "urgent",
+        "label": "¿Existe riesgo vital o urgencia médica inmediata?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "deterioration",
+        "label": "Nivel de deterioro o afectación actual",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "priority_condition",
+        "label": "Condición de especial protección o priorización",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "continuity_risk",
+        "label": "¿Hay riesgo de interrupción de tratamiento o continuidad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "immediate_attention_sought",
+        "label": "¿Ya buscó atención asistencial inmediata cuando era necesaria?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "medical_record_scope",
+        "label": "Alcance exacto de la historia clínica solicitada",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "secure_delivery",
+        "label": "¿Se solicitó entrega por canal seguro y reservado?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "third_party_authorization",
+        "label": "Autorización o base de acceso del tercero",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "deceased_access_purpose",
+        "label": "Finalidad concreta y legítima del acceso a la historia del paciente fallecido",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "prior_request",
+        "label": "¿Existe petición o radicado previo?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_request_date",
+        "label": "Fecha de la petición previa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_radicado",
+        "label": "Número o constancia del radicado previo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta recibida frente a la petición previa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de la respuesta recibida",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "response_quality",
+        "label": "Calidad de la respuesta recibida",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "tutela_active",
+        "label": "¿Existe tutela o proceso judicial activo sobre los mismos hechos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "supersalud_case_active",
+        "label": "¿Existe PQRD o actuación activa ante Supersalud?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "filing_date",
+        "label": "Fecha prevista de radicación de esta petición",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos contienen solo datos personales y clínicos necesarios?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que los hechos, nombres, fechas y soportes fueron revisados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "SA-S1",
+      "SA-S2",
+      "SA-S3",
+      "SA-S4",
+      "SA-S5",
+      "SA-S6",
+      "SA-S7",
+      "SA-S8",
+      "SA-S9",
+      "SA-S10",
+      "SA-S11",
+      "SA-S12",
+      "SA-S13"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-SA-001-HEALTH-FILING-GUIDE-B01",
+        "type": "section",
+        "heading": "1. Antes de radicar",
+        "text": "",
+        "bullets": [
+          "Verificar entidad competente.",
+          "Confirmar identidad y legitimación.",
+          "Reducir anexos a lo necesario.",
+          "Separar urgencia médica de petición administrativa."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S1",
+          "SA-S2",
+          "SA-S3",
+          "SA-S4",
+          "SA-S5",
+          "SA-S6",
+          "SA-S7",
+          "SA-S8",
+          "SA-S9",
+          "SA-S10",
+          "SA-S11",
+          "SA-S12",
+          "SA-S13"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-HEALTH-FILING-GUIDE-B02",
+        "type": "section",
+        "heading": "2. Radicación",
+        "text": "Canal previsto: {{filing_channel}}.",
+        "bullets": [
+          "Solicitar número de radicado.",
+          "Conservar copia íntegra.",
+          "Evitar canales sin constancia."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S1",
+          "SA-S2",
+          "SA-S3",
+          "SA-S4",
+          "SA-S5",
+          "SA-S6",
+          "SA-S7",
+          "SA-S8",
+          "SA-S9",
+          "SA-S10",
+          "SA-S11",
+          "SA-S12",
+          "SA-S13"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-HEALTH-FILING-GUIDE-B03",
+        "type": "section",
+        "heading": "3. Después de radicar",
+        "text": "",
+        "bullets": [
+          "Controlar término preliminar.",
+          "Verificar respuesta de fondo.",
+          "Documentar entrega o silencio.",
+          "Coordinar tutela o PQRD activa con profesional."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S1",
+          "SA-S2",
+          "SA-S3",
+          "SA-S4",
+          "SA-S5",
+          "SA-S6",
+          "SA-S7",
+          "SA-S8",
+          "SA-S9",
+          "SA-S10",
+          "SA-S11",
+          "SA-S12",
+          "SA-S13"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-HEALTH-FILING-GUIDE-B04",
+        "type": "section",
+        "heading": "4. Seguridad clínica",
+        "text": "",
+        "bullets": [
+          "No publicar historia clínica.",
+          "Usar cifrado o acceso autenticado cuando sea posible.",
+          "No compartir enlaces abiertos.",
+          "Eliminar copias innecesarias."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "SA-S5",
+          "SA-S7",
+          "SA-S8"
+        ],
+        "notes": "Bloque v2.31 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-SA-001-HEALTH-FILING-GUIDE-CONTROL",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse la información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de control; no puede eliminarse desde el editor."
+      }
+    ]
+  }
+]

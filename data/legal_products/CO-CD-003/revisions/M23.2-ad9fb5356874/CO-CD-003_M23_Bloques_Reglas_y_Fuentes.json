@@ -1,0 +1,86 @@
+{
+  "product_code": "CO-CD-003",
+  "version": "M23",
+  "integration_mode": "additive_immutable_revision",
+  "document_family": [
+    "consumer_direct_claim",
+    "legal_warranty",
+    "withdrawal",
+    "payment_reversal",
+    "evidence_chain",
+    "mechanism_classifier"
+  ],
+  "critical_rules": [
+    {
+      "id": "M23-CD3-001",
+      "when": "defect_or_nonconformity",
+      "risk": "green",
+      "action": "activate_legal_warranty"
+    },
+    {
+      "id": "M23-CD3-002",
+      "when": "repeated_failure_or_nonrepairable",
+      "risk": "green",
+      "action": "consumer_chooses_replacement_or_refund"
+    },
+    {
+      "id": "M23-CD3-003",
+      "when": "direct_claim",
+      "risk": "green",
+      "action": "15_business_days_response"
+    },
+    {
+      "id": "M23-CD3-004",
+      "when": "withdrawal_eligible",
+      "risk": "green",
+      "action": "exercise_within_5_business_days"
+    },
+    {
+      "id": "M23-CD3-005",
+      "when": "withdrawal_refund",
+      "risk": "green",
+      "action": "refund_within_15_calendar_days_uniformly_after_C192_2026"
+    },
+    {
+      "id": "M23-CD3-006",
+      "when": "payment_reversal_eligible",
+      "risk": "green",
+      "action": "provider_complaint_and_issuer_notice_within_5_business_days"
+    },
+    {
+      "id": "M23-CD3-007",
+      "when": "payment_reversal_complete",
+      "risk": "green",
+      "action": "participants_effect_within_15_business_days"
+    },
+    {
+      "id": "M23-CD3-008",
+      "when": "ecommerce_no_delivery_term",
+      "risk": "yellow",
+      "action": "default_max_30_calendar_days"
+    },
+    {
+      "id": "M23-CD3-009",
+      "when": "sector_with_special_consumer_rules",
+      "risk": "red",
+      "action": "apply_special_regime_first"
+    },
+    {
+      "id": "M23-CD3-010",
+      "when": "injury_unsafe_product_high_value_or_litigation",
+      "risk": "red",
+      "action": "mandatory_lawyer_review"
+    }
+  ],
+  "official_sources": [
+    "Constitución Política",
+    "Ley 1480 de 2011",
+    "Decreto 735 de 2013",
+    "Decreto 587 de 2016",
+    "Decreto 1074 de 2015",
+    "Ley 2439 de 2024",
+    "Sentencia C-192 de 2026",
+    "Superintendencia de Industria y Comercio"
+  ],
+  "legal_status_date": "2026-07-31"
+}

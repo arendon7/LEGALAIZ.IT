@@ -1,0 +1,72 @@
+[
+  {
+    "id": "EM4-S1",
+    "title": "Decisión 486 de 2000 — régimen común sobre propiedad industrial y secretos empresariales",
+    "authority": "Comunidad Andina / SIC",
+    "type": "supranational_decision",
+    "status": "vigente; verificar aplicación concreta",
+    "last_verified": "2026-07-17",
+    "verification_status": "Fuente oficial revisada para la base v2.14; aplicación al caso sujeta a validación profesional.",
+    "official_reference": "SIC — Decisión 486 de 2000"
+  },
+  {
+    "id": "EM4-S2",
+    "title": "Ley 1581 de 2012 — régimen general de protección de datos personales",
+    "authority": "Congreso de Colombia / SUIN-Juriscol",
+    "type": "statute",
+    "status": "vigente; verificar reglamentación y roles",
+    "last_verified": "2026-07-17",
+    "verification_status": "Fuente oficial revisada para la base v2.14; aplicación al caso sujeta a validación profesional.",
+    "official_reference": "SUIN-Juriscol — Ley 1581 de 2012"
+  },
+  {
+    "id": "EM4-S3",
+    "title": "Decisión Andina 351 de 1993 — derecho de autor y derechos conexos",
+    "authority": "Comunidad Andina / DNDA",
+    "type": "supranational_decision",
+    "status": "vigente; verificar modalidad de explotación",
+    "last_verified": "2026-07-17",
+    "verification_status": "Fuente oficial revisada para la base v2.14; aplicación al caso sujeta a validación profesional.",
+    "official_reference": "DNDA — Decisión 351 de 1993"
+  },
+  {
+    "id": "EM4-S4",
+    "title": "Ley 23 de 1982 — derechos de autor",
+    "authority": "Congreso de Colombia / SUIN-Juriscol",
+    "type": "statute",
+    "status": "vigente con modificaciones; verificar texto integrado",
+    "last_verified": "2026-07-17",
+    "verification_status": "Fuente oficial revisada para la base v2.14; aplicación al caso sujeta a validación profesional.",
+    "official_reference": "SUIN-Juriscol — Ley 23 de 1982"
+  },
+  {
+    "id": "EM4-S5",
+    "title": "Ley 1915 de 2018 — modificación del régimen de derecho de autor",
+    "authority": "Congreso de Colombia / SUIN-Juriscol",
+    "type": "statute",
+    "status": "vigente; verificar alcance contractual",
+    "last_verified": "2026-07-17",
+    "verification_status": "Fuente oficial revisada para la base v2.14; aplicación al caso sujeta a validación profesional.",
+    "official_reference": "SUIN-Juriscol — Ley 1915 de 2018"
+  },
+  {
+    "id": "EM4-S6",
+    "title": "Ley 256 de 1996 — competencia desleal y violación de secretos",
+    "authority": "Congreso de Colombia / SIC",
+    "type": "statute",
+    "status": "vigente; verificar supuesto de hecho",
+    "last_verified": "2026-07-17",
+    "verification_status": "Fuente oficial revisada para la base v2.14; aplicación al caso sujeta a validación profesional.",
+    "official_reference": "SIC — Ley 256 de 1996"
+  },
+  {
+    "id": "EM4-S7",
+    "title": "Paquete jurídico CO-EM-004 v2 y matriz de maduración v2.14",
+    "authority": "LegalAIZ.it",
+    "type": "internal_package",
+    "status": "pendiente de aprobación jurídica dual",
+    "last_verified": "2026-07-17",
+    "verification_status": "Fuente oficial revisada para la base v2.14; aplicación al caso sujeta a validación profesional.",
+    "official_reference": "Biblioteca Jurídica Avanzada LegalAIZ.it"
+  }
+]

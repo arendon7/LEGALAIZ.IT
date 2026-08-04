@@ -1,0 +1,230 @@
+{
+  "schema": "legalaizit-m25-0-pilot-case-plan-template-v1",
+  "milestone": "M25.0",
+  "target_cases": 20,
+  "cases_per_product": 5,
+  "contains_personal_data": false,
+  "pre_enrolled_users": false,
+  "slots": [
+    {
+      "slot_id": "CO-LA-002-M25-01",
+      "product_code": "CO-LA-002",
+      "archetype": "ordinary",
+      "data_mode": "real_anonymized_or_fictitious_controlled",
+      "participant_assigned": false,
+      "specialist_assigned": false,
+      "independent_reviewer_assigned": false,
+      "qa_reviewer_assigned": false,
+      "status": "template"
+    },
+    {
+      "slot_id": "CO-LA-002-M25-02",
+      "product_code": "CO-LA-002",
+      "archetype": "incomplete_information",
+      "data_mode": "real_anonymized_or_fictitious_controlled",
+      "participant_assigned": false,
+      "specialist_assigned": false,
+      "independent_reviewer_assigned": false,
+      "qa_reviewer_assigned": false,
+      "status": "template"
+    },
+    {
+      "slot_id": "CO-LA-002-M25-03",
+      "product_code": "CO-LA-002",
+      "archetype": "contradictory_answers",
+      "data_mode": "real_anonymized_or_fictitious_controlled",
+      "participant_assigned": false,
+      "specialist_assigned": false,
+      "independent_reviewer_assigned": false,
+      "qa_reviewer_assigned": false,
+      "status": "template"
+    },
+    {
+      "slot_id": "CO-LA-002-M25-04",
+      "product_code": "CO-LA-002",
+      "archetype": "high_risk_escalation",
+      "data_mode": "real_anonymized_or_fictitious_controlled",
+      "participant_assigned": false,
+      "specialist_assigned": false,
+      "independent_reviewer_assigned": false,
+      "qa_reviewer_assigned": false,
+      "status": "template"
+    },
+    {
+      "slot_id": "CO-LA-002-M25-05",
+      "product_code": "CO-LA-002",
+      "archetype": "conditional_module_and_evidence",
+      "data_mode": "real_anonymized_or_fictitious_controlled",
+      "participant_assigned": false,
+      "specialist_assigned": false,
+      "independent_reviewer_assigned": false,
+      "qa_reviewer_assigned": false,
+      "status": "template"
+    },
+    {
+      "slot_id": "CO-EM-003-M25-01",
+      "product_code": "CO-EM-003",
+      "archetype": "ordinary",
+      "data_mode": "real_anonymized_or_fictitious_controlled",
+      "participant_assigned": false,
+      "specialist_assigned": false,
+      "independent_reviewer_assigned": false,
+      "qa_reviewer_assigned": false,
+      "status": "template"
+    },
+    {
+      "slot_id": "CO-EM-003-M25-02",
+      "product_code": "CO-EM-003",
+      "archetype": "incomplete_information",
+      "data_mode": "real_anonymized_or_fictitious_controlled",
+      "participant_assigned": false,
+      "specialist_assigned": false,
+      "independent_reviewer_assigned": false,
+      "qa_reviewer_assigned": false,
+      "status": "template"
+    },
+    {
+      "slot_id": "CO-EM-003-M25-03",
+      "product_code": "CO-EM-003",
+      "archetype": "contradictory_answers",
+      "data_mode": "real_anonymized_or_fictitious_controlled",
+      "participant_assigned": false,
+      "specialist_assigned": false,
+      "independent_reviewer_assigned": false,
+      "qa_reviewer_assigned": false,
+      "status": "template"
+    },
+    {
+      "slot_id": "CO-EM-003-M25-04",
+      "product_code": "CO-EM-003",
+      "archetype": "high_risk_escalation",
+      "data_mode": "real_anonymized_or_fictitious_controlled",
+      "participant_assigned": false,
+      "specialist_assigned": false,
+      "independent_reviewer_assigned": false,
+      "qa_reviewer_assigned": false,
+      "status": "template"
+    },
+    {
+      "slot_id": "CO-EM-003-M25-05",
+      "product_code": "CO-EM-003",
+      "archetype": "conditional_module_and_evidence",
+      "data_mode": "real_anonymized_or_fictitious_controlled",
+      "participant_assigned": false,
+      "specialist_assigned": false,
+      "independent_reviewer_assigned": false,
+      "qa_reviewer_assigned": false,
+      "status": "template"
+    },
+    {
+      "slot_id": "CO-AR-001-M25-01",
+      "product_code": "CO-AR-001",
+      "archetype": "ordinary",
+      "data_mode": "real_anonymized_or_fictitious_controlled",
+      "participant_assigned": false,
+      "specialist_assigned": false,
+      "independent_reviewer_assigned": false,
+      "qa_reviewer_assigned": false,
+      "status": "template"
+    },
+    {
+      "slot_id": "CO-AR-001-M25-02",
+      "product_code": "CO-AR-001",
+      "archetype": "incomplete_information",
+      "data_mode": "real_anonymized_or_fictitious_controlled",
+      "participant_assigned": false,
+      "specialist_assigned": false,
+      "independent_reviewer_assigned": false,
+      "qa_reviewer_assigned": false,
+      "status": "template"
+    },
+    {
+      "slot_id": "CO-AR-001-M25-03",
+      "product_code": "CO-AR-001",
+      "archetype": "contradictory_answers",
+      "data_mode": "real_anonymized_or_fictitious_controlled",
+      "participant_assigned": false,
+      "specialist_assigned": false,
+      "independent_reviewer_assigned": false,
+      "qa_reviewer_assigned": false,
+      "status": "template"
+    },
+    {
+      "slot_id": "CO-AR-001-M25-04",
+      "product_code": "CO-AR-001",
+      "archetype": "high_risk_escalation",
+      "data_mode": "real_anonymized_or_fictitious_controlled",
+      "participant_assigned": false,
+      "specialist_assigned": false,
+      "independent_reviewer_assigned": false,
+      "qa_reviewer_assigned": false,
+      "status": "template"
+    },
+    {
+      "slot_id": "CO-AR-001-M25-05",
+      "product_code": "CO-AR-001",
+      "archetype": "conditional_module_and_evidence",
+      "data_mode": "real_anonymized_or_fictitious_controlled",
+      "participant_assigned": false,
+      "specialist_assigned": false,
+      "independent_reviewer_assigned": false,
+      "qa_reviewer_assigned": false,
+      "status": "template"
+    },
+    {
+      "slot_id": "CO-CD-003-M25-01",
+      "product_code": "CO-CD-003",
+      "archetype": "ordinary",
+      "data_mode": "real_anonymized_or_fictitious_controlled",
+      "participant_assigned": false,
+      "specialist_assigned": false,
+      "independent_reviewer_assigned": false,
+      "qa_reviewer_assigned": false,
+      "status": "template"
+    },
+    {
+      "slot_id": "CO-CD-003-M25-02",
+      "product_code": "CO-CD-003",
+      "archetype": "incomplete_information",
+      "data_mode": "real_anonymized_or_fictitious_controlled",
+      "participant_assigned": false,
+      "specialist_assigned": false,
+      "independent_reviewer_assigned": false,
+      "qa_reviewer_assigned": false,
+      "status": "template"
+    },
+    {
+      "slot_id": "CO-CD-003-M25-03",
+      "product_code": "CO-CD-003",
+      "archetype": "contradictory_answers",
+      "data_mode": "real_anonymized_or_fictitious_controlled",
+      "participant_assigned": false,
+      "specialist_assigned": false,
+      "independent_reviewer_assigned": false,
+      "qa_reviewer_assigned": false,
+      "status": "template"
+    },
+    {
+      "slot_id": "CO-CD-003-M25-04",
+      "product_code": "CO-CD-003",
+      "archetype": "high_risk_escalation",
+      "data_mode": "real_anonymized_or_fictitious_controlled",
+      "participant_assigned": false,
+      "specialist_assigned": false,
+      "independent_reviewer_assigned": false,
+      "qa_reviewer_assigned": false,
+      "status": "template"
+    },
+    {
+      "slot_id": "CO-CD-003-M25-05",
+      "product_code": "CO-CD-003",
+      "archetype": "conditional_module_and_evidence",
+      "data_mode": "real_anonymized_or_fictitious_controlled",
+      "participant_assigned": false,
+      "specialist_assigned": false,
+      "independent_reviewer_assigned": false,
+      "qa_reviewer_assigned": false,
+      "status": "template"
+    }
+  ]
+}

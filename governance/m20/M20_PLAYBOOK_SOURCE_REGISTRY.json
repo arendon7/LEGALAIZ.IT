@@ -1,0 +1,166 @@
+{
+  "CO-CD-004": [
+    {
+      "id": "CD4-S1",
+      "authority": "Secretaría Jurídica / fuentes constitucionales oficiales",
+      "reference": "Constitución Política — intimidad, hábeas data y debido proceso",
+      "official_url": "https://www.secretariasenado.gov.co/constitucion-politica",
+      "verified_at": "2026-07-31",
+      "binding_level": "constitution",
+      "status": "vigente"
+    },
+    {
+      "id": "CD4-S2",
+      "authority": "Secretaría del Senado",
+      "reference": "Código Civil — obligaciones, pago, novación, compensación y prescripción",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_civil.html",
+      "verified_at": "2026-07-31",
+      "binding_level": "statute",
+      "status": "vigente con modificaciones"
+    },
+    {
+      "id": "CD4-S3",
+      "authority": "Secretaría del Senado",
+      "reference": "Código de Comercio, artículos 619 a 622 — títulos valores y espacios en blanco",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio_pr019.html",
+      "verified_at": "2026-07-31",
+      "binding_level": "statute",
+      "status": "vigente"
+    },
+    {
+      "id": "CD4-S4",
+      "authority": "Secretaría del Senado",
+      "reference": "Código de Comercio, artículos 709 a 711 — requisitos del pagaré",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio_pr021.html",
+      "verified_at": "2026-07-31",
+      "binding_level": "statute",
+      "status": "vigente"
+    },
+    {
+      "id": "CD4-S5",
+      "authority": "Secretaría del Senado",
+      "reference": "Código de Comercio, artículo 884 — límites de intereses y sanción por exceso",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio_pr027.html",
+      "verified_at": "2026-07-31",
+      "binding_level": "statute",
+      "status": "vigente"
+    },
+    {
+      "id": "CD4-S6",
+      "authority": "Secretaría del Senado",
+      "reference": "Código Penal, artículo 305 — usura",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr011.html",
+      "verified_at": "2026-07-31",
+      "binding_level": "statute",
+      "status": "vigente"
+    },
+    {
+      "id": "CD4-S7",
+      "authority": "Secretaría del Senado",
+      "reference": "Código General del Proceso, artículo 422 — título ejecutivo",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1564_2012_pr014.html",
+      "verified_at": "2026-07-31",
+      "binding_level": "statute",
+      "status": "vigente"
+    },
+    {
+      "id": "CD4-S8",
+      "authority": "SUIN-Juriscol",
+      "reference": "Ley 2300 de 2023 — canales, horarios y periodicidad de cobranza",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30046853",
+      "verified_at": "2026-07-31",
+      "binding_level": "statute",
+      "status": "vigente"
+    },
+    {
+      "id": "CD4-S9",
+      "authority": "Corte Constitucional",
+      "reference": "Sentencia C-278 de 2024 — control constitucional de la Ley 2300",
+      "official_url": "https://www.corteconstitucional.gov.co/relatoria/2024/C-278-24.htm",
+      "verified_at": "2026-07-31",
+      "binding_level": "case_law",
+      "status": "vigente"
+    },
+    {
+      "id": "CD4-S10",
+      "authority": "SUIN-Juriscol",
+      "reference": "Ley 1266 de 2008 — hábeas data financiero y comunicación previa",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes/1676616",
+      "verified_at": "2026-07-31",
+      "binding_level": "statute",
+      "status": "vigente con modificaciones"
+    },
+    {
+      "id": "CD4-S11",
+      "authority": "Secretaría del Senado",
+      "reference": "Ley 2157 de 2021 — borrón y cuenta nueva y reporte de obligaciones de baja cuantía",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2157_2021.html",
+      "verified_at": "2026-07-31",
+      "binding_level": "statute",
+      "status": "vigente"
+    },
+    {
+      "id": "CD4-S12",
+      "authority": "SUIN-Juriscol",
+      "reference": "Decreto 1154 de 2020 — factura electrónica como título valor y RADIAN",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30039720",
+      "verified_at": "2026-07-31",
+      "binding_level": "regulation",
+      "status": "vigente"
+    },
+    {
+      "id": "CD4-S13",
+      "authority": "Secretaría del Senado",
+      "reference": "Ley 527 de 1999 — mensajes de datos, firmas e integridad",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0527_1999.html",
+      "verified_at": "2026-07-31",
+      "binding_level": "statute",
+      "status": "vigente con modificaciones"
+    },
+    {
+      "id": "CD4-S14",
+      "authority": "Secretaría del Senado",
+      "reference": "Ley 2445 de 2025 — insolvencia de persona natural no comerciante y pequeña comerciante",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2445_2025.html",
+      "verified_at": "2026-07-31",
+      "binding_level": "statute",
+      "status": "vigente con correcciones"
+    },
+    {
+      "id": "CD4-S15",
+      "authority": "Superintendencia Financiera de Colombia",
+      "reference": "Resolución 0965 de 2026 — interés bancario corriente julio de 2026",
+      "official_url": "https://www.superfinanciera.gov.co/publicaciones/10116173/superfinanciera-certifica-el-interes-bancario-corriente/",
+      "verified_at": "2026-07-31",
+      "binding_level": "dynamic_parameter",
+      "status": "vigente 2026-07-01 a 2026-07-31"
+    },
+    {
+      "id": "CD4-S16",
+      "authority": "SUIN-Juriscol",
+      "reference": "Decreto 159 de 2026 — SMLMV transitorio 2026",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30056106",
+      "verified_at": "2026-07-31",
+      "binding_level": "dynamic_parameter",
+      "status": "vigente transitoriamente"
+    },
+    {
+      "id": "CD4-S17",
+      "authority": "Secretaría del Senado",
+      "reference": "Ley 1231 de 2008 — factura como título valor, aceptación y pagos parciales",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1231_2008.html",
+      "verified_at": "2026-07-31",
+      "binding_level": "statute",
+      "status": "vigente con modificaciones"
+    },
+    {
+      "id": "CD4-S18",
+      "authority": "Secretaría del Senado",
+      "reference": "Ley 2024 de 2020 — pago en plazos justos en operaciones mercantiles",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2024_2020.html",
+      "verified_at": "2026-07-31",
+      "binding_level": "statute",
+      "status": "vigente"
+    }
+  ]
+}

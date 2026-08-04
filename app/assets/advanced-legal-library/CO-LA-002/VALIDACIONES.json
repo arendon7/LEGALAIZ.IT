@@ -1,0 +1,62 @@
+[
+  {
+    "id": "V-LA-001",
+    "severity": "blocker",
+    "when": "missing_employer_identity",
+    "message": "Debe completarse la identidad del empleador."
+  },
+  {
+    "id": "V-LA-002",
+    "severity": "blocker",
+    "when": "missing_worker_identity",
+    "message": "Debe completarse la identidad del trabajador."
+  },
+  {
+    "id": "V-LA-003",
+    "severity": "blocker",
+    "when": "worker_not_adult",
+    "message": "El flujo estándar no cubre contratación de menores."
+  },
+  {
+    "id": "V-LA-004",
+    "severity": "blocker",
+    "when": "missing_role_or_functions",
+    "message": "El cargo y las funciones deben estar definidos y aprobados."
+  },
+  {
+    "id": "V-LA-005",
+    "severity": "blocker",
+    "when": "salary_below_applicable_minimum",
+    "message": "El salario no cumple el mínimo aplicable."
+  },
+  {
+    "id": "V-LA-006",
+    "severity": "blocker",
+    "when": "integral_salary_noncompliant",
+    "message": "El salario integral no cumple el umbral legal aplicable."
+  },
+  {
+    "id": "V-LA-007",
+    "severity": "blocker",
+    "when": "weekly_hours_exceed_limit",
+    "message": "La jornada supera el máximo aplicable."
+  },
+  {
+    "id": "V-LA-008",
+    "severity": "blocker",
+    "when": "annex_required_but_missing",
+    "message": "Falta un documento complementario obligatorio."
+  },
+  {
+    "id": "V-LA-009",
+    "severity": "warning",
+    "when": "prior_relationship_continuity_risk",
+    "message": "Existe riesgo de continuidad laboral que requiere revisión."
+  },
+  {
+    "id": "V-LA-010",
+    "severity": "blocker",
+    "when": "protected_termination_risk",
+    "message": "Se requiere revisión jurídica por posible estabilidad reforzada."
+  }
+]

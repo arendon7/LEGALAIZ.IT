@@ -1,0 +1,53 @@
+{
+  "version": "2.56",
+  "scenarios": [
+    {
+      "id": "V256-CAN-01",
+      "documents": [
+        "00_PAQUETE_DOCUMENTAL_CO-TR-002_V256.docx"
+      ],
+      "checks": [
+        "no_clipping",
+        "headers_footers",
+        "page_numbers",
+        "tables_readable",
+        "no_unresolved_markers",
+        "brand_palette"
+      ]
+    },
+    {
+      "id": "V256-CAN-04",
+      "documents": [
+        "00_PAQUETE_DOCUMENTAL_CO-TR-002_V256.docx"
+      ],
+      "checks": [
+        "professional_review_notice",
+        "revocation_is_conditional",
+        "no_result_promises",
+        "no_unresolved_markers"
+      ]
+    },
+    {
+      "id": "V256-CAN-11",
+      "documents": [
+        "00_PAQUETE_DOCUMENTAL_CO-TR-002_V256.docx"
+      ],
+      "checks": [
+        "scope_mismatch_notice",
+        "no_false_non_notification_claim",
+        "no_unresolved_markers"
+      ]
+    },
+    {
+      "id": "V256-CAN-12",
+      "documents": [
+        "00_PAQUETE_DOCUMENTAL_CO-TR-002_V256.docx"
+      ],
+      "checks": [
+        "contradiction_notice",
+        "evidence_controls",
+        "no_unresolved_markers"
+      ]
+    }
+  ]
+}

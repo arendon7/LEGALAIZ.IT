@@ -1,0 +1,1184 @@
+{
+  "version": "2.49",
+  "steps": [
+    {
+      "id": "parties",
+      "name": "Partes y facultades"
+    },
+    {
+      "id": "property",
+      "name": "Inmueble y situación jurídica"
+    },
+    {
+      "id": "use",
+      "name": "Destino, ocupantes y convivencia"
+    },
+    {
+      "id": "condition",
+      "name": "Habitabilidad, reparaciones y entrega"
+    },
+    {
+      "id": "economics",
+      "name": "Canon, pagos y reajuste"
+    },
+    {
+      "id": "charges",
+      "name": "Servicios, administración y garantías"
+    },
+    {
+      "id": "term",
+      "name": "Plazo, terminación y restitución"
+    },
+    {
+      "id": "documents",
+      "name": "Datos, documentos y confirmación"
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q-AR-001",
+      "step_id": "parties",
+      "label": "Modalidad del arrendamiento",
+      "variable_path": "lease.configuration",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "individual",
+          "Individual"
+        ],
+        [
+          "joint",
+          "Mancomunado"
+        ],
+        [
+          "shared",
+          "Vivienda compartida"
+        ],
+        [
+          "pension",
+          "Pensión"
+        ]
+      ]
+    },
+    {
+      "id": "Q-AR-002",
+      "step_id": "parties",
+      "label": "Identificación completa del arrendador",
+      "variable_path": "landlord.identification",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "type",
+          "label": "Tipo de persona",
+          "type": "select",
+          "required": true,
+          "options": [
+            [
+              "natural",
+              "Persona natural"
+            ],
+            [
+              "legal",
+              "Persona jurídica"
+            ]
+          ]
+        },
+        {
+          "key": "name",
+          "label": "Nombre o razón social",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "id_number",
+          "label": "Identificación o NIT",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "address",
+          "label": "Domicilio o dirección",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "email",
+          "label": "Correo contractual",
+          "type": "email",
+          "required": true
+        },
+        {
+          "key": "phone",
+          "label": "Teléfono",
+          "type": "text",
+          "required": true
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-AR-003",
+      "step_id": "parties",
+      "label": "Firmante y fuente de facultad del arrendador",
+      "variable_path": "landlord.signatory",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Nombre del firmante",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "id_number",
+          "label": "Identificación",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "capacity",
+          "label": "Cargo o calidad",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "authority_source",
+          "label": "Fuente de facultad",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-AR-004",
+      "step_id": "parties",
+      "label": "Título o autorización para entregar el inmueble",
+      "variable_path": "landlord.authority_evidence",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "owner",
+          "Propietario acreditado"
+        ],
+        [
+          "agent",
+          "Apoderado o mandatario"
+        ],
+        [
+          "usufructuary",
+          "Usufructuario autorizado"
+        ],
+        [
+          "other_authorized",
+          "Otro autorizado"
+        ],
+        [
+          "pending",
+          "Soporte pendiente"
+        ],
+        [
+          "absent",
+          "Sin soporte"
+        ]
+      ]
+    },
+    {
+      "id": "Q-AR-005",
+      "step_id": "parties",
+      "label": "Identificación completa del arrendatario principal",
+      "variable_path": "tenant.identification",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "type",
+          "label": "Tipo de persona",
+          "type": "select",
+          "required": true,
+          "options": [
+            [
+              "natural",
+              "Persona natural"
+            ],
+            [
+              "legal",
+              "Persona jurídica"
+            ]
+          ]
+        },
+        {
+          "key": "name",
+          "label": "Nombre o razón social",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "id_number",
+          "label": "Identificación o NIT",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "address",
+          "label": "Domicilio o dirección",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "email",
+          "label": "Correo contractual",
+          "type": "email",
+          "required": true
+        },
+        {
+          "key": "phone",
+          "label": "Teléfono",
+          "type": "text",
+          "required": true
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-AR-006",
+      "step_id": "parties",
+      "label": "Arrendatarios adicionales y solidaridad",
+      "variable_path": "tenant.additional",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "names",
+          "label": "Nombres e identificaciones",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "key": "solidarity",
+          "label": "¿Responderán solidariamente?",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "to_define",
+              "Por definir"
+            ]
+          ]
+        }
+      ],
+      "columns": 1
+    },
+    {
+      "id": "Q-AR-007",
+      "step_id": "parties",
+      "label": "Canales contractuales de notificación",
+      "variable_path": "notifications.channels",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "landlord_channel",
+          "label": "Canal del arrendador",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "tenant_channel",
+          "label": "Canal del arrendatario",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "physical_addresses",
+          "label": "Direcciones físicas para notificación",
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "columns": 1
+    },
+    {
+      "id": "Q-AR-008",
+      "step_id": "property",
+      "label": "¿El inmueble corresponde a vivienda urbana ordinaria?",
+      "variable_path": "scope.urban_home",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "yes",
+          "Sí"
+        ],
+        [
+          "no",
+          "No"
+        ],
+        [
+          "unknown",
+          "Por verificar"
+        ]
+      ]
+    },
+    {
+      "id": "Q-AR-009",
+      "step_id": "property",
+      "label": "Identificación registral y física del inmueble",
+      "variable_path": "property.identification",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "address",
+          "label": "Dirección completa",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "municipality",
+          "label": "Municipio y departamento",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "registration",
+          "label": "Matrícula inmobiliaria",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "cadastral_id",
+          "label": "Identificación catastral",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-AR-010",
+      "step_id": "property",
+      "label": "Tipo de inmueble o parte arrendada",
+      "variable_path": "property.type",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "apartment",
+          "Apartamento"
+        ],
+        [
+          "house",
+          "Casa"
+        ],
+        [
+          "room",
+          "Habitación"
+        ],
+        [
+          "partial",
+          "Parte de inmueble"
+        ],
+        [
+          "other",
+          "Otro"
+        ]
+      ]
+    },
+    {
+      "id": "Q-AR-011",
+      "step_id": "property",
+      "label": "Unidades privadas, anexos y zonas incluidas",
+      "variable_path": "property.included_units",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "private_area",
+          "label": "Área o unidad privada",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "parking",
+          "label": "Parqueadero",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "storage",
+          "label": "Cuarto útil o depósito",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "other",
+          "label": "Otros bienes o usos incluidos",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-AR-012",
+      "step_id": "property",
+      "label": "¿El inmueble está sometido a propiedad horizontal?",
+      "variable_path": "property.horizontal",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q-AR-013",
+      "step_id": "property",
+      "label": "Datos de la copropiedad y entrega del reglamento",
+      "variable_path": "property.ph_details",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Nombre del edificio o conjunto",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "administrator",
+          "label": "Administrador o contacto",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "rules_delivery",
+          "label": "Entrega de parte normativa",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "pending",
+              "Pendiente"
+            ]
+          ]
+        },
+        {
+          "key": "ordinary_fee",
+          "label": "Administración ordinaria mensual",
+          "type": "number",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-AR-014",
+      "step_id": "property",
+      "label": "Controversias, ocupaciones o limitaciones relevantes",
+      "variable_path": "property.dispute_status",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "none",
+          "Ninguna conocida"
+        ],
+        [
+          "litigation",
+          "Litigio sobre dominio o tenencia"
+        ],
+        [
+          "restitution",
+          "Proceso de restitución activo"
+        ],
+        [
+          "occupied",
+          "Ocupante no vinculado"
+        ],
+        [
+          "restriction",
+          "Limitación o medida relevante"
+        ],
+        [
+          "unknown",
+          "Por verificar"
+        ]
+      ]
+    },
+    {
+      "id": "Q-AR-015",
+      "step_id": "use",
+      "label": "Destino autorizado del inmueble",
+      "variable_path": "use.destination",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "residential",
+          "Vivienda exclusivamente"
+        ],
+        [
+          "residential_remote",
+          "Vivienda y trabajo remoto sin atención al público"
+        ],
+        [
+          "residential_professional",
+          "Vivienda y actividad profesional sin transformación del uso"
+        ],
+        [
+          "mixed_or_commercial",
+          "Uso mixto o comercial"
+        ],
+        [
+          "other",
+          "Otro"
+        ]
+      ]
+    },
+    {
+      "id": "Q-AR-016",
+      "step_id": "use",
+      "label": "Ocupantes autorizados",
+      "variable_path": "occupants.authorized",
+      "type": "textarea",
+      "required": true
+    },
+    {
+      "id": "Q-AR-017",
+      "step_id": "use",
+      "label": "¿Habrá varios arrendatarios u ocupación compartida?",
+      "variable_path": "occupants.multiple",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q-AR-018",
+      "step_id": "use",
+      "label": "¿Habrá mascotas?",
+      "variable_path": "pets.exists",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q-AR-019",
+      "step_id": "use",
+      "label": "Condiciones razonables aplicables a mascotas",
+      "variable_path": "pets.conditions",
+      "type": "textarea",
+      "required": false
+    },
+    {
+      "id": "Q-AR-020",
+      "step_id": "use",
+      "label": "Subarriendo, cesión, turismo o plataformas",
+      "variable_path": "use.sublease_tourism",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "none",
+          "No se contempla"
+        ],
+        [
+          "sublease_requested",
+          "Subarriendo o cesión solicitada"
+        ],
+        [
+          "tourism",
+          "Hospedaje turístico o por días"
+        ],
+        [
+          "platform",
+          "Plataforma de alojamiento"
+        ],
+        [
+          "unknown",
+          "Por definir"
+        ]
+      ]
+    },
+    {
+      "id": "Q-AR-021",
+      "step_id": "use",
+      "label": "Zonas, servicios o instalaciones compartidas",
+      "variable_path": "use.shared_areas",
+      "type": "textarea",
+      "required": false
+    },
+    {
+      "id": "Q-AR-022",
+      "step_id": "condition",
+      "label": "Estado de habitabilidad y servicios esenciales",
+      "variable_path": "condition.habitability",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "fit",
+          "Apto y funcional"
+        ],
+        [
+          "minor_defects",
+          "Defectos menores identificados"
+        ],
+        [
+          "material_defects",
+          "Defectos materiales pendientes"
+        ],
+        [
+          "unsafe",
+          "Riesgo grave de sanidad o seguridad"
+        ],
+        [
+          "unknown",
+          "Pendiente de inspección"
+        ]
+      ]
+    },
+    {
+      "id": "Q-AR-023",
+      "step_id": "condition",
+      "label": "Defectos, observaciones y evidencia inicial",
+      "variable_path": "condition.defects",
+      "type": "textarea",
+      "required": false
+    },
+    {
+      "id": "Q-AR-024",
+      "step_id": "condition",
+      "label": "Reparaciones pendientes y responsable",
+      "variable_path": "condition.repairs_pending",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "items",
+          "label": "Reparaciones pendientes",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "key": "responsible",
+          "label": "Responsable y plazo",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "columns": 1
+    },
+    {
+      "id": "Q-AR-025",
+      "step_id": "condition",
+      "label": "¿El inmueble se entrega amoblado?",
+      "variable_path": "property.furnished",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q-AR-026",
+      "step_id": "condition",
+      "label": "¿Incluye bienes de valor relevante?",
+      "variable_path": "property.high_value_assets",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q-AR-027",
+      "step_id": "condition",
+      "label": "Método de inventario y evidencia",
+      "variable_path": "delivery.inventory_method",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "detailed",
+          "Inventario detallado"
+        ],
+        [
+          "photos",
+          "Inventario fotográfico"
+        ],
+        [
+          "video",
+          "Video de entrega"
+        ],
+        [
+          "combined",
+          "Inventario, fotos y video"
+        ]
+      ]
+    },
+    {
+      "id": "Q-AR-028",
+      "step_id": "condition",
+      "label": "Fecha prevista de entrega material",
+      "variable_path": "delivery.date",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "Q-AR-029",
+      "step_id": "condition",
+      "label": "Mantenimiento, reparaciones locativas y mejoras",
+      "variable_path": "maintenance.rules",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "routine",
+          "label": "Regla de mantenimiento ordinario",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "improvements",
+          "label": "Regla para mejoras y adecuaciones",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "authorization",
+          "label": "Procedimiento de autorización",
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "columns": 1
+    },
+    {
+      "id": "Q-AR-030",
+      "step_id": "economics",
+      "label": "Canon mensual de arrendamiento",
+      "variable_path": "rent.amount",
+      "type": "number",
+      "required": true,
+      "min": 1
+    },
+    {
+      "id": "Q-AR-031",
+      "step_id": "economics",
+      "label": "Valores de referencia y soportes",
+      "variable_path": "rent.values",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "commercial_value",
+          "label": "Valor comercial soportado",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "cadastral_value",
+          "label": "Avalúo catastral vigente",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "source_date",
+          "label": "Fecha o fuente del soporte",
+          "type": "text",
+          "required": true
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-AR-032",
+      "step_id": "economics",
+      "label": "Forma y oportunidad de pago",
+      "variable_path": "rent.payment",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "frequency",
+          "label": "Periodicidad",
+          "type": "select",
+          "required": true,
+          "options": [
+            [
+              "monthly",
+              "Mensual"
+            ],
+            [
+              "other",
+              "Otra"
+            ]
+          ]
+        },
+        {
+          "key": "day",
+          "label": "Día límite de pago",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "method",
+          "label": "Medio de pago",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "account",
+          "label": "Cuenta o instrucciones",
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-AR-033",
+      "step_id": "economics",
+      "label": "Regla de reajuste del canon",
+      "variable_path": "rent.adjustment",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "legal_ipc",
+          "Hasta el IPC legalmente aplicable después de 12 meses"
+        ],
+        [
+          "lower_than_ipc",
+          "Porcentaje inferior al IPC"
+        ],
+        [
+          "fixed_or_other",
+          "Fórmula fija u otra"
+        ],
+        [
+          "none",
+          "Sin reajuste pactado inicialmente"
+        ]
+      ]
+    },
+    {
+      "id": "Q-AR-034",
+      "step_id": "economics",
+      "label": "Servicios, cosas o usos adicionales cobrados por el arrendador",
+      "variable_path": "charges.additional_services",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "exists",
+          "label": "¿Existen?",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "key": "description",
+          "label": "Descripción",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "key": "value",
+          "label": "Valor mensual",
+          "type": "number",
+          "required": false
+        }
+      ],
+      "columns": 1
+    },
+    {
+      "id": "Q-AR-035",
+      "step_id": "charges",
+      "label": "Administración ordinaria y extraordinaria",
+      "variable_path": "charges.administration",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "ordinary_amount",
+          "label": "Administración ordinaria mensual",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "ordinary_responsible",
+          "label": "Responsable de la ordinaria",
+          "type": "select",
+          "required": true,
+          "options": [
+            [
+              "tenant",
+              "Arrendatario"
+            ],
+            [
+              "landlord",
+              "Arrendador"
+            ],
+            [
+              "included",
+              "Incluida en el canon"
+            ]
+          ]
+        },
+        {
+          "key": "extraordinary_responsible",
+          "label": "Responsable de expensas extraordinarias",
+          "type": "select",
+          "required": true,
+          "options": [
+            [
+              "landlord",
+              "Arrendador"
+            ],
+            [
+              "special_agreement",
+              "Acuerdo especial sujeto a revisión"
+            ]
+          ]
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-AR-036",
+      "step_id": "charges",
+      "label": "Servicios públicos y conectividad",
+      "variable_path": "charges.utilities",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "responsible",
+          "label": "Responsable principal",
+          "type": "select",
+          "required": true,
+          "options": [
+            [
+              "tenant",
+              "Arrendatario"
+            ],
+            [
+              "landlord",
+              "Arrendador"
+            ],
+            [
+              "special",
+              "Distribución especial"
+            ]
+          ]
+        },
+        {
+          "key": "distribution",
+          "label": "Detalle de distribución",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "key": "internet",
+          "label": "Internet o conectividad",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "key": "gas_or_other",
+          "label": "Gas u otros servicios",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "columns": 1
+    },
+    {
+      "id": "Q-AR-037",
+      "step_id": "charges",
+      "label": "Denuncia del contrato y garantías ante empresas de servicios",
+      "variable_path": "utilities.denunciation",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "yes",
+          "Se aplicará el procedimiento"
+        ],
+        [
+          "no",
+          "No se aplicará"
+        ],
+        [
+          "to_define",
+          "Por definir"
+        ]
+      ]
+    },
+    {
+      "id": "Q-AR-038",
+      "step_id": "charges",
+      "label": "Garantía personal o póliza",
+      "variable_path": "guarantee.type",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "none",
+          "Sin garantía adicional"
+        ],
+        [
+          "codebtor",
+          "Codeudor solidario"
+        ],
+        [
+          "guarantor",
+          "Fiador"
+        ],
+        [
+          "policy",
+          "Póliza de arrendamiento"
+        ]
+      ]
+    },
+    {
+      "id": "Q-AR-039",
+      "step_id": "charges",
+      "label": "Identificación y alcance de la garantía",
+      "variable_path": "guarantee.details",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "party",
+          "label": "Garante o aseguradora",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "key": "id_number",
+          "label": "Identificación o póliza",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "scope",
+          "label": "Obligaciones cubiertas",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "key": "validity",
+          "label": "Vigencia y renovaciones",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "columns": 1
+    },
+    {
+      "id": "Q-AR-040",
+      "step_id": "charges",
+      "label": "¿Se pretende exigir depósito en dinero o caución real a favor del arrendador?",
+      "variable_path": "guarantee.cash_deposit",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q-AR-041",
+      "step_id": "term",
+      "label": "Duración inicial del contrato en meses",
+      "variable_path": "term.duration_months",
+      "type": "number",
+      "required": true,
+      "min": 1,
+      "max": 120
+    },
+    {
+      "id": "Q-AR-042",
+      "step_id": "term",
+      "label": "Prórroga, preavisos y terminación especial",
+      "variable_path": "term.rules",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "automatic_extension",
+          "label": "Prórroga automática",
+          "type": "select",
+          "required": true,
+          "options": [
+            [
+              "yes",
+              "Sí, conforme a la ley"
+            ],
+            [
+              "no",
+              "No, sujeto a revisión"
+            ]
+          ]
+        },
+        {
+          "key": "notice_days",
+          "label": "Preaviso previsto en días",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "special_termination",
+          "label": "Venta, ocupación del propietario u otra terminación especial",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "columns": 1
+    },
+    {
+      "id": "Q-AR-043",
+      "step_id": "documents",
+      "label": "Estudio, datos personales y documentos sensibles",
+      "variable_path": "data.screening",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "credit_study",
+          "label": "¿Habrá estudio de riesgo o crédito?",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "key": "personal_data",
+          "label": "Finalidades del tratamiento",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "sensitive_documents",
+          "label": "¿Se solicitarán datos sensibles o documentos especialmente delicados?",
+          "type": "boolean",
+          "required": true
+        }
+      ],
+      "columns": 1
+    },
+    {
+      "id": "Q-AR-044",
+      "step_id": "documents",
+      "label": "Confirmación final de datos, soportes e inventario",
+      "variable_path": "confirmation.reviewed",
+      "type": "boolean",
+      "required": true
+    }
+  ]
+}

@@ -1,0 +1,249 @@
+{
+  "version": "2.56",
+  "base_case": {
+    "identity": {
+      "full_name": "Ana Prueba",
+      "document_type": "C.C.",
+      "document_number": "1000000001",
+      "email": "ana@example.com",
+      "address": "Calle 1",
+      "city": "Medellín"
+    },
+    "authority": {
+      "name": "Secretaría de Movilidad de Ejemplo",
+      "city": "Medellín",
+      "email": "radicacion@example.gov.co"
+    },
+    "infraction": {
+      "comparendo_number": "CMP-001",
+      "plate": "ABC123",
+      "date": "2026-05-01",
+      "validation_date": "2026-05-04",
+      "sent_date": "2026-05-06",
+      "notice_status": "No recibida",
+      "address_used": "Dirección anterior"
+    },
+    "notice": {
+      "delivery_proof_received": false
+    },
+    "procedure": {
+      "stage": "pre_sanction",
+      "judicial_active": false,
+      "embargo_active": false,
+      "collection_stage": "none",
+      "imminent_judicial_deadline": false,
+      "possible_fraud": false
+    },
+    "payment": {
+      "paid": false,
+      "agreement": false
+    },
+    "requests": {
+      "hearing": true
+    },
+    "registry": {
+      "simit_incorrect": false,
+      "runt_incorrect": false
+    },
+    "prior_filing": {
+      "no_response": false,
+      "number": "RAD-001"
+    },
+    "evidence": {
+      "items": [
+        "Consulta SIMIT",
+        "Consulta RUNT"
+      ]
+    },
+    "case": {
+      "narrative": "La persona conoció el registro mediante consulta posterior."
+    },
+    "filing": {
+      "city": "Medellín",
+      "date": "2026-07-26"
+    }
+  },
+  "scenarios": [
+    {
+      "id": "V256-CAN-01",
+      "name": "No notificada, etapa previa",
+      "expected": {
+        "blocked": false,
+        "status": "ready",
+        "risk": "green",
+        "documents": [
+          "traffic_record_request",
+          "traffic_notice_claim",
+          "traffic_hearing_request",
+          "traceability"
+        ],
+        "forbidden_findings": [
+          "COTR2-YEL-NOTIFIED"
+        ]
+      }
+    },
+    {
+      "id": "V256-CAN-02",
+      "name": "Corrección SIMIT",
+      "overrides": {
+        "registry.simit_incorrect": true
+      },
+      "expected": {
+        "blocked": false,
+        "documents": [
+          "traffic_registry_correction"
+        ]
+      }
+    },
+    {
+      "id": "V256-CAN-03",
+      "name": "Corrección RUNT",
+      "overrides": {
+        "registry.runt_incorrect": true
+      },
+      "expected": {
+        "blocked": false,
+        "documents": [
+          "traffic_registry_correction"
+        ]
+      }
+    },
+    {
+      "id": "V256-CAN-04",
+      "name": "Acto sancionatorio",
+      "overrides": {
+        "procedure.stage": "sanction",
+        "procedure.sanction_resolution": "RES-2026-10"
+      },
+      "expected": {
+        "blocked": false,
+        "status": "ready_with_review",
+        "risk": "yellow",
+        "documents": [
+          "traffic_revocation_request",
+          "traffic_escalation_guide"
+        ],
+        "required_findings": [
+          "COTR2-YEL-SANCTION"
+        ]
+      }
+    },
+    {
+      "id": "V256-CAN-05",
+      "name": "Reiteración",
+      "overrides": {
+        "prior_filing.no_response": true
+      },
+      "expected": {
+        "blocked": false,
+        "documents": [
+          "traffic_reiteration"
+        ]
+      }
+    },
+    {
+      "id": "V256-CAN-06",
+      "name": "Identificación compleja",
+      "overrides": {
+        "procedure.driver_identification_complex": true
+      },
+      "expected": {
+        "blocked": false,
+        "status": "ready_with_review",
+        "required_findings": [
+          "COTR2-YEL-DRIVER"
+        ]
+      }
+    },
+    {
+      "id": "V256-CAN-07",
+      "name": "Múltiples comparendos",
+      "overrides": {
+        "procedure.multiple_comparendos": true
+      },
+      "expected": {
+        "blocked": false,
+        "status": "ready_with_review",
+        "required_findings": [
+          "COTR2-YEL-MULTI"
+        ]
+      }
+    },
+    {
+      "id": "V256-CAN-08",
+      "name": "Cobro persuasivo",
+      "overrides": {
+        "procedure.collection_stage": "persuasivo"
+      },
+      "expected": {
+        "blocked": false,
+        "status": "ready_with_review",
+        "required_findings": [
+          "COTR2-YEL-COBRO"
+        ]
+      }
+    },
+    {
+      "id": "V256-CAN-09",
+      "name": "Validación tardía",
+      "overrides": {
+        "infraction.validation_date": "2026-05-22"
+      },
+      "expected": {
+        "blocked": false,
+        "status": "ready_with_review",
+        "required_findings": [
+          "COTR2-YEL-VALIDATION-LATE"
+        ]
+      }
+    },
+    {
+      "id": "V256-CAN-10",
+      "name": "Envío tardío",
+      "overrides": {
+        "infraction.sent_date": "2026-05-14"
+      },
+      "expected": {
+        "blocked": false,
+        "status": "ready_with_review",
+        "required_findings": [
+          "COTR2-YEL-SEND-LATE"
+        ]
+      }
+    },
+    {
+      "id": "V256-CAN-11",
+      "name": "Notificación recibida",
+      "overrides": {
+        "infraction.notice_status": "Recibida"
+      },
+      "expected": {
+        "blocked": false,
+        "status": "ready_with_review",
+        "required_findings": [
+          "COTR2-YEL-NOTIFIED"
+        ],
+        "forbidden_documents": [
+          "traffic_notice_claim"
+        ],
+        "documents": [
+          "traffic_escalation_guide"
+        ]
+      }
+    },
+    {
+      "id": "V256-CAN-12",
+      "name": "Contradicción de entrega",
+      "overrides": {
+        "notice.delivery_proof_received": true
+      },
+      "expected": {
+        "blocked": false,
+        "status": "ready_with_review",
+        "required_findings": [
+          "COTR2-YEL-NOTICE-CONTRADICTION"
+        ]
+      }
+    }
+  ]
+}

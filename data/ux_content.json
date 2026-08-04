@@ -1,0 +1,22 @@
+{
+  "version": "2.1",
+  "navigation": {
+    "client": ["Inicio", "Soluciones", "Diagnóstico", "Mis casos", "Archivos", "Documentos"],
+    "specialist": ["Inicio", "Casos asignados", "Revisiones", "Archivos", "Fábrica documental", "Cotejo"],
+    "admin": ["Inicio", "Productos", "Studio Jurídico", "Fábrica documental", "Fuentes", "Gobernanza", "Infraestructura"]
+  },
+  "journeys": [
+    {"id":"orientation","title":"Cuéntanos tu situación","description":"Responde preguntas guiadas y confirma los hechos relevantes.","icon":"chat"},
+    {"id":"diagnosis","title":"Recibe un diagnóstico","description":"El motor aplica reglas, detecta riesgos y explica la ruta propuesta.","icon":"ai"},
+    {"id":"files","title":"Organiza tus soportes","description":"Carga, clasifica y relaciona documentos con el expediente correcto.","icon":"files"},
+    {"id":"review","title":"Trabaja con un experto","description":"El especialista revisa, comenta y aprueba la versión correspondiente.","icon":"expert"}
+  ],
+  "file_categories": [
+    "Documento de identidad",
+    "Contrato o acto",
+    "Comprobante o pago",
+    "Comunicación o notificación",
+    "Consulta oficial",
+    "Soporte general"
+  ]
+}

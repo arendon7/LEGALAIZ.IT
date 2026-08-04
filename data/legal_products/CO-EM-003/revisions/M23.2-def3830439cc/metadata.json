@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "migration_id": "M24.1-M23.2-PREINTEGRATION-20260801",
+  "product_code": "CO-EM-003",
+  "revision_id": "M23.2-def3830439cc",
+  "source_revision_label": "M23.2",
+  "status": "candidate_blocked_pending_legal_and_qa_approval",
+  "immutable": true,
+  "asset_hashes": {
+    "CO-EM-003_Modelo_Maestro_Prestacion_Servicios_M23.docx": "def3830439ccfffe714fcc182f936182a9e45a22a3c08a00390614815e651598",
+    "CO-EM-003_Modelo_Maestro_Prestacion_Servicios_M23.pdf": "62557bb59787488a85326782b257a051410c7127adf59a5d61fef2ac807fc043",
+    "CO-EM-003_M23_Bloques_Reglas_y_Fuentes.json": "509cff5ee103df245e93e9ec32deea11f80710f6aa1fef6893d4d259a5f378db",
+    "CO-EM-003_Ejemplo_Final_Solucion_Gestion_Contractual_M23.docx": "8a774765cd15c67c08900be6ead274a515bd9849c0f98226fdd713748d95e8e2",
+    "CO-EM-003_Ejemplo_Final_Solucion_Gestion_Contractual_M23.pdf": "ac4c5b80493e07d861c6b2fa6181739c2aa4f36f5914464701b3d2c1a5bd5aa9"
+  },
+  "approvals": {
+    "legal": {
+      "required": true,
+      "approved": false,
+      "actor": null
+    },
+    "qa": {
+      "required": true,
+      "approved": false,
+      "actor": null
+    },
+    "must_be_distinct_users": true
+  },
+  "questionnaire_binding": {
+    "status": "pending_runtime_resolution",
+    "expected_legacy_ref": "M22://questionnaires/CO-EM-003",
+    "prohibition": "do_not_create_duplicate_questionnaire_before_runtime_audit"
+  },
+  "ruleset_binding": {
+    "status": "candidate_from_m23_2",
+    "source_file": "CO-EM-003/CO-EM-003_M23_Bloques_Reglas_y_Fuentes.json",
+    "rule_count": 12,
+    "rule_ids": [
+      "SERV-M23-001",
+      "SERV-M23-002",
+      "SERV-M23-003",
+      "SERV-M23-004",
+      "SERV-M23-005",
+      "SERV-M23-006",
+      "SERV-M23-007",
+      "SERV-M23-008",
+      "SERV-M23-009",
+      "SERV-M23-010",
+      "SERV-M23-011",
+      "SERV-M23-012"
+    ]
+  },
+  "created_at": "2026-08-01T05:58:46.979242+00:00",
+  "publication_change": "none"
+}

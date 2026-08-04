@@ -1,0 +1,1731 @@
+{
+  "version": "M20.1",
+  "build_id": "M20-COBRO-ACUERDO-PAGARE-2026-07-31",
+  "title": "Biblioteca de playbooks jurídicos profundos M20",
+  "notice": "CO-CD-004 fue revalidado y regenerado en M20. Los once productos tienen revisión sustantiva vigente para uso profesional controlado.",
+  "generated_at": "2026-07-31T17:33:17.474652+00:00",
+  "products": [
+    {
+      "code": "CO-LA-001",
+      "title": "Liquidación laboral, reclamación y cierre",
+      "status": "revalidated_m16",
+      "latest_document_version": "M16.1",
+      "documents": [
+        {
+          "kind": "diagnostic",
+          "title": "Informe técnico de diagnóstico y liquidación",
+          "subtitle": "CO-LA-001 · playbook jurídico operativo profundo M16 · documento 1 de 7",
+          "docx": "CO-LA-001/CO-LA-001_DIAGNOSTIC_PLAYBOOK_PROFUNDO_M16.docx",
+          "pdf": "CO-LA-001/CO-LA-001_DIAGNOSTIC_PLAYBOOK_PROFUNDO_M16.pdf",
+          "words": 829,
+          "pages": 4,
+          "docx_sha256": "5fd359eeb7891ff61eb6db10517b363f52f2befbe6fe669e7ffa2ee68faf98a2",
+          "pdf_sha256": "01227b8dad079935338374286ede2b12158cf961f3f5cba134110e6a56cf243a",
+          "approval_status": "revalidated_m16_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        },
+        {
+          "kind": "calculation",
+          "title": "Anexo de cálculo por concepto",
+          "subtitle": "CO-LA-001 · playbook jurídico operativo profundo M16 · documento 2 de 7",
+          "docx": "CO-LA-001/CO-LA-001_CALCULATION_PLAYBOOK_PROFUNDO_M16.docx",
+          "pdf": "CO-LA-001/CO-LA-001_CALCULATION_PLAYBOOK_PROFUNDO_M16.pdf",
+          "words": 733,
+          "pages": 3,
+          "docx_sha256": "eda24f12ea9db899649a9ad6181972224f1be48b3e78b14eed311037f6897a29",
+          "pdf_sha256": "b6482d3803e108c2c2fb1c621440a208b4eb09604422190d1f9b64d9f3485683",
+          "approval_status": "revalidated_m16_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        },
+        {
+          "kind": "termination",
+          "title": "Matriz de terminación e indemnizaciones",
+          "subtitle": "CO-LA-001 · playbook jurídico operativo profundo M16 · documento 3 de 7",
+          "docx": "CO-LA-001/CO-LA-001_TERMINATION_PLAYBOOK_PROFUNDO_M16.docx",
+          "pdf": "CO-LA-001/CO-LA-001_TERMINATION_PLAYBOOK_PROFUNDO_M16.pdf",
+          "words": 667,
+          "pages": 3,
+          "docx_sha256": "d473d56f2bc81fc0e63e509eca88e05c47371834ef42d72188ca7ac2da8f6b19",
+          "pdf_sha256": "13bc35fcf0c733b39155bc71e52573a6599f9dae39c494384540a083714d182a",
+          "approval_status": "revalidated_m16_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        },
+        {
+          "kind": "claim",
+          "title": "Reclamación laboral directa",
+          "subtitle": "CO-LA-001 · playbook jurídico operativo profundo M16 · documento 4 de 7",
+          "docx": "CO-LA-001/CO-LA-001_CLAIM_PLAYBOOK_PROFUNDO_M16.docx",
+          "pdf": "CO-LA-001/CO-LA-001_CLAIM_PLAYBOOK_PROFUNDO_M16.pdf",
+          "words": 505,
+          "pages": 3,
+          "docx_sha256": "1d49eb30c9e8399b8ed61d9086e4b40aa79f0d2290ba7888b5d8eb29d49b2702",
+          "pdf_sha256": "b1eaf058ac09cce774480bc476da0b258c0b551f96fbcc376a7ed56760010efc",
+          "approval_status": "revalidated_m16_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        },
+        {
+          "kind": "evidence",
+          "title": "Matriz probatoria, pagos y vacíos",
+          "subtitle": "CO-LA-001 · playbook jurídico operativo profundo M16 · documento 5 de 7",
+          "docx": "CO-LA-001/CO-LA-001_EVIDENCE_PLAYBOOK_PROFUNDO_M16.docx",
+          "pdf": "CO-LA-001/CO-LA-001_EVIDENCE_PLAYBOOK_PROFUNDO_M16.pdf",
+          "words": 482,
+          "pages": 3,
+          "docx_sha256": "a0bb7c9a6ce37525867582cd8862b5864b4e815223d35cdcaa0d7aa09ba25b3f",
+          "pdf_sha256": "60c39cb82538e52dd0a70bb2bab4803a9cd1d01ef0217cfb5a43ebeeb78afc49",
+          "approval_status": "revalidated_m16_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        },
+        {
+          "kind": "settlement",
+          "title": "Propuesta condicional de acuerdo",
+          "subtitle": "CO-LA-001 · playbook jurídico operativo profundo M16 · documento 6 de 7",
+          "docx": "CO-LA-001/CO-LA-001_SETTLEMENT_PLAYBOOK_PROFUNDO_M16.docx",
+          "pdf": "CO-LA-001/CO-LA-001_SETTLEMENT_PLAYBOOK_PROFUNDO_M16.pdf",
+          "words": 462,
+          "pages": 3,
+          "docx_sha256": "ef9f784141fa7d81c5abdfbe9d965b17f8799595b6fe3c7814f04ef2d380c1fa",
+          "pdf_sha256": "0f14ae7afd65021877b1e8f06b549ec9563fba9dab6279a6fbe41e27f676805d",
+          "approval_status": "revalidated_m16_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        },
+        {
+          "kind": "followup",
+          "title": "Guía de radicación y escalamiento",
+          "subtitle": "CO-LA-001 · playbook jurídico operativo profundo M16 · documento 7 de 7",
+          "docx": "CO-LA-001/CO-LA-001_FOLLOWUP_PLAYBOOK_PROFUNDO_M16.docx",
+          "pdf": "CO-LA-001/CO-LA-001_FOLLOWUP_PLAYBOOK_PROFUNDO_M16.pdf",
+          "words": 466,
+          "pages": 3,
+          "docx_sha256": "993a36d9389d62f235f99d68e94d67f1f3446a657d298fe92902454555f6020e",
+          "pdf_sha256": "1700f3c653a17d2162db45322eaa0a6f917bf8ead25f03fd13fb1331b3e8e5da",
+          "approval_status": "revalidated_m16_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        },
+        {
+          "kind": "consolidated_package",
+          "title": "Paquete jurídico operativo profundo CO-LA-001",
+          "subtitle": "7 actuaciones integradas · M16",
+          "docx": "CO-LA-001/CO-LA-001_PAQUETE_JURIDICO_OPERATIVO_PROFUNDO_M16.docx",
+          "pdf": "CO-LA-001/CO-LA-001_PAQUETE_JURIDICO_OPERATIVO_PROFUNDO_M16.pdf",
+          "words": 4099,
+          "pages": 24,
+          "docx_sha256": "ce4f4e660c992832b7ab96fffcdaeaf90325dfc9fe795a57c482b867121c8b45",
+          "pdf_sha256": "c4097d09cb67f0e6a586f792283fef8b4a9df08cc85570cbd64176acb6dfc106",
+          "approval_status": "revalidated_m16_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        }
+      ],
+      "metrics": {
+        "documents": 8,
+        "words": 8243,
+        "pages": 46,
+        "package_words": 4099,
+        "package_pages": 24
+      },
+      "sources": [
+        {
+          "id": "LA1-S1",
+          "authority": "SUIN-Juriscol",
+          "reference": "Código Sustantivo del Trabajo consolidado — artículos 13 a 15, 64, 65, 149, 186, 192, 249, 253, 306, 488 y 489",
+          "official_url": "https://www.suin-juriscol.gov.co/viewdocument.asp?ruta=codigo%2F30019323",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "LA1-S2",
+          "authority": "SUIN-Juriscol",
+          "reference": "Ley 50 de 1990, artículo 99 — régimen anualizado de cesantías",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1604809",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "LA1-S3",
+          "authority": "SUIN-Juriscol",
+          "reference": "Ley 52 de 1975 — intereses anuales a las cesantías",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1606193",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "LA1-S4",
+          "authority": "SUIN-Juriscol",
+          "reference": "Ley 789 de 2002 — indemnización por terminación y sanción moratoria",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1668469",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "LA1-S5",
+          "authority": "SUIN-Juriscol",
+          "reference": "Ley 2466 de 2025 — reforma laboral",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F30055086",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente con transición aplicable"
+        },
+        {
+          "id": "LA1-S6",
+          "authority": "SUIN-Juriscol",
+          "reference": "Decreto 1469 de 2025 — salario mínimo 2026, COP $1.750.905",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30055940",
+          "verified_at": "2026-07-31",
+          "binding_level": "acto administrativo vigente al corte"
+        },
+        {
+          "id": "LA1-S7",
+          "authority": "SUIN-Juriscol",
+          "reference": "Decreto 1470 de 2025 — auxilio de transporte 2026, COP $249.095",
+          "official_url": "https://www.suin-juriscol.gov.co/clp/contenidos.dll/Decretos/30055941",
+          "verified_at": "2026-07-31",
+          "binding_level": "acto administrativo vigente"
+        },
+        {
+          "id": "LA1-S8",
+          "authority": "Consejo de Estado",
+          "reference": "Revocatoria de la suspensión provisional del Decreto 1469 de 2025, 17 de julio de 2026",
+          "official_url": "https://www.consejodeestado.gov.co/news/17-julio-2026-salario-minimo/",
+          "verified_at": "2026-07-31",
+          "binding_level": "decisión cautelar; fondo pendiente"
+        },
+        {
+          "id": "LA1-S9",
+          "authority": "Corte Suprema de Justicia",
+          "reference": "SL2338-2023 — artículo 65 CST y análisis judicial de buena fe",
+          "official_url": "https://cortesuprema.gov.co/rl_dl_sl2338-2023/",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia laboral"
+        },
+        {
+          "id": "LA1-S10",
+          "authority": "SUIN-Juriscol",
+          "reference": "Constitución Política, artículo 53 — principios mínimos del trabajo",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1687988",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma constitucional"
+        }
+      ],
+      "previous_metrics": {
+        "documents": 7,
+        "words": 4513,
+        "pages": 37,
+        "package_words": 2240,
+        "package_pages": 20
+      }
+    },
+    {
+      "code": "CO-SA-001",
+      "title": "Acceso a salud, petición y escalamiento",
+      "status": "revalidated_m17",
+      "latest_document_version": "M17.1",
+      "documents": [
+        {
+          "kind": "diagnostic",
+          "title": "Diagnóstico jurídico y ruta de salud",
+          "subtitle": "CO-SA-001 · playbook jurídico operativo profundo M17 · documento 1 de 7",
+          "docx": "CO-SA-001/CO-SA-001_DIAGNOSTIC_PLAYBOOK_PROFUNDO_M17.docx",
+          "pdf": "CO-SA-001/CO-SA-001_DIAGNOSTIC_PLAYBOOK_PROFUNDO_M17.pdf",
+          "words": 676,
+          "pages": 3,
+          "docx_sha256": "548a93b327d4000db09b1c062a5aa7e5f6e31846d32150376036627047e9b404",
+          "pdf_sha256": "f2d703ad7c718273431ba914c1857e6f1be4d8e055abb055f36b0e353c26b9f2",
+          "approval_status": "revalidated_m17_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "sensitive_health_data": true
+        },
+        {
+          "kind": "petition",
+          "title": "Derecho de petición prioritario",
+          "subtitle": "CO-SA-001 · playbook jurídico operativo profundo M17 · documento 2 de 7",
+          "docx": "CO-SA-001/CO-SA-001_PETITION_PLAYBOOK_PROFUNDO_M17.docx",
+          "pdf": "CO-SA-001/CO-SA-001_PETITION_PLAYBOOK_PROFUNDO_M17.pdf",
+          "words": 730,
+          "pages": 4,
+          "docx_sha256": "a66f1210e9cd1f7dec0fda7f0d6b42763846a5204d8a88bc687e0b5517c75925",
+          "pdf_sha256": "81d0b13c55d1367415fc3cb6acb6dee392f4ccf66373f2e593874dfd2bda7671",
+          "approval_status": "revalidated_m17_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "sensitive_health_data": true
+        },
+        {
+          "kind": "record",
+          "title": "Solicitud de historia clínica",
+          "subtitle": "CO-SA-001 · playbook jurídico operativo profundo M17 · documento 3 de 7",
+          "docx": "CO-SA-001/CO-SA-001_RECORD_PLAYBOOK_PROFUNDO_M17.docx",
+          "pdf": "CO-SA-001/CO-SA-001_RECORD_PLAYBOOK_PROFUNDO_M17.pdf",
+          "words": 619,
+          "pages": 3,
+          "docx_sha256": "1c49352f3bae0a6e93eb7754525e2ec69ece581825821f980963389bc7249463",
+          "pdf_sha256": "d20c7d068329d8298013e43c05ccf88cbf303c883b42077d13cf13de31653940",
+          "approval_status": "revalidated_m17_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "sensitive_health_data": true
+        },
+        {
+          "kind": "evidence",
+          "title": "Matriz de evidencia, términos y respuesta",
+          "subtitle": "CO-SA-001 · playbook jurídico operativo profundo M17 · documento 4 de 7",
+          "docx": "CO-SA-001/CO-SA-001_EVIDENCE_PLAYBOOK_PROFUNDO_M17.docx",
+          "pdf": "CO-SA-001/CO-SA-001_EVIDENCE_PLAYBOOK_PROFUNDO_M17.pdf",
+          "words": 587,
+          "pages": 3,
+          "docx_sha256": "a10fdde0da126131414f780bf8ea20653b643f363a3ce94c54de10790f4e7034",
+          "pdf_sha256": "f2e32edec5416f32ad32640da036e8311a940c53df0cdad6921df8023baee956",
+          "approval_status": "revalidated_m17_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "sensitive_health_data": true
+        },
+        {
+          "kind": "reiteration",
+          "title": "Reiteración y medida urgente",
+          "subtitle": "CO-SA-001 · playbook jurídico operativo profundo M17 · documento 5 de 7",
+          "docx": "CO-SA-001/CO-SA-001_REITERATION_PLAYBOOK_PROFUNDO_M17.docx",
+          "pdf": "CO-SA-001/CO-SA-001_REITERATION_PLAYBOOK_PROFUNDO_M17.pdf",
+          "words": 523,
+          "pages": 3,
+          "docx_sha256": "b74a1e13ff11502d3f7bbcc3dd7357008fc17dd08b752fdd324e0bc66c29066c",
+          "pdf_sha256": "9281ee0564d899d3cfd1013081c67ad20af5df1612cb98a316ca7568f7e75abc",
+          "approval_status": "revalidated_m17_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "sensitive_health_data": true
+        },
+        {
+          "kind": "supersalud",
+          "title": "Reclamo ante Supersalud",
+          "subtitle": "CO-SA-001 · playbook jurídico operativo profundo M17 · documento 6 de 7",
+          "docx": "CO-SA-001/CO-SA-001_SUPERSALUD_PLAYBOOK_PROFUNDO_M17.docx",
+          "pdf": "CO-SA-001/CO-SA-001_SUPERSALUD_PLAYBOOK_PROFUNDO_M17.pdf",
+          "words": 504,
+          "pages": 3,
+          "docx_sha256": "b56610c718d45cff503ef774756a8ccaac06076b5e84d1d8681367213c18aa22",
+          "pdf_sha256": "22fbbd459c199fba4608900d9d780e52cef28361c453ac1184c0ac836cde2db5",
+          "approval_status": "revalidated_m17_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "sensitive_health_data": true
+        },
+        {
+          "kind": "tutela_guide",
+          "title": "Guía de valoración de tutela",
+          "subtitle": "CO-SA-001 · playbook jurídico operativo profundo M17 · documento 7 de 7",
+          "docx": "CO-SA-001/CO-SA-001_TUTELA_GUIDE_PLAYBOOK_PROFUNDO_M17.docx",
+          "pdf": "CO-SA-001/CO-SA-001_TUTELA_GUIDE_PLAYBOOK_PROFUNDO_M17.pdf",
+          "words": 597,
+          "pages": 3,
+          "docx_sha256": "7df39bf5ea9d60ed0cb9336233e31f27754057e2521c642484f9e125f4ecdb1e",
+          "pdf_sha256": "b39acf55a871eef0858f6ba212f695a69da68c1a82867e9caf9d635fe84a624f",
+          "approval_status": "revalidated_m17_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "sensitive_health_data": true
+        },
+        {
+          "kind": "consolidated_package",
+          "title": "Paquete jurídico operativo profundo CO-SA-001",
+          "subtitle": "7 actuaciones integradas · M17",
+          "docx": "CO-SA-001/CO-SA-001_PAQUETE_JURIDICO_OPERATIVO_PROFUNDO_M17.docx",
+          "pdf": "CO-SA-001/CO-SA-001_PAQUETE_JURIDICO_OPERATIVO_PROFUNDO_M17.pdf",
+          "words": 4147,
+          "pages": 24,
+          "docx_sha256": "7242130493bbabe658fc4571e26f545a7d67e78c59ca7837d1599bab005f06ab",
+          "pdf_sha256": "cb1bc6b5849793be435e6a5b0d6d3cbd6b4c678fc261db47a1834abfcca938bb",
+          "approval_status": "revalidated_m17_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "sensitive_health_data": true
+        }
+      ],
+      "metrics": {
+        "documents": 8,
+        "words": 8383,
+        "pages": 46,
+        "package_words": 4147,
+        "package_pages": 24
+      },
+      "sources": [
+        {
+          "id": "SA1-S1",
+          "authority": "Secretaría Jurídica del Senado",
+          "reference": "Ley 1755 de 2015 — derecho fundamental de petición, términos, prioridad, traslado y peticiones ante particulares",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1755_2015.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "SA1-S2",
+          "authority": "Secretaría Jurídica del Senado",
+          "reference": "Ley Estatutaria 1751 de 2015 — oportunidad, continuidad, integralidad, información, urgencias e historia clínica",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1751_2015.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma estatutaria vigente"
+        },
+        {
+          "id": "SA1-S3",
+          "authority": "Superintendencia Nacional de Salud",
+          "reference": "Circular Externa 008 de 2018 — PQR, reclamos en salud y riesgo vital",
+          "official_url": "https://normograma.supersalud.gov.co/compilacion/docs/circular_supersalud_0008_2018.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "instrucción sectorial compilada"
+        },
+        {
+          "id": "SA1-S4",
+          "authority": "Superintendencia Nacional de Salud",
+          "reference": "Preguntas frecuentes actualizadas — máximos de 24, 48 y 72 horas según riesgo",
+          "official_url": "https://www.supersalud.gov.co/es-co/Paginas/Protecci%C3%B3n%20al%20Usuario/preguntas-y%E2%80%93respuestas-frecuentes.aspx",
+          "verified_at": "2026-07-31",
+          "binding_level": "orientación oficial vigente"
+        },
+        {
+          "id": "SA1-S5",
+          "authority": "SUIN-Juriscol",
+          "reference": "Resolución 1995 de 1999 — manejo, reserva, custodia y acceso a historia clínica",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30035652",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "SA1-S6",
+          "authority": "Secretaría Jurídica del Senado",
+          "reference": "Ley 2015 de 2020 — historia clínica electrónica interoperable",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2015_2020.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "SA1-S7",
+          "authority": "Corte Constitucional",
+          "reference": "Sentencia T-370 de 2025 — respuesta clara, precisa, congruente, consecuente y notificada por EPS y Supersalud",
+          "official_url": "https://www.corteconstitucional.gov.co/relatoria/2025/t-370-25.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia constitucional"
+        },
+        {
+          "id": "SA1-S8",
+          "authority": "Corte Constitucional",
+          "reference": "Sentencia T-016 de 2025 — derecho de petición ante EPS y atención domiciliaria",
+          "official_url": "https://www.corteconstitucional.gov.co/relatoria/2025/T-016-25.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia constitucional"
+        },
+        {
+          "id": "SA1-S9",
+          "authority": "Corte Constitucional",
+          "reference": "Sentencia T-500 de 2025 — respuesta de fondo, salud de menores, continuidad e integralidad",
+          "official_url": "https://www.corteconstitucional.gov.co/relatoria/2025/T-500-25.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia constitucional"
+        },
+        {
+          "id": "SA1-S10",
+          "authority": "Secretaría Jurídica del Senado",
+          "reference": "Decreto 2591 de 1991 — acción de tutela y medidas provisionales",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/decreto_2591_1991.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        }
+      ],
+      "previous_metrics": {
+        "documents": 7,
+        "words": 3608,
+        "pages": 33,
+        "package_words": 1787,
+        "package_pages": 18
+      }
+    },
+    {
+      "code": "CO-CD-001",
+      "title": "Hábeas data financiero y suplantación",
+      "status": "revalidated_m18",
+      "latest_document_version": "M18.1",
+      "documents": [
+        {
+          "kind": "diagnostic",
+          "title": "Diagnóstico jurídico de reporte financiero",
+          "subtitle": "CO-CD-001 · playbook jurídico operativo profundo M18 · documento 1 de 7",
+          "docx": "CO-CD-001/CO-CD-001_DIAGNOSTIC_PLAYBOOK_PROFUNDO_M18.docx",
+          "pdf": "CO-CD-001/CO-CD-001_DIAGNOSTIC_PLAYBOOK_PROFUNDO_M18.pdf",
+          "words": 658,
+          "pages": 3,
+          "docx_sha256": "022143f113532c288fbca4e089d2c10ada26a4ed7be89f33019369c7a4841106",
+          "pdf_sha256": "c204aa6a5f84e146e7c5dbc5ce30a74d8a04a3448c1c3a9c4b09a0332af3667a",
+          "approval_status": "revalidated_m18_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "sensitive_financial_data": true,
+          "identity_data": true
+        },
+        {
+          "kind": "consultation",
+          "title": "Consulta integral de información y trazabilidad",
+          "subtitle": "CO-CD-001 · playbook jurídico operativo profundo M18 · documento 2 de 7",
+          "docx": "CO-CD-001/CO-CD-001_CONSULTATION_PLAYBOOK_PROFUNDO_M18.docx",
+          "pdf": "CO-CD-001/CO-CD-001_CONSULTATION_PLAYBOOK_PROFUNDO_M18.pdf",
+          "words": 478,
+          "pages": 3,
+          "docx_sha256": "5926f1c3f5faf47898f00cfe42a99644e3d238ad89e8b81673af45455a5a3ff9",
+          "pdf_sha256": "646abcf145f28477255f1b87bf4cda699941a79385df5c2f90522b55ea2e1c6d",
+          "approval_status": "revalidated_m18_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "sensitive_financial_data": true,
+          "identity_data": true
+        },
+        {
+          "kind": "claim",
+          "title": "Reclamo de actualización, rectificación o retiro",
+          "subtitle": "CO-CD-001 · playbook jurídico operativo profundo M18 · documento 3 de 7",
+          "docx": "CO-CD-001/CO-CD-001_CLAIM_PLAYBOOK_PROFUNDO_M18.docx",
+          "pdf": "CO-CD-001/CO-CD-001_CLAIM_PLAYBOOK_PROFUNDO_M18.pdf",
+          "words": 615,
+          "pages": 3,
+          "docx_sha256": "104696ef5e9a8bbe379ef4b1346f02c544ad8bdeac42ea8f975ec5ca0c1af74c",
+          "pdf_sha256": "dc44f8f8f21d70965b9d83b0721162a187086460b28e3cb01fc3620cc15c88e1",
+          "approval_status": "revalidated_m18_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "sensitive_financial_data": true,
+          "identity_data": true
+        },
+        {
+          "kind": "identity",
+          "title": "Protocolo de suplantación de identidad",
+          "subtitle": "CO-CD-001 · playbook jurídico operativo profundo M18 · documento 4 de 7",
+          "docx": "CO-CD-001/CO-CD-001_IDENTITY_PLAYBOOK_PROFUNDO_M18.docx",
+          "pdf": "CO-CD-001/CO-CD-001_IDENTITY_PLAYBOOK_PROFUNDO_M18.pdf",
+          "words": 578,
+          "pages": 3,
+          "docx_sha256": "b78f90918646fbd6233cea567c01d2d995210dc35fa88ede00efbdcc36e0b0a9",
+          "pdf_sha256": "bbbddab85b598d3d84a4c9c9d3b48e58456f9057a2f37436c0ebcf2b2c443c0d",
+          "approval_status": "revalidated_m18_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "sensitive_financial_data": true,
+          "identity_data": true
+        },
+        {
+          "kind": "escalation",
+          "title": "Reiteración y escalamiento ante autoridad",
+          "subtitle": "CO-CD-001 · playbook jurídico operativo profundo M18 · documento 5 de 7",
+          "docx": "CO-CD-001/CO-CD-001_ESCALATION_PLAYBOOK_PROFUNDO_M18.docx",
+          "pdf": "CO-CD-001/CO-CD-001_ESCALATION_PLAYBOOK_PROFUNDO_M18.pdf",
+          "words": 455,
+          "pages": 3,
+          "docx_sha256": "541f8ccec93df6fd8d38c4ea63bd5bb7440fd4ac9673bbd6503864c74858729f",
+          "pdf_sha256": "f3d4a773bf5122eadbff08c04a3a4896bd67c7f4b56588ed7f985eacceb7200f",
+          "approval_status": "revalidated_m18_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "sensitive_financial_data": true,
+          "identity_data": true
+        },
+        {
+          "kind": "evidence",
+          "title": "Matriz de evidencia y responsables",
+          "subtitle": "CO-CD-001 · playbook jurídico operativo profundo M18 · documento 6 de 7",
+          "docx": "CO-CD-001/CO-CD-001_EVIDENCE_PLAYBOOK_PROFUNDO_M18.docx",
+          "pdf": "CO-CD-001/CO-CD-001_EVIDENCE_PLAYBOOK_PROFUNDO_M18.pdf",
+          "words": 448,
+          "pages": 3,
+          "docx_sha256": "6f30c0fa28afb5b89d86334064f967dbb8cc14721a3d97ab5743ad26249156e4",
+          "pdf_sha256": "c54efe585fadfc8678f33036df7fe036bcc5a19c08dd574c7b9da0b84f7048ca",
+          "approval_status": "revalidated_m18_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "sensitive_financial_data": true,
+          "identity_data": true
+        },
+        {
+          "kind": "deadline",
+          "title": "Calendario de términos, permanencia y caducidad",
+          "subtitle": "CO-CD-001 · playbook jurídico operativo profundo M18 · documento 7 de 7",
+          "docx": "CO-CD-001/CO-CD-001_DEADLINE_PLAYBOOK_PROFUNDO_M18.docx",
+          "pdf": "CO-CD-001/CO-CD-001_DEADLINE_PLAYBOOK_PROFUNDO_M18.pdf",
+          "words": 441,
+          "pages": 3,
+          "docx_sha256": "0b6c699c1e5f7386ff73bf1c4d8d87c985a44e58e235b7176fafcc1dea783e90",
+          "pdf_sha256": "07253c16bed8b7452f8de29e45d6a39163ceb5d925b6dc82dd25bf4b7db3f43d",
+          "approval_status": "revalidated_m18_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "sensitive_financial_data": true,
+          "identity_data": true
+        },
+        {
+          "kind": "consolidated_package",
+          "title": "Paquete jurídico operativo profundo CO-CD-001",
+          "subtitle": "7 actuaciones integradas · M18",
+          "docx": "CO-CD-001/CO-CD-001_PAQUETE_JURIDICO_OPERATIVO_PROFUNDO_M18.docx",
+          "pdf": "CO-CD-001/CO-CD-001_PAQUETE_JURIDICO_OPERATIVO_PROFUNDO_M18.pdf",
+          "words": 3587,
+          "pages": 23,
+          "docx_sha256": "b11e27dbce15d29a9e28a7c5658e08a97239be1b7a31202fe659133ede11d41c",
+          "pdf_sha256": "f0e40d59585b1d934963745d94b0be9fc10ef30db20526ca0111b0131b23b87f",
+          "approval_status": "revalidated_m18_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "sensitive_financial_data": true,
+          "identity_data": true
+        }
+      ],
+      "metrics": {
+        "documents": 8,
+        "words": 7260,
+        "pages": 44,
+        "package_words": 3587,
+        "package_pages": 23
+      },
+      "sources": [
+        {
+          "id": "CD1-S1",
+          "authority": "Secretaría Jurídica del Senado",
+          "reference": "Ley Estatutaria 1266 de 2008 — régimen de hábeas data financiero, comunicación, permanencia, consultas y reclamos",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1266_2008.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma estatutaria vigente"
+        },
+        {
+          "id": "CD1-S2",
+          "authority": "Secretaría Jurídica del Senado",
+          "reference": "Ley Estatutaria 2157 de 2021 — fortalecimiento del hábeas data, permanencia, comunicación previa, reporte tardío, gratuidad y silencio",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2157_2021.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma estatutaria vigente"
+        },
+        {
+          "id": "CD1-S3",
+          "authority": "SUIN-Juriscol",
+          "reference": "Ley Estatutaria 2573 de 2026 — protección ante suplantación y control de vigencia general al 20 de noviembre de 2026",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30056451",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma promulgada con vigencia temporal diferenciada"
+        },
+        {
+          "id": "CD1-S4",
+          "authority": "Corte Constitucional",
+          "reference": "Sentencia C-413 de 2025 — control previo del régimen de suplantación, acceso a documentos y condicionamientos constitucionales",
+          "official_url": "https://www.corteconstitucional.gov.co/relatoria/2025/C-413-25.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia constitucional vinculante"
+        },
+        {
+          "id": "CD1-S5",
+          "authority": "Corte Constitucional",
+          "reference": "Sentencia C-282 de 2021 — control previo de la Ley 2157 de 2021",
+          "official_url": "https://www.corteconstitucional.gov.co/relatoria/2021/C-282-21.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia constitucional vinculante"
+        },
+        {
+          "id": "CD1-S6",
+          "authority": "Superintendencia de Industria y Comercio",
+          "reference": "Habeas data: derecho a controlar información financiera — orientación oficial actualizada en enero de 2026",
+          "official_url": "https://sedeelectronica.sic.gov.co/atencion-y-servicios-a-la-ciudadania/preguntas-frecuentes/habeas-data-el-derecho-controlar-tu-informacion-financiera",
+          "verified_at": "2026-07-31",
+          "binding_level": "orientación oficial"
+        },
+        {
+          "id": "CD1-S7",
+          "authority": "Superintendencia de Industria y Comercio",
+          "reference": "Denuncia por presunto incumplimiento del hábeas data financiero y protección de datos",
+          "official_url": "https://sedeelectronica.sic.gov.co/atencion-y-servicios-a-la-ciudadania/tramites/denuncia-por-el-presunto-incumplimiento-las-disposiciones-legales-relacionadas-con-el-habeas-data",
+          "verified_at": "2026-07-31",
+          "binding_level": "trámite oficial"
+        },
+        {
+          "id": "CD1-S8",
+          "authority": "Superintendencia de Industria y Comercio",
+          "reference": "Procedimiento PD01-P02 versión 6 para reclamos de hábeas data, vigente desde 30 de abril de 2026",
+          "official_url": "https://sigi.sic.gov.co/SIGI/portal/document_tab.php?id_doc=614&version=6",
+          "verified_at": "2026-07-31",
+          "binding_level": "procedimiento institucional vigente"
+        },
+        {
+          "id": "CD1-S9",
+          "authority": "SUIN-Juriscol",
+          "reference": "Compilación vigente de Ley 1266 de 2008 con modificaciones y notas temporales",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1676616",
+          "verified_at": "2026-07-31",
+          "binding_level": "compilación oficial informativa"
+        },
+        {
+          "id": "CD1-S10",
+          "authority": "SUIN-Juriscol",
+          "reference": "Compilación vigente de Ley 2157 de 2021 y modificación futura por Ley 2573 de 2026",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F30042420",
+          "verified_at": "2026-07-31",
+          "binding_level": "compilación oficial informativa"
+        }
+      ],
+      "previous_metrics": {
+        "documents": 7,
+        "words": 3475,
+        "pages": 32,
+        "package_words": 1719,
+        "package_pages": 17
+      }
+    },
+    {
+      "code": "CO-CD-003",
+      "title": "Garantía, retracto y reversión del pago",
+      "status": "revalidated_m19",
+      "latest_document_version": "M19.1",
+      "documents": [
+        {
+          "kind": "classifier",
+          "title": "Clasificador de mecanismos",
+          "subtitle": "CO-CD-003 · playbook jurídico operativo profundo M19 · documento 1 de 7",
+          "docx": "CO-CD-003/CO-CD-003_CLASSIFIER_PLAYBOOK_PROFUNDO_M19.docx",
+          "pdf": "CO-CD-003/CO-CD-003_CLASSIFIER_PLAYBOOK_PROFUNDO_M19.pdf",
+          "words": 660,
+          "pages": 3,
+          "docx_sha256": "47ff69616d4ec46beba7f9335ef3451e4fc1ba1284d113d1297de8e174088822",
+          "pdf_sha256": "1653714f3a68a4957e76074f2f0d76b401627f544989633ed92737991c113763",
+          "approval_status": "revalidated_m19_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "consumer_data": true,
+          "payment_data": true
+        },
+        {
+          "kind": "warranty",
+          "title": "Reclamación de garantía",
+          "subtitle": "CO-CD-003 · playbook jurídico operativo profundo M19 · documento 2 de 7",
+          "docx": "CO-CD-003/CO-CD-003_WARRANTY_PLAYBOOK_PROFUNDO_M19.docx",
+          "pdf": "CO-CD-003/CO-CD-003_WARRANTY_PLAYBOOK_PROFUNDO_M19.pdf",
+          "words": 600,
+          "pages": 4,
+          "docx_sha256": "401663dbede98262e7c57a2309a319bec4a90911650409e1798064bfef3979c3",
+          "pdf_sha256": "f45c1d3d441215100b0d15a6957debf2912b1d05ed3ba8cc7db1d4fe058b6324",
+          "approval_status": "revalidated_m19_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "consumer_data": true,
+          "payment_data": false
+        },
+        {
+          "kind": "retract",
+          "title": "Ejercicio de retracto",
+          "subtitle": "CO-CD-003 · playbook jurídico operativo profundo M19 · documento 3 de 7",
+          "docx": "CO-CD-003/CO-CD-003_RETRACT_PLAYBOOK_PROFUNDO_M19.docx",
+          "pdf": "CO-CD-003/CO-CD-003_RETRACT_PLAYBOOK_PROFUNDO_M19.pdf",
+          "words": 547,
+          "pages": 3,
+          "docx_sha256": "b73401d00be47cda455e6bee3fbc754b50cad97a9793b37e0e0f0c26b52b2abc",
+          "pdf_sha256": "ef3ffa1d4aab7ddefa4dbcc6a018916bf50ac711c058f961fdc31ae6f3a27324",
+          "approval_status": "revalidated_m19_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "consumer_data": true,
+          "payment_data": false
+        },
+        {
+          "kind": "reversal",
+          "title": "Solicitud coordinada de reversión",
+          "subtitle": "CO-CD-003 · playbook jurídico operativo profundo M19 · documento 4 de 7",
+          "docx": "CO-CD-003/CO-CD-003_REVERSAL_PLAYBOOK_PROFUNDO_M19.docx",
+          "pdf": "CO-CD-003/CO-CD-003_REVERSAL_PLAYBOOK_PROFUNDO_M19.pdf",
+          "words": 526,
+          "pages": 3,
+          "docx_sha256": "86c16651e9bfeed97ff8cf87592259369dc38253042ff300929c6f84addf4379",
+          "pdf_sha256": "73bc365b8c5846a92ea1adf81b466e73d8bc79c317a853ffd7ed5a5ee5b407e3",
+          "approval_status": "revalidated_m19_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "consumer_data": true,
+          "payment_data": true
+        },
+        {
+          "kind": "ecommerce",
+          "title": "Terminación por no entrega o indisponibilidad",
+          "subtitle": "CO-CD-003 · playbook jurídico operativo profundo M19 · documento 5 de 7",
+          "docx": "CO-CD-003/CO-CD-003_ECOMMERCE_PLAYBOOK_PROFUNDO_M19.docx",
+          "pdf": "CO-CD-003/CO-CD-003_ECOMMERCE_PLAYBOOK_PROFUNDO_M19.pdf",
+          "words": 452,
+          "pages": 3,
+          "docx_sha256": "433acf8989ca0adf630da0887454f6f86645620d3f1340347db6f063762cb42f",
+          "pdf_sha256": "5fe8a18ca6c62dfe561bcb464102e4c96422ff478cb1cc00f9ee877e7e3644d0",
+          "approval_status": "revalidated_m19_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "consumer_data": true,
+          "payment_data": false
+        },
+        {
+          "kind": "sic",
+          "title": "Reclamación directa y expediente para SIC",
+          "subtitle": "CO-CD-003 · playbook jurídico operativo profundo M19 · documento 6 de 7",
+          "docx": "CO-CD-003/CO-CD-003_SIC_PLAYBOOK_PROFUNDO_M19.docx",
+          "pdf": "CO-CD-003/CO-CD-003_SIC_PLAYBOOK_PROFUNDO_M19.pdf",
+          "words": 455,
+          "pages": 3,
+          "docx_sha256": "4eb3c73795f0c66a155854350f5a7ef5160f01d28fe0adbe6732c4e0a1be293f",
+          "pdf_sha256": "7dd3bfd15fc33ffe9272d39294dee9a8dba5daa2706654761106170ca867b0c8",
+          "approval_status": "revalidated_m19_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "consumer_data": true,
+          "payment_data": false
+        },
+        {
+          "kind": "evidence",
+          "title": "Matriz de evidencia y plazos",
+          "subtitle": "CO-CD-003 · playbook jurídico operativo profundo M19 · documento 7 de 7",
+          "docx": "CO-CD-003/CO-CD-003_EVIDENCE_PLAYBOOK_PROFUNDO_M19.docx",
+          "pdf": "CO-CD-003/CO-CD-003_EVIDENCE_PLAYBOOK_PROFUNDO_M19.pdf",
+          "words": 502,
+          "pages": 3,
+          "docx_sha256": "a0c1f99b5fbe086c5dcdf44a928afb68308b5ab8fa60718b57f9158767af0032",
+          "pdf_sha256": "ef2f77e4984efa44613e530cd507ba9c8ee7936f673694edbd1a81e9f4edbc91",
+          "approval_status": "revalidated_m19_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "consumer_data": true,
+          "payment_data": true
+        },
+        {
+          "kind": "consolidated_package",
+          "title": "Paquete jurídico operativo profundo CO-CD-003",
+          "subtitle": "7 actuaciones integradas · M19",
+          "docx": "CO-CD-003/CO-CD-003_PAQUETE_JURIDICO_OPERATIVO_PROFUNDO_M19.docx",
+          "pdf": "CO-CD-003/CO-CD-003_PAQUETE_JURIDICO_OPERATIVO_PROFUNDO_M19.pdf",
+          "words": 3644,
+          "pages": 24,
+          "docx_sha256": "dc9ef448c94dc82cafe8d86073c44fb47bffd03b1d8432d722d164cd85cbd42c",
+          "pdf_sha256": "7b9cc212893e108fd40e491006b25b9c209e1505bdb884d17bb1ad12442d824e",
+          "approval_status": "revalidated_m19_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "consumer_data": true,
+          "payment_data": true
+        }
+      ],
+      "metrics": {
+        "documents": 8,
+        "words": 7386,
+        "pages": 46,
+        "package_words": 3644,
+        "package_pages": 24
+      },
+      "sources": [
+        {
+          "id": "CD3-S1",
+          "authority": "Secretaría Jurídica del Senado",
+          "reference": "Ley 1480 de 2011 - Estatuto del Consumidor: garantía, retracto, comercio electrónico, reversión y acción de protección",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1480_2011.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "CD3-S2",
+          "authority": "Secretaría Jurídica del Senado",
+          "reference": "Ley 2439 de 2024 - protección del consumidor de comercio electrónico y devolución del dinero",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2439_2024.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "CD3-S3",
+          "authority": "SUIN-Juriscol",
+          "reference": "Sentencia C-192 de 2026 - término uniforme de quince días calendario para devolución por retracto",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30056645",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia constitucional vinculante"
+        },
+        {
+          "id": "CD3-S4",
+          "authority": "SUIN-Juriscol",
+          "reference": "Decreto 735 de 2013 - procedimiento y plazos para la efectividad de la garantía legal",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1156200",
+          "verified_at": "2026-07-31",
+          "binding_level": "reglamento vigente compilado"
+        },
+        {
+          "id": "CD3-S5",
+          "authority": "SUIN-Juriscol",
+          "reference": "Decreto 587 de 2016 - procedimiento de reversión del pago, compilado en Decreto 1074 de 2015",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30020299",
+          "verified_at": "2026-07-31",
+          "binding_level": "reglamento vigente compilado"
+        },
+        {
+          "id": "CD3-S6",
+          "authority": "Superintendencia de Industria y Comercio",
+          "reference": "Fallas en productos, garantía legal, reparaciones, cambios y devoluciones",
+          "official_url": "https://sedeelectronica.sic.gov.co/index.php/temas/proteccion-al-consumidor/derechos-y-deberes/fallas-en-un-producto",
+          "verified_at": "2026-07-31",
+          "binding_level": "orientación oficial"
+        },
+        {
+          "id": "CD3-S7",
+          "authority": "Superintendencia de Industria y Comercio",
+          "reference": "Reversión del pago - definición y alcance institucional",
+          "official_url": "https://sedeelectronica.sic.gov.co/atencion-y-servicios-a-la-ciudadania/glosario/reversion-del-pago",
+          "verified_at": "2026-07-31",
+          "binding_level": "orientación oficial"
+        },
+        {
+          "id": "CD3-S8",
+          "authority": "Superintendencia de Industria y Comercio",
+          "reference": "SIC Facilita - reglas de atención y respuesta de reclamaciones",
+          "official_url": "https://sicfacilita.sic.gov.co/SICFacilita/pages/general/tyc.xhtml",
+          "verified_at": "2026-07-31",
+          "binding_level": "procedimiento institucional"
+        },
+        {
+          "id": "CD3-S9",
+          "authority": "SUIN-Juriscol",
+          "reference": "Ley 2439 de 2024 compilada con nota de constitucionalidad C-192 de 2026",
+          "official_url": "https://suin-juriscol.gov.co/viewDocument.asp?id=30054269",
+          "verified_at": "2026-07-31",
+          "binding_level": "compilación oficial informativa"
+        }
+      ],
+      "previous_metrics": {
+        "documents": 7,
+        "words": 3528,
+        "pages": 36,
+        "package_words": 1744,
+        "package_pages": 19
+      }
+    },
+    {
+      "code": "CO-CD-004",
+      "title": "Cobro, acuerdo de pago, pagaré, garantías y cierre",
+      "status": "revalidated_m20",
+      "latest_document_version": "M20.1",
+      "documents": [
+        {
+          "kind": "diagnostic",
+          "title": "Diagnóstico integral de cartera",
+          "subtitle": "CO-CD-004 · playbook jurídico operativo profundo M20 · documento 1 de 8",
+          "docx": "CO-CD-004/CO-CD-004_DIAGNOSTIC_PLAYBOOK_PROFUNDO_M20.docx",
+          "pdf": "CO-CD-004/CO-CD-004_DIAGNOSTIC_PLAYBOOK_PROFUNDO_M20.pdf",
+          "words": 660,
+          "pages": 3,
+          "docx_sha256": "06ed0a9aa04d75c6587a73b0e2ea2f5226bbde6e7cab96897e6b7ca019b47010",
+          "pdf_sha256": "393a12f94b86b028b69a8003331e45eae559620af39a5f2981fce1041433b13c",
+          "approval_status": "revalidated_m20_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "financial_data": true,
+          "title_value_data": false
+        },
+        {
+          "kind": "statement",
+          "title": "Estado de cuenta y memoria de liquidación",
+          "subtitle": "CO-CD-004 · playbook jurídico operativo profundo M20 · documento 2 de 8",
+          "docx": "CO-CD-004/CO-CD-004_STATEMENT_PLAYBOOK_PROFUNDO_M20.docx",
+          "pdf": "CO-CD-004/CO-CD-004_STATEMENT_PLAYBOOK_PROFUNDO_M20.pdf",
+          "words": 520,
+          "pages": 3,
+          "docx_sha256": "0924a3478a25767d98cfc97b4492b1c5945e9755f36c0780cd714f7ce2efc705",
+          "pdf_sha256": "2c39796b5ac09b5386cd3d97c6b59ba251b3235403c2dc6941a2a30ce1ac0d80",
+          "approval_status": "revalidated_m20_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "financial_data": true,
+          "title_value_data": false
+        },
+        {
+          "kind": "collection",
+          "title": "Requerimiento prejurídico y propuesta",
+          "subtitle": "CO-CD-004 · playbook jurídico operativo profundo M20 · documento 3 de 8",
+          "docx": "CO-CD-004/CO-CD-004_COLLECTION_PLAYBOOK_PROFUNDO_M20.docx",
+          "pdf": "CO-CD-004/CO-CD-004_COLLECTION_PLAYBOOK_PROFUNDO_M20.pdf",
+          "words": 502,
+          "pages": 3,
+          "docx_sha256": "330f1a5aba96b5f486507b48e7ea5f3db5a27dd994ee3434941ee6e15f0ea767",
+          "pdf_sha256": "477040a6fd5ad2db52d74e0c5e571aff59470e7cddc1e1f2e7ae2eff6798ad2a",
+          "approval_status": "revalidated_m20_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "financial_data": true,
+          "title_value_data": false
+        },
+        {
+          "kind": "agreement",
+          "title": "Acuerdo integral de pago",
+          "subtitle": "CO-CD-004 · playbook jurídico operativo profundo M20 · documento 4 de 8",
+          "docx": "CO-CD-004/CO-CD-004_AGREEMENT_PLAYBOOK_PROFUNDO_M20.docx",
+          "pdf": "CO-CD-004/CO-CD-004_AGREEMENT_PLAYBOOK_PROFUNDO_M20.pdf",
+          "words": 697,
+          "pages": 3,
+          "docx_sha256": "ae00c126250f7fe0d4c9f07e9195c9d3afe5df64fe27ac3c2105b5ed4ca61c14",
+          "pdf_sha256": "810069da113925bce45bd4379cf979b7cf8f851aad41634cdeff3cd28ec49c59",
+          "approval_status": "revalidated_m20_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "financial_data": true,
+          "title_value_data": false
+        },
+        {
+          "kind": "note",
+          "title": "Pagaré diligenciado y controlado",
+          "subtitle": "CO-CD-004 · playbook jurídico operativo profundo M20 · documento 5 de 8",
+          "docx": "CO-CD-004/CO-CD-004_NOTE_PLAYBOOK_PROFUNDO_M20.docx",
+          "pdf": "CO-CD-004/CO-CD-004_NOTE_PLAYBOOK_PROFUNDO_M20.pdf",
+          "words": 460,
+          "pages": 3,
+          "docx_sha256": "bb0aea671eeb71ed370a76e4424eb93accd9c8b8dd9fe54c93ea94d1d8bb9a7a",
+          "pdf_sha256": "2e0ee397d1f854aae5ca914c67fa59b0d22243b4e0ce66c1d94e1c687f82e415",
+          "approval_status": "revalidated_m20_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "financial_data": true,
+          "title_value_data": true
+        },
+        {
+          "kind": "instructions",
+          "title": "Carta de instrucciones para pagaré",
+          "subtitle": "CO-CD-004 · playbook jurídico operativo profundo M20 · documento 6 de 8",
+          "docx": "CO-CD-004/CO-CD-004_INSTRUCTIONS_PLAYBOOK_PROFUNDO_M20.docx",
+          "pdf": "CO-CD-004/CO-CD-004_INSTRUCTIONS_PLAYBOOK_PROFUNDO_M20.pdf",
+          "words": 498,
+          "pages": 3,
+          "docx_sha256": "6fdc439ace7f79fe1d4519c2f01eec7f487d7a27be1a9f4a3493b59fe4710d45",
+          "pdf_sha256": "3595586e771671035a823e0f17fae88970bb414c73b6dd42292bec2a1c5cbe65",
+          "approval_status": "revalidated_m20_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "financial_data": true,
+          "title_value_data": true
+        },
+        {
+          "kind": "followup",
+          "title": "Matriz de evidencia y seguimiento",
+          "subtitle": "CO-CD-004 · playbook jurídico operativo profundo M20 · documento 7 de 8",
+          "docx": "CO-CD-004/CO-CD-004_FOLLOWUP_PLAYBOOK_PROFUNDO_M20.docx",
+          "pdf": "CO-CD-004/CO-CD-004_FOLLOWUP_PLAYBOOK_PROFUNDO_M20.pdf",
+          "words": 540,
+          "pages": 3,
+          "docx_sha256": "b9622778d6a1c1012840529f4521044d039be650c931da3e4ca523152bb520a5",
+          "pdf_sha256": "aefa1443b441be67162b04acc8e549b996999356791338b70cf290a10c6bf5aa",
+          "approval_status": "revalidated_m20_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "financial_data": true,
+          "title_value_data": false
+        },
+        {
+          "kind": "closure",
+          "title": "Cierre, paz y salvo y cancelación",
+          "subtitle": "CO-CD-004 · playbook jurídico operativo profundo M20 · documento 8 de 8",
+          "docx": "CO-CD-004/CO-CD-004_CLOSURE_PLAYBOOK_PROFUNDO_M20.docx",
+          "pdf": "CO-CD-004/CO-CD-004_CLOSURE_PLAYBOOK_PROFUNDO_M20.pdf",
+          "words": 518,
+          "pages": 3,
+          "docx_sha256": "560da31783743c39f1d78d942d9cc1fd20e3f1ff965931cd4729cfd3a9cfbfc5",
+          "pdf_sha256": "6cb9484bef8644921181506e20af20f60ddc652ece19e32ba05286f3a3884ed1",
+          "approval_status": "revalidated_m20_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "financial_data": true,
+          "title_value_data": true
+        },
+        {
+          "kind": "consolidated_package",
+          "title": "Paquete jurídico operativo profundo CO-CD-004",
+          "subtitle": "8 actuaciones integradas · M20",
+          "docx": "CO-CD-004/CO-CD-004_PAQUETE_JURIDICO_OPERATIVO_PROFUNDO_M20.docx",
+          "pdf": "CO-CD-004/CO-CD-004_PAQUETE_JURIDICO_OPERATIVO_PROFUNDO_M20.pdf",
+          "words": 4226,
+          "pages": 26,
+          "docx_sha256": "063d2d0eb37edfba2e454b7e69a2c29fe7b4789a00061dc9f556a3eb70f87bbb",
+          "pdf_sha256": "dc9aeff1bc9091dfe10c5e27d99ed9087be12791c126755229a1444739869a1a",
+          "approval_status": "revalidated_m20_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true,
+          "financial_data": true,
+          "title_value_data": true
+        }
+      ],
+      "metrics": {
+        "documents": 9,
+        "words": 8621,
+        "pages": 50,
+        "package_words": 4226,
+        "package_pages": 26
+      },
+      "sources": [
+        {
+          "id": "CD4-S1",
+          "authority": "Secretaría Jurídica / fuentes constitucionales oficiales",
+          "reference": "Constitución Política — intimidad, hábeas data y debido proceso",
+          "official_url": "https://www.secretariasenado.gov.co/constitucion-politica",
+          "verified_at": "2026-07-31",
+          "binding_level": "constitution",
+          "status": "vigente"
+        },
+        {
+          "id": "CD4-S2",
+          "authority": "Secretaría del Senado",
+          "reference": "Código Civil — obligaciones, pago, novación, compensación y prescripción",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_civil.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute",
+          "status": "vigente con modificaciones"
+        },
+        {
+          "id": "CD4-S3",
+          "authority": "Secretaría del Senado",
+          "reference": "Código de Comercio, artículos 619 a 622 — títulos valores y espacios en blanco",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio_pr019.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute",
+          "status": "vigente"
+        },
+        {
+          "id": "CD4-S4",
+          "authority": "Secretaría del Senado",
+          "reference": "Código de Comercio, artículos 709 a 711 — requisitos del pagaré",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio_pr021.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute",
+          "status": "vigente"
+        },
+        {
+          "id": "CD4-S5",
+          "authority": "Secretaría del Senado",
+          "reference": "Código de Comercio, artículo 884 — límites de intereses y sanción por exceso",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio_pr027.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute",
+          "status": "vigente"
+        },
+        {
+          "id": "CD4-S6",
+          "authority": "Secretaría del Senado",
+          "reference": "Código Penal, artículo 305 — usura",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr011.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute",
+          "status": "vigente"
+        },
+        {
+          "id": "CD4-S7",
+          "authority": "Secretaría del Senado",
+          "reference": "Código General del Proceso, artículo 422 — título ejecutivo",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1564_2012_pr014.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute",
+          "status": "vigente"
+        },
+        {
+          "id": "CD4-S8",
+          "authority": "SUIN-Juriscol",
+          "reference": "Ley 2300 de 2023 — canales, horarios y periodicidad de cobranza",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30046853",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute",
+          "status": "vigente"
+        },
+        {
+          "id": "CD4-S9",
+          "authority": "Corte Constitucional",
+          "reference": "Sentencia C-278 de 2024 — control constitucional de la Ley 2300",
+          "official_url": "https://www.corteconstitucional.gov.co/relatoria/2024/C-278-24.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "case_law",
+          "status": "vigente"
+        },
+        {
+          "id": "CD4-S10",
+          "authority": "SUIN-Juriscol",
+          "reference": "Ley 1266 de 2008 — hábeas data financiero y comunicación previa",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes/1676616",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute",
+          "status": "vigente con modificaciones"
+        },
+        {
+          "id": "CD4-S11",
+          "authority": "Secretaría del Senado",
+          "reference": "Ley 2157 de 2021 — borrón y cuenta nueva y reporte de obligaciones de baja cuantía",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2157_2021.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute",
+          "status": "vigente"
+        },
+        {
+          "id": "CD4-S12",
+          "authority": "SUIN-Juriscol",
+          "reference": "Decreto 1154 de 2020 — factura electrónica como título valor y RADIAN",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30039720",
+          "verified_at": "2026-07-31",
+          "binding_level": "regulation",
+          "status": "vigente"
+        },
+        {
+          "id": "CD4-S13",
+          "authority": "Secretaría del Senado",
+          "reference": "Ley 527 de 1999 — mensajes de datos, firmas e integridad",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0527_1999.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute",
+          "status": "vigente con modificaciones"
+        },
+        {
+          "id": "CD4-S14",
+          "authority": "Secretaría del Senado",
+          "reference": "Ley 2445 de 2025 — insolvencia de persona natural no comerciante y pequeña comerciante",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2445_2025.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute",
+          "status": "vigente con correcciones"
+        },
+        {
+          "id": "CD4-S15",
+          "authority": "Superintendencia Financiera de Colombia",
+          "reference": "Resolución 0965 de 2026 — interés bancario corriente julio de 2026",
+          "official_url": "https://www.superfinanciera.gov.co/publicaciones/10116173/superfinanciera-certifica-el-interes-bancario-corriente/",
+          "verified_at": "2026-07-31",
+          "binding_level": "dynamic_parameter",
+          "status": "vigente 2026-07-01 a 2026-07-31"
+        },
+        {
+          "id": "CD4-S16",
+          "authority": "SUIN-Juriscol",
+          "reference": "Decreto 159 de 2026 — SMLMV transitorio 2026",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30056106",
+          "verified_at": "2026-07-31",
+          "binding_level": "dynamic_parameter",
+          "status": "vigente transitoriamente"
+        },
+        {
+          "id": "CD4-S17",
+          "authority": "Secretaría del Senado",
+          "reference": "Ley 1231 de 2008 — factura como título valor, aceptación y pagos parciales",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1231_2008.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute",
+          "status": "vigente con modificaciones"
+        },
+        {
+          "id": "CD4-S18",
+          "authority": "Secretaría del Senado",
+          "reference": "Ley 2024 de 2020 — pago en plazos justos en operaciones mercantiles",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2024_2020.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute",
+          "status": "vigente"
+        }
+      ],
+      "previous_metrics": {
+        "documents": 7,
+        "words": 3555,
+        "pages": 31,
+        "package_words": 1758,
+        "package_pages": 17
+      }
+    },
+    {
+      "code": "CO-TR-001",
+      "title": "Chequeo SAST e inscripción verificada",
+      "status": "revalidated_m14",
+      "latest_document_version": "M14.1",
+      "documents": [
+        {
+          "kind": "report",
+          "title": "Informe preliminar SAST",
+          "subtitle": "CO-TR-001 · playbook jurídico operativo profundo M14 · documento 1 de 6",
+          "docx": "CO-TR-001/CO-TR-001_REPORT_PLAYBOOK_PROFUNDO_M14.docx",
+          "pdf": "CO-TR-001/CO-TR-001_REPORT_PLAYBOOK_PROFUNDO_M14.pdf",
+          "words": 828,
+          "pages": 4,
+          "docx_sha256": "df7d1e671aeca7373ee6946e62ab73d21c45ec2713d8db7d82e0a2fb836a921b",
+          "pdf_sha256": "e92a7ecae0874096a7d0b87e0a10ad9d7bf615f0580578c487780b3136553b19",
+          "approval_status": "revalidated_m14_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        },
+        {
+          "kind": "traceability",
+          "title": "Ficha de trazabilidad de fuentes",
+          "subtitle": "CO-TR-001 · playbook jurídico operativo profundo M14 · documento 2 de 6",
+          "docx": "CO-TR-001/CO-TR-001_TRACEABILITY_PLAYBOOK_PROFUNDO_M14.docx",
+          "pdf": "CO-TR-001/CO-TR-001_TRACEABILITY_PLAYBOOK_PROFUNDO_M14.pdf",
+          "words": 574,
+          "pages": 3,
+          "docx_sha256": "fdca175db63fce19520c47e8734be81a1bfa6789e17ed04e42b0620e050e2f2b",
+          "pdf_sha256": "f52b933e8be5e5199ccf466f5a24388d3033b4d5f5b60e66ff8970bccd5f1635",
+          "approval_status": "revalidated_m14_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        },
+        {
+          "kind": "enrollment",
+          "title": "Inscripción verificada",
+          "subtitle": "CO-TR-001 · playbook jurídico operativo profundo M14 · documento 3 de 6",
+          "docx": "CO-TR-001/CO-TR-001_ENROLLMENT_PLAYBOOK_PROFUNDO_M14.docx",
+          "pdf": "CO-TR-001/CO-TR-001_ENROLLMENT_PLAYBOOK_PROFUNDO_M14.pdf",
+          "words": 578,
+          "pages": 3,
+          "docx_sha256": "070cb8fcbf7e66d862a470ea8b475a382ae83c307257371954743a1a8615534e",
+          "pdf_sha256": "9db9bc6c6426139b73c2b90ca8d452168716273894fe27ac1e79ab66bb7204ea",
+          "approval_status": "revalidated_m14_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        },
+        {
+          "kind": "record_request",
+          "title": "Solicitud de expediente SAST",
+          "subtitle": "CO-TR-001 · playbook jurídico operativo profundo M14 · documento 4 de 6",
+          "docx": "CO-TR-001/CO-TR-001_RECORD_REQUEST_PLAYBOOK_PROFUNDO_M14.docx",
+          "pdf": "CO-TR-001/CO-TR-001_RECORD_REQUEST_PLAYBOOK_PROFUNDO_M14.pdf",
+          "words": 659,
+          "pages": 3,
+          "docx_sha256": "fa172f3a7c9b3488b661d53ea08ce042f517af0f5ac2bc0459b2b44cd03a8cfc",
+          "pdf_sha256": "98645caaee94c4f9fbdc4c537d656b08b21d3ac3e616982a2dcc820abe4e808e",
+          "approval_status": "revalidated_m14_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        },
+        {
+          "kind": "review",
+          "title": "Solicitud de revisión profesional",
+          "subtitle": "CO-TR-001 · playbook jurídico operativo profundo M14 · documento 5 de 6",
+          "docx": "CO-TR-001/CO-TR-001_REVIEW_PLAYBOOK_PROFUNDO_M14.docx",
+          "pdf": "CO-TR-001/CO-TR-001_REVIEW_PLAYBOOK_PROFUNDO_M14.pdf",
+          "words": 652,
+          "pages": 3,
+          "docx_sha256": "4205f188b0242bf672a49f725c64f19f5e04c739924eb6d8bff136346d6f3e1c",
+          "pdf_sha256": "4a6607158632a5b8bb1677b24653c5f9dad4b93d8ae9f3f60a20e0d35b00f20e",
+          "approval_status": "revalidated_m14_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        },
+        {
+          "kind": "followup",
+          "title": "Seguimiento de decisiones SAST",
+          "subtitle": "CO-TR-001 · playbook jurídico operativo profundo M14 · documento 6 de 6",
+          "docx": "CO-TR-001/CO-TR-001_FOLLOWUP_PLAYBOOK_PROFUNDO_M14.docx",
+          "pdf": "CO-TR-001/CO-TR-001_FOLLOWUP_PLAYBOOK_PROFUNDO_M14.pdf",
+          "words": 551,
+          "pages": 3,
+          "docx_sha256": "6b35a4b2c67a90c2967bfa5c97854a231d8094649e5ef51cb8bca93a274f5530",
+          "pdf_sha256": "50504fbf41b817e8fd7061a758dc59618ba6483a79e17e133844b64c7c0f8b1c",
+          "approval_status": "revalidated_m14_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        },
+        {
+          "kind": "consolidated_package",
+          "title": "Paquete jurídico operativo profundo CO-TR-001",
+          "subtitle": "6 actuaciones integradas · M14",
+          "docx": "CO-TR-001/CO-TR-001_PAQUETE_JURIDICO_OPERATIVO_PROFUNDO_M14.docx",
+          "pdf": "CO-TR-001/CO-TR-001_PAQUETE_JURIDICO_OPERATIVO_PROFUNDO_M14.pdf",
+          "words": 3804,
+          "pages": 21,
+          "docx_sha256": "f069964611d76f954c3cdc47a2b70b764974a1fc7ac81dab6a72eb29c9fe76bb",
+          "pdf_sha256": "1a1e4e2e51c9b6ca22ff584f27b05aff3731c6738ab67bc758716d10dac31919",
+          "approval_status": "revalidated_m14_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        }
+      ],
+      "metrics": {
+        "documents": 7,
+        "words": 7646,
+        "pages": 40,
+        "package_words": 3804,
+        "package_pages": 21
+      },
+      "sources": [
+        {
+          "id": "TR1-S1",
+          "authority": "Secretaría Jurídica del Senado",
+          "reference": "Ley 1843 de 2017 - instalación y operación de SAST",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1843_2017.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "TR1-S2",
+          "authority": "Secretaría Jurídica del Senado",
+          "reference": "Ley 769 de 2002, artículo 158A, adicionado por Ley 2251 de 2022",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002_pr003.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "TR1-S3",
+          "authority": "Ministerio de Transporte / ANSV",
+          "reference": "Resolución 20203040011245 de 2020 - criterios técnicos SAST",
+          "official_url": "https://www.ansv.gov.co/es/normatividad/resolucion-20203040011245-2020",
+          "verified_at": "2026-07-31",
+          "binding_level": "reglamento técnico"
+        },
+        {
+          "id": "TR1-S4",
+          "authority": "Agencia Nacional de Seguridad Vial",
+          "reference": "Sistema de Información de Fotodetección: autorizaciones, mapa e indicadores",
+          "official_url": "https://fotodeteccion.ansv.gov.co/",
+          "verified_at": "2026-07-31",
+          "binding_level": "registro administrativo oficial"
+        },
+        {
+          "id": "TR1-S5",
+          "authority": "Corte Constitucional",
+          "reference": "Sentencia C-038 de 2020 - imputación personal y culpabilidad",
+          "official_url": "https://www.corteconstitucional.gov.co/relatoria/2020/C-038-20.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia constitucional"
+        },
+        {
+          "id": "TR1-S6",
+          "authority": "Superintendencia de Transporte",
+          "reference": "Comunicación del 19 de mayo de 2026 e investigaciones contra 37 organismos",
+          "official_url": "https://www.supertransporte.gov.co/index.php/comunicaciones-2026/gobierno-nacional-investiga-a-37-organismos-de-transito-mas-de-75-millones-de-fotomultas-estan-bajo-la-lupa-y-58-millones-quedaran-sin-validez/",
+          "verified_at": "2026-07-31",
+          "binding_level": "comunicación; no sustituye acto"
+        },
+        {
+          "id": "TR1-S7",
+          "authority": "Superintendencia de Transporte",
+          "reference": "Comunicación del 29 de mayo de 2026 e investigaciones contra otros 12 organismos",
+          "official_url": "https://www.supertransporte.gov.co/index.php/comunicaciones-2026/la-supertransporte-abrio-investigacion-a-otros-12-organismos-de-transito-por-presuntas-irregularidades-en-sistemas-de-fotodeteccion/",
+          "verified_at": "2026-07-31",
+          "binding_level": "comunicación; no sustituye acto"
+        },
+        {
+          "id": "TR1-S8",
+          "authority": "Superintendencia de Transporte",
+          "reference": "Resoluciones de investigaciones administrativas 2026, incluidos autos SAST de mayo",
+          "official_url": "https://www.supertransporte.gov.co/index.php/resoluciones-de-investigaciones-administrativas/ria-2026/",
+          "verified_at": "2026-07-31",
+          "binding_level": "actos particulares según etapa"
+        },
+        {
+          "id": "TR1-S9",
+          "authority": "Ministerio de Transporte",
+          "reference": "Concepto 20261340929621 del 30 de junio de 2026 - Concepto de Desempeño y operación SAST",
+          "official_url": "https://mintransporte.gov.co/info/mintransporte/media/anexos/1LxORMOq.pdf",
+          "verified_at": "2026-07-31",
+          "binding_level": "concepto general no vinculante"
+        },
+        {
+          "id": "TR1-S10",
+          "authority": "Instituto Nacional de Metrología",
+          "reference": "Resolución 352 de 2020 - trazabilidad metrológica y transición",
+          "official_url": "https://www.inm.gov.co/",
+          "verified_at": "2026-07-31",
+          "binding_level": "acto administrativo técnico"
+        },
+        {
+          "id": "TR1-S11",
+          "authority": "Secretaría Jurídica del Senado",
+          "reference": "Ley 1755 de 2015 - derecho de petición",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1755_2015.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "TR1-S12",
+          "authority": "Secretaría Jurídica del Senado",
+          "reference": "Ley 1581 de 2012 - tratamiento de datos personales",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        }
+      ],
+      "previous_metrics": {
+        "documents": 7,
+        "words": 2861,
+        "pages": 28,
+        "package_words": 1411,
+        "package_pages": 15
+      }
+    },
+    {
+      "code": "CO-TR-002",
+      "title": "Fotodetección, notificación y defensa",
+      "status": "revalidated_m15",
+      "latest_document_version": "M15.1",
+      "documents": [
+        {
+          "kind": "diagnostic",
+          "title": "Diagnóstico de etapa y notificación",
+          "subtitle": "CO-TR-002 · playbook jurídico operativo profundo M15 · documento 1 de 7",
+          "docx": "CO-TR-002/CO-TR-002_DIAGNOSTIC_PLAYBOOK_PROFUNDO_M15.docx",
+          "pdf": "CO-TR-002/CO-TR-002_DIAGNOSTIC_PLAYBOOK_PROFUNDO_M15.pdf",
+          "words": 1002,
+          "pages": 4,
+          "docx_sha256": "4a9e18dd630a335e7716c330932460384a2167e3155752975b853299eab90030",
+          "pdf_sha256": "86536d32dfcc7d45c65ce7aa5dde58a5d95d8d234817053cbf704bc130186106",
+          "approval_status": "revalidated_m15_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        },
+        {
+          "kind": "record",
+          "title": "Solicitud integral de expediente",
+          "subtitle": "CO-TR-002 · playbook jurídico operativo profundo M15 · documento 2 de 7",
+          "docx": "CO-TR-002/CO-TR-002_RECORD_PLAYBOOK_PROFUNDO_M15.docx",
+          "pdf": "CO-TR-002/CO-TR-002_RECORD_PLAYBOOK_PROFUNDO_M15.pdf",
+          "words": 678,
+          "pages": 3,
+          "docx_sha256": "95a7da750f557e3a4bceaba684c3c0b38f01e38b167e77c8fcc73001e55807e7",
+          "pdf_sha256": "e005c2bb7428284a345d664a2438a19603bd196a52dc1e9c505a93de0ae6e797",
+          "approval_status": "revalidated_m15_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        },
+        {
+          "kind": "notice_claim",
+          "title": "Reclamación por notificación",
+          "subtitle": "CO-TR-002 · playbook jurídico operativo profundo M15 · documento 3 de 7",
+          "docx": "CO-TR-002/CO-TR-002_NOTICE_CLAIM_PLAYBOOK_PROFUNDO_M15.docx",
+          "pdf": "CO-TR-002/CO-TR-002_NOTICE_CLAIM_PLAYBOOK_PROFUNDO_M15.pdf",
+          "words": 734,
+          "pages": 4,
+          "docx_sha256": "dcd9c79cff7eb4f63c2474c1ea60beee0756033e5fb1155725653758b333c940",
+          "pdf_sha256": "396e970eb79fb6b8b740a7c3667f7a2d09ebf160cd07dbf1e895ad7904a29717",
+          "approval_status": "revalidated_m15_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        },
+        {
+          "kind": "hearing",
+          "title": "Audiencia y pruebas",
+          "subtitle": "CO-TR-002 · playbook jurídico operativo profundo M15 · documento 4 de 7",
+          "docx": "CO-TR-002/CO-TR-002_HEARING_PLAYBOOK_PROFUNDO_M15.docx",
+          "pdf": "CO-TR-002/CO-TR-002_HEARING_PLAYBOOK_PROFUNDO_M15.pdf",
+          "words": 544,
+          "pages": 3,
+          "docx_sha256": "5285e4dad5efa5337bee15d899bf4021f85a00891b5df6c057e80658099146ac",
+          "pdf_sha256": "c1971f50cca9323638750f518c1215dd6264ef52d912e0bd5f202029cb70eb5f",
+          "approval_status": "revalidated_m15_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        },
+        {
+          "kind": "revocation",
+          "title": "Revocatoria directa condicional",
+          "subtitle": "CO-TR-002 · playbook jurídico operativo profundo M15 · documento 5 de 7",
+          "docx": "CO-TR-002/CO-TR-002_REVOCATION_PLAYBOOK_PROFUNDO_M15.docx",
+          "pdf": "CO-TR-002/CO-TR-002_REVOCATION_PLAYBOOK_PROFUNDO_M15.pdf",
+          "words": 587,
+          "pages": 3,
+          "docx_sha256": "a681213bdeec19536dc45c4d283625193df2cf2eb9ed663109da96845abba157",
+          "pdf_sha256": "b0e054ee9ad7285b7ab68d3c0bca155f9d5fb67a1c5bc05fc7d8a2072c661281",
+          "approval_status": "revalidated_m15_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        },
+        {
+          "kind": "correction",
+          "title": "Corrección SIMIT/RUNT",
+          "subtitle": "CO-TR-002 · playbook jurídico operativo profundo M15 · documento 6 de 7",
+          "docx": "CO-TR-002/CO-TR-002_CORRECTION_PLAYBOOK_PROFUNDO_M15.docx",
+          "pdf": "CO-TR-002/CO-TR-002_CORRECTION_PLAYBOOK_PROFUNDO_M15.pdf",
+          "words": 480,
+          "pages": 3,
+          "docx_sha256": "4424b73c81a4cf63552e1a594feea565af9d0f78af19548e68862c18fc5dd194",
+          "pdf_sha256": "b2f2db7ff129de488c7c2f8d9232b11e691436e03ee9176a3149a58166341b2c",
+          "approval_status": "revalidated_m15_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        },
+        {
+          "kind": "followup",
+          "title": "Guía de términos y escalamiento",
+          "subtitle": "CO-TR-002 · playbook jurídico operativo profundo M15 · documento 7 de 7",
+          "docx": "CO-TR-002/CO-TR-002_FOLLOWUP_PLAYBOOK_PROFUNDO_M15.docx",
+          "pdf": "CO-TR-002/CO-TR-002_FOLLOWUP_PLAYBOOK_PROFUNDO_M15.pdf",
+          "words": 680,
+          "pages": 3,
+          "docx_sha256": "028f8635869bafff8893c046807321dabe49b6104935826eef1aaafbbd0d3ddb",
+          "pdf_sha256": "68501507614b1cb7e006ac5ad43b4beb9d8e283f0f50e816d2faab80f9e77971",
+          "approval_status": "revalidated_m15_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        },
+        {
+          "kind": "consolidated_package",
+          "title": "Paquete jurídico operativo profundo CO-TR-002",
+          "subtitle": "7 actuaciones integradas · M15",
+          "docx": "CO-TR-002/CO-TR-002_PAQUETE_JURIDICO_OPERATIVO_PROFUNDO_M15.docx",
+          "pdf": "CO-TR-002/CO-TR-002_PAQUETE_JURIDICO_OPERATIVO_PROFUNDO_M15.pdf",
+          "words": 4652,
+          "pages": 25,
+          "docx_sha256": "7483aff717850790cc57358721ab46bb7b7ac48cd37a01fcc7dd94ab2f567b9c",
+          "pdf_sha256": "9a000cf20a00cf113fd72f8ad474d796566d00f7b51e948a8934224cf6c84501",
+          "approval_status": "revalidated_m15_controlled_use",
+          "professional_use": true,
+          "independent_review": false,
+          "mandatory_case_review": true
+        }
+      ],
+      "metrics": {
+        "documents": 8,
+        "words": 9357,
+        "pages": 48,
+        "package_words": 4652,
+        "package_pages": 25
+      },
+      "sources": [
+        {
+          "id": "TR2-S1",
+          "authority": "Secretaría Jurídica del Senado",
+          "reference": "Ley 1843 de 2017, artículos 7 a 9 - notificación, descuentos y procedimiento SAST",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1843_2017.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "TR2-S2",
+          "authority": "Secretaría Jurídica del Senado",
+          "reference": "Ley 769 de 2002, artículos 135 y 136 - comparendo, procedimiento y reducción",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002_pr003.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "TR2-S3",
+          "authority": "Corte Constitucional",
+          "reference": "Sentencia C-038 de 2020 - imputación personal y culpabilidad en fotodetección",
+          "official_url": "https://www.corteconstitucional.gov.co/relatoria/2020/C-038-20.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia constitucional"
+        },
+        {
+          "id": "TR2-S4",
+          "authority": "Corte Constitucional",
+          "reference": "Sentencia C-321 de 2022 - comparendo distinto de sanción y deberes del propietario con culpabilidad probada",
+          "official_url": "https://www.corteconstitucional.gov.co/relatoria/2022/C-321-22.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia constitucional"
+        },
+        {
+          "id": "TR2-S5",
+          "authority": "Corte Constitucional",
+          "reference": "Sentencia T-616 de 2006 - naturaleza del comparendo y trámite contravencional",
+          "official_url": "https://www.corteconstitucional.gov.co/relatoria/2006/T-616-06.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia constitucional"
+        },
+        {
+          "id": "TR2-S6",
+          "authority": "Secretaría Jurídica del Senado",
+          "reference": "Ley 1755 de 2015 - derecho de petición y términos de documentos e información",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1755_2015.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "TR2-S7",
+          "authority": "Secretaría Jurídica del Senado",
+          "reference": "Ley 1437 de 2011, artículos 93 a 96 - revocación directa",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1437_2011_pr002.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "TR2-S8",
+          "authority": "Secretaría Jurídica del Senado",
+          "reference": "Ley 1581 de 2012 - corrección y tratamiento de datos personales",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        }
+      ],
+      "previous_metrics": {
+        "documents": 8,
+        "words": 3464,
+        "pages": 35,
+        "package_words": 1705,
+        "package_pages": 19
+      }
+    }
+  ],
+  "metrics": {
+    "products": 7,
+    "documents": 56,
+    "words": 56896,
+    "pages": 320,
+    "revalidated_products_total": 11
+  },
+  "quality_gates": {
+    "unresolved_variables": 0,
+    "sentinels": 0,
+    "docx_integrity_required": true,
+    "pdf_render_required": true,
+    "case_specific_review_required": true,
+    "red_risk_release_block": true,
+    "automatic_result_promises": false
+  },
+  "approval_act": {
+    "docx": "governance/m5/certificates/ACTA_MADURACION_PLAYBOOKS_CONTROLADA_M5.docx",
+    "pdf": "governance/m5/certificates/ACTA_MADURACION_PLAYBOOKS_CONTROLADA_M5.pdf",
+    "docx_sha256": "d43a1ffe56a78e695006361cd292629bae59748c5d5e6e57dbbf4c511a4f9fcb",
+    "pdf_sha256": "077bf0aa9f2b6fecba4b5a7b8fecc3e6b2322b812f8a7972494dd1cb3b6524e7"
+  }
+}

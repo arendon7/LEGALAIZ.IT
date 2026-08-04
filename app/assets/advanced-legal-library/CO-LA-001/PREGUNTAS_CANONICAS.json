@@ -1,0 +1,1065 @@
+{
+  "version": "2.51",
+  "steps": [
+    {
+      "id": "parties",
+      "name": "Partes y alcance"
+    },
+    {
+      "id": "relationship",
+      "name": "Relación y terminación"
+    },
+    {
+      "id": "salary",
+      "name": "Salario y variables"
+    },
+    {
+      "id": "accruals",
+      "name": "Períodos causados"
+    },
+    {
+      "id": "payments",
+      "name": "Pagos, descuentos y pruebas"
+    },
+    {
+      "id": "termination",
+      "name": "Indemnizaciones y mora"
+    },
+    {
+      "id": "risk",
+      "name": "Riesgos y estado procesal"
+    },
+    {
+      "id": "documents",
+      "name": "Prescripción, documentos y cierre"
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q-LA1-001",
+      "step_id": "parties",
+      "variable_path": "scope.private_relation",
+      "label": "¿La relación corresponde a trabajo privado regido por la legislación colombiana?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "yes",
+          "Sí"
+        ],
+        [
+          "no",
+          "No"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-LA1-002",
+      "step_id": "parties",
+      "variable_path": "worker.identity",
+      "label": "Identificación de la persona trabajadora",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Nombre completo",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "id_number",
+          "label": "Identificación",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "email",
+          "label": "Correo",
+          "type": "email",
+          "required": true
+        },
+        {
+          "key": "address",
+          "label": "Dirección o municipio",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-LA1-003",
+      "step_id": "parties",
+      "variable_path": "employer.identity",
+      "label": "Identificación del empleador",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Nombre o razón social",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "id_number",
+          "label": "NIT o identificación",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "email",
+          "label": "Correo de contacto",
+          "type": "email",
+          "required": true
+        },
+        {
+          "key": "address",
+          "label": "Domicilio",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-LA1-004",
+      "step_id": "parties",
+      "variable_path": "employer.signatory",
+      "label": "Firmante o responsable del empleador",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Nombre",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "capacity",
+          "label": "Cargo o calidad",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "authority_source",
+          "label": "Fuente de facultad",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-LA1-005",
+      "step_id": "parties",
+      "variable_path": "claim.cutoff_date",
+      "label": "Fecha de corte del cálculo",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "Q-LA1-006",
+      "step_id": "parties",
+      "variable_path": "claimant.role",
+      "label": "¿Quién prepara o solicita el expediente?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "worker",
+          "Trabajador"
+        ],
+        [
+          "employer",
+          "Empleador"
+        ],
+        [
+          "advisor",
+          "Abogado o asesor"
+        ],
+        [
+          "other",
+          "Otro"
+        ]
+      ]
+    },
+    {
+      "id": "Q-LA1-007",
+      "step_id": "relationship",
+      "variable_path": "relationship.start_date",
+      "label": "Fecha real de inicio",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "Q-LA1-008",
+      "step_id": "relationship",
+      "variable_path": "relationship.end_date",
+      "label": "Fecha de terminación o corte",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "Q-LA1-009",
+      "step_id": "relationship",
+      "variable_path": "relationship.contract_type",
+      "label": "Modalidad contractual",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "indefinite",
+          "Indefinido"
+        ],
+        [
+          "fixed",
+          "Término fijo"
+        ],
+        [
+          "work",
+          "Obra o labor"
+        ],
+        [
+          "verbal",
+          "Verbal o no documentado"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-LA1-010",
+      "step_id": "relationship",
+      "variable_path": "relationship.termination_type",
+      "label": "Situación al corte",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "resignation",
+          "Renuncia"
+        ],
+        [
+          "mutual",
+          "Mutuo acuerdo"
+        ],
+        [
+          "without_cause",
+          "Terminación sin justa causa"
+        ],
+        [
+          "just_cause",
+          "Terminación con justa causa"
+        ],
+        [
+          "fixed_or_work_end",
+          "Fin de término u obra"
+        ],
+        [
+          "active",
+          "Relación vigente"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-LA1-011",
+      "step_id": "relationship",
+      "variable_path": "relationship.special_term",
+      "label": "Datos de término fijo u obra",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "fixed_end_date",
+          "label": "Fecha final pactada",
+          "type": "date",
+          "required": false
+        },
+        {
+          "key": "work_remaining_days",
+          "label": "Días estimados restantes de obra",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "cause_document",
+          "label": "Soporte de la causa o terminación",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-LA1-012",
+      "step_id": "relationship",
+      "variable_path": "relationship.service_status",
+      "label": "Estado material de la prestación",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "ended",
+          "Terminó"
+        ],
+        [
+          "active",
+          "Continúa"
+        ],
+        [
+          "suspended",
+          "Suspendida"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-LA1-013",
+      "step_id": "salary",
+      "variable_path": "compensation.base_salary",
+      "label": "Salario básico mensual al corte (COP)",
+      "type": "number",
+      "required": true
+    },
+    {
+      "id": "Q-LA1-014",
+      "step_id": "salary",
+      "variable_path": "compensation.salary_type",
+      "label": "Tipo de salario",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "ordinary",
+          "Ordinario"
+        ],
+        [
+          "integral",
+          "Integral"
+        ],
+        [
+          "mixed",
+          "Mixto o discutido"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-LA1-015",
+      "step_id": "salary",
+      "variable_path": "compensation.variable.exists",
+      "label": "¿Existieron pagos salariales variables?",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q-LA1-016",
+      "step_id": "salary",
+      "variable_path": "compensation.variable",
+      "label": "Promedio y soportes de remuneración variable",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "monthly_average",
+          "label": "Promedio mensual confirmado (COP)",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "supports",
+          "label": "Calidad de soportes",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "complete",
+              "Completos"
+            ],
+            [
+              "partial",
+              "Parciales"
+            ],
+            [
+              "none",
+              "Sin soportes"
+            ]
+          ]
+        },
+        {
+          "key": "components",
+          "label": "Comisiones, recargos u otros componentes",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-LA1-017",
+      "step_id": "salary",
+      "variable_path": "compensation.transport_aid",
+      "label": "¿Tenía derecho al auxilio de transporte o conectividad?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "yes",
+          "Sí"
+        ],
+        [
+          "no",
+          "No"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-LA1-018",
+      "step_id": "salary",
+      "variable_path": "compensation.other_salary",
+      "label": "Otros factores salariales",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "overtime",
+          "label": "Horas extra estimadas (COP)",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "surcharges",
+          "label": "Recargos estimados (COP)",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "in_kind",
+          "label": "Salario en especie mensual (COP)",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "description",
+          "label": "Descripción",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-LA1-019",
+      "step_id": "accruals",
+      "variable_path": "periods.salary_due_days",
+      "label": "Días de salario ordinario pendientes",
+      "type": "number",
+      "required": true
+    },
+    {
+      "id": "Q-LA1-020",
+      "step_id": "accruals",
+      "variable_path": "periods.cesantias_start_date",
+      "label": "Inicio del período pendiente de cesantías",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "Q-LA1-021",
+      "step_id": "accruals",
+      "variable_path": "periods.prima_start_date",
+      "label": "Inicio del período pendiente de prima",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "Q-LA1-022",
+      "step_id": "accruals",
+      "variable_path": "periods.vacation_pending_days",
+      "label": "Días de vacaciones pendientes",
+      "type": "number",
+      "required": true
+    },
+    {
+      "id": "Q-LA1-023",
+      "step_id": "accruals",
+      "variable_path": "periods.vacation_basis",
+      "label": "Origen de los días de vacaciones",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "verified",
+          "Verificados en soportes"
+        ],
+        [
+          "estimated",
+          "Estimados"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-LA1-024",
+      "step_id": "accruals",
+      "variable_path": "periods.confirmation",
+      "label": "Nivel de verificación de períodos",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "complete",
+          "Completa"
+        ],
+        [
+          "partial",
+          "Parcial"
+        ],
+        [
+          "none",
+          "Sin verificar"
+        ]
+      ]
+    },
+    {
+      "id": "Q-LA1-025",
+      "step_id": "payments",
+      "variable_path": "payments.prior",
+      "label": "Pagos o consignaciones ya efectuados",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "salary",
+          "label": "Salarios (COP)",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "cesantias",
+          "label": "Cesantías (COP)",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "interests",
+          "label": "Intereses (COP)",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "prima",
+          "label": "Prima (COP)",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "vacation",
+          "label": "Vacaciones (COP)",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "indemnity",
+          "label": "Indemnización (COP)",
+          "type": "number",
+          "required": true
+        }
+      ],
+      "columns": 3
+    },
+    {
+      "id": "Q-LA1-026",
+      "step_id": "payments",
+      "variable_path": "payments.deductions.exists",
+      "label": "¿Existen descuentos, compensaciones o retenciones discutidas?",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q-LA1-027",
+      "step_id": "payments",
+      "variable_path": "payments.deductions",
+      "label": "Detalle de descuentos discutidos",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "amount",
+          "label": "Valor (COP)",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "reason",
+          "label": "Concepto",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "authorization",
+          "label": "Autorización o fundamento",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "support",
+          "label": "Soporte disponible",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-LA1-028",
+      "step_id": "payments",
+      "variable_path": "evidence.support_level",
+      "label": "Calidad general de los soportes",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "complete",
+          "Completa"
+        ],
+        [
+          "partial",
+          "Parcial"
+        ],
+        [
+          "none",
+          "Sin soportes"
+        ]
+      ]
+    },
+    {
+      "id": "Q-LA1-029",
+      "step_id": "payments",
+      "variable_path": "evidence.items",
+      "label": "Soportes disponibles",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "contract",
+          "label": "Contrato",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "key": "payroll",
+          "label": "Desprendibles",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "key": "bank",
+          "label": "Extractos",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "key": "cesantias",
+          "label": "Fondo de cesantías",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "key": "termination_letter",
+          "label": "Carta de terminación",
+          "type": "boolean",
+          "required": true
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-LA1-030",
+      "step_id": "payments",
+      "variable_path": "evidence.employer_calculation",
+      "label": "¿Existe liquidación preparada por el empleador?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "yes",
+          "Sí y coincide"
+        ],
+        [
+          "disputed",
+          "Sí, pero se discute"
+        ],
+        [
+          "no",
+          "No"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-LA1-031",
+      "step_id": "termination",
+      "variable_path": "termination.without_cause_claim",
+      "label": "¿Se solicita indemnización por terminación sin justa causa?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "yes",
+          "Sí"
+        ],
+        [
+          "no",
+          "No"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-LA1-032",
+      "step_id": "termination",
+      "variable_path": "termination.cause_support",
+      "label": "Soporte de la causa o modalidad de terminación",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "complete",
+          "Completo"
+        ],
+        [
+          "partial",
+          "Parcial"
+        ],
+        [
+          "none",
+          "No existe"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-LA1-033",
+      "step_id": "termination",
+      "variable_path": "termination.indemnity_already_paid",
+      "label": "Indemnización ya pagada (COP)",
+      "type": "number",
+      "required": true
+    },
+    {
+      "id": "Q-LA1-034",
+      "step_id": "termination",
+      "variable_path": "termination.moratory_claim",
+      "label": "¿Debe analizarse indemnización moratoria?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "yes",
+          "Sí"
+        ],
+        [
+          "no",
+          "No"
+        ],
+        [
+          "review",
+          "Debe evaluarse"
+        ]
+      ]
+    },
+    {
+      "id": "Q-LA1-035",
+      "step_id": "termination",
+      "variable_path": "termination.delay_days",
+      "label": "Días transcurridos sin pago desde la terminación",
+      "type": "number",
+      "required": true
+    },
+    {
+      "id": "Q-LA1-036",
+      "step_id": "termination",
+      "variable_path": "termination.good_faith_facts",
+      "label": "Hechos relevantes sobre pago, controversia y conducta de las partes",
+      "type": "textarea",
+      "required": false
+    },
+    {
+      "id": "Q-LA1-037",
+      "step_id": "risk",
+      "variable_path": "risk.special_protection",
+      "label": "¿Existe estabilidad reforzada u otra protección especial?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "yes",
+          "Sí"
+        ],
+        [
+          "no",
+          "No"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-LA1-038",
+      "step_id": "risk",
+      "variable_path": "risk.protection_details",
+      "label": "Detalle de la protección o situación de salud",
+      "type": "textarea",
+      "required": false
+    },
+    {
+      "id": "Q-LA1-039",
+      "step_id": "risk",
+      "variable_path": "risk.public_sector",
+      "label": "¿El vínculo pertenece al sector público?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "yes",
+          "Sí"
+        ],
+        [
+          "no",
+          "No"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-LA1-040",
+      "step_id": "risk",
+      "variable_path": "risk.contract_reality",
+      "label": "¿La controversia principal es un contrato realidad?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "yes",
+          "Sí"
+        ],
+        [
+          "no",
+          "No"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-LA1-041",
+      "step_id": "risk",
+      "variable_path": "risk.collective_regime",
+      "label": "¿Existe convención, pacto, laudo o régimen extralegal?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "yes",
+          "Sí"
+        ],
+        [
+          "no",
+          "No"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-LA1-042",
+      "step_id": "risk",
+      "variable_path": "risk.active_proceeding",
+      "label": "Estado de actuaciones existentes",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "none",
+          "Ninguna"
+        ],
+        [
+          "claim",
+          "Reclamación directa"
+        ],
+        [
+          "conciliation",
+          "Conciliación"
+        ],
+        [
+          "lawsuit",
+          "Proceso judicial"
+        ],
+        [
+          "settlement",
+          "Transacción o acuerdo"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-LA1-043",
+      "step_id": "documents",
+      "variable_path": "prescription.last_written_claim",
+      "label": "Fecha del último reclamo escrito recibido por el empleador",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "Q-LA1-044",
+      "step_id": "documents",
+      "variable_path": "prescription.rights_dates",
+      "label": "Fechas de exigibilidad relevantes",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "earliest",
+          "label": "Derecho más antiguo reclamado",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "latest",
+          "label": "Derecho más reciente",
+          "type": "date",
+          "required": true
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-LA1-045",
+      "step_id": "documents",
+      "variable_path": "settlement.generate",
+      "label": "¿Desea preparar propuesta de conciliación o pago?",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q-LA1-046",
+      "step_id": "documents",
+      "variable_path": "settlement.payment_terms",
+      "label": "Condiciones propuestas de pago",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "installments",
+          "label": "Número de cuotas",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "initial_payment",
+          "label": "Pago inicial (COP)",
+          "type": "number",
+          "required": false
+        },
+        {
+          "key": "payment_channel",
+          "label": "Canal o cuenta",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-LA1-047",
+      "step_id": "documents",
+      "variable_path": "data.confirmed",
+      "label": "¿Confirma que datos y soportes corresponden a hechos verificables?",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q-LA1-048",
+      "step_id": "documents",
+      "variable_path": "documents.selection",
+      "label": "Documentos adicionales solicitados",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "claim",
+          "label": "Reclamación directa",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "key": "support_request",
+          "label": "Solicitud de soportes",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "key": "prescription_report",
+          "label": "Informe de prescripción",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "key": "moratory_analysis",
+          "label": "Análisis moratorio",
+          "type": "boolean",
+          "required": true
+        }
+      ],
+      "columns": 2
+    }
+  ]
+}

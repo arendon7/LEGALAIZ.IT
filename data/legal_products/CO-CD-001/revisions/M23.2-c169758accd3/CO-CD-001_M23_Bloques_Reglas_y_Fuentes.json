@@ -1,0 +1,83 @@
+{
+  "product_code": "CO-CD-001",
+  "version": "M23",
+  "integration_mode": "additive_immutable_revision",
+  "document_family": [
+    "financial_habeas_data_claim",
+    "evidence_matrix",
+    "deadline_calendar",
+    "sic_escalation"
+  ],
+  "critical_rules": [
+    {
+      "id": "M23-CD1-001",
+      "when": "valid_debt_without_legal_removal_ground",
+      "risk": "yellow",
+      "action": "do_not_promise_deletion"
+    },
+    {
+      "id": "M23-CD1-002",
+      "when": "claim_complete",
+      "risk": "green",
+      "action": "insert_claim_in_progress_legend_within_2_business_days"
+    },
+    {
+      "id": "M23-CD1-003",
+      "when": "consultation",
+      "risk": "green",
+      "action": "10_business_days_plus_5_extension"
+    },
+    {
+      "id": "M23-CD1-004",
+      "when": "claim",
+      "risk": "green",
+      "action": "15_business_days_plus_8_extension"
+    },
+    {
+      "id": "M23-CD1-005",
+      "when": "paid_mora_under_2_years",
+      "risk": "green",
+      "action": "negative_data_duration_double_mora_max_4_years"
+    },
+    {
+      "id": "M23-CD1-006",
+      "when": "negative_data_age_over_8_years_from_default",
+      "risk": "yellow",
+      "action": "caducity_review"
+    },
+    {
+      "id": "M23-CD1-007",
+      "when": "debt_at_or_below_15_percent_smmlv",
+      "risk": "yellow",
+      "action": "verify_enhanced_prior_communications"
+    },
+    {
+      "id": "M23-CD1-008",
+      "when": "identity_theft",
+      "risk": "red",
+      "action": "human_review_and_current_law_route"
+    },
+    {
+      "id": "M23-CD1-009",
+      "when": "law_2573_general_rules",
+      "risk": "yellow",
+      "action": "activate_from_2026_11_20_except_express_early_provisions"
+    },
+    {
+      "id": "M23-CD1-010",
+      "when": "active_enforcement_insolvency_or_settlement",
+      "risk": "red",
+      "action": "mandatory_lawyer_review"
+    }
+  ],
+  "official_sources": [
+    "Constitución Política",
+    "Ley 1266 de 2008",
+    "Ley 2157 de 2021",
+    "Decreto 1074 de 2015",
+    "Ley 1581 de 2012",
+    "Ley 2573 de 2026",
+    "Superintendencia de Industria y Comercio"
+  ],
+  "legal_status_date": "2026-07-31"
+}

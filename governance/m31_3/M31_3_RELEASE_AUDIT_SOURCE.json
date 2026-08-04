@@ -1,0 +1,102 @@
+{
+  "schema": "legalaizit-release-audit-v1",
+  "milestone": "M31.3",
+  "version": "5.0.2",
+  "build_id": "M31-3-PREPRODUCCION-REPRODUCIBLE-2026-08-03",
+  "root": "/mnt/data/legalait_m313_work/LegalAIZit_M31_3_PREPRODUCCION_REPRODUCIBLE_v5.0.2_2026-08-03",
+  "strict_distribution": false,
+  "checks": [
+    {
+      "key": "manifest_identity",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "version": "5.0.2",
+          "build_id": "M31-3-PREPRODUCCION-REPRODUCIBLE-2026-08-03",
+          "release_id": "M31-3-PREPRODUCCION-REPRODUCIBLE-5.0.2-2026-08-03",
+          "release_name": "M31.3 — Preproducción reproducible y control de release",
+          "production_authorized": false
+        },
+        "actual": {
+          "version": "5.0.2",
+          "build_id": "M31-3-PREPRODUCCION-REPRODUCIBLE-2026-08-03",
+          "release_id": "M31-3-PREPRODUCCION-REPRODUCIBLE-5.0.2-2026-08-03",
+          "release_name": "M31.3 — Preproducción reproducible y control de release",
+          "production_authorized": false
+        }
+      }
+    },
+    {
+      "key": "runtime_manifest_identity",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "runtime_version": "5.0.2",
+          "build": "M31-3-PREPRODUCCION-REPRODUCIBLE-2026-08-03",
+          "release_iteration": "M31.3",
+          "production_authorized": false
+        },
+        "actual": {
+          "runtime_version": "5.0.2",
+          "build": "M31-3-PREPRODUCCION-REPRODUCIBLE-2026-08-03",
+          "release_iteration": "M31.3",
+          "production_authorized": false
+        }
+      }
+    },
+    {
+      "key": "release_policy_identity",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "phase": "M31.3",
+          "version": "5.0.2",
+          "release_id": "M31-3-PREPRODUCCION-REPRODUCIBLE-5.0.2-2026-08-03",
+          "production_authorized": false
+        },
+        "actual": {
+          "phase": "M31.3",
+          "version": "5.0.2",
+          "release_id": "M31-3-PREPRODUCCION-REPRODUCIBLE-5.0.2-2026-08-03",
+          "production_authorized": false
+        }
+      }
+    },
+    {
+      "key": "active_documentation",
+      "passed": true,
+      "detail": {
+        "files": 8
+      }
+    },
+    {
+      "key": "required_release_artifacts",
+      "passed": true,
+      "detail": {
+        "files": 10
+      }
+    },
+    {
+      "key": "deployment_security_contract",
+      "passed": true,
+      "detail": {
+        "status": "hardened"
+      }
+    },
+    {
+      "key": "security_report_current",
+      "passed": true,
+      "detail": {
+        "version": "5.0.2",
+        "milestone": "M31.3",
+        "critical_findings": 0,
+        "high_findings": 0,
+        "production_authorized": true
+      }
+    }
+  ],
+  "passed": 7,
+  "total": 7,
+  "ok": true,
+  "failures": []
+}

@@ -1,0 +1,165 @@
+{
+  "schema": "legalai_product_revision_registry_v1",
+  "product_code": "CO-TR-002",
+  "public_name": "Reclamar una fotomulta que no me notificaron correctamente",
+  "internal_name": "Petición por fotomulta no notificada",
+  "category": "Tránsito",
+  "jurisdiction": "Colombia",
+  "legacy_runtime_binding": {
+    "products_file": "data/products.json",
+    "interviews_file": "data/interviews.json",
+    "rules_file": "data/rules.json",
+    "document_templates_file": "data/document_templates.json",
+    "deep_library_path": "app/assets/advanced-legal-library/CO-TR-002",
+    "current_product_version": "2.25",
+    "current_publication_status": "Aprobado para uso profesional controlado"
+  },
+  "active_revision": "legacy-m21.1-current",
+  "published_revision": "legacy-m21.1-current",
+  "candidate_revision": "M23.2-5931b1406c9c",
+  "revisions": [
+    "legacy-m21.1-current",
+    "M23.2-5931b1406c9c"
+  ],
+  "candidate_revisions": [
+    "M23.2-5931b1406c9c"
+  ],
+  "revision_metadata": {
+    "legacy-m21.1-current": {
+      "status": "published_controlled_legacy_binding",
+      "immutable": true,
+      "source_milestone": "M20.1/M21.1",
+      "quality_status": "reviewed",
+      "verified_at": "2026-07-31",
+      "binding_mode": "legacy_runtime_files"
+    }
+  },
+  "candidate_policy": {
+    "status": "candidate_blocked_pending_legal_and_qa_approval",
+    "active_revision_change_allowed": false,
+    "published_revision_change_allowed": false,
+    "legal_approval_required": true,
+    "qa_approval_required": true,
+    "must_be_distinct_users": true,
+    "scenario_qa_required": true
+  },
+  "registry_snapshot": {
+    "product_code": "CO-TR-002",
+    "internal_name": "Petición por fotomulta no notificada",
+    "public_name": "Reclamar una fotomulta que no me notificaron correctamente",
+    "category": "Tránsito",
+    "problem_solved": "La persona necesita obtener el expediente, auditar la notificación y solicitar restablecimiento del debido proceso o correcciones procedentes.",
+    "service_levels": [
+      "orientacion",
+      "documento_personalizado",
+      "solucion_revisada"
+    ],
+    "risk_level": "high",
+    "scope": [
+      "derecho de petición",
+      "solicitud de expediente",
+      "auditoría de notificación",
+      "revocación condicionada",
+      "corrección de registros"
+    ],
+    "exclusions": [
+      "usar petición para sustituir recursos o acciones con término",
+      "prometer cancelación por no ser conductor",
+      "alegar caducidad o prescripción sin fechas certificadas"
+    ],
+    "required_evidence": [
+      "comparendo o consulta",
+      "datos RUNT vigentes al hecho",
+      "pruebas de notificación",
+      "acto sancionatorio",
+      "fechas",
+      "estado SIMIT y cobro"
+    ],
+    "pilot": false,
+    "jurisdiction": "CO",
+    "language": "es-CO",
+    "questionnaire_binding": {
+      "status": "pending_runtime_resolution",
+      "expected_legacy_ref": "M22://questionnaires/CO-TR-002",
+      "prohibition": "do_not_create_duplicate_questionnaire_before_runtime_audit"
+    },
+    "ruleset_binding": {
+      "status": "candidate_from_m23_2",
+      "source_file": "CO-TR-002/CO-TR-002_M23_Bloques_Reglas_y_Fuentes.json",
+      "rule_count": 12,
+      "rule_ids": [
+        "M23-TR2-001",
+        "M23-TR2-002",
+        "M23-TR2-003",
+        "M23-TR2-004",
+        "M23-TR2-005",
+        "M23-TR2-006",
+        "M23-TR2-007",
+        "M23-TR2-008",
+        "M23-TR2-009",
+        "M23-TR2-010",
+        "M23-TR2-011",
+        "M23-TR2-012"
+      ]
+    },
+    "template_candidate": {
+      "revision_label": "M23.2",
+      "master_docx": "CO-TR-002_Modelo_Maestro_Peticion_Fotomulta_No_Notificada_M23.docx",
+      "master_pdf": "CO-TR-002_Modelo_Maestro_Peticion_Fotomulta_No_Notificada_M23.pdf",
+      "worked_example_docx": "CO-TR-002_Ejemplo_Final_Peticion_Fotomulta_No_Notificada_M23.docx",
+      "worked_example_pdf": "CO-TR-002_Ejemplo_Final_Peticion_Fotomulta_No_Notificada_M23.pdf",
+      "integration_mode": "new_immutable_revision_no_overwrite"
+    },
+    "conditional_modules": [
+      "right_to_petition",
+      "full_record_request",
+      "notification_audit",
+      "due_process_restoration",
+      "conditional_direct_revocation",
+      "collection_handoff",
+      "simit_runt_correction"
+    ],
+    "legal_sources": [
+      {
+        "title": "Ley 1843 de 2017",
+        "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30032605"
+      },
+      {
+        "title": "Ley 769 de 2002",
+        "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002.html"
+      },
+      {
+        "title": "Ley 2161 de 2021",
+        "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2161_2021.html"
+      },
+      {
+        "title": "Ley 1437 de 2011",
+        "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1437_2011.html"
+      },
+      {
+        "title": "Ley 1755 de 2015",
+        "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1755_2015.html"
+      },
+      {
+        "title": "Sentencia C-038 de 2020",
+        "url": "https://www.corteconstitucional.gov.co/relatoria/2020/C-038-20.htm"
+      },
+      {
+        "title": "Sentencia C-321 de 2022",
+        "url": "https://www.corteconstitucional.gov.co/relatoria/2022/C-321-22.htm"
+      },
+      {
+        "title": "Sentencia T-051 de 2016",
+        "url": "https://www.corteconstitucional.gov.co/relatoria/2016/T-051-16.htm"
+      }
+    ],
+    "approvals": {
+      "legal_owner": "pending_assignment",
+      "qa_owner": "pending_assignment_distinct_from_legal_owner",
+      "legal_approval_required": true,
+      "qa_approval_required": true
+    },
+    "publication_status": "blocked_pending_runtime_integration_scenario_qa_and_dual_approval"
+  },
+  "last_migration_id": "M24.1-M23.2-PREINTEGRATION-20260801"
+}

@@ -1,0 +1,247 @@
+{
+  "routesAudited": 15,
+  "routesPassing": 15,
+  "routesFailing": 0,
+  "results": [
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "violations": [],
+      "details": {
+        "duplicateIds": [],
+        "unnamedControls": [],
+        "imagesWithoutAlt": [],
+        "headingSkips": [],
+        "overflow": 0,
+        "mainLandmarks": 1,
+        "h1Count": 1,
+        "skipLink": true,
+        "lang": "es"
+      }
+    },
+    {
+      "route": "/soluciones",
+      "viewport": "desktop",
+      "violations": [],
+      "details": {
+        "duplicateIds": [],
+        "unnamedControls": [],
+        "imagesWithoutAlt": [],
+        "headingSkips": [],
+        "overflow": 0,
+        "mainLandmarks": 1,
+        "h1Count": 1,
+        "skipLink": true,
+        "lang": "es"
+      }
+    },
+    {
+      "route": "/nuevo",
+      "viewport": "desktop",
+      "violations": [],
+      "details": {
+        "duplicateIds": [],
+        "unnamedControls": [],
+        "imagesWithoutAlt": [],
+        "headingSkips": [],
+        "overflow": 0,
+        "mainLandmarks": 1,
+        "h1Count": 1,
+        "skipLink": true,
+        "lang": "es"
+      }
+    },
+    {
+      "route": "/casos",
+      "viewport": "desktop",
+      "violations": [],
+      "details": {
+        "duplicateIds": [],
+        "unnamedControls": [],
+        "imagesWithoutAlt": [],
+        "headingSkips": [],
+        "overflow": 0,
+        "mainLandmarks": 1,
+        "h1Count": 1,
+        "skipLink": true,
+        "lang": "es"
+      }
+    },
+    {
+      "route": "/documentos",
+      "viewport": "desktop",
+      "violations": [],
+      "details": {
+        "duplicateIds": [],
+        "unnamedControls": [],
+        "imagesWithoutAlt": [],
+        "headingSkips": [],
+        "overflow": 0,
+        "mainLandmarks": 1,
+        "h1Count": 1,
+        "skipLink": true,
+        "lang": "es"
+      }
+    },
+    {
+      "route": "/operacion",
+      "viewport": "desktop",
+      "violations": [],
+      "details": {
+        "duplicateIds": [],
+        "unnamedControls": [],
+        "imagesWithoutAlt": [],
+        "headingSkips": [],
+        "overflow": 0,
+        "mainLandmarks": 1,
+        "h1Count": 1,
+        "skipLink": true,
+        "lang": "es"
+      }
+    },
+    {
+      "route": "/catalogo",
+      "viewport": "desktop",
+      "violations": [],
+      "details": {
+        "duplicateIds": [],
+        "unnamedControls": [],
+        "imagesWithoutAlt": [],
+        "headingSkips": [],
+        "overflow": 0,
+        "mainLandmarks": 1,
+        "h1Count": 1,
+        "skipLink": true,
+        "lang": "es"
+      }
+    },
+    {
+      "route": "/fuentes",
+      "viewport": "desktop",
+      "violations": [],
+      "details": {
+        "duplicateIds": [],
+        "unnamedControls": [],
+        "imagesWithoutAlt": [],
+        "headingSkips": [],
+        "overflow": 0,
+        "mainLandmarks": 1,
+        "h1Count": 1,
+        "skipLink": true,
+        "lang": "es"
+      }
+    },
+    {
+      "route": "/calidad",
+      "viewport": "desktop",
+      "violations": [],
+      "details": {
+        "duplicateIds": [],
+        "unnamedControls": [],
+        "imagesWithoutAlt": [],
+        "headingSkips": [],
+        "overflow": 0,
+        "mainLandmarks": 1,
+        "h1Count": 1,
+        "skipLink": true,
+        "lang": "es"
+      }
+    },
+    {
+      "route": "/configuracion",
+      "viewport": "desktop",
+      "violations": [],
+      "details": {
+        "duplicateIds": [],
+        "unnamedControls": [],
+        "imagesWithoutAlt": [],
+        "headingSkips": [],
+        "overflow": 0,
+        "mainLandmarks": 1,
+        "h1Count": 1,
+        "skipLink": true,
+        "lang": "es"
+      }
+    },
+    {
+      "route": "/biblioteca-contractual",
+      "viewport": "desktop",
+      "violations": [],
+      "details": {
+        "duplicateIds": [],
+        "unnamedControls": [],
+        "imagesWithoutAlt": [],
+        "headingSkips": [],
+        "overflow": 0,
+        "mainLandmarks": 1,
+        "h1Count": 1,
+        "skipLink": true,
+        "lang": "es"
+      }
+    },
+    {
+      "route": "/biblioteca-playbooks",
+      "viewport": "desktop",
+      "violations": [],
+      "details": {
+        "duplicateIds": [],
+        "unnamedControls": [],
+        "imagesWithoutAlt": [],
+        "headingSkips": [],
+        "overflow": 0,
+        "mainLandmarks": 1,
+        "h1Count": 1,
+        "skipLink": true,
+        "lang": "es"
+      }
+    },
+    {
+      "route": "/",
+      "viewport": "mobile",
+      "violations": [],
+      "details": {
+        "duplicateIds": [],
+        "unnamedControls": [],
+        "imagesWithoutAlt": [],
+        "headingSkips": [],
+        "overflow": 0,
+        "mainLandmarks": 1,
+        "h1Count": 1,
+        "skipLink": true,
+        "lang": "es"
+      }
+    },
+    {
+      "route": "/soluciones",
+      "viewport": "mobile",
+      "violations": [],
+      "details": {
+        "duplicateIds": [],
+        "unnamedControls": [],
+        "imagesWithoutAlt": [],
+        "headingSkips": [],
+        "overflow": 0,
+        "mainLandmarks": 1,
+        "h1Count": 1,
+        "skipLink": true,
+        "lang": "es"
+      }
+    },
+    {
+      "route": "/calidad",
+      "viewport": "mobile",
+      "violations": [],
+      "details": {
+        "duplicateIds": [],
+        "unnamedControls": [],
+        "imagesWithoutAlt": [],
+        "headingSkips": [],
+        "overflow": 0,
+        "mainLandmarks": 1,
+        "h1Count": 1,
+        "skipLink": true,
+        "lang": "es"
+      }
+    }
+  ]
+}

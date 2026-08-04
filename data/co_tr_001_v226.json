@@ -1,0 +1,66 @@
+{
+  "version": "2.26",
+  "product_code": "CO-TR-001",
+  "title": "Maduración integral del chequeo SAST e inscripción verificada",
+  "verified_at": "2026-07-19",
+  "status": "Candidato interno para cierre jurídico del abogado responsable",
+  "legal_positioning": [
+    "Una coincidencia de autoridad y fecha es una alerta de verificación, no una declaración de invalidez.",
+    "El análisis debe individualizar dispositivo, punto, fecha, autorización, calibración, señalización y expediente.",
+    "Una apertura de investigación o formulación de cargos no equivale a una decisión individual firme.",
+    "La ausencia de coincidencia en la muestra local no acredita regularidad del sistema ni del comparendo.",
+    "El concepto de desempeño solo se controla para el período histórico 22/03/2018-19/08/2020.",
+    "El pago, cobro coactivo, embargo, fraude o proceso judicial requieren ruta especializada."
+  ],
+  "documents": [
+    {
+      "kind": "sast_report",
+      "title": "Informe de coincidencia y diagnóstico SAST",
+      "filename_suffix": "informe_coincidencia_sast"
+    },
+    {
+      "kind": "sast_verification_matrix",
+      "title": "Matriz individual de autorización y evidencia técnica",
+      "filename_suffix": "matriz_verificacion_sast"
+    },
+    {
+      "kind": "sast_record_request",
+      "title": "Solicitud de expediente técnico y acto de autorización",
+      "filename_suffix": "solicitud_expediente_autorizacion"
+    },
+    {
+      "kind": "sast_supertransport_request",
+      "title": "Solicitud de certificación del estado de la actuación oficial",
+      "filename_suffix": "solicitud_estado_supertransporte"
+    },
+    {
+      "kind": "sast_conditional_review",
+      "title": "Solicitud condicionada de revisión administrativa",
+      "filename_suffix": "solicitud_revision_condicionada"
+    },
+    {
+      "kind": "sast_alert_registry",
+      "title": "Registro de alertas y seguimiento",
+      "filename_suffix": "registro_alertas"
+    },
+    {
+      "kind": "sast_route_guide",
+      "title": "Guía de verificación, términos y escalamiento",
+      "filename_suffix": "guia_ruta_sast"
+    }
+  ],
+  "controls": [
+    "coincidencia de autoridad/territorio y fecha",
+    "dispositivo y punto exactos",
+    "autorización ANSV o excepción",
+    "vigencia del acto",
+    "calibración y trazabilidad",
+    "señalización",
+    "concepto de desempeño por período",
+    "estado de actuación oficial",
+    "etapa procesal",
+    "pago y complejidad",
+    "fraude o suplantación",
+    "cobertura limitada del dataset"
+  ]
+}

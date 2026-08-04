@@ -1,0 +1,201 @@
+{
+  "version": "M27.4",
+  "generated_at": "2026-08-02",
+  "catalog_architecture_complete": true,
+  "definition": {
+    "catalog_complete": "Producto, entrevista, reglas, fuentes, plantillas y experiencia pública están conectados.",
+    "depth_complete": "El paquete esperado está integrado en la fábrica común y cada revisión sigue su aprobación jurídica y QA.",
+    "warning": "La existencia de contenido o biblioteca no equivale a aprobación jurídica de un caso ni a autorización de producción."
+  },
+  "products": {
+    "CO-AR-001": {
+      "status": "integrated_specialized_package",
+      "public_label": "Paquete especializado integrado: 5 documentos",
+      "catalog_complete": true,
+      "expected_document_count": 5,
+      "integrated_template_count": 5,
+      "canonical_evidence": [
+        "04_BIBLIOTECA_CONTRACTUAL_PROFUNDA/CO-AR-001",
+        "05_BIBLIOTECA_PLAYBOOKS_PROFUNDOS/CO-AR-001"
+      ],
+      "remaining_gates": [
+        "Aprobación jurídica por revisión",
+        "QA técnico por la misma revisión",
+        "Validación con expedientes reales controlados"
+      ],
+      "external_release_authorized": false
+    },
+    "CO-CD-001": {
+      "status": "integrated_specialized_package",
+      "public_label": "Paquete especializado integrado: 7 documentos",
+      "catalog_complete": true,
+      "expected_document_count": 7,
+      "integrated_template_count": 7,
+      "canonical_evidence": [
+        "05_BIBLIOTECA_PLAYBOOKS_PROFUNDOS/CO-CD-001",
+        "app/assets/advanced-legal-library/CO-CD-001"
+      ],
+      "remaining_gates": [
+        "Aprobación jurídica por revisión",
+        "QA técnico por la misma revisión",
+        "Validación con expedientes reales controlados"
+      ],
+      "external_release_authorized": false
+    },
+    "CO-CD-003": {
+      "status": "integrated_specialized_package",
+      "public_label": "Paquete especializado integrado: 8 documentos",
+      "catalog_complete": true,
+      "expected_document_count": 8,
+      "integrated_template_count": 8,
+      "canonical_evidence": [
+        "05_BIBLIOTECA_PLAYBOOKS_PROFUNDOS/CO-CD-003",
+        "app/assets/advanced-legal-library/CO-CD-003"
+      ],
+      "remaining_gates": [
+        "Aprobación jurídica por revisión",
+        "QA técnico por la misma revisión",
+        "Validación con expedientes reales controlados"
+      ],
+      "external_release_authorized": false
+    },
+    "CO-CD-004": {
+      "status": "integrated_specialized_package",
+      "public_label": "Paquete especializado integrado: 10 documentos",
+      "catalog_complete": true,
+      "expected_document_count": 10,
+      "integrated_template_count": 10,
+      "canonical_evidence": [
+        "05_BIBLIOTECA_PLAYBOOKS_PROFUNDOS/CO-CD-004",
+        "app/assets/advanced-legal-library/CO-CD-004"
+      ],
+      "remaining_gates": [
+        "Aprobación jurídica por revisión",
+        "QA técnico por la misma revisión",
+        "Validación con expedientes reales controlados"
+      ],
+      "external_release_authorized": false
+    },
+    "CO-EM-003": {
+      "status": "integrated_specialized_package",
+      "public_label": "Paquete especializado integrado: 6 documentos",
+      "catalog_complete": true,
+      "expected_document_count": 6,
+      "integrated_template_count": 6,
+      "canonical_evidence": [
+        "04_BIBLIOTECA_CONTRACTUAL_PROFUNDA/CO-EM-003",
+        "app/assets/advanced-legal-library/CO-EM-003"
+      ],
+      "remaining_gates": [
+        "Aprobación jurídica por revisión",
+        "QA técnico por la misma revisión",
+        "Validación con expedientes reales controlados"
+      ],
+      "external_release_authorized": false
+    },
+    "CO-EM-004": {
+      "status": "integrated_specialized_package",
+      "public_label": "Paquete especializado integrado: 7 documentos",
+      "catalog_complete": true,
+      "expected_document_count": 7,
+      "integrated_template_count": 7,
+      "canonical_evidence": [
+        "04_BIBLIOTECA_CONTRACTUAL_PROFUNDA/CO-EM-004",
+        "app/assets/advanced-legal-library/CO-EM-004"
+      ],
+      "remaining_gates": [
+        "Aprobación jurídica por revisión",
+        "QA técnico por la misma revisión",
+        "Validación con expedientes reales controlados"
+      ],
+      "external_release_authorized": false
+    },
+    "CO-LA-001": {
+      "status": "integrated_specialized_package",
+      "public_label": "Paquete especializado integrado: 4 documentos",
+      "catalog_complete": true,
+      "expected_document_count": 4,
+      "integrated_template_count": 4,
+      "canonical_evidence": [
+        "05_BIBLIOTECA_PLAYBOOKS_PROFUNDOS/CO-LA-001",
+        "app/assets/advanced-legal-library/CO-LA-001"
+      ],
+      "remaining_gates": [
+        "Aprobación jurídica por revisión",
+        "QA técnico por la misma revisión",
+        "Validación con expedientes reales controlados"
+      ],
+      "external_release_authorized": false
+    },
+    "CO-LA-002": {
+      "status": "integrated_specialized_package",
+      "public_label": "Paquete especializado integrado: 8 documentos",
+      "catalog_complete": true,
+      "expected_document_count": 8,
+      "integrated_template_count": 8,
+      "canonical_evidence": [
+        "04_BIBLIOTECA_CONTRACTUAL_PROFUNDA/CO-LA-002",
+        "05_BIBLIOTECA_PLAYBOOKS_PROFUNDOS/CO-LA-002"
+      ],
+      "remaining_gates": [
+        "Aprobación jurídica por revisión",
+        "QA técnico por la misma revisión",
+        "Validación con expedientes reales controlados"
+      ],
+      "external_release_authorized": false
+    },
+    "CO-SA-001": {
+      "status": "integrated_specialized_package",
+      "public_label": "Paquete especializado integrado: 7 documentos",
+      "catalog_complete": true,
+      "expected_document_count": 7,
+      "integrated_template_count": 7,
+      "canonical_evidence": [
+        "05_BIBLIOTECA_PLAYBOOKS_PROFUNDOS/CO-SA-001",
+        "app/assets/advanced-legal-library/CO-SA-001"
+      ],
+      "remaining_gates": [
+        "Aprobación jurídica por revisión",
+        "QA técnico por la misma revisión",
+        "Validación con expedientes reales controlados"
+      ],
+      "external_release_authorized": false
+    },
+    "CO-TR-001": {
+      "status": "integrated_specialized_package",
+      "public_label": "Paquete especializado integrado: 6 documentos",
+      "catalog_complete": true,
+      "expected_document_count": 6,
+      "integrated_template_count": 6,
+      "canonical_evidence": [
+        "05_BIBLIOTECA_PLAYBOOKS_PROFUNDOS/CO-TR-001",
+        "app/assets/advanced-legal-library/CO-TR-001/DOCUMENTOS_V259.json",
+        "legalai_runtime_modules/co_tr_001_api_v259.py"
+      ],
+      "remaining_gates": [
+        "Aprobación jurídica por revisión",
+        "QA técnico por la misma revisión",
+        "Validación con expedientes reales controlados"
+      ],
+      "external_release_authorized": false
+    },
+    "CO-TR-002": {
+      "status": "integrated_specialized_package",
+      "public_label": "Paquete especializado integrado: 8 documentos",
+      "catalog_complete": true,
+      "expected_document_count": 8,
+      "integrated_template_count": 8,
+      "canonical_evidence": [
+        "05_BIBLIOTECA_PLAYBOOKS_PROFUNDOS/CO-TR-002",
+        "app/assets/advanced-legal-library/CO-TR-002/DOCUMENTOS_V256.json",
+        "legalai_runtime_modules/co_tr_002_api_v256.py"
+      ],
+      "remaining_gates": [
+        "Aprobación jurídica por revisión",
+        "QA técnico por la misma revisión",
+        "Validación con expedientes reales controlados"
+      ],
+      "external_release_authorized": false
+    }
+  }
+}

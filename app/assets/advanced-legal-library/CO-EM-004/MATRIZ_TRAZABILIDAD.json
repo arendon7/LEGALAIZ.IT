@@ -1,0 +1,192 @@
+[
+  {
+    "question_id": "Q-EM4-001",
+    "variable_path": "agreement.type",
+    "test_id": "TEST-Q-EM4-001"
+  },
+  {
+    "question_id": "Q-EM4-002",
+    "variable_path": "party_a.identification",
+    "test_id": "TEST-Q-EM4-002"
+  },
+  {
+    "question_id": "Q-EM4-003",
+    "variable_path": "party_a.signatory",
+    "test_id": "TEST-Q-EM4-003"
+  },
+  {
+    "question_id": "Q-EM4-004",
+    "variable_path": "party_b.identification",
+    "test_id": "TEST-Q-EM4-004"
+  },
+  {
+    "question_id": "Q-EM4-005",
+    "variable_path": "party_b.signatory",
+    "test_id": "TEST-Q-EM4-005"
+  },
+  {
+    "question_id": "Q-EM4-006",
+    "variable_path": "relationship.context",
+    "test_id": "TEST-Q-EM4-006"
+  },
+  {
+    "question_id": "Q-EM4-007",
+    "variable_path": "agreement.purpose",
+    "test_id": "TEST-Q-EM4-007"
+  },
+  {
+    "question_id": "Q-EM4-008",
+    "variable_path": "agreement.reference",
+    "test_id": "TEST-Q-EM4-008"
+  },
+  {
+    "question_id": "Q-EM4-009",
+    "variable_path": "agreement.reciprocal",
+    "test_id": "TEST-Q-EM4-009"
+  },
+  {
+    "question_id": "Q-EM4-010",
+    "variable_path": "information.categories",
+    "test_id": "TEST-Q-EM4-010"
+  },
+  {
+    "question_id": "Q-EM4-011",
+    "variable_path": "information.formats_sources",
+    "test_id": "TEST-Q-EM4-011"
+  },
+  {
+    "question_id": "Q-EM4-012",
+    "variable_path": "information.oral_visual_rule",
+    "test_id": "TEST-Q-EM4-012"
+  },
+  {
+    "question_id": "Q-EM4-013",
+    "variable_path": "information.exclusions",
+    "test_id": "TEST-Q-EM4-013"
+  },
+  {
+    "question_id": "Q-EM4-014",
+    "variable_path": "information.trade_secrets",
+    "test_id": "TEST-Q-EM4-014"
+  },
+  {
+    "question_id": "Q-EM4-015",
+    "variable_path": "information.marking_rule",
+    "test_id": "TEST-Q-EM4-015"
+  },
+  {
+    "question_id": "Q-EM4-016",
+    "variable_path": "access.authorized_recipients",
+    "test_id": "TEST-Q-EM4-016"
+  },
+  {
+    "question_id": "Q-EM4-017",
+    "variable_path": "access.representatives",
+    "test_id": "TEST-Q-EM4-017"
+  },
+  {
+    "question_id": "Q-EM4-018",
+    "variable_path": "access.need_to_know",
+    "test_id": "TEST-Q-EM4-018"
+  },
+  {
+    "question_id": "Q-EM4-019",
+    "variable_path": "access.permitted_use",
+    "test_id": "TEST-Q-EM4-019"
+  },
+  {
+    "question_id": "Q-EM4-020",
+    "variable_path": "access.compelled_disclosure",
+    "test_id": "TEST-Q-EM4-020"
+  },
+  {
+    "question_id": "Q-EM4-021",
+    "variable_path": "security.controls",
+    "test_id": "TEST-Q-EM4-021"
+  },
+  {
+    "question_id": "Q-EM4-022",
+    "variable_path": "data.personal",
+    "test_id": "TEST-Q-EM4-022"
+  },
+  {
+    "question_id": "Q-EM4-023",
+    "variable_path": "data.roles",
+    "test_id": "TEST-Q-EM4-023"
+  },
+  {
+    "question_id": "Q-EM4-024",
+    "variable_path": "data.sensitive_or_children",
+    "test_id": "TEST-Q-EM4-024"
+  },
+  {
+    "question_id": "Q-EM4-025",
+    "variable_path": "data.crossborder",
+    "test_id": "TEST-Q-EM4-025"
+  },
+  {
+    "question_id": "Q-EM4-026",
+    "variable_path": "data.lifecycle",
+    "test_id": "TEST-Q-EM4-026"
+  },
+  {
+    "question_id": "Q-EM4-027",
+    "variable_path": "ip.results_allocation",
+    "test_id": "TEST-Q-EM4-027"
+  },
+  {
+    "question_id": "Q-EM4-028",
+    "variable_path": "ip.preexisting_materials",
+    "test_id": "TEST-Q-EM4-028"
+  },
+  {
+    "question_id": "Q-EM4-029",
+    "variable_path": "ip.oss_third_party",
+    "test_id": "TEST-Q-EM4-029"
+  },
+  {
+    "question_id": "Q-EM4-030",
+    "variable_path": "ip.source_code_reverse_engineering",
+    "test_id": "TEST-Q-EM4-030"
+  },
+  {
+    "question_id": "Q-EM4-031",
+    "variable_path": "ip.future_assignment_broad",
+    "test_id": "TEST-Q-EM4-031"
+  },
+  {
+    "question_id": "Q-EM4-032",
+    "variable_path": "ip.moral_rights_waiver",
+    "test_id": "TEST-Q-EM4-032"
+  },
+  {
+    "question_id": "Q-EM4-033",
+    "variable_path": "ai.used",
+    "test_id": "TEST-Q-EM4-033"
+  },
+  {
+    "question_id": "Q-EM4-034",
+    "variable_path": "ai.public_upload",
+    "test_id": "TEST-Q-EM4-034"
+  },
+  {
+    "question_id": "Q-EM4-035",
+    "variable_path": "ai.training_outputs",
+    "test_id": "TEST-Q-EM4-035"
+  },
+  {
+    "question_id": "Q-EM4-036",
+    "variable_path": "security.incident_protocol",
+    "test_id": "TEST-Q-EM4-036"
+  },
+  {
+    "question_id": "Q-EM4-037",
+    "variable_path": "term_remedies",
+    "test_id": "TEST-Q-EM4-037"
+  },
+  {
+    "question_id": "Q-EM4-038",
+    "variable_path": "closure_confirmation",
+    "test_id": "TEST-Q-EM4-038"
+  }
+]

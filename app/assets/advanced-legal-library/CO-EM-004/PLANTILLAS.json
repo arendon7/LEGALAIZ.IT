@@ -1,0 +1,2459 @@
+[
+  {
+    "template_id": "TPL-CO-EM-004-NDA",
+    "product_code": "CO-EM-004",
+    "kind": "nda",
+    "title": "Acuerdo de confidencialidad",
+    "subtitle": "Base avanzada v2.14 · uso interno sujeto a revisión jurídica",
+    "filename_suffix": "acuerdo_confidencialidad",
+    "version_label": "2.14-maduro",
+    "canonical_status": "Madurado e integrado; pendiente de validación jurídica final y aprobación dual",
+    "source_package": "LegalAIZit_Paquete_04_Confidencialidad_PI_Consolidado_v2",
+    "variables": [
+      {
+        "id": "party_a",
+        "label": "Parte reveladora principal",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_b",
+        "label": "Parte receptora principal",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "nda_type",
+        "label": "Tipo de acuerdo",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Unilateral",
+          "Mutuo"
+        ]
+      },
+      {
+        "id": "relationship_context",
+        "label": "Relación principal entre las partes",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Comercial/proveedor",
+          "Laboral/colaborador",
+          "Software/tecnología",
+          "Contenidos/creativo",
+          "Otra"
+        ]
+      },
+      {
+        "id": "info_defined",
+        "label": "¿La información protegida está definida por categorías?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "info_categories",
+        "label": "Categorías concretas de información protegida",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "authorized_recipients",
+        "label": "Personas, áreas o terceros autorizados para acceder",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "trade_secrets",
+        "label": "¿Incluye secretos empresariales o know-how crítico?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "personal_data",
+        "label": "¿Incluye datos personales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "sensitive_data",
+        "label": "¿Incluye datos sensibles, biométricos o de salud?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "crossborder",
+        "label": "¿Habrá transferencia internacional o nube fuera de Colombia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "ai_tools",
+        "label": "¿Se cargará información en herramientas públicas o no autorizadas de IA?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "preexisting_materials",
+        "label": "¿Existen materiales, tecnología o contenidos preexistentes de alguna parte?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "oss_components",
+        "label": "¿El proyecto utiliza software de código abierto o componentes de terceros?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "future_ip_assignment",
+        "label": "¿Se pretende ceder de forma general obras o resultados futuros aún indeterminados?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "noncompete",
+        "label": "¿Se pretende prohibir de forma general trabajar después de terminar?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "moral_rights",
+        "label": "¿Se pretende renunciar o transferir derechos morales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "purpose",
+        "label": "Finalidad autorizada de uso de la información",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "duration_years",
+        "label": "Duración propuesta de la obligación (años)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "incident_protocol",
+        "label": "¿Se requiere protocolo de incidentes, devolución y eliminación?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "EM4-S1",
+      "EM4-S2",
+      "EM4-S3",
+      "EM4-S4",
+      "EM4-S5",
+      "EM4-S6",
+      "EM4-S7"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-EM-004-NDA-B01",
+        "type": "section",
+        "heading": "1. Partes, modalidad y finalidad",
+        "text": "{{party_a}} y {{party_b}} celebran un acuerdo {{nda_type}} para: {{purpose}}.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-NDA-B02",
+        "type": "section",
+        "heading": "2. Información protegida",
+        "text": "Categorías: {{info_categories}}.",
+        "bullets": [
+          "Acceso autorizado: {{authorized_recipients}}"
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-NDA-B03",
+        "type": "section",
+        "heading": "3. Exclusiones",
+        "text": "",
+        "bullets": [
+          "Información pública sin infracción del acuerdo.",
+          "Información conocida legítimamente antes de la revelación.",
+          "Información recibida de tercero autorizado.",
+          "Información desarrollada de manera independiente."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-NDA-B04",
+        "type": "section",
+        "heading": "4. Uso, custodia y divulgación",
+        "text": "",
+        "bullets": [
+          "Uso limitado a la finalidad autorizada.",
+          "Acceso por necesidad de conocer.",
+          "Prohibición de herramientas o nubes no autorizadas."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-NDA-B05",
+        "type": "section",
+        "heading": "5. Secretos empresariales",
+        "text": "",
+        "bullets": [
+          "Clasificación, acceso restringido, evidencia de medidas razonables y trazabilidad."
+        ],
+        "table": [],
+        "condition": {
+          "field": "trade_secrets",
+          "op": "equals",
+          "value": "Sí"
+        },
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-NDA-B06",
+        "type": "section",
+        "heading": "6. Propiedad intelectual",
+        "text": "",
+        "bullets": [
+          "La confidencialidad no transfiere por sí sola derechos patrimoniales.",
+          "Los derechos morales permanecen inalienables conforme al régimen aplicable."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-NDA-B07",
+        "type": "section",
+        "heading": "7. Vigencia, devolución y eliminación",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Duración",
+            "{{duration_years}} año(s)"
+          ],
+          [
+            "Protocolo",
+            "{{incident_protocol}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-NDA-B08",
+        "type": "control",
+        "heading": "8. Control de uso",
+        "text": "",
+        "bullets": [
+          "No sustituye anexos de datos o PI.",
+          "No impone prohibición general de trabajar.",
+          "Requiere revisión antes de firma."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-EM-004-INFORMATION-INVENTORY",
+    "product_code": "CO-EM-004",
+    "kind": "information_inventory",
+    "title": "Inventario de información y matriz de acceso",
+    "subtitle": "Base avanzada v2.14 · uso interno sujeto a revisión jurídica",
+    "filename_suffix": "inventario_informacion_accesos",
+    "version_label": "2.14-maduro",
+    "canonical_status": "Madurado e integrado; pendiente de validación jurídica final y aprobación dual",
+    "source_package": "LegalAIZit_Paquete_04_Confidencialidad_PI_Consolidado_v2",
+    "variables": [
+      {
+        "id": "party_a",
+        "label": "Parte reveladora principal",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_b",
+        "label": "Parte receptora principal",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "nda_type",
+        "label": "Tipo de acuerdo",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Unilateral",
+          "Mutuo"
+        ]
+      },
+      {
+        "id": "relationship_context",
+        "label": "Relación principal entre las partes",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Comercial/proveedor",
+          "Laboral/colaborador",
+          "Software/tecnología",
+          "Contenidos/creativo",
+          "Otra"
+        ]
+      },
+      {
+        "id": "info_defined",
+        "label": "¿La información protegida está definida por categorías?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "info_categories",
+        "label": "Categorías concretas de información protegida",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "authorized_recipients",
+        "label": "Personas, áreas o terceros autorizados para acceder",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "trade_secrets",
+        "label": "¿Incluye secretos empresariales o know-how crítico?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "personal_data",
+        "label": "¿Incluye datos personales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "sensitive_data",
+        "label": "¿Incluye datos sensibles, biométricos o de salud?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "crossborder",
+        "label": "¿Habrá transferencia internacional o nube fuera de Colombia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "ai_tools",
+        "label": "¿Se cargará información en herramientas públicas o no autorizadas de IA?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "preexisting_materials",
+        "label": "¿Existen materiales, tecnología o contenidos preexistentes de alguna parte?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "oss_components",
+        "label": "¿El proyecto utiliza software de código abierto o componentes de terceros?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "future_ip_assignment",
+        "label": "¿Se pretende ceder de forma general obras o resultados futuros aún indeterminados?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "noncompete",
+        "label": "¿Se pretende prohibir de forma general trabajar después de terminar?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "moral_rights",
+        "label": "¿Se pretende renunciar o transferir derechos morales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "purpose",
+        "label": "Finalidad autorizada de uso de la información",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "duration_years",
+        "label": "Duración propuesta de la obligación (años)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "incident_protocol",
+        "label": "¿Se requiere protocolo de incidentes, devolución y eliminación?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "EM4-S1",
+      "EM4-S2",
+      "EM4-S3",
+      "EM4-S4",
+      "EM4-S5",
+      "EM4-S6",
+      "EM4-S7"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-EM-004-INFORMATION-INVENTORY-B01",
+        "type": "section",
+        "heading": "1. Finalidad y contexto",
+        "text": "Finalidad: {{purpose}}. Relación: {{relationship_context}}.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-INFORMATION-INVENTORY-B02",
+        "type": "section",
+        "heading": "2. Categorías protegidas",
+        "text": "{{info_categories}}",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-INFORMATION-INVENTORY-B03",
+        "type": "section",
+        "heading": "3. Matriz de acceso",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Campo",
+            "Contenido"
+          ],
+          [
+            "Rol/persona autorizada",
+            "{{authorized_recipients}}"
+          ],
+          [
+            "Necesidad de conocer",
+            "[DEFINIR]"
+          ],
+          [
+            "Sistema o soporte",
+            "[DEFINIR]"
+          ],
+          [
+            "Responsable",
+            "{{party_a}} / {{party_b}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-INFORMATION-INVENTORY-B04",
+        "type": "section",
+        "heading": "4. Clasificación y medidas",
+        "text": "",
+        "bullets": [
+          "Pública / interna / confidencial / secreto empresarial.",
+          "Control de identidad, privilegios mínimos, registro y revocación."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-INFORMATION-INVENTORY-B05",
+        "type": "control",
+        "heading": "5. Control de uso",
+        "text": "",
+        "bullets": [
+          "Actualizar ante cambios de personal, sistemas o finalidad.",
+          "No marcar como secreto información que no cumple sus condiciones."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-EM-004-RELATIONSHIP-ANNEX",
+    "product_code": "CO-EM-004",
+    "kind": "relationship_annex",
+    "title": "Anexo de confidencialidad según la relación",
+    "subtitle": "Base avanzada v2.14 · uso interno sujeto a revisión jurídica",
+    "filename_suffix": "anexo_relacion",
+    "version_label": "2.14-maduro",
+    "canonical_status": "Madurado e integrado; pendiente de validación jurídica final y aprobación dual",
+    "source_package": "LegalAIZit_Paquete_04_Confidencialidad_PI_Consolidado_v2",
+    "variables": [
+      {
+        "id": "party_a",
+        "label": "Parte reveladora principal",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_b",
+        "label": "Parte receptora principal",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "nda_type",
+        "label": "Tipo de acuerdo",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Unilateral",
+          "Mutuo"
+        ]
+      },
+      {
+        "id": "relationship_context",
+        "label": "Relación principal entre las partes",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Comercial/proveedor",
+          "Laboral/colaborador",
+          "Software/tecnología",
+          "Contenidos/creativo",
+          "Otra"
+        ]
+      },
+      {
+        "id": "info_defined",
+        "label": "¿La información protegida está definida por categorías?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "info_categories",
+        "label": "Categorías concretas de información protegida",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "authorized_recipients",
+        "label": "Personas, áreas o terceros autorizados para acceder",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "trade_secrets",
+        "label": "¿Incluye secretos empresariales o know-how crítico?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "personal_data",
+        "label": "¿Incluye datos personales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "sensitive_data",
+        "label": "¿Incluye datos sensibles, biométricos o de salud?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "crossborder",
+        "label": "¿Habrá transferencia internacional o nube fuera de Colombia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "ai_tools",
+        "label": "¿Se cargará información en herramientas públicas o no autorizadas de IA?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "preexisting_materials",
+        "label": "¿Existen materiales, tecnología o contenidos preexistentes de alguna parte?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "oss_components",
+        "label": "¿El proyecto utiliza software de código abierto o componentes de terceros?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "future_ip_assignment",
+        "label": "¿Se pretende ceder de forma general obras o resultados futuros aún indeterminados?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "noncompete",
+        "label": "¿Se pretende prohibir de forma general trabajar después de terminar?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "moral_rights",
+        "label": "¿Se pretende renunciar o transferir derechos morales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "purpose",
+        "label": "Finalidad autorizada de uso de la información",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "duration_years",
+        "label": "Duración propuesta de la obligación (años)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "incident_protocol",
+        "label": "¿Se requiere protocolo de incidentes, devolución y eliminación?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "EM4-S1",
+      "EM4-S2",
+      "EM4-S3",
+      "EM4-S4",
+      "EM4-S5",
+      "EM4-S6",
+      "EM4-S7"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-EM-004-RELATIONSHIP-ANNEX-B01",
+        "type": "section",
+        "heading": "1. Relación subyacente",
+        "text": "Tipo: {{relationship_context}}.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-RELATIONSHIP-ANNEX-B02",
+        "type": "section",
+        "heading": "2. Deberes específicos",
+        "text": "",
+        "bullets": [
+          "Definir funciones, entregables, canales autorizados y responsables.",
+          "Diferenciar información de la empresa, conocimientos generales y resultados del encargo."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-RELATIONSHIP-ANNEX-B03",
+        "type": "section",
+        "heading": "3. Personal y terceros",
+        "text": "",
+        "bullets": [
+          "Vincular únicamente a personas con necesidad de conocer.",
+          "Exigir obligaciones equivalentes y conservar trazabilidad."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-RELATIONSHIP-ANNEX-B04",
+        "type": "control",
+        "heading": "4. Control de uso",
+        "text": "",
+        "bullets": [
+          "Este anexo complementa, no reemplaza, el contrato principal.",
+          "Las restricciones deben ser necesarias y proporcionales."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-EM-004-IP-ANNEX",
+    "product_code": "CO-EM-004",
+    "kind": "ip_annex",
+    "title": "Anexo de propiedad intelectual, antecedentes y OSS",
+    "subtitle": "Base avanzada v2.14 · uso interno sujeto a revisión jurídica",
+    "filename_suffix": "anexo_pi_antecedentes_oss",
+    "version_label": "2.14-maduro",
+    "canonical_status": "Madurado e integrado; pendiente de validación jurídica final y aprobación dual",
+    "source_package": "LegalAIZit_Paquete_04_Confidencialidad_PI_Consolidado_v2",
+    "variables": [
+      {
+        "id": "party_a",
+        "label": "Parte reveladora principal",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_b",
+        "label": "Parte receptora principal",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "nda_type",
+        "label": "Tipo de acuerdo",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Unilateral",
+          "Mutuo"
+        ]
+      },
+      {
+        "id": "relationship_context",
+        "label": "Relación principal entre las partes",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Comercial/proveedor",
+          "Laboral/colaborador",
+          "Software/tecnología",
+          "Contenidos/creativo",
+          "Otra"
+        ]
+      },
+      {
+        "id": "info_defined",
+        "label": "¿La información protegida está definida por categorías?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "info_categories",
+        "label": "Categorías concretas de información protegida",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "authorized_recipients",
+        "label": "Personas, áreas o terceros autorizados para acceder",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "trade_secrets",
+        "label": "¿Incluye secretos empresariales o know-how crítico?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "personal_data",
+        "label": "¿Incluye datos personales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "sensitive_data",
+        "label": "¿Incluye datos sensibles, biométricos o de salud?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "crossborder",
+        "label": "¿Habrá transferencia internacional o nube fuera de Colombia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "ai_tools",
+        "label": "¿Se cargará información en herramientas públicas o no autorizadas de IA?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "preexisting_materials",
+        "label": "¿Existen materiales, tecnología o contenidos preexistentes de alguna parte?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "oss_components",
+        "label": "¿El proyecto utiliza software de código abierto o componentes de terceros?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "future_ip_assignment",
+        "label": "¿Se pretende ceder de forma general obras o resultados futuros aún indeterminados?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "noncompete",
+        "label": "¿Se pretende prohibir de forma general trabajar después de terminar?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "moral_rights",
+        "label": "¿Se pretende renunciar o transferir derechos morales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "purpose",
+        "label": "Finalidad autorizada de uso de la información",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "duration_years",
+        "label": "Duración propuesta de la obligación (años)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "incident_protocol",
+        "label": "¿Se requiere protocolo de incidentes, devolución y eliminación?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "EM4-S1",
+      "EM4-S2",
+      "EM4-S3",
+      "EM4-S4",
+      "EM4-S5",
+      "EM4-S6",
+      "EM4-S7"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-EM-004-IP-ANNEX-B01",
+        "type": "section",
+        "heading": "1. Alcance y resultados",
+        "text": "Relación: {{relationship_context}}. Finalidad: {{purpose}}.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-IP-ANNEX-B02",
+        "type": "section",
+        "heading": "2. Materiales preexistentes",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Existencia informada",
+            "{{preexisting_materials}}"
+          ],
+          [
+            "Inventario/titular/licencia",
+            "Registrar en el inventario técnico asociado y validar antes de la firma."
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-IP-ANNEX-B03",
+        "type": "section",
+        "heading": "3. Componentes de terceros y OSS",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Uso informado",
+            "{{oss_components}}"
+          ],
+          [
+            "Componente/licencia/obligaciones",
+            "Registrar en el inventario técnico asociado y validar antes de la firma."
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-IP-ANNEX-B04",
+        "type": "section",
+        "heading": "4. Resultados nuevos",
+        "text": "",
+        "bullets": [
+          "Identificar cada obra o resultado.",
+          "Definir titularidad o licencia, modalidades, territorio, plazo y contraprestación cuando corresponda."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-IP-ANNEX-B05",
+        "type": "section",
+        "heading": "5. Derechos morales",
+        "text": "",
+        "bullets": [
+          "No se transfieren ni renuncian por estipulación general.",
+          "Respetar autoría e integridad en los términos jurídicamente aplicables."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-IP-ANNEX-B06",
+        "type": "control",
+        "heading": "6. Control de uso",
+        "text": "",
+        "bullets": [
+          "No comprende obras futuras indeterminadas.",
+          "No usar componentes sin verificar licencias y obligaciones.",
+          "Requiere validación jurídica antes de firma."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-EM-004-DATA-ANNEX",
+    "product_code": "CO-EM-004",
+    "kind": "data_annex",
+    "title": "Anexo de datos personales y transferencias",
+    "subtitle": "Base avanzada v2.14 · uso interno sujeto a revisión jurídica",
+    "filename_suffix": "anexo_datos_transferencias",
+    "version_label": "2.14-maduro",
+    "canonical_status": "Madurado e integrado; pendiente de validación jurídica final y aprobación dual",
+    "source_package": "LegalAIZit_Paquete_04_Confidencialidad_PI_Consolidado_v2",
+    "variables": [
+      {
+        "id": "party_a",
+        "label": "Parte reveladora principal",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_b",
+        "label": "Parte receptora principal",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "nda_type",
+        "label": "Tipo de acuerdo",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Unilateral",
+          "Mutuo"
+        ]
+      },
+      {
+        "id": "relationship_context",
+        "label": "Relación principal entre las partes",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Comercial/proveedor",
+          "Laboral/colaborador",
+          "Software/tecnología",
+          "Contenidos/creativo",
+          "Otra"
+        ]
+      },
+      {
+        "id": "info_defined",
+        "label": "¿La información protegida está definida por categorías?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "info_categories",
+        "label": "Categorías concretas de información protegida",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "authorized_recipients",
+        "label": "Personas, áreas o terceros autorizados para acceder",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "trade_secrets",
+        "label": "¿Incluye secretos empresariales o know-how crítico?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "personal_data",
+        "label": "¿Incluye datos personales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "sensitive_data",
+        "label": "¿Incluye datos sensibles, biométricos o de salud?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "crossborder",
+        "label": "¿Habrá transferencia internacional o nube fuera de Colombia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "ai_tools",
+        "label": "¿Se cargará información en herramientas públicas o no autorizadas de IA?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "preexisting_materials",
+        "label": "¿Existen materiales, tecnología o contenidos preexistentes de alguna parte?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "oss_components",
+        "label": "¿El proyecto utiliza software de código abierto o componentes de terceros?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "future_ip_assignment",
+        "label": "¿Se pretende ceder de forma general obras o resultados futuros aún indeterminados?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "noncompete",
+        "label": "¿Se pretende prohibir de forma general trabajar después de terminar?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "moral_rights",
+        "label": "¿Se pretende renunciar o transferir derechos morales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "purpose",
+        "label": "Finalidad autorizada de uso de la información",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "duration_years",
+        "label": "Duración propuesta de la obligación (años)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "incident_protocol",
+        "label": "¿Se requiere protocolo de incidentes, devolución y eliminación?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "EM4-S1",
+      "EM4-S2",
+      "EM4-S3",
+      "EM4-S4",
+      "EM4-S5",
+      "EM4-S6",
+      "EM4-S7"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-EM-004-DATA-ANNEX-B01",
+        "type": "section",
+        "heading": "1. Alcance del tratamiento",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Datos personales",
+            "{{personal_data}}"
+          ],
+          [
+            "Datos sensibles",
+            "{{sensitive_data}}"
+          ],
+          [
+            "Transferencia/nube exterior",
+            "{{crossborder}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-DATA-ANNEX-B02",
+        "type": "section",
+        "heading": "2. Finalidades y roles",
+        "text": "Finalidad vinculada: {{purpose}}. Definir responsable, encargado, titulares y categorías.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-DATA-ANNEX-B03",
+        "type": "section",
+        "heading": "3. Seguridad y ciclo de vida",
+        "text": "",
+        "bullets": [
+          "Acceso mínimo, cifrado, registros, respaldo, retención y eliminación.",
+          "Gestión de incidentes y atención de derechos de titulares."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-DATA-ANNEX-B04",
+        "type": "section",
+        "heading": "4. Terceros y transferencias",
+        "text": "",
+        "bullets": [
+          "Identificar proveedor, país, ubicación, subencargados y garantías.",
+          "No transferir ni transmitir sin base y controles aplicables."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-DATA-ANNEX-B05",
+        "type": "control",
+        "heading": "5. Control de uso",
+        "text": "",
+        "bullets": [
+          "La confidencialidad no reemplaza el régimen de datos.",
+          "Los datos sensibles requieren evaluación especializada."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-EM-004-INCIDENT-PROTOCOL",
+    "product_code": "CO-EM-004",
+    "kind": "incident_protocol",
+    "title": "Protocolo de incidentes de información",
+    "subtitle": "Base avanzada v2.14 · uso interno sujeto a revisión jurídica",
+    "filename_suffix": "protocolo_incidentes",
+    "version_label": "2.14-maduro",
+    "canonical_status": "Madurado e integrado; pendiente de validación jurídica final y aprobación dual",
+    "source_package": "LegalAIZit_Paquete_04_Confidencialidad_PI_Consolidado_v2",
+    "variables": [
+      {
+        "id": "party_a",
+        "label": "Parte reveladora principal",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_b",
+        "label": "Parte receptora principal",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "nda_type",
+        "label": "Tipo de acuerdo",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Unilateral",
+          "Mutuo"
+        ]
+      },
+      {
+        "id": "relationship_context",
+        "label": "Relación principal entre las partes",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Comercial/proveedor",
+          "Laboral/colaborador",
+          "Software/tecnología",
+          "Contenidos/creativo",
+          "Otra"
+        ]
+      },
+      {
+        "id": "info_defined",
+        "label": "¿La información protegida está definida por categorías?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "info_categories",
+        "label": "Categorías concretas de información protegida",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "authorized_recipients",
+        "label": "Personas, áreas o terceros autorizados para acceder",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "trade_secrets",
+        "label": "¿Incluye secretos empresariales o know-how crítico?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "personal_data",
+        "label": "¿Incluye datos personales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "sensitive_data",
+        "label": "¿Incluye datos sensibles, biométricos o de salud?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "crossborder",
+        "label": "¿Habrá transferencia internacional o nube fuera de Colombia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "ai_tools",
+        "label": "¿Se cargará información en herramientas públicas o no autorizadas de IA?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "preexisting_materials",
+        "label": "¿Existen materiales, tecnología o contenidos preexistentes de alguna parte?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "oss_components",
+        "label": "¿El proyecto utiliza software de código abierto o componentes de terceros?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "future_ip_assignment",
+        "label": "¿Se pretende ceder de forma general obras o resultados futuros aún indeterminados?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "noncompete",
+        "label": "¿Se pretende prohibir de forma general trabajar después de terminar?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "moral_rights",
+        "label": "¿Se pretende renunciar o transferir derechos morales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "purpose",
+        "label": "Finalidad autorizada de uso de la información",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "duration_years",
+        "label": "Duración propuesta de la obligación (años)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "incident_protocol",
+        "label": "¿Se requiere protocolo de incidentes, devolución y eliminación?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "EM4-S1",
+      "EM4-S2",
+      "EM4-S3",
+      "EM4-S4",
+      "EM4-S5",
+      "EM4-S6",
+      "EM4-S7"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-EM-004-INCIDENT-PROTOCOL-B01",
+        "type": "section",
+        "heading": "1. Alcance",
+        "text": "Aplica a información protegida de {{party_a}} y {{party_b}}.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-INCIDENT-PROTOCOL-B02",
+        "type": "section",
+        "heading": "2. Eventos reportables",
+        "text": "",
+        "bullets": [
+          "Pérdida, acceso, envío, publicación o carga no autorizados.",
+          "Credenciales comprometidas o divulgación obligatoria."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-INCIDENT-PROTOCOL-B03",
+        "type": "section",
+        "heading": "3. Respuesta",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Fase",
+            "Acción"
+          ],
+          [
+            "Detectar",
+            "Registrar fecha, fuente y alcance"
+          ],
+          [
+            "Contener",
+            "Limitar acceso sin destruir evidencia"
+          ],
+          [
+            "Escalar",
+            "Avisar responsables y evaluar notificaciones"
+          ],
+          [
+            "Recuperar",
+            "Restaurar, eliminar o devolver"
+          ],
+          [
+            "Cerrar",
+            "Causa, impacto y acciones correctivas"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-INCIDENT-PROTOCOL-B04",
+        "type": "section",
+        "heading": "4. Evidencia y responsables",
+        "text": "",
+        "bullets": [
+          "Conservar cronología, decisiones, comunicaciones y soportes.",
+          "Definir responsable jurídico, técnico y de datos."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-INCIDENT-PROTOCOL-B05",
+        "type": "control",
+        "heading": "5. Control de uso",
+        "text": "",
+        "bullets": [
+          "No ocultar incidentes.",
+          "No destruir evidencia.",
+          "Validar deberes de notificación contractual y legal."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-EM-004-CLOSURE-ACT",
+    "product_code": "CO-EM-004",
+    "kind": "closure_act",
+    "title": "Acta de devolución, eliminación y cierre",
+    "subtitle": "Base avanzada v2.14 · uso interno sujeto a revisión jurídica",
+    "filename_suffix": "acta_cierre_confidencialidad",
+    "version_label": "2.14-maduro",
+    "canonical_status": "Madurado e integrado; pendiente de validación jurídica final y aprobación dual",
+    "source_package": "LegalAIZit_Paquete_04_Confidencialidad_PI_Consolidado_v2",
+    "variables": [
+      {
+        "id": "party_a",
+        "label": "Parte reveladora principal",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_b",
+        "label": "Parte receptora principal",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "nda_type",
+        "label": "Tipo de acuerdo",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Unilateral",
+          "Mutuo"
+        ]
+      },
+      {
+        "id": "relationship_context",
+        "label": "Relación principal entre las partes",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Comercial/proveedor",
+          "Laboral/colaborador",
+          "Software/tecnología",
+          "Contenidos/creativo",
+          "Otra"
+        ]
+      },
+      {
+        "id": "info_defined",
+        "label": "¿La información protegida está definida por categorías?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "info_categories",
+        "label": "Categorías concretas de información protegida",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "authorized_recipients",
+        "label": "Personas, áreas o terceros autorizados para acceder",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "trade_secrets",
+        "label": "¿Incluye secretos empresariales o know-how crítico?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "personal_data",
+        "label": "¿Incluye datos personales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "sensitive_data",
+        "label": "¿Incluye datos sensibles, biométricos o de salud?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "crossborder",
+        "label": "¿Habrá transferencia internacional o nube fuera de Colombia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "ai_tools",
+        "label": "¿Se cargará información en herramientas públicas o no autorizadas de IA?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "preexisting_materials",
+        "label": "¿Existen materiales, tecnología o contenidos preexistentes de alguna parte?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "oss_components",
+        "label": "¿El proyecto utiliza software de código abierto o componentes de terceros?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "future_ip_assignment",
+        "label": "¿Se pretende ceder de forma general obras o resultados futuros aún indeterminados?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "noncompete",
+        "label": "¿Se pretende prohibir de forma general trabajar después de terminar?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "moral_rights",
+        "label": "¿Se pretende renunciar o transferir derechos morales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "purpose",
+        "label": "Finalidad autorizada de uso de la información",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "duration_years",
+        "label": "Duración propuesta de la obligación (años)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "incident_protocol",
+        "label": "¿Se requiere protocolo de incidentes, devolución y eliminación?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "EM4-S1",
+      "EM4-S2",
+      "EM4-S3",
+      "EM4-S4",
+      "EM4-S5",
+      "EM4-S6",
+      "EM4-S7"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-EM-004-CLOSURE-ACT-B01",
+        "type": "section",
+        "heading": "1. Identificación",
+        "text": "Partes: {{party_a}} y {{party_b}}. Finalidad cerrada: {{purpose}}.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-CLOSURE-ACT-B02",
+        "type": "section",
+        "heading": "2. Inventario de cierre",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Campo",
+            "Contenido"
+          ],
+          [
+            "Categoría/soporte",
+            "{{info_categories}}"
+          ],
+          [
+            "Acción: devolver, eliminar o conservar",
+            "Registrar en el inventario técnico asociado y validar antes de la firma."
+          ],
+          [
+            "Fecha",
+            "Fecha de firma de la presente acta."
+          ],
+          [
+            "Responsable",
+            "Responsable designado por la parte reveladora."
+          ],
+          [
+            "Evidencia",
+            "Acta, registro de eliminación y constancia de revocación de accesos."
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-CLOSURE-ACT-B03",
+        "type": "section",
+        "heading": "3. Accesos y terceros",
+        "text": "",
+        "bullets": [
+          "Revocar credenciales y permisos.",
+          "Confirmar cierre con destinatarios autorizados y terceros."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-CLOSURE-ACT-B04",
+        "type": "section",
+        "heading": "4. Excepciones de conservación",
+        "text": "",
+        "bullets": [
+          "Identificar copias exigidas por ley o respaldo técnico.",
+          "Mantener controles y plazos sobre cualquier copia conservada."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      },
+      {
+        "id": "TPL-CO-EM-004-CLOSURE-ACT-B05",
+        "type": "control",
+        "heading": "5. Control de uso",
+        "text": "",
+        "bullets": [
+          "No certificar eliminación sin evidencia.",
+          "Registrar reservas, incidentes pendientes y responsables.",
+          "Firmar solo con información verificada."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM4-S1",
+          "EM4-S2",
+          "EM4-S3",
+          "EM4-S4",
+          "EM4-S5",
+          "EM4-S6",
+          "EM4-S7"
+        ],
+        "notes": "Bloque v2.14 sujeto a revisión jurídica y aprobación dual."
+      }
+    ]
+  }
+]

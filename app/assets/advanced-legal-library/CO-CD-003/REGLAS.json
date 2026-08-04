@@ -1,0 +1,795 @@
+[
+  {
+    "id": "CD3-R01",
+    "risk": "red",
+    "message": "No se acredita una relación de consumo en Colombia.",
+    "action": "Reclasificar como asunto civil, comercial o sectorial.",
+    "conditions": {
+      "all": [
+        {
+          "field": "consumer_relationship",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "scope",
+    "source_ids": [
+      "CD3-S1",
+      "CD3-S2"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD3-R02",
+    "risk": "yellow",
+    "message": "La relación de consumo no está confirmada.",
+    "action": "Verificar consumidor, productor/proveedor, destinación final y régimen especial.",
+    "conditions": {
+      "all": [
+        {
+          "field": "consumer_relationship",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "category": "scope",
+    "source_ids": [
+      "CD3-S2"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R03",
+    "risk": "red",
+    "message": "Existe lesión, afectación a la salud o riesgo de seguridad.",
+    "action": "Preservar evidencia, atender el riesgo y obtener revisión profesional inmediata.",
+    "conditions": {
+      "any": [
+        {
+          "field": "injury_or_safety",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "injury_or_safety",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "category": "safety",
+    "source_ids": [
+      "CD3-S1",
+      "CD3-S2"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD3-R04",
+    "risk": "red",
+    "message": "El caso puede estar sometido a regulación sectorial especial.",
+    "action": "Definir competencia y norma especial antes de generar una salida definitiva.",
+    "conditions": {
+      "all": [
+        {
+          "field": "regulated_sector",
+          "op": "not_in",
+          "value": [
+            "No"
+          ]
+        }
+      ]
+    },
+    "category": "special_regime",
+    "source_ids": [
+      "CD3-S2",
+      "CD3-S7"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD3-R05",
+    "risk": "red",
+    "message": "Existe un proceso o actuación activa por los mismos hechos.",
+    "action": "Coordinar estrategia, pretensiones y expediente para evitar duplicidad o contradicción.",
+    "conditions": {
+      "any": [
+        {
+          "field": "active_process",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "active_process",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "category": "active_process",
+    "source_ids": [
+      "CD3-S13",
+      "CD3-S14"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD3-R06",
+    "risk": "red",
+    "message": "El fraude o la suplantación presentan complejidad incompatible con autoservicio.",
+    "action": "Preservar evidencia y escalar a revisión jurídica y financiera especializada.",
+    "conditions": {
+      "any": [
+        {
+          "field": "complex_fraud",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "complex_fraud",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "category": "fraud",
+    "source_ids": [
+      "CD3-S5",
+      "CD3-S8",
+      "CD3-S12"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD3-R07",
+    "risk": "red",
+    "message": "No se acredita legitimación o representación.",
+    "action": "Aportar autorización, poder, representación o soporte aplicable.",
+    "conditions": {
+      "all": [
+        {
+          "field": "representation_support",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "legitimacy",
+    "source_ids": [
+      "CD3-S13"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD3-R08",
+    "risk": "yellow",
+    "message": "La representación o legitimación está incompleta.",
+    "action": "Completar soportes antes de firma, radicación o entrega de información.",
+    "conditions": {
+      "all": [
+        {
+          "field": "representation_support",
+          "op": "equals",
+          "value": "Parcial"
+        }
+      ]
+    },
+    "category": "legitimacy",
+    "source_ids": [
+      "CD3-S13"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R09",
+    "risk": "yellow",
+    "message": "La evidencia disponible es insuficiente o parcial.",
+    "action": "Completar factura, pedido, pago, comunicaciones, fotografías y constancias.",
+    "conditions": {
+      "any": [
+        {
+          "field": "evidence_status",
+          "op": "equals",
+          "value": "Parcial"
+        },
+        {
+          "field": "evidence_status",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "evidence",
+    "source_ids": [
+      "CD3-S9",
+      "CD3-S10",
+      "CD3-S13"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R10",
+    "risk": "green",
+    "message": "Se activa la ruta de garantía legal.",
+    "action": "Generar reclamación de garantía con pretensión compatible.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_mode",
+          "op": "equals",
+          "value": "Garantía legal"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "CD3-S2",
+      "CD3-S6"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R11",
+    "risk": "yellow",
+    "message": "La garantía o el defecto no están suficientemente delimitados.",
+    "action": "Precisar defecto, término, entrega, reparación previa y pretensión.",
+    "conditions": {
+      "any": [
+        {
+          "field": "warranty_announced",
+          "op": "in",
+          "value": [
+            "Vencido",
+            "No fue informado",
+            "No sé"
+          ]
+        },
+        {
+          "field": "defect_detail",
+          "op": "missing"
+        }
+      ]
+    },
+    "category": "warranty",
+    "source_ids": [
+      "CD3-S2",
+      "CD3-S6"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R12",
+    "risk": "green",
+    "message": "Se activa la ruta de derecho de retracto.",
+    "action": "Verificar canal, término, excepción, devolución y reembolso.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_mode",
+          "op": "equals",
+          "value": "Derecho de retracto"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "CD3-S3",
+      "CD3-S4"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R13",
+    "risk": "red",
+    "message": "Se informa una excepción legal al derecho de retracto.",
+    "action": "No presentar retracto como procedente; evaluar garantía, incumplimiento u otra ruta.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_mode",
+          "op": "equals",
+          "value": "Derecho de retracto"
+        },
+        {
+          "field": "withdrawal_exception",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "withdrawal",
+    "source_ids": [
+      "CD3-S3",
+      "CD3-S4"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD3-R14",
+    "risk": "red",
+    "message": "El servicio comenzó con acuerdo del consumidor, lo que puede excluir el retracto.",
+    "action": "Verificar consentimiento, inicio y alcance de la ejecución antes de invocar retracto.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_mode",
+          "op": "equals",
+          "value": "Derecho de retracto"
+        },
+        {
+          "field": "product_type",
+          "op": "equals",
+          "value": "Servicio"
+        },
+        {
+          "field": "service_started_with_consent",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "withdrawal",
+    "source_ids": [
+      "CD3-S3"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD3-R15",
+    "risk": "yellow",
+    "message": "El canal o modalidad no acredita claramente un supuesto de retracto.",
+    "action": "Verificar venta a distancia, método no tradicional o financiación directa.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_mode",
+          "op": "equals",
+          "value": "Derecho de retracto"
+        },
+        {
+          "field": "purchase_channel",
+          "op": "equals",
+          "value": "Presencial"
+        }
+      ]
+    },
+    "category": "withdrawal",
+    "source_ids": [
+      "CD3-S3"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R16",
+    "risk": "green",
+    "message": "Se activa la ruta de reversión del pago.",
+    "action": "Coordinar queja al proveedor y notificación al emisor dentro del término.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_mode",
+          "op": "equals",
+          "value": "Reversión del pago"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "CD3-S5",
+      "CD3-S8",
+      "CD3-S11"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R17",
+    "risk": "yellow",
+    "message": "La compra o el pago no cumplen preliminarmente los presupuestos de reversión electrónica.",
+    "action": "Reclasificar hacia garantía, retracto, incumplimiento o reclamación directa.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_mode",
+          "op": "equals",
+          "value": "Reversión del pago"
+        },
+        {
+          "any": [
+            {
+              "field": "electronic_payment",
+              "op": "not_equals",
+              "value": "Sí"
+            },
+            {
+              "field": "purchase_channel",
+              "op": "equals",
+              "value": "Presencial"
+            }
+          ]
+        }
+      ]
+    },
+    "category": "reversal",
+    "source_ids": [
+      "CD3-S5",
+      "CD3-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R18",
+    "risk": "yellow",
+    "message": "La causal informada no coincide claramente con una causal legal de reversión.",
+    "action": "Seleccionar únicamente fraude, operación no solicitada, no entrega, producto distinto o defectuoso.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_mode",
+          "op": "equals",
+          "value": "Reversión del pago"
+        },
+        {
+          "field": "reversal_cause",
+          "op": "in",
+          "value": [
+            "No aplica",
+            "Otra"
+          ]
+        }
+      ]
+    },
+    "category": "reversal",
+    "source_ids": [
+      "CD3-S5",
+      "CD3-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R19",
+    "risk": "green",
+    "message": "Se activa la ruta de revocación de débito periódico.",
+    "action": "Comunicar la revocación y controlar nuevos cargos o reversión del pago periódico.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_mode",
+          "op": "equals",
+          "value": "Revocación de débito periódico"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "CD3-S5",
+      "CD3-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R20",
+    "risk": "green",
+    "message": "Se activa la ruta de terminación por falta de entrega.",
+    "action": "Controlar plazo pactado, máximo legal supletorio y devolución del dinero.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_mode",
+          "op": "equals",
+          "value": "Terminación por falta de entrega"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "CD3-S5",
+      "CD3-S7"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R21",
+    "risk": "yellow",
+    "message": "No se acredita la queja al proveedor exigida para la reversión.",
+    "action": "Presentar queja al proveedor y conservar constancia dentro del término aplicable.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_mode",
+          "op": "equals",
+          "value": "Reversión del pago"
+        },
+        {
+          "field": "provider_complaint_for_reversal",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "reversal",
+    "source_ids": [
+      "CD3-S5",
+      "CD3-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R22",
+    "risk": "yellow",
+    "message": "No se acredita notificación al emisor del instrumento de pago.",
+    "action": "Notificar al emisor con causal, valor, transacción e identificación parcial del instrumento.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_mode",
+          "op": "equals",
+          "value": "Reversión del pago"
+        },
+        {
+          "field": "issuer_notification",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "reversal",
+    "source_ids": [
+      "CD3-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R23",
+    "risk": "yellow",
+    "message": "La reversión puede quedar fuera del ámbito territorial reglamentario.",
+    "action": "Verificar domicilio del proveedor y del emisor, contrato y reglas transfronterizas.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_mode",
+          "op": "equals",
+          "value": "Reversión del pago"
+        },
+        {
+          "field": "provider_country",
+          "op": "not_equals",
+          "value": "Colombia"
+        }
+      ]
+    },
+    "category": "territoriality",
+    "source_ids": [
+      "CD3-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R24",
+    "risk": "yellow",
+    "message": "La reversión parcial exige individualizar productos y valor exacto.",
+    "action": "Precisar bienes afectados y monto correspondiente.",
+    "conditions": {
+      "all": [
+        {
+          "field": "partial_reversal",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "reversal_amount",
+          "op": "missing"
+        }
+      ]
+    },
+    "category": "reversal",
+    "source_ids": [
+      "CD3-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R25",
+    "risk": "yellow",
+    "message": "No se acredita devolución o puesta a disposición del bien cuando puede ser exigible.",
+    "action": "Documentar la devolución, recogida o imposibilidad fundada por seguridad.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_mode",
+          "op": "in",
+          "value": [
+            "Derecho de retracto",
+            "Reversión del pago"
+          ]
+        },
+        {
+          "field": "return_status",
+          "op": "equals",
+          "value": "Pendiente"
+        }
+      ]
+    },
+    "category": "return",
+    "source_ids": [
+      "CD3-S3",
+      "CD3-S4",
+      "CD3-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R26",
+    "risk": "yellow",
+    "message": "No existe reclamación directa previa para una ruta de escalamiento.",
+    "action": "Agotar o justificar el requisito previo antes de demandar o escalar.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_mode",
+          "op": "equals",
+          "value": "Escalamiento ante autoridad"
+        },
+        {
+          "field": "prior_claim",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "procedure",
+    "source_ids": [
+      "CD3-S9",
+      "CD3-S13",
+      "CD3-S14"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R27",
+    "risk": "yellow",
+    "message": "La respuesta recibida es parcial o carece de soporte.",
+    "action": "Comparar cada pretensión, prueba y fundamento antes de reiterar o escalar.",
+    "conditions": {
+      "any": [
+        {
+          "field": "response_received",
+          "op": "equals",
+          "value": "Sí parcial"
+        },
+        {
+          "field": "response_received",
+          "op": "equals",
+          "value": "Negativa sin soporte"
+        }
+      ]
+    },
+    "category": "procedure",
+    "source_ids": [
+      "CD3-S6",
+      "CD3-S9",
+      "CD3-S10"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R28",
+    "risk": "yellow",
+    "message": "La cuantía o el daño aconsejan estrategia jurídica individual.",
+    "action": "Evaluar competencia, abogado, medidas y prueba de perjuicios.",
+    "conditions": {
+      "any": [
+        {
+          "field": "high_value_or_damage",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "high_value_or_damage",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "category": "complexity",
+    "source_ids": [
+      "CD3-S13",
+      "CD3-S14"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R29",
+    "risk": "red",
+    "message": "Los datos o fechas esenciales no están confirmados.",
+    "action": "Conciliar cronología, valor, canal, causal, destinatarios y evidencia.",
+    "conditions": {
+      "all": [
+        {
+          "field": "data_confirmed",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "data_quality",
+    "source_ids": [],
+    "blocking": true
+  },
+  {
+    "id": "CD3-R30",
+    "risk": "yellow",
+    "message": "Parte de la información esencial continúa pendiente de confirmación.",
+    "action": "Generar solo borrador con advertencias y completar datos antes de radicar.",
+    "conditions": {
+      "all": [
+        {
+          "field": "data_confirmed",
+          "op": "equals",
+          "value": "Parcial"
+        }
+      ]
+    },
+    "category": "data_quality",
+    "source_ids": [],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R31",
+    "risk": "yellow",
+    "message": "Los anexos pueden exponer datos financieros o credenciales innecesarias.",
+    "action": "Ocultar números completos, códigos, claves y datos de terceros.",
+    "conditions": {
+      "any": [
+        {
+          "field": "data_minimized",
+          "op": "equals",
+          "value": "No"
+        },
+        {
+          "field": "data_minimized",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "category": "privacy",
+    "source_ids": [
+      "CD3-S5",
+      "CD3-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD3-R32",
+    "risk": "green",
+    "message": "La reclamación directa cuenta con identificación, hechos, pretensión y evidencia básica.",
+    "action": "Generar reclamación y conservar constancia íntegra de radicación.",
+    "conditions": {
+      "all": [
+        {
+          "field": "consumer_relationship",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "evidence_status",
+          "op": "equals",
+          "value": "Completa"
+        },
+        {
+          "field": "data_confirmed",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "readiness",
+    "source_ids": [
+      "CD3-S9",
+      "CD3-S13"
+    ],
+    "blocking": false
+  }
+]

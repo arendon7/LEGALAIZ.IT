@@ -1,0 +1,479 @@
+{
+  "version": "2.44",
+  "base_case": {
+    "client": {
+      "type": "legal_person",
+      "identification": {
+        "name": "EMPRESA DEMO S.A.S.",
+        "id_number": "900.123.456-7",
+        "address": "Medellín",
+        "email": "contratos@empresa.com"
+      },
+      "signatory": {
+        "name": "Laura Gómez",
+        "id_number": "43.000.000",
+        "capacity": "Representante legal",
+        "authority_source": "certificado de existencia y representación vigente"
+      },
+      "email": "contratos@empresa.com"
+    },
+    "contractor": {
+      "type": "legal_person",
+      "identification": {
+        "name": "CONSULTORES ANDINOS S.A.S.",
+        "id_number": "901.222.333-4",
+        "address": "Bogotá",
+        "email": "legal@consultores.com"
+      },
+      "signatory": {
+        "name": "Carlos Pérez",
+        "id_number": "79.000.000",
+        "capacity": "Representante legal",
+        "authority_source": "certificado vigente"
+      },
+      "email": "legal@consultores.com"
+    },
+    "service": {
+      "category": "technology",
+      "object": "diseñar, desarrollar, probar y documentar una plataforma de analítica contractual",
+      "expected_result": "una solución funcional, documentada y desplegable conforme a los criterios de aceptación",
+      "regulated": false
+    },
+    "scope": {
+      "included": [
+        "levantamiento técnico",
+        "diseño de arquitectura",
+        "desarrollo y pruebas",
+        "documentación y transferencia"
+      ],
+      "excluded": [
+        "operación permanente posterior a la garantía",
+        "licencias de terceros no cotizadas"
+      ],
+      "deliverables": [
+        {
+          "id": "D1",
+          "name": "Documento de arquitectura",
+          "due_date": "2026-08-15",
+          "acceptance_criteria": "Aprobación técnica frente a requisitos",
+          "format": "DOCX/PDF"
+        },
+        {
+          "id": "D2",
+          "name": "Código fuente y pruebas",
+          "due_date": "2026-10-30",
+          "acceptance_criteria": "Pruebas aprobadas y ausencia de defectos críticos",
+          "format": "Repositorio Git"
+        }
+      ],
+      "change_control": true
+    },
+    "execution": {
+      "arrangement": {
+        "location": "Remota con reuniones presenciales coordinadas",
+        "tools": "Equipos propios y repositorios del contratante bajo mínimo privilegio",
+        "access_controls": "Cuentas individuales y MFA",
+        "coordination": "Comité quincenal de seguimiento a resultados"
+      }
+    },
+    "autonomy": {
+      "methods": true,
+      "delegation": true
+    },
+    "labor_indicators": {
+      "fixed_schedule": false,
+      "continuous_orders": false,
+      "org_integration": false,
+      "exclusivity_or_availability": false,
+      "personal_continuous_periodic": false,
+      "fixed_location": false,
+      "attendance_control": false,
+      "daily_method_control": false,
+      "continuous_supervision": false,
+      "absence_authorization": false,
+      "employee_identity": false,
+      "internal_labor_rules": false,
+      "disciplinary_measures": false,
+      "vacation_permission": false,
+      "economic_dependence": false,
+      "periodic_payment_without_outputs": false,
+      "personal_service_required": false
+    },
+    "term": {
+      "start_date": "2026-07-30",
+      "end_date": "2026-11-30",
+      "renewal": "acuerdo escrito previo"
+    },
+    "schedule": {
+      "milestones": "D1 el 15 de agosto; D2 el 30 de octubre",
+      "dependencies": "accesos, decisiones y datos de prueba a cargo del contratante",
+      "client_delays": "los plazos se ampliarán en proporción al retraso documentado"
+    },
+    "fees": {
+      "model": "milestone",
+      "financial_terms": {
+        "amount": 50000000,
+        "currency": "COP",
+        "payment_terms": "20% de anticipo, 30% con D1 y 50% con D2",
+        "invoice_requirements": "Factura electrónica y acta de aceptación",
+        "taxes": "Retenciones de ley"
+      },
+      "expenses": {
+        "authorized": "Viajes previamente autorizados",
+        "support": "Facturas y comprobantes",
+        "advance": "Anticipo sujeto a legalización",
+        "approval": "Aprobación escrita previa"
+      }
+    },
+    "risk_allocation": {
+      "insurance_required": true,
+      "insurance": "Responsabilidad civil profesional por COP 100.000.000",
+      "third_party_claims": "defensa coordinada",
+      "indemnity": "notificación oportuna, control de defensa y mitigación"
+    },
+    "liability": {
+      "cap": "100% del valor del contrato",
+      "exclusions": "dolo; violación deliberada de confidencialidad; infracción de PI",
+      "direct_damages": "daños directos comprobados",
+      "mitigation": "cada parte mitigará razonablemente los daños"
+    },
+    "confidentiality": {
+      "required": true,
+      "categories": "información técnica, comercial, financiera y de seguridad",
+      "duration": "cinco años; secretos empresariales mientras conserven esa calidad",
+      "return_rule": "devolución o eliminación, salvo conservación mínima legal o probatoria"
+    },
+    "data_processing": {
+      "required": true,
+      "roles": {
+        "client": "Responsable",
+        "contractor": "Encargado",
+        "categories": "datos de usuarios corporativos"
+      },
+      "instructions": "tratamiento solo bajo instrucciones documentadas; subencargados autorizados y medidas de seguridad"
+    },
+    "ip": {
+      "required": true,
+      "allocation": {
+        "new_results": "Cesión patrimonial al contratante tras pago total",
+        "background": "Licencia no exclusiva sobre herramientas preexistentes",
+        "open_source": "Sujeto a licencias identificadas",
+        "third_party": "Uso solo con autorización o licencia válida"
+      }
+    },
+    "ai": {
+      "required": true,
+      "allowed_tools": "herramientas empresariales aprobadas",
+      "permitted_uses": "asistencia de redacción y código con revisión humana",
+      "prohibited_data": "datos personales, secretos y credenciales en servicios no aprobados",
+      "human_review": "verificación, registro y aprobación humana antes de entrega"
+    },
+    "termination": {
+      "notice": "15 días",
+      "cure_period": "10 días hábiles",
+      "serious_breach": "terminación inmediata para incumplimientos no subsanables",
+      "suspension": "suspensión documentada por fuerza mayor o incumplimiento de dependencias"
+    },
+    "closure": {
+      "transition": "Entrega de repositorios, documentación, cierre de accesos y acta final",
+      "support": "20 horas de transición incluidas",
+      "return_assets": "devolución de credenciales, equipos y soportes",
+      "delete_data": "devolución o eliminación certificada de copias no exigidas por ley"
+    },
+    "disputes": {
+      "mechanism": "negotiation_conciliation_courts"
+    },
+    "confirmation": {
+      "public_contracting": false,
+      "true_independence": true
+    }
+  },
+  "scenarios": [
+    {
+      "id": "EM3-C01",
+      "name": "Consultoría profesional sencilla por precio fijo",
+      "overrides": {
+        "contractor.type": "natural_person",
+        "contractor.identification.name": "Ana Torres",
+        "contractor.identification.id_number": "52.123.456",
+        "contractor.signatory": {},
+        "service.category": "consulting",
+        "service.object": "realizar un diagnóstico estratégico y entregar recomendaciones priorizadas",
+        "service.expected_result": "un informe ejecutivo y una sesión de socialización",
+        "scope.deliverables": [
+          {
+            "id": "D1",
+            "name": "Informe de diagnóstico",
+            "due_date": "2026-09-15",
+            "acceptance_criteria": "Cobertura de los temas y recomendaciones accionables",
+            "format": "DOCX/PDF"
+          }
+        ],
+        "scope.change_control": false,
+        "fees.model": "fixed",
+        "fees.financial_terms.amount": 12000000,
+        "confidentiality.required": false,
+        "data_processing.required": false,
+        "ip.required": false,
+        "ai.required": false,
+        "risk_allocation.insurance_required": false,
+        "risk_allocation.insurance": ""
+      },
+      "expected": {
+        "risk_level": "low",
+        "readiness": "ready_to_generate",
+        "documents": [
+          "DOC-EM-CONTRACT-001",
+          "ANX-EM-SCOPE-001",
+          "ACT-EM-ACCEPT-001",
+          "ACT-EM-CLOSE-001"
+        ]
+      }
+    },
+    {
+      "id": "EM3-C02",
+      "name": "Desarrollo tecnológico integral",
+      "overrides": {},
+      "expected": {
+        "risk_level": "low",
+        "readiness": "requires_review",
+        "document_count": 10
+      }
+    },
+    {
+      "id": "EM3-C03",
+      "name": "Campaña creativa con confidencialidad y propiedad intelectual",
+      "overrides": {
+        "service.category": "creative",
+        "service.object": "diseñar una campaña de identidad visual y contenidos digitales",
+        "service.expected_result": "piezas editables y finales aprobadas conforme al manual de marca",
+        "fees.model": "mixed",
+        "fees.financial_terms.amount": 30000000,
+        "data_processing.required": false,
+        "ai.required": false
+      },
+      "expected": {
+        "risk_level": "low",
+        "readiness": "ready_to_generate",
+        "documents": [
+          "DOC-EM-CONTRACT-001",
+          "ANX-EM-SCOPE-001",
+          "ANX-EM-FEES-001",
+          "ANX-EM-CONF-001",
+          "ANX-EM-IP-001",
+          "ACT-EM-ACCEPT-001",
+          "ACT-EM-CHANGE-001",
+          "ACT-EM-CLOSE-001"
+        ]
+      }
+    },
+    {
+      "id": "EM3-C04",
+      "name": "Operación de datos personales sin propiedad intelectual",
+      "overrides": {
+        "service.category": "data_services",
+        "service.object": "depurar y migrar bases de datos de clientes bajo instrucciones documentadas",
+        "service.expected_result": "base migrada y reporte de integridad",
+        "confidentiality.required": true,
+        "data_processing.required": true,
+        "ip.required": false,
+        "ai.required": false,
+        "fees.model": "fixed",
+        "scope.change_control": false
+      },
+      "expected": {
+        "risk_level": "low",
+        "readiness": "ready_to_generate",
+        "documents": [
+          "DOC-EM-CONTRACT-001",
+          "ANX-EM-SCOPE-001",
+          "ANX-EM-CONF-001",
+          "ANX-EM-DATA-001",
+          "ACT-EM-ACCEPT-001",
+          "ACT-EM-CLOSE-001"
+        ]
+      }
+    },
+    {
+      "id": "EM3-C05",
+      "name": "Intermediación comercial con remuneración por éxito",
+      "overrides": {
+        "service.category": "commercial",
+        "service.object": "identificar y gestionar oportunidades comerciales hasta la celebración de negocios elegibles",
+        "service.expected_result": "negocios verificables conforme a la fórmula de causación",
+        "fees.model": "success",
+        "fees.financial_terms.payment_terms": "Comisión del 5% sobre recaudos netos de negocios elegibles",
+        "confidentiality.required": true,
+        "data_processing.required": false,
+        "ip.required": false,
+        "ai.required": false
+      },
+      "expected": {
+        "risk_level": "low",
+        "readiness": "requires_review",
+        "required_findings": [
+          "V-EM-006"
+        ],
+        "documents": [
+          "ANX-EM-FEES-001",
+          "ANX-EM-CONF-001"
+        ]
+      }
+    },
+    {
+      "id": "EM3-C06",
+      "name": "Servicio profesional regulado con habilitación verificada",
+      "overrides": {
+        "service.category": "regulated_professional",
+        "service.regulated": true,
+        "service.habilitation_verified": true,
+        "service.habilitation_type": "Tarjeta profesional",
+        "service.habilitation_reference": "TP 123456 vigente, autoridad profesional competente",
+        "service.object": "emitir concepto técnico especializado dentro del ámbito de habilitación",
+        "service.expected_result": "concepto firmado, soportado y verificable",
+        "ai.required": false,
+        "data_processing.required": false
+      },
+      "expected": {
+        "risk_level": "low",
+        "readiness": "requires_review",
+        "blocks": [
+          "EM-REG-001"
+        ]
+      }
+    },
+    {
+      "id": "EM3-C07",
+      "name": "Servicio administrativo recurrente con riesgo medio",
+      "overrides": {
+        "service.category": "administrative_support",
+        "service.object": "procesar mensualmente reportes administrativos por resultados",
+        "service.expected_result": "reportes mensuales conciliados",
+        "fees.model": "monthly",
+        "labor_indicators.org_integration": true,
+        "labor_indicators.personal_continuous_periodic": true,
+        "confidentiality.required": true,
+        "data_processing.required": true,
+        "ip.required": false,
+        "ai.required": false,
+        "labor_indicators.economic_dependence": true
+      },
+      "expected": {
+        "risk_level": "medium",
+        "readiness": "requires_review",
+        "required_findings": [
+          "V-EM-004"
+        ]
+      }
+    },
+    {
+      "id": "EM3-C08",
+      "name": "Analítica con esquema mixto e inteligencia artificial",
+      "overrides": {
+        "service.category": "analytics",
+        "service.object": "desarrollar modelos analíticos asistidos por herramientas de inteligencia artificial aprobadas",
+        "service.expected_result": "modelos, documentación y reporte de validación humana",
+        "fees.model": "mixed",
+        "ip.required": true,
+        "data_processing.required": true,
+        "ai.required": true
+      },
+      "expected": {
+        "risk_level": "low",
+        "readiness": "requires_review",
+        "required_findings": [
+          "V-EM-010"
+        ],
+        "documents": [
+          "ANX-EM-AI-001",
+          "ANX-EM-IP-001",
+          "ANX-EM-DATA-001",
+          "ANX-EM-FEES-001"
+        ]
+      }
+    },
+    {
+      "id": "EM3-C09",
+      "name": "Ingeniería con seguro y arbitraje",
+      "overrides": {
+        "service.category": "engineering",
+        "service.object": "diseñar especificaciones de ingeniería y acompañar su validación",
+        "service.expected_result": "memorias de cálculo, planos y concepto de validación",
+        "disputes.mechanism": "arbitration",
+        "ip.required": true,
+        "ai.required": false,
+        "data_processing.required": false
+      },
+      "expected": {
+        "risk_level": "low",
+        "readiness": "requires_review",
+        "blocks": [
+          "EM-INS-001"
+        ]
+      }
+    },
+    {
+      "id": "EM3-C10",
+      "name": "Investigación y desarrollo con activos preexistentes",
+      "overrides": {
+        "service.category": "research_development",
+        "service.object": "desarrollar y validar un proceso experimental con resultados potencialmente protegibles",
+        "service.expected_result": "protocolo, datos, informe y paquete de resultados",
+        "fees.model": "milestone",
+        "ip.required": true,
+        "confidentiality.required": true,
+        "data_processing.required": false,
+        "ai.required": false
+      },
+      "expected": {
+        "risk_level": "low",
+        "readiness": "ready_to_generate",
+        "documents": [
+          "ANX-EM-IP-001",
+          "ANX-EM-CONF-001"
+        ]
+      }
+    },
+    {
+      "id": "EM3-C11",
+      "name": "Mantenimiento tecnológico con control de cambios",
+      "overrides": {
+        "service.category": "technology_support",
+        "service.object": "ejecutar mantenimiento correctivo y evolutivo por solicitudes priorizadas",
+        "service.expected_result": "incidentes resueltos y versiones entregadas conforme a criterios de aceptación",
+        "fees.model": "monthly",
+        "ip.required": true,
+        "data_processing.required": true,
+        "ai.required": false
+      },
+      "expected": {
+        "risk_level": "low",
+        "readiness": "ready_to_generate",
+        "documents": [
+          "ACT-EM-CHANGE-001",
+          "ACT-EM-ACCEPT-001"
+        ]
+      }
+    },
+    {
+      "id": "EM3-C12",
+      "name": "Servicio ejecutado por equipo propio del contratista",
+      "overrides": {
+        "service.category": "outsourced_team",
+        "service.object": "proveer un equipo autónomo para ejecutar un proyecto definido por entregables",
+        "service.expected_result": "entregables del proyecto bajo dirección técnica del contratista",
+        "autonomy.delegation": true,
+        "labor_indicators.personal_service_required": false,
+        "contractor.type": "legal_person",
+        "confidentiality.required": true,
+        "data_processing.required": false,
+        "ip.required": true,
+        "ai.required": false
+      },
+      "expected": {
+        "risk_level": "low",
+        "readiness": "ready_to_generate"
+      }
+    }
+  ]
+}

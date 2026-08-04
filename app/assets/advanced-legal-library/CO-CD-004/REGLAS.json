@@ -1,0 +1,1055 @@
+[
+  {
+    "id": "CD4-R01",
+    "risk": "red",
+    "message": "La obligación pertenece a un régimen laboral, familiar/alimentario o tributario/público incompatible con esta ruta general.",
+    "action": "Reclasificar al producto o especialidad competente.",
+    "conditions": {
+      "all": [
+        {
+          "field": "obligation_type",
+          "op": "in",
+          "value": [
+            "Laboral",
+            "Familiar o alimentos",
+            "Tributaria o pública"
+          ]
+        }
+      ]
+    },
+    "category": "scope",
+    "source_ids": [
+      "CD4-S2",
+      "CD4-S7"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD4-R02",
+    "risk": "yellow",
+    "message": "La naturaleza de la obligación no está definida.",
+    "action": "Precisar negocio causal, jurisdicción y régimen aplicable.",
+    "conditions": {
+      "all": [
+        {
+          "field": "obligation_type",
+          "op": "equals",
+          "value": "Otra"
+        }
+      ]
+    },
+    "category": "scope",
+    "source_ids": [
+      "CD4-S2",
+      "CD4-S3"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R03",
+    "risk": "red",
+    "message": "No se acredita facultad del acreedor o representante para cobrar.",
+    "action": "Aportar certificado, poder, mandato, endoso o soporte de legitimación.",
+    "conditions": {
+      "all": [
+        {
+          "field": "creditor_authority",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "legitimacy",
+    "source_ids": [
+      "CD4-S3",
+      "CD4-S7"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD4-R04",
+    "risk": "yellow",
+    "message": "La legitimación o representación está incompleta.",
+    "action": "Completar soportes antes de firma o radicación.",
+    "conditions": {
+      "all": [
+        {
+          "field": "creditor_authority",
+          "op": "equals",
+          "value": "Parcial"
+        }
+      ]
+    },
+    "category": "legitimacy",
+    "source_ids": [
+      "CD4-S3",
+      "CD4-S7"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R05",
+    "risk": "red",
+    "message": "Existe fraude, suplantación o atribución controvertida.",
+    "action": "Preservar evidencia y escalar a revisión jurídica especializada.",
+    "conditions": {
+      "any": [
+        {
+          "field": "fraud_impersonation",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "fraud_impersonation",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "category": "fraud",
+    "source_ids": [
+      "CD4-S13"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD4-R06",
+    "risk": "red",
+    "message": "Fallecimiento, capacidad o representación del deudor requieren análisis individual.",
+    "action": "Definir sucesión, apoyos, representación y legitimados antes de continuar.",
+    "conditions": {
+      "any": [
+        {
+          "field": "debtor_capacity_issue",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "debtor_capacity_issue",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "category": "capacity",
+    "source_ids": [
+      "CD4-S2",
+      "CD4-S7"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD4-R07",
+    "risk": "red",
+    "message": "Existe un proceso judicial o arbitral activo.",
+    "action": "Coordinar la actuación con el expediente y evitar cobro paralelo contradictorio.",
+    "conditions": {
+      "any": [
+        {
+          "field": "judicial_process_active",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "judicial_process_active",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "category": "active_process",
+    "source_ids": [
+      "CD4-S7"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD4-R08",
+    "risk": "red",
+    "message": "Existe o puede existir un trámite de insolvencia o negociación formal de deudas.",
+    "action": "Suspender la ruta ordinaria y verificar efectos concursales y competencia.",
+    "conditions": {
+      "any": [
+        {
+          "field": "insolvency_active",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "insolvency_active",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "category": "insolvency",
+    "source_ids": [
+      "CD4-S14"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD4-R09",
+    "risk": "red",
+    "message": "Existe embargo, medida cautelar o limitación relevante.",
+    "action": "Revisar orden, prelación, expediente y efectos antes de disponer del crédito.",
+    "conditions": {
+      "any": [
+        {
+          "field": "embargo_or_measure",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "embargo_or_measure",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "category": "measure",
+    "source_ids": [
+      "CD4-S7",
+      "CD4-S12"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD4-R10",
+    "risk": "red",
+    "message": "La constitución de garantía real requiere instrumentación especializada.",
+    "action": "No perfeccionar hipoteca, prenda u otra garantía real mediante autoservicio.",
+    "conditions": {
+      "any": [
+        {
+          "field": "real_collateral",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "real_collateral",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "category": "real_security",
+    "source_ids": [
+      "CD4-S2",
+      "CD4-S7"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD4-R11",
+    "risk": "red",
+    "message": "La obligación no está vencida o no se acredita exigibilidad.",
+    "action": "No presentar cobro vencido; verificar plazo, condición y exigibilidad.",
+    "conditions": {
+      "any": [
+        {
+          "field": "obligation_status",
+          "op": "equals",
+          "value": "No vencida"
+        },
+        {
+          "field": "express_clear_enforceable",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "enforceability",
+    "source_ids": [
+      "CD4-S7"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD4-R12",
+    "risk": "yellow",
+    "message": "La claridad o exigibilidad del título no está confirmada.",
+    "action": "Cotejar documento, vencimiento, condición y obligación antes de exigir.",
+    "conditions": {
+      "any": [
+        {
+          "field": "obligation_status",
+          "op": "equals",
+          "value": "No sé"
+        },
+        {
+          "field": "express_clear_enforceable",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "category": "enforceability",
+    "source_ids": [
+      "CD4-S7"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R13",
+    "risk": "yellow",
+    "message": "El soporte principal es inexistente o atípico.",
+    "action": "Reconstruir prueba del negocio, aceptación, prestación y saldo.",
+    "conditions": {
+      "all": [
+        {
+          "field": "source_document_type",
+          "op": "in",
+          "value": [
+            "Sin documento",
+            "Otro"
+          ]
+        }
+      ]
+    },
+    "category": "evidence",
+    "source_ids": [
+      "CD4-S7",
+      "CD4-S13"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R14",
+    "risk": "yellow",
+    "message": "La firma, aceptación o atribución al deudor no está plenamente acreditada.",
+    "action": "Completar firma, aceptación, trazabilidad o prueba del mensaje de datos.",
+    "conditions": {
+      "all": [
+        {
+          "field": "debtor_signature_status",
+          "op": "in",
+          "value": [
+            "Parcial",
+            "No acreditada"
+          ]
+        }
+      ]
+    },
+    "category": "signature",
+    "source_ids": [
+      "CD4-S3",
+      "CD4-S13"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R15",
+    "risk": "yellow",
+    "message": "La integridad u originalidad del soporte es insuficiente.",
+    "action": "Conservar original, metadatos, trazabilidad y copia verificable.",
+    "conditions": {
+      "all": [
+        {
+          "field": "original_integrity_status",
+          "op": "in",
+          "value": [
+            "Parcial",
+            "No acreditada"
+          ]
+        }
+      ]
+    },
+    "category": "integrity",
+    "source_ids": [
+      "CD4-S3",
+      "CD4-S13"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R16",
+    "risk": "yellow",
+    "message": "La factura no acredita aceptación como título valor.",
+    "action": "Verificar recepción, aceptación, reclamos y negocio causal.",
+    "conditions": {
+      "all": [
+        {
+          "field": "source_document_type",
+          "op": "in",
+          "value": [
+            "Factura electrónica",
+            "Factura física"
+          ]
+        },
+        {
+          "field": "invoice_acceptance_status",
+          "op": "in",
+          "value": [
+            "Rechazada",
+            "No acreditada"
+          ]
+        }
+      ]
+    },
+    "category": "invoice",
+    "source_ids": [
+      "CD4-S12",
+      "CD4-S17"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R17",
+    "risk": "yellow",
+    "message": "La factura electrónica cedida o negociada no tiene trazabilidad RADIAN suficiente.",
+    "action": "Verificar eventos, tenedor legítimo, pagos, endosos y limitaciones en RADIAN.",
+    "conditions": {
+      "all": [
+        {
+          "field": "source_document_type",
+          "op": "equals",
+          "value": "Factura electrónica"
+        },
+        {
+          "field": "assignment_factoring",
+          "op": "not_equals",
+          "value": "No"
+        },
+        {
+          "field": "radian_status",
+          "op": "not_equals",
+          "value": "Registrada y trazable"
+        }
+      ]
+    },
+    "category": "radian",
+    "source_ids": [
+      "CD4-S12"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R18",
+    "risk": "yellow",
+    "message": "La cesión, endoso o negociación no tiene trazabilidad completa.",
+    "action": "Acreditar cadena de titularidad y notificaciones antes de cobrar.",
+    "conditions": {
+      "all": [
+        {
+          "field": "assignment_factoring",
+          "op": "in",
+          "value": [
+            "Sí con trazabilidad parcial",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "assignment",
+    "source_ids": [
+      "CD4-S3",
+      "CD4-S12"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R19",
+    "risk": "yellow",
+    "message": "El saldo no está conciliado.",
+    "action": "Reconstruir capital, abonos, notas crédito, intereses y cargos.",
+    "conditions": {
+      "all": [
+        {
+          "field": "balance_reconciled",
+          "op": "not_equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "balance",
+    "source_ids": [
+      "CD4-S2",
+      "CD4-S17"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R20",
+    "risk": "yellow",
+    "message": "Existen abonos, notas crédito o compensaciones que deben imputarse.",
+    "action": "Conciliar fecha, concepto, valor e imputación de cada movimiento.",
+    "conditions": {
+      "all": [
+        {
+          "field": "partial_payments",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        },
+        {
+          "field": "balance_reconciled",
+          "op": "not_equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "balance",
+    "source_ids": [
+      "CD4-S2",
+      "CD4-S17"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R21",
+    "risk": "yellow",
+    "message": "Los intereses no tienen pacto o periodicidad suficientemente definida.",
+    "action": "No liquidar una tasa definitiva sin identificar clase, modalidad, periodo y límite vigente.",
+    "conditions": {
+      "all": [
+        {
+          "field": "interest_agreed",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        },
+        {
+          "field": "interest_period",
+          "op": "in",
+          "value": [
+            "No sé",
+            "No aplica"
+          ]
+        }
+      ]
+    },
+    "category": "interest",
+    "source_ids": [
+      "CD4-S5",
+      "CD4-S15"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R22",
+    "risk": "yellow",
+    "message": "Existen gastos u honorarios sin soporte integral.",
+    "action": "Excluir o acreditar pacto, procedencia, razonabilidad y soporte.",
+    "conditions": {
+      "all": [
+        {
+          "field": "other_charges",
+          "op": "gt",
+          "value": 0
+        },
+        {
+          "field": "other_charges_supported",
+          "op": "not_equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "charges",
+    "source_ids": [
+      "CD4-S2",
+      "CD4-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R23",
+    "risk": "yellow",
+    "message": "La obligación o el saldo están controvertidos.",
+    "action": "Separar hechos aceptados, valores discutidos, soportes y propuesta de arreglo.",
+    "conditions": {
+      "any": [
+        {
+          "field": "disputed",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "disputed",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "category": "dispute",
+    "source_ids": [
+      "CD4-S7"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R24",
+    "risk": "yellow",
+    "message": "Se alega compensación, cruce de cuentas o excepción.",
+    "action": "Depurar obligaciones recíprocas y no reconocer saldo definitivo automáticamente.",
+    "conditions": {
+      "any": [
+        {
+          "field": "setoff_claimed",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "setoff_claimed",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "category": "setoff",
+    "source_ids": [
+      "CD4-S2"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R25",
+    "risk": "red",
+    "message": "Existe duda de prescripción o caducidad incompatible con cobro automático.",
+    "action": "Calcular término, interrupciones, suspensiones y acción aplicable con revisión profesional.",
+    "conditions": {
+      "any": [
+        {
+          "field": "prescription_concern",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "prescription_concern",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "category": "prescription",
+    "source_ids": [
+      "CD4-S2",
+      "CD4-S3",
+      "CD4-S7"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD4-R26",
+    "risk": "yellow",
+    "message": "No se acreditan canales autorizados para la cobranza al consumidor.",
+    "action": "Actualizar preferencias y usar únicamente canales autorizados.",
+    "conditions": {
+      "all": [
+        {
+          "field": "consumer_debt",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "authorized_channels",
+          "op": "not_equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "collection_contact",
+    "source_ids": [
+      "CD4-S8",
+      "CD4-S9"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R27",
+    "risk": "yellow",
+    "message": "Ya hubo contacto directo hoy.",
+    "action": "No realizar un nuevo contacto de cobranza durante el mismo día.",
+    "conditions": {
+      "all": [
+        {
+          "field": "consumer_debt",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "direct_contact_today",
+          "op": "not_equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "collection_contact",
+    "source_ids": [
+      "CD4-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R28",
+    "risk": "yellow",
+    "message": "Se usaron o podrían usarse varios canales en una misma semana después del contacto directo.",
+    "action": "Respetar periodicidad y registrar cada interacción.",
+    "conditions": {
+      "all": [
+        {
+          "field": "consumer_debt",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "channels_same_week",
+          "op": "not_equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "collection_contact",
+    "source_ids": [
+      "CD4-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R29",
+    "risk": "red",
+    "message": "El contacto previsto no respeta el horario legal o una autorización posterior válida.",
+    "action": "No efectuar el contacto y reprogramar dentro del horario permitido.",
+    "conditions": {
+      "all": [
+        {
+          "field": "consumer_debt",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "contact_time_compliant",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "collection_contact",
+    "source_ids": [
+      "CD4-S8",
+      "CD4-S9"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD4-R30",
+    "risk": "red",
+    "message": "No pueden contactarse referencias, familiares o terceros no obligados para cobrar.",
+    "action": "Limitar la gestión al deudor, avalista, codeudor o solidario bajo las mismas reglas.",
+    "conditions": {
+      "all": [
+        {
+          "field": "third_party_contact",
+          "op": "not_equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "privacy",
+    "source_ids": [
+      "CD4-S8",
+      "CD4-S10"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD4-R31",
+    "risk": "red",
+    "message": "Se pretende reporte negativo sin comunicación previa suficiente.",
+    "action": "No reportar; cumplir comunicación previa y término legal.",
+    "conditions": {
+      "all": [
+        {
+          "field": "negative_report_planned",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "prior_report_notice_status",
+          "op": "in",
+          "value": [
+            "No enviada",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "credit_reporting",
+    "source_ids": [
+      "CD4-S10",
+      "CD4-S11"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD4-R32",
+    "risk": "yellow",
+    "message": "El reporte negativo requiere control reforzado de comunicación previa.",
+    "action": "Verificar valor, número de comunicaciones, fechas y espera de veinte días calendario.",
+    "conditions": {
+      "all": [
+        {
+          "field": "negative_report_planned",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "prior_report_notice_status",
+          "op": "equals",
+          "value": "Una comunicación"
+        }
+      ]
+    },
+    "category": "credit_reporting",
+    "source_ids": [
+      "CD4-S10",
+      "CD4-S11",
+      "CD4-S16"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R33",
+    "risk": "red",
+    "message": "Un pagaré con espacios en blanco carece de carta de instrucciones firmada.",
+    "action": "No emitir ni utilizar el pagaré hasta documentar instrucciones estrictas y suficientes.",
+    "conditions": {
+      "all": [
+        {
+          "field": "promissory_note_requested",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "blanks_present",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "instructions_signed",
+          "op": "not_equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "promissory_note",
+    "source_ids": [
+      "CD4-S3",
+      "CD4-S4"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD4-R34",
+    "risk": "yellow",
+    "message": "El pagaré o su forma de vencimiento requieren definición adicional.",
+    "action": "Precisar suma, beneficiario, orden, vencimiento, firma y lugar de pago.",
+    "conditions": {
+      "all": [
+        {
+          "field": "promissory_note_requested",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "maturity_form",
+          "op": "in",
+          "value": [
+            "Otra",
+            "No aplica"
+          ]
+        }
+      ]
+    },
+    "category": "promissory_note",
+    "source_ids": [
+      "CD4-S3",
+      "CD4-S4"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R35",
+    "risk": "yellow",
+    "message": "La vinculación de avalista, codeudor o solidario exige consentimiento y alcance claros.",
+    "action": "Identificar calidad, firma, obligaciones, canales y límites antes de vincularlo.",
+    "conditions": {
+      "all": [
+        {
+          "field": "guarantor_or_aval",
+          "op": "not_equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "guarantee",
+    "source_ids": [
+      "CD4-S3",
+      "CD4-S4",
+      "CD4-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R36",
+    "risk": "yellow",
+    "message": "La evidencia es parcial o insuficiente.",
+    "action": "Completar documentos, comunicaciones, movimientos, firmas y trazabilidad.",
+    "conditions": {
+      "all": [
+        {
+          "field": "evidence_status",
+          "op": "not_equals",
+          "value": "Completo"
+        }
+      ]
+    },
+    "category": "evidence",
+    "source_ids": [
+      "CD4-S7",
+      "CD4-S13"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R37",
+    "risk": "yellow",
+    "message": "Los datos o anexos no están minimizados.",
+    "action": "Eliminar claves, credenciales, números completos y datos ajenos al objeto.",
+    "conditions": {
+      "all": [
+        {
+          "field": "data_minimized",
+          "op": "not_equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "privacy",
+    "source_ids": [
+      "CD4-S10",
+      "CD4-S13"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R38",
+    "risk": "red",
+    "message": "Los datos esenciales no están confirmados.",
+    "action": "Confirmar identidad, fechas, capital, saldo, destinatarios y soportes.",
+    "conditions": {
+      "all": [
+        {
+          "field": "data_confirmed",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "data_quality",
+    "source_ids": [
+      "CD4-S7",
+      "CD4-S13"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "CD4-R39",
+    "risk": "green",
+    "message": "Se activa la ruta de cobro inicial y estado de cuenta.",
+    "action": "Generar diagnóstico, estado de cuenta, requerimiento y matriz de evidencia.",
+    "conditions": {
+      "all": [
+        {
+          "field": "package_stage",
+          "op": "equals",
+          "value": "Cobro inicial"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "CD4-S7",
+      "CD4-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R40",
+    "risk": "green",
+    "message": "Se activa la ruta de negociación y acuerdo.",
+    "action": "Generar acuerdo de pago y cronograma conciliable.",
+    "conditions": {
+      "all": [
+        {
+          "field": "package_stage",
+          "op": "in",
+          "value": [
+            "Negociación",
+            "Formalización"
+          ]
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "CD4-S2",
+      "CD4-S13"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R41",
+    "risk": "green",
+    "message": "Se activa la ruta de pagaré y carta de instrucciones.",
+    "action": "Generar instrumentos únicamente con datos completos y controles de título valor.",
+    "conditions": {
+      "all": [
+        {
+          "field": "package_stage",
+          "op": "equals",
+          "value": "Formalización"
+        },
+        {
+          "field": "promissory_note_requested",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "CD4-S3",
+      "CD4-S4"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "CD4-R42",
+    "risk": "green",
+    "message": "Se activa la ruta de recibo o cierre.",
+    "action": "Generar constancia compatible con el pago efectivamente acreditado.",
+    "conditions": {
+      "all": [
+        {
+          "field": "package_stage",
+          "op": "in",
+          "value": [
+            "Seguimiento de pagos",
+            "Cierre"
+          ]
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "CD4-S2",
+      "CD4-S17"
+    ],
+    "blocking": false
+  }
+]

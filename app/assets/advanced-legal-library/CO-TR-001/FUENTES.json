@@ -1,0 +1,145 @@
+[
+  {
+    "id": "TR1-S1",
+    "title": "Ley 1843 de 2017",
+    "authority": "Congreso de Colombia / SUIN-Juriscol",
+    "type": "norma",
+    "status": "vigente",
+    "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30032605",
+    "note": "Instalación, autorización, señalización, procedimiento y control SAST.",
+    "last_verified": "2026-07-19",
+    "verification_status": "Fuente oficial consultada"
+  },
+  {
+    "id": "TR1-S2",
+    "title": "Ley 769 de 2002 - Código Nacional de Tránsito",
+    "authority": "Congreso de Colombia / SUIN-Juriscol",
+    "type": "norma",
+    "status": "vigente con modificaciones",
+    "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1826223",
+    "note": "Procedimiento contravencional, comparendo, sanción, recursos y caducidad.",
+    "last_verified": "2026-07-19",
+    "verification_status": "Fuente oficial"
+  },
+  {
+    "id": "TR1-S3",
+    "title": "Decreto Ley 2106 de 2019, artículo 109",
+    "authority": "Presidencia de la República / SUIN-Juriscol",
+    "type": "norma",
+    "status": "vigente",
+    "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30038582",
+    "note": "Traslado de autorización SAST a la Agencia Nacional de Seguridad Vial.",
+    "last_verified": "2026-07-19",
+    "verification_status": "Fuente oficial"
+  },
+  {
+    "id": "TR1-S4",
+    "title": "Ley 2294 de 2023, artículo 181",
+    "authority": "Congreso de Colombia / SUIN-Juriscol",
+    "type": "norma",
+    "status": "vigente",
+    "url": "https://www.suin-juriscol.gov.co/clp/contenidos.dll/Leyes/30046580",
+    "note": "Excepción de autorización para controles en infraestructura de transporte público, con señalización.",
+    "last_verified": "2026-07-19",
+    "verification_status": "Fuente oficial"
+  },
+  {
+    "id": "TR1-S5",
+    "title": "Resolución 20203040011245 de 2020",
+    "authority": "Ministerio de Transporte y ANSV",
+    "type": "resolución",
+    "status": "vigente por verificar frente a modificaciones",
+    "url": "https://mintransporte.gov.co/publicaciones/9590/normatividad-racionalizacion/",
+    "note": "Criterios técnicos para instalación y operación SAST.",
+    "last_verified": "2026-07-19",
+    "verification_status": "Página oficial del Ministerio"
+  },
+  {
+    "id": "TR1-S6",
+    "title": "Resolución ANSV 181 de 2020",
+    "authority": "Agencia Nacional de Seguridad Vial",
+    "type": "resolución",
+    "status": "vigente por verificar",
+    "url": "https://fotodeteccion.ansv.gov.co/",
+    "note": "Metodología de evaluación de criterios técnicos de seguridad vial.",
+    "last_verified": "2026-07-19",
+    "verification_status": "Portal oficial del trámite"
+  },
+  {
+    "id": "TR1-S7",
+    "title": "Resolución 352 de 2020",
+    "authority": "Ministerio de Comercio, Industria y Turismo / INM",
+    "type": "resolución",
+    "status": "vigente por verificar",
+    "url": "https://www.inm.gov.co/",
+    "note": "Alternativas de trazabilidad metrológica para mediciones de velocidad.",
+    "last_verified": "2026-07-19",
+    "verification_status": "Referencia oficial a cotejar por equipo"
+  },
+  {
+    "id": "TR1-S8",
+    "title": "Sistema de Información de Fotodetección",
+    "authority": "Agencia Nacional de Seguridad Vial",
+    "type": "registro oficial",
+    "status": "consulta dinámica",
+    "url": "https://fotodeteccion.ansv.gov.co/",
+    "note": "Mapa y consulta de cámaras autorizadas; debe verificarse el punto exacto y la fecha.",
+    "last_verified": "2026-07-19",
+    "verification_status": "Fuente dinámica oficial"
+  },
+  {
+    "id": "TR1-S9",
+    "title": "Sentencia C-038 de 2020",
+    "authority": "Corte Constitucional",
+    "type": "jurisprudencia",
+    "status": "vigente",
+    "url": "https://www.corteconstitucional.gov.co/relatoria/2020/C-038-20.htm",
+    "note": "Inexequibilidad de responsabilidad solidaria automática del propietario.",
+    "last_verified": "2026-07-19",
+    "verification_status": "Relatoría oficial"
+  },
+  {
+    "id": "TR1-S10",
+    "title": "Sentencia C-321 de 2022",
+    "authority": "Corte Constitucional",
+    "type": "jurisprudencia",
+    "status": "vigente",
+    "url": "https://www.corteconstitucional.gov.co/Relatoria/2022/C-321-22.htm",
+    "note": "Deberes del propietario sujetos a imputación culpable y procedimiento.",
+    "last_verified": "2026-07-19",
+    "verification_status": "Relatoría oficial"
+  },
+  {
+    "id": "TR1-S11",
+    "title": "Investigaciones SAST a 37 organismos de tránsito - 19 mayo 2026",
+    "authority": "Superintendencia de Transporte",
+    "type": "comunicación oficial",
+    "status": "actuaciones administrativas en desarrollo",
+    "url": "https://www.supertransporte.gov.co/index.php/comunicaciones-2026/gobierno-nacional-investiga-a-37-organismos-de-transito-mas-de-75-millones-de-fotomultas-estan-bajo-la-lupa-y-58-millones-quedaran-sin-validez/page/2/",
+    "note": "Anuncio oficial que requiere individualizar autoridad, período, acto y efecto.",
+    "last_verified": "2026-07-19",
+    "verification_status": "Fuente oficial actual"
+  },
+  {
+    "id": "TR1-S12",
+    "title": "Investigaciones SAST a 12 organismos adicionales - 29 mayo 2026",
+    "authority": "Superintendencia de Transporte",
+    "type": "comunicación oficial",
+    "status": "actuaciones administrativas en desarrollo",
+    "url": "https://www.supertransporte.gov.co/index.php/comunicaciones-2026/la-supertransporte-abrio-investigacion-a-otros-12-organismos-de-transito-por-presuntas-irregularidades-en-sistemas-de-fotodeteccion/",
+    "note": "Amplía el universo investigado; no reemplaza actos individuales ni decisiones firmes.",
+    "last_verified": "2026-07-19",
+    "verification_status": "Fuente oficial actual"
+  },
+  {
+    "id": "TR1-S13",
+    "title": "Snapshot curado SAST LegalAIZ.it v2.26",
+    "authority": "LegalAIZ.it",
+    "type": "dataset interno trazable",
+    "status": "muestra de 10 registros",
+    "url": "canonical_sources/candidates/CO-TR-001/LegalAIZit_CO-TR-001_SAST_Muestra_Estructurada_v2.9.csv",
+    "note": "Muestra demostrativa de 10 actuaciones dentro de un universo histórico esperado de 49; nunca sustituye la consulta oficial.",
+    "last_verified": "2026-07-19",
+    "verification_status": "Integridad local verificada; cobertura incompleta"
+  }
+]

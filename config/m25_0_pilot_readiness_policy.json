@@ -1,0 +1,64 @@
+{
+  "schema": "legalaizit-m25-0-pilot-readiness-policy-v1",
+  "milestone": "M25.0",
+  "base": "M24.10",
+  "created_at": "2026-08-02T18:24:00-05:00",
+  "scope": "controlled_real_user_pilot_preparation",
+  "pilot_products": ["CO-LA-002", "CO-EM-003", "CO-AR-001", "CO-CD-003"],
+  "target_cases_total": 20,
+  "target_cases_per_product": 5,
+  "case_archetypes": [
+    "ordinary",
+    "incomplete_information",
+    "contradictory_answers",
+    "high_risk_escalation",
+    "conditional_module_and_evidence"
+  ],
+  "pilot_success_thresholds": {
+    "minimum_completed_cases": 20,
+    "minimum_completed_cases_per_product": 5,
+    "minimum_average_clarity": 4.0,
+    "minimum_average_ease": 4.0,
+    "minimum_average_confidence": 4.0,
+    "minimum_goal_met_rate": 0.8,
+    "maximum_open_high_or_critical_incidents": 0,
+    "maximum_document_generation_failures": 0,
+    "maximum_cross_tenant_access_findings": 0,
+    "independent_sample_review_required": true,
+    "all_manual_device_checks_required": true
+  },
+  "capabilities": [
+    {"id":"legal_catalog","label":"Catálogo de 11 productos jurídicos","status":"implemented_controlled","evidence":"config/legal_products_registry.json"},
+    {"id":"questionnaires","label":"Entrevistas y preguntas por producto","status":"implemented_controlled","evidence":"data/interviews.json"},
+    {"id":"rules","label":"Reglas jurídicas y controles de riesgo","status":"implemented_controlled","evidence":"data/rules.json"},
+    {"id":"candidate_library","label":"Biblioteca M23.2 integrada como revisión inmutable","status":"implemented_controlled","evidence":"data/legal_products"},
+    {"id":"catalog_approval","label":"Aprobación humana del catálogo","status":"implemented_controlled_with_disclosure","evidence":"config/m24_10_human_approval_policy.json"},
+    {"id":"case_specific_review","label":"Revisión jurídica y QA por expediente","status":"implemented_controlled","evidence":"legalai_platform/m24_case_journey.py"},
+    {"id":"client_intake","label":"Diagnóstico inicial y oferta explicable","status":"implemented_controlled","evidence":"legalai_platform/m24_client_intake.py"},
+    {"id":"case_follow_up","label":"Expediente y seguimiento","status":"implemented_controlled","evidence":"legalai_platform/m24_case_journey.py"},
+    {"id":"professional_network","label":"Red profesional cerrada, conflictos y SLA","status":"implemented_controlled","evidence":"legalai_platform/m24_professional_network.py"},
+    {"id":"pilot_operations","label":"Consentimiento, métricas, incidentes y congelamiento","status":"implemented_controlled","evidence":"legalai_platform/m24_pilot_operations.py"},
+    {"id":"payment","label":"Pago y checkout","status":"sandbox","evidence":"payment_sandbox_backend.py"},
+    {"id":"notifications","label":"Notificaciones productivas y monitoreo SLA","status":"blocked_external_provider","evidence":"config/m24_9_professional_network_policy.json"},
+    {"id":"professional_verification","label":"Validación externa de tarjeta profesional y antecedentes","status":"blocked_external_validation","evidence":"config/m24_9_professional_network_policy.json"},
+    {"id":"independent_review","label":"Segundo revisor humano independiente","status":"pending_human_resource","evidence":"config/m24_10_human_approval_policy.json"},
+    {"id":"commercial_terms","label":"Términos, privacidad, devoluciones y reglas comerciales finales","status":"pending_legal_approval","evidence":"docs"},
+    {"id":"pricing","label":"Precios y economía unitaria validados","status":"pending_real_validation","evidence":"config/m25_0_pilot_readiness_policy.json"},
+    {"id":"real_user_pilot","label":"Piloto con usuarios no abogados","status":"pending_execution","evidence":"m25_pilot_case_plan"},
+    {"id":"public_production","label":"Producción pública","status":"blocked","evidence":"M24_10_RELEASE_MANIFEST.json"},
+    {"id":"real_payments","label":"Pagos reales","status":"blocked","evidence":"M24_10_RELEASE_MANIFEST.json"},
+    {"id":"automatic_delivery","label":"Entrega desatendida","status":"blocked","evidence":"M24_10_RELEASE_MANIFEST.json"}
+  ],
+  "confirmations": {
+    "create_cohort": "CREAR PILOTO M25 CONTROLADO",
+    "archive_cohort": "ARCHIVAR COHORTE M25 Y PRESERVAR EVIDENCIA"
+  },
+  "safeguards": {
+    "no_publication": true,
+    "no_real_payments": true,
+    "no_automatic_delivery": true,
+    "no_pre_enrolled_real_users": true,
+    "no_personal_data_in_case_plan": true,
+    "case_specific_review_required": true
+  }
+}

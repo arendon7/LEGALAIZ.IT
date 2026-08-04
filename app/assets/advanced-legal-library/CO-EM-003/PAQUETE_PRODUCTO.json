@@ -1,0 +1,249 @@
+{
+  "version": "2.13",
+  "product": {
+    "code": "CO-EM-003",
+    "slug": "prestacion-servicios",
+    "title": "Contrato de prestación de servicios",
+    "vertical": "Empresarial",
+    "icon": "▣",
+    "price_auto": 39900,
+    "price_review": 129900,
+    "version": "2.13",
+    "base_risk": "green",
+    "maturity": "Producto en maduración integral v2.13 sobre línea base estable",
+    "summary": "Genera un paquete modular para servicios independientes, con alcance verificable y controles expresos frente a señales de subordinación.",
+    "outcomes": [
+      "Contrato de prestación de servicios independientes",
+      "Anexo No. 1 — Alcance, entregables y cronograma",
+      "Acuerdo de confidencialidad",
+      "Anexo de propiedad intelectual",
+      "Anexo de tratamiento de datos personales",
+      "Acta de terminación y cierre"
+    ],
+    "exclusions": [
+      "Contratación estatal",
+      "Relación laboral real",
+      "Servicios regulados",
+      "Litigio activo"
+    ],
+    "package": "LegalAIZit_Paquete_01_Prestacion_de_Servicios_v1",
+    "package_status": "Base jurídica avanzada disponible; maduración funcional y documental v2.13; validación final pendiente",
+    "owner": "Comercial y empresarial",
+    "workflow": [
+      "Alcance",
+      "Autonomía",
+      "Módulos",
+      "Riesgo",
+      "Contrato"
+    ],
+    "primary_document": "Contrato de prestación de servicios",
+    "jurisdiction": "Colombia",
+    "publication_status": "Aprobado para uso profesional controlado",
+    "human_validation_required": false,
+    "design_system": "LegalAIZ.it canonical 2026.07",
+    "capabilities": [
+      "Entrevista dinámica",
+      "Motor de reglas",
+      "Semáforo de riesgo",
+      "Expediente",
+      "Documento preliminar",
+      "Revisión profesional",
+      "Carga de soportes",
+      "Paquete documental múltiple",
+      "Exportación de expediente",
+      "Versionado",
+      "Paquete documental específico",
+      "Edición versionada en Studio Jurídico",
+      "Exportación de contenido jurídico",
+      "Seis documentos candidatos estructurados",
+      "Mapa página-bloque del paquete fuente",
+      "Generación de prepublicación con trazabilidad",
+      "Cotejo diferencial contra original cuando se incorpore",
+      "Generación condicional de seis documentos",
+      "Autoservicio estándar sin abogado obligatorio",
+      "Resumen de módulos antes de generar",
+      "Regeneración coherente del paquete",
+      "Matriz de madurez y QA v2.13"
+    ],
+    "pilot_level": "Producto madurado para prueba interna",
+    "implementation_status": "end-to-end local con generación condicional de seis documentos",
+    "canonical_candidate": {
+      "version": "2.13",
+      "documents": 6,
+      "status": "Base avanzada madurada; original binario y aprobación profesional pendientes",
+      "source_file": "LegalAIZit_Paquete_01_Prestacion_de_Servicios_v1.docx"
+    }
+  },
+  "maturity": {
+    "version": "2.13",
+    "product_code": "CO-EM-003",
+    "baseline": "2.12.1",
+    "status": "Maduración integral para prueba interna",
+    "objective": "Cerrar el recorrido público y documental de prestación de servicios sin reescribir la plataforma.",
+    "frozen_identifiers": {
+      "questions": [
+        "party_a",
+        "party_a_id",
+        "party_b",
+        "party_b_id",
+        "contract_city",
+        "contact_email_a",
+        "contact_email_b",
+        "state_entity",
+        "regulated_service",
+        "object_clear",
+        "fixed_schedule",
+        "permanent_orders",
+        "disciplinary_control",
+        "continuous_availability",
+        "exclusive",
+        "personal_data",
+        "confidentiality",
+        "ip_relevant",
+        "object",
+        "deliverables",
+        "fees",
+        "start_date",
+        "end_date",
+        "payment_scheme",
+        "acceptance_days",
+        "subcontractors",
+        "early_termination"
+      ],
+      "rules": [
+        "EM3-R1",
+        "EM3-R2",
+        "EM3-R3",
+        "EM3-R4",
+        "EM3-R5",
+        "EM3-R6",
+        "EM3-R7",
+        "EM3-R8",
+        "EM3-R9",
+        "EM3-R10",
+        "EM3-R11",
+        "EM3-R12",
+        "EM3-R13",
+        "EM3-R14"
+      ]
+    },
+    "metrics": {
+      "questions": 27,
+      "rules": 14,
+      "sources": 6,
+      "test_scenarios": 8,
+      "possible_documents": 6
+    },
+    "document_logic": {
+      "always": [
+        "contract",
+        "scope",
+        "closure"
+      ],
+      "conditional": {
+        "confidentiality": "confidentiality == Sí",
+        "intellectual_property": "ip_relevant == Sí",
+        "data_processing": "personal_data == Sí"
+      },
+      "blocked": [
+        "state_entity == Sí",
+        "regulated_service == Sí",
+        "fixed_schedule == Sí",
+        "permanent_orders == Sí",
+        "disciplinary_control == Sí"
+      ]
+    },
+    "maturity_matrix": [
+      {
+        "component": "Página pública",
+        "before": "Contenido genérico y dos documentos visibles",
+        "change": "Texto final de producto y seis documentos condicionales",
+        "validation": "Detalle público y biblioteca"
+      },
+      {
+        "component": "Entrevista",
+        "before": "27 preguntas con ayuda desigual",
+        "change": "27 IDs conservadas, ayudas, ejemplos y validaciones completas",
+        "validation": "Pruebas de esquema y formulario"
+      },
+      {
+        "component": "Reglas",
+        "before": "Módulos ordinarios elevaban el riesgo",
+        "change": "Módulos verdes; alertas amarillas delimitadas; bloqueos rojos expresos",
+        "validation": "Ocho escenarios jurídicos"
+      },
+      {
+        "component": "Generación",
+        "before": "Flujo normal generaba contrato y alcance",
+        "change": "Generación condicional de tres a seis documentos",
+        "validation": "Pruebas end-to-end y QA DOCX/PDF"
+      },
+      {
+        "component": "Revisión",
+        "before": "Validación humana marcada como obligatoria",
+        "change": "Opcional en estándar, recomendada en amarillo, obligatoria en rojo",
+        "validation": "Modalidades verde/amarillo/rojo"
+      }
+    ],
+    "qa_criteria": [
+      "No reducir los 11 productos, 176 preguntas o 96 reglas globales.",
+      "No producir variables rotas o textos centinela.",
+      "Generar exactamente los módulos aplicables.",
+      "Bloquear los cinco supuestos expresos de fuera de alcance o subordinación.",
+      "Verificar visualmente todos los DOCX/PDF avanzados del producto.",
+      "Mantener advertencia de uso interno hasta aprobación jurídica final."
+    ],
+    "legal_foundations": [
+      "EM3-S1",
+      "EM3-S2",
+      "EM3-S3",
+      "EM3-S4",
+      "EM3-S5",
+      "EM3-S6"
+    ],
+    "limitations": [
+      "No incorpora el binario canónico original verificado.",
+      "No autoriza firma, radicación o uso profesional.",
+      "La clasificación laboral depende de la realidad y las pruebas.",
+      "No incluye contratación estatal ni clausulados sectoriales especiales."
+    ]
+  },
+  "notice": "Materiales aprobados para uso profesional controlado, sujetos a revisión específica del caso y a las compuertas de riesgo, vigencia y consistencia.",
+  "container_version": "2.35",
+  "internal_legal_approval": {
+    "code": "CO-EM-003",
+    "name": "Contrato de prestación de servicios",
+    "owner": "Comercial y empresarial",
+    "wave": "Primera ola",
+    "maturity_version": "2.13",
+    "decision_version": "2.28",
+    "internal_legal_status": "Aprobación jurídica interna asistida completada",
+    "human_ratification": true,
+    "dual_approval": true,
+    "professional_publication": "Bloqueada",
+    "questions": 27,
+    "rules": 14,
+    "sources": 6,
+    "scenarios": 8,
+    "documents": 6
+  },
+  "professional_use": true,
+  "publication_status": "Aprobado para uso profesional controlado",
+  "approval_model": "multi_stage_single_responsible",
+  "approval_date": "2026-07-28",
+  "approval_disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables.",
+  "m12_revalidation": {
+    "version": "M12.1",
+    "verified_at": "2026-07-30",
+    "status": "Revalidado para uso profesional controlado",
+    "scope": [
+      "autonomía y primacía de la realidad",
+      "IBC y pago mes vencido",
+      "ARL y SG-SST",
+      "propiedad intelectual",
+      "datos personales",
+      "firma electrónica"
+    ],
+    "active_library": "04_BIBLIOTECA_CONTRACTUAL_PROFUNDA/CO-EM-003"
+  }
+}

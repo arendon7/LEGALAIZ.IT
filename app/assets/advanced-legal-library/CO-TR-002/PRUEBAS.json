@@ -1,0 +1,34 @@
+[
+  {
+    "id": "TR2-T01",
+    "name": "Sin notificación ni resolución",
+    "answers": {
+      "electronic": "Sí",
+      "notice_received": "No",
+      "resolution": "No",
+      "coercive": "No",
+      "court": "No",
+      "deadline_urgent": "No",
+      "paid": "No",
+      "owner_updated_runt": "Sí",
+      "data_confirmed": "Sí"
+    },
+    "expected_risk": "yellow"
+  },
+  {
+    "id": "TR2-T02",
+    "name": "Cobro coactivo",
+    "answers": {
+      "electronic": "Sí",
+      "notice_received": "No",
+      "resolution": "Sí",
+      "coercive": "Sí",
+      "court": "No",
+      "deadline_urgent": "No",
+      "paid": "No",
+      "owner_updated_runt": "Sí",
+      "data_confirmed": "Sí"
+    },
+    "expected_risk": "red"
+  }
+]

@@ -1,0 +1,116 @@
+[
+  {
+    "id": "PR-LA1-001",
+    "name": "Relación vigente con corte de prestaciones",
+    "presets": {
+      "relationship.termination_type": "active",
+      "relationship.service_status": "active",
+      "termination.without_cause_claim": "no"
+    },
+    "warning": "El perfil organiza el expediente; no sustituye soportes, cálculo individual ni revisión jurídica."
+  },
+  {
+    "id": "PR-LA1-002",
+    "name": "Renuncia con liquidación pendiente",
+    "presets": {
+      "relationship.termination_type": "resignation",
+      "relationship.service_status": "ended",
+      "termination.without_cause_claim": "no"
+    },
+    "warning": "El perfil organiza el expediente; no sustituye soportes, cálculo individual ni revisión jurídica."
+  },
+  {
+    "id": "PR-LA1-003",
+    "name": "Mutuo acuerdo",
+    "presets": {
+      "relationship.termination_type": "mutual",
+      "relationship.service_status": "ended",
+      "settlement.generate": true
+    },
+    "warning": "El perfil organiza el expediente; no sustituye soportes, cálculo individual ni revisión jurídica."
+  },
+  {
+    "id": "PR-LA1-004",
+    "name": "Despido sin justa causa — indefinido",
+    "presets": {
+      "relationship.contract_type": "indefinite",
+      "relationship.termination_type": "without_cause",
+      "termination.without_cause_claim": "yes"
+    },
+    "warning": "El perfil organiza el expediente; no sustituye soportes, cálculo individual ni revisión jurídica."
+  },
+  {
+    "id": "PR-LA1-005",
+    "name": "Terminación anticipada — término fijo",
+    "presets": {
+      "relationship.contract_type": "fixed",
+      "relationship.termination_type": "without_cause",
+      "termination.without_cause_claim": "yes"
+    },
+    "warning": "El perfil organiza el expediente; no sustituye soportes, cálculo individual ni revisión jurídica."
+  },
+  {
+    "id": "PR-LA1-006",
+    "name": "Terminación anticipada — obra o labor",
+    "presets": {
+      "relationship.contract_type": "work",
+      "relationship.termination_type": "without_cause",
+      "termination.without_cause_claim": "yes"
+    },
+    "warning": "El perfil organiza el expediente; no sustituye soportes, cálculo individual ni revisión jurídica."
+  },
+  {
+    "id": "PR-LA1-007",
+    "name": "Justa causa discutida",
+    "presets": {
+      "relationship.termination_type": "just_cause",
+      "termination.cause_support": "partial",
+      "termination.without_cause_claim": "unknown"
+    },
+    "warning": "El perfil organiza el expediente; no sustituye soportes, cálculo individual ni revisión jurídica."
+  },
+  {
+    "id": "PR-LA1-008",
+    "name": "Salario variable",
+    "presets": {
+      "compensation.variable.exists": true,
+      "compensation.salary_type": "ordinary"
+    },
+    "warning": "El perfil organiza el expediente; no sustituye soportes, cálculo individual ni revisión jurídica."
+  },
+  {
+    "id": "PR-LA1-009",
+    "name": "Salario integral",
+    "presets": {
+      "compensation.salary_type": "integral",
+      "compensation.transport_aid": "no"
+    },
+    "warning": "El perfil organiza el expediente; no sustituye soportes, cálculo individual ni revisión jurídica."
+  },
+  {
+    "id": "PR-LA1-010",
+    "name": "Trabajo doméstico",
+    "presets": {
+      "scope.private_relation": "yes",
+      "risk.collective_regime": "no"
+    },
+    "warning": "El perfil organiza el expediente; no sustituye soportes, cálculo individual ni revisión jurídica."
+  },
+  {
+    "id": "PR-LA1-011",
+    "name": "Contrato realidad — escalamiento",
+    "presets": {
+      "risk.contract_reality": "yes"
+    },
+    "warning": "El perfil organiza el expediente; no sustituye soportes, cálculo individual ni revisión jurídica."
+  },
+  {
+    "id": "PR-LA1-012",
+    "name": "Protección especial o litigio",
+    "presets": {
+      "risk.special_protection": "yes",
+      "risk.active_proceeding": "lawsuit"
+    },
+    "warning": "El perfil organiza el expediente; no sustituye soportes, cálculo individual ni revisión jurídica."
+  }
+]

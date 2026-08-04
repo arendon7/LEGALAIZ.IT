@@ -1,0 +1,133 @@
+{
+  "schema": "legalai_product_revision_registry_v1",
+  "product_code": "CO-SA-001",
+  "public_name": "Solicitar atención, continuidad o respuesta de una entidad de salud",
+  "internal_name": "Petición y reclamo en salud",
+  "category": "Salud",
+  "jurisdiction": "Colombia",
+  "legacy_runtime_binding": {
+    "products_file": "data/products.json",
+    "interviews_file": "data/interviews.json",
+    "rules_file": "data/rules.json",
+    "document_templates_file": "data/document_templates.json",
+    "deep_library_path": "app/assets/advanced-legal-library/CO-SA-001",
+    "current_product_version": "2.31",
+    "current_publication_status": "Aprobado para uso profesional controlado"
+  },
+  "active_revision": "legacy-m21.1-current",
+  "published_revision": "legacy-m21.1-current",
+  "candidate_revision": "M23.2-c70e5d698954",
+  "revisions": [
+    "legacy-m21.1-current",
+    "M23.2-c70e5d698954"
+  ],
+  "candidate_revisions": [
+    "M23.2-c70e5d698954"
+  ],
+  "revision_metadata": {
+    "legacy-m21.1-current": {
+      "status": "published_controlled_legacy_binding",
+      "immutable": true,
+      "source_milestone": "M20.1/M21.1",
+      "quality_status": "reviewed",
+      "verified_at": "2026-07-31",
+      "binding_mode": "legacy_runtime_files"
+    }
+  },
+  "candidate_policy": {
+    "status": "candidate_blocked_pending_legal_and_qa_approval",
+    "active_revision_change_allowed": false,
+    "published_revision_change_allowed": false,
+    "legal_approval_required": true,
+    "qa_approval_required": true,
+    "must_be_distinct_users": true,
+    "scenario_qa_required": true
+  },
+  "registry_snapshot": {
+    "product_code": "CO-SA-001",
+    "internal_name": "Petición y reclamo en salud",
+    "public_name": "Solicitar atención, continuidad o respuesta de una entidad de salud",
+    "category": "Salud",
+    "problem_solved": "La persona necesita solicitar autorización, continuidad, entrega, programación o respuesta de una entidad del sistema de salud.",
+    "service_levels": [
+      "orientacion",
+      "documento_personalizado",
+      "solucion_revisada"
+    ],
+    "risk_level": "critical",
+    "scope": [
+      "petición o reclamo",
+      "índice de pruebas",
+      "calendario de seguimiento",
+      "reiteración y escalamiento"
+    ],
+    "exclusions": [
+      "urgencia vital tratada solo por documento",
+      "tutela o incidente activo sin revisión",
+      "entrega de historia clínica a tercero no autorizado"
+    ],
+    "required_evidence": [
+      "orden médica",
+      "historia o resumen pertinente",
+      "negación o demora",
+      "identificación",
+      "datos de afiliación",
+      "radicados previos"
+    ],
+    "pilot": false,
+    "jurisdiction": "CO",
+    "language": "es-CO",
+    "questionnaire_binding": {
+      "status": "pending_runtime_resolution",
+      "expected_legacy_ref": "M22://questionnaires/CO-SA-001",
+      "prohibition": "do_not_create_duplicate_questionnaire_before_runtime_audit"
+    },
+    "ruleset_binding": {
+      "status": "candidate_from_m23_2",
+      "source_file": "CO-SA-001/CO-SA-001_M23_Bloques_Reglas_y_Fuentes.json",
+      "rule_count": 8,
+      "rule_ids": [
+        "M23-SA1-001",
+        "M23-SA1-002",
+        "M23-SA1-003",
+        "M23-SA1-004",
+        "M23-SA1-005",
+        "M23-SA1-006",
+        "M23-SA1-007",
+        "M23-SA1-008"
+      ]
+    },
+    "template_candidate": {
+      "revision_label": "M23.2",
+      "master_docx": "CO-SA-001_Modelo_Maestro_Peticion_Reclamo_Salud_M23.docx",
+      "master_pdf": "CO-SA-001_Modelo_Maestro_Peticion_Reclamo_Salud_M23.pdf",
+      "worked_example_docx": "CO-SA-001_Ejemplo_Final_Continuidad_Tratamiento_M23.docx",
+      "worked_example_pdf": "CO-SA-001_Ejemplo_Final_Continuidad_Tratamiento_M23.pdf",
+      "integration_mode": "new_immutable_revision_no_overwrite"
+    },
+    "conditional_modules": [
+      "health_petition",
+      "health_claim",
+      "evidence_index",
+      "deadline_calendar",
+      "reiteration_and_escalation"
+    ],
+    "legal_sources": [
+      "Constitución Política",
+      "Ley 1751 de 2015",
+      "Ley 1755 de 2015",
+      "Decreto 780 de 2016",
+      "Circular Externa 2023151000000010-5 de 2023",
+      "Resoluciones 1995 de 1999 y 839 de 2017",
+      "Ley 1581 de 2012"
+    ],
+    "approvals": {
+      "legal_owner": "pending_assignment",
+      "qa_owner": "pending_assignment_distinct_from_legal_owner",
+      "legal_approval_required": true,
+      "qa_approval_required": true
+    },
+    "publication_status": "blocked_pending_runtime_integration_scenario_qa_and_dual_approval"
+  },
+  "last_migration_id": "M24.1-M23.2-PREINTEGRATION-20260801"
+}

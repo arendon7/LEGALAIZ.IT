@@ -1,0 +1,807 @@
+{
+  "version": "2.45",
+  "steps": [
+    {
+      "id": "parties",
+      "name": "Partes y relación"
+    },
+    {
+      "id": "configuration",
+      "name": "Configuración y finalidad"
+    },
+    {
+      "id": "information",
+      "name": "Información protegida"
+    },
+    {
+      "id": "access",
+      "name": "Acceso, uso y seguridad"
+    },
+    {
+      "id": "data",
+      "name": "Datos personales y transferencias"
+    },
+    {
+      "id": "ip",
+      "name": "Propiedad intelectual y tecnología"
+    },
+    {
+      "id": "ai_incidents",
+      "name": "IA, terceros e incidentes"
+    },
+    {
+      "id": "term_closure",
+      "name": "Vigencia, remedios y cierre"
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q-EM4-001",
+      "step_id": "parties",
+      "label": "Tipo de acuerdo de confidencialidad",
+      "variable_path": "agreement.type",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "unilateral",
+          "Unilateral"
+        ],
+        [
+          "mutual",
+          "Mutuo"
+        ],
+        [
+          "multilateral",
+          "Multilateral"
+        ]
+      ]
+    },
+    {
+      "id": "Q-EM4-002",
+      "step_id": "parties",
+      "label": "Identificación completa de la Parte A",
+      "variable_path": "party_a.identification",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "type",
+          "label": "Tipo de persona",
+          "type": "select",
+          "required": true,
+          "options": [
+            [
+              "legal_person",
+              "Persona jurídica"
+            ],
+            [
+              "natural_person",
+              "Persona natural"
+            ]
+          ]
+        },
+        {
+          "key": "name",
+          "label": "Nombre o razón social",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "id_number",
+          "label": "Identificación o NIT",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "address",
+          "label": "Domicilio o dirección",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "email",
+          "label": "Correo contractual",
+          "type": "email",
+          "required": true
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-EM4-003",
+      "step_id": "parties",
+      "label": "Firmante de la Parte A y fuente de facultad",
+      "variable_path": "party_a.signatory",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Nombre del firmante",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "id_number",
+          "label": "Identificación",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "capacity",
+          "label": "Cargo o calidad",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "authority_source",
+          "label": "Fuente de facultad",
+          "type": "text",
+          "required": true
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-EM4-004",
+      "step_id": "parties",
+      "label": "Identificación completa de la Parte B",
+      "variable_path": "party_b.identification",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "type",
+          "label": "Tipo de persona",
+          "type": "select",
+          "required": true,
+          "options": [
+            [
+              "legal_person",
+              "Persona jurídica"
+            ],
+            [
+              "natural_person",
+              "Persona natural"
+            ]
+          ]
+        },
+        {
+          "key": "name",
+          "label": "Nombre o razón social",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "id_number",
+          "label": "Identificación o NIT",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "address",
+          "label": "Domicilio o dirección",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "email",
+          "label": "Correo contractual",
+          "type": "email",
+          "required": true
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-EM4-005",
+      "step_id": "parties",
+      "label": "Firmante de la Parte B y fuente de facultad",
+      "variable_path": "party_b.signatory",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Nombre del firmante",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "id_number",
+          "label": "Identificación",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "capacity",
+          "label": "Cargo o calidad",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "authority_source",
+          "label": "Fuente de facultad",
+          "type": "text",
+          "required": true
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-EM4-006",
+      "step_id": "parties",
+      "label": "Contexto principal de la relación",
+      "variable_path": "relationship.context",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "preliminary_negotiation",
+          "Negociación preliminar"
+        ],
+        [
+          "commercial_supplier",
+          "Comercial o proveedor"
+        ],
+        [
+          "independent_services",
+          "Servicios independientes"
+        ],
+        [
+          "employment_collaboration",
+          "Laboral o colaboración"
+        ],
+        [
+          "software_technology",
+          "Software o tecnología"
+        ],
+        [
+          "creative_content",
+          "Contenidos o creación"
+        ],
+        [
+          "research_development",
+          "Investigación y desarrollo"
+        ],
+        [
+          "strategic_alliance",
+          "Alianza estratégica"
+        ],
+        [
+          "investment_due_diligence",
+          "Inversión o debida diligencia"
+        ],
+        [
+          "data_processing",
+          "Tratamiento de datos"
+        ],
+        [
+          "other",
+          "Otro"
+        ]
+      ]
+    },
+    {
+      "id": "Q-EM4-007",
+      "step_id": "configuration",
+      "label": "Finalidad autorizada para revelar y utilizar la información",
+      "variable_path": "agreement.purpose",
+      "type": "textarea",
+      "required": true
+    },
+    {
+      "id": "Q-EM4-008",
+      "step_id": "configuration",
+      "label": "Proyecto, operación o relación a la cual se limita el acuerdo",
+      "variable_path": "agreement.reference",
+      "type": "textarea",
+      "required": true
+    },
+    {
+      "id": "Q-EM4-009",
+      "step_id": "configuration",
+      "label": "¿La obligación es recíproca para todas las partes?",
+      "variable_path": "agreement.reciprocal",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q-EM4-010",
+      "step_id": "information",
+      "label": "Categorías concretas de información protegida",
+      "variable_path": "information.categories",
+      "type": "textarea",
+      "required": true
+    },
+    {
+      "id": "Q-EM4-011",
+      "step_id": "information",
+      "label": "Formatos, fuentes y canales por los cuales se revelará",
+      "variable_path": "information.formats_sources",
+      "type": "textarea",
+      "required": true
+    },
+    {
+      "id": "Q-EM4-012",
+      "step_id": "information",
+      "label": "Tratamiento de revelaciones orales, visuales o demostraciones",
+      "variable_path": "information.oral_visual_rule",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "protected_without_confirmation",
+          "Protegidas sin confirmación posterior"
+        ],
+        [
+          "written_confirmation",
+          "Exigen confirmación escrita posterior"
+        ],
+        [
+          "not_protected",
+          "No se consideran protegidas salvo identificación escrita"
+        ]
+      ]
+    },
+    {
+      "id": "Q-EM4-013",
+      "step_id": "information",
+      "label": "Exclusiones de la definición de información confidencial",
+      "variable_path": "information.exclusions",
+      "type": "textarea",
+      "required": true
+    },
+    {
+      "id": "Q-EM4-014",
+      "step_id": "information",
+      "label": "¿Incluye secretos empresariales o know-how crítico?",
+      "variable_path": "information.trade_secrets",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q-EM4-015",
+      "step_id": "information",
+      "label": "Regla de identificación o marcado de la información",
+      "variable_path": "information.marking_rule",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "category_based",
+          "Protección por categoría y contexto"
+        ],
+        [
+          "marked_only",
+          "Solo información marcada"
+        ],
+        [
+          "hybrid",
+          "Sistema híbrido"
+        ],
+        [
+          "no_marking",
+          "Sin requisito de marcado"
+        ]
+      ]
+    },
+    {
+      "id": "Q-EM4-016",
+      "step_id": "access",
+      "label": "Personas, áreas o terceros autorizados para acceder",
+      "variable_path": "access.authorized_recipients",
+      "type": "textarea",
+      "required": true
+    },
+    {
+      "id": "Q-EM4-017",
+      "step_id": "access",
+      "label": "Representantes, asesores, afiliadas o subcontratistas permitidos",
+      "variable_path": "access.representatives",
+      "type": "textarea",
+      "required": true
+    },
+    {
+      "id": "Q-EM4-018",
+      "step_id": "access",
+      "label": "Regla de necesidad de conocer y matriz de acceso",
+      "variable_path": "access.need_to_know",
+      "type": "textarea",
+      "required": true
+    },
+    {
+      "id": "Q-EM4-019",
+      "step_id": "access",
+      "label": "Usos autorizados, copias y reproducciones permitidas",
+      "variable_path": "access.permitted_use",
+      "type": "textarea",
+      "required": true
+    },
+    {
+      "id": "Q-EM4-020",
+      "step_id": "access",
+      "label": "Procedimiento ante orden legal o requerimiento de autoridad",
+      "variable_path": "access.compelled_disclosure",
+      "type": "textarea",
+      "required": true
+    },
+    {
+      "id": "Q-EM4-021",
+      "step_id": "access",
+      "label": "Nivel y medidas mínimas de seguridad",
+      "variable_path": "security.controls",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "level",
+          "label": "Nivel",
+          "type": "select",
+          "required": true,
+          "options": [
+            [
+              "basic",
+              "Básico"
+            ],
+            [
+              "enhanced",
+              "Reforzado"
+            ],
+            [
+              "critical",
+              "Crítico"
+            ]
+          ]
+        },
+        {
+          "key": "technical",
+          "label": "Controles técnicos",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "organizational",
+          "label": "Controles organizacionales",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "physical",
+          "label": "Controles físicos",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-EM4-022",
+      "step_id": "data",
+      "label": "¿La información incluye datos personales?",
+      "variable_path": "data.personal",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q-EM4-023",
+      "step_id": "data",
+      "label": "Roles y responsabilidades de tratamiento",
+      "variable_path": "data.roles",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "party_a_role",
+          "label": "Rol Parte A",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "responsible",
+              "Responsable"
+            ],
+            [
+              "processor",
+              "Encargado"
+            ],
+            [
+              "independent",
+              "Responsable independiente"
+            ],
+            [
+              "none",
+              "No aplica"
+            ]
+          ]
+        },
+        {
+          "key": "party_b_role",
+          "label": "Rol Parte B",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "responsible",
+              "Responsable"
+            ],
+            [
+              "processor",
+              "Encargado"
+            ],
+            [
+              "independent",
+              "Responsable independiente"
+            ],
+            [
+              "none",
+              "No aplica"
+            ]
+          ]
+        },
+        {
+          "key": "instructions",
+          "label": "Instrucciones y finalidades",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-EM4-024",
+      "step_id": "data",
+      "label": "¿Incluye datos sensibles, biométricos, de salud o de menores?",
+      "variable_path": "data.sensitive_or_children",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q-EM4-025",
+      "step_id": "data",
+      "label": "¿Habrá transferencia internacional o nube fuera de Colombia?",
+      "variable_path": "data.crossborder",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "no",
+          "No"
+        ],
+        [
+          "yes",
+          "Sí"
+        ],
+        [
+          "unknown",
+          "No se sabe"
+        ]
+      ]
+    },
+    {
+      "id": "Q-EM4-026",
+      "step_id": "data",
+      "label": "Conservación, devolución, supresión y evidencia",
+      "variable_path": "data.lifecycle",
+      "type": "textarea",
+      "required": false
+    },
+    {
+      "id": "Q-EM4-027",
+      "step_id": "ip",
+      "label": "Asignación prevista sobre resultados de propiedad intelectual",
+      "variable_path": "ip.results_allocation",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "none",
+          "No se asignarán resultados"
+        ],
+        [
+          "license",
+          "Licencia delimitada"
+        ],
+        [
+          "assignment",
+          "Cesión patrimonial delimitada"
+        ],
+        [
+          "shared",
+          "Titularidad compartida"
+        ],
+        [
+          "to_define",
+          "Por definir"
+        ]
+      ]
+    },
+    {
+      "id": "Q-EM4-028",
+      "step_id": "ip",
+      "label": "Materiales, tecnología o contenidos preexistentes",
+      "variable_path": "ip.preexisting_materials",
+      "type": "textarea",
+      "required": false
+    },
+    {
+      "id": "Q-EM4-029",
+      "step_id": "ip",
+      "label": "Software de código abierto y componentes de terceros",
+      "variable_path": "ip.oss_third_party",
+      "type": "textarea",
+      "required": false
+    },
+    {
+      "id": "Q-EM4-030",
+      "step_id": "ip",
+      "label": "Código fuente, ingeniería inversa e interoperabilidad",
+      "variable_path": "ip.source_code_reverse_engineering",
+      "type": "textarea",
+      "required": false
+    },
+    {
+      "id": "Q-EM4-031",
+      "step_id": "ip",
+      "label": "¿Se pretende una cesión general de obras o resultados futuros indeterminados?",
+      "variable_path": "ip.future_assignment_broad",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q-EM4-032",
+      "step_id": "ip",
+      "label": "¿Se pretende renunciar o transferir derechos morales?",
+      "variable_path": "ip.moral_rights_waiver",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q-EM4-033",
+      "step_id": "ai_incidents",
+      "label": "¿Se utilizarán herramientas de inteligencia artificial?",
+      "variable_path": "ai.used",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q-EM4-034",
+      "step_id": "ai_incidents",
+      "label": "¿Se cargará información confidencial en IA pública o no autorizada?",
+      "variable_path": "ai.public_upload",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q-EM4-035",
+      "step_id": "ai_incidents",
+      "label": "Entrenamiento de modelos, retención y titularidad de resultados de IA",
+      "variable_path": "ai.training_outputs",
+      "type": "textarea",
+      "required": false
+    },
+    {
+      "id": "Q-EM4-036",
+      "step_id": "ai_incidents",
+      "label": "Protocolo de incidentes, notificación y preservación de evidencia",
+      "variable_path": "security.incident_protocol",
+      "type": "textarea",
+      "required": true
+    },
+    {
+      "id": "Q-EM4-037",
+      "step_id": "term_closure",
+      "label": "Vigencia, supervivencia y remedios",
+      "variable_path": "term_remedies",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "agreement_years",
+          "label": "Vigencia del acuerdo (años)",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "ordinary_confidentiality_years",
+          "label": "Reserva ordinaria posterior (años)",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "trade_secret_rule",
+          "label": "Duración para secretos empresariales",
+          "type": "select",
+          "required": true,
+          "options": [
+            [
+              "while_secret",
+              "Mientras conserve carácter secreto"
+            ],
+            [
+              "fixed",
+              "Plazo fijo"
+            ],
+            [
+              "not_applicable",
+              "No aplica"
+            ]
+          ]
+        },
+        {
+          "key": "general_noncompete",
+          "label": "¿Prohibición general de trabajar después de terminar?",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "key": "penalty_or_liability",
+          "label": "Cláusula penal, responsabilidad y remedios",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-EM4-038",
+      "step_id": "term_closure",
+      "label": "Devolución, cierre, controversias, firma y confirmación",
+      "variable_path": "closure_confirmation",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "return_destroy",
+          "label": "Devolución o destrucción",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "retained_copies",
+          "label": "Copias legales, respaldo y conservación probatoria",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "dispute_mechanism",
+          "label": "Mecanismo de controversias",
+          "type": "select",
+          "required": true,
+          "options": [
+            [
+              "ordinary_courts",
+              "Jurisdicción ordinaria"
+            ],
+            [
+              "negotiation_conciliation",
+              "Negociación y conciliación"
+            ],
+            [
+              "arbitration",
+              "Arbitraje"
+            ],
+            [
+              "to_define",
+              "Por definir"
+            ]
+          ]
+        },
+        {
+          "key": "electronic_signature",
+          "label": "¿Se utilizará firma electrónica?",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "key": "confirmed",
+          "label": "¿La información fue revisada y confirmada?",
+          "type": "boolean",
+          "required": true
+        }
+      ],
+      "columns": 2
+    }
+  ]
+}

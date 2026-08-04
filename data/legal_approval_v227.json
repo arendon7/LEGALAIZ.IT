@@ -1,0 +1,69 @@
+{
+  "version": "2.27",
+  "release": "Primera ola de aprobación jurídica",
+  "date": "2026-07-19",
+  "reconstruction": {
+    "status": "reconstrucción funcional desde v2.26",
+    "reason": "El binario ZIP original v2.27 no estuvo disponible; se conservaron su hash publicado y los expedientes derivados recuperados.",
+    "original_zip_sha256": "28a7880f8500d8237a51476fd5cdd3c7bea7c0cebd53b51c4c4da6b258839c93",
+    "binary_equivalence_claimed": false,
+    "functional_continuity": true
+  },
+  "standard": {
+    "name": "Estándar contractual canónico",
+    "status": "candidato para aprobación interna",
+    "principles": [
+      "Arquitectura modular y proporcional al riesgo, no extensión artificial.",
+      "Cláusulas numeradas, tituladas, ejecutables y conectadas con hechos, preguntas, reglas y fuentes.",
+      "Variables tipadas, validadas y sin marcadores sin resolver.",
+      "Anexos integrales con numeración estable, prelación y control de versiones.",
+      "Aprobación vinculada al hash exacto; cambios sustantivos invalidan la aprobación afectada.",
+      "Aprobación jurídica y QA diferenciados, trazables e inmutables."
+    ]
+  },
+  "products": [
+    {
+      "code": "CO-EM-003",
+      "name": "Contrato de prestación de servicios independientes",
+      "source_lineage": "v2.13 / modelos completos v2.15",
+      "package_sha256": "196f280ffcc6c9e374a8d51de65992a84dff371ea947b266b92fc55c7ddc238a",
+      "principal_sha256": "86fc4cd9fa630e3cb8aaeccef4bd877849c80bd339cdb41b5405c3faaccd07f3",
+      "clauses": 31,
+      "status": "candidato para aprobación"
+    },
+    {
+      "code": "CO-EM-004",
+      "name": "Confidencialidad, secretos empresariales y propiedad intelectual",
+      "source_lineage": "v2.14 / modelos completos v2.15",
+      "package_sha256": "6f7162f628e8daeece0333db297449e92fcc413662a59d34dbee42be68b059f6",
+      "principal_sha256": "26788e51eb25480e247517c0087623348349500996923a6057ee2e4beb23283e",
+      "clauses": 27,
+      "status": "candidato para aprobación"
+    },
+    {
+      "code": "CO-AR-001",
+      "name": "Contrato de arrendamiento de vivienda urbana",
+      "source_lineage": "v2.23 / modelos completos v2.15",
+      "package_sha256": "d5213ae4236665a4d4af8412a495d0f74d0d6a0f586630971608eb7d689da87f",
+      "principal_sha256": "e762a325cae39fb814a9bd51322f0748b6217d55c73dd5783ed06b01c913ed2b",
+      "clauses": 29,
+      "status": "candidato para aprobación"
+    },
+    {
+      "code": "CO-LA-002",
+      "name": "Contrato individual de trabajo y anexos laborales",
+      "source_lineage": "v2.24 / modelos completos v2.15",
+      "package_sha256": "4bf57c8c3036f902f310602950c16adcc64876b229cc87669d4b9f7ff5ce86cc",
+      "principal_sha256": "f9949ba18dc84ab52f360e1f97a1ec6708bf1ee15a33026c51dc501a7c58f3ab",
+      "clauses": 31,
+      "status": "candidato para aprobación"
+    }
+  ],
+  "gates": [
+    "revisión jurídica del hash exacto",
+    "consistencia cláusula-pregunta-regla-fuente",
+    "ausencia de variables rotas",
+    "QA DOCX/PDF",
+    "aprobación dual y registro de auditoría"
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "schema": "legalaizit-m7-active-regression-v3",
+  "execution": "isolated_by_module",
+  "files": 16,
+  "passed": 115,
+  "subtests": 630,
+  "failed": 0,
+  "errors": 0,
+  "duration_seconds": 164.9,
+  "ok": true,
+  "results": [
+    {
+      "file": "test_assisted_review.py",
+      "returncode": 0,
+      "passed": 7,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 12.22
+    },
+    {
+      "file": "test_continuity_delivery.py",
+      "returncode": 0,
+      "passed": 5,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 9.2
+    },
+    {
+      "file": "test_document_factory.py",
+      "returncode": 0,
+      "passed": 8,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 15.92
+    },
+    {
+      "file": "test_engine.py",
+      "returncode": 0,
+      "passed": 15,
+      "subtests": 154,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 2.95
+    },
+    {
+      "file": "test_infrastructure.py",
+      "returncode": 0,
+      "passed": 8,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 19.71
+    },
+    {
+      "file": "test_m7_security_operational.py",
+      "returncode": 0,
+      "passed": 8,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 16.52
+    },
+    {
+      "file": "test_normative_updates.py",
+      "returncode": 0,
+      "passed": 7,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 14.04
+    },
+    {
+      "file": "test_pdf_acceptance.py",
+      "returncode": 0,
+      "passed": 5,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 9.32
+    },
+    {
+      "file": "test_public_portal.py",
+      "returncode": 0,
+      "passed": 3,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 2.21
+    },
+    {
+      "file": "test_release_candidate.py",
+      "returncode": 0,
+      "passed": 11,
+      "subtests": 476,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 0.53
+    },
+    {
+      "file": "test_review_batches.py",
+      "returncode": 0,
+      "passed": 6,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 10.1
+    },
+    {
+      "file": "test_security.py",
+      "returncode": 0,
+      "passed": 7,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 5.08
+    },
+    {
+      "file": "test_self_service.py",
+      "returncode": 0,
+      "passed": 4,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 7.56
+    },
+    {
+      "file": "test_source_intake.py",
+      "returncode": 0,
+      "passed": 8,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 14.86
+    },
+    {
+      "file": "test_traceability.py",
+      "returncode": 0,
+      "passed": 7,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 12.05
+    },
+    {
+      "file": "test_workflows.py",
+      "returncode": 0,
+      "passed": 6,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 12.63
+    }
+  ],
+  "note": "Aislamiento por módulo para evitar que servidores locales y estados temporales heredados contaminen la siguiente suite."
+}

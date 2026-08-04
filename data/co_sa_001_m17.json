@@ -1,0 +1,71 @@
+{
+  "version": "M17.1",
+  "product_code": "CO-SA-001",
+  "title": "Derecho de petición a EPS o IPS",
+  "objective": "Clasificar riesgo, eliminar barreras, exigir respuesta cualificada y solución material, proteger historia clínica y definir escalamiento.",
+  "verified_at": "2026-07-31",
+  "status": "Revalidado M17 para uso profesional controlado",
+  "documents": [
+    {
+      "kind": "diagnostic",
+      "title": "Diagnóstico jurídico y ruta de salud",
+      "conditional": false
+    },
+    {
+      "kind": "petition",
+      "title": "Derecho de petición prioritario",
+      "conditional": false
+    },
+    {
+      "kind": "record",
+      "title": "Solicitud de historia clínica",
+      "conditional": false
+    },
+    {
+      "kind": "evidence",
+      "title": "Matriz de evidencia, términos y respuesta",
+      "conditional": false
+    },
+    {
+      "kind": "reiteration",
+      "title": "Reiteración y medida urgente",
+      "conditional": false
+    },
+    {
+      "kind": "supersalud",
+      "title": "Reclamo ante Supersalud",
+      "conditional": true
+    },
+    {
+      "kind": "tutela_guide",
+      "title": "Guía de valoración de tutela",
+      "conditional": true
+    }
+  ],
+  "controls": [
+    "triage y urgencia",
+    "reclamo vital 24 h",
+    "reclamo priorizado 48 h",
+    "reclamo simple 72 h",
+    "términos 15/10/30",
+    "respuesta de fondo y notificación",
+    "solución material",
+    "continuidad e integralidad",
+    "historia clínica y reserva",
+    "Supersalud",
+    "tutela y medida provisional",
+    "minimización de datos"
+  ],
+  "official_source_ids": [
+    "SA1-S1",
+    "SA1-S2",
+    "SA1-S3",
+    "SA1-S4",
+    "SA1-S5",
+    "SA1-S6",
+    "SA1-S7",
+    "SA1-S8",
+    "SA1-S9",
+    "SA1-S10"
+  ]
+}

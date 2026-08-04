@@ -1,0 +1,313 @@
+[
+  {
+    "template_id": "TPL-CO-TR-002-TRAFFIC-REQUEST",
+    "product_code": "CO-TR-002",
+    "kind": "traffic_request",
+    "title": "Solicitud integral de expediente y reclamación por notificación",
+    "subtitle": "Borrador condicionado por etapa y prueba",
+    "filename_suffix": "solicitud_expediente_fotomulta",
+    "version_label": "2.0-factory",
+    "canonical_status": "Estructura piloto normalizada; importación y cotejo íntegro del paquete canónico pendiente",
+    "source_package": "LegalAIZit_Paquete_10_Fotomulta_No_Notificada_Consolidado_v2",
+    "variables": [
+      {
+        "id": "authority",
+        "label": "Autoridad de tránsito",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "plate",
+        "label": "Placa del vehículo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "comparendo_number",
+        "label": "Número del comparendo",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "event_date",
+        "label": "Fecha de la presunta infracción",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "electronic",
+        "label": "¿Fue detectada por cámara o medio tecnológico?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "notice_received",
+        "label": "¿Recibió notificación verificable?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "resolution",
+        "label": "¿Existe resolución sancionatoria?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "coercive",
+        "label": "¿Hay cobro coactivo, mandamiento o embargo?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "court",
+        "label": "¿Existe proceso judicial activo?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "evidence",
+        "label": "Soportes disponibles",
+        "type": "multiselect",
+        "required": false
+      },
+      {
+        "id": "owner_updated_runt",
+        "label": "¿Los datos del propietario estaban actualizados en RUNT?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "paid",
+        "label": "¿El comparendo fue pagado?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "deadline_urgent",
+        "label": "¿Hay un término próximo o una actuación en menos de 10 días?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que la información fue verificada con los soportes disponibles?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "petitioner_name",
+        "label": "Nombre completo del peticionario",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "petitioner_id",
+        "label": "Documento de identidad",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "address",
+        "label": "Dirección para notificaciones",
+        "type": "text",
+        "required": false
+      }
+    ],
+    "available_source_ids": [
+      "TR2-S1",
+      "TR2-S2",
+      "TR2-S3"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-TR-002-TRAFFIC-REQUEST-B01",
+        "type": "section",
+        "heading": "1. Peticionario y autoridad",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Campo",
+            "Información"
+          ],
+          [
+            "Peticionario",
+            "{{petitioner_name}}"
+          ],
+          [
+            "Identificación",
+            "{{petitioner_id}}"
+          ],
+          [
+            "Autoridad",
+            "{{authority}}"
+          ],
+          [
+            "Placa",
+            "{{plate}}"
+          ],
+          [
+            "Comparendo",
+            "{{comparendo_number}}"
+          ],
+          [
+            "Fecha de infracción",
+            "{{event_date}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "TR2-S1",
+          "TR2-S2",
+          "TR2-S3"
+        ],
+        "notes": "Estructura derivada del generador jurídico del prototipo. Comparar contra el paquete canónico antes de aprobación."
+      },
+      {
+        "id": "TPL-CO-TR-002-TRAFFIC-REQUEST-B02",
+        "type": "section",
+        "heading": "2. Hechos declarados",
+        "text": "",
+        "bullets": [
+          "Detección tecnológica: {{electronic}}.",
+          "Notificación verificable recibida: {{notice_received}}.",
+          "Resolución sancionatoria conocida: {{resolution}}.",
+          "Cobro coactivo, mandamiento o embargo: {{coercive}}.",
+          "Proceso judicial activo: {{court}}.",
+          "Datos RUNT actualizados: {{owner_updated_runt}}.",
+          "Pago realizado: {{paid}}."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "TR2-S1",
+          "TR2-S2",
+          "TR2-S3"
+        ],
+        "notes": "Estructura derivada del generador jurídico del prototipo. Comparar contra el paquete canónico antes de aprobación."
+      },
+      {
+        "id": "TPL-CO-TR-002-TRAFFIC-REQUEST-B03",
+        "type": "section",
+        "heading": "3. Solicitudes de expediente y trazabilidad",
+        "text": "",
+        "bullets": [
+          "Entregar copia íntegra del comparendo, evidencias, validación, identificación del dispositivo y registros técnicos disponibles.",
+          "Informar fechas, direcciones y canales utilizados para cada intento de notificación, con soportes de entrega, devolución, aviso o publicación.",
+          "Indicar si existe resolución, ejecutoria, recursos, cobro coactivo, mandamiento de pago o medida cautelar y remitir copia de cada actuación.",
+          "Habilitar o informar la oportunidad procesal compatible con la etapa real cuando se acredite afectación material del derecho de defensa.",
+          "Actualizar SIMIT, RUNT y sistemas internos únicamente conforme a la decisión que adopte la autoridad."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "TR2-S1",
+          "TR2-S2",
+          "TR2-S3"
+        ],
+        "notes": "Estructura derivada del generador jurídico del prototipo. Comparar contra el paquete canónico antes de aprobación."
+      },
+      {
+        "id": "TPL-CO-TR-002-TRAFFIC-REQUEST-B04",
+        "type": "section",
+        "heading": "4. Pretensiones condicionadas por etapa",
+        "text": "",
+        "bullets": [
+          "Sin resolución: solicitar acceso al expediente, audiencia y oportunidad probatoria.",
+          "Con resolución no notificada: solicitar copia, constancia de ejecutoria, recursos y revisión de la afectación concreta.",
+          "Con cobro coactivo o embargo: detener la automatización y remitir a especialista para excepciones y medidas.",
+          "Comparendo pagado: no pedir devolución automática; solicitar fundamento, estado del acto y ruta procedente.",
+          "Coincidencia SAST: pedir identificación exacta del dispositivo, período, actuación y decisión firme."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "TR2-S1",
+          "TR2-S2",
+          "TR2-S3"
+        ],
+        "notes": "Estructura derivada del generador jurídico del prototipo. Comparar contra el paquete canónico antes de aprobación."
+      },
+      {
+        "id": "TPL-CO-TR-002-TRAFFIC-REQUEST-B05",
+        "type": "section",
+        "heading": "5. Índice de soportes",
+        "text": "",
+        "bullets": [
+          "{{evidence}}"
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "TR2-S1",
+          "TR2-S2",
+          "TR2-S3"
+        ],
+        "notes": "Estructura derivada del generador jurídico del prototipo. Comparar contra el paquete canónico antes de aprobación."
+      },
+      {
+        "id": "TPL-CO-TR-002-TRAFFIC-REQUEST-B06",
+        "type": "section",
+        "heading": "6. Notificaciones",
+        "text": "Correo: {{email}}. Dirección: {{address}}. Solicito número de radicado y respuesta expresa y motivada.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "TR2-S1",
+          "TR2-S2",
+          "TR2-S3"
+        ],
+        "notes": "Estructura derivada del generador jurídico del prototipo. Comparar contra el paquete canónico antes de aprobación."
+      },
+      {
+        "id": "TPL-CO-TR-002-TRAFFIC-REQUEST-B07",
+        "type": "section",
+        "heading": "7. Advertencia de uso",
+        "text": "Este borrador no afirma la nulidad de la actuación ni garantiza anulación, archivo o devolución. La consecuencia jurídica depende del expediente, la etapa, la prueba y la afectación efectiva del derecho de defensa.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "TR2-S1",
+          "TR2-S2",
+          "TR2-S3"
+        ],
+        "notes": "Estructura derivada del generador jurídico del prototipo. Comparar contra el paquete canónico antes de aprobación."
+      },
+      {
+        "id": "TPL-CO-TR-002-TRAFFIC-REQUEST-CONTROL",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado dentro de un piloto jurídico-tecnológico. Antes de firmar, radicar, enviar o publicar, debe verificarse la información, la vigencia de las fuentes, los términos y la estrategia, y obtenerse la aprobación profesional correspondiente.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de control; no puede eliminarse desde el editor."
+      }
+    ]
+  }
+]

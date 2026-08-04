@@ -1,0 +1,14 @@
+{
+  "schema": "legalaizit-m7-payload-verification-v1",
+  "build": "M7-PREPRODUCTION-HARDENING-2026-07-29",
+  "payload_files": 2628,
+  "payload_bytes": 263117810,
+  "changes": {
+    "added": 31,
+    "modified": 21,
+    "removed": 13
+  },
+  "production_ready": false,
+  "hash_manifest": "FILE_HASHES_M7.json",
+  "hash_record": "SHA256SUMS_M7.txt"
+}

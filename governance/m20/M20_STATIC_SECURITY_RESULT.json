@@ -1,0 +1,8 @@
+{
+  "schema": "legalaizit-m20-static-security-v1",
+  "findings": [],
+  "high_or_critical": 0,
+  "passed": true,
+  "milestone": "M20",
+  "build_id": "M20-COBRO-ACUERDO-PAGARE-2026-07-31"
+}

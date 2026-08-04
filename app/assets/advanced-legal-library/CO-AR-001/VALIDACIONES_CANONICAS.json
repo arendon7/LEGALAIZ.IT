@@ -1,0 +1,92 @@
+[
+  {
+    "id": "V-AR-001",
+    "severity": "blocker",
+    "name": "Producto limitado a vivienda urbana ordinaria"
+  },
+  {
+    "id": "V-AR-002",
+    "severity": "blocker",
+    "name": "Propiedad o facultad suficiente del arrendador"
+  },
+  {
+    "id": "V-AR-003",
+    "severity": "blocker",
+    "name": "Controversia material sobre dominio, tenencia u ocupación"
+  },
+  {
+    "id": "V-AR-004",
+    "severity": "blocker",
+    "name": "Prohibición de depósito en dinero o caución real"
+  },
+  {
+    "id": "V-AR-005",
+    "severity": "blocker",
+    "name": "Canon máximo del uno por ciento del valor comercial"
+  },
+  {
+    "id": "V-AR-006",
+    "severity": "blocker",
+    "name": "Valor comercial limitado frente al avalúo catastral"
+  },
+  {
+    "id": "V-AR-007",
+    "severity": "review",
+    "name": "Entrega de reglas de propiedad horizontal"
+  },
+  {
+    "id": "V-AR-008",
+    "severity": "blocker",
+    "name": "Habitabilidad, seguridad y servicios esenciales"
+  },
+  {
+    "id": "V-AR-009",
+    "severity": "blocker",
+    "name": "Turismo, plataformas o uso comercial fuera de alcance"
+  },
+  {
+    "id": "V-AR-010",
+    "severity": "review",
+    "name": "Subarriendo o cesión sujetos a autorización expresa"
+  },
+  {
+    "id": "V-AR-011",
+    "severity": "blocker",
+    "name": "Servicios o usos adicionales dentro del límite legal"
+  },
+  {
+    "id": "V-AR-012",
+    "severity": "review",
+    "name": "Inventario reforzado para inmueble amoblado o bienes valiosos"
+  },
+  {
+    "id": "V-AR-013",
+    "severity": "review",
+    "name": "Pluralidad de arrendatarios, solidaridad y ocupantes"
+  },
+  {
+    "id": "V-AR-014",
+    "severity": "blocker",
+    "name": "Garantía personal o póliza suficientemente identificada"
+  },
+  {
+    "id": "V-AR-015",
+    "severity": "review",
+    "name": "Servicios públicos y procedimiento de denuncia del contrato"
+  },
+  {
+    "id": "V-AR-016",
+    "severity": "review",
+    "name": "Reajuste y comunicación conforme al régimen aplicable"
+  },
+  {
+    "id": "V-AR-017",
+    "severity": "review",
+    "name": "Terminación especial, venta, ocupación o preaviso atípico"
+  },
+  {
+    "id": "V-AR-018",
+    "severity": "blocker",
+    "name": "Confirmación final y tratamiento proporcional de datos"
+  }
+]

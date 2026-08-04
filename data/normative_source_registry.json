@@ -1,0 +1,488 @@
+{
+  "registry_reviewed_at": "2026-07-20",
+  "principles": [
+    "Priorizar fuentes oficiales y conservar URL, autoridad, fecha de consulta y evidencia.",
+    "Una alerta no modifica automáticamente preguntas, reglas, plantillas, parámetros ni documentos.",
+    "La similitud textual o la detección automatizada no equivalen a interpretación jurídica.",
+    "Toda modificación exige análisis de impacto, aprobación jurídica, QA técnico y trazabilidad de implementación.",
+    "SUIN-Juriscol es informativo y su seguimiento de vigencia no constituye certificación ni interpretación oficial definitiva."
+  ],
+  "sources": [
+    {
+      "id": "OF-SUIN-NORMAS",
+      "name": "SUIN-Juriscol — Normas de Colombia",
+      "authority": "Ministerio de Justicia y del Derecho",
+      "source_type": "Normativa general",
+      "url": "https://www.suin-juriscol.gov.co/legislacion/normatividad.html",
+      "scope": [
+        "leyes",
+        "decretos",
+        "resoluciones",
+        "circulares",
+        "vigencia y afectaciones informativas"
+      ],
+      "products": [
+        "CO-TR-001",
+        "CO-TR-002",
+        "CO-LA-001",
+        "CO-LA-002",
+        "CO-EM-003",
+        "CO-EM-004",
+        "CO-AR-001",
+        "CO-SA-001",
+        "CO-CD-001",
+        "CO-CD-003",
+        "CO-CD-004"
+      ],
+      "frequency": "Semanal",
+      "notes": "Fuente transversal. La verificación final debe contrastar el Diario Oficial, el texto del acto y sus afectaciones."
+    },
+    {
+      "id": "OF-SUIN-NOVEDADES",
+      "name": "SUIN-Juriscol — Derecho al día",
+      "authority": "Ministerio de Justicia y del Derecho",
+      "source_type": "Boletín de novedades normativas",
+      "url": "https://www.suin-juriscol.gov.co/legislacion/novedades.html",
+      "scope": [
+        "resúmenes normativos mensuales",
+        "novedades",
+        "divulgación"
+      ],
+      "products": [
+        "CO-TR-001",
+        "CO-TR-002",
+        "CO-LA-001",
+        "CO-LA-002",
+        "CO-EM-003",
+        "CO-EM-004",
+        "CO-AR-001",
+        "CO-SA-001",
+        "CO-CD-001",
+        "CO-CD-003",
+        "CO-CD-004"
+      ],
+      "frequency": "Mensual",
+      "notes": "Canal de descubrimiento; nunca sustituye el texto oficial completo."
+    },
+    {
+      "id": "OF-FUNCION-PUBLICA",
+      "name": "Gestor Normativo",
+      "authority": "Departamento Administrativo de la Función Pública",
+      "source_type": "Normativa, jurisprudencia y conceptos del sector público",
+      "url": "https://www.funcionpublica.gov.co/eva_/gestor-normativo",
+      "scope": [
+        "sector público",
+        "procedimiento administrativo",
+        "conceptos",
+        "jurisprudencia"
+      ],
+      "products": [
+        "CO-TR-001",
+        "CO-TR-002",
+        "CO-SA-001"
+      ],
+      "frequency": "Mensual",
+      "notes": "Fuente complementaria para asuntos administrativos y entidades públicas."
+    },
+    {
+      "id": "OF-CORTE-CONSTITUCIONAL",
+      "name": "Relatoría de la Corte Constitucional",
+      "authority": "Corte Constitucional de Colombia",
+      "source_type": "Jurisprudencia constitucional",
+      "url": "https://www.corteconstitucional.gov.co/relatoria/",
+      "scope": [
+        "sentencias de constitucionalidad",
+        "tutela",
+        "autos",
+        "temas de interés"
+      ],
+      "products": [
+        "CO-TR-001",
+        "CO-TR-002",
+        "CO-LA-001",
+        "CO-LA-002",
+        "CO-AR-001",
+        "CO-SA-001",
+        "CO-CD-001",
+        "CO-CD-003"
+      ],
+      "frequency": "Semanal",
+      "notes": "Verificar texto íntegro, salvamentos, aclaraciones y alcance vinculante aplicable."
+    },
+    {
+      "id": "OF-CONSEJO-ESTADO",
+      "name": "Consulta y boletines de jurisprudencia",
+      "authority": "Consejo de Estado",
+      "source_type": "Jurisprudencia contencioso-administrativa",
+      "url": "https://www.consejodeestado.gov.co/buscador-de-jurisprudencia2/index.htm",
+      "scope": [
+        "actos administrativos",
+        "tránsito",
+        "responsabilidad estatal",
+        "procedimiento administrativo"
+      ],
+      "products": [
+        "CO-TR-001",
+        "CO-TR-002",
+        "CO-SA-001"
+      ],
+      "frequency": "Semanal",
+      "notes": "Consultar Mi Relatoría para decisiones desde diciembre de 2021 y el buscador tradicional para anteriores."
+    },
+    {
+      "id": "OF-CORTE-SUPREMA",
+      "name": "Consulta jurisprudencial de la Corte Suprema de Justicia",
+      "authority": "Corte Suprema de Justicia / Rama Judicial",
+      "source_type": "Jurisprudencia ordinaria",
+      "url": "https://consultajurisprudencial.ramajudicial.gov.co/WebRelatoria/csj/index.xhtml",
+      "scope": [
+        "laboral",
+        "civil",
+        "familia",
+        "comercial"
+      ],
+      "products": [
+        "CO-LA-001",
+        "CO-LA-002",
+        "CO-EM-003",
+        "CO-EM-004",
+        "CO-AR-001",
+        "CO-CD-004"
+      ],
+      "frequency": "Semanal",
+      "notes": "Verificar sala, radicación, fecha, problema jurídico y vigencia de la línea."
+    },
+    {
+      "id": "OF-MINTRABAJO",
+      "name": "Marco legal y normatividad laboral",
+      "authority": "Ministerio del Trabajo",
+      "source_type": "Normativa sectorial laboral",
+      "url": "https://www.mintrabajo.gov.co/marco-legal",
+      "scope": [
+        "Código Sustantivo del Trabajo",
+        "leyes",
+        "decretos",
+        "resoluciones",
+        "circulares"
+      ],
+      "products": [
+        "CO-LA-001",
+        "CO-LA-002",
+        "CO-EM-003"
+      ],
+      "frequency": "Semanal",
+      "notes": "Contrastar reformas, reglamentación, vigencias diferidas y circulares con el texto oficial."
+    },
+    {
+      "id": "OF-MINSALUD",
+      "name": "Normativa del sector salud",
+      "authority": "Ministerio de Salud y Protección Social",
+      "source_type": "Normativa sectorial de salud",
+      "url": "https://www.minsalud.gov.co/Normativa/paginas/normativa.aspx",
+      "scope": [
+        "derecho fundamental a la salud",
+        "EPS e IPS",
+        "historia clínica",
+        "resoluciones y circulares"
+      ],
+      "products": [
+        "CO-SA-001"
+      ],
+      "frequency": "Semanal",
+      "notes": "Revisar también instrucciones de Supersalud cuando resulten aplicables al trámite."
+    },
+    {
+      "id": "OF-SIC",
+      "name": "Normatividad de la SIC",
+      "authority": "Superintendencia de Industria y Comercio",
+      "source_type": "Protección al consumidor y datos personales",
+      "url": "https://www.sic.gov.co/normatividad",
+      "scope": [
+        "protección al consumidor",
+        "datos personales",
+        "comercio electrónico",
+        "circulares y resoluciones"
+      ],
+      "products": [
+        "CO-EM-004",
+        "CO-CD-001",
+        "CO-CD-003"
+      ],
+      "frequency": "Semanal",
+      "notes": "Verificar autoridad competente y diferenciar consumidor general, financiero y regímenes especiales."
+    },
+    {
+      "id": "OF-SUPERFINANCIERA",
+      "name": "Normativa de protección al consumidor financiero",
+      "authority": "Superintendencia Financiera de Colombia",
+      "source_type": "Regulación y doctrina financiera",
+      "url": "https://www.superfinanciera.gov.co/publicaciones/10083873/normativaproteccion-para-el-consumidor-financiero-10083873/",
+      "scope": [
+        "consumidor financiero",
+        "hábeas data financiero",
+        "entidades vigiladas",
+        "defensor del consumidor financiero"
+      ],
+      "products": [
+        "CO-CD-001",
+        "CO-CD-003",
+        "CO-CD-004"
+      ],
+      "frequency": "Mensual",
+      "notes": "Aplicar solo cuando la contraparte o el asunto esté dentro de la competencia financiera."
+    },
+    {
+      "id": "OF-DIAN",
+      "name": "Normatividad DIAN",
+      "authority": "Dirección de Impuestos y Aduanas Nacionales",
+      "source_type": "Normativa y doctrina tributaria",
+      "url": "https://www.dian.gov.co/normatividad/Paginas/Inicio.aspx",
+      "scope": [
+        "retenciones",
+        "facturación",
+        "conceptos",
+        "resoluciones",
+        "obligaciones tributarias"
+      ],
+      "products": [
+        "CO-EM-003",
+        "CO-EM-004",
+        "CO-CD-004"
+      ],
+      "frequency": "Mensual",
+      "notes": "Los documentos contractuales no sustituyen asesoría tributaria individual."
+    },
+    {
+      "id": "OF-MINCIT",
+      "name": "Normatividad del sector Comercio, Industria y Turismo",
+      "authority": "Ministerio de Comercio, Industria y Turismo",
+      "source_type": "Normativa comercial y de consumo",
+      "url": "https://www.mincit.gov.co/normatividad",
+      "scope": [
+        "comercio",
+        "empresa",
+        "factura electrónica como título valor",
+        "consumo"
+      ],
+      "products": [
+        "CO-EM-003",
+        "CO-EM-004",
+        "CO-CD-003",
+        "CO-CD-004"
+      ],
+      "frequency": "Mensual",
+      "notes": "Fuente sectorial complementaria; contrastar con SUIN, SIC y autoridad competente."
+    }
+  ],
+  "profiles": [
+    {
+      "product_code": "CO-TR-001",
+      "frequency": "Semanal",
+      "owner_specialty": "Tránsito y administrativo",
+      "topics": [
+        "SAST",
+        "autorización de sistemas automáticos",
+        "metrología",
+        "procedimiento sancionatorio",
+        "protección de datos"
+      ],
+      "source_ids": [
+        "OF-SUIN-NORMAS",
+        "OF-SUIN-NOVEDADES",
+        "OF-FUNCION-PUBLICA",
+        "OF-CORTE-CONSTITUCIONAL",
+        "OF-CONSEJO-ESTADO"
+      ]
+    },
+    {
+      "product_code": "CO-TR-002",
+      "frequency": "Semanal",
+      "owner_specialty": "Tránsito y administrativo",
+      "topics": [
+        "fotodetección",
+        "notificación",
+        "debido proceso",
+        "cobro coactivo",
+        "caducidad y prescripción"
+      ],
+      "source_ids": [
+        "OF-SUIN-NORMAS",
+        "OF-CORTE-CONSTITUCIONAL",
+        "OF-CONSEJO-ESTADO",
+        "OF-FUNCION-PUBLICA"
+      ]
+    },
+    {
+      "product_code": "CO-LA-001",
+      "frequency": "Semanal",
+      "owner_specialty": "Derecho laboral",
+      "topics": [
+        "salario",
+        "prestaciones",
+        "indemnizaciones",
+        "jornada",
+        "reforma laboral",
+        "estabilidad reforzada"
+      ],
+      "source_ids": [
+        "OF-SUIN-NORMAS",
+        "OF-MINTRABAJO",
+        "OF-CORTE-SUPREMA",
+        "OF-CORTE-CONSTITUCIONAL"
+      ]
+    },
+    {
+      "product_code": "CO-LA-002",
+      "frequency": "Semanal",
+      "owner_specialty": "Derecho laboral",
+      "topics": [
+        "modalidades contractuales",
+        "jornada",
+        "trabajo remoto",
+        "período de prueba",
+        "terminación"
+      ],
+      "source_ids": [
+        "OF-SUIN-NORMAS",
+        "OF-MINTRABAJO",
+        "OF-CORTE-SUPREMA",
+        "OF-CORTE-CONSTITUCIONAL"
+      ]
+    },
+    {
+      "product_code": "CO-EM-003",
+      "frequency": "Semanal",
+      "owner_specialty": "Comercial, contratos y datos",
+      "topics": [
+        "subordinación",
+        "contrato realidad",
+        "retenciones",
+        "facturación",
+        "protección de datos",
+        "propiedad intelectual"
+      ],
+      "source_ids": [
+        "OF-SUIN-NORMAS",
+        "OF-MINTRABAJO",
+        "OF-CORTE-SUPREMA",
+        "OF-DIAN",
+        "OF-SIC",
+        "OF-MINCIT"
+      ]
+    },
+    {
+      "product_code": "CO-EM-004",
+      "frequency": "Mensual",
+      "owner_specialty": "Comercial, contratos y datos",
+      "topics": [
+        "secretos empresariales",
+        "propiedad intelectual",
+        "software",
+        "datos personales",
+        "incidentes"
+      ],
+      "source_ids": [
+        "OF-SUIN-NORMAS",
+        "OF-CORTE-SUPREMA",
+        "OF-SIC",
+        "OF-DIAN",
+        "OF-MINCIT"
+      ]
+    },
+    {
+      "product_code": "CO-AR-001",
+      "frequency": "Mensual",
+      "owner_specialty": "Civil e inmobiliario",
+      "topics": [
+        "vivienda urbana",
+        "depósitos",
+        "servicios públicos",
+        "terminación",
+        "restitución"
+      ],
+      "source_ids": [
+        "OF-SUIN-NORMAS",
+        "OF-CORTE-CONSTITUCIONAL",
+        "OF-CORTE-SUPREMA"
+      ]
+    },
+    {
+      "product_code": "CO-SA-001",
+      "frequency": "Semanal y antes de cada publicación",
+      "owner_specialty": "Salud y constitucional",
+      "topics": [
+        "derecho de petición",
+        "términos y prioridad",
+        "derecho fundamental a la salud",
+        "continuidad",
+        "historia clínica",
+        "datos sensibles",
+        "legitimación de terceros y fallecidos",
+        "PQRD Supersalud"
+      ],
+      "source_ids": [
+        "OF-SUIN-NORMAS",
+        "OF-MINSALUD",
+        "OF-CORTE-CONSTITUCIONAL",
+        "OF-FUNCION-PUBLICA"
+      ]
+    },
+    {
+      "product_code": "CO-CD-001",
+      "frequency": "Semanal",
+      "owner_specialty": "Consumo y datos",
+      "topics": [
+        "hábeas data",
+        "reporte negativo",
+        "permanencia",
+        "consulta y reclamo",
+        "consumidor financiero"
+      ],
+      "source_ids": [
+        "OF-SUIN-NORMAS",
+        "OF-SIC",
+        "OF-CORTE-CONSTITUCIONAL",
+        "OF-SUPERFINANCIERA"
+      ]
+    },
+    {
+      "product_code": "CO-CD-003",
+      "frequency": "Semanal",
+      "owner_specialty": "Consumo y datos",
+      "topics": [
+        "garantía",
+        "retracto",
+        "reversión",
+        "comercio electrónico",
+        "consumidor financiero"
+      ],
+      "source_ids": [
+        "OF-SUIN-NORMAS",
+        "OF-SIC",
+        "OF-MINCIT",
+        "OF-SUPERFINANCIERA",
+        "OF-CORTE-CONSTITUCIONAL"
+      ]
+    },
+    {
+      "product_code": "CO-CD-004",
+      "frequency": "Mensual",
+      "owner_specialty": "Civil y comercial",
+      "topics": [
+        "títulos valores",
+        "intereses",
+        "cobro",
+        "acuerdos de pago",
+        "pagaré",
+        "facturación"
+      ],
+      "source_ids": [
+        "OF-SUIN-NORMAS",
+        "OF-CORTE-SUPREMA",
+        "OF-SUPERFINANCIERA",
+        "OF-DIAN",
+        "OF-MINCIT"
+      ]
+    }
+  ]
+}

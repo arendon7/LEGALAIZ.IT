@@ -1,0 +1,132 @@
+[
+  {
+    "id": "SA-S1",
+    "title": "Constitución Política de Colombia — artículos 23, 44, 48 y 49",
+    "authority": "Secretaría Jurídica del Senado",
+    "type": "constitution",
+    "url": "https://www.secretariasenado.gov.co/senado/basedoc/constitucion_politica_1991.html",
+    "status": "vigente con verificación oficial",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificada para v2.31; revalidar antes de publicación"
+  },
+  {
+    "id": "SA-S2",
+    "title": "Ley Estatutaria 1755 de 2015 — derecho fundamental de petición",
+    "authority": "Secretaría Jurídica del Senado",
+    "type": "statute",
+    "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1755_2015.html",
+    "status": "vigente con afectaciones consultables",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificada para v2.31; términos calculados de forma preliminar"
+  },
+  {
+    "id": "SA-S3",
+    "title": "Ley 1437 de 2011 — CPACA, texto actualizado",
+    "authority": "Secretaría Jurídica del Senado",
+    "type": "code",
+    "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1437_2011.html",
+    "status": "vigente con modificaciones",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificada para reglas de petición y actuación administrativa"
+  },
+  {
+    "id": "SA-S4",
+    "title": "Ley Estatutaria 1751 de 2015 — derecho fundamental a la salud",
+    "authority": "Secretaría Jurídica del Senado",
+    "type": "statute",
+    "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1751_2015.html",
+    "status": "vigente",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificada para acceso, continuidad, información e historia clínica"
+  },
+  {
+    "id": "SA-S5",
+    "title": "Resolución 1995 de 1999 — manejo de historia clínica",
+    "authority": "Ministerio de Salud y Protección Social",
+    "type": "resolution",
+    "url": "https://www.minsalud.gov.co/ihce/Paginas/Normatividad.aspx",
+    "status": "consultada en normatividad oficial",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificada como referencia sectorial; cotejar texto íntegro al publicar"
+  },
+  {
+    "id": "SA-S6",
+    "title": "Resolución 839 de 2017 — custodia, retención y disposición final de historia clínica",
+    "authority": "Ministerio de Salud y Protección Social",
+    "type": "resolution",
+    "url": "https://www.minsalud.gov.co/ihce/Paginas/Normatividad.aspx",
+    "status": "consultada en normatividad oficial",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificada como referencia sectorial; cotejar texto íntegro al publicar"
+  },
+  {
+    "id": "SA-S7",
+    "title": "Ley 1581 de 2012 — protección de datos personales y datos sensibles",
+    "authority": "Secretaría Jurídica del Senado",
+    "type": "statute",
+    "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html",
+    "status": "vigente con reglamentación",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificada para minimización, seguridad y acceso a datos de salud"
+  },
+  {
+    "id": "SA-S8",
+    "title": "Ley 2015 de 2020 — historia clínica electrónica interoperable",
+    "authority": "Secretaría Jurídica del Senado",
+    "type": "statute",
+    "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2015_2020.html",
+    "status": "vigente con reglamentación",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificada para acceso y circulación controlada de información clínica"
+  },
+  {
+    "id": "SA-S9",
+    "title": "Resolución 229 de 2020 — carta de derechos y deberes de afiliados y pacientes",
+    "authority": "Ministerio de Salud y Protección Social / Normograma Supersalud",
+    "type": "resolution",
+    "url": "https://normograma.supersalud.gov.co/compilacion/docs/resolucion_minsaludps_0229_2020.htm",
+    "status": "texto oficial compilado",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificada para peticiones a EPS/IPS y atención prioritaria"
+  },
+  {
+    "id": "SA-S10",
+    "title": "Decreto 780 de 2016 — Decreto Único Reglamentario del Sector Salud",
+    "authority": "Ministerio de Salud y Protección Social",
+    "type": "decree",
+    "url": "https://www.minsalud.gov.co/Normativa/Paginas/decreto-unico-minsalud-780-de-2016.aspx",
+    "status": "compilación sectorial actualizable",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificada como marco reglamentario; revisar norma específica del trámite"
+  },
+  {
+    "id": "SA-S11",
+    "title": "Sentencia T-370 de 2025 — respuesta de EPS y Supersalud al derecho de petición",
+    "authority": "Corte Constitucional",
+    "type": "case_law",
+    "url": "https://www.corteconstitucional.gov.co/relatoria/2025/T-370-25.htm",
+    "status": "providencia oficial",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificada para respuesta oportuna, clara, congruente y efectivamente notificada"
+  },
+  {
+    "id": "SA-S12",
+    "title": "Sentencia T-343 de 2008 — acceso de familiares a historia clínica de paciente fallecido",
+    "authority": "Corte Constitucional",
+    "type": "case_law",
+    "url": "https://www.corteconstitucional.gov.co/relatoria/2008/t-343-08.htm",
+    "status": "providencia oficial",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificada como precedente; exige análisis individual de legitimación y finalidad"
+  },
+  {
+    "id": "SA-S13",
+    "title": "Canales, derechos y PQRD de la Superintendencia Nacional de Salud",
+    "authority": "Superintendencia Nacional de Salud",
+    "type": "official_guidance",
+    "url": "https://www.supersalud.gov.co/es-co/atencion-ciudadano/pqrd",
+    "status": "portal oficial operativo",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificada para ruta administrativa; canales y formularios pueden cambiar"
+  }
+]

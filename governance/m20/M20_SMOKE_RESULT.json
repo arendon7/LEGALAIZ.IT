@@ -1,0 +1,157 @@
+{
+  "ok": true,
+  "build_id": "M20-COBRO-ACUERDO-PAGARE-2026-07-31",
+  "checks": [
+    {
+      "name": "health",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "request_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "frontend_entry",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "frontend_main_module",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "frontend_core_module",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "frontend_quality_ui",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "login",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "live",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "ready",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "config",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "products",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "approval_status",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "rc_readiness",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "m7_readiness",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "privacy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "observability",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "product_quality",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "employment_quality",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "service_quality",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "confidentiality_quality",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "sast_quality",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lease_quality",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "traffic_notice_quality",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "labor_settlement_quality",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "health_petition_quality",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "financial_habeas_data_quality",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consumer_protection_quality",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "collection_quality",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "library_manifest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "logout",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "failed": []
+}

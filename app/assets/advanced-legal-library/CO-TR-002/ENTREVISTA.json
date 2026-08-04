@@ -1,0 +1,191 @@
+{
+  "version": "2.0",
+  "intro": "Responde con datos confirmados. El sistema explicará alertas y nunca ocultará los casos que requieren revisión profesional.",
+  "sections": [
+    "Peticionario",
+    "Identificación",
+    "Notificación",
+    "Etapa",
+    "Evidencia",
+    "Control"
+  ],
+  "questions": [
+    {
+      "id": "authority",
+      "label": "Autoridad de tránsito",
+      "type": "text",
+      "required": true,
+      "section": "Identificación"
+    },
+    {
+      "id": "plate",
+      "label": "Placa del vehículo",
+      "type": "text",
+      "required": true,
+      "section": "Identificación"
+    },
+    {
+      "id": "comparendo_number",
+      "label": "Número del comparendo",
+      "type": "text",
+      "required": false,
+      "section": "Identificación"
+    },
+    {
+      "id": "event_date",
+      "label": "Fecha de la presunta infracción",
+      "type": "date",
+      "required": true,
+      "section": "Identificación"
+    },
+    {
+      "id": "electronic",
+      "label": "¿Fue detectada por cámara o medio tecnológico?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Identificación"
+    },
+    {
+      "id": "notice_received",
+      "label": "¿Recibió notificación verificable?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Notificación"
+    },
+    {
+      "id": "resolution",
+      "label": "¿Existe resolución sancionatoria?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Etapa"
+    },
+    {
+      "id": "coercive",
+      "label": "¿Hay cobro coactivo, mandamiento o embargo?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Etapa"
+    },
+    {
+      "id": "court",
+      "label": "¿Existe proceso judicial activo?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Etapa"
+    },
+    {
+      "id": "evidence",
+      "label": "Soportes disponibles",
+      "type": "multiselect",
+      "options": [
+        "Comparendo",
+        "Consulta SIMIT/RUNT",
+        "Guía o correo devuelto",
+        "Resolución",
+        "Ninguno"
+      ],
+      "required": false,
+      "section": "Evidencia"
+    },
+    {
+      "id": "owner_updated_runt",
+      "label": "¿Los datos del propietario estaban actualizados en RUNT?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Notificación"
+    },
+    {
+      "id": "paid",
+      "label": "¿El comparendo fue pagado?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Etapa"
+    },
+    {
+      "id": "deadline_urgent",
+      "label": "¿Hay un término próximo o una actuación en menos de 10 días?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Etapa"
+    },
+    {
+      "id": "data_confirmed",
+      "label": "¿Confirma que la información fue verificada con los soportes disponibles?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No"
+      ],
+      "required": true,
+      "section": "Control"
+    },
+    {
+      "id": "petitioner_name",
+      "label": "Nombre completo del peticionario",
+      "type": "text",
+      "required": true,
+      "section": "Peticionario"
+    },
+    {
+      "id": "petitioner_id",
+      "label": "Documento de identidad",
+      "type": "text",
+      "required": true,
+      "section": "Peticionario"
+    },
+    {
+      "id": "email",
+      "label": "Correo para notificaciones",
+      "type": "text",
+      "required": true,
+      "section": "Peticionario"
+    },
+    {
+      "id": "address",
+      "label": "Dirección para notificaciones",
+      "type": "text",
+      "required": false,
+      "section": "Peticionario"
+    }
+  ],
+  "confirmation_required": true
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="t d">
+<title id="t">IA y revisión humana</title><desc id="d">Tecnología y criterio profesional trabajan sobre el mismo expediente</desc>
+<defs>
+  <linearGradient id="navyG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0D1324"/><stop offset="1" stop-color="#18375E"/></linearGradient>
+  <linearGradient id="goldG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#E6C98F"/><stop offset="1" stop-color="#B1843C"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#0D1324" flood-opacity=".14"/></filter>
+</defs><rect width="640" height="480" rx="36" fill="#F7F5F1"/><circle cx="535" cy="80" r="96" fill="#C9A96E" opacity=".13"/><circle cx="92" cy="402" r="72" fill="#2563EB" opacity=".07"/><g filter="url(#shadow)"><rect x="86" y="72" width="468" height="336" rx="30" fill="#fff"/></g><circle cx="320" cy="220" r="68" fill="#0D1324"/><path d="M286 220h68M320 186v68" stroke="#C9A96E" stroke-width="10" stroke-linecap="round"/><circle cx="472" cy="224" r="48" fill="#fff" stroke="#E6E6E1" stroke-width="4"/><circle cx="472" cy="210" r="14" fill="#C9A96E"/><path d="M443 246c7-24 51-24 58 0" fill="none" stroke="#C9A96E" stroke-width="9" stroke-linecap="round"/><path d="M388 220h34" stroke="#2563EB" stroke-width="7" stroke-dasharray="8 8"/><rect x="122" y="96" width="112" height="13" rx="6" fill="#0D1324"/><rect x="122" y="120" width="76" height="8" rx="4" fill="#A8AEB8"/></svg>

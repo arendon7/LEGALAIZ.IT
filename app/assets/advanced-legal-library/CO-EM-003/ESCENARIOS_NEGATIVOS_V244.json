@@ -1,0 +1,375 @@
+{
+  "version": "2.44",
+  "base_case": {
+    "client": {
+      "type": "legal_person",
+      "identification": {
+        "name": "EMPRESA DEMO S.A.S.",
+        "id_number": "900.123.456-7",
+        "address": "Medellín",
+        "email": "contratos@empresa.com"
+      },
+      "signatory": {
+        "name": "Laura Gómez",
+        "id_number": "43.000.000",
+        "capacity": "Representante legal",
+        "authority_source": "certificado de existencia y representación vigente"
+      },
+      "email": "contratos@empresa.com"
+    },
+    "contractor": {
+      "type": "legal_person",
+      "identification": {
+        "name": "CONSULTORES ANDINOS S.A.S.",
+        "id_number": "901.222.333-4",
+        "address": "Bogotá",
+        "email": "legal@consultores.com"
+      },
+      "signatory": {
+        "name": "Carlos Pérez",
+        "id_number": "79.000.000",
+        "capacity": "Representante legal",
+        "authority_source": "certificado vigente"
+      },
+      "email": "legal@consultores.com"
+    },
+    "service": {
+      "category": "technology",
+      "object": "diseñar, desarrollar, probar y documentar una plataforma de analítica contractual",
+      "expected_result": "una solución funcional, documentada y desplegable conforme a los criterios de aceptación",
+      "regulated": false
+    },
+    "scope": {
+      "included": [
+        "levantamiento técnico",
+        "diseño de arquitectura",
+        "desarrollo y pruebas",
+        "documentación y transferencia"
+      ],
+      "excluded": [
+        "operación permanente posterior a la garantía",
+        "licencias de terceros no cotizadas"
+      ],
+      "deliverables": [
+        {
+          "id": "D1",
+          "name": "Documento de arquitectura",
+          "due_date": "2026-08-15",
+          "acceptance_criteria": "Aprobación técnica frente a requisitos",
+          "format": "DOCX/PDF"
+        },
+        {
+          "id": "D2",
+          "name": "Código fuente y pruebas",
+          "due_date": "2026-10-30",
+          "acceptance_criteria": "Pruebas aprobadas y ausencia de defectos críticos",
+          "format": "Repositorio Git"
+        }
+      ],
+      "change_control": true
+    },
+    "execution": {
+      "arrangement": {
+        "location": "Remota con reuniones presenciales coordinadas",
+        "tools": "Equipos propios y repositorios del contratante bajo mínimo privilegio",
+        "access_controls": "Cuentas individuales y MFA",
+        "coordination": "Comité quincenal de seguimiento a resultados"
+      }
+    },
+    "autonomy": {
+      "methods": true,
+      "delegation": true
+    },
+    "labor_indicators": {
+      "fixed_schedule": false,
+      "continuous_orders": false,
+      "org_integration": false,
+      "exclusivity_or_availability": false,
+      "personal_continuous_periodic": false,
+      "fixed_location": false,
+      "attendance_control": false,
+      "daily_method_control": false,
+      "continuous_supervision": false,
+      "absence_authorization": false,
+      "employee_identity": false,
+      "internal_labor_rules": false,
+      "disciplinary_measures": false,
+      "vacation_permission": false,
+      "economic_dependence": false,
+      "periodic_payment_without_outputs": false,
+      "personal_service_required": false
+    },
+    "term": {
+      "start_date": "2026-07-30",
+      "end_date": "2026-11-30",
+      "renewal": "acuerdo escrito previo"
+    },
+    "schedule": {
+      "milestones": "D1 el 15 de agosto; D2 el 30 de octubre",
+      "dependencies": "accesos, decisiones y datos de prueba a cargo del contratante",
+      "client_delays": "los plazos se ampliarán en proporción al retraso documentado"
+    },
+    "fees": {
+      "model": "milestone",
+      "financial_terms": {
+        "amount": 50000000,
+        "currency": "COP",
+        "payment_terms": "20% de anticipo, 30% con D1 y 50% con D2",
+        "invoice_requirements": "Factura electrónica y acta de aceptación",
+        "taxes": "Retenciones de ley"
+      },
+      "expenses": {
+        "authorized": "Viajes previamente autorizados",
+        "support": "Facturas y comprobantes",
+        "advance": "Anticipo sujeto a legalización",
+        "approval": "Aprobación escrita previa"
+      }
+    },
+    "risk_allocation": {
+      "insurance_required": true,
+      "insurance": "Responsabilidad civil profesional por COP 100.000.000",
+      "third_party_claims": "defensa coordinada",
+      "indemnity": "notificación oportuna, control de defensa y mitigación"
+    },
+    "liability": {
+      "cap": "100% del valor del contrato",
+      "exclusions": "dolo; violación deliberada de confidencialidad; infracción de PI",
+      "direct_damages": "daños directos comprobados",
+      "mitigation": "cada parte mitigará razonablemente los daños"
+    },
+    "confidentiality": {
+      "required": true,
+      "categories": "información técnica, comercial, financiera y de seguridad",
+      "duration": "cinco años; secretos empresariales mientras conserven esa calidad",
+      "return_rule": "devolución o eliminación, salvo conservación mínima legal o probatoria"
+    },
+    "data_processing": {
+      "required": true,
+      "roles": {
+        "client": "Responsable",
+        "contractor": "Encargado",
+        "categories": "datos de usuarios corporativos"
+      },
+      "instructions": "tratamiento solo bajo instrucciones documentadas; subencargados autorizados y medidas de seguridad"
+    },
+    "ip": {
+      "required": true,
+      "allocation": {
+        "new_results": "Cesión patrimonial al contratante tras pago total",
+        "background": "Licencia no exclusiva sobre herramientas preexistentes",
+        "open_source": "Sujeto a licencias identificadas",
+        "third_party": "Uso solo con autorización o licencia válida"
+      }
+    },
+    "ai": {
+      "required": true,
+      "allowed_tools": "herramientas empresariales aprobadas",
+      "permitted_uses": "asistencia de redacción y código con revisión humana",
+      "prohibited_data": "datos personales, secretos y credenciales en servicios no aprobados",
+      "human_review": "verificación, registro y aprobación humana antes de entrega"
+    },
+    "termination": {
+      "notice": "15 días",
+      "cure_period": "10 días hábiles",
+      "serious_breach": "terminación inmediata para incumplimientos no subsanables",
+      "suspension": "suspensión documentada por fuerza mayor o incumplimiento de dependencias"
+    },
+    "closure": {
+      "transition": "Entrega de repositorios, documentación, cierre de accesos y acta final",
+      "support": "20 horas de transición incluidas",
+      "return_assets": "devolución de credenciales, equipos y soportes",
+      "delete_data": "devolución o eliminación certificada de copias no exigidas por ley"
+    },
+    "disputes": {
+      "mechanism": "negotiation_conciliation_courts"
+    },
+    "confirmation": {
+      "public_contracting": false,
+      "true_independence": true
+    }
+  },
+  "scenarios": [
+    {
+      "id": "EM3-N01",
+      "name": "Contratación estatal fuera de alcance",
+      "overrides": {
+        "confirmation.public_contracting": true
+      },
+      "expected": {
+        "blocked": true,
+        "finding": "V-EM-001"
+      }
+    },
+    {
+      "id": "EM3-N02",
+      "name": "Independencia real no confirmada",
+      "overrides": {
+        "confirmation.true_independence": false
+      },
+      "expected": {
+        "blocked": true,
+        "finding": "V-EM-011"
+      }
+    },
+    {
+      "id": "EM3-N03",
+      "name": "Servicio regulado sin habilitación",
+      "overrides": {
+        "service.regulated": true,
+        "service.habilitation_verified": false
+      },
+      "expected": {
+        "blocked": true,
+        "finding": "V-EM-002"
+      }
+    },
+    {
+      "id": "EM3-N04",
+      "name": "Subordinación acumulada de alto riesgo",
+      "overrides": {
+        "labor_indicators.fixed_schedule": true,
+        "labor_indicators.continuous_orders": true,
+        "labor_indicators.org_integration": true,
+        "labor_indicators.exclusivity_or_availability": true,
+        "labor_indicators.personal_continuous_periodic": true,
+        "autonomy.methods": false,
+        "autonomy.delegation": false
+      },
+      "expected": {
+        "blocked": true,
+        "finding": "V-EM-003"
+      }
+    },
+    {
+      "id": "EM3-N05",
+      "name": "Control disciplinario incompatible",
+      "overrides": {
+        "labor_indicators.disciplinary_measures": true,
+        "labor_indicators.continuous_orders": true
+      },
+      "expected": {
+        "blocked": true,
+        "finding": "V-EM-013"
+      }
+    },
+    {
+      "id": "EM3-N06",
+      "name": "Objeto ausente",
+      "remove": [
+        "service.object"
+      ],
+      "expected": {
+        "blocked": true,
+        "missing": "service.object",
+        "finding": "V-EM-005"
+      }
+    },
+    {
+      "id": "EM3-N07",
+      "name": "Entregables ausentes",
+      "remove": [
+        "scope.deliverables"
+      ],
+      "expected": {
+        "blocked": true,
+        "missing": "scope.deliverables",
+        "finding": "V-EM-005"
+      }
+    },
+    {
+      "id": "EM3-N08",
+      "name": "Tratamiento de datos sin roles",
+      "remove": [
+        "data_processing.roles"
+      ],
+      "expected": {
+        "blocked": true,
+        "finding": "V-EM-008"
+      }
+    },
+    {
+      "id": "EM3-N09",
+      "name": "Propiedad intelectual sin asignación",
+      "remove": [
+        "ip.allocation"
+      ],
+      "expected": {
+        "blocked": true,
+        "finding": "V-EM-009"
+      }
+    },
+    {
+      "id": "EM3-N10",
+      "name": "Firmante del contratante ausente",
+      "remove": [
+        "client.signatory"
+      ],
+      "expected": {
+        "blocked": false,
+        "missing": "client.signatory"
+      }
+    },
+    {
+      "id": "EM3-N11",
+      "name": "Condiciones económicas ausentes",
+      "remove": [
+        "fees.financial_terms"
+      ],
+      "expected": {
+        "blocked": false,
+        "missing": "fees.financial_terms"
+      }
+    },
+    {
+      "id": "EM3-N12",
+      "name": "Terminación no definida",
+      "remove": [
+        "termination"
+      ],
+      "expected": {
+        "blocked": false,
+        "missing": "termination"
+      }
+    },
+    {
+      "id": "EM3-N13",
+      "name": "Cierre no definido",
+      "remove": [
+        "closure"
+      ],
+      "expected": {
+        "blocked": false,
+        "missing": "closure"
+      }
+    },
+    {
+      "id": "EM3-N14",
+      "name": "Confirmaciones finales incompletas",
+      "remove": [
+        "confirmation"
+      ],
+      "expected": {
+        "blocked": false,
+        "missing": "confirmation"
+      }
+    },
+    {
+      "id": "EM3-N15",
+      "name": "Éxito sin límite de responsabilidad",
+      "overrides": {
+        "fees.model": "success"
+      },
+      "remove": [
+        "liability.cap"
+      ],
+      "expected": {
+        "blocked": false,
+        "readiness": "requires_review",
+        "findings": [
+          "V-EM-006",
+          "V-EM-007"
+        ]
+      }
+    }
+  ]
+}

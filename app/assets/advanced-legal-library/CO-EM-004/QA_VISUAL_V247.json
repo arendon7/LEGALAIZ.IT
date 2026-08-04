@@ -1,0 +1,56 @@
+{
+  "version": "2.47",
+  "scenarios": [
+    {
+      "id": "EM4-C01",
+      "documents": [
+        "DOC-EM4-NDA-001",
+        "ANX-EM4-INFO-001",
+        "ANX-EM4-REL-001"
+      ]
+    },
+    {
+      "id": "EM4-C02",
+      "documents": [
+        "DOC-EM4-NDA-001",
+        "ANX-EM4-DATA-001",
+        "ANX-EM4-IP-001",
+        "ANX-EM4-AI-001",
+        "ANX-EM4-OSS-001",
+        "PRO-EM4-INC-001"
+      ]
+    },
+    {
+      "id": "EM4-C03",
+      "documents": [
+        "DOC-EM4-NDA-001",
+        "ANX-EM4-IP-001",
+        "PRO-EM4-INC-001"
+      ]
+    },
+    {
+      "id": "EM4-C05",
+      "documents": [
+        "DOC-EM4-NDA-001",
+        "ANX-EM4-DATA-001"
+      ]
+    },
+    {
+      "id": "EM4-C06",
+      "documents": [
+        "DOC-EM4-NDA-001",
+        "ANX-EM4-DATA-001",
+        "ACT-EM4-CLOSE-001"
+      ]
+    },
+    {
+      "id": "EM4-C10",
+      "documents": [
+        "DOC-EM4-NDA-001",
+        "ANX-EM4-IP-001",
+        "ANX-EM4-DATA-001",
+        "ANX-EM4-AI-001"
+      ]
+    }
+  ]
+}

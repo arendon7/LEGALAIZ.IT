@@ -1,0 +1,743 @@
+{
+  "phase": "M6",
+  "version": "RC1",
+  "build_id": "M6-RELEASE-CANDIDATE-2026-07-29",
+  "generated_at": "2026-07-29T19:00:00.758293+00:00",
+  "status": "content_ready_for_controlled_pilot",
+  "release_candidate_ready": true,
+  "content": {
+    "passed": 18,
+    "total": 18,
+    "score": 100,
+    "checks": [
+      {
+        "key": "catalog_scope",
+        "label": "Los 11 productos tienen biblioteca profunda",
+        "passed": true,
+        "detail_text": "11 de 11",
+        "critical": true
+      },
+      {
+        "key": "controlled_approval",
+        "label": "Los 11 productos están aprobados para uso controlado",
+        "passed": true,
+        "detail_text": "11 productos",
+        "critical": true
+      },
+      {
+        "key": "contractual_approval",
+        "label": "Biblioteca contractual aprobada",
+        "passed": true,
+        "detail_text": "28 documentos aprobados",
+        "critical": true
+      },
+      {
+        "key": "playbook_approval",
+        "label": "Biblioteca de playbooks aprobada",
+        "passed": true,
+        "detail_text": "50 documentos aprobados",
+        "critical": true
+      },
+      {
+        "key": "official_sources",
+        "label": "Todos los productos tienen fuentes jurídicas registradas",
+        "passed": true,
+        "detail_text": "111 fuentes registradas",
+        "critical": true
+      },
+      {
+        "key": "document_presence",
+        "label": "Todos los documentos profundos están presentes",
+        "passed": true,
+        "detail_text": "78 DOCX y 78 PDF",
+        "critical": true
+      },
+      {
+        "key": "document_integrity",
+        "label": "Los hashes documentales coinciden",
+        "passed": true,
+        "detail_text": "0 divergencias",
+        "critical": true
+      },
+      {
+        "key": "resolved_variables",
+        "label": "No hay variables o centinelas sin resolver",
+        "passed": true,
+        "detail_text": "0 hallazgos",
+        "critical": true
+      },
+      {
+        "key": "frontend_consolidated",
+        "label": "Frontend activo consolidado sin capas históricas",
+        "passed": true,
+        "detail_text": "main.js + app.css",
+        "critical": true
+      },
+      {
+        "key": "frontend_entry",
+        "label": "Entrada final disponible",
+        "passed": true,
+        "detail_text": "index.html, main.js, app.css",
+        "critical": true
+      },
+      {
+        "key": "frontend_no_inline",
+        "label": "Frontend sin manejadores o estilos inline",
+        "passed": true,
+        "detail_text": "delegación de eventos y clases CSS",
+        "critical": true
+      },
+      {
+        "key": "strict_csp",
+        "label": "CSP estricta sin unsafe-inline",
+        "passed": true,
+        "detail_text": "scripts y estilos self",
+        "critical": true
+      },
+      {
+        "key": "safe_errors",
+        "label": "Errores internos no exponen excepciones",
+        "passed": true,
+        "detail_text": "respuesta genérica y log interno",
+        "critical": true
+      },
+      {
+        "key": "public_contract",
+        "label": "Contrato público M6 sin flags históricos",
+        "passed": true,
+        "detail_text": "API 2026-07-m6",
+        "critical": true
+      },
+      {
+        "key": "launchers",
+        "label": "Iniciadores multiplataforma presentes",
+        "passed": true,
+        "detail_text": "macOS, Windows y Linux",
+        "critical": true
+      },
+      {
+        "key": "deployment_guides",
+        "label": "Guías de piloto y producción disponibles",
+        "passed": true,
+        "detail_text": "checklists y ejemplo de entorno",
+        "critical": true
+      },
+      {
+        "key": "active_tests",
+        "label": "Suite activa M6, regresión aislada y smoke test disponibles",
+        "passed": true,
+        "detail_text": "pruebas unitarias e integración HTTP",
+        "critical": true
+      },
+      {
+        "key": "historical_archive",
+        "label": "Evidencia histórica retirada del runtime activo",
+        "passed": true,
+        "detail_text": "archivo de auditoría separado",
+        "critical": true
+      }
+    ],
+    "deep_products": 11,
+    "docx": 78,
+    "pdf": 78,
+    "pages": 394,
+    "words": 56900,
+    "missing": [],
+    "hash_errors": [],
+    "marker_hits": []
+  },
+  "products": [
+    {
+      "product_code": "CO-AR-001",
+      "title": "Arrendamiento de vivienda urbana",
+      "library": "contractual_m4",
+      "documents": 6,
+      "sources": 3,
+      "status": "approved_controlled_use"
+    },
+    {
+      "product_code": "CO-CD-001",
+      "title": "Hábeas data financiero y suplantación",
+      "library": "playbook_m5",
+      "documents": 7,
+      "sources": 17,
+      "status": "approved_controlled_use"
+    },
+    {
+      "product_code": "CO-CD-003",
+      "title": "Garantía, retracto y reversión del pago",
+      "library": "playbook_m5",
+      "documents": 7,
+      "sources": 17,
+      "status": "approved_controlled_use"
+    },
+    {
+      "product_code": "CO-CD-004",
+      "title": "Cobro, acuerdo de pago y pagaré",
+      "library": "playbook_m5",
+      "documents": 7,
+      "sources": 19,
+      "status": "approved_controlled_use"
+    },
+    {
+      "product_code": "CO-EM-003",
+      "title": "Contrato de prestación de servicios independientes",
+      "library": "contractual_m4",
+      "documents": 7,
+      "sources": 3,
+      "status": "approved_controlled_use"
+    },
+    {
+      "product_code": "CO-EM-004",
+      "title": "Confidencialidad, secretos empresariales y propiedad intelectual",
+      "library": "contractual_m4",
+      "documents": 8,
+      "sources": 3,
+      "status": "approved_controlled_use"
+    },
+    {
+      "product_code": "CO-LA-001",
+      "title": "Liquidación laboral, reclamación y cierre",
+      "library": "playbook_m5",
+      "documents": 7,
+      "sources": 12,
+      "status": "approved_controlled_use"
+    },
+    {
+      "product_code": "CO-LA-002",
+      "title": "Contrato de trabajo personalizado",
+      "library": "contractual_m4",
+      "documents": 7,
+      "sources": 4,
+      "status": "approved_controlled_use"
+    },
+    {
+      "product_code": "CO-SA-001",
+      "title": "Acceso a salud, petición y escalamiento",
+      "library": "playbook_m5",
+      "documents": 7,
+      "sources": 16,
+      "status": "approved_controlled_use"
+    },
+    {
+      "product_code": "CO-TR-001",
+      "title": "Chequeo SAST e inscripción verificada",
+      "library": "playbook_m5",
+      "documents": 7,
+      "sources": 3,
+      "status": "approved_controlled_use"
+    },
+    {
+      "product_code": "CO-TR-002",
+      "title": "Fotodetección, notificación y defensa",
+      "library": "playbook_m5",
+      "documents": 8,
+      "sources": 14,
+      "status": "approved_controlled_use"
+    }
+  ],
+  "approval_model": "multi_stage_single_responsible",
+  "independent_reviewers": false,
+  "notice": "La biblioteca, los documentos y la experiencia M6 están preparados para un piloto profesional controlado. El perfil local no constituye un despliegue público de producción; producción permanece condicionada a PostgreSQL, HTTPS, cookies Secure, secretos administrados, MFA, backup verificado y escaneo antimalware.",
+  "score": 91,
+  "controlled_pilot_ready": true,
+  "production_ready": false,
+  "profile": "local",
+  "runtime": {
+    "passed": 11,
+    "total": 14,
+    "ready": false,
+    "checks": [
+      {
+        "key": "master_key",
+        "label": "Llave maestra administrada",
+        "passed": true,
+        "detail": "runtime-file"
+      },
+      {
+        "key": "aes_gcm",
+        "label": "Cifrado AES-256-GCM disponible",
+        "passed": true,
+        "detail": "cryptography"
+      },
+      {
+        "key": "secure_cookies",
+        "label": "Cookies Secure para despliegue",
+        "passed": true,
+        "detail": false
+      },
+      {
+        "key": "public_https",
+        "label": "URL pública HTTPS",
+        "passed": true,
+        "detail": "http://127.0.0.1:8765"
+      },
+      {
+        "key": "mfa",
+        "label": "MFA de roles obligatorios",
+        "passed": true,
+        "detail": {
+          "enabled": 0,
+          "required": 0
+        }
+      },
+      {
+        "key": "object_storage",
+        "label": "Almacenamiento cifrado operativo",
+        "passed": true,
+        "detail": {
+          "backend": "local-encrypted",
+          "total": 0,
+          "bytes": 0,
+          "encrypted": 0
+        }
+      },
+      {
+        "key": "volume_encryption",
+        "label": "Cifrado del volumen/base confirmado",
+        "passed": true,
+        "detail": true
+      },
+      {
+        "key": "malware_scanner",
+        "label": "Escaneo antimalware integrado",
+        "passed": true,
+        "detail": "none"
+      },
+      {
+        "key": "verified_backup",
+        "label": "Backup cifrado verificado",
+        "passed": false,
+        "detail": {
+          "backups": 0,
+          "verified": 0
+        }
+      },
+      {
+        "key": "database",
+        "label": "Base adecuada al perfil",
+        "passed": true,
+        "detail": "sqlite"
+      },
+      {
+        "key": "postgres_runtime",
+        "label": "Migración runtime PostgreSQL completada",
+        "passed": false,
+        "detail": "La v2.0 prepara DDL, contenedores y plan; el runtime principal sigue SQLite hasta migración validada."
+      },
+      {
+        "key": "canonical_sources",
+        "label": "Fuentes jurídicas canónicas incorporadas",
+        "passed": false,
+        "detail": "No se sustituye por infraestructura."
+      },
+      {
+        "key": "demo_accounts",
+        "label": "Cuentas de demostración restringidas al perfil local",
+        "passed": true,
+        "detail": "5 cuentas demo activas; solo se permiten en perfil local."
+      },
+      {
+        "key": "real_admin",
+        "label": "Administrador institucional disponible",
+        "passed": true,
+        "detail": "0 administradores no demo activos."
+      }
+    ],
+    "blocking": [
+      "verified_backup",
+      "postgres_runtime",
+      "canonical_sources"
+    ]
+  },
+  "approval": {
+    "version": "M3",
+    "build_id": "M3-CONTROLLED-APPROVAL-2026-07-28",
+    "catalog_status": "approved_controlled",
+    "professional_publication_authorized": true,
+    "approval_model": "multi_stage_single_responsible",
+    "independent_reviewers": false,
+    "approver": {
+      "name": "Agustín Rendón Calle",
+      "professional_card": "330845",
+      "city": "Medellín",
+      "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+    },
+    "approved_at": "2026-07-28T21:15:34-05:00",
+    "product_count": 11,
+    "document_count": 387,
+    "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables.",
+    "controlled_use_conditions": [
+      "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+      "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+      "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+      "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+      "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+    ],
+    "products": [
+      {
+        "product_code": "CO-TR-001",
+        "title": "Chequeo SAST + inscripción verificada",
+        "vertical": "Tránsito",
+        "approval_status": "approved_controlled",
+        "publication_authorized": true,
+        "professional_use": true,
+        "human_ratification": true,
+        "specialist_approval": true,
+        "qa_approval": true,
+        "dual_approval": true,
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "approver": {
+          "name": "Agustín Rendón Calle",
+          "professional_card": "330845",
+          "city": "Medellín",
+          "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+        },
+        "approved_at": "2026-07-28T21:15:03-05:00",
+        "approved_document_count": 13,
+        "approved_docx_count": 11,
+        "approved_pdf_count": 2,
+        "case_specific_review_required": false,
+        "controlled_use_conditions": [
+          "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+          "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+          "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+          "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+          "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+        ],
+        "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+      },
+      {
+        "product_code": "CO-TR-002",
+        "title": "Fotomulta no notificada",
+        "vertical": "Tránsito",
+        "approval_status": "approved_controlled",
+        "publication_authorized": true,
+        "professional_use": true,
+        "human_ratification": true,
+        "specialist_approval": true,
+        "qa_approval": true,
+        "dual_approval": true,
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "approver": {
+          "name": "Agustín Rendón Calle",
+          "professional_card": "330845",
+          "city": "Medellín",
+          "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+        },
+        "approved_at": "2026-07-28T21:15:06-05:00",
+        "approved_document_count": 52,
+        "approved_docx_count": 26,
+        "approved_pdf_count": 26,
+        "case_specific_review_required": false,
+        "controlled_use_conditions": [
+          "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+          "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+          "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+          "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+          "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+        ],
+        "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+      },
+      {
+        "product_code": "CO-LA-001",
+        "title": "Liquidación laboral + reclamación",
+        "vertical": "Laboral",
+        "approval_status": "approved_controlled",
+        "publication_authorized": true,
+        "professional_use": true,
+        "human_ratification": true,
+        "specialist_approval": true,
+        "qa_approval": true,
+        "dual_approval": true,
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "approver": {
+          "name": "Agustín Rendón Calle",
+          "professional_card": "330845",
+          "city": "Medellín",
+          "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+        },
+        "approved_at": "2026-07-28T21:15:09-05:00",
+        "approved_document_count": 18,
+        "approved_docx_count": 9,
+        "approved_pdf_count": 9,
+        "case_specific_review_required": true,
+        "controlled_use_conditions": [
+          "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+          "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+          "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+          "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+          "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+        ],
+        "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+      },
+      {
+        "product_code": "CO-LA-002",
+        "title": "Contrato de trabajo personalizado",
+        "vertical": "Laboral",
+        "approval_status": "approved_controlled",
+        "publication_authorized": true,
+        "professional_use": true,
+        "human_ratification": true,
+        "specialist_approval": true,
+        "qa_approval": true,
+        "dual_approval": true,
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "approver": {
+          "name": "Agustín Rendón Calle",
+          "professional_card": "330845",
+          "city": "Medellín",
+          "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+        },
+        "approved_at": "2026-07-28T21:15:12-05:00",
+        "approved_document_count": 58,
+        "approved_docx_count": 29,
+        "approved_pdf_count": 29,
+        "case_specific_review_required": true,
+        "controlled_use_conditions": [
+          "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+          "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+          "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+          "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+          "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+        ],
+        "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+      },
+      {
+        "product_code": "CO-EM-003",
+        "title": "Contrato de prestación de servicios",
+        "vertical": "Empresarial",
+        "approval_status": "approved_controlled",
+        "publication_authorized": true,
+        "professional_use": true,
+        "human_ratification": true,
+        "specialist_approval": true,
+        "qa_approval": true,
+        "dual_approval": true,
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "approver": {
+          "name": "Agustín Rendón Calle",
+          "professional_card": "330845",
+          "city": "Medellín",
+          "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+        },
+        "approved_at": "2026-07-28T21:15:15-05:00",
+        "approved_document_count": 38,
+        "approved_docx_count": 19,
+        "approved_pdf_count": 19,
+        "case_specific_review_required": false,
+        "controlled_use_conditions": [
+          "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+          "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+          "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+          "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+          "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+        ],
+        "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+      },
+      {
+        "product_code": "CO-EM-004",
+        "title": "Confidencialidad y propiedad intelectual",
+        "vertical": "Empresarial",
+        "approval_status": "approved_controlled",
+        "publication_authorized": true,
+        "professional_use": true,
+        "human_ratification": true,
+        "specialist_approval": true,
+        "qa_approval": true,
+        "dual_approval": true,
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "approver": {
+          "name": "Agustín Rendón Calle",
+          "professional_card": "330845",
+          "city": "Medellín",
+          "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+        },
+        "approved_at": "2026-07-28T21:15:18-05:00",
+        "approved_document_count": 40,
+        "approved_docx_count": 20,
+        "approved_pdf_count": 20,
+        "case_specific_review_required": false,
+        "controlled_use_conditions": [
+          "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+          "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+          "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+          "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+          "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+        ],
+        "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+      },
+      {
+        "product_code": "CO-AR-001",
+        "title": "Arrendamiento de vivienda urbana",
+        "vertical": "Inmobiliario",
+        "approval_status": "approved_controlled",
+        "publication_authorized": true,
+        "professional_use": true,
+        "human_ratification": true,
+        "specialist_approval": true,
+        "qa_approval": true,
+        "dual_approval": true,
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "approver": {
+          "name": "Agustín Rendón Calle",
+          "professional_card": "330845",
+          "city": "Medellín",
+          "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+        },
+        "approved_at": "2026-07-28T21:15:21-05:00",
+        "approved_document_count": 30,
+        "approved_docx_count": 15,
+        "approved_pdf_count": 15,
+        "case_specific_review_required": false,
+        "controlled_use_conditions": [
+          "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+          "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+          "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+          "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+          "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+        ],
+        "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+      },
+      {
+        "product_code": "CO-SA-001",
+        "title": "Derecho de petición a EPS o IPS",
+        "vertical": "Salud",
+        "approval_status": "approved_controlled",
+        "publication_authorized": true,
+        "professional_use": true,
+        "human_ratification": true,
+        "specialist_approval": true,
+        "qa_approval": true,
+        "dual_approval": true,
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "approver": {
+          "name": "Agustín Rendón Calle",
+          "professional_card": "330845",
+          "city": "Medellín",
+          "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+        },
+        "approved_at": "2026-07-28T21:15:24-05:00",
+        "approved_document_count": 38,
+        "approved_docx_count": 19,
+        "approved_pdf_count": 19,
+        "case_specific_review_required": true,
+        "controlled_use_conditions": [
+          "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+          "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+          "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+          "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+          "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+        ],
+        "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+      },
+      {
+        "product_code": "CO-CD-001",
+        "title": "Centrales de riesgo y hábeas data",
+        "vertical": "Consumo y datos",
+        "approval_status": "approved_controlled",
+        "publication_authorized": true,
+        "professional_use": true,
+        "human_ratification": true,
+        "specialist_approval": true,
+        "qa_approval": true,
+        "dual_approval": true,
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "approver": {
+          "name": "Agustín Rendón Calle",
+          "professional_card": "330845",
+          "city": "Medellín",
+          "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+        },
+        "approved_at": "2026-07-28T21:15:27-05:00",
+        "approved_document_count": 28,
+        "approved_docx_count": 14,
+        "approved_pdf_count": 14,
+        "case_specific_review_required": false,
+        "controlled_use_conditions": [
+          "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+          "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+          "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+          "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+          "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+        ],
+        "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+      },
+      {
+        "product_code": "CO-CD-003",
+        "title": "Garantía, retracto y reversión del pago",
+        "vertical": "Consumo y datos",
+        "approval_status": "approved_controlled",
+        "publication_authorized": true,
+        "professional_use": true,
+        "human_ratification": true,
+        "specialist_approval": true,
+        "qa_approval": true,
+        "dual_approval": true,
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "approver": {
+          "name": "Agustín Rendón Calle",
+          "professional_card": "330845",
+          "city": "Medellín",
+          "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+        },
+        "approved_at": "2026-07-28T21:15:30-05:00",
+        "approved_document_count": 32,
+        "approved_docx_count": 16,
+        "approved_pdf_count": 16,
+        "case_specific_review_required": false,
+        "controlled_use_conditions": [
+          "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+          "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+          "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+          "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+          "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+        ],
+        "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+      },
+      {
+        "product_code": "CO-CD-004",
+        "title": "Cobro, acuerdo de pago y pagaré",
+        "vertical": "Civil y comercial",
+        "approval_status": "approved_controlled",
+        "publication_authorized": true,
+        "professional_use": true,
+        "human_ratification": true,
+        "specialist_approval": true,
+        "qa_approval": true,
+        "dual_approval": true,
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "approver": {
+          "name": "Agustín Rendón Calle",
+          "professional_card": "330845",
+          "city": "Medellín",
+          "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+        },
+        "approved_at": "2026-07-28T21:15:33-05:00",
+        "approved_document_count": 40,
+        "approved_docx_count": 20,
+        "approved_pdf_count": 20,
+        "case_specific_review_required": true,
+        "controlled_use_conditions": [
+          "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+          "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+          "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+          "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+          "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+        ],
+        "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+      }
+    ]
+  }
+}

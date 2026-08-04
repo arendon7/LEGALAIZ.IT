@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "migration_id": "M24.1-M23.2-PREINTEGRATION-20260801",
+  "product_code": "CO-LA-002",
+  "revision_id": "M23.2-d0612f88d9c8",
+  "source_revision_label": "M23.2",
+  "status": "candidate_blocked_pending_legal_and_qa_approval",
+  "immutable": true,
+  "asset_hashes": {
+    "CO-LA-002_Modelo_Maestro_Contrato_Indefinido_M23.docx": "d0612f88d9c89796aeaabc6317a6e97e845dfdd23e90f50a6fce35eb92425948",
+    "CO-LA-002_Modelo_Maestro_Contrato_Indefinido_M23.pdf": "a8e39044c704cc32d9acc5f10907b2d222bae2f7277c86f84805e8ac577d759e",
+    "CO-LA-002_M23_Bloques_Reglas_y_Fuentes.json": "bfd2a6e8da2c16713db34846a37f16b58a1f49778503595ceda55ab3b1e01dbf",
+    "CO-LA-002_Ejemplo_Final_Auxiliar_Administrativa_M23.docx": "8d97bc8a960b71f6a8813f47d4534f5c36dccd8870165ca9b72a7fbfe2ec56c1",
+    "CO-LA-002_Ejemplo_Final_Auxiliar_Administrativa_M23.pdf": "f0303d4f603a1ded8db96c301ab5ea589accb73d9133ec56af58bf5f5e3386a8"
+  },
+  "approvals": {
+    "legal": {
+      "required": true,
+      "approved": false,
+      "actor": null
+    },
+    "qa": {
+      "required": true,
+      "approved": false,
+      "actor": null
+    },
+    "must_be_distinct_users": true
+  },
+  "questionnaire_binding": {
+    "status": "pending_runtime_resolution",
+    "expected_legacy_ref": "M22://questionnaires/CO-LA-002",
+    "prohibition": "do_not_create_duplicate_questionnaire_before_runtime_audit"
+  },
+  "ruleset_binding": {
+    "status": "candidate_from_m23_2",
+    "source_file": "CO-LA-002/CO-LA-002_M23_Bloques_Reglas_y_Fuentes.json",
+    "rule_count": 14,
+    "rule_ids": [
+      "LAB-M23-001",
+      "LAB-M23-002",
+      "LAB-M23-003",
+      "LAB-M23-004",
+      "LAB-M23-005",
+      "LAB-M23-006",
+      "LAB-M23-007",
+      "LAB-M23-008",
+      "LAB-M23-009",
+      "LAB-M23-010",
+      "LAB-M23-011",
+      "LAB-M23-012",
+      "LAB-M23-013",
+      "LAB-M23-014"
+    ]
+  },
+  "created_at": "2026-08-01T05:58:46.977681+00:00",
+  "publication_change": "none"
+}

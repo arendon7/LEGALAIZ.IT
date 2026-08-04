@@ -1,0 +1,169 @@
+{
+  "schema": "legalaizit-postgres-release-gate-v1",
+  "generated_at": "2026-08-04T14:58:04.378579+00:00",
+  "milestone": "M31.5",
+  "version": "5.0.4",
+  "build_id": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-2026-08-04",
+  "checks": [
+    {
+      "key": "certification_present",
+      "passed": true,
+      "detail": {
+        "present": true
+      }
+    },
+    {
+      "key": "certification_release_identity",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "milestone": "M31.5",
+          "version": "5.0.4"
+        },
+        "actual": {
+          "milestone": "M31.5",
+          "version": "5.0.4"
+        }
+      }
+    },
+    {
+      "key": "certification_ok",
+      "passed": false,
+      "detail": {
+        "ok": false
+      }
+    },
+    {
+      "key": "migration_present",
+      "passed": true,
+      "detail": {
+        "present": true
+      }
+    },
+    {
+      "key": "migration_release_identity",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "milestone": "M31.5",
+          "version": "5.0.4"
+        },
+        "actual": {
+          "milestone": "M31.5",
+          "version": "5.0.4"
+        }
+      }
+    },
+    {
+      "key": "migration_ok",
+      "passed": false,
+      "detail": {
+        "ok": false
+      }
+    },
+    {
+      "key": "backup_restore_present",
+      "passed": true,
+      "detail": {
+        "present": true
+      }
+    },
+    {
+      "key": "backup_restore_release_identity",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "milestone": "M31.5",
+          "version": "5.0.4"
+        },
+        "actual": {
+          "milestone": "M31.5",
+          "version": "5.0.4"
+        }
+      }
+    },
+    {
+      "key": "backup_restore_ok",
+      "passed": false,
+      "detail": {
+        "ok": false
+      }
+    },
+    {
+      "key": "certification_required_checks",
+      "passed": false,
+      "detail": {
+        "required": [
+          "concurrency",
+          "connection",
+          "schema_bootstrap",
+          "serial_sequence",
+          "transaction_rollback",
+          "upsert_and_row_contract"
+        ],
+        "successful": []
+      }
+    },
+    {
+      "key": "certification_not_self_authorizing",
+      "passed": true,
+      "detail": {
+        "production_authorized": false
+      }
+    },
+    {
+      "key": "migration_verified",
+      "passed": false,
+      "detail": {
+        "verified": false,
+        "missing_rows": null,
+        "mismatched_rows": null
+      }
+    },
+    {
+      "key": "migration_sequences_reconciled",
+      "passed": false,
+      "detail": {
+        "sequences_reconciled": false
+      }
+    },
+    {
+      "key": "restore_target_is_distinct",
+      "passed": false,
+      "detail": {
+        "source_fingerprint": null,
+        "restore_fingerprint": null
+      }
+    },
+    {
+      "key": "restore_data_reconciled",
+      "passed": false,
+      "detail": {
+        "restored": false,
+        "mismatched_tables": null,
+        "missing_tables": null
+      }
+    },
+    {
+      "key": "restore_destructive_guard",
+      "passed": false,
+      "detail": {
+        "destructive_guard_confirmed": false
+      }
+    },
+    {
+      "key": "same_source_environment",
+      "passed": false,
+      "detail": {
+        "fingerprints": []
+      }
+    }
+  ],
+  "passed": 7,
+  "total": 17,
+  "ok": false,
+  "postgres_preproduction_certified": false,
+  "production_authorized": false,
+  "public_production_ready": false,
+  "notice": "La compuerta certifica únicamente PostgreSQL de preproducción. Producción pública requiere además pentest, carga, observabilidad, protección de datos y aprobaciones externas."
+}

@@ -1,0 +1,69 @@
+{
+  "version": "2.26",
+  "product_code": "CO-TR-001",
+  "templates": [
+    {
+      "template_id": "TPL-CO-TR-001-V226-01",
+      "kind": "sast_report",
+      "title": "Informe de coincidencia y diagnóstico SAST",
+      "filename_suffix": "informe_coincidencia_sast",
+      "status": "active_candidate",
+      "source": "data/co_tr_001_v226.json",
+      "conditional": false
+    },
+    {
+      "template_id": "TPL-CO-TR-001-V226-02",
+      "kind": "sast_verification_matrix",
+      "title": "Matriz individual de autorización y evidencia técnica",
+      "filename_suffix": "matriz_verificacion_sast",
+      "status": "active_candidate",
+      "source": "data/co_tr_001_v226.json",
+      "conditional": false
+    },
+    {
+      "template_id": "TPL-CO-TR-001-V226-03",
+      "kind": "sast_record_request",
+      "title": "Solicitud de expediente técnico y acto de autorización",
+      "filename_suffix": "solicitud_expediente_autorizacion",
+      "status": "active_candidate",
+      "source": "data/co_tr_001_v226.json",
+      "conditional": false
+    },
+    {
+      "template_id": "TPL-CO-TR-001-V226-04",
+      "kind": "sast_supertransport_request",
+      "title": "Solicitud de certificación del estado de la actuación oficial",
+      "filename_suffix": "solicitud_estado_supertransporte",
+      "status": "active_candidate",
+      "source": "data/co_tr_001_v226.json",
+      "conditional": true
+    },
+    {
+      "template_id": "TPL-CO-TR-001-V226-05",
+      "kind": "sast_conditional_review",
+      "title": "Solicitud condicionada de revisión administrativa",
+      "filename_suffix": "solicitud_revision_condicionada",
+      "status": "active_candidate",
+      "source": "data/co_tr_001_v226.json",
+      "conditional": true
+    },
+    {
+      "template_id": "TPL-CO-TR-001-V226-06",
+      "kind": "sast_alert_registry",
+      "title": "Registro de alertas y seguimiento",
+      "filename_suffix": "registro_alertas",
+      "status": "active_candidate",
+      "source": "data/co_tr_001_v226.json",
+      "conditional": true
+    },
+    {
+      "template_id": "TPL-CO-TR-001-V226-07",
+      "kind": "sast_route_guide",
+      "title": "Guía de verificación, términos y escalamiento",
+      "filename_suffix": "guia_ruta_sast",
+      "status": "active_candidate",
+      "source": "data/co_tr_001_v226.json",
+      "conditional": false
+    }
+  ]
+}

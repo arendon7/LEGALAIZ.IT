@@ -1,0 +1,50 @@
+{
+  "schema": "legalaiz_m31_2_consolidation_policy_v1",
+  "phase": "M31.2",
+  "version": "5.0.1",
+  "base_release": "M31.1 v5.0.0",
+  "release_id": "M31-2-CONSOLIDACION-VISUAL-TECNICA-5.0.1-2026-08-03",
+  "objective": "Cerrar incoherencias de versión, identidad visual, distribución y gobernanza de aprobación antes de desplegar una preproducción administrada.",
+  "production_authorized": false,
+  "public_production_ready": false,
+  "brand": {
+    "official_name": "LegalAIZ.it",
+    "official_slogan": "Más que respuestas, soluciones.",
+    "wordmark": "app/assets/logo-legalaizit-web.png",
+    "document_logo": "app/assets/logo-legalaizit.jpg",
+    "app_icon": "app/assets/app-icon.png",
+    "favicon": "app/assets/favicon-64.png",
+    "redrawing_or_deformation_allowed": false
+  },
+  "approval_governance": {
+    "historical_catalog_ratification": "multi_stage_single_responsible",
+    "current_document_release": "distinct_legal_and_qa_same_revision",
+    "distinct_people_required": true,
+    "historical_evidence_immutable": true
+  },
+  "distribution": {
+    "exclude_runtime_databases": true,
+    "exclude_runtime_backups": true,
+    "exclude_python_bytecode": true,
+    "exclude_os_metadata": true,
+    "preserve_audit_evidence_required_by_runtime_or_tests": true
+  },
+  "required_artifacts": [
+    "legalai_platform/release_metadata.py",
+    "app/assets/logo-legalaizit-web.png",
+    "app/assets/app-icon.png",
+    "app/assets/favicon-64.png",
+    "M31_2_RELEASE_NOTES.md",
+    "M31_2_QA_REPORT.md",
+    "M31_2_TEST_REPORT.json",
+    "M31_2_RELEASE_MANIFEST.json"
+  ],
+  "validation": {
+    "python_compilation": true,
+    "automated_regression": true,
+    "http_smoke": true,
+    "visual_qa_viewports": [1440, 834, 390],
+    "roles": ["public", "client", "specialist", "admin"],
+    "integrity_manifest": true
+  }
+}

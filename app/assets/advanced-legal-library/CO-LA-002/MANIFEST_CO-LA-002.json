@@ -1,0 +1,53 @@
+{
+  "product_id": "CO-LA-002",
+  "name": "Contrato individual de trabajo a término indefinido",
+  "jurisdiction": "CO",
+  "language": "es-CO",
+  "functional_version": "2.0.0",
+  "implementation_version": "2.41",
+  "status": "m6_regression_and_visual_qa_completed",
+  "counts": {
+    "steps": 8,
+    "questions": 27,
+    "profiles": 30,
+    "documents": 13,
+    "validations": 10
+  },
+  "immutable_revisions": true,
+  "dual_approval": true,
+  "legacy_compatibility": {
+    "v224": true,
+    "replace_legacy_now": false
+  },
+  "implementationVersion": "2.41",
+  "uiRoute": "#/contratacion-v237",
+  "evaluationEndpoint": "/api/v237/co-la-002/evaluate",
+  "functionalVersion": "2.41.0",
+  "documentFactory": {
+    "endpoint": "/api/v239/co-la-002/generate",
+    "downloadPattern": "/api/v239/co-la-002/generations/{generation_id}/download",
+    "format": "DOCX+ZIP",
+    "unresolvedVariableGate": true,
+    "legalApproval": "pending",
+    "qaApproval": "pending"
+  },
+  "governance": {
+    "immutableRevisions": true,
+    "comparison": true,
+    "dualApproval": true,
+    "legalApprovalRoles": [
+      "specialist",
+      "admin"
+    ],
+    "qaApprovalRoles": [
+      "admin"
+    ],
+    "distinctApproversRequired": true,
+    "approvalsInvalidatedOnRevision": true,
+    "hashChainedAuditEvents": true,
+    "approvedPackageOnlyAfterDualApproval": true
+  },
+  "approval_model": "multi_stage_single_responsible",
+  "approval_date": "2026-07-28",
+  "approval_disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+}

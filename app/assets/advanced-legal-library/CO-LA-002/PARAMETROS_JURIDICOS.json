@@ -1,0 +1,75 @@
+{
+  "product_id": "CO-LA-002",
+  "version": "M10.1",
+  "resolution": "effective_date",
+  "parameters": [
+    {
+      "id": "maximumWeeklyHours",
+      "type": "number",
+      "value": 42,
+      "effective_from": "2026-07-15",
+      "source_id": "LA2-S1",
+      "review_required": true
+    },
+    {
+      "id": "nightWorkStart",
+      "type": "time",
+      "value": "19:00",
+      "effective_from": "2025-12-25",
+      "source_id": "LA2-S2",
+      "review_required": true
+    },
+    {
+      "id": "authorizationDefaults",
+      "type": "object",
+      "value": {
+        "image": false,
+        "biometric": false,
+        "geolocation": false
+      },
+      "effective_from": "2026-07-22",
+      "source_id": "LA2-S7",
+      "review_required": false
+    },
+    {
+      "id": "fixedTermMaximumMonths",
+      "type": "number",
+      "value": 48,
+      "effective_from": "2025-06-25",
+      "source_id": "LA2-S2",
+      "review_required": true
+    },
+    {
+      "id": "restDaySurchargePercent",
+      "type": "number",
+      "value": 90,
+      "effective_from": "2026-07-01",
+      "source_id": "LA2-S2",
+      "review_required": true
+    },
+    {
+      "id": "restDaySurchargeFullPercent",
+      "type": "number",
+      "value": 100,
+      "effective_from": "2027-07-01",
+      "source_id": "LA2-S2",
+      "review_required": true
+    },
+    {
+      "id": "disciplinaryDefenseMinimumDays",
+      "type": "number",
+      "value": 5,
+      "effective_from": "2025-06-25",
+      "source_id": "LA2-S2",
+      "review_required": true
+    },
+    {
+      "id": "employeeResignationPreNoticeDays",
+      "type": "number",
+      "value": 30,
+      "effective_from": "2025-06-25",
+      "source_id": "LA2-S2",
+      "review_required": true
+    }
+  ]
+}

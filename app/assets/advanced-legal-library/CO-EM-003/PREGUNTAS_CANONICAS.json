@@ -1,0 +1,1021 @@
+{
+  "version": "2.44",
+  "steps": [
+    {
+      "id": "parties",
+      "name": "Partes y capacidad"
+    },
+    {
+      "id": "service",
+      "name": "Servicio y alcance"
+    },
+    {
+      "id": "execution",
+      "name": "Ejecución y autonomía"
+    },
+    {
+      "id": "term",
+      "name": "Plazo y cronograma"
+    },
+    {
+      "id": "fees",
+      "name": "Honorarios y gastos"
+    },
+    {
+      "id": "risk",
+      "name": "Riesgo laboral y responsabilidades"
+    },
+    {
+      "id": "protection",
+      "name": "Confidencialidad, datos y propiedad intelectual"
+    },
+    {
+      "id": "closure",
+      "name": "Terminación, cierre y confirmación"
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q-EM-001",
+      "step_id": "parties",
+      "label": "Tipo de contratante",
+      "variable_path": "client.type",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "legal_person",
+          "Persona jurídica"
+        ],
+        [
+          "natural_person",
+          "Persona natural"
+        ]
+      ]
+    },
+    {
+      "id": "Q-EM-002",
+      "step_id": "parties",
+      "label": "Identificación completa del contratante",
+      "variable_path": "client.identification",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Nombre o razón social",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "id_number",
+          "label": "Identificación / NIT",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "address",
+          "label": "Domicilio o dirección",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "email",
+          "label": "Correo contractual",
+          "type": "email",
+          "required": true
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-EM-003",
+      "step_id": "parties",
+      "label": "Firmante y fuente de facultad",
+      "variable_path": "client.signatory",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Nombre del firmante",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "id_number",
+          "label": "Identificación",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "capacity",
+          "label": "Cargo o calidad",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "authority_source",
+          "label": "Fuente de facultad",
+          "type": "text",
+          "required": true
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-EM-004",
+      "step_id": "parties",
+      "label": "Tipo de contratista",
+      "variable_path": "contractor.type",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "legal_person",
+          "Persona jurídica"
+        ],
+        [
+          "natural_person",
+          "Persona natural"
+        ]
+      ]
+    },
+    {
+      "id": "Q-EM-005",
+      "step_id": "parties",
+      "label": "Identificación completa del contratista",
+      "variable_path": "contractor.identification",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Nombre o razón social",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "id_number",
+          "label": "Identificación / NIT",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "address",
+          "label": "Domicilio o dirección",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "email",
+          "label": "Correo contractual",
+          "type": "email",
+          "required": true
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-EM-006",
+      "step_id": "parties",
+      "label": "¿El servicio exige habilitación, matrícula o permiso profesional?",
+      "variable_path": "service.regulated",
+      "type": "boolean",
+      "required": true,
+      "conditional_fields": [
+        {
+          "path": "service.habilitation_verified",
+          "label": "¿La habilitación fue verificada?",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "path": "service.habilitation_type",
+          "label": "Tipo de matrícula, licencia o permiso",
+          "type": "text",
+          "required": true
+        },
+        {
+          "path": "service.habilitation_reference",
+          "label": "Número, autoridad y vigencia",
+          "type": "textarea",
+          "required": true
+        }
+      ]
+    },
+    {
+      "id": "Q-EM-007",
+      "step_id": "service",
+      "label": "Categoría del servicio",
+      "variable_path": "service.category",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "consulting",
+          "Consultoría"
+        ],
+        [
+          "technology",
+          "Tecnología y software"
+        ],
+        [
+          "creative",
+          "Servicios creativos"
+        ],
+        [
+          "research",
+          "Investigación y desarrollo"
+        ],
+        [
+          "commercial",
+          "Gestión comercial"
+        ],
+        [
+          "operational",
+          "Servicio operativo especializado"
+        ],
+        [
+          "professional",
+          "Servicio profesional"
+        ],
+        [
+          "other",
+          "Otro"
+        ]
+      ]
+    },
+    {
+      "id": "Q-EM-008",
+      "step_id": "service",
+      "label": "Objeto contractual preciso",
+      "variable_path": "service.object",
+      "type": "textarea",
+      "required": true
+    },
+    {
+      "id": "Q-EM-009",
+      "step_id": "service",
+      "label": "Resultado esperado",
+      "variable_path": "service.expected_result",
+      "type": "textarea",
+      "required": true
+    },
+    {
+      "id": "Q-EM-010",
+      "step_id": "service",
+      "label": "Actividades incluidas",
+      "variable_path": "scope.included",
+      "type": "list",
+      "required": true,
+      "item_label": "Actividad incluida"
+    },
+    {
+      "id": "Q-EM-011",
+      "step_id": "service",
+      "label": "Actividades excluidas",
+      "variable_path": "scope.excluded",
+      "type": "list",
+      "required": true,
+      "item_label": "Actividad excluida"
+    },
+    {
+      "id": "Q-EM-012",
+      "step_id": "service",
+      "label": "Entregables, hitos y criterios de aceptación",
+      "variable_path": "scope.deliverables",
+      "type": "list",
+      "required": true,
+      "item_fields": [
+        {
+          "key": "id",
+          "label": "Código",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "name",
+          "label": "Entregable",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "due_date",
+          "label": "Fecha o hito",
+          "type": "date",
+          "required": false
+        },
+        {
+          "key": "acceptance_criteria",
+          "label": "Criterio de aceptación",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "format",
+          "label": "Formato",
+          "type": "text",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "Q-EM-013",
+      "step_id": "execution",
+      "label": "¿El contratista decide métodos y organización del trabajo?",
+      "variable_path": "autonomy.methods",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q-EM-014",
+      "step_id": "execution",
+      "label": "¿Puede apoyarse en personal propio o sustitutos idóneos?",
+      "variable_path": "autonomy.delegation",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q-EM-015",
+      "step_id": "execution",
+      "label": "Lugar y medios de ejecución",
+      "variable_path": "execution.arrangement",
+      "type": "structured",
+      "required": true,
+      "fields": [
+        {
+          "key": "location",
+          "label": "Lugar o modalidad",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "tools",
+          "label": "Equipos, sistemas y medios",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "access_controls",
+          "label": "Accesos y controles",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "key": "coordination",
+          "label": "Coordinación entre las partes",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-EM-016",
+      "step_id": "execution",
+      "label": "¿Se impondrá horario fijo o control de asistencia?",
+      "variable_path": "labor_indicators.fixed_schedule",
+      "type": "boolean",
+      "required": true,
+      "conditional_fields": [
+        {
+          "path": "labor_indicators.fixed_location",
+          "label": "¿Se impondrá lugar fijo como regla ordinaria?",
+          "type": "boolean"
+        },
+        {
+          "path": "labor_indicators.attendance_control",
+          "label": "¿Habrá marcación o control equivalente de asistencia?",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "id": "Q-EM-017",
+      "step_id": "execution",
+      "label": "¿Habrá órdenes permanentes sobre modo, tiempo o cantidad?",
+      "variable_path": "labor_indicators.continuous_orders",
+      "type": "boolean",
+      "required": true,
+      "conditional_fields": [
+        {
+          "path": "labor_indicators.daily_method_control",
+          "label": "¿Se controlará diariamente cómo ejecutar el servicio?",
+          "type": "boolean"
+        },
+        {
+          "path": "labor_indicators.continuous_supervision",
+          "label": "¿Existirá supervisión personal continua?",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "id": "Q-EM-018",
+      "step_id": "execution",
+      "label": "¿El contratista se integrará como cargo interno o reportará ausencias como empleado?",
+      "variable_path": "labor_indicators.org_integration",
+      "type": "boolean",
+      "required": true,
+      "conditional_fields": [
+        {
+          "path": "labor_indicators.absence_authorization",
+          "label": "¿Deberá pedir permiso para ausentarse?",
+          "type": "boolean"
+        },
+        {
+          "path": "labor_indicators.employee_identity",
+          "label": "¿Usará cargo, firma o presentación como empleado?",
+          "type": "boolean"
+        },
+        {
+          "path": "labor_indicators.internal_labor_rules",
+          "label": "¿Se someterá a reglamentos laborales internos?",
+          "type": "boolean"
+        },
+        {
+          "path": "labor_indicators.disciplinary_measures",
+          "label": "¿Se prevén sanciones disciplinarias?",
+          "type": "boolean"
+        },
+        {
+          "path": "labor_indicators.vacation_permission",
+          "label": "¿Debe solicitar vacaciones o permisos?",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "id": "Q-EM-019",
+      "step_id": "execution",
+      "label": "¿Existirá exclusividad o disponibilidad personal permanente?",
+      "variable_path": "labor_indicators.exclusivity_or_availability",
+      "type": "boolean",
+      "required": true,
+      "conditional_fields": [
+        {
+          "path": "labor_indicators.exclusivity_scope",
+          "label": "Alcance, causa y duración de la exclusividad",
+          "type": "textarea"
+        },
+        {
+          "path": "labor_indicators.economic_dependence",
+          "label": "¿Se prevé dependencia económica sustancial?",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "id": "Q-EM-020",
+      "step_id": "term",
+      "label": "Fecha de inicio y plazo",
+      "variable_path": "term",
+      "type": "structured",
+      "required": true,
+      "fields": [
+        {
+          "key": "start_date",
+          "label": "Fecha de inicio",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "end_date",
+          "label": "Fecha de terminación",
+          "type": "date",
+          "required": false
+        },
+        {
+          "key": "duration",
+          "label": "Duración, si no hay fecha final",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "renewal",
+          "label": "Regla de prórroga o renovación",
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-EM-021",
+      "step_id": "term",
+      "label": "Cronograma, dependencias y retrasos atribuibles",
+      "variable_path": "schedule",
+      "type": "structured",
+      "required": true,
+      "fields": [
+        {
+          "key": "milestones",
+          "label": "Cronograma e hitos",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "dependencies",
+          "label": "Dependencias a cargo del contratante",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "client_delays",
+          "label": "Efecto de retrasos atribuibles al contratante",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-EM-022",
+      "step_id": "fees",
+      "label": "Modelo de honorarios",
+      "variable_path": "fees.model",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "fixed",
+          "Precio fijo"
+        ],
+        [
+          "monthly",
+          "Mensual"
+        ],
+        [
+          "hourly",
+          "Por hora"
+        ],
+        [
+          "milestone",
+          "Por hito"
+        ],
+        [
+          "success",
+          "Por resultado o éxito"
+        ],
+        [
+          "mixed",
+          "Mixto"
+        ]
+      ]
+    },
+    {
+      "id": "Q-EM-023",
+      "step_id": "fees",
+      "label": "Valor, impuestos, retenciones y facturación",
+      "variable_path": "fees.financial_terms",
+      "type": "structured",
+      "required": true,
+      "fields": [
+        {
+          "key": "amount",
+          "label": "Valor",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "currency",
+          "label": "Moneda",
+          "type": "select",
+          "required": true,
+          "options": [
+            [
+              "COP",
+              "COP"
+            ],
+            [
+              "USD",
+              "USD"
+            ],
+            [
+              "EUR",
+              "EUR"
+            ]
+          ]
+        },
+        {
+          "key": "payment_terms",
+          "label": "Forma y calendario de pago",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "invoice_requirements",
+          "label": "Factura, cuenta de cobro y soportes",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "taxes",
+          "label": "Impuestos y retenciones",
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-EM-024",
+      "step_id": "fees",
+      "label": "Anticipos, gastos y reembolsos",
+      "variable_path": "fees.expenses",
+      "type": "structured",
+      "required": false,
+      "fields": [
+        {
+          "key": "authorized",
+          "label": "Gastos autorizables",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "support",
+          "label": "Soportes exigidos",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "advance",
+          "label": "Anticipos y legalización",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "key": "approval",
+          "label": "Aprobación previa",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-EM-025",
+      "step_id": "risk",
+      "label": "¿La ejecución será personal, continuada y remunerada periódicamente?",
+      "variable_path": "labor_indicators.personal_continuous_periodic",
+      "type": "boolean",
+      "required": true,
+      "conditional_fields": [
+        {
+          "path": "labor_indicators.periodic_payment_without_outputs",
+          "label": "¿El pago será periódico sin depender de entregables?",
+          "type": "boolean"
+        },
+        {
+          "path": "labor_indicators.personal_service_required",
+          "label": "¿La prestación debe ser estrictamente personal?",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "id": "Q-EM-026",
+      "step_id": "risk",
+      "label": "Nivel de responsabilidad y límite económico",
+      "variable_path": "liability",
+      "type": "structured",
+      "required": true,
+      "fields": [
+        {
+          "key": "cap",
+          "label": "Límite de responsabilidad",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "exclusions",
+          "label": "Exclusiones del límite",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "direct_damages",
+          "label": "Daños cubiertos",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "key": "mitigation",
+          "label": "Deber de mitigación",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-EM-027",
+      "step_id": "risk",
+      "label": "Seguros, indemnidad y reclamaciones de terceros",
+      "variable_path": "risk_allocation",
+      "type": "structured",
+      "required": false,
+      "fields": [
+        {
+          "key": "insurance_required",
+          "label": "¿Se exige seguro?",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "key": "insurance",
+          "label": "Seguro, cobertura y vigencia",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "key": "third_party_claims",
+          "label": "Reclamaciones de terceros",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "indemnity",
+          "label": "Procedimiento de indemnidad",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-EM-028",
+      "step_id": "protection",
+      "label": "¿Se manejará información confidencial o secretos empresariales?",
+      "variable_path": "confidentiality.required",
+      "type": "boolean",
+      "required": true,
+      "conditional_fields": [
+        {
+          "path": "confidentiality.categories",
+          "label": "Categorías de información protegida",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "path": "confidentiality.duration",
+          "label": "Duración de la reserva",
+          "type": "text",
+          "required": true
+        },
+        {
+          "path": "confidentiality.return_rule",
+          "label": "Devolución, eliminación y conservación probatoria",
+          "type": "textarea",
+          "required": true
+        }
+      ]
+    },
+    {
+      "id": "Q-EM-029",
+      "step_id": "protection",
+      "label": "¿Se tratarán datos personales por cuenta de la otra parte?",
+      "variable_path": "data_processing.required",
+      "type": "boolean",
+      "required": true,
+      "conditional_fields": [
+        {
+          "path": "data_processing.roles.client",
+          "label": "Rol del contratante",
+          "type": "select",
+          "options": [
+            [
+              "Responsable",
+              "Responsable"
+            ],
+            [
+              "Encargado",
+              "Encargado"
+            ],
+            [
+              "Transmisor",
+              "Transmisor"
+            ]
+          ]
+        },
+        {
+          "path": "data_processing.roles.contractor",
+          "label": "Rol del contratista",
+          "type": "select",
+          "options": [
+            [
+              "Responsable",
+              "Responsable"
+            ],
+            [
+              "Encargado",
+              "Encargado"
+            ],
+            [
+              "Transmisor",
+              "Transmisor"
+            ]
+          ]
+        },
+        {
+          "path": "data_processing.roles.categories",
+          "label": "Categorías de datos y titulares",
+          "type": "textarea"
+        },
+        {
+          "path": "data_processing.instructions",
+          "label": "Instrucciones, seguridad y subencargados",
+          "type": "textarea"
+        }
+      ]
+    },
+    {
+      "id": "Q-EM-030",
+      "step_id": "protection",
+      "label": "¿Se crearán obras, software, invenciones o resultados protegibles?",
+      "variable_path": "ip.required",
+      "type": "boolean",
+      "required": true,
+      "conditional_fields": [
+        {
+          "path": "ip.allocation.new_results",
+          "label": "Resultados nuevos",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "path": "ip.allocation.background",
+          "label": "Materiales preexistentes",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "path": "ip.allocation.open_source",
+          "label": "Código abierto y licencias",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "path": "ip.allocation.third_party",
+          "label": "Materiales de terceros",
+          "type": "textarea",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "Q-EM-031",
+      "step_id": "protection",
+      "label": "¿Se utilizarán herramientas de inteligencia artificial?",
+      "variable_path": "ai.required",
+      "type": "boolean",
+      "required": false,
+      "conditional_fields": [
+        {
+          "path": "ai.allowed_tools",
+          "label": "Herramientas autorizadas",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "path": "ai.permitted_uses",
+          "label": "Usos permitidos y controlados",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "path": "ai.prohibited_data",
+          "label": "Información que no puede ingresarse",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "path": "ai.human_review",
+          "label": "Revisión humana y trazabilidad",
+          "type": "textarea",
+          "required": true
+        }
+      ]
+    },
+    {
+      "id": "Q-EM-032",
+      "step_id": "closure",
+      "label": "Terminación anticipada, subsanación y suspensión",
+      "variable_path": "termination",
+      "type": "structured",
+      "required": true,
+      "fields": [
+        {
+          "key": "notice",
+          "label": "Preaviso",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "cure_period",
+          "label": "Plazo de subsanación",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "serious_breach",
+          "label": "Incumplimientos no subsanables",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "suspension",
+          "label": "Causales y efectos de suspensión",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-EM-033",
+      "step_id": "closure",
+      "label": "Transición, devolución, eliminación y acta de cierre",
+      "variable_path": "closure",
+      "type": "structured",
+      "required": true,
+      "fields": [
+        {
+          "key": "transition",
+          "label": "Transición y entrega",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "support",
+          "label": "Soporte posterior incluido",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "return_assets",
+          "label": "Devolución de activos y accesos",
+          "type": "textarea",
+          "required": false
+        },
+        {
+          "key": "delete_data",
+          "label": "Devolución o eliminación de información",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-EM-034",
+      "step_id": "closure",
+      "label": "Mecanismo de solución de controversias",
+      "variable_path": "disputes.mechanism",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "negotiation_courts",
+          "Negociación y jueces"
+        ],
+        [
+          "negotiation_conciliation_courts",
+          "Negociación, conciliación y jueces"
+        ],
+        [
+          "arbitration",
+          "Arbitraje"
+        ],
+        [
+          "amicable_composition",
+          "Amigable composición"
+        ]
+      ]
+    },
+    {
+      "id": "Q-EM-035",
+      "step_id": "closure",
+      "label": "Confirmación de ausencia de contratación estatal y de vínculo laboral real",
+      "variable_path": "confirmation",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "public_contracting",
+          "label": "¿Interviene una entidad estatal?",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "key": "true_independence",
+          "label": "¿La operación real será autónoma e independiente?",
+          "type": "boolean",
+          "required": true
+        }
+      ],
+      "columns": 1
+    }
+  ]
+}

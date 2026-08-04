@@ -1,0 +1,28 @@
+{
+  "build_id": "M3-CONTROLLED-APPROVAL-2026-07-28",
+  "products": 11,
+  "modules": 11,
+  "documents": 387,
+  "events": 34,
+  "archived_sources": 6,
+  "act": "governance/m3/certificates/ACTA_INTEGRAL_APROBACION_CONTROLADA_M3.docx",
+  "certificates": [
+    "governance/m3/certificates/CERTIFICADO_CO-TR-001_APROBACION_CONTROLADA_M3.docx",
+    "governance/m3/certificates/CERTIFICADO_CO-TR-002_APROBACION_CONTROLADA_M3.docx",
+    "governance/m3/certificates/CERTIFICADO_CO-LA-001_APROBACION_CONTROLADA_M3.docx",
+    "governance/m3/certificates/CERTIFICADO_CO-LA-002_APROBACION_CONTROLADA_M3.docx",
+    "governance/m3/certificates/CERTIFICADO_CO-EM-003_APROBACION_CONTROLADA_M3.docx",
+    "governance/m3/certificates/CERTIFICADO_CO-EM-004_APROBACION_CONTROLADA_M3.docx",
+    "governance/m3/certificates/CERTIFICADO_CO-AR-001_APROBACION_CONTROLADA_M3.docx",
+    "governance/m3/certificates/CERTIFICADO_CO-SA-001_APROBACION_CONTROLADA_M3.docx",
+    "governance/m3/certificates/CERTIFICADO_CO-CD-001_APROBACION_CONTROLADA_M3.docx",
+    "governance/m3/certificates/CERTIFICADO_CO-CD-003_APROBACION_CONTROLADA_M3.docx",
+    "governance/m3/certificates/CERTIFICADO_CO-CD-004_APROBACION_CONTROLADA_M3.docx"
+  ],
+  "registry_hash": "a20783852217c2d7a4bc0c092e63dc2fea661751de298477c94660b1c394fec0",
+  "tests_passed": 837,
+  "subtests_passed": 617,
+  "failures": 0,
+  "qa_report": "governance/m3/M3_QA_REPORT.json",
+  "approval_registry_hash": "a20783852217c2d7a4bc0c092e63dc2fea661751de298477c94660b1c394fec0"
+}

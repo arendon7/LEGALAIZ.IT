@@ -1,0 +1,75 @@
+{
+  "product_code": "CO-LA-001",
+  "version": "M23",
+  "integration_mode": "additive_immutable_revision",
+  "document_family": [
+    "reclamacion_laboral",
+    "liquidacion_desglosada",
+    "evidence_matrix",
+    "filing_guide"
+  ],
+  "critical_rules": [
+    {
+      "id": "M23-LA1-001",
+      "when": "sector_publico_o_regimen_especial",
+      "risk": "red",
+      "action": "block_standard_flow"
+    },
+    {
+      "id": "M23-LA1-002",
+      "when": "fuero_estabilidad_reforzada_embarazo_discapacidad",
+      "risk": "red",
+      "action": "mandatory_lawyer_review"
+    },
+    {
+      "id": "M23-LA1-003",
+      "when": "salario_variable_sin_soportes",
+      "risk": "red",
+      "action": "partial_calculation_only"
+    },
+    {
+      "id": "M23-LA1-004",
+      "when": "terminacion_sin_justa_causa_estandar",
+      "risk": "yellow",
+      "action": "calculate_article_64"
+    },
+    {
+      "id": "M23-LA1-005",
+      "when": "mora_o_cesantias_no_consignadas",
+      "risk": "yellow",
+      "action": "reserve_sanction_for_specific_review"
+    },
+    {
+      "id": "M23-LA1-006",
+      "when": "deduccion_sin_soporte",
+      "risk": "yellow",
+      "action": "exclude_from_net_and_flag"
+    },
+    {
+      "id": "M23-LA1-007",
+      "when": "litigio_conciliacion_transaccion_activa",
+      "risk": "red",
+      "action": "prevent_duplicate_claims"
+    },
+    {
+      "id": "M23-LA1-008",
+      "when": "variables_o_fuentes_no_confirmadas",
+      "risk": "red",
+      "action": "do_not_release_final_document"
+    }
+  ],
+  "parameters_2026": {
+    "smmlv_cop": 1750905,
+    "transport_allowance_cop": 249095,
+    "source_status": "Decree 1469/1470 values currently effective as of 2026-07-31; judicial status monitored"
+  },
+  "official_sources": [
+    "Constitución Política",
+    "Código Sustantivo del Trabajo",
+    "Ley 50 de 1990",
+    "Ley 2466 de 2025",
+    "Ley 1755 de 2015",
+    "Decretos 1469 y 1470 de 2025",
+    "Consejo de Estado, decisión informada 17-07-2026"
+  ]
+}

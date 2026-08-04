@@ -1,0 +1,35 @@
+[
+  {
+    "file": "test_m20_collection_quality.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 12,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 1.82,
+    "summary": "............                                                             [100%] 12 passed in 0.28s"
+  },
+  {
+    "file": "test_m21_ux_navigation.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 7,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 1.87,
+    "summary": ".......                                                                  [100%] 7 passed in 0.26s"
+  },
+  {
+    "file": "test_m24_2_candidate_integration.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 10,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 1.62,
+    "summary": "..........                                                               [100%] 10 passed in 0.06s"
+  }
+]

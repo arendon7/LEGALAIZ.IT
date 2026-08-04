@@ -1,0 +1,47 @@
+{
+  "ok": true,
+  "port": 59603,
+  "checks": [
+    {
+      "name": "health",
+      "passed": true
+    },
+    {
+      "name": "login",
+      "passed": true
+    },
+    {
+      "name": "/api/config",
+      "passed": true
+    },
+    {
+      "name": "/api/products",
+      "passed": true
+    },
+    {
+      "name": "/api/approval-status",
+      "passed": true
+    },
+    {
+      "name": "/api/rc-readiness",
+      "passed": true
+    },
+    {
+      "name": "/api/governance",
+      "passed": true
+    },
+    {
+      "name": "/",
+      "passed": true
+    },
+    {
+      "name": "/main.js",
+      "passed": true
+    },
+    {
+      "name": "/app.css",
+      "passed": true
+    }
+  ],
+  "failed": []
+}

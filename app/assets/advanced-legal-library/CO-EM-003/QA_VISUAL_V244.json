@@ -1,0 +1,40 @@
+{
+  "version": "2.44",
+  "scenarios": [
+    "EM3-C01",
+    "EM3-C02",
+    "EM3-C03",
+    "EM3-C04",
+    "EM3-C05",
+    "EM3-C09"
+  ],
+  "documents_to_inspect": {
+    "EM3-C01": [
+      "DOC-EM-CONTRACT-001",
+      "ANX-EM-SCOPE-001"
+    ],
+    "EM3-C02": [
+      "DOC-EM-CONTRACT-001",
+      "ANX-EM-DATA-001",
+      "ANX-EM-IP-001",
+      "ANX-EM-AI-001"
+    ],
+    "EM3-C03": [
+      "DOC-EM-CONTRACT-001",
+      "ANX-EM-FEES-001",
+      "ANX-EM-CONF-001"
+    ],
+    "EM3-C04": [
+      "DOC-EM-CONTRACT-001",
+      "ANX-EM-DATA-001"
+    ],
+    "EM3-C05": [
+      "DOC-EM-CONTRACT-001",
+      "ANX-EM-FEES-001"
+    ],
+    "EM3-C09": [
+      "DOC-EM-CONTRACT-001",
+      "ANX-EM-IP-001"
+    ]
+  }
+}

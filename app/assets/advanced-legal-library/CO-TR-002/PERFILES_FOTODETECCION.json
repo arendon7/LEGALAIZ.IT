@@ -1,0 +1,117 @@
+[
+  {
+    "id": "TR2-P01",
+    "name": "Sin notificación y sin resolución",
+    "presets": {
+      "notice.comparendo_received": "no",
+      "stage.resolution_exists": "no",
+      "strategy.objective": "restore_defense"
+    },
+    "notice": "Perfil orientativo. Debe verificarse cada expediente y cada acto individual."
+  },
+  {
+    "id": "TR2-P02",
+    "name": "Notificación tardía o defectuosa",
+    "presets": {
+      "notice.comparendo_received": "yes",
+      "notice.address_match": "different",
+      "strategy.objective": "restore_defense"
+    },
+    "notice": "Perfil orientativo. Debe verificarse cada expediente y cada acto individual."
+  },
+  {
+    "id": "TR2-P03",
+    "name": "Resolución sancionatoria no conocida",
+    "presets": {
+      "stage.resolution_exists": "yes",
+      "stage.final_status": "unknown",
+      "strategy.objective": "challenge_resolution"
+    },
+    "notice": "Perfil orientativo. Debe verificarse cada expediente y cada acto individual."
+  },
+  {
+    "id": "TR2-P04",
+    "name": "Propietario que no era conductor",
+    "presets": {
+      "petitioner.role": "owner",
+      "responsibility.was_driver": "no",
+      "strategy.objective": "combined"
+    },
+    "notice": "Perfil orientativo. Debe verificarse cada expediente y cada acto individual."
+  },
+  {
+    "id": "TR2-P05",
+    "name": "Conductor identificado distinto del propietario",
+    "presets": {
+      "petitioner.role": "owner",
+      "responsibility.was_driver": "no",
+      "responsibility.driver_identification.known": "yes"
+    },
+    "notice": "Perfil orientativo. Debe verificarse cada expediente y cada acto individual."
+  },
+  {
+    "id": "TR2-P06",
+    "name": "Venta o entrega previa con traspaso pendiente",
+    "presets": {
+      "vehicle.relationship": "sold",
+      "responsibility.transfer.exists": "yes"
+    },
+    "notice": "Perfil orientativo. Debe verificarse cada expediente y cada acto individual."
+  },
+  {
+    "id": "TR2-P07",
+    "name": "Hurto o uso no autorizado",
+    "presets": {
+      "vehicle.relationship": "stolen",
+      "responsibility.theft.exists": "yes"
+    },
+    "notice": "Perfil orientativo. Debe verificarse cada expediente y cada acto individual."
+  },
+  {
+    "id": "TR2-P08",
+    "name": "Obligación legal del propietario bajo revisión",
+    "presets": {
+      "responsibility.owner_duty_category": "speed",
+      "strategy.objective": "combined"
+    },
+    "notice": "Perfil orientativo. Debe verificarse cada expediente y cada acto individual."
+  },
+  {
+    "id": "TR2-P09",
+    "name": "Pago efectuado y expediente incompleto",
+    "presets": {
+      "stage.payment": "full_paid",
+      "strategy.objective": "obtain_file"
+    },
+    "notice": "Perfil orientativo. Debe verificarse cada expediente y cada acto individual."
+  },
+  {
+    "id": "TR2-P10",
+    "name": "Cobro coactivo o embargo",
+    "presets": {
+      "stage.coercive": "payment_order",
+      "strategy.objective": "coercive_defense"
+    },
+    "notice": "Perfil orientativo. Debe verificarse cada expediente y cada acto individual."
+  },
+  {
+    "id": "TR2-P11",
+    "name": "Cuestionamiento técnico del SAST",
+    "presets": {
+      "sast.authorization_status": "unknown",
+      "sast.signaling": "unknown",
+      "strategy.objective": "technical_review"
+    },
+    "notice": "Perfil orientativo. Debe verificarse cada expediente y cada acto individual."
+  },
+  {
+    "id": "TR2-P12",
+    "name": "Varios comparendos o flota empresarial",
+    "presets": {
+      "case.multiple": "yes",
+      "petitioner.role": "company",
+      "strategy.objective": "combined"
+    },
+    "notice": "Perfil orientativo. Debe verificarse cada expediente y cada acto individual."
+  }
+]

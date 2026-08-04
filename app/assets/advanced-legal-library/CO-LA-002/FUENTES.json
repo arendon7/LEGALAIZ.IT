@@ -1,0 +1,117 @@
+[
+  {
+    "id": "LA2-S1",
+    "title": "Código Sustantivo del Trabajo consolidado",
+    "authority": "Secretaría Jurídica del Senado / SUIN-Juriscol",
+    "type": "code",
+    "status": "vigente sujeto a concordancias",
+    "url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+    "last_verified": "2026-08-02",
+    "verification_status": "Revalidada para estructura contractual, período de prueba, salario, obligaciones, terminación y concordancias vigentes."
+  },
+  {
+    "id": "LA2-S2",
+    "title": "Ley 2466 de 2025 — reforma laboral",
+    "authority": "Congreso de Colombia / Secretaría Jurídica del Senado",
+    "type": "statute",
+    "status": "vigente",
+    "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2466_2025.html",
+    "last_verified": "2026-08-02",
+    "verification_status": "Revalidada frente a la reforma laboral vigente para modalidades contractuales, jornada, nocturnidad, descansos, horas extra y debido proceso disciplinario."
+  },
+  {
+    "id": "LA2-S3",
+    "title": "Ley 2101 de 2021 — reducción de jornada",
+    "authority": "Congreso de Colombia / SUIN-Juriscol",
+    "type": "statute",
+    "status": "vigente",
+    "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F30042017",
+    "last_verified": "2026-08-02",
+    "verification_status": "Revalidada para la reducción gradual: jornada máxima semanal de 42 horas aplicable desde el 15 de julio de 2026."
+  },
+  {
+    "id": "LA2-S4",
+    "title": "Decreto 159 de 2026 — salario mínimo transitorio",
+    "authority": "Gobierno nacional / SUIN-Juriscol",
+    "type": "decree",
+    "status": "vigente transitorio",
+    "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30056106",
+    "last_verified": "2026-07-18",
+    "verification_status": "Valor utilizado: $1.750.905."
+  },
+  {
+    "id": "LA2-S5",
+    "title": "Decreto 1470 de 2025 — auxilio de transporte 2026",
+    "authority": "Gobierno nacional / SUIN-Juriscol",
+    "type": "decree",
+    "status": "vigente 2026",
+    "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30055941",
+    "last_verified": "2026-07-18",
+    "verification_status": "Valor utilizado: $249.095 para quienes cumplen condiciones."
+  },
+  {
+    "id": "LA2-S6",
+    "title": "Ley 1221 de 2008 y Decreto 1072 de 2015 — teletrabajo y SG-SST",
+    "authority": "Congreso y Gobierno nacional / SUIN-Juriscol",
+    "type": "regulation",
+    "status": "vigente",
+    "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Decretos%2F30019522",
+    "last_verified": "2026-07-30",
+    "verification_status": "Verificada para teletrabajo, ARL, equipos, privacidad y SG-SST."
+  },
+  {
+    "id": "LA2-S7",
+    "title": "Ley 2121 de 2021 — trabajo remoto",
+    "authority": "Congreso de Colombia / SUIN-Juriscol",
+    "type": "statute",
+    "status": "vigente",
+    "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30042108",
+    "last_verified": "2026-07-18",
+    "verification_status": "Verificada para ejecución íntegramente remota y firma electrónica/digital."
+  },
+  {
+    "id": "LA2-S8",
+    "title": "Ley 2088 de 2021 — trabajo en casa",
+    "authority": "Congreso de Colombia",
+    "type": "statute",
+    "status": "vigente",
+    "last_verified": "2026-07-18",
+    "verification_status": "Verificada como habilitación temporal, distinta del teletrabajo y trabajo remoto."
+  },
+  {
+    "id": "LA2-S9",
+    "title": "Ley 2191 de 2022 — desconexión laboral",
+    "authority": "Congreso de Colombia",
+    "type": "statute",
+    "status": "vigente",
+    "last_verified": "2026-07-18",
+    "verification_status": "Verificada para política y límites de comunicaciones fuera de jornada."
+  },
+  {
+    "id": "LA2-S10",
+    "title": "Ley 1581 de 2012 y reglamentación — datos personales",
+    "authority": "Congreso y Gobierno nacional",
+    "type": "data_protection",
+    "status": "vigente",
+    "last_verified": "2026-07-18",
+    "verification_status": "Aplicada a datos laborales, sensibles, biometría y monitoreo."
+  },
+  {
+    "id": "LA2-S11",
+    "title": "Decisión Andina 351 de 1993 y Ley 23 de 1982 — propiedad intelectual",
+    "authority": "Comunidad Andina y República de Colombia",
+    "type": "ip",
+    "status": "vigente",
+    "last_verified": "2026-07-18",
+    "verification_status": "Aplicada a derechos patrimoniales, morales y entregables laborales."
+  },
+  {
+    "id": "LA2-S12",
+    "title": "Paquete jurídico maestro CO-LA-002",
+    "authority": "LegalAIZ.it",
+    "type": "package",
+    "status": "integrado v2.24",
+    "last_verified": "2026-07-18",
+    "verification_status": "Modelo completo convertido en bloques, anexos y documentos trazables."
+  }
+]

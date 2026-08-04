@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="t d">
+<title id="t">Protección al consumidor</title><desc id="d">Ilustración de la solución Protección al consumidor</desc>
+<defs>
+  <linearGradient id="navyG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0D1324"/><stop offset="1" stop-color="#18375E"/></linearGradient>
+  <linearGradient id="goldG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#E6C98F"/><stop offset="1" stop-color="#B1843C"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#0D1324" flood-opacity=".14"/></filter>
+</defs><rect width="640" height="480" rx="36" fill="#F7F5F1"/><circle cx="525" cy="82" r="90" fill="#C9A96E" opacity=".14"/><circle cx="100" cy="405" r="70" fill="#2563EB" opacity=".07"/><g filter="url(#shadow)"><rect x="86" y="70" width="468" height="340" rx="30" fill="#fff"/></g><path d="M212 176h216l-19 178H231z" fill="#fff" stroke="#E6E6E1" stroke-width="4"/><path d="M264 176c0-58 112-58 112 0" fill="none" stroke="#C9A96E" stroke-width="12"/><circle cx="390" cy="325" r="42" fill="#0D1324"/><path d="m370 325 13 13 27-32" fill="none" stroke="#C9A96E" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg>

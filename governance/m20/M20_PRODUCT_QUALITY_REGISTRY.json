@@ -1,0 +1,2437 @@
+{
+  "version": "M20.1",
+  "verified_at": "2026-07-31",
+  "notice": "Los 11 productos jurídicos quedaron revalidados sustantivamente entre M10 y M20. La aprobación histórica y la verificación vigente continúan mostrándose por separado y cada caso requiere revisión específica según su riesgo.",
+  "products": [
+    {
+      "product_code": "CO-TR-001",
+      "title": "Chequeo SAST + inscripción verificada",
+      "status": "reviewed",
+      "verified_at": "2026-07-31",
+      "review_scope": "Revisión sustantiva de autorización, operación técnica, actuaciones Supertransporte, firmeza, aplicabilidad individual, inscripción y trazabilidad; regeneración documental M14",
+      "next_action": "Revalidar registro ANSV y estado de cada acto antes de cada informe o actuación",
+      "jurisdiction": "Colombia",
+      "sources": [
+        {
+          "id": "TR1-S1",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 1843 de 2017 - instalación y operación de SAST",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1843_2017.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "TR1-S2",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 769 de 2002, artículo 158A, adicionado por Ley 2251 de 2022",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002_pr003.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "TR1-S3",
+          "authority": "Ministerio de Transporte / ANSV",
+          "title": "Resolución 20203040011245 de 2020 - criterios técnicos SAST",
+          "url": "https://www.ansv.gov.co/es/normatividad/resolucion-20203040011245-2020",
+          "verified_at": "2026-07-31",
+          "binding_level": "reglamento técnico"
+        },
+        {
+          "id": "TR1-S4",
+          "authority": "Agencia Nacional de Seguridad Vial",
+          "title": "Sistema de Información de Fotodetección: autorizaciones, mapa e indicadores",
+          "url": "https://fotodeteccion.ansv.gov.co/",
+          "verified_at": "2026-07-31",
+          "binding_level": "registro administrativo oficial"
+        },
+        {
+          "id": "TR1-S5",
+          "authority": "Corte Constitucional",
+          "title": "Sentencia C-038 de 2020 - imputación personal y culpabilidad",
+          "url": "https://www.corteconstitucional.gov.co/relatoria/2020/C-038-20.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia constitucional"
+        },
+        {
+          "id": "TR1-S6",
+          "authority": "Superintendencia de Transporte",
+          "title": "Comunicación del 19 de mayo de 2026 e investigaciones contra 37 organismos",
+          "url": "https://www.supertransporte.gov.co/index.php/comunicaciones-2026/gobierno-nacional-investiga-a-37-organismos-de-transito-mas-de-75-millones-de-fotomultas-estan-bajo-la-lupa-y-58-millones-quedaran-sin-validez/",
+          "verified_at": "2026-07-31",
+          "binding_level": "comunicación; no sustituye acto"
+        },
+        {
+          "id": "TR1-S7",
+          "authority": "Superintendencia de Transporte",
+          "title": "Comunicación del 29 de mayo de 2026 e investigaciones contra otros 12 organismos",
+          "url": "https://www.supertransporte.gov.co/index.php/comunicaciones-2026/la-supertransporte-abrio-investigacion-a-otros-12-organismos-de-transito-por-presuntas-irregularidades-en-sistemas-de-fotodeteccion/",
+          "verified_at": "2026-07-31",
+          "binding_level": "comunicación; no sustituye acto"
+        },
+        {
+          "id": "TR1-S8",
+          "authority": "Superintendencia de Transporte",
+          "title": "Resoluciones de investigaciones administrativas 2026, incluidos autos SAST de mayo",
+          "url": "https://www.supertransporte.gov.co/index.php/resoluciones-de-investigaciones-administrativas/ria-2026/",
+          "verified_at": "2026-07-31",
+          "binding_level": "actos particulares según etapa"
+        },
+        {
+          "id": "TR1-S9",
+          "authority": "Ministerio de Transporte",
+          "title": "Concepto 20261340929621 del 30 de junio de 2026 - Concepto de Desempeño y operación SAST",
+          "url": "https://mintransporte.gov.co/info/mintransporte/media/anexos/1LxORMOq.pdf",
+          "verified_at": "2026-07-31",
+          "binding_level": "concepto general no vinculante"
+        },
+        {
+          "id": "TR1-S10",
+          "authority": "Instituto Nacional de Metrología",
+          "title": "Resolución 352 de 2020 - trazabilidad metrológica y transición",
+          "url": "https://www.inm.gov.co/",
+          "verified_at": "2026-07-31",
+          "binding_level": "acto administrativo técnico"
+        },
+        {
+          "id": "TR1-S11",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 1755 de 2015 - derecho de petición",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1755_2015.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "TR1-S12",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 1581 de 2012 - tratamiento de datos personales",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        }
+      ],
+      "verified_controls": [
+        {
+          "id": "authorization_validity",
+          "label": "Vigencia general de autorización ANSV",
+          "value": "5 años, salvo excepción legal aplicable",
+          "source_ids": [
+            "TR1-S1"
+          ]
+        },
+        {
+          "id": "operational_criteria",
+          "label": "Criterios técnicos de operación",
+          "value": "Viabilidad de infraestructura + calibración + señalización",
+          "source_ids": [
+            "TR1-S3",
+            "TR1-S9"
+          ]
+        },
+        {
+          "id": "ex_officio_revocation",
+          "label": "Revocatoria oficiosa",
+          "value": "Hasta 30 días hábiles después de decisión Supertransporte en firme y para periodo sin autorización",
+          "source_ids": [
+            "TR1-S2"
+          ]
+        },
+        {
+          "id": "personal_imputability",
+          "label": "Responsabilidad individual",
+          "value": "No se presume por la sola propiedad; requiere imputación y culpabilidad",
+          "source_ids": [
+            "TR1-S5"
+          ]
+        },
+        {
+          "id": "official_conflict",
+          "label": "Tensión oficial 2026",
+          "value": "Comunicaciones/autos de mayo deben cotejarse con concepto MinTransporte de junio y régimen temporal",
+          "source_ids": [
+            "TR1-S6",
+            "TR1-S7",
+            "TR1-S8",
+            "TR1-S9"
+          ]
+        },
+        {
+          "id": "source_hierarchy",
+          "label": "Jerarquía y firmeza",
+          "value": "Comunicado ≠ auto ≠ decisión ≠ decisión firme",
+          "source_ids": [
+            "TR1-S8"
+          ]
+        },
+        {
+          "id": "verified_enrollment",
+          "label": "Inscripción verificada",
+          "value": "Identidad, legitimación y consentimientos separados; no crea representación",
+          "source_ids": [
+            "TR1-S12"
+          ]
+        }
+      ],
+      "document_inventory": {
+        "reports": 1,
+        "operational_documents": 5,
+        "consolidated_packages": 1,
+        "formats": [
+          "DOCX",
+          "PDF"
+        ],
+        "latest_version": "M14.1"
+      },
+      "findings": [
+        {
+          "severity": "high",
+          "status": "corrected_m14",
+          "title": "El cruce territorial y temporal podía confundirse con procedencia jurídica",
+          "resolution": "Se exige dispositivo, punto, autorización, criterios técnicos, acto, firmeza y aplicabilidad individual."
+        },
+        {
+          "severity": "high",
+          "status": "corrected_m14",
+          "title": "Las comunicaciones de mayo de 2026 podían presentarse como decisiones definitivas",
+          "resolution": "Se implementó jerarquía de fuentes y estados separados de investigación, decisión y firmeza."
+        },
+        {
+          "severity": "high",
+          "status": "controlled_m14",
+          "title": "Existe tensión oficial sobre el Concepto de Desempeño posterior a 2020",
+          "resolution": "Se registra el conflicto, se exige régimen temporal y se prohíbe concluir por titulares."
+        },
+        {
+          "severity": "medium",
+          "status": "corrected_m14",
+          "title": "La inscripción mezclaba chequeo, datos y representación",
+          "resolution": "Se separaron autorizaciones y se incorporaron minimización, retención y acceso por rol."
+        }
+      ],
+      "legal_notice": "M14 no declara nulidad, revocatoria, devolución ni inexigibilidad. Deben analizarse expediente, términos, autorización, criterios técnicos, acto y firmeza, imputación personal, pagos, cobro coactivo y procesos judiciales."
+    },
+    {
+      "product_code": "CO-TR-002",
+      "title": "Fotomulta no notificada",
+      "status": "reviewed",
+      "verified_at": "2026-07-31",
+      "review_scope": "Revisión sustantiva de cronología de validación y envío, dirección RUNT, entrega, aviso, conocimiento real, comparecencia, imputación, sanción, revocatoria, registros y cobro; regeneración documental M15",
+      "next_action": "Revalidar expediente, dirección RUNT histórica, trazabilidad postal/electrónica y etapa antes de cada radicación",
+      "jurisdiction": "Colombia",
+      "sources": [
+        {
+          "id": "TR2-S1",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 1843 de 2017, artículos 7 a 9 - notificación, descuentos y procedimiento SAST",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1843_2017.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "TR2-S2",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 769 de 2002, artículos 135 y 136 - comparendo, procedimiento y reducción",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002_pr003.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "TR2-S3",
+          "authority": "Corte Constitucional",
+          "title": "Sentencia C-038 de 2020 - imputación personal y culpabilidad en fotodetección",
+          "url": "https://www.corteconstitucional.gov.co/relatoria/2020/C-038-20.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia constitucional"
+        },
+        {
+          "id": "TR2-S4",
+          "authority": "Corte Constitucional",
+          "title": "Sentencia C-321 de 2022 - comparendo distinto de sanción y deberes del propietario con culpabilidad probada",
+          "url": "https://www.corteconstitucional.gov.co/relatoria/2022/C-321-22.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia constitucional"
+        },
+        {
+          "id": "TR2-S5",
+          "authority": "Corte Constitucional",
+          "title": "Sentencia T-616 de 2006 - naturaleza del comparendo y trámite contravencional",
+          "url": "https://www.corteconstitucional.gov.co/relatoria/2006/T-616-06.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia constitucional"
+        },
+        {
+          "id": "TR2-S6",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 1755 de 2015 - derecho de petición y términos de documentos e información",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1755_2015.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "TR2-S7",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 1437 de 2011, artículos 93 a 96 - revocación directa",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1437_2011_pr002.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "TR2-S8",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 1581 de 2012 - corrección y tratamiento de datos personales",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        }
+      ],
+      "verified_controls": [
+        {
+          "id": "dispatch_deadline",
+          "label": "Envío de comparendo y soportes",
+          "value": "Dentro de 3 días hábiles siguientes a la validación",
+          "source_ids": [
+            "TR2-S1"
+          ]
+        },
+        {
+          "id": "appearance_deadline",
+          "label": "Comparecencia SAST",
+          "value": "11 días hábiles desde la entrega del comparendo",
+          "source_ids": [
+            "TR2-S1"
+          ]
+        },
+        {
+          "id": "discount_restoration",
+          "label": "Restablecimiento de descuentos",
+          "value": "Desde la notificación válida cuando se prueba falta o indebida notificación",
+          "source_ids": [
+            "TR2-S1"
+          ]
+        },
+        {
+          "id": "runt_address",
+          "label": "Dirección de notificación",
+          "value": "Última dirección registrada en RUNT para la fecha; deber de actualización del propietario",
+          "source_ids": [
+            "TR2-S1"
+          ]
+        },
+        {
+          "id": "comparendo_not_sanction",
+          "label": "Naturaleza del comparendo",
+          "value": "Citación inicial; no equivale a sanción ni prueba concluyente",
+          "source_ids": [
+            "TR2-S4",
+            "TR2-S5"
+          ]
+        },
+        {
+          "id": "personal_imputability",
+          "label": "Responsabilidad sancionatoria",
+          "value": "Requiere imputación personal y culpabilidad; no deriva automáticamente de la propiedad",
+          "source_ids": [
+            "TR2-S3",
+            "TR2-S4"
+          ]
+        },
+        {
+          "id": "document_request",
+          "label": "Petición de documentos",
+          "value": "10 días; si no se responde opera la regla legal de entrega posterior",
+          "source_ids": [
+            "TR2-S6"
+          ]
+        },
+        {
+          "id": "direct_revocation",
+          "label": "Revocación directa",
+          "value": "Causales y límites de artículos 93 a 96; 2 meses para resolver y no revive términos",
+          "source_ids": [
+            "TR2-S7"
+          ]
+        },
+        {
+          "id": "no_automatic_nullity",
+          "label": "Defecto de notificación",
+          "value": "Exige analizar etapa y afectación concreta; no produce por sí solo nulidad, archivo o inexigibilidad",
+          "source_ids": [
+            "TR2-S1",
+            "TR2-S4"
+          ]
+        }
+      ],
+      "document_inventory": {
+        "diagnostics": 1,
+        "operational_documents": 6,
+        "consolidated_packages": 1,
+        "formats": [
+          "DOCX",
+          "PDF"
+        ],
+        "latest_version": "M15.1"
+      },
+      "findings": [
+        {
+          "severity": "high",
+          "status": "corrected_m15",
+          "title": "La notificación podía tratarse como un hecho binario",
+          "resolution": "Se implementó cronología de nueve hitos con evidencia y efectos diferenciados."
+        },
+        {
+          "severity": "high",
+          "status": "corrected_m15",
+          "title": "El defecto de notificación podía presentarse como nulidad automática",
+          "resolution": "Se exige afectación concreta, etapa, conocimiento real y remedio jurídicamente disponible."
+        },
+        {
+          "severity": "high",
+          "status": "corrected_m15",
+          "title": "Comparendo, sanción y cobro podían mezclarse",
+          "resolution": "Se separaron citación, procedimiento, acto, firmeza, registros y ejecución."
+        },
+        {
+          "severity": "high",
+          "status": "corrected_m15",
+          "title": "Faltaba control preciso de dirección RUNT, entrega y aviso",
+          "resolution": "Se solicitan histórico, pieza enviada, guía, logs, devolución y evidencia de aviso."
+        },
+        {
+          "severity": "medium",
+          "status": "corrected_m15",
+          "title": "La revocatoria directa podía usarse como recurso genérico",
+          "resolution": "Se incorporaron causales, improcedencia, oportunidad, plazo y efectos del CPACA."
+        }
+      ],
+      "legal_notice": "M15 no declara nulidad, archivo, caducidad, prescripción, devolución o inexigibilidad automática. Deben revisarse expediente, notificación, afectación de defensa, imputación, acto, firmeza, recursos, pagos, cobro coactivo y procesos judiciales."
+    },
+    {
+      "product_code": "CO-LA-001",
+      "title": "Liquidación laboral, reclamación y cierre",
+      "status": "reviewed",
+      "verified_at": "2026-07-31",
+      "review_scope": "Revisión sustantiva de bases por concepto, causación, cesantías anualizadas, intereses, prima semestral, vacaciones, modalidades de terminación, indemnizaciones, descuentos, prescripción, reclamación y cierre; regeneración documental M16",
+      "next_action": "Verificar soportes, bases, pagos, modalidad y causa de terminación, protección especial y prescripción antes de calcular o transar",
+      "jurisdiction": "Colombia",
+      "sources": [
+        {
+          "id": "LA1-S1",
+          "authority": "SUIN-Juriscol",
+          "title": "Código Sustantivo del Trabajo consolidado — artículos 13 a 15, 64, 65, 149, 186, 192, 249, 253, 306, 488 y 489",
+          "url": "https://www.suin-juriscol.gov.co/viewdocument.asp?ruta=codigo%2F30019323",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "LA1-S2",
+          "authority": "SUIN-Juriscol",
+          "title": "Ley 50 de 1990, artículo 99 — régimen anualizado de cesantías",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1604809",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "LA1-S3",
+          "authority": "SUIN-Juriscol",
+          "title": "Ley 52 de 1975 — intereses anuales a las cesantías",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1606193",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "LA1-S4",
+          "authority": "SUIN-Juriscol",
+          "title": "Ley 789 de 2002 — indemnización por terminación y sanción moratoria",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1668469",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "LA1-S5",
+          "authority": "SUIN-Juriscol",
+          "title": "Ley 2466 de 2025 — reforma laboral",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F30055086",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente con transición aplicable"
+        },
+        {
+          "id": "LA1-S6",
+          "authority": "SUIN-Juriscol",
+          "title": "Decreto 1469 de 2025 — salario mínimo 2026, COP $1.750.905",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30055940",
+          "verified_at": "2026-07-31",
+          "binding_level": "acto administrativo vigente al corte"
+        },
+        {
+          "id": "LA1-S7",
+          "authority": "SUIN-Juriscol",
+          "title": "Decreto 1470 de 2025 — auxilio de transporte 2026, COP $249.095",
+          "url": "https://www.suin-juriscol.gov.co/clp/contenidos.dll/Decretos/30055941",
+          "verified_at": "2026-07-31",
+          "binding_level": "acto administrativo vigente"
+        },
+        {
+          "id": "LA1-S8",
+          "authority": "Consejo de Estado",
+          "title": "Revocatoria de la suspensión provisional del Decreto 1469 de 2025, 17 de julio de 2026",
+          "url": "https://consejodeestado.gov.co/noticias/",
+          "verified_at": "2026-07-31",
+          "binding_level": "decisión cautelar; fondo pendiente"
+        },
+        {
+          "id": "LA1-S9",
+          "authority": "Corte Suprema de Justicia",
+          "title": "SL2338-2023 — artículo 65 CST y análisis judicial de buena fe",
+          "url": "https://cortesuprema.gov.co/rl_dl_sl2338-2023/",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia laboral"
+        },
+        {
+          "id": "LA1-S10",
+          "authority": "SUIN-Juriscol",
+          "title": "Constitución Política, artículo 53 — principios mínimos del trabajo",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1687988",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma constitucional"
+        }
+      ],
+      "verified_controls": [
+        {
+          "id": "minimum_salary",
+          "label": "SMLMV 2026",
+          "value": "COP $1.750.905; Decreto 1469 vigente al corte tras revocatoria cautelar",
+          "source_ids": [
+            "LA1-S6",
+            "LA1-S8"
+          ]
+        },
+        {
+          "id": "transport_aid",
+          "label": "Auxilio de transporte 2026",
+          "value": "COP $249.095 sujeto a elegibilidad",
+          "source_ids": [
+            "LA1-S7"
+          ]
+        },
+        {
+          "id": "separate_bases",
+          "label": "Bases por concepto",
+          "value": "Cesantías, prima, vacaciones e indemnización se liquidan con bases diferenciadas",
+          "source_ids": [
+            "LA1-S1"
+          ]
+        },
+        {
+          "id": "cesantias",
+          "label": "Cesantías anualizadas",
+          "value": "Un mes de salario por año o fracción; control anual",
+          "source_ids": [
+            "LA1-S1",
+            "LA1-S2"
+          ]
+        },
+        {
+          "id": "interest",
+          "label": "Intereses de cesantías",
+          "value": "12 % anual proporcional",
+          "source_ids": [
+            "LA1-S3"
+          ]
+        },
+        {
+          "id": "prima",
+          "label": "Prima de servicios",
+          "value": "30 días por año, liquidación semestral/proporcional",
+          "source_ids": [
+            "LA1-S1"
+          ]
+        },
+        {
+          "id": "vacation",
+          "label": "Vacaciones",
+          "value": "15 días hábiles por año; base sin auxilio y promedio legal si variable",
+          "source_ids": [
+            "LA1-S1"
+          ]
+        },
+        {
+          "id": "indemnity",
+          "label": "Indemnización artículo 64",
+          "value": "Regla según término fijo, obra/labor o indefinido y nivel salarial",
+          "source_ids": [
+            "LA1-S1",
+            "LA1-S4"
+          ]
+        },
+        {
+          "id": "prescription",
+          "label": "Prescripción",
+          "value": "Tres años por derecho desde exigibilidad",
+          "source_ids": [
+            "LA1-S1"
+          ]
+        },
+        {
+          "id": "written_claim",
+          "label": "Interrupción escrita",
+          "value": "Una sola vez y nuevo lapso igual respecto del derecho determinado",
+          "source_ids": [
+            "LA1-S1"
+          ]
+        },
+        {
+          "id": "deductions",
+          "label": "Descuentos",
+          "value": "Solo bajo autorización o habilitación legal y sin afectar mínimos",
+          "source_ids": [
+            "LA1-S1"
+          ]
+        },
+        {
+          "id": "moratory",
+          "label": "Sanciones moratorias",
+          "value": "No automáticas; exigen presupuesto jurídico y análisis de conducta/buena fe",
+          "source_ids": [
+            "LA1-S1",
+            "LA1-S9"
+          ]
+        }
+      ],
+      "document_inventory": {
+        "diagnostics": 1,
+        "operational_documents": 7,
+        "consolidated_packages": 1,
+        "formats": [
+          "DOCX",
+          "PDF"
+        ],
+        "latest_version": "M16.1"
+      },
+      "findings": [
+        {
+          "severity": "high",
+          "status": "corrected_m16",
+          "title": "El cálculo podía usar una sola base global",
+          "resolution": "Se implementaron bases y cortes separados por concepto."
+        },
+        {
+          "severity": "high",
+          "status": "corrected_m16",
+          "title": "Indemnización y sanciones podían mezclarse con prestaciones",
+          "resolution": "Se separaron módulos de terminación, indemnización y rubros litigiosos."
+        },
+        {
+          "severity": "high",
+          "status": "corrected_m16",
+          "title": "Prescripción podía tratarse con una sola fecha",
+          "resolution": "Se exige exigibilidad y control individual por derecho, con una sola interrupción escrita."
+        },
+        {
+          "severity": "medium",
+          "status": "corrected_m16",
+          "title": "Pagos y descuentos podían imputarse globalmente",
+          "resolution": "Se exige conciliación por concepto, soporte y autorización."
+        }
+      ],
+      "legal_notice": "M16 produce estimaciones reproducibles, no declara vínculo, deuda, mala fe, sanción moratoria, estabilidad reforzada, justa causa ni derecho litigioso. Requiere revisión profesional en controversias, fueros, insolvencia, prescripción o proceso."
+    },
+    {
+      "product_code": "CO-LA-002",
+      "title": "Contrato de trabajo personalizado",
+      "status": "reviewed",
+      "verified_at": "2026-07-30",
+      "review_scope": "Revisión normativa M10 y regeneración documental integral M11 con comparación y QA visual",
+      "next_action": "Revalidación periódica y control del caso concreto antes de firma",
+      "jurisdiction": "Colombia",
+      "sources": [
+        {
+          "id": "LA2-S1",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Código Sustantivo del Trabajo consolidado",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "id": "LA2-S2",
+          "authority": "Congreso de Colombia",
+          "title": "Ley 2466 de 2025",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2466_2025.html",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "id": "LA2-S3",
+          "authority": "Congreso de Colombia",
+          "title": "Ley 2101 de 2021",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2101_2021.html",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "id": "LA2-S6",
+          "authority": "Congreso de Colombia",
+          "title": "Ley 1221 de 2008, teletrabajo",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1221_2008.html",
+          "verified_at": "2026-07-30"
+        }
+      ],
+      "verified_controls": [
+        {
+          "id": "indefinite_default",
+          "label": "Contrato indefinido como modalidad general",
+          "value": true,
+          "effective_from": "2025-06-25",
+          "source_ids": [
+            "LA2-S2"
+          ]
+        },
+        {
+          "id": "fixed_term_limit",
+          "label": "Término fijo escrito y máximo acumulado",
+          "value": "48 meses",
+          "effective_from": "2025-06-25",
+          "source_ids": [
+            "LA2-S2"
+          ]
+        },
+        {
+          "id": "night_work_start",
+          "label": "Inicio de jornada nocturna",
+          "value": "19:00",
+          "effective_from": "2025-12-25",
+          "source_ids": [
+            "LA2-S2"
+          ]
+        },
+        {
+          "id": "weekly_hours",
+          "label": "Jornada máxima semanal",
+          "value": "42 horas",
+          "effective_from": "2026-07-15",
+          "source_ids": [
+            "LA2-S2",
+            "LA2-S3"
+          ]
+        },
+        {
+          "id": "rest_day_surcharge",
+          "label": "Recargo mínimo por día de descanso obligatorio",
+          "value": "90%",
+          "effective_from": "2026-07-01",
+          "source_ids": [
+            "LA2-S2"
+          ]
+        },
+        {
+          "id": "disciplinary_defense",
+          "label": "Término mínimo de defensa disciplinaria",
+          "value": "5 días",
+          "effective_from": "2025-06-25",
+          "source_ids": [
+            "LA2-S2"
+          ]
+        },
+        {
+          "id": "overtime_limits",
+          "label": "Límite de trabajo suplementario",
+          "value": "2 horas diarias y 12 semanales",
+          "effective_from": "2025-06-25",
+          "source_ids": [
+            "LA2-S2"
+          ]
+        }
+      ],
+      "document_inventory": {
+        "master_contracts": 1,
+        "annexes": 5,
+        "consolidated_packages": 1,
+        "formats": [
+          "DOCX",
+          "PDF"
+        ],
+        "latest_version": "M11.1"
+      },
+      "findings": [
+        {
+          "severity": "medium",
+          "status": "corrected_m10",
+          "title": "Parámetro de recargo en descanso obligatorio no estaba expuesto",
+          "resolution": "Se incorpora 90% vigente desde el 1 de julio de 2026 y escalamiento a 100% desde el 1 de julio de 2027."
+        },
+        {
+          "severity": "medium",
+          "status": "corrected_m10",
+          "title": "Debido proceso disciplinario estaba redactado sin término mínimo",
+          "resolution": "Se incorpora control de cinco días y excepción legal para trabajo doméstico y ciertas empresas de menos de diez trabajadores."
+        },
+        {
+          "severity": "low",
+          "status": "corrected_m10",
+          "title": "Fuente del inicio de jornada nocturna apuntaba al paquete interno",
+          "resolution": "Se enlaza directamente con Ley 2466 de 2025."
+        },
+        {
+          "severity": "low",
+          "status": "corrected_m11",
+          "title": "Los DOCX M4 requieren nueva generación visual con parámetros M10",
+          "resolution": "DOCX y PDF regenerados como M11, comparados contra M4 y sometidos a QA documental."
+        }
+      ],
+      "legal_notice": "La verificación M10 confirma parámetros generales. No sustituye el análisis de fueros, pactos colectivos, sectores exceptuados, trabajo de menores, ejecución internacional ni hechos específicos."
+    },
+    {
+      "product_code": "CO-EM-003",
+      "title": "Contrato de prestación de servicios",
+      "status": "reviewed",
+      "verified_at": "2026-07-30",
+      "review_scope": "Revisión sustantiva de autonomía real, riesgo de laboralidad, seguridad social, riesgos laborales, propiedad intelectual, datos y firma electrónica; regeneración documental M12",
+      "next_action": "Revalidar seguridad social, ARL, tributación y cualquier régimen sectorial antes de cada firma o prórroga",
+      "jurisdiction": "Colombia",
+      "sources": [
+        {
+          "id": "EM-S1",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Código Sustantivo del Trabajo, artículos 22 y 23",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "id": "EM-S2",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 2277 de 2022, artículo 89",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2277_2022.html",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "id": "EM-S3",
+          "authority": "Función Pública",
+          "title": "Decreto 1273 de 2018",
+          "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=87624",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "id": "EM-S4",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 1562 de 2012",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1562_2012.html",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "id": "EM-S5",
+          "authority": "Función Pública",
+          "title": "Decreto 1072 de 2015",
+          "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=72173",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "id": "EM-S6",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 1450 de 2011, artículos 29 y 30",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1450_2011.html",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "id": "EM-S7",
+          "authority": "Función Pública",
+          "title": "Ley 1581 de 2012",
+          "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=49981",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "id": "EM-S8",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 527 de 1999",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0527_1999.html",
+          "verified_at": "2026-07-30"
+        }
+      ],
+      "verified_controls": [
+        {
+          "id": "contract_reality",
+          "label": "Naturaleza real del vínculo",
+          "value": "Servicio personal + remuneración + subordinación configuran contrato laboral",
+          "source_ids": [
+            "EM-S1"
+          ]
+        },
+        {
+          "id": "ibc_ratio",
+          "label": "IBC mínimo de servicios personales",
+          "value": "40% del valor mensualizado sin IVA",
+          "source_ids": [
+            "EM-S2",
+            "EM-S3"
+          ]
+        },
+        {
+          "id": "payment_timing",
+          "label": "Momento de aportes",
+          "value": "Mes vencido",
+          "source_ids": [
+            "EM-S2",
+            "EM-S3"
+          ]
+        },
+        {
+          "id": "arl_affiliation",
+          "label": "Afiliación ARL",
+          "value": "A cargo del contratante cuando aplica; mínimo un día antes",
+          "source_ids": [
+            "EM-S4",
+            "EM-S5"
+          ]
+        },
+        {
+          "id": "arl_risk_payment",
+          "label": "Pago ARL por riesgo",
+          "value": "I-III contratista; IV-V contratante",
+          "source_ids": [
+            "EM-S5"
+          ]
+        },
+        {
+          "id": "ip_transfer",
+          "label": "Cesión patrimonial",
+          "value": "Por escrito, con modalidades, tiempo y territorio definidos",
+          "source_ids": [
+            "EM-S6"
+          ]
+        },
+        {
+          "id": "personal_data",
+          "label": "Tratamiento de datos",
+          "value": "Roles, instrucciones, seguridad, incidentes y eliminación documentados",
+          "source_ids": [
+            "EM-S7"
+          ]
+        },
+        {
+          "id": "electronic_signature",
+          "label": "Firma y mensajes de datos",
+          "value": "Método identificable, aprobatorio, confiable e íntegro",
+          "source_ids": [
+            "EM-S8"
+          ]
+        }
+      ],
+      "document_inventory": {
+        "master_contracts": 1,
+        "annexes": 5,
+        "consolidated_packages": 1,
+        "formats": [
+          "DOCX",
+          "PDF"
+        ],
+        "latest_version": "M12.1"
+      },
+      "findings": [
+        {
+          "severity": "high",
+          "status": "corrected_m12",
+          "title": "El soporte anterior no explicitaba el IBC y pago mes vencido",
+          "resolution": "Se incorporaron cláusulas y matriz operativa con base mínima del 40% sin IVA y pago mes vencido."
+        },
+        {
+          "severity": "high",
+          "status": "corrected_m12",
+          "title": "La afiliación y pago en riesgos laborales estaban formulados de forma genérica",
+          "resolution": "Se precisaron afiliación por el contratante, inicio de cobertura y distribución del pago por clase de riesgo."
+        },
+        {
+          "severity": "high",
+          "status": "controlled",
+          "title": "La ejecución puede desnaturalizar el contrato civil o comercial",
+          "resolution": "Se fortalecieron indicadores de subordinación, revisión periódica y obligación de formalizar laboralmente si la realidad lo exige."
+        },
+        {
+          "severity": "medium",
+          "status": "corrected_m12",
+          "title": "Los soportes de aportes podían solicitarse sin delimitación",
+          "resolution": "Se exige pertinencia, minimización y protección de la información de PILA."
+        }
+      ],
+      "legal_notice": "La verificación M12 no sustituye el análisis de la ejecución real, contratación estatal, consumidores, profesiones reguladas, tributación especial, responsabilidad médica o técnica, contratos internacionales, relaciones colectivas, litigios ni pruebas de subordinación."
+    },
+    {
+      "product_code": "CO-EM-004",
+      "title": "Confidencialidad, secretos empresariales y propiedad intelectual",
+      "status": "reviewed",
+      "verified_at": "2026-07-31",
+      "review_scope": "Revisión sustantiva de secretos empresariales, competencia desleal, datos, incidentes, derecho de autor, software e IA; regeneración documental M13",
+      "next_action": "Revalidar normativa y configuración del caso antes de firma o despliegue de herramientas de IA",
+      "jurisdiction": "Colombia",
+      "sources": [
+        {
+          "id": "EM4-S1",
+          "authority": "Comunidad Andina / compilación oficial colombiana",
+          "title": "Decisión 486 de 2000, artículos 260 a 265 - secretos empresariales",
+          "url": "https://normograma.mincultura.gov.co/compilacion/docs/decision_comisioncandina_dec486.htm",
+          "verified_at": "2026-07-31"
+        },
+        {
+          "id": "EM4-S2",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 256 de 1996, artículo 16 - violación de secretos",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0256_1996.html",
+          "verified_at": "2026-07-31"
+        },
+        {
+          "id": "EM4-S3",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 1581 de 2012 - protección de datos personales",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html",
+          "verified_at": "2026-07-31"
+        },
+        {
+          "id": "EM4-S4",
+          "authority": "Función Pública",
+          "title": "Decreto 1074 de 2015 - reglamentación compilada de datos personales",
+          "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=76608",
+          "verified_at": "2026-07-31"
+        },
+        {
+          "id": "EM4-S5",
+          "authority": "Superintendencia de Industria y Comercio / SUIN",
+          "title": "Circular Externa 3 de 2018 - reporte de incidentes de seguridad",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30051429",
+          "verified_at": "2026-07-31"
+        },
+        {
+          "id": "EM4-S6",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 23 de 1982 - derecho de autor",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0023_1982.html",
+          "verified_at": "2026-07-31"
+        },
+        {
+          "id": "EM4-S7",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 1450 de 2011, artículo 30 - transferencia por escrito",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1450_2011.html",
+          "verified_at": "2026-07-31"
+        },
+        {
+          "id": "EM4-S8",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 1915 de 2018 - actualización de derecho de autor",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1915_2018.html",
+          "verified_at": "2026-07-31"
+        },
+        {
+          "id": "EM4-S9",
+          "authority": "Dirección Nacional de Derecho de Autor",
+          "title": "Decisión Andina 351 - software y transmisión de derechos",
+          "url": "https://www.derechodeautor.gov.co/es/decision-andina",
+          "verified_at": "2026-07-31"
+        },
+        {
+          "id": "EM4-S10",
+          "authority": "Dirección Nacional de Derecho de Autor",
+          "title": "Registro de software y actos o contratos",
+          "url": "https://www.derechodeautor.gov.co/es/registro-de-software",
+          "verified_at": "2026-07-31"
+        },
+        {
+          "id": "EM4-S11",
+          "authority": "Departamento Nacional de Planeación",
+          "title": "CONPES 4144 de 2025 - Política Nacional de Inteligencia Artificial",
+          "url": "https://dnp.gov.co/publicaciones/Planeacion/Paginas/conpes-4144-hoja-de-ruta-colombia-inteligencia-artificial-retos-actuales-transformacion-futura.aspx",
+          "verified_at": "2026-07-31"
+        },
+        {
+          "id": "EM4-S12",
+          "authority": "Ministerio TIC",
+          "title": "Lineamientos de seguridad y privacidad para sistemas de IA, 2026",
+          "url": "https://www.mintic.gov.co/portal/715/w3-article-437197.html",
+          "verified_at": "2026-07-31"
+        }
+      ],
+      "verified_controls": [
+        {
+          "id": "trade_secret_elements",
+          "label": "Requisitos del secreto empresarial",
+          "value": "Información secreta + valor comercial + medidas razonables",
+          "source_ids": [
+            "EM4-S1"
+          ]
+        },
+        {
+          "id": "trade_secret_duration",
+          "label": "Duración del secreto",
+          "value": "Mientras subsistan los requisitos legales",
+          "source_ids": [
+            "EM4-S1"
+          ]
+        },
+        {
+          "id": "unfair_secret_use",
+          "label": "Violación de secretos",
+          "value": "Divulgación, explotación o adquisición desleal",
+          "source_ids": [
+            "EM4-S1",
+            "EM4-S2"
+          ]
+        },
+        {
+          "id": "personal_data_roles",
+          "label": "Roles de datos",
+          "value": "Se determinan por decisión sobre finalidades/medios y tratamiento por cuenta ajena",
+          "source_ids": [
+            "EM4-S3",
+            "EM4-S4"
+          ]
+        },
+        {
+          "id": "incident_reporting",
+          "label": "Reporte de incidentes de datos",
+          "value": "15 días hábiles cuando resulte aplicable; aviso contractual interno no lo sustituye",
+          "source_ids": [
+            "EM4-S5"
+          ]
+        },
+        {
+          "id": "ip_written_transfer",
+          "label": "Transferencia patrimonial",
+          "value": "Por escrito y limitada a modalidades expresamente pactadas",
+          "source_ids": [
+            "EM4-S6",
+            "EM4-S7",
+            "EM4-S8",
+            "EM4-S9"
+          ]
+        },
+        {
+          "id": "software_registration",
+          "label": "Registro de software",
+          "value": "Declarativo y probatorio, no constitutivo",
+          "source_ids": [
+            "EM4-S10"
+          ]
+        },
+        {
+          "id": "ai_governance",
+          "label": "Gobierno contractual de IA",
+          "value": "Proveedor, datos, entrenamiento, revisión humana, seguridad, trazabilidad y salida",
+          "source_ids": [
+            "EM4-S11",
+            "EM4-S12"
+          ]
+        }
+      ],
+      "document_inventory": {
+        "master_contracts": 1,
+        "annexes": 6,
+        "consolidated_packages": 1,
+        "formats": [
+          "DOCX",
+          "PDF"
+        ],
+        "latest_version": "M13.1"
+      },
+      "findings": [
+        {
+          "severity": "high",
+          "status": "corrected_m13",
+          "title": "El plazo contractual podía confundirse con la duración legal del secreto",
+          "resolution": "Se separó la confidencialidad general de la protección mientras subsistan los requisitos del secreto empresarial."
+        },
+        {
+          "severity": "high",
+          "status": "corrected_m13",
+          "title": "La gestión de incidentes no distinguía aviso interno y reporte regulatorio",
+          "resolution": "Se incorporó aviso contractual temprano y control del reporte legal de 15 días hábiles cuando aplique."
+        },
+        {
+          "severity": "high",
+          "status": "corrected_m13",
+          "title": "La cadena de derechos de software, datos, modelos y resultados de IA era insuficiente",
+          "resolution": "Se añadieron inventarios, SBOM, procedencia, modalidades de cesión/licencia y trazabilidad de IA."
+        },
+        {
+          "severity": "medium",
+          "status": "controlled",
+          "title": "La política pública de IA no equivale a una ley general de IA",
+          "resolution": "Se usa como referente de gobernanza y se mantiene aplicación de normas vigentes de datos, PI, consumo, contratos y responsabilidad."
+        }
+      ],
+      "legal_notice": "La revalidación M13 no sustituye análisis de secretos concretos, competencia, contratos laborales, transferencia internacional de datos, sectores regulados, ciberincidentes, licencias de terceros, patentabilidad, litigios ni validez de restricciones comerciales."
+    },
+    {
+      "product_code": "CO-AR-001",
+      "title": "Arrendamiento de vivienda urbana",
+      "status": "reviewed",
+      "verified_at": "2026-07-30",
+      "review_scope": "Revisión sustantiva de Ley 820 de 2003, Decreto 3130 de 2003, IPC 2025 y regeneración documental M11",
+      "next_action": "Revalidar el IPC y cualquier reforma aplicable antes de cada reajuste o terminación",
+      "jurisdiction": "Colombia",
+      "sources": [
+        {
+          "id": "AR-S1",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 820 de 2003",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0820_2003.html",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "id": "AR-S2",
+          "authority": "Función Pública",
+          "title": "Decreto 3130 de 2003",
+          "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=10482",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "id": "AR-S3",
+          "authority": "DANE",
+          "title": "IPC diciembre de 2025",
+          "url": "https://www.dane.gov.co/index.php/estadisticas-por-tema/precios-y-costos/indice-de-precios-al-consumidor-ipc",
+          "verified_at": "2026-07-30"
+        }
+      ],
+      "verified_controls": [
+        {
+          "id": "rent_cap",
+          "label": "Canon mensual máximo",
+          "value": "1% del valor comercial",
+          "source_ids": [
+            "AR-S1"
+          ]
+        },
+        {
+          "id": "commercial_value_cap",
+          "label": "Límite del valor comercial para el control",
+          "value": "2 veces el avalúo catastral",
+          "source_ids": [
+            "AR-S1"
+          ]
+        },
+        {
+          "id": "annual_adjustment",
+          "label": "Reajuste anual",
+          "value": "Después de 12 meses y hasta IPC del año anterior",
+          "source_ids": [
+            "AR-S1"
+          ]
+        },
+        {
+          "id": "ipc_2025",
+          "label": "IPC anual 2025 aplicable como máximo de referencia en 2026",
+          "value": "5,10%",
+          "source_ids": [
+            "AR-S3"
+          ]
+        },
+        {
+          "id": "deposit_prohibition",
+          "label": "Depósito o caución real a favor del arrendador",
+          "value": "Prohibido para garantizar obligaciones residenciales",
+          "source_ids": [
+            "AR-S1",
+            "AR-S2"
+          ]
+        },
+        {
+          "id": "additional_services_cap",
+          "label": "Servicios o usos adicionales",
+          "value": "Máximo 50% del canon",
+          "source_ids": [
+            "AR-S1"
+          ]
+        },
+        {
+          "id": "contract_copy_deadline",
+          "label": "Entrega de copia escrita",
+          "value": "10 días",
+          "source_ids": [
+            "AR-S1"
+          ]
+        },
+        {
+          "id": "termination_notice",
+          "label": "Preaviso ordinario de terminación",
+          "value": "3 meses, sujeto a causal y procedimiento",
+          "source_ids": [
+            "AR-S1"
+          ]
+        }
+      ],
+      "document_inventory": {
+        "master_contracts": 1,
+        "annexes": 4,
+        "consolidated_packages": 1,
+        "formats": [
+          "DOCX",
+          "PDF"
+        ],
+        "latest_version": "M11.1"
+      },
+      "findings": [
+        {
+          "severity": "medium",
+          "status": "corrected_m11",
+          "title": "El modelo anterior no exponía todos los límites económicos y documentales",
+          "resolution": "Se incorporaron canon, avalúo, reajuste, servicios adicionales, copias y prohibición de depósito."
+        },
+        {
+          "severity": "high",
+          "status": "corrected_m11",
+          "title": "Las reglas de terminación requerían mayor precisión procedimental",
+          "resolution": "Se desarrollaron preavisos, indemnizaciones, cauciones y canales de notificación según la causal."
+        },
+        {
+          "severity": "low",
+          "status": "controlled",
+          "title": "El IPC es un parámetro anual dinámico",
+          "resolution": "Se registra 5,10% para 2025 y se exige revalidación antes de cada reajuste."
+        }
+      ],
+      "legal_notice": "La verificación M11 no sustituye el análisis de causales concretas, propiedad horizontal, servicios públicos, restitución, garantías, procesos judiciales, protección especial ni pruebas de notificación."
+    },
+    {
+      "product_code": "CO-SA-001",
+      "title": "Derecho de petición a EPS o IPS",
+      "status": "reviewed",
+      "verified_at": "2026-07-31",
+      "review_scope": "Revisión sustantiva de clasificación de reclamos, riesgo, términos sectoriales, respuesta de fondo, solución material, historia clínica, Supersalud, tutela, datos sensibles y trazabilidad; regeneración documental M17",
+      "next_action": "Verificar riesgo clínico actual, entidad responsable, orden, afiliación, representación, radicados y materialización antes de enviar o escalar",
+      "jurisdiction": "Colombia",
+      "sources": [
+        {
+          "id": "SA1-S1",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 1755 de 2015 — derecho fundamental de petición, términos, prioridad, traslado y peticiones ante particulares",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1755_2015.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "SA1-S2",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley Estatutaria 1751 de 2015 — oportunidad, continuidad, integralidad, información, urgencias e historia clínica",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1751_2015.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma estatutaria vigente"
+        },
+        {
+          "id": "SA1-S3",
+          "authority": "Superintendencia Nacional de Salud",
+          "title": "Circular Externa 008 de 2018 — PQR, reclamos en salud y riesgo vital",
+          "url": "https://normograma.supersalud.gov.co/compilacion/docs/circular_supersalud_0008_2018.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "instrucción sectorial compilada"
+        },
+        {
+          "id": "SA1-S4",
+          "authority": "Superintendencia Nacional de Salud",
+          "title": "Preguntas frecuentes actualizadas — máximos de 24, 48 y 72 horas según riesgo",
+          "url": "https://www.supersalud.gov.co/es-co/Paginas/Protecci%C3%B3n%20al%20Usuario/preguntas-y%E2%80%93respuestas-frecuentes.aspx",
+          "verified_at": "2026-07-31",
+          "binding_level": "orientación oficial vigente"
+        },
+        {
+          "id": "SA1-S5",
+          "authority": "SUIN-Juriscol",
+          "title": "Resolución 1995 de 1999 — manejo, reserva, custodia y acceso a historia clínica",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30035652",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "SA1-S6",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 2015 de 2020 — historia clínica electrónica interoperable",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2015_2020.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "SA1-S7",
+          "authority": "Corte Constitucional",
+          "title": "Sentencia T-370 de 2025 — respuesta clara, precisa, congruente, consecuente y notificada por EPS y Supersalud",
+          "url": "https://www.corteconstitucional.gov.co/relatoria/2025/t-370-25.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia constitucional"
+        },
+        {
+          "id": "SA1-S8",
+          "authority": "Corte Constitucional",
+          "title": "Sentencia T-016 de 2025 — derecho de petición ante EPS y atención domiciliaria",
+          "url": "https://www.corteconstitucional.gov.co/relatoria/2025/T-016-25.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia constitucional"
+        },
+        {
+          "id": "SA1-S9",
+          "authority": "Corte Constitucional",
+          "title": "Sentencia T-500 de 2025 — respuesta de fondo, salud de menores, continuidad e integralidad",
+          "url": "https://www.corteconstitucional.gov.co/relatoria/2025/T-500-25.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia constitucional"
+        },
+        {
+          "id": "SA1-S10",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Decreto 2591 de 1991 — acción de tutela y medidas provisionales",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/decreto_2591_1991.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        }
+      ],
+      "verified_controls": [
+        {
+          "id": "risk_triage",
+          "label": "Triage y urgencia",
+          "value": "La urgencia clínica no espera derecho de petición; activar atención inmediata",
+          "source_ids": [
+            "SA1-S2",
+            "SA1-S3"
+          ]
+        },
+        {
+          "id": "vital_claim",
+          "label": "Reclamo vital",
+          "value": "Solución inmediata; máximo sectorial de 24 horas",
+          "source_ids": [
+            "SA1-S3",
+            "SA1-S4"
+          ]
+        },
+        {
+          "id": "priority_claim",
+          "label": "Reclamo priorizado",
+          "value": "Máximo sectorial de 48 horas",
+          "source_ids": [
+            "SA1-S4"
+          ]
+        },
+        {
+          "id": "simple_claim",
+          "label": "Reclamo simple",
+          "value": "Máximo sectorial de 72 horas",
+          "source_ids": [
+            "SA1-S4"
+          ]
+        },
+        {
+          "id": "general_terms",
+          "label": "Términos generales",
+          "value": "15 días; información/documentos 10; consultas 30",
+          "source_ids": [
+            "SA1-S1"
+          ]
+        },
+        {
+          "id": "priority_petition",
+          "label": "Atención prioritaria",
+          "value": "Medidas urgentes cuando peligren vida o integridad",
+          "source_ids": [
+            "SA1-S1"
+          ]
+        },
+        {
+          "id": "substantive_response",
+          "label": "Respuesta de fondo",
+          "value": "Clara, precisa, congruente, consecuente y notificada",
+          "source_ids": [
+            "SA1-S7",
+            "SA1-S8",
+            "SA1-S9"
+          ]
+        },
+        {
+          "id": "material_solution",
+          "label": "Solución material",
+          "value": "Autorización formal no basta si no hay agenda, entrega o prestación efectiva",
+          "source_ids": [
+            "SA1-S2",
+            "SA1-S7"
+          ]
+        },
+        {
+          "id": "continuity_integrality",
+          "label": "Continuidad e integralidad",
+          "value": "No fragmentar ni interrumpir por razones administrativas o económicas",
+          "source_ids": [
+            "SA1-S2",
+            "SA1-S9"
+          ]
+        },
+        {
+          "id": "medical_record",
+          "label": "Historia clínica",
+          "value": "Acceso gratuito del titular; reserva, legitimación, integridad y canal seguro",
+          "source_ids": [
+            "SA1-S2",
+            "SA1-S5",
+            "SA1-S6"
+          ]
+        },
+        {
+          "id": "supersalud",
+          "label": "Escalamiento Supersalud",
+          "value": "Clasificar riesgo y seguir la solución sin reemplazar tutela urgente",
+          "source_ids": [
+            "SA1-S3",
+            "SA1-S4"
+          ]
+        },
+        {
+          "id": "tutela",
+          "label": "Tutela",
+          "value": "Valoración directa para petición y protección urgente de salud; medida provisional según prueba",
+          "source_ids": [
+            "SA1-S7",
+            "SA1-S10"
+          ]
+        },
+        {
+          "id": "privacy",
+          "label": "Datos sensibles",
+          "value": "Minimización, circulación restringida y prohibición de usos secundarios no autorizados",
+          "source_ids": [
+            "SA1-S2",
+            "SA1-S5"
+          ]
+        }
+      ],
+      "document_inventory": {
+        "diagnostics": 1,
+        "operational_documents": 7,
+        "consolidated_packages": 1,
+        "formats": [
+          "DOCX",
+          "PDF"
+        ],
+        "latest_version": "M17.1"
+      },
+      "findings": [
+        {
+          "severity": "high",
+          "status": "corrected_m17",
+          "title": "El producto aplicaba principalmente términos generales de 15/10/30 días",
+          "resolution": "Se incorporó clasificación sectorial simple/priorizada/vital de 72/48/24 horas y urgencia inmediata."
+        },
+        {
+          "severity": "high",
+          "status": "corrected_m17",
+          "title": "La respuesta formal podía confundirse con solución de la barrera",
+          "resolution": "Se exige verificar materialización de cita, servicio, tecnología o entrega."
+        },
+        {
+          "severity": "high",
+          "status": "corrected_m17",
+          "title": "La ruta administrativa podía retrasar urgencias o tutela",
+          "resolution": "Se incorporó triage, rutas paralelas y prohibición expresa de esperar ante riesgo."
+        },
+        {
+          "severity": "medium",
+          "status": "corrected_m17",
+          "title": "Historia clínica no diferenciaba uso asistencial urgente de copia general",
+          "resolution": "Se separaron términos y controles de legitimación, reserva, seguridad e integridad."
+        },
+        {
+          "severity": "medium",
+          "status": "corrected_m17",
+          "title": "Faltaba matriz auditable de términos y respuesta",
+          "resolution": "Se agregó cronología, cálculo preliminar, índice de anexos y control de respuesta de fondo."
+        }
+      ],
+      "legal_notice": "M17 orienta, documenta y escala barreras de salud, pero no diagnostica, prescribe, sustituye triage, presta urgencias, representa judicialmente ni garantiza autorización o fallo. Casos vitales, tutela, responsabilidad médica, menores, incapacidad o conflicto de representación requieren revisión inmediata."
+    },
+    {
+      "product_code": "CO-CD-001",
+      "title": "Hábeas data financiero y suplantación",
+      "status": "reviewed",
+      "verified_at": "2026-07-31",
+      "review_scope": "Revisión sustantiva de roles, soporte de obligación, comunicación previa, reporte, actualización, permanencia, caducidad, score, consulta, reclamo, silencio, suplantación, escalamiento y vigencia temporal de Ley 2573; regeneración documental M18",
+      "next_action": "Verificar obligación, fuente, operador, mora, pago, comunicación, primer reporte, score, cobro activo, régimen temporal y evidencias antes de radicar",
+      "jurisdiction": "Colombia",
+      "sources": [
+        {
+          "id": "CD1-S1",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley Estatutaria 1266 de 2008 — régimen de hábeas data financiero, comunicación, permanencia, consultas y reclamos",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1266_2008.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma estatutaria vigente"
+        },
+        {
+          "id": "CD1-S2",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley Estatutaria 2157 de 2021 — fortalecimiento del hábeas data, permanencia, comunicación previa, reporte tardío, gratuidad y silencio",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2157_2021.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma estatutaria vigente"
+        },
+        {
+          "id": "CD1-S3",
+          "authority": "SUIN-Juriscol",
+          "title": "Ley Estatutaria 2573 de 2026 — protección ante suplantación y control de vigencia general al 20 de noviembre de 2026",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30056451",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma promulgada con vigencia temporal diferenciada"
+        },
+        {
+          "id": "CD1-S4",
+          "authority": "Corte Constitucional",
+          "title": "Sentencia C-413 de 2025 — control previo del régimen de suplantación, acceso a documentos y condicionamientos constitucionales",
+          "url": "https://www.corteconstitucional.gov.co/relatoria/2025/C-413-25.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia constitucional vinculante"
+        },
+        {
+          "id": "CD1-S5",
+          "authority": "Corte Constitucional",
+          "title": "Sentencia C-282 de 2021 — control previo de la Ley 2157 de 2021",
+          "url": "https://www.corteconstitucional.gov.co/relatoria/2021/C-282-21.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia constitucional vinculante"
+        },
+        {
+          "id": "CD1-S6",
+          "authority": "Superintendencia de Industria y Comercio",
+          "title": "Habeas data: derecho a controlar información financiera — orientación oficial actualizada en enero de 2026",
+          "url": "https://sedeelectronica.sic.gov.co/atencion-y-servicios-a-la-ciudadania/preguntas-frecuentes/habeas-data-el-derecho-controlar-tu-informacion-financiera",
+          "verified_at": "2026-07-31",
+          "binding_level": "orientación oficial"
+        },
+        {
+          "id": "CD1-S7",
+          "authority": "Superintendencia de Industria y Comercio",
+          "title": "Denuncia por presunto incumplimiento del hábeas data financiero y protección de datos",
+          "url": "https://sedeelectronica.sic.gov.co/atencion-y-servicios-a-la-ciudadania/tramites/denuncia-por-el-presunto-incumplimiento-las-disposiciones-legales-relacionadas-con-el-habeas-data",
+          "verified_at": "2026-07-31",
+          "binding_level": "trámite oficial"
+        },
+        {
+          "id": "CD1-S8",
+          "authority": "Superintendencia de Industria y Comercio",
+          "title": "Procedimiento PD01-P02 versión 6 para reclamos de hábeas data, vigente desde 30 de abril de 2026",
+          "url": "https://sigi.sic.gov.co/SIGI/portal/document_tab.php?id_doc=614&version=6",
+          "verified_at": "2026-07-31",
+          "binding_level": "procedimiento institucional vigente"
+        },
+        {
+          "id": "CD1-S9",
+          "authority": "SUIN-Juriscol",
+          "title": "Compilación vigente de Ley 1266 de 2008 con modificaciones y notas temporales",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1676616",
+          "verified_at": "2026-07-31",
+          "binding_level": "compilación oficial informativa"
+        },
+        {
+          "id": "CD1-S10",
+          "authority": "SUIN-Juriscol",
+          "title": "Compilación vigente de Ley 2157 de 2021 y modificación futura por Ley 2573 de 2026",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F30042420",
+          "verified_at": "2026-07-31",
+          "binding_level": "compilación oficial informativa"
+        }
+      ],
+      "verified_controls": [
+        {
+          "id": "roles",
+          "label": "Roles del dato",
+          "value": "Separar fuente, operador y usuario; dirigir cada pretensión al responsable competente",
+          "source_ids": [
+            "CD1-S1",
+            "CD1-S2"
+          ]
+        },
+        {
+          "id": "consultation",
+          "label": "Consulta",
+          "value": "10 días hábiles, prorrogables por 5; gratuita para el titular",
+          "source_ids": [
+            "CD1-S1",
+            "CD1-S2"
+          ]
+        },
+        {
+          "id": "claim",
+          "label": "Reclamo",
+          "value": "15 días hábiles, prorrogables por 8 con aviso oportuno",
+          "source_ids": [
+            "CD1-S1",
+            "CD1-S2"
+          ]
+        },
+        {
+          "id": "claim_legend",
+          "label": "Leyenda de reclamo",
+          "value": "Incluir reclamo en trámite dentro de 2 días hábiles",
+          "source_ids": [
+            "CD1-S1"
+          ]
+        },
+        {
+          "id": "prior_notice",
+          "label": "Comunicación previa",
+          "value": "20 días calendario antes del reporte; efecto distinto según obligación extinguida o vigente",
+          "source_ids": [
+            "CD1-S1",
+            "CD1-S2"
+          ]
+        },
+        {
+          "id": "small_obligation",
+          "label": "Obligación de bajo monto",
+          "value": "Hasta 15 % SMLMV: dos comunicaciones en días distintos y 20 días desde la última",
+          "source_ids": [
+            "CD1-S2"
+          ]
+        },
+        {
+          "id": "late_report",
+          "label": "Primer reporte",
+          "value": "Máximo 18 meses después de la constitución en mora",
+          "source_ids": [
+            "CD1-S2"
+          ]
+        },
+        {
+          "id": "paid_permanence",
+          "label": "Permanencia pagada",
+          "value": "Doble del tiempo de mora, máximo cuatro años desde pago o extinción",
+          "source_ids": [
+            "CD1-S1",
+            "CD1-S2"
+          ]
+        },
+        {
+          "id": "unpaid_caducity",
+          "label": "Caducidad insoluta",
+          "value": "Ocho años desde la constitución en mora",
+          "source_ids": [
+            "CD1-S2"
+          ]
+        },
+        {
+          "id": "score_update",
+          "label": "Score",
+          "value": "Actualizar simultáneamente con retiro o cesación del hecho negativo",
+          "source_ids": [
+            "CD1-S2"
+          ]
+        },
+        {
+          "id": "silence",
+          "label": "Silencio favorable",
+          "value": "Efecto legal favorable documentable; no extingue automáticamente una deuda válida",
+          "source_ids": [
+            "CD1-S1",
+            "CD1-S2",
+            "CD1-S5"
+          ]
+        },
+        {
+          "id": "identity_theft",
+          "label": "Suplantación",
+          "value": "Cotejo, entrega de documentos, leyenda y corrección sin barreras inconstitucionales",
+          "source_ids": [
+            "CD1-S3",
+            "CD1-S4"
+          ]
+        },
+        {
+          "id": "law_2573_timing",
+          "label": "Vigencia Ley 2573",
+          "value": "Régimen general desde 20/11/2026; solo excepciones expresas inmediatas antes de esa fecha",
+          "source_ids": [
+            "CD1-S3",
+            "CD1-S10"
+          ]
+        },
+        {
+          "id": "authority",
+          "label": "Escalamiento",
+          "value": "SIC o SFC según competencia, sin prometer sanción, indemnización o retiro automático",
+          "source_ids": [
+            "CD1-S7",
+            "CD1-S8"
+          ]
+        },
+        {
+          "id": "privacy",
+          "label": "Seguridad y minimización",
+          "value": "Datos financieros, biométricos y de identidad con acceso restringido y conservación controlada",
+          "source_ids": [
+            "CD1-S1",
+            "CD1-S3"
+          ]
+        }
+      ],
+      "document_inventory": {
+        "diagnostics": 1,
+        "operational_documents": 7,
+        "consolidated_packages": 1,
+        "formats": [
+          "DOCX",
+          "PDF"
+        ],
+        "latest_version": "M18.1"
+      },
+      "findings": [
+        {
+          "severity": "high",
+          "status": "corrected_m18",
+          "title": "El modelo anterior no separaba suficientemente fuente, operador y usuario",
+          "resolution": "Se incorporó matriz de responsables y pretensiones ejecutables por actor."
+        },
+        {
+          "severity": "high",
+          "status": "corrected_m18",
+          "title": "Los efectos de falta de comunicación previa podían generalizarse",
+          "resolution": "Se diferenciaron obligación extinguida y vigente, además del régimen de bajo monto."
+        },
+        {
+          "severity": "high",
+          "status": "corrected_m18",
+          "title": "La Ley 2573 podía anticiparse antes de su vigencia general",
+          "resolution": "Se incorporó control temporal al 20 de noviembre de 2026 y excepciones inmediatas separadas."
+        },
+        {
+          "severity": "high",
+          "status": "corrected_m18",
+          "title": "La suplantación mezclaba acceso, corrección administrativa y determinación penal",
+          "resolution": "Se separaron consulta, entrega documental, cotejo, leyenda, investigación y efectos futuros."
+        },
+        {
+          "severity": "medium",
+          "status": "corrected_m18",
+          "title": "Faltaba calendario auditable de permanencia, caducidad y términos",
+          "resolution": "Se agregó documento específico con fórmulas, alertas y supuestos."
+        }
+      ],
+      "legal_notice": "M18 orienta y documenta el hábeas data financiero, pero no extingue obligaciones, declara suplantación, ordena retiros, representa judicialmente ni garantiza decisiones. Procesos ejecutivos, embargos, fraude, biometría, daño grave o múltiples reportes requieren revisión profesional inmediata."
+    },
+    {
+      "product_code": "CO-CD-003",
+      "title": "Garantía, retracto, reversión y comercio electrónico",
+      "status": "reviewed",
+      "verified_at": "2026-07-31",
+      "review_scope": "Revisión sustantiva de relación de consumo, garantía, reparabilidad, repetición, retracto, excepciones, reversión, entrega, indisponibilidad, reclamación directa, SIC, evidencia, custodia, datos y no duplicidad; regeneración documental M19",
+      "next_action": "Verificar canal, modalidad, fechas, garantía, defecto, reparaciones, causal, instrumento de pago, devolución, participantes, sector y evidencia antes de cada actuación",
+      "jurisdiction": "Colombia",
+      "sources": [
+        {
+          "id": "CD3-S1",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 1480 de 2011 - Estatuto del Consumidor: garantía, retracto, comercio electrónico, reversión y acción de protección",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1480_2011.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "CD3-S2",
+          "authority": "Secretaría Jurídica del Senado",
+          "title": "Ley 2439 de 2024 - protección del consumidor de comercio electrónico y devolución del dinero",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2439_2024.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "norma vigente"
+        },
+        {
+          "id": "CD3-S3",
+          "authority": "SUIN-Juriscol",
+          "title": "Sentencia C-192 de 2026 - término uniforme de quince días calendario para devolución por retracto",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30056645",
+          "verified_at": "2026-07-31",
+          "binding_level": "jurisprudencia constitucional vinculante"
+        },
+        {
+          "id": "CD3-S4",
+          "authority": "SUIN-Juriscol",
+          "title": "Decreto 735 de 2013 - procedimiento y plazos para la efectividad de la garantía legal",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1156200",
+          "verified_at": "2026-07-31",
+          "binding_level": "reglamento vigente compilado"
+        },
+        {
+          "id": "CD3-S5",
+          "authority": "SUIN-Juriscol",
+          "title": "Decreto 587 de 2016 - procedimiento de reversión del pago, compilado en Decreto 1074 de 2015",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30020299",
+          "verified_at": "2026-07-31",
+          "binding_level": "reglamento vigente compilado"
+        },
+        {
+          "id": "CD3-S6",
+          "authority": "Superintendencia de Industria y Comercio",
+          "title": "Fallas en productos, garantía legal, reparaciones, cambios y devoluciones",
+          "url": "https://sedeelectronica.sic.gov.co/index.php/temas/proteccion-al-consumidor/derechos-y-deberes/fallas-en-un-producto",
+          "verified_at": "2026-07-31",
+          "binding_level": "orientación oficial"
+        },
+        {
+          "id": "CD3-S7",
+          "authority": "Superintendencia de Industria y Comercio",
+          "title": "Reversión del pago - definición y alcance institucional",
+          "url": "https://sedeelectronica.sic.gov.co/atencion-y-servicios-a-la-ciudadania/glosario/reversion-del-pago",
+          "verified_at": "2026-07-31",
+          "binding_level": "orientación oficial"
+        },
+        {
+          "id": "CD3-S8",
+          "authority": "Superintendencia de Industria y Comercio",
+          "title": "SIC Facilita - reglas de atención y respuesta de reclamaciones",
+          "url": "https://sicfacilita.sic.gov.co/SICFacilita/pages/general/tyc.xhtml",
+          "verified_at": "2026-07-31",
+          "binding_level": "procedimiento institucional"
+        },
+        {
+          "id": "CD3-S9",
+          "authority": "SUIN-Juriscol",
+          "title": "Ley 2439 de 2024 compilada con nota de constitucionalidad C-192 de 2026",
+          "url": "https://suin-juriscol.gov.co/viewDocument.asp?id=30054269",
+          "verified_at": "2026-07-31",
+          "binding_level": "compilación oficial informativa"
+        }
+      ],
+      "verified_controls": [
+        {
+          "id": "consumer_relationship",
+          "label": "Relación de consumo",
+          "value": "Identificar consumidor, productor, proveedor, producto, finalidad y régimen especial",
+          "source_ids": [
+            "CD3-S1"
+          ]
+        },
+        {
+          "id": "warranty_solidarity",
+          "label": "Responsabilidad de garantía",
+          "value": "Productor y proveedor responden solidariamente frente al consumidor",
+          "source_ids": [
+            "CD3-S1"
+          ]
+        },
+        {
+          "id": "warranty_default",
+          "label": "Término supletorio",
+          "value": "Un año para producto nuevo cuando no exista término legal o anunciado; reglas especiales para usados, servicios e inmuebles",
+          "source_ids": [
+            "CD3-S1"
+          ]
+        },
+        {
+          "id": "repair",
+          "label": "Primera falla reparable",
+          "value": "Reparación gratuita, transporte y repuestos; 30 días hábiles como regla reglamentaria",
+          "source_ids": [
+            "CD3-S1",
+            "CD3-S4"
+          ]
+        },
+        {
+          "id": "replacement",
+          "label": "Reposición",
+          "value": "10 días hábiles como regla general desde puesta a disposición; 30 para bienes sujetos a registro",
+          "source_ids": [
+            "CD3-S4"
+          ]
+        },
+        {
+          "id": "warranty_refund",
+          "label": "Devolución por garantía",
+          "value": "15 días hábiles desde puesta a disposición cuando no es reparable o se repite la falla y el consumidor elige devolución",
+          "source_ids": [
+            "CD3-S4"
+          ]
+        },
+        {
+          "id": "retract_exercise",
+          "label": "Ejercicio de retracto",
+          "value": "Cinco días hábiles y solo para modalidades incluidas sin excepción",
+          "source_ids": [
+            "CD3-S1"
+          ]
+        },
+        {
+          "id": "retract_refund",
+          "label": "Reembolso por retracto",
+          "value": "Máximo 15 días calendario de manera uniforme para todas las modalidades del artículo 47",
+          "source_ids": [
+            "CD3-S2",
+            "CD3-S3",
+            "CD3-S9"
+          ]
+        },
+        {
+          "id": "reversal_scope",
+          "label": "Ámbito de reversión",
+          "value": "Comercio electrónico + instrumento de pago electrónico + causal taxativa",
+          "source_ids": [
+            "CD3-S1",
+            "CD3-S5"
+          ]
+        },
+        {
+          "id": "reversal_deadline",
+          "label": "Término de reversión",
+          "value": "Queja al proveedor y aviso al emisor dentro de cinco días hábiles desde el hito aplicable",
+          "source_ids": [
+            "CD3-S1",
+            "CD3-S5"
+          ]
+        },
+        {
+          "id": "reversal_dispute",
+          "label": "Controversia",
+          "value": "La reversión no define definitivamente el litigio y puede recargarse por decisión adversa",
+          "source_ids": [
+            "CD3-S5"
+          ]
+        },
+        {
+          "id": "ecommerce_delivery",
+          "label": "Entrega comercio electrónico",
+          "value": "Plazo pactado; a falta de plazo, máximo 30 días calendario desde el día siguiente al pedido",
+          "source_ids": [
+            "CD3-S2"
+          ]
+        },
+        {
+          "id": "ecommerce_refund",
+          "label": "No entrega o indisponibilidad",
+          "value": "Terminación unilateral y devolución sin descuentos en máximo 15 días calendario",
+          "source_ids": [
+            "CD3-S2"
+          ]
+        },
+        {
+          "id": "direct_claim",
+          "label": "Reclamación directa",
+          "value": "Respuesta dentro de 15 días hábiles como regla procesal y decisión sustentada",
+          "source_ids": [
+            "CD3-S1",
+            "CD3-S4",
+            "CD3-S8"
+          ]
+        },
+        {
+          "id": "no_double_recovery",
+          "label": "No duplicidad",
+          "value": "Coordinar garantía, retracto, reversión y devolución para impedir doble recuperación",
+          "source_ids": [
+            "CD3-S1",
+            "CD3-S5"
+          ]
+        },
+        {
+          "id": "evidence_custody",
+          "label": "Evidencia y custodia",
+          "value": "Serial, oferta, estado, entrega, devolución, extracto y radicados con trazabilidad",
+          "source_ids": [
+            "CD3-S4",
+            "CD3-S5"
+          ]
+        }
+      ],
+      "document_inventory": {
+        "diagnostic_documents": 1,
+        "consumer_actions": 5,
+        "evidence_documents": 1,
+        "consolidated_packages": 1,
+        "formats": [
+          "DOCX",
+          "PDF"
+        ],
+        "latest_version": "M19.1"
+      },
+      "findings": [
+        {
+          "severity": "high",
+          "status": "corrected_m19",
+          "title": "Los mecanismos podían presentarse como acumulables o equivalentes",
+          "resolution": "Se implementó clasificación principal/subsidiaria y control de no duplicidad."
+        },
+        {
+          "severity": "high",
+          "status": "corrected_m19",
+          "title": "La garantía anterior no detallaba reparabilidad, repetición y plazos reglamentarios",
+          "resolution": "Se incorporaron remedios escalonados y plazos de reparación, reposición y devolución."
+        },
+        {
+          "severity": "high",
+          "status": "corrected_m19",
+          "title": "El retracto podía limitar el plazo de reembolso al comercio electrónico",
+          "resolution": "Se incorporó expresamente el condicionamiento uniforme de la Sentencia C-192 de 2026."
+        },
+        {
+          "severity": "medium",
+          "status": "corrected_m19",
+          "title": "No existía actuación profunda de terminación por no entrega o indisponibilidad",
+          "resolution": "Se agregó documento autónomo para comercio electrónico y reembolso."
+        },
+        {
+          "severity": "medium",
+          "status": "controlled_m19",
+          "title": "Los términos dependen de hitos, calendario y regímenes especiales",
+          "resolution": "El sistema los marca como preliminares y exige revisión profesional antes de radicar."
+        }
+      ],
+      "legal_notice": "M19 no garantiza cambio, devolución, reversión, sanción o indemnización. Deben verificarse relación de consumo, canal, modalidad, término, causal, reparabilidad, repetición, excepciones, participantes, devolución, prueba, competencia y régimen especial."
+    },
+    {
+      "product_code": "CO-CD-004",
+      "title": "Cobro, acuerdo de pago, pagaré, garantías y cierre",
+      "status": "reviewed",
+      "verified_at": "2026-07-31",
+      "review_scope": "Revisión sustantiva de obligación, legitimación, título, exigibilidad, saldo, abonos, intereses, cobranza, privacidad, reporte, negociación, novación, pagaré, carta de instrucciones, garantías, insolvencia, pagos y cierre; regeneración documental M20",
+      "next_action": "Verificar documentos originales, legitimación, saldo, tasa vigente, prescripción, procesos, insolvencia, canales, títulos, garantías y reportes antes de usar cada actuación",
+      "jurisdiction": "Colombia",
+      "sources": [
+        {
+          "id": "CD4-S1",
+          "authority": "Secretaría Jurídica / fuentes constitucionales oficiales",
+          "title": "Constitución Política — intimidad, hábeas data y debido proceso",
+          "url": "https://www.secretariasenado.gov.co/constitucion-politica",
+          "verified_at": "2026-07-31",
+          "binding_level": "constitution"
+        },
+        {
+          "id": "CD4-S2",
+          "authority": "Secretaría del Senado",
+          "title": "Código Civil — obligaciones, pago, novación, compensación y prescripción",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_civil.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute"
+        },
+        {
+          "id": "CD4-S3",
+          "authority": "Secretaría del Senado",
+          "title": "Código de Comercio, artículos 619 a 622 — títulos valores y espacios en blanco",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio_pr019.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute"
+        },
+        {
+          "id": "CD4-S4",
+          "authority": "Secretaría del Senado",
+          "title": "Código de Comercio, artículos 709 a 711 — requisitos del pagaré",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio_pr021.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute"
+        },
+        {
+          "id": "CD4-S5",
+          "authority": "Secretaría del Senado",
+          "title": "Código de Comercio, artículo 884 — límites de intereses y sanción por exceso",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio_pr027.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute"
+        },
+        {
+          "id": "CD4-S6",
+          "authority": "Secretaría del Senado",
+          "title": "Código Penal, artículo 305 — usura",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr011.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute"
+        },
+        {
+          "id": "CD4-S7",
+          "authority": "Secretaría del Senado",
+          "title": "Código General del Proceso, artículo 422 — título ejecutivo",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1564_2012_pr014.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute"
+        },
+        {
+          "id": "CD4-S8",
+          "authority": "SUIN-Juriscol",
+          "title": "Ley 2300 de 2023 — canales, horarios y periodicidad de cobranza",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30046853",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute"
+        },
+        {
+          "id": "CD4-S9",
+          "authority": "Corte Constitucional",
+          "title": "Sentencia C-278 de 2024 — control constitucional de la Ley 2300",
+          "url": "https://www.corteconstitucional.gov.co/relatoria/2024/C-278-24.htm",
+          "verified_at": "2026-07-31",
+          "binding_level": "case_law"
+        },
+        {
+          "id": "CD4-S10",
+          "authority": "SUIN-Juriscol",
+          "title": "Ley 1266 de 2008 — hábeas data financiero y comunicación previa",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes/1676616",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute"
+        },
+        {
+          "id": "CD4-S11",
+          "authority": "Secretaría del Senado",
+          "title": "Ley 2157 de 2021 — borrón y cuenta nueva y reporte de obligaciones de baja cuantía",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2157_2021.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute"
+        },
+        {
+          "id": "CD4-S12",
+          "authority": "SUIN-Juriscol",
+          "title": "Decreto 1154 de 2020 — factura electrónica como título valor y RADIAN",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30039720",
+          "verified_at": "2026-07-31",
+          "binding_level": "regulation"
+        },
+        {
+          "id": "CD4-S13",
+          "authority": "Secretaría del Senado",
+          "title": "Ley 527 de 1999 — mensajes de datos, firmas e integridad",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0527_1999.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute"
+        },
+        {
+          "id": "CD4-S14",
+          "authority": "Secretaría del Senado",
+          "title": "Ley 2445 de 2025 — insolvencia de persona natural no comerciante y pequeña comerciante",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2445_2025.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute"
+        },
+        {
+          "id": "CD4-S15",
+          "authority": "Superintendencia Financiera de Colombia",
+          "title": "Resolución 0965 de 2026 — interés bancario corriente julio de 2026",
+          "url": "https://www.superfinanciera.gov.co/publicaciones/10116173/superfinanciera-certifica-el-interes-bancario-corriente/",
+          "verified_at": "2026-07-31",
+          "binding_level": "dynamic_parameter"
+        },
+        {
+          "id": "CD4-S16",
+          "authority": "SUIN-Juriscol",
+          "title": "Decreto 159 de 2026 — SMLMV transitorio 2026",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30056106",
+          "verified_at": "2026-07-31",
+          "binding_level": "dynamic_parameter"
+        },
+        {
+          "id": "CD4-S17",
+          "authority": "Secretaría del Senado",
+          "title": "Ley 1231 de 2008 — factura como título valor, aceptación y pagos parciales",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1231_2008.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute"
+        },
+        {
+          "id": "CD4-S18",
+          "authority": "Secretaría del Senado",
+          "title": "Ley 2024 de 2020 — pago en plazos justos en operaciones mercantiles",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2024_2020.html",
+          "verified_at": "2026-07-31",
+          "binding_level": "statute"
+        }
+      ],
+      "verified_controls": [
+        {
+          "id": "obligation",
+          "label": "Obligación",
+          "value": "Individualizar negocio causal, partes, prestación, vencimiento y condición",
+          "source_ids": [
+            "CD4-S2",
+            "CD4-S7"
+          ]
+        },
+        {
+          "id": "executive_title",
+          "label": "Título ejecutivo",
+          "value": "Obligación expresa, clara y exigible contenida en documento atribuible al deudor",
+          "source_ids": [
+            "CD4-S7"
+          ]
+        },
+        {
+          "id": "title_value",
+          "label": "Título valor",
+          "value": "Separar negocio causal, título valor, tenencia, endosos, original e integridad",
+          "source_ids": [
+            "CD4-S3",
+            "CD4-S4",
+            "CD4-S13"
+          ]
+        },
+        {
+          "id": "blank_note",
+          "label": "Espacios en blanco",
+          "value": "Solo bajo instrucciones escritas, específicas, firmadas y limitadas al saldo real",
+          "source_ids": [
+            "CD4-S3"
+          ]
+        },
+        {
+          "id": "interest",
+          "label": "Intereses",
+          "value": "Tasa, modalidad, periodicidad, periodo y certificado vigentes; sin exceso ni duplicidad",
+          "source_ids": [
+            "CD4-S5",
+            "CD4-S6",
+            "CD4-S15"
+          ]
+        },
+        {
+          "id": "july_rate",
+          "label": "Parámetro julio 2026",
+          "value": "IBC consumo y ordinario 19,19% E.A.; límite de referencia 28,79% E.A. del 1 al 31 de julio",
+          "source_ids": [
+            "CD4-S15"
+          ]
+        },
+        {
+          "id": "reconciliation",
+          "label": "Conciliación de saldo",
+          "value": "Capital menos pagos, notas, compensaciones y devoluciones; gastos no automáticos",
+          "source_ids": [
+            "CD4-S2",
+            "CD4-S17"
+          ]
+        },
+        {
+          "id": "fair_payment",
+          "label": "Plazos justos",
+          "value": "Revisar Ley 2024 de 2020 y exclusiones en operaciones mercantiles",
+          "source_ids": [
+            "CD4-S18"
+          ]
+        },
+        {
+          "id": "collection_channels",
+          "label": "Canales de cobranza",
+          "value": "Usar canales autorizados cuando aplique la Ley 2300",
+          "source_ids": [
+            "CD4-S8",
+            "CD4-S9"
+          ]
+        },
+        {
+          "id": "collection_frequency",
+          "label": "Horario y periodicidad",
+          "value": "Una ocasión diaria; no varios canales en la misma semana tras contacto directo; horarios legales",
+          "source_ids": [
+            "CD4-S8",
+            "CD4-S9"
+          ]
+        },
+        {
+          "id": "third_parties",
+          "label": "Terceros",
+          "value": "No revelar ni cobrar a referencias, familiares o terceros no obligados",
+          "source_ids": [
+            "CD4-S8",
+            "CD4-S10"
+          ]
+        },
+        {
+          "id": "credit_reporting",
+          "label": "Reporte negativo",
+          "value": "Exactitud, finalidad, comunicación previa, espera y baja cuantía antes de reportar",
+          "source_ids": [
+            "CD4-S10",
+            "CD4-S11",
+            "CD4-S16"
+          ]
+        },
+        {
+          "id": "agreement",
+          "label": "Acuerdo de pago",
+          "value": "Reconocimiento delimitado; novación solo expresa; cuotas, cura, imputación y cierre trazables",
+          "source_ids": [
+            "CD4-S2"
+          ]
+        },
+        {
+          "id": "guarantees",
+          "label": "Garantías",
+          "value": "Individualizar alcance, monto, vigencia, ejecución, custodia y cancelación",
+          "source_ids": [
+            "CD4-S2",
+            "CD4-S3",
+            "CD4-S4"
+          ]
+        },
+        {
+          "id": "insolvency",
+          "label": "Insolvencia",
+          "value": "Detectar persona natural, pequeña comerciante, sociedad, admisión y efectos; no acelerar por sola admisión cuando sea ineficaz",
+          "source_ids": [
+            "CD4-S14"
+          ]
+        },
+        {
+          "id": "electronic_evidence",
+          "label": "Mensajes y firma",
+          "value": "Atribución, integridad, conservación y disponibilidad de mensajes y firmas",
+          "source_ids": [
+            "CD4-S13"
+          ]
+        },
+        {
+          "id": "closure",
+          "label": "Cierre",
+          "value": "Paz y salvo solo con saldo cero o extinción documentada, títulos cancelados, garantías liberadas y reportes actualizados",
+          "source_ids": [
+            "CD4-S2",
+            "CD4-S10",
+            "CD4-S11"
+          ]
+        },
+        {
+          "id": "professional_review",
+          "label": "Revisión específica",
+          "value": "Proceso judicial, prescripción, insolvencia, garantía real, endoso o tasa dudosa exigen abogado responsable",
+          "source_ids": [
+            "CD4-S2",
+            "CD4-S7",
+            "CD4-S14"
+          ]
+        }
+      ],
+      "document_inventory": {
+        "diagnostic_documents": 1,
+        "financial_documents": 1,
+        "collection_documents": 1,
+        "agreement_documents": 1,
+        "title_value_documents": 2,
+        "evidence_documents": 1,
+        "closure_documents": 1,
+        "consolidated_packages": 1,
+        "formats": [
+          "DOCX",
+          "PDF"
+        ],
+        "latest_version": "M20.1"
+      },
+      "findings": [
+        {
+          "severity": "high",
+          "status": "corrected_m20",
+          "title": "El paquete M5 mezclaba pagaré y carta de instrucciones en un único modelo breve",
+          "resolution": "M20 separa el título diligenciado de las instrucciones, con límites, evento habilitante, trazabilidad y cancelación."
+        },
+        {
+          "severity": "high",
+          "status": "corrected_m20",
+          "title": "La ruta de cobro no desarrollaba suficientemente canales, periodicidad, terceros y reportes",
+          "resolution": "M20 incorpora un protocolo operativo completo bajo Ley 2300 y hábeas data."
+        },
+        {
+          "severity": "high",
+          "status": "corrected_m20",
+          "title": "El acuerdo no diferenciaba con precisión reconocimiento, novación, aceleración e insolvencia",
+          "resolution": "M20 delimita cada efecto y bloquea automatismos incompatibles con el régimen concursal."
+        },
+        {
+          "severity": "medium",
+          "status": "corrected_m20",
+          "title": "El cierre anterior no era un documento autónomo de cancelación de títulos, garantías y reportes",
+          "resolution": "M20 incorpora acta de cierre y prohíbe paz y salvo total con pendientes."
+        },
+        {
+          "severity": "medium",
+          "status": "controlled_m20",
+          "title": "Las tasas y la prescripción dependen de modalidad, periodo, acción y hechos",
+          "resolution": "Se usan parámetros dinámicos y revisión profesional obligatoria cuando exista duda."
+        }
+      ],
+      "legal_notice": "M20 no garantiza recuperación, pago, reporte, embargo, ejecución, validez del pagaré ni preferencia crediticia. Deben verificarse legitimación, obligación, título, original, saldo, tasa, prescripción, proceso, insolvencia, canales, datos, garantías y efectos del cierre."
+    }
+  ]
+}

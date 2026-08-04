@@ -1,0 +1,15 @@
+{
+  "version": "2.58",
+  "scenarios": [
+    {
+      "id": "V258-CAN-03",
+      "document": "00_PAQUETE_DOCUMENTAL_CO-TR-001_V258.docx",
+      "checks": ["all_matches_visible", "tables_readable", "no_clipping", "headers_footers", "no_unresolved_markers"]
+    },
+    {
+      "id": "V258-CAN-04",
+      "document": "00_PAQUETE_DOCUMENTAL_CO-TR-001_V258.docx",
+      "checks": ["registration_consent_visible", "identity_minimized", "professional_review_notice", "no_unresolved_markers"]
+    }
+  ]
+}

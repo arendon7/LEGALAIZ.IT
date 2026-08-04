@@ -1,0 +1,97 @@
+{
+  "version": "2.34",
+  "product_code": "CO-CD-004",
+  "verified_at": "2026-07-21",
+  "title": "Maduración integral de cobro, acuerdo de pago y pagaré",
+  "status": "Candidato interno madurado; publicación profesional bloqueada",
+  "decisions": [
+    "La herramienta separa existencia de la obligación, exigibilidad ejecutiva, saldo, intereses, cobranza, negociación, pagaré y cierre.",
+    "No se presentan como ciertos saldos no conciliados ni obligaciones controvertidas.",
+    "Los límites de interés son parámetros dinámicos con vigencia mensual y modalidad específica.",
+    "La cobranza respeta canales autorizados, periodicidad, horarios, intimidad y prohibición de contactar terceros no obligados.",
+    "El reporte negativo exige comunicación previa y control reforzado para obligaciones de hasta 15% de un SMLMV.",
+    "Pagarés en blanco solo pueden habilitarse con instrucciones específicas y firmadas; garantías reales quedan bloqueadas.",
+    "Procesos activos, insolvencia, medidas cautelares, fraude, capacidad, prescripción y regímenes especiales bloquean autoservicio definitivo.",
+    "La publicación profesional requiere aprobación jurídica humana y QA dual sobre los hashes finales."
+  ],
+  "documents": [
+    {
+      "kind": "debt_diagnostic",
+      "title": "Diagnóstico de obligación, título y ruta de cobro",
+      "filename_suffix": "diagnostico_obligacion"
+    },
+    {
+      "kind": "account_statement",
+      "title": "Estado de cuenta conciliable y liquidación preliminar",
+      "filename_suffix": "estado_cuenta"
+    },
+    {
+      "kind": "collection_letter",
+      "title": "Requerimiento de pago y propuesta de solución",
+      "filename_suffix": "requerimiento_pago"
+    },
+    {
+      "kind": "payment_agreement",
+      "title": "Acuerdo de pago integral",
+      "filename_suffix": "acuerdo_pago"
+    },
+    {
+      "kind": "payment_schedule",
+      "title": "Cronograma e imputación de cuotas",
+      "filename_suffix": "cronograma_cuotas"
+    },
+    {
+      "kind": "promissory_note",
+      "title": "Pagaré diligenciado y controlado",
+      "filename_suffix": "pagare"
+    },
+    {
+      "kind": "instruction_letter",
+      "title": "Carta de instrucciones para pagaré",
+      "filename_suffix": "carta_instrucciones"
+    },
+    {
+      "kind": "payment_receipt",
+      "title": "Recibo de pago y actualización de saldo",
+      "filename_suffix": "recibo_pago"
+    },
+    {
+      "kind": "settlement_certificate",
+      "title": "Paz y salvo o constancia de cierre condicionada",
+      "filename_suffix": "paz_salvo"
+    },
+    {
+      "kind": "collection_evidence_matrix",
+      "title": "Matriz de evidencia, comunicaciones y trazabilidad",
+      "filename_suffix": "matriz_evidencia"
+    }
+  ],
+  "controls": [
+    "legitimación",
+    "origen y exigibilidad",
+    "título ejecutivo",
+    "factura y RADIAN",
+    "saldo y abonos",
+    "intereses dinámicos",
+    "controversias",
+    "prescripción",
+    "procesos e insolvencia",
+    "cobranza respetuosa",
+    "reporte negativo",
+    "acuerdo y novación",
+    "pagaré e instrucciones",
+    "garantías",
+    "evidencia y privacidad",
+    "aprobación jurídica y QA"
+  ],
+  "approval_documents": [
+    "CO-CD-004_INFORME_MADURACION_JURIDICA_V234.docx",
+    "CO-CD-004_INFORME_MADURACION_JURIDICA_V234.pdf",
+    "CO-CD-004_MATRIZ_TRAZABILIDAD_V234.docx",
+    "CO-CD-004_MATRIZ_TRAZABILIDAD_V234.pdf",
+    "LegalAIZit_Paquete_Documental_CO-CD-004_V234.docx",
+    "LegalAIZit_Paquete_Documental_CO-CD-004_V234.pdf"
+  ],
+  "packaging_policy": "Paquete autocontenido de la versión vigente; excluye artefactos y QA de versiones históricas.",
+  "next_release": "v2.35 — aprobación jurídica interna de la tercera ola y consolidación de los 11 productos"
+}

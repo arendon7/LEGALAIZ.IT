@@ -1,0 +1,21 @@
+{
+  "schema": "legalaizit-m7-smoke-v1",
+  "ok": true,
+  "checks": [
+    "health",
+    "request_id",
+    "login",
+    "live",
+    "ready",
+    "config",
+    "products",
+    "approval-status",
+    "rc-readiness",
+    "m7-readiness",
+    "privacy",
+    "observability",
+    "logout"
+  ],
+  "passed": 13,
+  "failed": 0
+}

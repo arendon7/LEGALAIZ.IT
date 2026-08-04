@@ -1,0 +1,47 @@
+{
+  "schema": "legalaizit-m31-4-release-policy-v1",
+  "phase": "M31.4",
+  "version": "5.0.3",
+  "release_id": "M31-4-INFRAESTRUCTURA-POSTGRESQL-5.0.3-2026-08-03",
+  "scope": "dual_database_adapter_postgresql_migration_and_external_certification_gate",
+  "production_authorized": false,
+  "postgres_adapter_implemented": true,
+  "postgres_external_certified": false,
+  "sqlite_local_certified": true,
+  "distribution_outputs": ["complete_source", "runtime_slim", "historical_evidence"],
+  "required_postgres_artifacts": [
+    "legalai_platform/database.py",
+    "requirements-postgres.txt",
+    "deploy/postgres_schema_candidate.sql",
+    "deploy/docker-compose.postgres-preproduction.yml",
+    "deploy/postgres_readiness_m31_4.json",
+    "tools/export_postgres_schema.py",
+    "tools/migrate_sqlite_to_postgres.py",
+    "tools/postgres_certify.py"
+  ],
+  "external_certification_checks": [
+    "connection",
+    "schema_bootstrap",
+    "transaction_rollback",
+    "upsert_and_row_contract",
+    "concurrency"
+  ],
+  "required_external_gates_before_public_production": [
+    "postgres_external_certification",
+    "backup_restore_postgresql",
+    "load_test",
+    "pentest",
+    "monitoring_alerts",
+    "rollback_drill",
+    "privacy_approval",
+    "final_legal_and_qa_release"
+  ],
+  "safeguards": {
+    "no_inline_database_password": true,
+    "postgres_password_file_required": true,
+    "destructive_postgres_reset_blocked_in_runtime": true,
+    "public_production_blocked": true,
+    "real_payments_blocked": true,
+    "automatic_delivery_blocked": true
+  }
+}

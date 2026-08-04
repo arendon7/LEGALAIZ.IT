@@ -1,0 +1,92 @@
+{
+  "product_code": "CO-AR-001",
+  "version": "M23-OLA4-2026-07-31",
+  "strategy": "additive_maturation",
+  "preserve": [
+    "questions, variables, contract, inventory, delivery, restitution and operational guide",
+    "immutable reviews, comparison, dual approval and DOCX/PDF generation",
+    "historical models and evidence"
+  ],
+  "conditional_rules": [
+    {
+      "id": "LEASE-M23-001",
+      "when": "use_not_exclusively_residential",
+      "then": "block_and_route_to_commercial_or_mixed_lease",
+      "risk": "red"
+    },
+    {
+      "id": "LEASE-M23-002",
+      "when": "monthly_rent_exceeds_legal_cap",
+      "then": "block_generation",
+      "risk": "red"
+    },
+    {
+      "id": "LEASE-M23-003",
+      "when": "cash_deposit_or_real_security_requested",
+      "then": "remove_and_explain_article_16_exception_limits",
+      "risk": "red"
+    },
+    {
+      "id": "LEASE-M23-004",
+      "when": "horizontal_property",
+      "then": "require_regulation_delivery_and_fee_distribution"
+    },
+    {
+      "id": "LEASE-M23-005",
+      "when": "public_services_guarantee_selected",
+      "then": "activate_Decree_3130_2003_process"
+    },
+    {
+      "id": "LEASE-M23-006",
+      "when": "termination_selected",
+      "then": "calculate_cause_notice_indemnity_and_formality_under_Law_820",
+      "risk": "high"
+    },
+    {
+      "id": "LEASE-M23-007",
+      "when": "protected_household_or_vulnerability_facts",
+      "then": "require_specialist_review_before_enforcement",
+      "risk": "high"
+    }
+  ],
+  "official_sources": [
+    {
+      "name": "Ley 820 de 2003",
+      "topic": "arrendamiento de vivienda urbana",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1669010"
+    },
+    {
+      "name": "Decreto 3130 de 2003",
+      "topic": "servicios públicos en vivienda arrendada",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Decretos%2F1877380"
+    },
+    {
+      "name": "Decreto 51 de 2004, compilado",
+      "topic": "reglamentación de la Ley 820",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1840085"
+    },
+    {
+      "name": "Ley 675 de 2001",
+      "topic": "propiedad horizontal",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1665811"
+    },
+    {
+      "name": "Ley 1581 de 2012",
+      "topic": "protección de datos personales",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1684507"
+    },
+    {
+      "name": "Ley 527 de 1999",
+      "topic": "mensajes de datos y firmas",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1662013"
+    }
+  ],
+  "final_document_exclusions": [
+    "product price",
+    "internal decision rules",
+    "risk semaphore",
+    "QA notes",
+    "hashes",
+    "demo labels"
+  ]
+}

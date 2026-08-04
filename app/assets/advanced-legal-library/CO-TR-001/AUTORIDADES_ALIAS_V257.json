@@ -1,0 +1,167 @@
+{
+  "product_id": "CO-TR-001",
+  "version": "2.57",
+  "aliases": {
+    "medellin": [
+      "medellin",
+      "secretaria de movilidad de medellin"
+    ],
+    "la_dorada": [
+      "la dorada",
+      "division de transito y transporte de la dorada"
+    ],
+    "villavicencio": [
+      "villavicencio",
+      "inspeccion municipal de transito de villavicencio"
+    ],
+    "cali": [
+      "cali",
+      "santiago de cali",
+      "secretaria de movilidad de santiago de cali"
+    ],
+    "bogota": [
+      "bogota",
+      "bogota dc",
+      "secretaria distrital de movilidad de bogota"
+    ],
+    "barranquilla": [
+      "barranquilla",
+      "secretaria distrital de transito y seguridad vial de barranquilla"
+    ],
+    "corozal": [
+      "corozal",
+      "instituto municipal de transito y transporte de corozal"
+    ],
+    "villa_del_rosario": [
+      "villa del rosario",
+      "departamento administrativo de transporte y transito de villa del rosario"
+    ],
+    "itagui": [
+      "itagui",
+      "secretaria de movilidad de itagui"
+    ],
+    "sabaneta": [
+      "sabaneta",
+      "secretaria de movilidad y transito de sabaneta"
+    ],
+    "magdalena_departamental": [
+      "magdalena departamental",
+      "oficina de transito y transporte departamental del magdalena"
+    ],
+    "bello": [
+      "bello",
+      "secretaria de movilidad de bello"
+    ],
+    "galapa": [
+      "galapa",
+      "secretaria municipal de transito y transporte de galapa"
+    ],
+    "atlantico_departamental": [
+      "atlantico departamental",
+      "instituto de transito del atlantico"
+    ],
+    "puerto_colombia": [
+      "puerto colombia",
+      "secretaria municipal de transito y transporte de puerto colombia"
+    ],
+    "arjona": [
+      "arjona",
+      "secretaria municipal de transporte y transito de arjona"
+    ],
+    "turbaco": [
+      "turbaco",
+      "secretaria de transito y transporte municipal de turbaco"
+    ],
+    "soledad": [
+      "soledad",
+      "instituto municipal de transito y transporte de soledad"
+    ],
+    "cucuta": [
+      "cucuta",
+      "san jose de cucuta",
+      "secretaria de transito y transporte de san jose de cucuta"
+    ],
+    "cundinamarca": [
+      "cundinamarca",
+      "movilidad contemporanea de cundinamarca",
+      "secretaria de movilidad contemporanea de cundinamarca"
+    ],
+    "palermo": [
+      "palermo",
+      "organismo de transito municipal de palermo"
+    ],
+    "fundacion": [
+      "fundacion",
+      "intrasfun",
+      "instituto municipal de transito y transporte de fundacion"
+    ],
+    "los_patios": [
+      "los patios",
+      "instituto de transito y transporte del municipio de los patios"
+    ],
+    "cartago": [
+      "cartago",
+      "secretaria de movilidad y transporte de cartago"
+    ],
+    "yumbo": [
+      "yumbo",
+      "secretaria de transito y transporte de yumbo"
+    ],
+    "yotoco": [
+      "yotoco",
+      "secretaria de transito transporte y movilidad de yotoco"
+    ],
+    "cienaga": [
+      "cienaga",
+      "instituto de transito y transporte municipal de cienaga"
+    ],
+    "barrancabermeja": [
+      "barrancabermeja",
+      "inspeccion de transito y transporte de barrancabermeja"
+    ],
+    "santa_marta": [
+      "santa marta",
+      "secretaria de movilidad multimodal y sostenible de santa marta"
+    ],
+    "popayan": [
+      "popayan",
+      "secretaria de transito y transporte municipal de popayan"
+    ],
+    "aguachica": [
+      "aguachica",
+      "instituto municipal de transito y transporte de aguachica"
+    ],
+    "monteria": [
+      "monteria",
+      "secretaria municipal de transporte y transito de monteria"
+    ],
+    "planeta_rica": [
+      "planeta rica",
+      "secretaria de transporte y transito de planeta rica"
+    ],
+    "palmira": [
+      "palmira",
+      "secretaria de transito y transporte de palmira"
+    ],
+    "santander_de_quilichao": [
+      "santander de quilichao",
+      "secretaria de transito y transporte de santander de quilichao"
+    ],
+    "valle_del_cauca": [
+      "valle del cauca",
+      "secretaria de movilidad y transporte del valle del cauca"
+    ],
+    "zipaquira": [
+      "zipaquira",
+      "secretaria de transporte y movilidad de zipaquira"
+    ],
+    "cesar_departamental": [
+      "cesar departamental",
+      "instituto departamental de transito del cesar"
+    ],
+    "valledupar": [
+      "valledupar",
+      "secretaria de transito y transporte de valledupar"
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "migration_id": "M24.1-M23.2-PREINTEGRATION-20260801",
+  "product_code": "CO-AR-001",
+  "revision_id": "M23.2-0b9f4cd32a48",
+  "source_revision_label": "M23.2",
+  "status": "candidate_blocked_pending_legal_and_qa_approval",
+  "immutable": true,
+  "asset_hashes": {
+    "CO-AR-001_Modelo_Maestro_Arrendamiento_Vivienda_M23.docx": "0b9f4cd32a48d6de6163129b300960a7c89b01db90ab1767212a7b9d7bbf9c18",
+    "CO-AR-001_Modelo_Maestro_Arrendamiento_Vivienda_M23.pdf": "0ab63ce9321256a967742d85f72a280ceaf5dd389787ff8316b4736d41bb87ec",
+    "CO-AR-001_M23_Bloques_Reglas_y_Fuentes.json": "61c03b6e89d7b029659d96db0d13c5fbf8fac495202a9d72a44c94fa3664d807",
+    "CO-AR-001_Ejemplo_Final_Arrendamiento_Apartamento_M23.docx": "4cc2d1703ed740ad53ff5c292cad4993ec5a71c74fb13bc8586ba24a75577dce",
+    "CO-AR-001_Ejemplo_Final_Arrendamiento_Apartamento_M23.pdf": "2634b9f44615351404600becee4d8f644ded4e0419756edd0ac089b6efc39ab5"
+  },
+  "approvals": {
+    "legal": {
+      "required": true,
+      "approved": false,
+      "actor": null
+    },
+    "qa": {
+      "required": true,
+      "approved": false,
+      "actor": null
+    },
+    "must_be_distinct_users": true
+  },
+  "questionnaire_binding": {
+    "status": "pending_runtime_resolution",
+    "expected_legacy_ref": "M22://questionnaires/CO-AR-001",
+    "prohibition": "do_not_create_duplicate_questionnaire_before_runtime_audit"
+  },
+  "ruleset_binding": {
+    "status": "candidate_from_m23_2",
+    "source_file": "CO-AR-001/CO-AR-001_M23_Bloques_Reglas_y_Fuentes.json",
+    "rule_count": 7,
+    "rule_ids": [
+      "LEASE-M23-001",
+      "LEASE-M23-002",
+      "LEASE-M23-003",
+      "LEASE-M23-004",
+      "LEASE-M23-005",
+      "LEASE-M23-006",
+      "LEASE-M23-007"
+    ]
+  },
+  "created_at": "2026-08-01T05:58:46.981956+00:00",
+  "publication_change": "none"
+}

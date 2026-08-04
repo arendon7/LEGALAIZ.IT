@@ -1,0 +1,70 @@
+{
+  "schema": "legalaizit-m24-3-document-visual-qa-v1",
+  "status": "passed",
+  "documents": 4,
+  "pages_inspected": 48,
+  "renderer": "PDF render at 140 DPI plus DOCX render workflow",
+  "observations": "Se inspeccionaron las 48 páginas mediante hojas de contacto. No se observaron cortes, superposiciones, glifos rotos ni tablas partidas de forma anómala.",
+  "results": [
+    {
+      "product_code": "CO-LA-002",
+      "pdf": "governance/m24_3/pilot_documents/CO-LA-002/M24-CO-LA-002-10-SUCCESS_Documento_Final.pdf",
+      "page_count": 16,
+      "pdf_openable": true,
+      "encrypted": false,
+      "likely_scanned": false,
+      "contact_sheet": "governance/m24_3/visual_qa/CO-LA-002_M24_3_contact_sheet.jpg",
+      "contact_sheet_sha256": "8854575a1f987921fdf200f64e323213416ac46823d73ec0a1ebbbbf850106ba",
+      "visual_inspection": "passed",
+      "clipping_detected": false,
+      "overlap_detected": false,
+      "broken_glyphs_detected": false,
+      "broken_tables_detected": false
+    },
+    {
+      "product_code": "CO-EM-003",
+      "pdf": "governance/m24_3/pilot_documents/CO-EM-003/M24-CO-EM-003-10-SUCCESS_Documento_Final.pdf",
+      "page_count": 14,
+      "pdf_openable": true,
+      "encrypted": false,
+      "likely_scanned": false,
+      "contact_sheet": "governance/m24_3/visual_qa/CO-EM-003_M24_3_contact_sheet.jpg",
+      "contact_sheet_sha256": "1cb0305d675e3fca2af8df3b0b7b25c3a4b477ca52245e713696b074f7a1bcc5",
+      "visual_inspection": "passed",
+      "clipping_detected": false,
+      "overlap_detected": false,
+      "broken_glyphs_detected": false,
+      "broken_tables_detected": false
+    },
+    {
+      "product_code": "CO-AR-001",
+      "pdf": "governance/m24_3/pilot_documents/CO-AR-001/M24-CO-AR-001-10-SUCCESS_Documento_Final.pdf",
+      "page_count": 10,
+      "pdf_openable": true,
+      "encrypted": false,
+      "likely_scanned": false,
+      "contact_sheet": "governance/m24_3/visual_qa/CO-AR-001_M24_3_contact_sheet.jpg",
+      "contact_sheet_sha256": "2eb39d66cef952a1c71f3a1288c613620af346403ead9a3c854230d9a5f9f338",
+      "visual_inspection": "passed",
+      "clipping_detected": false,
+      "overlap_detected": false,
+      "broken_glyphs_detected": false,
+      "broken_tables_detected": false
+    },
+    {
+      "product_code": "CO-CD-003",
+      "pdf": "governance/m24_3/pilot_documents/CO-CD-003/M24-CO-CD-003-10-SUCCESS_Documento_Final.pdf",
+      "page_count": 8,
+      "pdf_openable": true,
+      "encrypted": false,
+      "likely_scanned": false,
+      "contact_sheet": "governance/m24_3/visual_qa/CO-CD-003_M24_3_contact_sheet.jpg",
+      "contact_sheet_sha256": "0b762e116043e074898868700c905ad97ca31460aded2422baf633b214fa150a",
+      "visual_inspection": "passed",
+      "clipping_detected": false,
+      "overlap_detected": false,
+      "broken_glyphs_detected": false,
+      "broken_tables_detected": false
+    }
+  ]
+}

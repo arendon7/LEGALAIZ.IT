@@ -1,0 +1,283 @@
+[
+  {
+    "id": "EM3-R1",
+    "risk": "red",
+    "category": "scope",
+    "blocking": true,
+    "conditions": {
+      "all": [
+        {
+          "field": "state_entity",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "message": "El contrato involucra una entidad estatal.",
+    "action": "Detener el formato privado estándar y remitir a contratación estatal.",
+    "source_ids": [
+      "EM3-S1"
+    ]
+  },
+  {
+    "id": "EM3-R2",
+    "risk": "red",
+    "category": "scope",
+    "blocking": true,
+    "conditions": {
+      "all": [
+        {
+          "field": "regulated_service",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "message": "El servicio está sujeto a un régimen sectorial o profesional especial.",
+    "action": "Usar un producto especializado y validar licencias, responsabilidades y cláusulas obligatorias.",
+    "source_ids": [
+      "EM3-S1"
+    ]
+  },
+  {
+    "id": "EM3-R3",
+    "risk": "yellow",
+    "category": "quality",
+    "blocking": false,
+    "conditions": {
+      "all": [
+        {
+          "field": "object_clear",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "message": "El alcance todavía no es suficientemente verificable.",
+    "action": "Generar con advertencia y completar objeto, entregables y criterios de aceptación antes de firma.",
+    "source_ids": [
+      "EM3-S1"
+    ]
+  },
+  {
+    "id": "EM3-R4",
+    "risk": "red",
+    "category": "labor_risk",
+    "blocking": true,
+    "conditions": {
+      "all": [
+        {
+          "field": "fixed_schedule",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "message": "Se informó horario fijo con control de asistencia.",
+    "action": "Bloquear la versión definitiva y revisar la posible naturaleza laboral del vínculo.",
+    "source_ids": [
+      "EM3-S2"
+    ]
+  },
+  {
+    "id": "EM3-R5",
+    "risk": "red",
+    "category": "labor_risk",
+    "blocking": true,
+    "conditions": {
+      "all": [
+        {
+          "field": "permanent_orders",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "message": "Se informaron órdenes permanentes sobre la forma diaria de trabajar.",
+    "action": "Bloquear la versión definitiva y revisar subordinación material.",
+    "source_ids": [
+      "EM3-S2"
+    ]
+  },
+  {
+    "id": "EM3-R6",
+    "risk": "red",
+    "category": "labor_risk",
+    "blocking": true,
+    "conditions": {
+      "all": [
+        {
+          "field": "disciplinary_control",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "message": "Se informó control disciplinario o sanciones internas.",
+    "action": "Bloquear el contrato de servicios y revisar el instrumento laboral aplicable.",
+    "source_ids": [
+      "EM3-S2"
+    ]
+  },
+  {
+    "id": "EM3-R7",
+    "risk": "yellow",
+    "category": "labor_risk",
+    "blocking": false,
+    "conditions": {
+      "all": [
+        {
+          "field": "continuous_availability",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "message": "La disponibilidad continua puede reducir la autonomía.",
+    "action": "Delimitar ventanas de atención, niveles de servicio y tiempos de respuesta; revisión profesional opcional.",
+    "source_ids": [
+      "EM3-S2"
+    ]
+  },
+  {
+    "id": "EM3-R8",
+    "risk": "yellow",
+    "category": "labor_risk",
+    "blocking": false,
+    "conditions": {
+      "all": [
+        {
+          "field": "exclusive",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "message": "La exclusividad total requiere delimitación y justificación.",
+    "action": "Definir alcance, plazo, actividades exceptuadas y contraprestación; revisión profesional recomendada.",
+    "source_ids": [
+      "EM3-S2"
+    ]
+  },
+  {
+    "id": "EM3-R9",
+    "risk": "green",
+    "category": "module",
+    "blocking": false,
+    "conditions": {
+      "all": [
+        {
+          "field": "personal_data",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "message": "Se activará el anexo de tratamiento de datos personales.",
+    "action": "Incluir instrucciones, seguridad, incidentes, confidencialidad, devolución y eliminación.",
+    "source_ids": [
+      "EM3-S3"
+    ]
+  },
+  {
+    "id": "EM3-R10",
+    "risk": "green",
+    "category": "module",
+    "blocking": false,
+    "conditions": {
+      "all": [
+        {
+          "field": "ip_relevant",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "message": "Se activará el anexo de propiedad intelectual.",
+    "action": "Distinguir materiales preexistentes, resultados, cesión o licencia y usos autorizados.",
+    "source_ids": [
+      "EM3-S5"
+    ]
+  },
+  {
+    "id": "EM3-R11",
+    "risk": "yellow",
+    "category": "third_parties",
+    "blocking": false,
+    "conditions": {
+      "all": [
+        {
+          "field": "subcontractors",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "message": "El servicio podrá involucrar subcontratistas.",
+    "action": "Exigir autorización, responsabilidad del contratista y obligaciones equivalentes de confidencialidad, datos y propiedad intelectual.",
+    "source_ids": [
+      "EM3-S1",
+      "EM3-S3"
+    ]
+  },
+  {
+    "id": "EM3-R12",
+    "risk": "green",
+    "category": "module",
+    "blocking": false,
+    "conditions": {
+      "all": [
+        {
+          "field": "early_termination",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "message": "Se activará el módulo de terminación anticipada y cierre.",
+    "action": "Regular pago proporcional, entregables parciales, devolución de activos y obligaciones sobrevivientes.",
+    "source_ids": [
+      "EM3-S1"
+    ]
+  },
+  {
+    "id": "EM3-R13",
+    "risk": "yellow",
+    "category": "value",
+    "blocking": false,
+    "conditions": {
+      "all": [
+        {
+          "field": "fees",
+          "op": "gte",
+          "value": 100000000
+        }
+      ]
+    },
+    "message": "La cuantía elevada aumenta la exposición contractual.",
+    "action": "Generar el paquete con advertencia y recomendar revisión de responsabilidad, garantías, seguros y solución de controversias.",
+    "source_ids": [
+      "EM3-S1"
+    ]
+  },
+  {
+    "id": "EM3-R14",
+    "risk": "green",
+    "category": "module",
+    "blocking": false,
+    "conditions": {
+      "all": [
+        {
+          "field": "confidentiality",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "message": "Se activará el acuerdo específico de confidencialidad.",
+    "action": "Definir información protegida, usos permitidos, exclusiones, seguridad, devolución y duración.",
+    "source_ids": [
+      "EM3-S1"
+    ]
+  }
+]

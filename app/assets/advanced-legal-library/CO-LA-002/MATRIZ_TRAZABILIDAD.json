@@ -1,0 +1,299 @@
+[
+  {
+    "question_id": "Q-LA-001",
+    "variable_path": "employer.type",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-001"
+    ]
+  },
+  {
+    "question_id": "Q-LA-002",
+    "variable_path": "employer",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-002"
+    ]
+  },
+  {
+    "question_id": "Q-LA-003",
+    "variable_path": "employerSignatory",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-003"
+    ]
+  },
+  {
+    "question_id": "Q-LA-004",
+    "variable_path": "worker",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-004"
+    ]
+  },
+  {
+    "question_id": "Q-LA-005",
+    "variable_path": "worker.isAdult",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-005"
+    ]
+  },
+  {
+    "question_id": "Q-LA-006",
+    "variable_path": "priorRelationship",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-006"
+    ]
+  },
+  {
+    "question_id": "Q-LA-007",
+    "variable_path": "role.jobTitle",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-007"
+    ]
+  },
+  {
+    "question_id": "Q-LA-008",
+    "variable_path": "role.profileId",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-008"
+    ]
+  },
+  {
+    "question_id": "Q-LA-009",
+    "variable_path": "role.managesPeople",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-009"
+    ]
+  },
+  {
+    "question_id": "Q-LA-010",
+    "variable_path": "authorities",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-010"
+    ]
+  },
+  {
+    "question_id": "Q-LA-011",
+    "variable_path": "role.profileSource",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-011"
+    ]
+  },
+  {
+    "question_id": "Q-LA-012",
+    "variable_path": "role.functionsPlacement",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-012"
+    ]
+  },
+  {
+    "question_id": "Q-LA-013",
+    "variable_path": "work.actualStartDate",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-013"
+    ]
+  },
+  {
+    "question_id": "Q-LA-014",
+    "variable_path": "work.probation",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-014"
+    ]
+  },
+  {
+    "question_id": "Q-LA-015",
+    "variable_path": "work.workplace",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-015"
+    ]
+  },
+  {
+    "question_id": "Q-LA-016",
+    "variable_path": "work.modality",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-016"
+    ]
+  },
+  {
+    "question_id": "Q-LA-017",
+    "variable_path": "mobility",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-017"
+    ]
+  },
+  {
+    "question_id": "Q-LA-018",
+    "variable_path": "schedule.type",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-018"
+    ]
+  },
+  {
+    "question_id": "Q-LA-019",
+    "variable_path": "schedule",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-019"
+    ]
+  },
+  {
+    "question_id": "Q-LA-020",
+    "variable_path": "schedule.specialWork",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-020"
+    ]
+  },
+  {
+    "question_id": "Q-LA-021",
+    "variable_path": "availability",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-021"
+    ]
+  },
+  {
+    "question_id": "Q-LA-022",
+    "variable_path": "compensation",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-022"
+    ]
+  },
+  {
+    "question_id": "Q-LA-023",
+    "variable_path": "variableCompensation",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-023"
+    ]
+  },
+  {
+    "question_id": "Q-LA-024",
+    "variable_path": "benefits",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-024"
+    ]
+  },
+  {
+    "question_id": "Q-LA-025",
+    "variable_path": "specialConditions",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-025"
+    ]
+  },
+  {
+    "question_id": "Q-LA-026",
+    "variable_path": "assets",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-026"
+    ]
+  },
+  {
+    "question_id": "Q-LA-027",
+    "variable_path": "documents",
+    "rule_ids": [],
+    "document_ids": [
+      "DOC-LA-CONTRACT-001"
+    ],
+    "test_ids": [
+      "TEST-LA-Q-027"
+    ]
+  }
+]

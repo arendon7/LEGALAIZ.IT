@@ -1,0 +1,142 @@
+{
+  "version": "M23-OLA2-2026-07-31",
+  "product_code": "CO-EM-003",
+  "document": "independent_services",
+  "strategy": "additive_maturation",
+  "preserve": [
+    "existing questions, variables, rules and annexes that remain useful",
+    "RBAC, immutable reviews, comparison, dual approval and DOCX/PDF outputs",
+    "historical versions and evidence"
+  ],
+  "final_document_exclusions": [
+    "product price",
+    "risk semaphore",
+    "internal approval status",
+    "QA notes",
+    "hashes",
+    "demo labels",
+    "publication controls",
+    "rules engine explanations"
+  ],
+  "conditional_rules": [
+    {
+      "id": "SERV-M23-001",
+      "when": "material_subordination_indicators",
+      "then": "block_final_generation_and_redirect_to_labor_review",
+      "risk": "red"
+    },
+    {
+      "id": "SERV-M23-002",
+      "when": "scope_or_acceptance_criteria_missing",
+      "then": "require_annex_1_completion",
+      "risk": "red"
+    },
+    {
+      "id": "SERV-M23-003",
+      "when": "commercial_operation_subject_to_fair_payment_terms",
+      "then": "validate_law_2024_2020_maximum_term_and_exceptions",
+      "risk": "yellow"
+    },
+    {
+      "id": "SERV-M23-004",
+      "when": "personal_data_processed_on_behalf_of_client",
+      "then": "activate_processor_terms_and_security_annex",
+      "risk": "yellow"
+    },
+    {
+      "id": "SERV-M23-005",
+      "when": "sensitive_biometric_minor_or_health_data",
+      "then": "mandatory_professional_review_and_enhanced_controls",
+      "risk": "red"
+    },
+    {
+      "id": "SERV-M23-006",
+      "when": "public_or_unapproved_ai_receives_confidential_personal_or_client_data",
+      "then": "prohibit_and_warn",
+      "risk": "red"
+    },
+    {
+      "id": "SERV-M23-007",
+      "when": "copyright_transfer_or_exclusive_license",
+      "then": "require_written_modes_term_territory_remuneration_and_registration_warning",
+      "risk": "yellow"
+    },
+    {
+      "id": "SERV-M23-008",
+      "when": "general_indeterminate_future_ip_transfer",
+      "then": "remove_or_block",
+      "risk": "red"
+    },
+    {
+      "id": "SERV-M23-009",
+      "when": "third_party_or_open_source_components",
+      "then": "require_inventory_license_and_compatibility_review",
+      "risk": "yellow"
+    },
+    {
+      "id": "SERV-M23-010",
+      "when": "uncapped_penalty_indemnity_or_exclusivity",
+      "then": "mandatory_proportionality_review",
+      "risk": "red"
+    },
+    {
+      "id": "SERV-M23-011",
+      "when": "natural_person_service_over_one_month_or_high_risk_activity",
+      "then": "validate_applicable_occupational_risk_affiliation_duties",
+      "risk": "yellow"
+    },
+    {
+      "id": "SERV-M23-012",
+      "when": "termination_with_partial_deliverables",
+      "then": "calculate_useful_work_nonrecoverable_approved_costs_transition_and_reservations",
+      "risk": "yellow"
+    }
+  ],
+  "legal_sources": [
+    {
+      "source": "Código Civil - Ley 84 de 1873",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1827111",
+      "verified": "2026-07-31"
+    },
+    {
+      "source": "Código de Comercio - Decreto 410 de 1971",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1833376",
+      "verified": "2026-07-31"
+    },
+    {
+      "source": "Ley 2024 de 2020 - pago en plazos justos",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F30039609",
+      "verified": "2026-07-31"
+    },
+    {
+      "source": "Ley 1581 de 2012",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1684507",
+      "verified": "2026-07-31"
+    },
+    {
+      "source": "Decreto 1074 de 2015",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Decretos%2F30019935",
+      "verified": "2026-07-31"
+    },
+    {
+      "source": "Ley 23 de 1982 y artículo 183 modificado",
+      "official_url": "https://suin-juriscol.gov.co/viewDocument.asp?id=30035790",
+      "verified": "2026-07-31"
+    },
+    {
+      "source": "Ley 527 de 1999",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1662013",
+      "verified": "2026-07-31"
+    },
+    {
+      "source": "Ley 1562 de 2012 y Decreto 723 de 2013",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Decretos%2F1153464",
+      "verified": "2026-07-31"
+    },
+    {
+      "source": "Decisión Andina 486 de 2000",
+      "official_url": "https://www.suin-juriscol.gov.co/otrosinformacion/dpi/decisiones_486.pdf",
+      "verified": "2026-07-31"
+    }
+  ]
+}

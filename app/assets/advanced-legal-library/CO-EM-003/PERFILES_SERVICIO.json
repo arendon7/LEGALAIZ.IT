@@ -1,0 +1,62 @@
+[
+  {
+    "id": "PROF-EM-001",
+    "name": "Consultoría estratégica y administrativa",
+    "category": "consulting"
+  },
+  {
+    "id": "PROF-EM-002",
+    "name": "Asesoría jurídica independiente",
+    "category": "professional"
+  },
+  {
+    "id": "PROF-EM-003",
+    "name": "Desarrollo de software",
+    "category": "technology"
+  },
+  {
+    "id": "PROF-EM-004",
+    "name": "Diseño, publicidad y contenidos",
+    "category": "creative"
+  },
+  {
+    "id": "PROF-EM-005",
+    "name": "Investigación y desarrollo",
+    "category": "research"
+  },
+  {
+    "id": "PROF-EM-006",
+    "name": "Intermediación o gestión comercial",
+    "category": "commercial"
+  },
+  {
+    "id": "PROF-EM-007",
+    "name": "Mantenimiento técnico especializado",
+    "category": "operational"
+  },
+  {
+    "id": "PROF-EM-008",
+    "name": "Capacitación y formación",
+    "category": "professional"
+  },
+  {
+    "id": "PROF-EM-009",
+    "name": "Contabilidad, auditoría o finanzas",
+    "category": "professional"
+  },
+  {
+    "id": "PROF-EM-010",
+    "name": "Tratamiento o aprovechamiento de residuos",
+    "category": "operational"
+  },
+  {
+    "id": "PROF-EM-011",
+    "name": "Operación técnica por resultados",
+    "category": "operational"
+  },
+  {
+    "id": "PROF-EM-012",
+    "name": "Servicio profesional personalizado",
+    "category": "professional"
+  }
+]

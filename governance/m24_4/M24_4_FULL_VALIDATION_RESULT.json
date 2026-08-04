@@ -1,0 +1,3763 @@
+{
+  "schema": "legalai_m24_4_full_validation_result_v1",
+  "executed_at": "2026-08-01T16:28:49.197527+00:00",
+  "base_runtime": "M21.1",
+  "candidate_library": "M23.2",
+  "milestone": "M24.4",
+  "status": "passed",
+  "validated_products": [
+    "CO-LA-001",
+    "CO-LA-002",
+    "CO-EM-003",
+    "CO-EM-004",
+    "CO-AR-001",
+    "CO-SA-001",
+    "CO-CD-001",
+    "CO-CD-003",
+    "CO-CD-004",
+    "CO-TR-001",
+    "CO-TR-002"
+  ],
+  "scenario_count": 110,
+  "passed": 110,
+  "failed": 0,
+  "generated_document_count": 11,
+  "generated_file_count": 22,
+  "publication_blocked": true,
+  "active_generation_unchanged": true,
+  "products": [
+    {
+      "product_code": "CO-LA-001",
+      "scenario_count": 10,
+      "passed_count": 10,
+      "failed_count": 0,
+      "passed": true,
+      "generated_documents": [
+        {
+          "file_name": "M24-CO-LA-001-10-SUCCESS_Documento_Final.docx",
+          "format": "docx",
+          "sha256": "8a90e156032672933d4c190448fc0eec54d5bdfa4118571ac3f52773a796b0ac",
+          "download_url": "/api/m24/full-validation/CO-LA-001/evidence/M24-CO-LA-001-10-SUCCESS_Documento_Final.docx"
+        },
+        {
+          "file_name": "M24-CO-LA-001-10-SUCCESS_Documento_Final.pdf",
+          "format": "pdf",
+          "sha256": "2d97db2449ef86eceefac43078d85ad49ed5568935a74254dcd15c9f522e8d72",
+          "download_url": "/api/m24/full-validation/CO-LA-001/evidence/M24-CO-LA-001-10-SUCCESS_Documento_Final.pdf"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "M24-CO-LA-001-01-ORDINARY",
+          "product_code": "CO-LA-001",
+          "scenario_type": "ordinary",
+          "actual": {
+            "risk": "green",
+            "action": "generate_with_calculation_and_claim",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-LA1-004"
+            ]
+          },
+          "expected": {
+            "risk": "green",
+            "action": "generate_with_calculation_and_claim",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-LA1-004"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-LA-001-02-INCOMPLETE",
+          "product_code": "CO-LA-001",
+          "scenario_type": "incomplete",
+          "actual": {
+            "risk": "yellow",
+            "action": "request_missing_information_and_block_final_release",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-LA1-008"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "request_missing_information_and_block_final_release",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-LA1-008"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-LA-001-03-CONTRADICTION",
+          "product_code": "CO-LA-001",
+          "scenario_type": "contradiction",
+          "actual": {
+            "risk": "yellow",
+            "action": "flag_contradiction_and_require_resolution",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "flag_contradiction_and_require_resolution",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-LA-001-04-HIGH_RISK",
+          "product_code": "CO-LA-001",
+          "scenario_type": "high_risk",
+          "actual": {
+            "risk": "red",
+            "action": "mandatory_lawyer_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-LA1-002"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "mandatory_lawyer_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-LA1-002"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-LA-001-05-DEADLINE",
+          "product_code": "CO-LA-001",
+          "scenario_type": "deadline",
+          "actual": {
+            "risk": "yellow",
+            "action": "calculate_deadline_and_warn_without_false_certainty",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "calculate_deadline_and_warn_without_false_certainty",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-LA-001-06-EVIDENCE",
+          "product_code": "CO-LA-001",
+          "scenario_type": "evidence",
+          "actual": {
+            "risk": "yellow",
+            "action": "exclude_unsupported_deduction_and_flag",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-LA1-006"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "exclude_unsupported_deduction_and_flag",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-LA1-006"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-LA-001-07-CONDITIONAL",
+          "product_code": "CO-LA-001",
+          "scenario_type": "conditional",
+          "actual": {
+            "risk": "yellow",
+            "action": "activate_indemnity_module",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-LA1-004"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "activate_indemnity_module",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-LA1-004"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-LA-001-08-INCOMPATIBLE",
+          "product_code": "CO-LA-001",
+          "scenario_type": "incompatible",
+          "actual": {
+            "risk": "red",
+            "action": "block_standard_flow",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-LA1-001"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "block_standard_flow",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-LA1-001"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-LA-001-09-ESCALATION",
+          "product_code": "CO-LA-001",
+          "scenario_type": "escalation",
+          "actual": {
+            "risk": "red",
+            "action": "prevent_duplicate_claim_and_escalate",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-LA1-007"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "prevent_duplicate_claim_and_escalate",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-LA1-007"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-LA-001-10-SUCCESS",
+          "product_code": "CO-LA-001",
+          "scenario_type": "success",
+          "actual": {
+            "risk": "green",
+            "action": "generate_review_approve_and_deliver",
+            "state": "CERRADO",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "green",
+            "action": "generate_review_approve_and_deliver",
+            "state": "CERRADO",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": true,
+          "document_checks": {
+            "source_candidate_hash_verified": true,
+            "no_unresolved_variables": true,
+            "no_prohibited_output_terms": true,
+            "docx_nonempty": true,
+            "pdf_nonempty": true
+          },
+          "document_passed": true,
+          "generated_files": [
+            "M24-CO-LA-001-10-SUCCESS_Documento_Final.docx",
+            "M24-CO-LA-001-10-SUCCESS_Documento_Final.pdf"
+          ],
+          "unresolved_variables": [],
+          "prohibited_terms_found": []
+        }
+      ]
+    },
+    {
+      "product_code": "CO-LA-002",
+      "scenario_count": 10,
+      "passed_count": 10,
+      "failed_count": 0,
+      "passed": true,
+      "generated_documents": [
+        {
+          "file_name": "M24-CO-LA-002-10-SUCCESS_Documento_Final.docx",
+          "format": "docx",
+          "sha256": "774d49c298fa11aa50ac67cf4754271b939dd7722926722379cf07b08563687f",
+          "download_url": "/api/m24/full-validation/CO-LA-002/evidence/M24-CO-LA-002-10-SUCCESS_Documento_Final.docx"
+        },
+        {
+          "file_name": "M24-CO-LA-002-10-SUCCESS_Documento_Final.pdf",
+          "format": "pdf",
+          "sha256": "7795229855dc92c493e6c228109287ae751c69962fc21170cb36b1d051066634",
+          "download_url": "/api/m24/full-validation/CO-LA-002/evidence/M24-CO-LA-002-10-SUCCESS_Documento_Final.pdf"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "M24-CO-LA-002-01-ORDINARY",
+          "product_code": "CO-LA-002",
+          "scenario_type": "ordinary",
+          "actual": {
+            "risk": "green",
+            "action": "generate_indefinite_contract",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "LAB-M23-001"
+            ]
+          },
+          "expected": {
+            "risk": "green",
+            "action": "generate_indefinite_contract",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "LAB-M23-001"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-LA-002-02-INCOMPLETE",
+          "product_code": "CO-LA-002",
+          "scenario_type": "incomplete",
+          "actual": {
+            "risk": "yellow",
+            "action": "request_role_annex_completion",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "request_role_annex_completion",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-LA-002-03-CONTRADICTION",
+          "product_code": "CO-LA-002",
+          "scenario_type": "contradiction",
+          "actual": {
+            "risk": "yellow",
+            "action": "flag_modality_contradiction",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "flag_modality_contradiction",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-LA-002-04-HIGH_RISK",
+          "product_code": "CO-LA-002",
+          "scenario_type": "high_risk",
+          "actual": {
+            "risk": "red",
+            "action": "block_generation",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "LAB-M23-004"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "block_generation",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "LAB-M23-004"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-LA-002-05-DEADLINE",
+          "product_code": "CO-LA-002",
+          "scenario_type": "deadline",
+          "actual": {
+            "risk": "yellow",
+            "action": "apply_current_surcharge_rule",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "LAB-M23-006"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "apply_current_surcharge_rule",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "LAB-M23-006"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-LA-002-06-EVIDENCE",
+          "product_code": "CO-LA-002",
+          "scenario_type": "evidence",
+          "actual": {
+            "risk": "yellow",
+            "action": "remove_clause_and_require_legal_basis",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "LAB-M23-012"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "remove_clause_and_require_legal_basis",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "LAB-M23-012"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-LA-002-07-CONDITIONAL",
+          "product_code": "CO-LA-002",
+          "scenario_type": "conditional",
+          "actual": {
+            "risk": "yellow",
+            "action": "activate_night_surcharge_module",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "LAB-M23-005"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "activate_night_surcharge_module",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "LAB-M23-005"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-LA-002-08-INCOMPATIBLE",
+          "product_code": "CO-LA-002",
+          "scenario_type": "incompatible",
+          "actual": {
+            "risk": "red",
+            "action": "remove_or_escalate",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "LAB-M23-013"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "remove_or_escalate",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "LAB-M23-013"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-LA-002-09-ESCALATION",
+          "product_code": "CO-LA-002",
+          "scenario_type": "escalation",
+          "actual": {
+            "risk": "red",
+            "action": "mandatory_human_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "LAB-M23-009"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "mandatory_human_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "LAB-M23-009"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-LA-002-10-SUCCESS",
+          "product_code": "CO-LA-002",
+          "scenario_type": "success",
+          "actual": {
+            "risk": "green",
+            "action": "generate_review_approve_and_deliver",
+            "state": "CERRADO",
+            "rule_ids": [
+              "LAB-M23-001"
+            ]
+          },
+          "expected": {
+            "risk": "green",
+            "action": "generate_review_approve_and_deliver",
+            "state": "CERRADO",
+            "rule_ids": [
+              "LAB-M23-001"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": true,
+          "document_checks": {
+            "source_candidate_hash_verified": true,
+            "no_unresolved_variables": true,
+            "no_prohibited_output_terms": true,
+            "docx_nonempty": true,
+            "pdf_nonempty": true
+          },
+          "document_passed": true,
+          "generated_files": [
+            "M24-CO-LA-002-10-SUCCESS_Documento_Final.docx",
+            "M24-CO-LA-002-10-SUCCESS_Documento_Final.pdf"
+          ],
+          "unresolved_variables": [],
+          "prohibited_terms_found": []
+        }
+      ]
+    },
+    {
+      "product_code": "CO-EM-003",
+      "scenario_count": 10,
+      "passed_count": 10,
+      "failed_count": 0,
+      "passed": true,
+      "generated_documents": [
+        {
+          "file_name": "M24-CO-EM-003-10-SUCCESS_Documento_Final.docx",
+          "format": "docx",
+          "sha256": "c67458de756ccc4900bd6edc58f20c6024465392392678370f7803dde180270a",
+          "download_url": "/api/m24/full-validation/CO-EM-003/evidence/M24-CO-EM-003-10-SUCCESS_Documento_Final.docx"
+        },
+        {
+          "file_name": "M24-CO-EM-003-10-SUCCESS_Documento_Final.pdf",
+          "format": "pdf",
+          "sha256": "c884559f8067dc04d146965e5b274db7ed7100517c82f11c0279d6d292bb05eb",
+          "download_url": "/api/m24/full-validation/CO-EM-003/evidence/M24-CO-EM-003-10-SUCCESS_Documento_Final.pdf"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "M24-CO-EM-003-01-ORDINARY",
+          "product_code": "CO-EM-003",
+          "scenario_type": "ordinary",
+          "actual": {
+            "risk": "green",
+            "action": "generate_services_contract",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "green",
+            "action": "generate_services_contract",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-EM-003-02-INCOMPLETE",
+          "product_code": "CO-EM-003",
+          "scenario_type": "incomplete",
+          "actual": {
+            "risk": "yellow",
+            "action": "require_annex_1_completion",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "SERV-M23-002"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "require_annex_1_completion",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "SERV-M23-002"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-EM-003-03-CONTRADICTION",
+          "product_code": "CO-EM-003",
+          "scenario_type": "contradiction",
+          "actual": {
+            "risk": "yellow",
+            "action": "block_and_redirect_to_labor_review",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "SERV-M23-001"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "block_and_redirect_to_labor_review",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "SERV-M23-001"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-EM-003-04-HIGH_RISK",
+          "product_code": "CO-EM-003",
+          "scenario_type": "high_risk",
+          "actual": {
+            "risk": "red",
+            "action": "mandatory_professional_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "SERV-M23-005"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "mandatory_professional_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "SERV-M23-005"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-EM-003-05-DEADLINE",
+          "product_code": "CO-EM-003",
+          "scenario_type": "deadline",
+          "actual": {
+            "risk": "yellow",
+            "action": "validate_payment_term",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "SERV-M23-003"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "validate_payment_term",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "SERV-M23-003"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-EM-003-06-EVIDENCE",
+          "product_code": "CO-EM-003",
+          "scenario_type": "evidence",
+          "actual": {
+            "risk": "yellow",
+            "action": "require_component_inventory",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "SERV-M23-009"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "require_component_inventory",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "SERV-M23-009"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-EM-003-07-CONDITIONAL",
+          "product_code": "CO-EM-003",
+          "scenario_type": "conditional",
+          "actual": {
+            "risk": "yellow",
+            "action": "activate_data_processing_and_security_annex",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "SERV-M23-004"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "activate_data_processing_and_security_annex",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "SERV-M23-004"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-EM-003-08-INCOMPATIBLE",
+          "product_code": "CO-EM-003",
+          "scenario_type": "incompatible",
+          "actual": {
+            "risk": "red",
+            "action": "remove_or_block",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "SERV-M23-008"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "remove_or_block",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "SERV-M23-008"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-EM-003-09-ESCALATION",
+          "product_code": "CO-EM-003",
+          "scenario_type": "escalation",
+          "actual": {
+            "risk": "red",
+            "action": "mandatory_proportionality_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "SERV-M23-010"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "mandatory_proportionality_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "SERV-M23-010"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-EM-003-10-SUCCESS",
+          "product_code": "CO-EM-003",
+          "scenario_type": "success",
+          "actual": {
+            "risk": "green",
+            "action": "generate_review_approve_and_deliver",
+            "state": "CERRADO",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "green",
+            "action": "generate_review_approve_and_deliver",
+            "state": "CERRADO",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": true,
+          "document_checks": {
+            "source_candidate_hash_verified": true,
+            "no_unresolved_variables": true,
+            "no_prohibited_output_terms": true,
+            "docx_nonempty": true,
+            "pdf_nonempty": true
+          },
+          "document_passed": true,
+          "generated_files": [
+            "M24-CO-EM-003-10-SUCCESS_Documento_Final.docx",
+            "M24-CO-EM-003-10-SUCCESS_Documento_Final.pdf"
+          ],
+          "unresolved_variables": [],
+          "prohibited_terms_found": []
+        }
+      ]
+    },
+    {
+      "product_code": "CO-EM-004",
+      "scenario_count": 10,
+      "passed_count": 10,
+      "failed_count": 0,
+      "passed": true,
+      "generated_documents": [
+        {
+          "file_name": "M24-CO-EM-004-10-SUCCESS_Documento_Final.docx",
+          "format": "docx",
+          "sha256": "d1b8cdb083d1cbb351714062514df8ec70e5d3dd09002ba96c1f6f41c7b5aeeb",
+          "download_url": "/api/m24/full-validation/CO-EM-004/evidence/M24-CO-EM-004-10-SUCCESS_Documento_Final.docx"
+        },
+        {
+          "file_name": "M24-CO-EM-004-10-SUCCESS_Documento_Final.pdf",
+          "format": "pdf",
+          "sha256": "f57bc332872cb0d545a142c98b1f971b8cebafad6580d307dfdea024b61d7654",
+          "download_url": "/api/m24/full-validation/CO-EM-004/evidence/M24-CO-EM-004-10-SUCCESS_Documento_Final.pdf"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "M24-CO-EM-004-01-ORDINARY",
+          "product_code": "CO-EM-004",
+          "scenario_type": "ordinary",
+          "actual": {
+            "risk": "green",
+            "action": "generate_bilateral_confidentiality_agreement",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "green",
+            "action": "generate_bilateral_confidentiality_agreement",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-EM-004-02-INCOMPLETE",
+          "product_code": "CO-EM-004",
+          "scenario_type": "incomplete",
+          "actual": {
+            "risk": "yellow",
+            "action": "request_information_inventory",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "request_information_inventory",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-EM-004-03-CONTRADICTION",
+          "product_code": "CO-EM-004",
+          "scenario_type": "contradiction",
+          "actual": {
+            "risk": "yellow",
+            "action": "flag_and_activate_data_module",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "CONF-M23-003"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "flag_and_activate_data_module",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "CONF-M23-003"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-EM-004-04-HIGH_RISK",
+          "product_code": "CO-EM-004",
+          "scenario_type": "high_risk",
+          "actual": {
+            "risk": "red",
+            "action": "require_specific_basis_and_reinforced_controls",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "CONF-M23-004"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "require_specific_basis_and_reinforced_controls",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "CONF-M23-004"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-EM-004-05-DEADLINE",
+          "product_code": "CO-EM-004",
+          "scenario_type": "deadline",
+          "actual": {
+            "risk": "yellow",
+            "action": "require_duration_and_exit_rules",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "require_duration_and_exit_rules",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-EM-004-06-EVIDENCE",
+          "product_code": "CO-EM-004",
+          "scenario_type": "evidence",
+          "actual": {
+            "risk": "yellow",
+            "action": "require_secret_inventory_and_controls",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "CONF-M23-002"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "require_secret_inventory_and_controls",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "CONF-M23-002"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-EM-004-07-CONDITIONAL",
+          "product_code": "CO-EM-004",
+          "scenario_type": "conditional",
+          "actual": {
+            "risk": "yellow",
+            "action": "activate_unilateral_variant",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "CONF-M23-001"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "activate_unilateral_variant",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "CONF-M23-001"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-EM-004-08-INCOMPATIBLE",
+          "product_code": "CO-EM-004",
+          "scenario_type": "incompatible",
+          "actual": {
+            "risk": "red",
+            "action": "route_to_specific_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "CONF-M23-007"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "route_to_specific_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "CONF-M23-007"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-EM-004-09-ESCALATION",
+          "product_code": "CO-EM-004",
+          "scenario_type": "escalation",
+          "actual": {
+            "risk": "red",
+            "action": "require_provider_and_no_upload_controls",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "CONF-M23-005"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "require_provider_and_no_upload_controls",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "CONF-M23-005"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-EM-004-10-SUCCESS",
+          "product_code": "CO-EM-004",
+          "scenario_type": "success",
+          "actual": {
+            "risk": "green",
+            "action": "generate_review_approve_and_deliver",
+            "state": "CERRADO",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "green",
+            "action": "generate_review_approve_and_deliver",
+            "state": "CERRADO",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": true,
+          "document_checks": {
+            "source_candidate_hash_verified": true,
+            "no_unresolved_variables": true,
+            "no_prohibited_output_terms": true,
+            "docx_nonempty": true,
+            "pdf_nonempty": true
+          },
+          "document_passed": true,
+          "generated_files": [
+            "M24-CO-EM-004-10-SUCCESS_Documento_Final.docx",
+            "M24-CO-EM-004-10-SUCCESS_Documento_Final.pdf"
+          ],
+          "unresolved_variables": [],
+          "prohibited_terms_found": []
+        }
+      ]
+    },
+    {
+      "product_code": "CO-AR-001",
+      "scenario_count": 10,
+      "passed_count": 10,
+      "failed_count": 0,
+      "passed": true,
+      "generated_documents": [
+        {
+          "file_name": "M24-CO-AR-001-10-SUCCESS_Documento_Final.docx",
+          "format": "docx",
+          "sha256": "359f6cc24625af7c0d7c8daf0808df76cc67d31fff7c8736a4ec0fd3882fc973",
+          "download_url": "/api/m24/full-validation/CO-AR-001/evidence/M24-CO-AR-001-10-SUCCESS_Documento_Final.docx"
+        },
+        {
+          "file_name": "M24-CO-AR-001-10-SUCCESS_Documento_Final.pdf",
+          "format": "pdf",
+          "sha256": "6c6093a7bf57e158053c559f22b946e2554863fc9da3dc72a90499ea4acb55ae",
+          "download_url": "/api/m24/full-validation/CO-AR-001/evidence/M24-CO-AR-001-10-SUCCESS_Documento_Final.pdf"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "M24-CO-AR-001-01-ORDINARY",
+          "product_code": "CO-AR-001",
+          "scenario_type": "ordinary",
+          "actual": {
+            "risk": "green",
+            "action": "generate_housing_lease",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "green",
+            "action": "generate_housing_lease",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-AR-001-02-INCOMPLETE",
+          "product_code": "CO-AR-001",
+          "scenario_type": "incomplete",
+          "actual": {
+            "risk": "yellow",
+            "action": "request_annex_and_cost_distribution",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "request_annex_and_cost_distribution",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-AR-001-03-CONTRADICTION",
+          "product_code": "CO-AR-001",
+          "scenario_type": "contradiction",
+          "actual": {
+            "risk": "yellow",
+            "action": "block_and_route_to_mixed_or_commercial_lease",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "LEASE-M23-001"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "block_and_route_to_mixed_or_commercial_lease",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "LEASE-M23-001"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-AR-001-04-HIGH_RISK",
+          "product_code": "CO-AR-001",
+          "scenario_type": "high_risk",
+          "actual": {
+            "risk": "red",
+            "action": "block_generation",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "LEASE-M23-002"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "block_generation",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "LEASE-M23-002"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-AR-001-05-DEADLINE",
+          "product_code": "CO-AR-001",
+          "scenario_type": "deadline",
+          "actual": {
+            "risk": "yellow",
+            "action": "calculate_notice_indemnity_and_formality",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "LEASE-M23-006"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "calculate_notice_indemnity_and_formality",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "LEASE-M23-006"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-AR-001-06-EVIDENCE",
+          "product_code": "CO-AR-001",
+          "scenario_type": "evidence",
+          "actual": {
+            "risk": "yellow",
+            "action": "remove_and_explain_limits",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "LEASE-M23-003"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "remove_and_explain_limits",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "LEASE-M23-003"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-AR-001-07-CONDITIONAL",
+          "product_code": "CO-AR-001",
+          "scenario_type": "conditional",
+          "actual": {
+            "risk": "yellow",
+            "action": "activate_regulation_and_fee_module",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "LEASE-M23-004"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "activate_regulation_and_fee_module",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "LEASE-M23-004"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-AR-001-08-INCOMPATIBLE",
+          "product_code": "CO-AR-001",
+          "scenario_type": "incompatible",
+          "actual": {
+            "risk": "red",
+            "action": "exclude_housing_template",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "LEASE-M23-001"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "exclude_housing_template",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "LEASE-M23-001"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-AR-001-09-ESCALATION",
+          "product_code": "CO-AR-001",
+          "scenario_type": "escalation",
+          "actual": {
+            "risk": "red",
+            "action": "mandatory_specialist_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "LEASE-M23-007"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "mandatory_specialist_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "LEASE-M23-007"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-AR-001-10-SUCCESS",
+          "product_code": "CO-AR-001",
+          "scenario_type": "success",
+          "actual": {
+            "risk": "green",
+            "action": "generate_review_approve_and_deliver",
+            "state": "CERRADO",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "green",
+            "action": "generate_review_approve_and_deliver",
+            "state": "CERRADO",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": true,
+          "document_checks": {
+            "source_candidate_hash_verified": true,
+            "no_unresolved_variables": true,
+            "no_prohibited_output_terms": true,
+            "docx_nonempty": true,
+            "pdf_nonempty": true
+          },
+          "document_passed": true,
+          "generated_files": [
+            "M24-CO-AR-001-10-SUCCESS_Documento_Final.docx",
+            "M24-CO-AR-001-10-SUCCESS_Documento_Final.pdf"
+          ],
+          "unresolved_variables": [],
+          "prohibited_terms_found": []
+        }
+      ]
+    },
+    {
+      "product_code": "CO-SA-001",
+      "scenario_count": 10,
+      "passed_count": 10,
+      "failed_count": 0,
+      "passed": true,
+      "generated_documents": [
+        {
+          "file_name": "M24-CO-SA-001-10-SUCCESS_Documento_Final.docx",
+          "format": "docx",
+          "sha256": "e8d70c8d8082754c8dcb802ca2f8b493a6e806dcb8eeaaa36dc6370669c73207",
+          "download_url": "/api/m24/full-validation/CO-SA-001/evidence/M24-CO-SA-001-10-SUCCESS_Documento_Final.docx"
+        },
+        {
+          "file_name": "M24-CO-SA-001-10-SUCCESS_Documento_Final.pdf",
+          "format": "pdf",
+          "sha256": "3422dac1eaf8884470845c0fe1a4c5e4261c8d5b920a481b077fa4e110cd561d",
+          "download_url": "/api/m24/full-validation/CO-SA-001/evidence/M24-CO-SA-001-10-SUCCESS_Documento_Final.pdf"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "M24-CO-SA-001-01-ORDINARY",
+          "product_code": "CO-SA-001",
+          "scenario_type": "ordinary",
+          "actual": {
+            "risk": "green",
+            "action": "generate_health_petition_and_tracking",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-SA1-006"
+            ]
+          },
+          "expected": {
+            "risk": "green",
+            "action": "generate_health_petition_and_tracking",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-SA1-006"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-SA-001-02-INCOMPLETE",
+          "product_code": "CO-SA-001",
+          "scenario_type": "incomplete",
+          "actual": {
+            "risk": "yellow",
+            "action": "request_minimum_clinical_and_administrative_evidence",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "request_minimum_clinical_and_administrative_evidence",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-SA-001-03-CONTRADICTION",
+          "product_code": "CO-SA-001",
+          "scenario_type": "contradiction",
+          "actual": {
+            "risk": "yellow",
+            "action": "classify_as_urgent_and_escalate",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-SA1-001"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "classify_as_urgent_and_escalate",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-SA1-001"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-SA-001-04-HIGH_RISK",
+          "product_code": "CO-SA-001",
+          "scenario_type": "high_risk",
+          "actual": {
+            "risk": "red",
+            "action": "urgency_and_human_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-SA1-001"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "urgency_and_human_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-SA1-001"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-SA-001-05-DEADLINE",
+          "product_code": "CO-SA-001",
+          "scenario_type": "deadline",
+          "actual": {
+            "risk": "yellow",
+            "action": "set_48_hour_tracking",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-SA1-002"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "set_48_hour_tracking",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-SA1-002"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-SA-001-06-EVIDENCE",
+          "product_code": "CO-SA-001",
+          "scenario_type": "evidence",
+          "actual": {
+            "risk": "yellow",
+            "action": "block_record_release",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-SA1-004"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "block_record_release",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-SA1-004"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-SA-001-07-CONDITIONAL",
+          "product_code": "CO-SA-001",
+          "scenario_type": "conditional",
+          "actual": {
+            "risk": "yellow",
+            "action": "generate_reiteration_and_supersalud_route",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-SA1-007"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "generate_reiteration_and_supersalud_route",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-SA1-007"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-SA-001-08-INCOMPATIBLE",
+          "product_code": "CO-SA-001",
+          "scenario_type": "incompatible",
+          "actual": {
+            "risk": "red",
+            "action": "mandatory_lawyer_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-SA1-005"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "mandatory_lawyer_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-SA1-005"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-SA-001-09-ESCALATION",
+          "product_code": "CO-SA-001",
+          "scenario_type": "escalation",
+          "actual": {
+            "risk": "red",
+            "action": "minimize_and_restrict_access",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-SA1-008"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "minimize_and_restrict_access",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-SA1-008"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-SA-001-10-SUCCESS",
+          "product_code": "CO-SA-001",
+          "scenario_type": "success",
+          "actual": {
+            "risk": "green",
+            "action": "generate_review_approve_and_track",
+            "state": "CERRADO",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "green",
+            "action": "generate_review_approve_and_track",
+            "state": "CERRADO",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": true,
+          "document_checks": {
+            "source_candidate_hash_verified": true,
+            "no_unresolved_variables": true,
+            "no_prohibited_output_terms": true,
+            "docx_nonempty": true,
+            "pdf_nonempty": true
+          },
+          "document_passed": true,
+          "generated_files": [
+            "M24-CO-SA-001-10-SUCCESS_Documento_Final.docx",
+            "M24-CO-SA-001-10-SUCCESS_Documento_Final.pdf"
+          ],
+          "unresolved_variables": [],
+          "prohibited_terms_found": []
+        }
+      ]
+    },
+    {
+      "product_code": "CO-CD-001",
+      "scenario_count": 10,
+      "passed_count": 10,
+      "failed_count": 0,
+      "passed": true,
+      "generated_documents": [
+        {
+          "file_name": "M24-CO-CD-001-10-SUCCESS_Documento_Final.docx",
+          "format": "docx",
+          "sha256": "f95abd75858dac3f58ddb73800c570aeae7b653fe44ab0522761e50dbc1f97a3",
+          "download_url": "/api/m24/full-validation/CO-CD-001/evidence/M24-CO-CD-001-10-SUCCESS_Documento_Final.docx"
+        },
+        {
+          "file_name": "M24-CO-CD-001-10-SUCCESS_Documento_Final.pdf",
+          "format": "pdf",
+          "sha256": "4ed74c69924245f165510516d9bd28fb4a7a6af7d7ab722785024c318439d383",
+          "download_url": "/api/m24/full-validation/CO-CD-001/evidence/M24-CO-CD-001-10-SUCCESS_Documento_Final.pdf"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "M24-CO-CD-001-01-ORDINARY",
+          "product_code": "CO-CD-001",
+          "scenario_type": "ordinary",
+          "actual": {
+            "risk": "green",
+            "action": "calculate_duration_and_generate_claim",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-CD1-005"
+            ]
+          },
+          "expected": {
+            "risk": "green",
+            "action": "calculate_duration_and_generate_claim",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-CD1-005"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-001-02-INCOMPLETE",
+          "product_code": "CO-CD-001",
+          "scenario_type": "incomplete",
+          "actual": {
+            "risk": "yellow",
+            "action": "request_timeline_and_evidence",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "request_timeline_and_evidence",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-001-03-CONTRADICTION",
+          "product_code": "CO-CD-001",
+          "scenario_type": "contradiction",
+          "actual": {
+            "risk": "yellow",
+            "action": "do_not_promise_deletion",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-CD1-001"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "do_not_promise_deletion",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-CD1-001"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-001-04-HIGH_RISK",
+          "product_code": "CO-CD-001",
+          "scenario_type": "high_risk",
+          "actual": {
+            "risk": "red",
+            "action": "mandatory_human_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-CD1-008"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "mandatory_human_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-CD1-008"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-001-05-DEADLINE",
+          "product_code": "CO-CD-001",
+          "scenario_type": "deadline",
+          "actual": {
+            "risk": "yellow",
+            "action": "set_deadline_calendar",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-CD1-004"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "set_deadline_calendar",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-CD1-004"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-001-06-EVIDENCE",
+          "product_code": "CO-CD-001",
+          "scenario_type": "evidence",
+          "actual": {
+            "risk": "yellow",
+            "action": "require_prior_communication_evidence",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-CD1-007"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "require_prior_communication_evidence",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-CD1-007"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-001-07-CONDITIONAL",
+          "product_code": "CO-CD-001",
+          "scenario_type": "conditional",
+          "actual": {
+            "risk": "yellow",
+            "action": "activate_caducity_review",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-CD1-006"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "activate_caducity_review",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-CD1-006"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-001-08-INCOMPATIBLE",
+          "product_code": "CO-CD-001",
+          "scenario_type": "incompatible",
+          "actual": {
+            "risk": "red",
+            "action": "apply_temporal_control",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-CD1-009"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "apply_temporal_control",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-CD1-009"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-001-09-ESCALATION",
+          "product_code": "CO-CD-001",
+          "scenario_type": "escalation",
+          "actual": {
+            "risk": "red",
+            "action": "mandatory_lawyer_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-CD1-010"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "mandatory_lawyer_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-CD1-010"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-001-10-SUCCESS",
+          "product_code": "CO-CD-001",
+          "scenario_type": "success",
+          "actual": {
+            "risk": "green",
+            "action": "generate_review_approve_and_deliver",
+            "state": "CERRADO",
+            "rule_ids": [
+              "M23-CD1-002"
+            ]
+          },
+          "expected": {
+            "risk": "green",
+            "action": "generate_review_approve_and_deliver",
+            "state": "CERRADO",
+            "rule_ids": [
+              "M23-CD1-002"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": true,
+          "document_checks": {
+            "source_candidate_hash_verified": true,
+            "no_unresolved_variables": true,
+            "no_prohibited_output_terms": true,
+            "docx_nonempty": true,
+            "pdf_nonempty": true
+          },
+          "document_passed": true,
+          "generated_files": [
+            "M24-CO-CD-001-10-SUCCESS_Documento_Final.docx",
+            "M24-CO-CD-001-10-SUCCESS_Documento_Final.pdf"
+          ],
+          "unresolved_variables": [],
+          "prohibited_terms_found": []
+        }
+      ]
+    },
+    {
+      "product_code": "CO-CD-003",
+      "scenario_count": 10,
+      "passed_count": 10,
+      "failed_count": 0,
+      "passed": true,
+      "generated_documents": [
+        {
+          "file_name": "M24-CO-CD-003-10-SUCCESS_Documento_Final.docx",
+          "format": "docx",
+          "sha256": "1f382ec842d1bf868556699bfed846b1e6e7c9e15e6c4641d1e5e81292408ff7",
+          "download_url": "/api/m24/full-validation/CO-CD-003/evidence/M24-CO-CD-003-10-SUCCESS_Documento_Final.docx"
+        },
+        {
+          "file_name": "M24-CO-CD-003-10-SUCCESS_Documento_Final.pdf",
+          "format": "pdf",
+          "sha256": "feba73cd35958cbfcebcc6586b1bb5365436c940ec29873f83e03aeb91d422de",
+          "download_url": "/api/m24/full-validation/CO-CD-003/evidence/M24-CO-CD-003-10-SUCCESS_Documento_Final.pdf"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "M24-CO-CD-003-01-ORDINARY",
+          "product_code": "CO-CD-003",
+          "scenario_type": "ordinary",
+          "actual": {
+            "risk": "green",
+            "action": "activate_legal_warranty",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-CD3-001"
+            ]
+          },
+          "expected": {
+            "risk": "green",
+            "action": "activate_legal_warranty",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-CD3-001"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-003-02-INCOMPLETE",
+          "product_code": "CO-CD-003",
+          "scenario_type": "incomplete",
+          "actual": {
+            "risk": "yellow",
+            "action": "request_minimum_consumer_evidence",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "request_minimum_consumer_evidence",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-003-03-CONTRADICTION",
+          "product_code": "CO-CD-003",
+          "scenario_type": "contradiction",
+          "actual": {
+            "risk": "yellow",
+            "action": "reclassify_or_explain_non_applicability",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "reclassify_or_explain_non_applicability",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-003-04-HIGH_RISK",
+          "product_code": "CO-CD-003",
+          "scenario_type": "high_risk",
+          "actual": {
+            "risk": "red",
+            "action": "mandatory_lawyer_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-CD3-010"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "mandatory_lawyer_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-CD3-010"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-003-05-DEADLINE",
+          "product_code": "CO-CD-003",
+          "scenario_type": "deadline",
+          "actual": {
+            "risk": "yellow",
+            "action": "activate_withdrawal_and_refund_calendar",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-CD3-004"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "activate_withdrawal_and_refund_calendar",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-CD3-004"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-003-06-EVIDENCE",
+          "product_code": "CO-CD-003",
+          "scenario_type": "evidence",
+          "actual": {
+            "risk": "yellow",
+            "action": "require_provider_and_issuer_notices",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-CD3-006"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "require_provider_and_issuer_notices",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-CD3-006"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-003-07-CONDITIONAL",
+          "product_code": "CO-CD-003",
+          "scenario_type": "conditional",
+          "actual": {
+            "risk": "yellow",
+            "action": "offer_replacement_or_refund_choice",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-CD3-002"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "offer_replacement_or_refund_choice",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-CD3-002"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-003-08-INCOMPATIBLE",
+          "product_code": "CO-CD-003",
+          "scenario_type": "incompatible",
+          "actual": {
+            "risk": "red",
+            "action": "apply_special_regime_first",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-CD3-009"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "apply_special_regime_first",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-CD3-009"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-003-09-ESCALATION",
+          "product_code": "CO-CD-003",
+          "scenario_type": "escalation",
+          "actual": {
+            "risk": "red",
+            "action": "apply_default_delivery_term_and_claim",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-CD3-008"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "apply_default_delivery_term_and_claim",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-CD3-008"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-003-10-SUCCESS",
+          "product_code": "CO-CD-003",
+          "scenario_type": "success",
+          "actual": {
+            "risk": "green",
+            "action": "generate_review_approve_and_track",
+            "state": "CERRADO",
+            "rule_ids": [
+              "M23-CD3-003"
+            ]
+          },
+          "expected": {
+            "risk": "green",
+            "action": "generate_review_approve_and_track",
+            "state": "CERRADO",
+            "rule_ids": [
+              "M23-CD3-003"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": true,
+          "document_checks": {
+            "source_candidate_hash_verified": true,
+            "no_unresolved_variables": true,
+            "no_prohibited_output_terms": true,
+            "docx_nonempty": true,
+            "pdf_nonempty": true
+          },
+          "document_passed": true,
+          "generated_files": [
+            "M24-CO-CD-003-10-SUCCESS_Documento_Final.docx",
+            "M24-CO-CD-003-10-SUCCESS_Documento_Final.pdf"
+          ],
+          "unresolved_variables": [],
+          "prohibited_terms_found": []
+        }
+      ]
+    },
+    {
+      "product_code": "CO-CD-004",
+      "scenario_count": 10,
+      "passed_count": 10,
+      "failed_count": 0,
+      "passed": true,
+      "generated_documents": [
+        {
+          "file_name": "M24-CO-CD-004-10-SUCCESS_Documento_Final.docx",
+          "format": "docx",
+          "sha256": "bcd421c449c5f716adba92849bdf1f73f97dc4b5057d10ef7ee2b8b9a73d7f26",
+          "download_url": "/api/m24/full-validation/CO-CD-004/evidence/M24-CO-CD-004-10-SUCCESS_Documento_Final.docx"
+        },
+        {
+          "file_name": "M24-CO-CD-004-10-SUCCESS_Documento_Final.pdf",
+          "format": "pdf",
+          "sha256": "f11901bec4b8dc789d19e45f17ecdaa51a94316638d244bf9ee39993546ebcad",
+          "download_url": "/api/m24/full-validation/CO-CD-004/evidence/M24-CO-CD-004-10-SUCCESS_Documento_Final.pdf"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "M24-CO-CD-004-01-ORDINARY",
+          "product_code": "CO-CD-004",
+          "scenario_type": "ordinary",
+          "actual": {
+            "risk": "green",
+            "action": "generate_payment_agreement_and_schedule",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "green",
+            "action": "generate_payment_agreement_and_schedule",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-004-02-INCOMPLETE",
+          "product_code": "CO-CD-004",
+          "scenario_type": "incomplete",
+          "actual": {
+            "risk": "yellow",
+            "action": "block_and_require_reconciliation",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-CD4-001"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "block_and_require_reconciliation",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-CD4-001"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-004-03-CONTRADICTION",
+          "product_code": "CO-CD-004",
+          "scenario_type": "contradiction",
+          "actual": {
+            "risk": "yellow",
+            "action": "block_document_release",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-CD4-010"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "block_document_release",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-CD4-010"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-004-04-HIGH_RISK",
+          "product_code": "CO-CD-004",
+          "scenario_type": "high_risk",
+          "actual": {
+            "risk": "red",
+            "action": "require_precise_instructions_and_human_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-CD4-003"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "require_precise_instructions_and_human_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-CD4-003"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-004-05-DEADLINE",
+          "product_code": "CO-CD-004",
+          "scenario_type": "deadline",
+          "actual": {
+            "risk": "yellow",
+            "action": "issue_itemized_notice_and_cure_period",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-CD4-005"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "issue_itemized_notice_and_cure_period",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-CD4-005"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-004-06-EVIDENCE",
+          "product_code": "CO-CD-004",
+          "scenario_type": "evidence",
+          "actual": {
+            "risk": "yellow",
+            "action": "block_until_rate_verified",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-CD4-002"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "block_until_rate_verified",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-CD4-002"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-004-07-CONDITIONAL",
+          "product_code": "CO-CD-004",
+          "scenario_type": "conditional",
+          "actual": {
+            "risk": "yellow",
+            "action": "reduce_balances_and_issue_receipt",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-CD4-004"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "reduce_balances_and_issue_receipt",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-CD4-004"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-004-08-INCOMPATIBLE",
+          "product_code": "CO-CD-004",
+          "scenario_type": "incompatible",
+          "actual": {
+            "risk": "red",
+            "action": "mandatory_lawyer_review_and_respect_stay",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-CD4-007"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "mandatory_lawyer_review_and_respect_stay",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-CD4-007"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-004-09-ESCALATION",
+          "product_code": "CO-CD-004",
+          "scenario_type": "escalation",
+          "actual": {
+            "risk": "red",
+            "action": "apply_special_regime_and_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-CD4-008"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "apply_special_regime_and_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-CD4-008"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-CD-004-10-SUCCESS",
+          "product_code": "CO-CD-004",
+          "scenario_type": "success",
+          "actual": {
+            "risk": "green",
+            "action": "close_and_update_records",
+            "state": "CERRADO",
+            "rule_ids": [
+              "M23-CD4-009"
+            ]
+          },
+          "expected": {
+            "risk": "green",
+            "action": "close_and_update_records",
+            "state": "CERRADO",
+            "rule_ids": [
+              "M23-CD4-009"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": true,
+          "document_checks": {
+            "source_candidate_hash_verified": true,
+            "no_unresolved_variables": true,
+            "no_prohibited_output_terms": true,
+            "docx_nonempty": true,
+            "pdf_nonempty": true
+          },
+          "document_passed": true,
+          "generated_files": [
+            "M24-CO-CD-004-10-SUCCESS_Documento_Final.docx",
+            "M24-CO-CD-004-10-SUCCESS_Documento_Final.pdf"
+          ],
+          "unresolved_variables": [],
+          "prohibited_terms_found": []
+        }
+      ]
+    },
+    {
+      "product_code": "CO-TR-001",
+      "scenario_count": 10,
+      "passed_count": 10,
+      "failed_count": 0,
+      "passed": true,
+      "generated_documents": [
+        {
+          "file_name": "M24-CO-TR-001-10-SUCCESS_Documento_Final.docx",
+          "format": "docx",
+          "sha256": "fc48b9731463711dfcd649e9a3a0ebce52ddaf6c8ff2e8d0966003440a6eb4d6",
+          "download_url": "/api/m24/full-validation/CO-TR-001/evidence/M24-CO-TR-001-10-SUCCESS_Documento_Final.docx"
+        },
+        {
+          "file_name": "M24-CO-TR-001-10-SUCCESS_Documento_Final.pdf",
+          "format": "pdf",
+          "sha256": "d15d58ac8e553df90b760d2fd04c50ff3e55f6f1a273993b0f6dc752e74be457",
+          "download_url": "/api/m24/full-validation/CO-TR-001/evidence/M24-CO-TR-001-10-SUCCESS_Documento_Final.pdf"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "M24-CO-TR-001-01-ORDINARY",
+          "product_code": "CO-TR-001",
+          "scenario_type": "ordinary",
+          "actual": {
+            "risk": "green",
+            "action": "generate_preliminary_verification_report",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": []
+          },
+          "expected": {
+            "risk": "green",
+            "action": "generate_preliminary_verification_report",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": []
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-TR-001-02-INCOMPLETE",
+          "product_code": "CO-TR-001",
+          "scenario_type": "incomplete",
+          "actual": {
+            "risk": "yellow",
+            "action": "request_certified_complete_record",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-TR1-002"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "request_certified_complete_record",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-TR1-002"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-TR-001-03-CONTRADICTION",
+          "product_code": "CO-TR-001",
+          "scenario_type": "contradiction",
+          "actual": {
+            "risk": "yellow",
+            "action": "distinguish_procedural_stage",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-TR1-003"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "distinguish_procedural_stage",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-TR1-003"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-TR-001-04-HIGH_RISK",
+          "product_code": "CO-TR-001",
+          "scenario_type": "high_risk",
+          "actual": {
+            "risk": "red",
+            "action": "mandatory_lawyer_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-TR1-009"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "mandatory_lawyer_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-TR1-009"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-TR-001-05-DEADLINE",
+          "product_code": "CO-TR-001",
+          "scenario_type": "deadline",
+          "actual": {
+            "risk": "yellow",
+            "action": "immediate_deadline_review",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-TR1-005"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "immediate_deadline_review",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-TR1-005"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-TR-001-06-EVIDENCE",
+          "product_code": "CO-TR-001",
+          "scenario_type": "evidence",
+          "actual": {
+            "risk": "yellow",
+            "action": "classify_as_preliminary",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-TR1-001"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "classify_as_preliminary",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-TR1-001"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-TR-001-07-CONDITIONAL",
+          "product_code": "CO-TR-001",
+          "scenario_type": "conditional",
+          "actual": {
+            "risk": "yellow",
+            "action": "capture_specific_consent_and_expiry",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-TR1-008"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "capture_specific_consent_and_expiry",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-TR1-008"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-TR-001-08-INCOMPATIBLE",
+          "product_code": "CO-TR-001",
+          "scenario_type": "incompatible",
+          "actual": {
+            "risk": "red",
+            "action": "require_individual_basis_and_favorable_act",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-TR1-006"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "require_individual_basis_and_favorable_act",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-TR1-006"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-TR-001-09-ESCALATION",
+          "product_code": "CO-TR-001",
+          "scenario_type": "escalation",
+          "actual": {
+            "risk": "red",
+            "action": "revalidate_and_version_before_release",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-TR1-010"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "revalidate_and_version_before_release",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-TR1-010"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-TR-001-10-SUCCESS",
+          "product_code": "CO-TR-001",
+          "scenario_type": "success",
+          "actual": {
+            "risk": "green",
+            "action": "generate_review_approve_and_enroll",
+            "state": "CERRADO",
+            "rule_ids": [
+              "M23-TR1-007"
+            ]
+          },
+          "expected": {
+            "risk": "green",
+            "action": "generate_review_approve_and_enroll",
+            "state": "CERRADO",
+            "rule_ids": [
+              "M23-TR1-007"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": true,
+          "document_checks": {
+            "source_candidate_hash_verified": true,
+            "no_unresolved_variables": true,
+            "no_prohibited_output_terms": true,
+            "docx_nonempty": true,
+            "pdf_nonempty": true
+          },
+          "document_passed": true,
+          "generated_files": [
+            "M24-CO-TR-001-10-SUCCESS_Documento_Final.docx",
+            "M24-CO-TR-001-10-SUCCESS_Documento_Final.pdf"
+          ],
+          "unresolved_variables": [],
+          "prohibited_terms_found": []
+        }
+      ]
+    },
+    {
+      "product_code": "CO-TR-002",
+      "scenario_count": 10,
+      "passed_count": 10,
+      "failed_count": 0,
+      "passed": true,
+      "generated_documents": [
+        {
+          "file_name": "M24-CO-TR-002-10-SUCCESS_Documento_Final.docx",
+          "format": "docx",
+          "sha256": "3cd5ff1bad99d29b7367fce7444d1ec546181b54e9205c94a3962d0681d26a18",
+          "download_url": "/api/m24/full-validation/CO-TR-002/evidence/M24-CO-TR-002-10-SUCCESS_Documento_Final.docx"
+        },
+        {
+          "file_name": "M24-CO-TR-002-10-SUCCESS_Documento_Final.pdf",
+          "format": "pdf",
+          "sha256": "e0df260d40a1c7a10c2bfe7da9a6665d7e8e64eb90569030da39277580b0507f",
+          "download_url": "/api/m24/full-validation/CO-TR-002/evidence/M24-CO-TR-002-10-SUCCESS_Documento_Final.pdf"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "M24-CO-TR-002-01-ORDINARY",
+          "product_code": "CO-TR-002",
+          "scenario_type": "ordinary",
+          "actual": {
+            "risk": "green",
+            "action": "generate_petition_and_notification_audit",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-TR2-001"
+            ]
+          },
+          "expected": {
+            "risk": "green",
+            "action": "generate_petition_and_notification_audit",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-TR2-001"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-TR-002-02-INCOMPLETE",
+          "product_code": "CO-TR-002",
+          "scenario_type": "incomplete",
+          "actual": {
+            "risk": "yellow",
+            "action": "request_certified_complete_record",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-TR2-009"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "request_certified_complete_record",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-TR2-009"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-TR-002-03-CONTRADICTION",
+          "product_code": "CO-TR-002",
+          "scenario_type": "contradiction",
+          "actual": {
+            "risk": "yellow",
+            "action": "do_not_promise_cancellation",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-TR2-003"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "do_not_promise_cancellation",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-TR2-003"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-TR-002-04-HIGH_RISK",
+          "product_code": "CO-TR-002",
+          "scenario_type": "high_risk",
+          "actual": {
+            "risk": "red",
+            "action": "mandatory_legal_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-TR2-002"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "mandatory_legal_review",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-TR2-002"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-TR-002-05-DEADLINE",
+          "product_code": "CO-TR-002",
+          "scenario_type": "deadline",
+          "actual": {
+            "risk": "yellow",
+            "action": "do_not_substitute_with_petition",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-TR2-005"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "do_not_substitute_with_petition",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-TR2-005"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-TR-002-06-EVIDENCE",
+          "product_code": "CO-TR-002",
+          "scenario_type": "evidence",
+          "actual": {
+            "risk": "yellow",
+            "action": "require_complete_timeline",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-TR2-007"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "require_complete_timeline",
+            "state": "INFORMACION_INCOMPLETA",
+            "rule_ids": [
+              "M23-TR2-007"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-TR-002-07-CONDITIONAL",
+          "product_code": "CO-TR-002",
+          "scenario_type": "conditional",
+          "actual": {
+            "risk": "yellow",
+            "action": "assess_last_registered_data_without_false_guarantee",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-TR2-004"
+            ]
+          },
+          "expected": {
+            "risk": "yellow",
+            "action": "assess_last_registered_data_without_false_guarantee",
+            "state": "LISTO_PARA_GENERAR",
+            "rule_ids": [
+              "M23-TR2-004"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-TR-002-08-INCOMPATIBLE",
+          "product_code": "CO-TR-002",
+          "scenario_type": "incompatible",
+          "actual": {
+            "risk": "red",
+            "action": "route_to_specialized_defense",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-TR2-006"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "route_to_specialized_defense",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-TR2-006"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-TR-002-09-ESCALATION",
+          "product_code": "CO-TR-002",
+          "scenario_type": "escalation",
+          "actual": {
+            "risk": "red",
+            "action": "require_favorable_act_before_refund",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-TR2-008"
+            ]
+          },
+          "expected": {
+            "risk": "red",
+            "action": "require_favorable_act_before_refund",
+            "state": "ESCALADO",
+            "rule_ids": [
+              "M23-TR2-008"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": false
+        },
+        {
+          "scenario_id": "M24-CO-TR-002-10-SUCCESS",
+          "product_code": "CO-TR-002",
+          "scenario_type": "success",
+          "actual": {
+            "risk": "green",
+            "action": "track_execution_and_close",
+            "state": "CERRADO",
+            "rule_ids": [
+              "M23-TR2-010"
+            ]
+          },
+          "expected": {
+            "risk": "green",
+            "action": "track_execution_and_close",
+            "state": "CERRADO",
+            "rule_ids": [
+              "M23-TR2-010"
+            ]
+          },
+          "checks": {
+            "all_rule_ids_exist": true,
+            "rule_ids_match": true,
+            "risk_matches": true,
+            "action_matches": true,
+            "state_matches": true
+          },
+          "missing_rule_ids": [],
+          "passed": true,
+          "document_generation_required": true,
+          "document_checks": {
+            "source_candidate_hash_verified": true,
+            "no_unresolved_variables": true,
+            "no_prohibited_output_terms": true,
+            "docx_nonempty": true,
+            "pdf_nonempty": true
+          },
+          "document_passed": true,
+          "generated_files": [
+            "M24-CO-TR-002-10-SUCCESS_Documento_Final.docx",
+            "M24-CO-TR-002-10-SUCCESS_Documento_Final.pdf"
+          ],
+          "unresolved_variables": [],
+          "prohibited_terms_found": []
+        }
+      ]
+    }
+  ]
+}

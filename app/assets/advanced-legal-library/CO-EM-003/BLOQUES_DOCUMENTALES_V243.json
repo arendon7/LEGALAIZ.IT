@@ -1,0 +1,251 @@
+[
+  {
+    "id": "EM-TIT-001",
+    "heading": "Título",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-CMP-001",
+    "heading": "Comparecencia y capacidad",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-CON-001",
+    "heading": "Consideraciones",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-OBJ-001",
+    "heading": "Objeto",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-SCOPE-001",
+    "heading": "Alcance, inclusiones y exclusiones",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-DEL-001",
+    "heading": "Entregables e hitos",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-ACC-001",
+    "heading": "Aceptación y subsanación",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-CHG-001",
+    "heading": "Control de cambios",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-AUT-001",
+    "heading": "Autonomía técnica y administrativa",
+    "source_ids": [
+      "SRC-EM-CST-023"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-NOLAB-001",
+    "heading": "Inexistencia de vínculo laboral y primacía de la realidad",
+    "source_ids": [
+      "SRC-EM-CST-023"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-TERM-001",
+    "heading": "Plazo y cronograma",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-FEES-001",
+    "heading": "Honorarios, facturación y pago",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-INV-001",
+    "heading": "Impuestos y aportes",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-EXP-001",
+    "heading": "Anticipos, gastos y reembolsos",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-OBL-CNT-001",
+    "heading": "Obligaciones del contratante",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-OBL-CNR-001",
+    "heading": "Obligaciones del contratista",
+    "source_ids": [
+      "SRC-EM-D1072",
+      "SRC-EM-UGPP-IND"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-CONF-001",
+    "heading": "Confidencialidad",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-DATA-001",
+    "heading": "Tratamiento de datos personales",
+    "source_ids": [
+      "SRC-EM-L1581"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-IP-001",
+    "heading": "Propiedad intelectual",
+    "source_ids": [
+      "SRC-EM-L23-1982"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-AI-001",
+    "heading": "Uso de inteligencia artificial",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-LIAB-001",
+    "heading": "Responsabilidad",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-INDEM-001",
+    "heading": "Indemnidad y reclamaciones de terceros",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-INS-001",
+    "heading": "Seguros",
+    "source_ids": [
+      "SRC-EM-D1072"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-FM-001",
+    "heading": "Fuerza mayor",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-SUSP-001",
+    "heading": "Suspensión",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-TER-001",
+    "heading": "Terminación anticipada",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-TRANS-001",
+    "heading": "Transición y cierre",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-DISP-001",
+    "heading": "Solución de controversias",
+    "source_ids": [
+      "SRC-EM-L1563"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-NOT-001",
+    "heading": "Notificaciones",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-INT-001",
+    "heading": "Integridad y prelación",
+    "source_ids": [
+      "SRC-EM-CC"
+    ],
+    "text_status": "long_form_v243"
+  },
+  {
+    "id": "EM-FIR-001",
+    "heading": "Firma y aceptación",
+    "source_ids": [
+      "SRC-EM-L527"
+    ],
+    "text_status": "long_form_v243"
+  }
+]

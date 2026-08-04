@@ -1,0 +1,35 @@
+[
+  {
+    "file": "test_m24_3_pilot_validation.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 8,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 1.68,
+    "summary": "........                                                                 [100%] 8 passed in 0.11s"
+  },
+  {
+    "file": "test_m24_4_full_validation.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 7,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 1.77,
+    "summary": ".......                                                                  [100%] 7 passed in 0.15s"
+  },
+  {
+    "file": "test_m7_security_operational.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 8,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 9.95,
+    "summary": "........                                                                 [100%] 8 passed in 8.22s"
+  }
+]

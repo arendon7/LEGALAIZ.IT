@@ -1,0 +1,11 @@
+LegalAIZ.it · Administración avanzada · Originales jurídicos
+
+Esta carpeta NO es necesaria para abrir ni probar la webapp.
+
+1. Úsela únicamente cuando el equipo jurídico decida incorporar un original aprobado.
+2. Inicie la aplicación desde 00_ABRIR_LEGALAIZIT_MAC.command y abra Administración avanzada.
+3. Administración ejecuta Escanear e ingresar originales.
+4. Los archivos entran únicamente a cuarentena.
+5. Especialista y QA deben aprobar el mismo registro antes del cotejo.
+
+Esta carpeta no autoriza publicación ni uso profesional.

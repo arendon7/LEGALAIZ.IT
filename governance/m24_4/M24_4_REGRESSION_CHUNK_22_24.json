@@ -1,0 +1,35 @@
+[
+  {
+    "file": "test_m8_product_ux.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 5,
+    "subtests": 11,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 1.72,
+    "summary": ".....                                                         [100%] 5 passed, 11 subtests passed in 0.04s"
+  },
+  {
+    "file": "test_m9_modularization.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 5,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 3.88,
+    "summary": ".....                                                                    [100%] 5 passed in 1.75s"
+  },
+  {
+    "file": "test_normative_updates.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 7,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 10.89,
+    "summary": ".......                                                                  [100%] 7 passed in 7.51s"
+  }
+]

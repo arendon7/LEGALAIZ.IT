@@ -1,0 +1,54 @@
+{
+  "schema": "legalaizit-m30-1-pilot-execution-policy-v1",
+  "milestone": "M30.1",
+  "version": "4.5.0",
+  "created_at": "2026-08-03T10:53:00-05:00",
+  "scope": "controlled_pilot_execution_center",
+  "pilot_products": ["CO-LA-002", "CO-EM-003", "CO-AR-001", "CO-CD-003"],
+  "target_cases": 20,
+  "phases": [
+    {"id": "preparation", "label": "Preparación", "description": "Cohorte, responsables y controles previos."},
+    {"id": "recruitment", "label": "Participación", "description": "Consentimiento voluntario y vinculación controlada."},
+    {"id": "intake", "label": "Recopilación", "description": "Formulario guiado con datos ficticios o minimizados."},
+    {"id": "legal_review", "label": "Revisión jurídica", "description": "Validación específica del expediente por especialista."},
+    {"id": "qa", "label": "QA documental", "description": "Coherencia, formato, fuentes, riesgos y hash revisados."},
+    {"id": "feedback", "label": "Retroalimentación", "description": "Claridad, facilidad, confianza y cumplimiento del objetivo."},
+    {"id": "closure", "label": "Cierre", "description": "Decisión sustentada y preservación de evidencia."}
+  ],
+  "plan_statuses": ["planned", "recruited", "in_progress", "completed", "blocked", "cancelled"],
+  "support_categories": ["access", "navigation", "document_generation", "legal_review", "qa", "privacy", "other"],
+  "support_priorities": {
+    "low": {"sla_hours": 48, "label": "Baja"},
+    "medium": {"sla_hours": 24, "label": "Media"},
+    "high": {"sla_hours": 8, "label": "Alta"},
+    "critical": {"sla_hours": 2, "label": "Crítica"}
+  },
+  "support_statuses": ["open", "assigned", "resolved", "closed"],
+  "observation_stages": ["intake", "analysis", "generation", "legal_review", "qa", "delivery", "feedback"],
+  "observation_outcomes": ["passed", "friction", "blocked", "not_applicable"],
+  "issue_codes": ["none", "unclear_copy", "missing_guidance", "validation_error", "generation_error", "review_delay", "format_issue", "accessibility_issue", "privacy_concern", "other"],
+  "duration_buckets": ["under_5m", "5m_to_15m", "15m_to_30m", "over_30m"],
+  "decisions": ["hold", "repeat", "proceed_limited"],
+  "decision_reason_codes": ["insufficient_evidence", "quality_threshold_not_met", "incident_open", "pricing_pending", "privacy_or_terms_pending", "product_ready", "pilot_objective_met", "other"],
+  "confirmations": {
+    "activate_cohort": "ACTIVAR COHORTE CONTROLADA M30",
+    "record_decision": "REGISTRAR DECISION PILOTO M30"
+  },
+  "privacy": {
+    "no_case_narratives_in_support": true,
+    "no_identity_documents": true,
+    "no_financial_values": true,
+    "no_health_details": true,
+    "structured_observations_only": true,
+    "support_summary_max_chars": 220,
+    "pilot_data_retention": "pending_final_policy"
+  },
+  "safeguards": {
+    "public_production_blocked": true,
+    "real_payments_blocked": true,
+    "automatic_delivery_blocked": true,
+    "case_specific_legal_review_required": true,
+    "qa_required": true,
+    "independent_reviewer_required": true
+  }
+}

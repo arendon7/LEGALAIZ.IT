@@ -1,0 +1,44 @@
+[
+  {
+    "path": "#/",
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "scrollHeight": 1861,
+    "brokenImages": [],
+    "h1": [
+      "Hola, Juan. ¿Qué necesitas resolver hoy?"
+    ],
+    "view": "client_home",
+    "viewport": "desktop",
+    "screenshot": "governance/m31_2/visual/client_home_desktop.png",
+    "errors": []
+  },
+  {
+    "path": "#/",
+    "scrollWidth": 834,
+    "clientWidth": 834,
+    "scrollHeight": 2693,
+    "brokenImages": [],
+    "h1": [
+      "Hola, Juan. ¿Qué necesitas resolver hoy?"
+    ],
+    "view": "client_home",
+    "viewport": "tablet",
+    "screenshot": "governance/m31_2/visual/client_home_tablet.png",
+    "errors": []
+  },
+  {
+    "path": "#/",
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 3639,
+    "brokenImages": [],
+    "h1": [
+      "Hola, Juan. ¿Qué necesitas resolver hoy?"
+    ],
+    "view": "client_home",
+    "viewport": "mobile",
+    "screenshot": "governance/m31_2/visual/client_home_mobile.png",
+    "errors": []
+  }
+]

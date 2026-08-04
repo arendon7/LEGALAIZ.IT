@@ -1,0 +1,14 @@
+{
+  "schema": "legalaizit-static-validation-v1",
+  "milestone": "M31.5",
+  "version": "5.0.4",
+  "counts": {
+    "python": 250,
+    "javascript": 19,
+    "json": 701,
+    "svg": 113
+  },
+  "node_available": true,
+  "errors": [],
+  "ok": true
+}

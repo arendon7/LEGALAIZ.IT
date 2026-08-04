@@ -1,0 +1,64 @@
+{
+  "version": "M15.1",
+  "product_code": "CO-TR-002",
+  "title": "Fotomulta no notificada: cronología, debido proceso y defensa",
+  "verified_at": "2026-07-31",
+  "status": "Revalidado M15 para uso profesional controlado",
+  "legal_positioning": [
+    "La orden de comparendo es una citación y no equivale por sí sola a una sanción.",
+    "El envío debe realizarse dentro de tres días hábiles siguientes a la validación y acompañar comparendo y soportes.",
+    "La comparecencia SAST se cuenta desde la entrega y la dirección RUNT debe verificarse históricamente.",
+    "La falta o indebida notificación restablece términos de reducción desde la notificación válida, pero no produce nulidad automática.",
+    "La sanción exige imputación personal, culpabilidad, defensa y decisión motivada.",
+    "La revocatoria directa es condicionada, no suspende automáticamente y no revive términos judiciales."
+  ],
+  "documents": [
+    {
+      "kind": "traffic_record_request",
+      "title": "Solicitud integral de expediente y preservación de evidencia",
+      "filename_suffix": "solicitud_expediente_evidencia"
+    },
+    {
+      "kind": "traffic_notice_claim",
+      "title": "Reclamación por notificación y debido proceso",
+      "filename_suffix": "reclamacion_notificacion"
+    },
+    {
+      "kind": "traffic_hearing_request",
+      "title": "Solicitud de audiencia, pruebas y contradicción",
+      "filename_suffix": "solicitud_audiencia_pruebas"
+    },
+    {
+      "kind": "traffic_revocation_request",
+      "title": "Solicitud condicionada de revocatoria directa",
+      "filename_suffix": "revocatoria_directa_condicionada"
+    },
+    {
+      "kind": "traffic_registry_correction",
+      "title": "Solicitud de corrección y actualización SIMIT/RUNT",
+      "filename_suffix": "correccion_simit_runt"
+    },
+    {
+      "kind": "traffic_technical_matrix",
+      "title": "Matriz técnica y probatoria del SAST",
+      "filename_suffix": "matriz_tecnica_sast"
+    },
+    {
+      "kind": "traffic_escalation_guide",
+      "title": "Guía de términos, radicación y escalamiento",
+      "filename_suffix": "guia_terminos_escalamiento"
+    }
+  ],
+  "controls": [
+    "detección y metadatos",
+    "validación por autoridad",
+    "envío dentro de tres días hábiles",
+    "dirección RUNT histórica",
+    "entrega, devolución y aviso",
+    "conocimiento real y comparecencia",
+    "imputación personal y culpabilidad",
+    "acto sancionatorio, notificación y firmeza",
+    "recursos, revocatoria y control judicial",
+    "SIMIT/RUNT, pago y cobro coactivo"
+  ]
+}

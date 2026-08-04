@@ -1,0 +1,84 @@
+{
+  "schema": "legalai_m24_5_follow_up_plans_v1",
+  "jurisdiction": "Colombia",
+  "notice": "Los términos son parámetros operativos orientativos. El expediente debe validar norma vigente, autoridad competente, fecha de radicación y circunstancias particulares antes de generar alertas definitivas.",
+  "products": {
+    "CO-LA-001": {
+      "delivery_action": "Radicar reclamación laboral con liquidación, soportes y constancia de entrega.",
+      "initial_follow_up_days": 5,
+      "response_window_label": "Verificar respuesta y eventual constitución en mora; escalar según término aplicable y estrategia laboral.",
+      "required_actions": ["Conservar constancia de radicación", "Verificar pago o respuesta integral", "Actualizar valores e intereses cuando corresponda"],
+      "escalation_path": ["Requerimiento final documentado", "Conciliación laboral", "Evaluación de demanda ante juez laboral"]
+    },
+    "CO-LA-002": {
+      "delivery_action": "Firmar el contrato y anexos antes del inicio o de la modificación de condiciones.",
+      "initial_follow_up_days": 2,
+      "response_window_label": "Confirmar firma, afiliaciones, entrega de documentos y activación de obligaciones laborales.",
+      "required_actions": ["Verificar firma de ambas partes", "Confirmar afiliaciones y SG-SST", "Entregar funciones, políticas y activos con evidencia"],
+      "escalation_path": ["Subsanar información o firmas", "Revisión por especialista laboral", "Suspender uso del documento si cambian hechos esenciales"]
+    },
+    "CO-EM-003": {
+      "delivery_action": "Firmar contrato y anexos de alcance, entregables, pagos, datos y propiedad intelectual.",
+      "initial_follow_up_days": 3,
+      "response_window_label": "Confirmar firma, inicio, responsables, hitos y mecanismo de aceptación.",
+      "required_actions": ["Conservar versión firmada", "Activar cronograma y responsables", "Registrar cambios y aceptaciones por escrito"],
+      "escalation_path": ["Requerimiento de cumplimiento", "Control de cambios o subsanación", "Terminación y liquidación contractual"]
+    },
+    "CO-EM-004": {
+      "delivery_action": "Firmar el acuerdo antes de revelar información o permitir acceso a desarrollos, datos o sistemas.",
+      "initial_follow_up_days": 2,
+      "response_window_label": "Confirmar firma, clasificación de información, accesos y medidas de seguridad.",
+      "required_actions": ["Inventariar información protegida", "Limitar accesos", "Registrar devoluciones, destrucción o conservación autorizada"],
+      "escalation_path": ["Contención del incidente", "Requerimiento de devolución o cese", "Evaluación de medidas judiciales y regulatorias"]
+    },
+    "CO-AR-001": {
+      "delivery_action": "Firmar contrato, inventario y acta de entrega; conservar soportes de pagos y estado del inmueble.",
+      "initial_follow_up_days": 3,
+      "response_window_label": "Confirmar entrega, garantías permitidas, servicios, inventario y canales de notificación.",
+      "required_actions": ["Firmar inventario con registro fotográfico", "Registrar medidores y llaves", "Conservar comprobantes de canon y servicios"],
+      "escalation_path": ["Requerimiento de subsanación", "Conciliación", "Restitución o reclamación según el incumplimiento"]
+    },
+    "CO-SA-001": {
+      "delivery_action": "Radicar petición o reclamo por canal oficial y conservar número, fecha y anexos.",
+      "initial_follow_up_days": 3,
+      "response_window_label": "Controlar término aplicable, continuidad del servicio y riesgo de afectación a la salud.",
+      "required_actions": ["Conservar constancia de radicación", "Monitorear continuidad y autorizaciones", "Actualizar historia clínica y soportes"],
+      "escalation_path": ["Reiteración prioritaria", "Queja ante autoridad competente", "Evaluación de tutela u otra acción urgente"]
+    },
+    "CO-CD-001": {
+      "delivery_action": "Radicar reclamación ante fuente y operador con soportes completos y solicitud precisa.",
+      "initial_follow_up_days": 5,
+      "response_window_label": "Verificar leyenda de reclamo, respuesta integral y actualización del reporte.",
+      "required_actions": ["Conservar radicado", "Consultar historia del reporte", "Comparar respuesta con pagos, comunicaciones y permanencia"],
+      "escalation_path": ["Reclamo complementario", "Queja ante la SIC", "Acción judicial cuando sea procedente"]
+    },
+    "CO-CD-003": {
+      "delivery_action": "Radicar reclamación directa y conservar prueba de compra, entrega, defecto y comunicaciones.",
+      "initial_follow_up_days": 5,
+      "response_window_label": "Controlar término de respuesta y, cuando aplique, ventanas especiales de retracto o reversión.",
+      "required_actions": ["Conservar radicado y evidencia", "Custodiar el producto cuando corresponda", "Notificar también al emisor del medio de pago si aplica reversión"],
+      "escalation_path": ["Requerimiento complementario", "Denuncia o demanda ante la SIC", "Conciliación o acción judicial"]
+    },
+    "CO-CD-004": {
+      "delivery_action": "Firmar acuerdo, pagaré y carta de instrucciones; entregar copias y activar cronograma de pagos.",
+      "initial_follow_up_days": 3,
+      "response_window_label": "Confirmar primer vencimiento, canales de pago y registro de abonos.",
+      "required_actions": ["Entregar copia firmada", "Registrar cada abono", "Actualizar saldo y custodiar el título"],
+      "escalation_path": ["Requerimiento de pago", "Renegociación documentada", "Cobro prejurídico o judicial sujeto a validación"]
+    },
+    "CO-TR-001": {
+      "delivery_action": "Conservar informe, fuentes consultadas, fecha de verificación y matriz de coincidencia.",
+      "initial_follow_up_days": 10,
+      "response_window_label": "Revisar cambios en registros oficiales, señalización, autorizaciones y expediente de tránsito.",
+      "required_actions": ["Archivar capturas y fuentes", "Confirmar identificación exacta del sistema", "Actualizar el análisis si cambian registros oficiales"],
+      "escalation_path": ["Solicitud de información", "Petición a organismo competente", "Evaluación de actuación administrativa o judicial"]
+    },
+    "CO-TR-002": {
+      "delivery_action": "Radicar petición con solicitud de expediente, prueba de notificación y actualización de registros.",
+      "initial_follow_up_days": 5,
+      "response_window_label": "Controlar respuesta, entrega del expediente y oportunidades de defensa o recursos.",
+      "required_actions": ["Conservar constancia de radicación", "Consultar SIMIT y organismo de tránsito", "Verificar fechas de detección, validación, envío y notificación"],
+      "escalation_path": ["Reiteración o complemento", "Recursos o revocación directa cuando proceda", "Evaluación de acción judicial"]
+    }
+  }
+}

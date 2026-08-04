@@ -1,0 +1,15 @@
+{
+  "from": "2.24",
+  "to": "2.36",
+  "strategy": "additive_adapter",
+  "legacy_endpoint": "/api/v224/co-la-002",
+  "canonical_endpoint": "/api/v236/co-la-002",
+  "preserved_files": [
+    "ENTREVISTA.json",
+    "REGLAS.json",
+    "PLANTILLAS.json",
+    "PRUEBAS.json",
+    "FUENTES.json",
+    "PAQUETE_PRODUCTO.json"
+  ]
+}

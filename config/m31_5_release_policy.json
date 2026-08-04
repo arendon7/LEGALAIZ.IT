@@ -1,0 +1,22 @@
+{
+  "schema": "legalaizit-m31-5-release-policy-v1",
+  "phase": "M31.5",
+  "version": "5.0.4",
+  "release_id": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-5.0.4-2026-08-04",
+  "base_release": "M31.4 v5.0.3",
+  "channel": "managed_preproduction_certification_candidate",
+  "postgres_adapter_implemented": true,
+  "postgres_external_certified": false,
+  "postgres_migration_certified": false,
+  "postgres_backup_restore_certified": false,
+  "evidence_required": [
+    "external_certification",
+    "sqlite_postgres_migration_reconciliation",
+    "pg_dump_pg_restore_reconciliation"
+  ],
+  "restore_target_must_be_disposable_and_distinct": true,
+  "destructive_restore_confirmation": "RESTORE_TEST_DATABASE",
+  "gate_may_not_self_authorize_public_production": true,
+  "production_authorized": false,
+  "public_production_ready": false
+}

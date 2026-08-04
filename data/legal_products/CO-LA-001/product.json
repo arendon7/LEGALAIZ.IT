@@ -1,0 +1,131 @@
+{
+  "schema": "legalai_product_revision_registry_v1",
+  "product_code": "CO-LA-001",
+  "public_name": "Revisar y reclamar mi liquidación laboral",
+  "internal_name": "Reclamación y liquidación laboral",
+  "category": "Laboral",
+  "jurisdiction": "Colombia",
+  "legacy_runtime_binding": {
+    "products_file": "data/products.json",
+    "interviews_file": "data/interviews.json",
+    "rules_file": "data/rules.json",
+    "document_templates_file": "data/document_templates.json",
+    "deep_library_path": "app/assets/advanced-legal-library/CO-LA-001",
+    "current_product_version": "3.0",
+    "current_publication_status": "Aprobado para uso profesional controlado"
+  },
+  "active_revision": "legacy-m21.1-current",
+  "published_revision": "legacy-m21.1-current",
+  "candidate_revision": "M23.2-0946257d2885",
+  "revisions": [
+    "legacy-m21.1-current",
+    "M23.2-0946257d2885"
+  ],
+  "candidate_revisions": [
+    "M23.2-0946257d2885"
+  ],
+  "revision_metadata": {
+    "legacy-m21.1-current": {
+      "status": "published_controlled_legacy_binding",
+      "immutable": true,
+      "source_milestone": "M20.1/M21.1",
+      "quality_status": "reviewed",
+      "verified_at": "2026-07-31",
+      "binding_mode": "legacy_runtime_files"
+    }
+  },
+  "candidate_policy": {
+    "status": "candidate_blocked_pending_legal_and_qa_approval",
+    "active_revision_change_allowed": false,
+    "published_revision_change_allowed": false,
+    "legal_approval_required": true,
+    "qa_approval_required": true,
+    "must_be_distinct_users": true,
+    "scenario_qa_required": true
+  },
+  "registry_snapshot": {
+    "product_code": "CO-LA-001",
+    "internal_name": "Reclamación y liquidación laboral",
+    "public_name": "Revisar y reclamar mi liquidación laboral",
+    "category": "Laboral",
+    "problem_solved": "La persona trabajadora necesita verificar acreencias laborales, liquidación final, deducciones, indemnizaciones y formular una reclamación documentada.",
+    "service_levels": [
+      "orientacion",
+      "documento_personalizado",
+      "solucion_revisada"
+    ],
+    "risk_level": "high",
+    "scope": [
+      "liquidación desglosada",
+      "reclamación directa",
+      "matriz de soportes",
+      "guía de radicación y seguimiento"
+    ],
+    "exclusions": [
+      "régimen público o especial sin revisión",
+      "proceso judicial o conciliación activa no analizada",
+      "cálculo definitivo con salario variable sin soportes"
+    ],
+    "required_evidence": [
+      "contrato o prueba de vinculación",
+      "comprobantes de pago",
+      "fecha y causa de terminación",
+      "liquidación entregada",
+      "soportes de deducciones"
+    ],
+    "pilot": false,
+    "jurisdiction": "CO",
+    "language": "es-CO",
+    "questionnaire_binding": {
+      "status": "pending_runtime_resolution",
+      "expected_legacy_ref": "M22://questionnaires/CO-LA-001",
+      "prohibition": "do_not_create_duplicate_questionnaire_before_runtime_audit"
+    },
+    "ruleset_binding": {
+      "status": "candidate_from_m23_2",
+      "source_file": "CO-LA-001/CO-LA-001_M23_Bloques_Reglas_y_Fuentes.json",
+      "rule_count": 8,
+      "rule_ids": [
+        "M23-LA1-001",
+        "M23-LA1-002",
+        "M23-LA1-003",
+        "M23-LA1-004",
+        "M23-LA1-005",
+        "M23-LA1-006",
+        "M23-LA1-007",
+        "M23-LA1-008"
+      ]
+    },
+    "template_candidate": {
+      "revision_label": "M23.2",
+      "master_docx": "CO-LA-001_Modelo_Maestro_Reclamacion_Liquidacion_Laboral_M23.docx",
+      "master_pdf": "CO-LA-001_Modelo_Maestro_Reclamacion_Liquidacion_Laboral_M23.pdf",
+      "worked_example_docx": "CO-LA-001_Ejemplo_Final_Reclamacion_Liquidacion_M23.docx",
+      "worked_example_pdf": "CO-LA-001_Ejemplo_Final_Reclamacion_Liquidacion_M23.pdf",
+      "integration_mode": "new_immutable_revision_no_overwrite"
+    },
+    "conditional_modules": [
+      "reclamacion_laboral",
+      "liquidacion_desglosada",
+      "evidence_matrix",
+      "filing_guide"
+    ],
+    "legal_sources": [
+      "Constitución Política",
+      "Código Sustantivo del Trabajo",
+      "Ley 50 de 1990",
+      "Ley 2466 de 2025",
+      "Ley 1755 de 2015",
+      "Decretos 1469 y 1470 de 2025",
+      "Consejo de Estado, decisión informada 17-07-2026"
+    ],
+    "approvals": {
+      "legal_owner": "pending_assignment",
+      "qa_owner": "pending_assignment_distinct_from_legal_owner",
+      "legal_approval_required": true,
+      "qa_approval_required": true
+    },
+    "publication_status": "blocked_pending_runtime_integration_scenario_qa_and_dual_approval"
+  },
+  "last_migration_id": "M24.1-M23.2-PREINTEGRATION-20260801"
+}

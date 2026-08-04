@@ -1,0 +1,467 @@
+[
+  {
+    "id": "LA1-R1",
+    "risk": "red",
+    "message": "El motor madurado solo cubre relaciones laborales privadas regidas por el derecho colombiano.",
+    "action": "Clasificar jurisdicción y régimen antes de calcular.",
+    "conditions": {
+      "all": [
+        {
+          "field": "private_relation",
+          "op": "not_equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "LA1-S1",
+      "LA1-S5"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA1-R2",
+    "risk": "red",
+    "message": "Existe o podría existir estabilidad laboral reforzada o fuero.",
+    "action": "Asignar revisión laboral antes de liquidar terminación o indemnización.",
+    "conditions": {
+      "all": [
+        {
+          "field": "special_protection",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "LA1-S1",
+      "LA1-S5"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA1-R3",
+    "risk": "red",
+    "message": "El vínculo puede pertenecer al sector público.",
+    "action": "Aplicar régimen de empleo público o trabajadores oficiales; no usar este cálculo privado.",
+    "conditions": {
+      "all": [
+        {
+          "field": "public_sector",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "LA1-S1"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA1-R4",
+    "risk": "red",
+    "message": "Existe litigio, conciliación o transacción activa.",
+    "action": "Evitar duplicar pretensiones y revisar expediente, prescripción y alcance de acuerdos.",
+    "conditions": {
+      "all": [
+        {
+          "field": "active_litigation",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "LA1-S1",
+      "LA1-S9"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA1-R5",
+    "risk": "red",
+    "message": "El caso puede exigir declarar un contrato realidad.",
+    "action": "Separar la controversia sobre existencia del vínculo del cálculo aritmético.",
+    "conditions": {
+      "all": [
+        {
+          "field": "contract_reality",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "LA1-S1",
+      "LA1-S5"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA1-R6",
+    "risk": "red",
+    "message": "Puede existir régimen colectivo o extralegal aplicable.",
+    "action": "Incorporar convención, pacto, laudo o beneficios extralegales antes de calcular.",
+    "conditions": {
+      "all": [
+        {
+          "field": "collective_regime",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "LA1-S1"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA1-R7",
+    "risk": "red",
+    "message": "El salario integral requiere un tratamiento prestacional diferente.",
+    "action": "Revisar pacto, cuantía mínima, factor prestacional y conceptos excluidos.",
+    "conditions": {
+      "all": [
+        {
+          "field": "integral_salary",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "LA1-S1",
+      "LA1-S5"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA1-R8",
+    "risk": "red",
+    "message": "El salario variable no tiene soportes suficientes para fijar el promedio.",
+    "action": "Reconstruir nómina, comisiones, recargos y bases antes de emitir un total.",
+    "conditions": {
+      "all": [
+        {
+          "field": "variable_salary",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "variable_salary_supports",
+          "op": "not_equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "LA1-S1"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA1-R9",
+    "risk": "red",
+    "message": "Los períodos pendientes no fueron confirmados.",
+    "action": "Contrastar pagos, consignaciones y cortes por concepto.",
+    "conditions": {
+      "all": [
+        {
+          "field": "periods_confirmed",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "validation",
+    "source_ids": [
+      "LA1-S1",
+      "LA1-S2",
+      "LA1-S3"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA1-R10",
+    "risk": "red",
+    "message": "Los datos no fueron confirmados contra hechos o soportes.",
+    "action": "Bloquear la salida final hasta confirmación.",
+    "conditions": {
+      "all": [
+        {
+          "field": "data_confirmed",
+          "op": "not_equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "validation",
+    "source_ids": [
+      "LA1-S1"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA1-R11",
+    "risk": "yellow",
+    "message": "Los soportes salariales o contractuales están incompletos.",
+    "action": "Generar resultado provisional, identificar supuestos y solicitar faltantes.",
+    "conditions": {
+      "all": [
+        {
+          "field": "salary_supports",
+          "op": "in",
+          "value": [
+            "Parcial",
+            "No"
+          ]
+        }
+      ]
+    },
+    "category": "evidence",
+    "source_ids": [
+      "LA1-S1"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA1-R12",
+    "risk": "yellow",
+    "message": "Los períodos solo fueron confirmados parcialmente.",
+    "action": "Mostrar cada fecha de corte y evitar afirmar que el total es definitivo.",
+    "conditions": {
+      "all": [
+        {
+          "field": "periods_confirmed",
+          "op": "equals",
+          "value": "Parcial"
+        }
+      ]
+    },
+    "category": "evidence",
+    "source_ids": [
+      "LA1-S1",
+      "LA1-S2",
+      "LA1-S3"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA1-R13",
+    "risk": "yellow",
+    "message": "No está confirmado el derecho al auxilio de transporte.",
+    "action": "No aplicarlo automáticamente y solicitar nómina o prueba del desplazamiento.",
+    "conditions": {
+      "all": [
+        {
+          "field": "transport_aid",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "category": "parameter",
+    "source_ids": [
+      "LA1-S7"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA1-R14",
+    "risk": "yellow",
+    "message": "Existen descuentos discutidos o no documentados.",
+    "action": "No descontarlos del total y exigir autorización o fundamento legal.",
+    "conditions": {
+      "all": [
+        {
+          "field": "disputed_deductions",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "deduction",
+    "source_ids": [
+      "LA1-S1"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA1-R15",
+    "risk": "yellow",
+    "message": "La terminación sin justa causa activa una indemnización estimativa.",
+    "action": "Verificar modalidad, fecha, salario base y comunicación de terminación.",
+    "conditions": {
+      "all": [
+        {
+          "field": "termination",
+          "op": "equals",
+          "value": "Sin justa causa"
+        }
+      ]
+    },
+    "category": "indemnity",
+    "source_ids": [
+      "LA1-S1",
+      "LA1-S4"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA1-R16",
+    "risk": "yellow",
+    "message": "El salario variable exige reconstrucción de promedio y período.",
+    "action": "Conservar soportes y metodología del promedio utilizado.",
+    "conditions": {
+      "all": [
+        {
+          "field": "variable_salary",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "variable_salary_supports",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "calculation",
+    "source_ids": [
+      "LA1-S1"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA1-R17",
+    "risk": "red",
+    "message": "Falta la fecha final pactada para estimar la indemnización del contrato a término fijo.",
+    "action": "Completar el contrato o bloquear la indemnización automática.",
+    "conditions": {
+      "all": [
+        {
+          "field": "termination",
+          "op": "equals",
+          "value": "Sin justa causa"
+        },
+        {
+          "field": "contract_type",
+          "op": "equals",
+          "value": "Término fijo"
+        },
+        {
+          "field": "fixed_term_end",
+          "op": "missing",
+          "value": null
+        }
+      ]
+    },
+    "category": "validation",
+    "source_ids": [
+      "LA1-S1",
+      "LA1-S4"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA1-R18",
+    "risk": "red",
+    "message": "Falta estimar la duración restante de la obra o labor.",
+    "action": "Acreditar el hito o tiempo restante antes de calcular indemnización.",
+    "conditions": {
+      "all": [
+        {
+          "field": "termination",
+          "op": "equals",
+          "value": "Sin justa causa"
+        },
+        {
+          "field": "contract_type",
+          "op": "equals",
+          "value": "Obra o labor"
+        },
+        {
+          "field": "work_remaining_days",
+          "op": "missing",
+          "value": null
+        }
+      ]
+    },
+    "category": "validation",
+    "source_ids": [
+      "LA1-S1",
+      "LA1-S4"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA1-R19",
+    "risk": "yellow",
+    "message": "La modalidad contractual no está suficientemente determinada.",
+    "action": "Revisar contrato, necesidad real y ejecución antes de calcular indemnización.",
+    "conditions": {
+      "all": [
+        {
+          "field": "contract_type",
+          "op": "equals",
+          "value": "Verbal / no sé"
+        }
+      ]
+    },
+    "category": "classification",
+    "source_ids": [
+      "LA1-S1",
+      "LA1-S5"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA1-R20",
+    "risk": "green",
+    "message": "Se solicitó propuesta de acuerdo de pago y cierre.",
+    "action": "Activar documento condicional sin incorporar renuncias generales.",
+    "conditions": {
+      "all": [
+        {
+          "field": "generate_settlement",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "LA1-S1",
+      "LA1-S8"
+    ],
+    "blocking": false
+  }
+]

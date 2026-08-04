@@ -1,0 +1,3 @@
+LegalAIZ.it CO-EM-003 v2.13
+
+Paquete documental avanzado para navegación, generación y QA interno. Incluye seis documentos, entrevista, reglas, fuentes y escenarios. No está autorizado para firma, radicación ni uso profesional hasta validación jurídica final y publicación expresa.

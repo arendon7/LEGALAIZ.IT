@@ -1,0 +1,571 @@
+{
+  "CO-TR-001": {
+    "title": "Chequeo SAST + inscripción verificada",
+    "required": [
+      {
+        "key": "comparendo",
+        "label": "Comparendo o acto consultado",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ],
+        "help": "Documento o captura donde se identifique número, autoridad, fecha y placa."
+      },
+      {
+        "key": "consulta_oficial",
+        "label": "Consulta oficial disponible",
+        "category": "Consulta oficial",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ],
+        "help": "Consulta SIMIT, RUNT u otra fuente oficial disponible."
+      }
+    ],
+    "optional": [
+      {
+        "key": "notificacion",
+        "label": "Notificación recibida",
+        "category": "Comunicación o notificación",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "pago",
+        "label": "Comprobante de pago",
+        "category": "Comprobante o pago",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      }
+    ]
+  },
+  "CO-TR-002": {
+    "title": "Fotomulta no notificada",
+    "required": [
+      {
+        "key": "comparendo",
+        "label": "Comparendo o resolución",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ],
+        "help": "Acto que permita determinar etapa, autoridad y fecha."
+      },
+      {
+        "key": "consulta_oficial",
+        "label": "Consulta SIMIT/RUNT",
+        "category": "Consulta oficial",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      }
+    ],
+    "optional": [
+      {
+        "key": "notificacion",
+        "label": "Constancia o evidencia de notificación",
+        "category": "Comunicación o notificación",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "cobro",
+        "label": "Mandamiento de pago o cobro coactivo",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF"
+        ]
+      }
+    ]
+  },
+  "CO-LA-001": {
+    "title": "Liquidación laboral + reclamación",
+    "required": [
+      {
+        "key": "contrato",
+        "label": "Contrato de trabajo",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF",
+          "DOCX",
+          "JPG",
+          "PNG"
+        ],
+        "help": "Contrato y otrosíes que definan modalidad, salario y vigencia."
+      },
+      {
+        "key": "pagos",
+        "label": "Desprendibles o soportes de pago",
+        "category": "Comprobante o pago",
+        "formats": [
+          "PDF",
+          "XLSX",
+          "JPG",
+          "PNG"
+        ],
+        "help": "Soportes necesarios para validar salario, pagos y deducciones."
+      }
+    ],
+    "optional": [
+      {
+        "key": "terminacion",
+        "label": "Carta de terminación o renuncia",
+        "category": "Comunicación o notificación",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "historia",
+        "label": "Historia de pagos o certificación laboral",
+        "category": "Soporte general",
+        "formats": [
+          "PDF",
+          "XLSX"
+        ]
+      }
+    ]
+  },
+  "CO-LA-002": {
+    "title": "Contrato de trabajo personalizado",
+    "required": [
+      {
+        "key": "identidad_empleador",
+        "label": "Identificación del empleador",
+        "category": "Documento de identidad",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "identidad_trabajador",
+        "label": "Identificación del trabajador",
+        "category": "Documento de identidad",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "oferta",
+        "label": "Oferta, cargo o descripción funcional",
+        "category": "Soporte general",
+        "formats": [
+          "PDF",
+          "DOCX",
+          "TXT"
+        ]
+      }
+    ],
+    "optional": [
+      {
+        "key": "politicas",
+        "label": "Políticas o reglamentos aplicables",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF",
+          "DOCX"
+        ]
+      }
+    ]
+  },
+  "CO-EM-003": {
+    "title": "Contrato de prestación de servicios",
+    "required": [
+      {
+        "key": "identificacion_partes",
+        "label": "Identificación de las partes",
+        "category": "Documento de identidad",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ],
+        "help": "Cédula, RUT o certificado aplicable."
+      },
+      {
+        "key": "alcance",
+        "label": "Propuesta o alcance de servicios",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF",
+          "DOCX",
+          "XLSX",
+          "TXT"
+        ],
+        "help": "Objetivo, entregables, hitos y condiciones económicas."
+      }
+    ],
+    "optional": [
+      {
+        "key": "oferta",
+        "label": "Cotización o propuesta económica",
+        "category": "Comprobante o pago",
+        "formats": [
+          "PDF",
+          "XLSX"
+        ]
+      },
+      {
+        "key": "datos_pi",
+        "label": "Anexos de datos, confidencialidad o PI",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF",
+          "DOCX"
+        ]
+      }
+    ]
+  },
+  "CO-EM-004": {
+    "title": "Confidencialidad y propiedad intelectual",
+    "required": [
+      {
+        "key": "identificacion_partes",
+        "label": "Identificación de las partes",
+        "category": "Documento de identidad",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "informacion",
+        "label": "Descripción de la información protegida",
+        "category": "Soporte general",
+        "formats": [
+          "PDF",
+          "DOCX",
+          "TXT"
+        ]
+      }
+    ],
+    "optional": [
+      {
+        "key": "antecedente",
+        "label": "Contrato o relación principal",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF",
+          "DOCX"
+        ]
+      },
+      {
+        "key": "inventario_pi",
+        "label": "Inventario de activos o desarrollos",
+        "category": "Soporte general",
+        "formats": [
+          "PDF",
+          "XLSX"
+        ]
+      }
+    ]
+  },
+  "CO-AR-001": {
+    "title": "Arrendamiento de vivienda urbana",
+    "required": [
+      {
+        "key": "identidad",
+        "label": "Identificación de arrendador y arrendatario",
+        "category": "Documento de identidad",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "inmueble",
+        "label": "Información del inmueble",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ],
+        "help": "Certificado, dirección, matrícula o soporte disponible."
+      },
+      {
+        "key": "inventario",
+        "label": "Inventario o registro de estado",
+        "category": "Soporte general",
+        "formats": [
+          "PDF",
+          "DOCX",
+          "XLSX",
+          "JPG",
+          "PNG"
+        ]
+      }
+    ],
+    "optional": [
+      {
+        "key": "servicios",
+        "label": "Servicios, administración o facturas",
+        "category": "Comprobante o pago",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      }
+    ]
+  },
+  "CO-SA-001": {
+    "title": "Derecho de petición a EPS o IPS",
+    "required": [
+      {
+        "key": "identidad_peticionario",
+        "label": "Documento de identidad del peticionario",
+        "category": "Identidad",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "identidad_paciente",
+        "label": "Documento de identidad del paciente",
+        "category": "Identidad",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "soporte_legitimacion",
+        "label": "Autorización, registro civil, poder o soporte de legitimación",
+        "category": "Representación",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ],
+        "help": "Aplica cuando la petición no la presenta directamente el paciente adulto con capacidad."
+      },
+      {
+        "key": "soporte_medico",
+        "label": "Orden, fórmula o soporte médico pertinente",
+        "category": "Soporte clínico",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ],
+        "help": "Adjunta solo la información necesaria para la solicitud."
+      }
+    ],
+    "optional": [
+      {
+        "key": "peticion_previa",
+        "label": "Petición previa y constancia de radicación",
+        "category": "Antecedentes",
+        "formats": [
+          "PDF",
+          "EML",
+          "MSG",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "respuesta_previa",
+        "label": "Respuesta, negación o autorización recibida",
+        "category": "Antecedentes",
+        "formats": [
+          "PDF",
+          "EML",
+          "MSG",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "historia_delimitada",
+        "label": "Extracto pertinente de historia clínica",
+        "category": "Dato sensible",
+        "formats": [
+          "PDF"
+        ],
+        "help": "Evita cargar la historia completa cuando no sea necesaria."
+      },
+      {
+        "key": "actuacion_activa",
+        "label": "Tutela o PQRD activa, si existe",
+        "category": "Proceso activo",
+        "formats": [
+          "PDF"
+        ]
+      }
+    ]
+  },
+  "CO-CD-001": {
+    "title": "Centrales de riesgo y hábeas data",
+    "required": [
+      {
+        "key": "identidad",
+        "label": "Documento de identidad",
+        "category": "Documento de identidad",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "reporte",
+        "label": "Reporte o consulta de la central de riesgo",
+        "category": "Consulta oficial",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      }
+    ],
+    "optional": [
+      {
+        "key": "paz_salvo",
+        "label": "Paz y salvo o soportes de pago",
+        "category": "Comprobante o pago",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "reclamo_previo",
+        "label": "Reclamo o respuesta previa",
+        "category": "Comunicación o notificación",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      }
+    ]
+  },
+  "CO-CD-003": {
+    "title": "Garantía, retracto y reversión del pago",
+    "required": [
+      {
+        "key": "compra",
+        "label": "Factura o comprobante de compra",
+        "category": "Comprobante o pago",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "producto",
+        "label": "Evidencia del producto, servicio o incumplimiento",
+        "category": "Soporte general",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG",
+          "TXT"
+        ]
+      }
+    ],
+    "optional": [
+      {
+        "key": "reclamo",
+        "label": "Reclamación o respuesta del proveedor",
+        "category": "Comunicación o notificación",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "pago_electronico",
+        "label": "Soporte de pago electrónico",
+        "category": "Comprobante o pago",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      }
+    ]
+  },
+  "CO-CD-004": {
+    "title": "Cobro, acuerdo de pago y pagaré",
+    "required": [
+      {
+        "key": "obligacion",
+        "label": "Documento que soporta la obligación",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF",
+          "DOCX",
+          "JPG",
+          "PNG"
+        ],
+        "help": "Contrato, factura, cuenta de cobro, pagaré u otro soporte."
+      },
+      {
+        "key": "saldo",
+        "label": "Relación del saldo y pagos",
+        "category": "Comprobante o pago",
+        "formats": [
+          "PDF",
+          "XLSX",
+          "JPG",
+          "PNG"
+        ]
+      }
+    ],
+    "optional": [
+      {
+        "key": "comunicaciones",
+        "label": "Comunicaciones de cobro previas",
+        "category": "Comunicación o notificación",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "garantias",
+        "label": "Garantías o títulos adicionales",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      }
+    ]
+  }
+}

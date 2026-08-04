@@ -1,0 +1,36 @@
+{
+  "id": "CO-TR-001",
+  "version": "2.57",
+  "name": "Chequeo SAST + inscripción verificada",
+  "jurisdiction": "Colombia",
+  "macro_phase": "A",
+  "status": "functional_candidate",
+  "risk_base": "yellow",
+  "purpose": "Cruzar de forma determinística organismo y fecha contra actuaciones oficiales SAST, explicar el resultado y crear un expediente verificable cuando exista consentimiento.",
+  "not_promised": [
+    "anulación automática",
+    "devolución automática",
+    "revocación individual",
+    "suspensión de términos",
+    "representación judicial"
+  ],
+  "outputs": [
+    "sast_preliminary_report",
+    "sast_source_trace",
+    "sast_verified_case_file",
+    "sast_professional_review_request"
+  ],
+  "matrix": {
+    "records": 49,
+    "group_a": 37,
+    "group_b": 12,
+    "snapshot_date": "2026-07-26"
+  },
+  "pricing_context": {
+    "precheck": "gratuito o demostrativo",
+    "verified_registration_cop": 4900,
+    "human_review_cop": 49900,
+    "commercial_activation": "pendiente de aprobación y configuración de pagos"
+  },
+  "next_macro_phase": "2.58 - documental y gobierno de CO-TR-001"
+}

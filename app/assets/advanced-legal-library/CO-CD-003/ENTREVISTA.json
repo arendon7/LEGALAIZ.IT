@@ -1,0 +1,658 @@
+{
+  "version": "2.33",
+  "intro": "Responde únicamente con información confirmada. El sistema separa garantía, retracto, reversión, débito periódico, falta de entrega y escalamiento.",
+  "sections": [
+    "Consumidor y legitimación",
+    "Relación y operación",
+    "Clasificación jurídica",
+    "Pago y reversión",
+    "Gestiones y términos",
+    "Evidencia, riesgo y privacidad"
+  ],
+  "questions": [
+    {
+      "id": "consumer_name",
+      "label": "Nombre completo del consumidor",
+      "type": "text",
+      "required": true,
+      "section": "Consumidor y legitimación",
+      "min_length": 3
+    },
+    {
+      "id": "consumer_id",
+      "label": "Identificación del consumidor",
+      "type": "text",
+      "required": true,
+      "section": "Consumidor y legitimación",
+      "min_length": 4
+    },
+    {
+      "id": "acting_capacity",
+      "label": "Calidad en la que actúa",
+      "type": "select",
+      "options": [
+        "Consumidor directo",
+        "Apoderado o autorizado",
+        "Representante legal",
+        "Causahabiente",
+        "Otro legitimado"
+      ],
+      "required": true,
+      "section": "Consumidor y legitimación"
+    },
+    {
+      "id": "representative_name",
+      "label": "Nombre del representante o autorizado",
+      "type": "text",
+      "required": true,
+      "section": "Consumidor y legitimación",
+      "min_length": 3,
+      "show_if": {
+        "field": "acting_capacity",
+        "equals": "Apoderado o autorizado"
+      }
+    },
+    {
+      "id": "representation_support",
+      "label": "Soporte de representación o legitimación",
+      "type": "select",
+      "options": [
+        "Completo",
+        "Parcial",
+        "No",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Consumidor y legitimación"
+    },
+    {
+      "id": "email",
+      "label": "Correo para notificaciones",
+      "type": "text",
+      "format": "email",
+      "required": true,
+      "section": "Consumidor y legitimación"
+    },
+    {
+      "id": "phone",
+      "label": "Teléfono de contacto",
+      "type": "text",
+      "required": true,
+      "section": "Consumidor y legitimación",
+      "min_length": 7
+    },
+    {
+      "id": "city",
+      "label": "Ciudad o municipio",
+      "type": "text",
+      "required": true,
+      "section": "Consumidor y legitimación",
+      "min_length": 2
+    },
+    {
+      "id": "consumer_relationship",
+      "label": "¿Existe una relación de consumo en Colombia?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Relación y operación"
+    },
+    {
+      "id": "provider_name",
+      "label": "Productor, proveedor o expendedor",
+      "type": "text",
+      "required": true,
+      "section": "Relación y operación",
+      "min_length": 3
+    },
+    {
+      "id": "provider_country",
+      "label": "Domicilio principal conocido del proveedor",
+      "type": "select",
+      "options": [
+        "Colombia",
+        "Exterior",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Relación y operación"
+    },
+    {
+      "id": "product_type",
+      "label": "Tipo de objeto adquirido",
+      "type": "select",
+      "options": [
+        "Bien nuevo",
+        "Bien usado",
+        "Servicio",
+        "Suscripción o prestación periódica",
+        "Bien inmueble",
+        "Otro"
+      ],
+      "required": true,
+      "section": "Relación y operación"
+    },
+    {
+      "id": "product_description",
+      "label": "Descripción precisa del bien o servicio",
+      "type": "textarea",
+      "required": true,
+      "section": "Relación y operación",
+      "min_length": 20,
+      "max_length": 1500
+    },
+    {
+      "id": "order_or_contract",
+      "label": "Número de pedido, factura o contrato",
+      "type": "text",
+      "required": true,
+      "section": "Relación y operación",
+      "min_length": 3
+    },
+    {
+      "id": "purchase_value",
+      "label": "Valor total pagado o controvertido",
+      "type": "number",
+      "required": true,
+      "section": "Relación y operación",
+      "min": 0
+    },
+    {
+      "id": "purchase_date",
+      "label": "Fecha de compra o celebración del contrato",
+      "type": "date",
+      "required": true,
+      "section": "Relación y operación"
+    },
+    {
+      "id": "purchase_channel",
+      "label": "Canal de compra",
+      "type": "select",
+      "options": [
+        "Presencial",
+        "Internet o aplicación",
+        "PSE o enlace de pago",
+        "Call center o teléfono",
+        "Red social o mensajería",
+        "Venta no tradicional fuera del establecimiento",
+        "Otro"
+      ],
+      "required": true,
+      "section": "Relación y operación"
+    },
+    {
+      "id": "delivery_date",
+      "label": "Fecha de entrega, inicio del servicio o fecha esperada",
+      "type": "date",
+      "required": false,
+      "section": "Relación y operación"
+    },
+    {
+      "id": "request_mode",
+      "label": "Mecanismo principal que desea ejercer",
+      "type": "select",
+      "options": [
+        "Garantía legal",
+        "Derecho de retracto",
+        "Reversión del pago",
+        "Revocación de débito periódico",
+        "Terminación por falta de entrega",
+        "Reclamación directa general",
+        "Escalamiento ante autoridad",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Clasificación jurídica"
+    },
+    {
+      "id": "problem_type",
+      "label": "Problema principal",
+      "type": "select",
+      "options": [
+        "Producto defectuoso",
+        "Servicio defectuoso",
+        "Falla repetida",
+        "Producto distinto a lo solicitado",
+        "Producto no recibido",
+        "Operación no solicitada",
+        "Fraude",
+        "Arrepentimiento de compra",
+        "Débito periódico que debe cesar",
+        "Incumplimiento de información o publicidad",
+        "Otro"
+      ],
+      "required": true,
+      "section": "Clasificación jurídica"
+    },
+    {
+      "id": "claim_goal",
+      "label": "Resultado principal solicitado",
+      "type": "select",
+      "options": [
+        "Reparación gratuita",
+        "Repetición del servicio",
+        "Cambio o reposición",
+        "Devolución del dinero",
+        "Terminación del contrato",
+        "Reversión total",
+        "Reversión parcial",
+        "Cesación de débitos",
+        "Respuesta y soportes",
+        "Otra"
+      ],
+      "required": true,
+      "section": "Clasificación jurídica"
+    },
+    {
+      "id": "facts_detail",
+      "label": "Relato de hechos confirmados",
+      "type": "textarea",
+      "required": true,
+      "section": "Clasificación jurídica",
+      "min_length": 60,
+      "max_length": 6000
+    },
+    {
+      "id": "defect_detail",
+      "label": "Defecto, incumplimiento o diferencia concreta",
+      "type": "textarea",
+      "required": true,
+      "section": "Clasificación jurídica",
+      "min_length": 20,
+      "max_length": 2500
+    },
+    {
+      "id": "repeated_failure",
+      "label": "¿La falla se repitió después de una reparación?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No aplica",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Clasificación jurídica"
+    },
+    {
+      "id": "warranty_announced",
+      "label": "Término de garantía anunciado",
+      "type": "select",
+      "options": [
+        "Vigente y documentado",
+        "Vencido",
+        "No fue informado",
+        "No sé",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Clasificación jurídica"
+    },
+    {
+      "id": "withdrawal_exception",
+      "label": "¿El bien o servicio encaja en una excepción legal al retracto?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Clasificación jurídica"
+    },
+    {
+      "id": "service_started_with_consent",
+      "label": "En servicios, ¿la ejecución comenzó con acuerdo del consumidor?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Clasificación jurídica"
+    },
+    {
+      "id": "electronic_payment",
+      "label": "¿El pago se realizó con instrumento electrónico?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Pago y reversión"
+    },
+    {
+      "id": "payment_instrument",
+      "label": "Instrumento de pago",
+      "type": "select",
+      "options": [
+        "Tarjeta crédito",
+        "Tarjeta débito",
+        "PSE o transferencia electrónica",
+        "Billetera o instrumento electrónico",
+        "Débito automático",
+        "Efectivo",
+        "Otro",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Pago y reversión"
+    },
+    {
+      "id": "instrument_holder_same",
+      "label": "¿El consumidor es titular del instrumento de pago?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No sé",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Pago y reversión"
+    },
+    {
+      "id": "transaction_reference",
+      "label": "Referencia parcial de la transacción",
+      "type": "text",
+      "required": false,
+      "section": "Pago y reversión",
+      "min_length": 3
+    },
+    {
+      "id": "transaction_date",
+      "label": "Fecha de la transacción",
+      "type": "date",
+      "required": false,
+      "section": "Pago y reversión"
+    },
+    {
+      "id": "reversal_cause",
+      "label": "Causal alegada para reversión",
+      "type": "select",
+      "options": [
+        "Fraude",
+        "Operación no solicitada",
+        "Producto no recibido",
+        "Producto no corresponde",
+        "Producto defectuoso",
+        "Pago periódico",
+        "No aplica",
+        "Otra"
+      ],
+      "required": true,
+      "section": "Pago y reversión"
+    },
+    {
+      "id": "reversal_event_date",
+      "label": "Fecha en que conoció la causal o ocurrió el incumplimiento",
+      "type": "date",
+      "required": false,
+      "section": "Pago y reversión"
+    },
+    {
+      "id": "reversal_amount",
+      "label": "Valor cuya reversión solicita",
+      "type": "number",
+      "required": false,
+      "section": "Pago y reversión",
+      "min": 0
+    },
+    {
+      "id": "partial_reversal",
+      "label": "¿La reversión solicitada es parcial?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Pago y reversión"
+    },
+    {
+      "id": "prior_claim",
+      "label": "¿Presentó reclamación directa al proveedor?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Gestiones y términos"
+    },
+    {
+      "id": "prior_claim_date",
+      "label": "Fecha de reclamación directa",
+      "type": "date",
+      "required": true,
+      "section": "Gestiones y términos",
+      "show_if": {
+        "field": "prior_claim",
+        "equals": "Sí"
+      }
+    },
+    {
+      "id": "prior_claim_radicado",
+      "label": "Número o constancia de radicación",
+      "type": "text",
+      "required": true,
+      "section": "Gestiones y términos",
+      "min_length": 3,
+      "show_if": {
+        "field": "prior_claim",
+        "equals": "Sí"
+      }
+    },
+    {
+      "id": "provider_complaint_for_reversal",
+      "label": "¿La queja de reversión fue presentada al proveedor?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Gestiones y términos"
+    },
+    {
+      "id": "issuer_notification",
+      "label": "¿Se notificó al emisor del instrumento de pago?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Gestiones y términos"
+    },
+    {
+      "id": "issuer_notification_date",
+      "label": "Fecha de notificación al emisor",
+      "type": "date",
+      "required": false,
+      "section": "Gestiones y términos"
+    },
+    {
+      "id": "withdrawal_exercised_date",
+      "label": "Fecha en que ejerció el retracto",
+      "type": "date",
+      "required": false,
+      "section": "Gestiones y términos"
+    },
+    {
+      "id": "return_status",
+      "label": "Estado de devolución o puesta a disposición del bien",
+      "type": "select",
+      "options": [
+        "Devuelto",
+        "Puesto a disposición",
+        "Pendiente",
+        "Imposible por seguridad",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Gestiones y términos"
+    },
+    {
+      "id": "response_received",
+      "label": "Respuesta del proveedor",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí completa",
+        "Sí parcial",
+        "Negativa sin soporte",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Gestiones y términos"
+    },
+    {
+      "id": "response_date",
+      "label": "Fecha de respuesta",
+      "type": "date",
+      "required": false,
+      "section": "Gestiones y términos"
+    },
+    {
+      "id": "recurring_debit_revoked_date",
+      "label": "Fecha de revocación del débito periódico",
+      "type": "date",
+      "required": false,
+      "section": "Gestiones y términos"
+    },
+    {
+      "id": "latest_periodic_charge_date",
+      "label": "Fecha del último cargo periódico controvertido",
+      "type": "date",
+      "required": false,
+      "section": "Gestiones y términos"
+    },
+    {
+      "id": "evidence_status",
+      "label": "Estado de factura, comprobante, comunicaciones y evidencia",
+      "type": "select",
+      "options": [
+        "Completa",
+        "Parcial",
+        "No"
+      ],
+      "required": true,
+      "section": "Evidencia, riesgo y privacidad"
+    },
+    {
+      "id": "advertising_support",
+      "label": "¿Conserva publicidad, oferta o descripción del producto?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "Parcial",
+        "No",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Evidencia, riesgo y privacidad"
+    },
+    {
+      "id": "injury_or_safety",
+      "label": "¿Hubo lesión, afectación a la salud o riesgo de seguridad?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Evidencia, riesgo y privacidad"
+    },
+    {
+      "id": "regulated_sector",
+      "label": "¿Existe régimen sectorial especial?",
+      "type": "select",
+      "options": [
+        "No",
+        "Financiero vigilado",
+        "Salud o producto sanitario",
+        "Telecomunicaciones",
+        "Transporte aéreo o turismo",
+        "Servicios públicos",
+        "Otro",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Evidencia, riesgo y privacidad"
+    },
+    {
+      "id": "complex_fraud",
+      "label": "¿Existe fraude complejo, múltiples transacciones o suplantación?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Evidencia, riesgo y privacidad"
+    },
+    {
+      "id": "active_process",
+      "label": "¿Existe demanda, investigación o trámite activo por los mismos hechos?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Evidencia, riesgo y privacidad"
+    },
+    {
+      "id": "high_value_or_damage",
+      "label": "¿La cuantía o el daño exige estrategia individual?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Evidencia, riesgo y privacidad"
+    },
+    {
+      "id": "data_minimized",
+      "label": "¿Los anexos están minimizados y sin credenciales o números completos?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Evidencia, riesgo y privacidad"
+    },
+    {
+      "id": "data_confirmed",
+      "label": "¿Los datos y fechas esenciales están confirmados?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "Parcial"
+      ],
+      "required": true,
+      "section": "Evidencia, riesgo y privacidad"
+    }
+  ]
+}

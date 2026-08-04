@@ -1,0 +1,17 @@
+{
+  "name": "LegalAIZ.it M31.8",
+  "build": {"dockerfile": "../Dockerfile", "context": ".."},
+  "forwardPorts": [8765],
+  "portsAttributes": {"8765": {"label": "LegalAIZ.it", "onAutoForward": "openBrowser"}},
+  "containerEnv": {
+    "LEGAL_PROFILE": "local",
+    "LEGAL_APP_ENV": "demo",
+    "LEGAL_RUNTIME_DIR": "/workspaces/LEGALAIZ.IT/runtime/demo",
+    "LEGAL_ALLOW_DEMO_ACCOUNTS": "true",
+    "LEGAL_DEMO_PASSWORD": "LegalAIZDemo2026!",
+    "LEGAL_REQUIRE_MFA_ROLES": "",
+    "LEGAL_GITHUB_LITE_ASSETS": "true"
+  },
+  "postCreateCommand": "pip install -r requirements.txt",
+  "postStartCommand": "python run.py --lan --no-browser"
+}

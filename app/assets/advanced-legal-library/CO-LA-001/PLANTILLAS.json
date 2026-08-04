@@ -1,0 +1,1964 @@
+[
+  {
+    "template_id": "TPL-CO-LA-001-CALCULATION",
+    "product_code": "CO-LA-001",
+    "kind": "calculation",
+    "title": "Informe técnico de liquidación laboral por concepto",
+    "subtitle": "Cálculo determinístico v3 · períodos, pagos y fuentes",
+    "filename_suffix": "informe_liquidacion_v3",
+    "version_label": "3.0-v2.22",
+    "canonical_status": "Producto madurado e integrado v2.22; cierre jurídico a cargo del abogado responsable",
+    "source_package": "LegalAIZit_Paquete_09_Liquidacion_Laboral_Consolidado_v3",
+    "variables": [
+      {
+        "id": "worker_name",
+        "label": "Nombre completo del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_id",
+        "label": "Identificación del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_name",
+        "label": "Nombre o razón social del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_id",
+        "label": "NIT o identificación del empleador",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "claim_email",
+        "label": "Correo para recibir el borrador y la respuesta",
+        "type": "email",
+        "required": true
+      },
+      {
+        "id": "private_relation",
+        "label": "¿La relación corresponde a un empleador privado en Colombia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ]
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha de ingreso",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha de terminación o fecha de corte",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "contract_type",
+        "label": "Modalidad contractual",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Indefinido",
+          "Término fijo",
+          "Obra o labor",
+          "Verbal / no sé"
+        ]
+      },
+      {
+        "id": "termination",
+        "label": "Situación o causa informada al corte",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Renuncia",
+          "Mutuo acuerdo",
+          "Sin justa causa",
+          "Justa causa",
+          "Fin de término/obra",
+          "Sigue vigente"
+        ]
+      },
+      {
+        "id": "fixed_term_end",
+        "label": "Fecha final pactada del contrato",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "work_remaining_days",
+        "label": "Días estimados que faltaban para terminar la obra o labor",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "monthly_salary",
+        "label": "Salario básico mensual fijo (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "integral_salary",
+        "label": "¿El salario fue pactado como integral?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "variable_salary",
+        "label": "¿Existieron comisiones, recargos, horas extra u otros pagos salariales variables?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "variable_salary_supports",
+        "label": "¿Existen soportes suficientes para reconstruir el promedio variable?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "variable_average",
+        "label": "Promedio mensual variable confirmado para el período aplicable (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "transport_aid",
+        "label": "¿Tenía derecho y recibía auxilio de transporte?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ]
+      },
+      {
+        "id": "salary_due_days",
+        "label": "Días de salario ordinario pendientes al corte",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "cesantias_start_date",
+        "label": "Fecha desde la cual están pendientes las cesantías",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prima_start_date",
+        "label": "Fecha desde la cual está pendiente la prima de servicios",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "vacation_pending_days",
+        "label": "Días de vacaciones causados y pendientes de disfrute o compensación",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "periods_confirmed",
+        "label": "¿Los períodos pendientes fueron contrastados con desprendibles, fondo de cesantías o soportes?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "Parcial",
+          "No"
+        ]
+      },
+      {
+        "id": "prior_salary_paid",
+        "label": "Salario ya pagado correspondiente a los días informados (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "prior_cesantias_paid",
+        "label": "Cesantías ya pagadas o consignadas del período informado (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "prior_interest_paid",
+        "label": "Intereses a las cesantías ya pagados del período informado (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "prior_prima_paid",
+        "label": "Prima ya pagada del período informado (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "prior_vacation_paid",
+        "label": "Vacaciones ya pagadas o compensadas de los días informados (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "prior_indemnity_paid",
+        "label": "Indemnización por terminación ya pagada (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "disputed_deductions",
+        "label": "¿El empleador aplicó o anuncia descuentos discutidos por daños, equipos, préstamos u otros conceptos?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "salary_supports",
+        "label": "¿Cuenta con contrato, desprendibles, extractos o comprobantes de pago?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "Parcial",
+          "No"
+        ]
+      },
+      {
+        "id": "special_protection",
+        "label": "¿Existe embarazo, discapacidad, situación de salud, fuero u otra estabilidad reforzada?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "public_sector",
+        "label": "¿El empleador o vínculo pertenece al sector público?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "active_litigation",
+        "label": "¿Existe demanda, conciliación, transacción o proceso activo sobre estos conceptos?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "contract_reality",
+        "label": "¿La discusión principal consiste en demostrar que una prestación de servicios fue realmente laboral?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "collective_regime",
+        "label": "¿Existe convención colectiva, pacto, laudo, sindicato o régimen extralegal aplicable?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que los datos corresponden a hechos y soportes verificables?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "generate_settlement",
+        "label": "¿Desea incluir una propuesta de acuerdo de pago y cierre?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "LA1-S1",
+      "LA1-S2",
+      "LA1-S3",
+      "LA1-S4",
+      "LA1-S5",
+      "LA1-S6",
+      "LA1-S7",
+      "LA1-S8",
+      "LA1-S9",
+      "LA1-S10"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-LA-001-CALCULATION-B01",
+        "type": "section",
+        "heading": "1. Alcance y metodología",
+        "text": "La liquidación separa períodos y pagos por concepto; no trata el vínculo completo como una deuda única.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S10"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-CALCULATION-B02",
+        "type": "section",
+        "heading": "2. Identificación y vínculo",
+        "text": "Individualiza trabajador, empleador, modalidad, causa y fecha de corte.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-CALCULATION-B03",
+        "type": "section",
+        "heading": "3. Parámetros versionados",
+        "text": "Registra salario mínimo, auxilio de transporte, divisores, vigencia y fuentes.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S6",
+          "LA1-S7",
+          "LA1-S10"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-CALCULATION-B04",
+        "type": "section",
+        "heading": "4. Salario y base prestacional",
+        "text": "Diferencia salario básico, promedio variable y auxilio aplicable.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S7"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-CALCULATION-B05",
+        "type": "section",
+        "heading": "5. Salarios pendientes",
+        "text": "Salario diario multiplicado por días pendientes, menos pagos confirmados.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-CALCULATION-B06",
+        "type": "section",
+        "heading": "6. Cesantías",
+        "text": "Base prestacional por días del período pendiente dividido entre 360.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-CALCULATION-B07",
+        "type": "section",
+        "heading": "7. Intereses a las cesantías",
+        "text": "Cesantías causadas por 12% y por la proporción temporal del período.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S3"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-CALCULATION-B08",
+        "type": "section",
+        "heading": "8. Prima de servicios",
+        "text": "Base prestacional por días del período pendiente dividido entre 360.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-CALCULATION-B09",
+        "type": "section",
+        "heading": "9. Vacaciones",
+        "text": "Salario diario por días de vacaciones pendientes confirmados.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-CALCULATION-B10",
+        "type": "section",
+        "heading": "10. Indemnización por terminación",
+        "text": "Cálculo separado según modalidad; no incluye sanción moratoria.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S4",
+          "LA1-S9"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-CALCULATION-B11",
+        "type": "section",
+        "heading": "11. Pagos previos y total neto",
+        "text": "Descuenta pagos confirmados dentro de cada línea y conserva diferencias.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-CALCULATION-B12",
+        "type": "section",
+        "heading": "12. Alertas, exclusiones y soportes",
+        "text": "Explica riesgos, conceptos no calculados y documentos faltantes.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-CALCULATION-CONTROL",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado por LegalAIZ.it dentro de un flujo trazable. Antes de firmar, radicar o aceptar, el abogado responsable debe verificar hechos, soportes, fuentes, períodos, pagos y estrategia.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-LA-001-CLAIM",
+    "product_code": "CO-LA-001",
+    "kind": "claim",
+    "title": "Reclamación directa de acreencias laborales",
+    "subtitle": "Hechos, diferencias y solicitudes trazables",
+    "filename_suffix": "reclamacion_laboral_v3",
+    "version_label": "3.0-v2.22",
+    "canonical_status": "Producto madurado e integrado v2.22; cierre jurídico a cargo del abogado responsable",
+    "source_package": "LegalAIZit_Paquete_09_Liquidacion_Laboral_Consolidado_v3",
+    "variables": [
+      {
+        "id": "worker_name",
+        "label": "Nombre completo del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_id",
+        "label": "Identificación del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_name",
+        "label": "Nombre o razón social del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_id",
+        "label": "NIT o identificación del empleador",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "claim_email",
+        "label": "Correo para recibir el borrador y la respuesta",
+        "type": "email",
+        "required": true
+      },
+      {
+        "id": "private_relation",
+        "label": "¿La relación corresponde a un empleador privado en Colombia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ]
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha de ingreso",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha de terminación o fecha de corte",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "contract_type",
+        "label": "Modalidad contractual",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Indefinido",
+          "Término fijo",
+          "Obra o labor",
+          "Verbal / no sé"
+        ]
+      },
+      {
+        "id": "termination",
+        "label": "Situación o causa informada al corte",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Renuncia",
+          "Mutuo acuerdo",
+          "Sin justa causa",
+          "Justa causa",
+          "Fin de término/obra",
+          "Sigue vigente"
+        ]
+      },
+      {
+        "id": "fixed_term_end",
+        "label": "Fecha final pactada del contrato",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "work_remaining_days",
+        "label": "Días estimados que faltaban para terminar la obra o labor",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "monthly_salary",
+        "label": "Salario básico mensual fijo (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "integral_salary",
+        "label": "¿El salario fue pactado como integral?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "variable_salary",
+        "label": "¿Existieron comisiones, recargos, horas extra u otros pagos salariales variables?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "variable_salary_supports",
+        "label": "¿Existen soportes suficientes para reconstruir el promedio variable?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "variable_average",
+        "label": "Promedio mensual variable confirmado para el período aplicable (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "transport_aid",
+        "label": "¿Tenía derecho y recibía auxilio de transporte?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ]
+      },
+      {
+        "id": "salary_due_days",
+        "label": "Días de salario ordinario pendientes al corte",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "cesantias_start_date",
+        "label": "Fecha desde la cual están pendientes las cesantías",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prima_start_date",
+        "label": "Fecha desde la cual está pendiente la prima de servicios",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "vacation_pending_days",
+        "label": "Días de vacaciones causados y pendientes de disfrute o compensación",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "periods_confirmed",
+        "label": "¿Los períodos pendientes fueron contrastados con desprendibles, fondo de cesantías o soportes?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "Parcial",
+          "No"
+        ]
+      },
+      {
+        "id": "prior_salary_paid",
+        "label": "Salario ya pagado correspondiente a los días informados (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "prior_cesantias_paid",
+        "label": "Cesantías ya pagadas o consignadas del período informado (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "prior_interest_paid",
+        "label": "Intereses a las cesantías ya pagados del período informado (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "prior_prima_paid",
+        "label": "Prima ya pagada del período informado (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "prior_vacation_paid",
+        "label": "Vacaciones ya pagadas o compensadas de los días informados (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "prior_indemnity_paid",
+        "label": "Indemnización por terminación ya pagada (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "disputed_deductions",
+        "label": "¿El empleador aplicó o anuncia descuentos discutidos por daños, equipos, préstamos u otros conceptos?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "salary_supports",
+        "label": "¿Cuenta con contrato, desprendibles, extractos o comprobantes de pago?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "Parcial",
+          "No"
+        ]
+      },
+      {
+        "id": "special_protection",
+        "label": "¿Existe embarazo, discapacidad, situación de salud, fuero u otra estabilidad reforzada?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "public_sector",
+        "label": "¿El empleador o vínculo pertenece al sector público?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "active_litigation",
+        "label": "¿Existe demanda, conciliación, transacción o proceso activo sobre estos conceptos?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "contract_reality",
+        "label": "¿La discusión principal consiste en demostrar que una prestación de servicios fue realmente laboral?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "collective_regime",
+        "label": "¿Existe convención colectiva, pacto, laudo, sindicato o régimen extralegal aplicable?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que los datos corresponden a hechos y soportes verificables?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "generate_settlement",
+        "label": "¿Desea incluir una propuesta de acuerdo de pago y cierre?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "LA1-S1",
+      "LA1-S2",
+      "LA1-S3",
+      "LA1-S4",
+      "LA1-S5",
+      "LA1-S6",
+      "LA1-S7",
+      "LA1-S8",
+      "LA1-S9",
+      "LA1-S10"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-LA-001-CLAIM-B01",
+        "type": "section",
+        "heading": "1. Destinatario, reclamante y asunto",
+        "text": "Identifica las partes, el vínculo y el objeto de la reclamación.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-CLAIM-B02",
+        "type": "section",
+        "heading": "2. Hechos verificables",
+        "text": "Expone fechas, modalidad, salario y terminación sin afirmar hechos no confirmados.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-CLAIM-B03",
+        "type": "section",
+        "heading": "3. Reconstrucción económica",
+        "text": "Incorpora el cuadro neto por concepto y sus períodos.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-CLAIM-B04",
+        "type": "section",
+        "heading": "4. Solicitudes de información y pago",
+        "text": "Solicita liquidación, soportes, pago o explicación motivada por cada diferencia.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-CLAIM-B05",
+        "type": "section",
+        "heading": "5. Deducciones y compensaciones",
+        "text": "Rechaza descuentos no soportados sin desconocer los que sean válidos.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-CLAIM-B06",
+        "type": "section",
+        "heading": "6. Conceptos reservados",
+        "text": "No liquida automáticamente sanciones, perjuicios ni derechos sujetos a decisión judicial.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S9"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-CLAIM-B07",
+        "type": "section",
+        "heading": "7. Anexos e índice de evidencia",
+        "text": "Relaciona contrato, nómina, fondo, pagos, vacaciones y terminación.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-CLAIM-B08",
+        "type": "section",
+        "heading": "8. Respuesta, radicación y trazabilidad",
+        "text": "Define correo, radicado, término de respuesta y conservación de evidencia.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-CLAIM-CONTROL",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado por LegalAIZ.it dentro de un flujo trazable. Antes de firmar, radicar o aceptar, el abogado responsable debe verificar hechos, soportes, fuentes, períodos, pagos y estrategia.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-LA-001-EVIDENCE",
+    "product_code": "CO-LA-001",
+    "kind": "evidence_matrix",
+    "title": "Matriz de soportes y conciliación de pagos",
+    "subtitle": "Control probatorio por concepto y período",
+    "filename_suffix": "matriz_soportes_pagos",
+    "version_label": "3.0-v2.22",
+    "canonical_status": "Producto madurado e integrado v2.22; cierre jurídico a cargo del abogado responsable",
+    "source_package": "LegalAIZit_Paquete_09_Liquidacion_Laboral_Consolidado_v3",
+    "variables": [
+      {
+        "id": "worker_name",
+        "label": "Nombre completo del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_id",
+        "label": "Identificación del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_name",
+        "label": "Nombre o razón social del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_id",
+        "label": "NIT o identificación del empleador",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "claim_email",
+        "label": "Correo para recibir el borrador y la respuesta",
+        "type": "email",
+        "required": true
+      },
+      {
+        "id": "private_relation",
+        "label": "¿La relación corresponde a un empleador privado en Colombia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ]
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha de ingreso",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha de terminación o fecha de corte",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "contract_type",
+        "label": "Modalidad contractual",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Indefinido",
+          "Término fijo",
+          "Obra o labor",
+          "Verbal / no sé"
+        ]
+      },
+      {
+        "id": "termination",
+        "label": "Situación o causa informada al corte",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Renuncia",
+          "Mutuo acuerdo",
+          "Sin justa causa",
+          "Justa causa",
+          "Fin de término/obra",
+          "Sigue vigente"
+        ]
+      },
+      {
+        "id": "fixed_term_end",
+        "label": "Fecha final pactada del contrato",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "work_remaining_days",
+        "label": "Días estimados que faltaban para terminar la obra o labor",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "monthly_salary",
+        "label": "Salario básico mensual fijo (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "integral_salary",
+        "label": "¿El salario fue pactado como integral?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "variable_salary",
+        "label": "¿Existieron comisiones, recargos, horas extra u otros pagos salariales variables?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "variable_salary_supports",
+        "label": "¿Existen soportes suficientes para reconstruir el promedio variable?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "variable_average",
+        "label": "Promedio mensual variable confirmado para el período aplicable (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "transport_aid",
+        "label": "¿Tenía derecho y recibía auxilio de transporte?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ]
+      },
+      {
+        "id": "salary_due_days",
+        "label": "Días de salario ordinario pendientes al corte",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "cesantias_start_date",
+        "label": "Fecha desde la cual están pendientes las cesantías",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prima_start_date",
+        "label": "Fecha desde la cual está pendiente la prima de servicios",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "vacation_pending_days",
+        "label": "Días de vacaciones causados y pendientes de disfrute o compensación",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "periods_confirmed",
+        "label": "¿Los períodos pendientes fueron contrastados con desprendibles, fondo de cesantías o soportes?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "Parcial",
+          "No"
+        ]
+      },
+      {
+        "id": "prior_salary_paid",
+        "label": "Salario ya pagado correspondiente a los días informados (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "prior_cesantias_paid",
+        "label": "Cesantías ya pagadas o consignadas del período informado (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "prior_interest_paid",
+        "label": "Intereses a las cesantías ya pagados del período informado (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "prior_prima_paid",
+        "label": "Prima ya pagada del período informado (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "prior_vacation_paid",
+        "label": "Vacaciones ya pagadas o compensadas de los días informados (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "prior_indemnity_paid",
+        "label": "Indemnización por terminación ya pagada (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "disputed_deductions",
+        "label": "¿El empleador aplicó o anuncia descuentos discutidos por daños, equipos, préstamos u otros conceptos?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "salary_supports",
+        "label": "¿Cuenta con contrato, desprendibles, extractos o comprobantes de pago?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "Parcial",
+          "No"
+        ]
+      },
+      {
+        "id": "special_protection",
+        "label": "¿Existe embarazo, discapacidad, situación de salud, fuero u otra estabilidad reforzada?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "public_sector",
+        "label": "¿El empleador o vínculo pertenece al sector público?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "active_litigation",
+        "label": "¿Existe demanda, conciliación, transacción o proceso activo sobre estos conceptos?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "contract_reality",
+        "label": "¿La discusión principal consiste en demostrar que una prestación de servicios fue realmente laboral?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "collective_regime",
+        "label": "¿Existe convención colectiva, pacto, laudo, sindicato o régimen extralegal aplicable?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que los datos corresponden a hechos y soportes verificables?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "generate_settlement",
+        "label": "¿Desea incluir una propuesta de acuerdo de pago y cierre?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "LA1-S1",
+      "LA1-S2",
+      "LA1-S3",
+      "LA1-S4",
+      "LA1-S5",
+      "LA1-S6",
+      "LA1-S7",
+      "LA1-S8",
+      "LA1-S9",
+      "LA1-S10"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-LA-001-EVIDENCE-B01",
+        "type": "section",
+        "heading": "1. Matriz de documentos",
+        "text": "Lista soporte, período, concepto, estado y hallazgo.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-EVIDENCE-B02",
+        "type": "section",
+        "heading": "2. Conciliación por concepto",
+        "text": "Compara cálculo, pago identificado y diferencia.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-EVIDENCE-B03",
+        "type": "section",
+        "heading": "3. Vacíos probatorios",
+        "text": "Identifica información faltante sin sustituirla por supuestos.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-EVIDENCE-B04",
+        "type": "section",
+        "heading": "4. Control de autenticidad y origen",
+        "text": "Registra fuente, fecha, responsable y hash cuando aplique.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-EVIDENCE-B05",
+        "type": "section",
+        "heading": "5. Lista de cierre",
+        "text": "Confirma que fechas, valores y documentos coincidan antes de aprobar.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-EVIDENCE-CONTROL",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado por LegalAIZ.it dentro de un flujo trazable. Antes de firmar, radicar o aceptar, el abogado responsable debe verificar hechos, soportes, fuentes, períodos, pagos y estrategia.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-LA-001-SETTLEMENT",
+    "product_code": "CO-LA-001",
+    "kind": "settlement",
+    "title": "Propuesta de acuerdo de pago y cierre",
+    "subtitle": "Módulo condicional sin renuncias generales",
+    "filename_suffix": "propuesta_acuerdo_pago",
+    "version_label": "3.0-v2.22",
+    "canonical_status": "Producto madurado e integrado v2.22; cierre jurídico a cargo del abogado responsable",
+    "source_package": "LegalAIZit_Paquete_09_Liquidacion_Laboral_Consolidado_v3",
+    "variables": [
+      {
+        "id": "worker_name",
+        "label": "Nombre completo del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_id",
+        "label": "Identificación del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_name",
+        "label": "Nombre o razón social del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_id",
+        "label": "NIT o identificación del empleador",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "claim_email",
+        "label": "Correo para recibir el borrador y la respuesta",
+        "type": "email",
+        "required": true
+      },
+      {
+        "id": "private_relation",
+        "label": "¿La relación corresponde a un empleador privado en Colombia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ]
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha de ingreso",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha de terminación o fecha de corte",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "contract_type",
+        "label": "Modalidad contractual",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Indefinido",
+          "Término fijo",
+          "Obra o labor",
+          "Verbal / no sé"
+        ]
+      },
+      {
+        "id": "termination",
+        "label": "Situación o causa informada al corte",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Renuncia",
+          "Mutuo acuerdo",
+          "Sin justa causa",
+          "Justa causa",
+          "Fin de término/obra",
+          "Sigue vigente"
+        ]
+      },
+      {
+        "id": "fixed_term_end",
+        "label": "Fecha final pactada del contrato",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "work_remaining_days",
+        "label": "Días estimados que faltaban para terminar la obra o labor",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "monthly_salary",
+        "label": "Salario básico mensual fijo (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "integral_salary",
+        "label": "¿El salario fue pactado como integral?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "variable_salary",
+        "label": "¿Existieron comisiones, recargos, horas extra u otros pagos salariales variables?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "variable_salary_supports",
+        "label": "¿Existen soportes suficientes para reconstruir el promedio variable?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "variable_average",
+        "label": "Promedio mensual variable confirmado para el período aplicable (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "transport_aid",
+        "label": "¿Tenía derecho y recibía auxilio de transporte?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ]
+      },
+      {
+        "id": "salary_due_days",
+        "label": "Días de salario ordinario pendientes al corte",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "cesantias_start_date",
+        "label": "Fecha desde la cual están pendientes las cesantías",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prima_start_date",
+        "label": "Fecha desde la cual está pendiente la prima de servicios",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "vacation_pending_days",
+        "label": "Días de vacaciones causados y pendientes de disfrute o compensación",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "periods_confirmed",
+        "label": "¿Los períodos pendientes fueron contrastados con desprendibles, fondo de cesantías o soportes?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "Parcial",
+          "No"
+        ]
+      },
+      {
+        "id": "prior_salary_paid",
+        "label": "Salario ya pagado correspondiente a los días informados (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "prior_cesantias_paid",
+        "label": "Cesantías ya pagadas o consignadas del período informado (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "prior_interest_paid",
+        "label": "Intereses a las cesantías ya pagados del período informado (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "prior_prima_paid",
+        "label": "Prima ya pagada del período informado (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "prior_vacation_paid",
+        "label": "Vacaciones ya pagadas o compensadas de los días informados (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "prior_indemnity_paid",
+        "label": "Indemnización por terminación ya pagada (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "disputed_deductions",
+        "label": "¿El empleador aplicó o anuncia descuentos discutidos por daños, equipos, préstamos u otros conceptos?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "salary_supports",
+        "label": "¿Cuenta con contrato, desprendibles, extractos o comprobantes de pago?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "Parcial",
+          "No"
+        ]
+      },
+      {
+        "id": "special_protection",
+        "label": "¿Existe embarazo, discapacidad, situación de salud, fuero u otra estabilidad reforzada?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "public_sector",
+        "label": "¿El empleador o vínculo pertenece al sector público?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "active_litigation",
+        "label": "¿Existe demanda, conciliación, transacción o proceso activo sobre estos conceptos?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "contract_reality",
+        "label": "¿La discusión principal consiste en demostrar que una prestación de servicios fue realmente laboral?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "collective_regime",
+        "label": "¿Existe convención colectiva, pacto, laudo, sindicato o régimen extralegal aplicable?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que los datos corresponden a hechos y soportes verificables?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "generate_settlement",
+        "label": "¿Desea incluir una propuesta de acuerdo de pago y cierre?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "LA1-S1",
+      "LA1-S2",
+      "LA1-S3",
+      "LA1-S4",
+      "LA1-S5",
+      "LA1-S6",
+      "LA1-S7",
+      "LA1-S8",
+      "LA1-S9",
+      "LA1-S10"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-LA-001-SETTLEMENT-B01",
+        "type": "section",
+        "heading": "1. Partes y antecedentes",
+        "text": "Presenta el acuerdo como propuesta condicionada y no como confesión indiscriminada.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-SETTLEMENT-B02",
+        "type": "section",
+        "heading": "2. Conceptos y valor conciliado",
+        "text": "Detalla cada concepto, valor y diferencia frente a la estimación.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-SETTLEMENT-B03",
+        "type": "section",
+        "heading": "3. Forma y calendario de pago",
+        "text": "Define fechas, medios, comprobantes y consecuencias del incumplimiento.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-SETTLEMENT-B04",
+        "type": "section",
+        "heading": "4. Aportes, certificados y documentos",
+        "text": "Incluye obligaciones documentales que deban completarse.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-SETTLEMENT-B05",
+        "type": "section",
+        "heading": "5. Alcance del cierre",
+        "text": "Limita el efecto liberatorio a conceptos identificados y efectivamente pagados.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-SETTLEMENT-B06",
+        "type": "section",
+        "heading": "6. No renuncia a derechos ciertos e indiscutibles",
+        "text": "Evita renuncias generales o indeterminadas.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S8"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-SETTLEMENT-B07",
+        "type": "section",
+        "heading": "7. Firmas y constancia de cumplimiento",
+        "text": "Separa firma, pago y cierre definitivo.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA1-S1",
+          "LA1-S2",
+          "LA1-S3",
+          "LA1-S4"
+        ],
+        "notes": "Bloque jurídico v2.22; trazable a fuentes oficiales y cálculo por concepto."
+      },
+      {
+        "id": "TPL-CO-LA-001-SETTLEMENT-CONTROL",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado por LegalAIZ.it dentro de un flujo trazable. Antes de firmar, radicar o aceptar, el abogado responsable debe verificar hechos, soportes, fuentes, períodos, pagos y estrategia.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio."
+      }
+    ]
+  }
+]

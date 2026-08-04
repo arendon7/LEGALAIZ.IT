@@ -1,0 +1,692 @@
+[
+  {
+    "question_id": "Q-TR2-001",
+    "variable_path": "scope.colombian_traffic_case",
+    "step_id": "parties",
+    "validation_ids": [
+      "V-TR2-001",
+      "V-TR2-009"
+    ],
+    "block_ids": [
+      "TR2-B001"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-001"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-002",
+    "variable_path": "petitioner.role",
+    "step_id": "parties",
+    "validation_ids": [
+      "V-TR2-002",
+      "V-TR2-010"
+    ],
+    "block_ids": [
+      "TR2-B002"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-002"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-003",
+    "variable_path": "petitioner.identity",
+    "step_id": "parties",
+    "validation_ids": [
+      "V-TR2-003",
+      "V-TR2-011"
+    ],
+    "block_ids": [
+      "TR2-B003"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-003"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-004",
+    "variable_path": "petitioner.representation",
+    "step_id": "parties",
+    "validation_ids": [
+      "V-TR2-004",
+      "V-TR2-012"
+    ],
+    "block_ids": [
+      "TR2-B004"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-004"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-005",
+    "variable_path": "authority.identity",
+    "step_id": "parties",
+    "validation_ids": [
+      "V-TR2-005",
+      "V-TR2-013"
+    ],
+    "block_ids": [
+      "TR2-B005"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-005"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-006",
+    "variable_path": "notifications.preferred",
+    "step_id": "parties",
+    "validation_ids": [
+      "V-TR2-006",
+      "V-TR2-014"
+    ],
+    "block_ids": [
+      "TR2-B006"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-006"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-007",
+    "variable_path": "vehicle.identity",
+    "step_id": "case",
+    "validation_ids": [
+      "V-TR2-007",
+      "V-TR2-015"
+    ],
+    "block_ids": [
+      "TR2-B007"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-007"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-008",
+    "variable_path": "vehicle.relationship",
+    "step_id": "case",
+    "validation_ids": [
+      "V-TR2-008",
+      "V-TR2-016"
+    ],
+    "block_ids": [
+      "TR2-B008"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-008"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-009",
+    "variable_path": "case.identifiers",
+    "step_id": "case",
+    "validation_ids": [
+      "V-TR2-001",
+      "V-TR2-009"
+    ],
+    "block_ids": [
+      "TR2-B009"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-009"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-010",
+    "variable_path": "case.discovery",
+    "step_id": "case",
+    "validation_ids": [
+      "V-TR2-002",
+      "V-TR2-010"
+    ],
+    "block_ids": [
+      "TR2-B010"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-010"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-011",
+    "variable_path": "case.multiple",
+    "step_id": "case",
+    "validation_ids": [
+      "V-TR2-003",
+      "V-TR2-011"
+    ],
+    "block_ids": [
+      "TR2-B011"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-011"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-012",
+    "variable_path": "runt.status_at_event",
+    "step_id": "case",
+    "validation_ids": [
+      "V-TR2-004",
+      "V-TR2-012"
+    ],
+    "block_ids": [
+      "TR2-B012"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-012"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-013",
+    "variable_path": "sast.detection_type",
+    "step_id": "sast",
+    "validation_ids": [
+      "V-TR2-005",
+      "V-TR2-013"
+    ],
+    "block_ids": [
+      "TR2-B013"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-013"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-014",
+    "variable_path": "sast.identification",
+    "step_id": "sast",
+    "validation_ids": [
+      "V-TR2-006",
+      "V-TR2-014"
+    ],
+    "block_ids": [
+      "TR2-B014"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-014"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-015",
+    "variable_path": "sast.authorization_status",
+    "step_id": "sast",
+    "validation_ids": [
+      "V-TR2-007",
+      "V-TR2-015"
+    ],
+    "block_ids": [
+      "TR2-B015"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-015"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-016",
+    "variable_path": "sast.signaling",
+    "step_id": "sast",
+    "validation_ids": [
+      "V-TR2-008",
+      "V-TR2-016"
+    ],
+    "block_ids": [
+      "TR2-B016"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-016"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-017",
+    "variable_path": "sast.speed_measurement",
+    "step_id": "sast",
+    "validation_ids": [
+      "V-TR2-001",
+      "V-TR2-009"
+    ],
+    "block_ids": [
+      "TR2-B017"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-017"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-018",
+    "variable_path": "sast.agent_validation",
+    "step_id": "sast",
+    "validation_ids": [
+      "V-TR2-002",
+      "V-TR2-010"
+    ],
+    "block_ids": [
+      "TR2-B018"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-018"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-019",
+    "variable_path": "sast.evidence_available",
+    "step_id": "sast",
+    "validation_ids": [
+      "V-TR2-003",
+      "V-TR2-011"
+    ],
+    "block_ids": [
+      "TR2-B019"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-019"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-020",
+    "variable_path": "notice.comparendo_received",
+    "step_id": "notice",
+    "validation_ids": [
+      "V-TR2-004",
+      "V-TR2-012"
+    ],
+    "block_ids": [
+      "TR2-B020"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-020"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-021",
+    "variable_path": "notice.method",
+    "step_id": "notice",
+    "validation_ids": [
+      "V-TR2-005",
+      "V-TR2-013"
+    ],
+    "block_ids": [
+      "TR2-B021"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-021"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-022",
+    "variable_path": "notice.timeline",
+    "step_id": "notice",
+    "validation_ids": [
+      "V-TR2-006",
+      "V-TR2-014"
+    ],
+    "block_ids": [
+      "TR2-B022"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-022"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-023",
+    "variable_path": "notice.address_match",
+    "step_id": "notice",
+    "validation_ids": [
+      "V-TR2-007",
+      "V-TR2-015"
+    ],
+    "block_ids": [
+      "TR2-B023"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-023"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-024",
+    "variable_path": "notice.electronic_consent",
+    "step_id": "notice",
+    "validation_ids": [
+      "V-TR2-008",
+      "V-TR2-016"
+    ],
+    "block_ids": [
+      "TR2-B024"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-024"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-025",
+    "variable_path": "notice.actual_knowledge",
+    "step_id": "notice",
+    "validation_ids": [
+      "V-TR2-001",
+      "V-TR2-009"
+    ],
+    "block_ids": [
+      "TR2-B025"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-025"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-026",
+    "variable_path": "stage.resolution_exists",
+    "step_id": "stage",
+    "validation_ids": [
+      "V-TR2-002",
+      "V-TR2-010"
+    ],
+    "block_ids": [
+      "TR2-B026"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-026"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-027",
+    "variable_path": "stage.resolution",
+    "step_id": "stage",
+    "validation_ids": [
+      "V-TR2-003",
+      "V-TR2-011"
+    ],
+    "block_ids": [
+      "TR2-B027"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-027"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-028",
+    "variable_path": "stage.hearing",
+    "step_id": "stage",
+    "validation_ids": [
+      "V-TR2-004",
+      "V-TR2-012"
+    ],
+    "block_ids": [
+      "TR2-B028"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-028"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-029",
+    "variable_path": "stage.resources",
+    "step_id": "stage",
+    "validation_ids": [
+      "V-TR2-005",
+      "V-TR2-013"
+    ],
+    "block_ids": [
+      "TR2-B029"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-029"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-030",
+    "variable_path": "stage.final_status",
+    "step_id": "stage",
+    "validation_ids": [
+      "V-TR2-006",
+      "V-TR2-014"
+    ],
+    "block_ids": [
+      "TR2-B030"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-030"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-031",
+    "variable_path": "stage.payment",
+    "step_id": "stage",
+    "validation_ids": [
+      "V-TR2-007",
+      "V-TR2-015"
+    ],
+    "block_ids": [
+      "TR2-B031"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-031"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-032",
+    "variable_path": "stage.coercive",
+    "step_id": "stage",
+    "validation_ids": [
+      "V-TR2-008",
+      "V-TR2-016"
+    ],
+    "block_ids": [
+      "TR2-B032"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-032"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-033",
+    "variable_path": "stage.active_process",
+    "step_id": "stage",
+    "validation_ids": [
+      "V-TR2-001",
+      "V-TR2-009"
+    ],
+    "block_ids": [
+      "TR2-B033"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-033"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-034",
+    "variable_path": "responsibility.was_driver",
+    "step_id": "responsibility",
+    "validation_ids": [
+      "V-TR2-002",
+      "V-TR2-010"
+    ],
+    "block_ids": [
+      "TR2-B034"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-034"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-035",
+    "variable_path": "responsibility.driver_identification",
+    "step_id": "responsibility",
+    "validation_ids": [
+      "V-TR2-003",
+      "V-TR2-011"
+    ],
+    "block_ids": [
+      "TR2-B035"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-035"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-036",
+    "variable_path": "responsibility.owner_duty_category",
+    "step_id": "responsibility",
+    "validation_ids": [
+      "V-TR2-004",
+      "V-TR2-012"
+    ],
+    "block_ids": [
+      "TR2-B036"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-036"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-037",
+    "variable_path": "responsibility.transfer",
+    "step_id": "responsibility",
+    "validation_ids": [
+      "V-TR2-005",
+      "V-TR2-013"
+    ],
+    "block_ids": [
+      "TR2-B037"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-037"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-038",
+    "variable_path": "responsibility.theft",
+    "step_id": "responsibility",
+    "validation_ids": [
+      "V-TR2-006",
+      "V-TR2-014"
+    ],
+    "block_ids": [
+      "TR2-B038"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-038"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-039",
+    "variable_path": "responsibility.facts",
+    "step_id": "responsibility",
+    "validation_ids": [
+      "V-TR2-007",
+      "V-TR2-015"
+    ],
+    "block_ids": [
+      "TR2-B039"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-039"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-040",
+    "variable_path": "evidence.inventory",
+    "step_id": "evidence",
+    "validation_ids": [
+      "V-TR2-008",
+      "V-TR2-016"
+    ],
+    "block_ids": [
+      "TR2-B040"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-040"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-041",
+    "variable_path": "evidence.prior_actions",
+    "step_id": "evidence",
+    "validation_ids": [
+      "V-TR2-001",
+      "V-TR2-009"
+    ],
+    "block_ids": [
+      "TR2-B041"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-041"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-042",
+    "variable_path": "deadlines.urgency",
+    "step_id": "evidence",
+    "validation_ids": [
+      "V-TR2-002",
+      "V-TR2-010"
+    ],
+    "block_ids": [
+      "TR2-B042"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-042"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-043",
+    "variable_path": "evidence.integrity_concern",
+    "step_id": "evidence",
+    "validation_ids": [
+      "V-TR2-003",
+      "V-TR2-011"
+    ],
+    "block_ids": [
+      "TR2-B043"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-043"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-044",
+    "variable_path": "strategy.objective",
+    "step_id": "strategy",
+    "validation_ids": [
+      "V-TR2-004",
+      "V-TR2-012"
+    ],
+    "block_ids": [
+      "TR2-B044"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-044"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-045",
+    "variable_path": "documents.selection",
+    "step_id": "strategy",
+    "validation_ids": [
+      "V-TR2-005",
+      "V-TR2-013"
+    ],
+    "block_ids": [
+      "TR2-B045"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-045"
+    ]
+  },
+  {
+    "question_id": "Q-TR2-046",
+    "variable_path": "data.confirmed",
+    "step_id": "strategy",
+    "validation_ids": [
+      "V-TR2-006",
+      "V-TR2-014"
+    ],
+    "block_ids": [
+      "TR2-B046"
+    ],
+    "test_ids": [
+      "TEST-TR2-254-046"
+    ]
+  }
+]

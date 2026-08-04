@@ -1,0 +1,48 @@
+[
+  {
+    "product_code": "CO-EM-003",
+    "priority": 1,
+    "title": "Prestación de servicios",
+    "artifacts": [
+      {"key": "paquete_principal", "label": "Contrato o paquete consolidado", "required": true, "extensions": [".docx", ".pdf"], "filename_hints": ["prestacion", "servicios", "paquete_01"]},
+      {"key": "reglas_formulario", "label": "Entrevista, reglas y riesgos", "required": true, "extensions": [".docx", ".xlsx", ".pdf"], "filename_hints": ["reglas", "formulario", "entrevista"]},
+      {"key": "anexos", "label": "Alcance, confidencialidad, PI y cierre", "required": false, "extensions": [".docx", ".pdf"], "filename_hints": ["alcance", "confidencialidad", "propiedad", "cierre"]}
+    ]
+  },
+  {
+    "product_code": "CO-LA-001",
+    "priority": 1,
+    "title": "Liquidación laboral",
+    "artifacts": [
+      {"key": "paquete_consolidado", "label": "Paquete jurídico consolidado", "required": true, "extensions": [".docx", ".pdf"], "filename_hints": ["liquidacion", "laboral", "paquete_09"]},
+      {"key": "calculadora", "label": "Calculadora y parámetros", "required": true, "extensions": [".xlsx"], "filename_hints": ["calculadora", "liquidacion", "parametros"]},
+      {"key": "reglas_formulario", "label": "Formulario, reglas y escenarios", "required": true, "extensions": [".docx", ".xlsx", ".pdf"], "filename_hints": ["formulario", "reglas", "escenarios"]}
+    ]
+  },
+  {
+    "product_code": "CO-TR-001",
+    "priority": 1,
+    "title": "Chequeo SAST",
+    "artifacts": [
+      {"key": "matriz_sast", "label": "Matriz maestra SAST", "required": true, "extensions": [".xlsx"], "filename_hints": ["matriz", "sast"]},
+      {"key": "metodologia", "label": "Metodología de cruce, reglas y advertencias", "required": true, "extensions": [".docx", ".xlsx", ".pdf"], "filename_hints": ["metodologia", "reglas", "sast"]}
+    ]
+  },
+  {
+    "product_code": "CO-TR-002",
+    "priority": 1,
+    "title": "Fotomulta no notificada",
+    "artifacts": [
+      {"key": "paquete_consolidado", "label": "Paquete jurídico consolidado", "required": true, "extensions": [".docx", ".pdf"], "filename_hints": ["fotomulta", "no_notificada", "paquete_10"]},
+      {"key": "reglas_formulario", "label": "Entrevista, reglas y etapa procesal", "required": true, "extensions": [".docx", ".xlsx", ".pdf"], "filename_hints": ["formulario", "reglas", "etapa"]},
+      {"key": "fuentes_actuaciones", "label": "Fuentes y actuaciones administrativas", "required": false, "extensions": [".xlsx", ".pdf", ".docx"], "filename_hints": ["actuaciones", "fuentes", "sast"]}
+    ]
+  },
+  {"product_code": "CO-LA-002", "priority": 2, "title": "Contrato de trabajo", "artifacts": [{"key": "paquete_principal", "label": "Paquete jurídico principal", "required": true, "extensions": [".docx", ".pdf"], "filename_hints": ["contrato", "trabajo", "paquete_03"]}]},
+  {"product_code": "CO-EM-004", "priority": 2, "title": "Confidencialidad y propiedad intelectual", "artifacts": [{"key": "paquete_principal", "label": "Paquete jurídico principal", "required": true, "extensions": [".docx", ".pdf"], "filename_hints": ["confidencialidad", "propiedad", "paquete_04"]}]},
+  {"product_code": "CO-AR-001", "priority": 2, "title": "Arrendamiento de vivienda urbana", "artifacts": [{"key": "paquete_principal", "label": "Paquete jurídico principal", "required": true, "extensions": [".docx", ".pdf"], "filename_hints": ["arrendamiento", "vivienda", "paquete_02"]}]},
+  {"product_code": "CO-SA-001", "priority": 2, "title": "Derecho de petición EPS/IPS", "artifacts": [{"key": "paquete_principal", "label": "Paquete jurídico principal", "required": true, "extensions": [".docx", ".pdf"], "filename_hints": ["eps", "ips", "peticion", "paquete_06"]}]},
+  {"product_code": "CO-CD-001", "priority": 2, "title": "Centrales de riesgo y hábeas data", "artifacts": [{"key": "paquete_principal", "label": "Paquete jurídico principal", "required": true, "extensions": [".docx", ".pdf"], "filename_hints": ["centrales", "habeas", "paquete_07"]}]},
+  {"product_code": "CO-CD-003", "priority": 2, "title": "Garantía, retracto y reversión", "artifacts": [{"key": "paquete_principal", "label": "Paquete jurídico principal", "required": true, "extensions": [".docx", ".pdf"], "filename_hints": ["garantia", "retracto", "reversion", "paquete_08"]}]},
+  {"product_code": "CO-CD-004", "priority": 2, "title": "Cobro, acuerdo y pagaré", "artifacts": [{"key": "paquete_principal", "label": "Paquete jurídico principal", "required": true, "extensions": [".docx", ".pdf"], "filename_hints": ["cobro", "pagare", "paquete_05"]}]}
+]

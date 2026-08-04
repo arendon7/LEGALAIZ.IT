@@ -1,0 +1,422 @@
+{
+  "version": "2.50",
+  "product_id": "CO-AR-001",
+  "base_case": {
+    "lease": {
+      "configuration": "individual"
+    },
+    "landlord": {
+      "identification": {
+        "type": "natural",
+        "name": "Laura Propietaria",
+        "id_number": "43.100.001",
+        "address": "Medellín, Antioquia",
+        "email": "laura@example.com",
+        "phone": "3001112233"
+      },
+      "signatory": {},
+      "authority_evidence": "owner"
+    },
+    "tenant": {
+      "identification": {
+        "type": "natural",
+        "name": "Andrés Arrendatario",
+        "id_number": "71.200.002",
+        "address": "Medellín, Antioquia",
+        "email": "andres@example.com",
+        "phone": "3102223344"
+      },
+      "additional": {
+        "names": "",
+        "solidarity": "no"
+      }
+    },
+    "notifications": {
+      "channels": {
+        "landlord_channel": "laura@example.com",
+        "tenant_channel": "andres@example.com",
+        "physical_addresses": "Direcciones contractuales informadas por las partes"
+      }
+    },
+    "scope": {
+      "urban_home": "yes"
+    },
+    "property": {
+      "identification": {
+        "address": "Carrera 45 # 10-20",
+        "municipality": "Medellín, Antioquia",
+        "registration": "001-654321",
+        "cadastral_id": "05001-02-0002"
+      },
+      "type": "house",
+      "included_units": {
+        "private_area": "Casa urbana completa",
+        "parking": "",
+        "storage": "",
+        "other": ""
+      },
+      "horizontal": false,
+      "ph_details": {},
+      "dispute_status": "none",
+      "furnished": false,
+      "high_value_assets": false
+    },
+    "use": {
+      "destination": "residential",
+      "sublease_tourism": "none",
+      "shared_areas": ""
+    },
+    "occupants": {
+      "authorized": "Andrés Arrendatario",
+      "multiple": false
+    },
+    "pets": {
+      "exists": false,
+      "conditions": ""
+    },
+    "condition": {
+      "habitability": "fit",
+      "defects": "Sin defectos materiales identificados en la inspección de entrega.",
+      "repairs_pending": {
+        "items": "",
+        "responsible": ""
+      }
+    },
+    "delivery": {
+      "inventory_method": "detailed",
+      "date": "2026-08-01"
+    },
+    "maintenance": {
+      "rules": {
+        "routine": "Reparaciones locativas atribuibles al uso ordinario.",
+        "improvements": "Solo con autorización escrita del arrendador.",
+        "authorization": "Solicitud escrita con descripción, costo y reversibilidad."
+      }
+    },
+    "rent": {
+      "amount": 1800000,
+      "values": {
+        "commercial_value": 250000000,
+        "cadastral_value": 150000000,
+        "source_date": "Avalúo comercial de julio de 2026"
+      },
+      "payment": {
+        "frequency": "monthly",
+        "day": 5,
+        "method": "transferencia",
+        "account": "Cuenta bancaria informada por la arrendadora"
+      },
+      "adjustment": "legal_ipc"
+    },
+    "charges": {
+      "additional_services": {
+        "exists": false,
+        "description": "",
+        "value": 0
+      },
+      "administration": {
+        "ordinary_amount": 0,
+        "ordinary_responsible": "landlord",
+        "extraordinary_responsible": "landlord"
+      },
+      "utilities": {
+        "responsible": "tenant",
+        "distribution": "Facturación directa por medidores",
+        "internet": "A cargo del arrendatario",
+        "gas_or_other": "Según consumo"
+      }
+    },
+    "utilities": {
+      "denunciation": "no"
+    },
+    "guarantee": {
+      "type": "none",
+      "details": {},
+      "cash_deposit": false
+    },
+    "term": {
+      "duration_months": 12,
+      "rules": {
+        "automatic_extension": "yes",
+        "notice_days": 90,
+        "special_termination": ""
+      }
+    },
+    "data": {
+      "screening": {
+        "credit_study": false,
+        "personal_data": "Celebración, ejecución, facturación, comunicaciones, cobranza y cierre del contrato",
+        "sensitive_documents": false
+      }
+    },
+    "confirmation": {
+      "reviewed": true
+    }
+  },
+  "scenarios": [
+    {
+      "id": "AR-N01",
+      "name": "Inmueble fuera del alcance urbano",
+      "overrides": {
+        "scope.urban_home": "no"
+      },
+      "expected": {
+        "blocked": true,
+        "readiness": "blocked",
+        "required_findings": [
+          "V-AR-001"
+        ]
+      }
+    },
+    {
+      "id": "AR-N02",
+      "name": "Persona jurídica sin firmante acreditado",
+      "overrides": {
+        "landlord.identification.type": "legal",
+        "landlord.signatory": {}
+      },
+      "expected": {
+        "blocked": true,
+        "readiness": "blocked",
+        "required_findings": [
+          "V-AR-002"
+        ]
+      }
+    },
+    {
+      "id": "AR-N03",
+      "name": "Facultad del arrendador ausente",
+      "overrides": {
+        "landlord.authority_evidence": "absent"
+      },
+      "expected": {
+        "blocked": true,
+        "readiness": "blocked",
+        "required_findings": [
+          "V-AR-002"
+        ]
+      }
+    },
+    {
+      "id": "AR-N04",
+      "name": "Inmueble en litigio",
+      "overrides": {
+        "property.dispute_status": "litigation"
+      },
+      "expected": {
+        "blocked": true,
+        "readiness": "blocked",
+        "required_findings": [
+          "V-AR-003"
+        ]
+      }
+    },
+    {
+      "id": "AR-N05",
+      "name": "Depósito en dinero prohibido",
+      "overrides": {
+        "guarantee.cash_deposit": true
+      },
+      "expected": {
+        "blocked": true,
+        "readiness": "blocked",
+        "required_findings": [
+          "V-AR-004"
+        ]
+      }
+    },
+    {
+      "id": "AR-N06",
+      "name": "Canon superior al uno por ciento",
+      "overrides": {
+        "rent.amount": 3000000
+      },
+      "expected": {
+        "blocked": true,
+        "readiness": "blocked",
+        "required_findings": [
+          "V-AR-005"
+        ]
+      }
+    },
+    {
+      "id": "AR-N07",
+      "name": "Valor comercial superior a dos avalúos catastrales",
+      "overrides": {
+        "rent.values.commercial_value": 350000000,
+        "rent.values.cadastral_value": 150000000
+      },
+      "expected": {
+        "blocked": true,
+        "readiness": "blocked",
+        "required_findings": [
+          "V-AR-006"
+        ]
+      }
+    },
+    {
+      "id": "AR-N08",
+      "name": "Propiedad horizontal sin entrega de reglas",
+      "overrides": {
+        "property.horizontal": true,
+        "property.ph_details": {
+          "name": "Edificio P.H.",
+          "administrator": "Administración",
+          "rules_delivery": "no",
+          "ordinary_fee": 300000
+        }
+      },
+      "expected": {
+        "blocked": false,
+        "readiness": "review_required",
+        "required_findings": [
+          "V-AR-007"
+        ],
+        "documents": [
+          "ANX-AR-PH-001"
+        ]
+      }
+    },
+    {
+      "id": "AR-N09",
+      "name": "Inmueble no habitable",
+      "overrides": {
+        "condition.habitability": "unsafe"
+      },
+      "expected": {
+        "blocked": true,
+        "readiness": "blocked",
+        "required_findings": [
+          "V-AR-008"
+        ]
+      }
+    },
+    {
+      "id": "AR-N10",
+      "name": "Uso turístico por plataforma",
+      "overrides": {
+        "use.sublease_tourism": "platform"
+      },
+      "expected": {
+        "blocked": true,
+        "readiness": "blocked",
+        "required_findings": [
+          "V-AR-009"
+        ]
+      }
+    },
+    {
+      "id": "AR-N11",
+      "name": "Subarriendo solicitado sin delimitar",
+      "overrides": {
+        "use.sublease_tourism": "sublease_requested"
+      },
+      "expected": {
+        "blocked": false,
+        "readiness": "review_required",
+        "required_findings": [
+          "V-AR-010"
+        ],
+        "blocks": [
+          "AR-SUB-001"
+        ]
+      }
+    },
+    {
+      "id": "AR-N12",
+      "name": "Servicios adicionales superiores al cincuenta por ciento",
+      "overrides": {
+        "charges.additional_services": {
+          "exists": true,
+          "description": "Paquete de servicios y mobiliario",
+          "value": 1000000
+        }
+      },
+      "expected": {
+        "blocked": true,
+        "readiness": "blocked",
+        "required_findings": [
+          "V-AR-011"
+        ]
+      }
+    },
+    {
+      "id": "AR-N13",
+      "name": "Bienes de valor sin inventario individualizado y convivencia indefinida",
+      "overrides": {
+        "property.furnished": true,
+        "property.high_value_assets": true,
+        "delivery.inventory_method": "photos",
+        "pets.exists": true,
+        "pets.conditions": "",
+        "occupants.multiple": true,
+        "tenant.additional": {
+          "names": "María Coarrendataria",
+          "solidarity": "to_define"
+        }
+      },
+      "expected": {
+        "blocked": false,
+        "readiness": "review_required",
+        "required_findings": [
+          "V-AR-012",
+          "V-AR-013"
+        ],
+        "documents": [
+          "ANX-AR-FURNISHED-001",
+          "ANX-AR-OCCUPANTS-001"
+        ]
+      }
+    },
+    {
+      "id": "AR-N14",
+      "name": "Garantía incompleta",
+      "overrides": {
+        "guarantee.type": "codebtor",
+        "guarantee.details": {
+          "party": "",
+          "id_number": "",
+          "scope": "",
+          "validity": ""
+        }
+      },
+      "expected": {
+        "blocked": true,
+        "readiness": "blocked",
+        "required_findings": [
+          "V-AR-014"
+        ]
+      }
+    },
+    {
+      "id": "AR-N15",
+      "name": "Servicios, reajuste, terminación y datos pendientes",
+      "overrides": {
+        "charges.utilities": {
+          "responsible": "special",
+          "distribution": "",
+          "internet": "",
+          "gas_or_other": ""
+        },
+        "utilities.denunciation": "to_define",
+        "rent.adjustment": "none",
+        "term.rules.special_termination": "Terminación especial por definir",
+        "data.screening.sensitive_documents": true
+      },
+      "remove": [
+        "rent.payment.method"
+      ],
+      "expected": {
+        "blocked": false,
+        "readiness": "incomplete",
+        "required_findings": [
+          "V-AR-015",
+          "V-AR-016",
+          "V-AR-017",
+          "V-AR-018"
+        ],
+        "missing": "rent.payment.method"
+      }
+    }
+  ]
+}

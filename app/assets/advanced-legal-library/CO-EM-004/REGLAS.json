@@ -1,0 +1,389 @@
+[
+  {
+    "id": "EM4-R1",
+    "risk": "yellow",
+    "message": "La información protegida no está delimitada por categorías verificables.",
+    "action": "Completar inventario, exclusiones, custodios y soportes.",
+    "conditions": {
+      "all": [
+        {
+          "field": "info_defined",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "EM4-S1",
+      "EM4-S6",
+      "EM4-S7"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "EM4-R2",
+    "risk": "yellow",
+    "message": "La transferencia internacional o nube externa requiere análisis de roles, países y garantías.",
+    "action": "Activar anexo de datos y revisión profesional recomendada.",
+    "conditions": {
+      "all": [
+        {
+          "field": "crossborder",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "EM4-S2",
+      "EM4-S7"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "EM4-R3",
+    "risk": "red",
+    "message": "No debe imponerse una prohibición general de trabajar después de terminar.",
+    "action": "Eliminar o rediseñar la restricción con alcance legítimo y proporcional.",
+    "conditions": {
+      "all": [
+        {
+          "field": "noncompete",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "EM4-S6",
+      "EM4-S7"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "EM4-R4",
+    "risk": "red",
+    "message": "Los derechos morales no se transfieren ni renuncian por cláusula general.",
+    "action": "Corregir la cláusula y separar derechos morales de derechos patrimoniales.",
+    "conditions": {
+      "all": [
+        {
+          "field": "moral_rights",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "EM4-S3",
+      "EM4-S4",
+      "EM4-S5"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "EM4-R5",
+    "risk": "yellow",
+    "message": "El tratamiento de datos personales requiere finalidades, roles, medidas y ciclo de vida propios.",
+    "action": "Activar anexo de protección de datos.",
+    "conditions": {
+      "all": [
+        {
+          "field": "personal_data",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "EM4-S2",
+      "EM4-S7"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "EM4-R6",
+    "risk": "yellow",
+    "message": "La duración propuesta supera cinco años.",
+    "action": "Justificar proporcionalidad y diferenciar información ordinaria de secreto empresarial.",
+    "conditions": {
+      "all": [
+        {
+          "field": "duration_years",
+          "op": "gt",
+          "value": 5
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "EM4-S1",
+      "EM4-S6",
+      "EM4-S7"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "EM4-R7",
+    "risk": "green",
+    "message": "Se confirmó la necesidad de protocolo de incidentes y cierre.",
+    "action": "Incorporar protocolo operativo, responsables, evidencia y acta de cierre.",
+    "conditions": {
+      "all": [
+        {
+          "field": "incident_protocol",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "EM4-S2",
+      "EM4-S7"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "EM4-R8",
+    "risk": "red",
+    "message": "Los datos sensibles, biométricos o de salud requieren evaluación especializada previa.",
+    "action": "Bloquear autoservicio y validar base jurídica, necesidad, seguridad y autorizaciones.",
+    "conditions": {
+      "all": [
+        {
+          "field": "sensitive_data",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "EM4-S2"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "EM4-R9",
+    "risk": "red",
+    "message": "No debe cargarse información confidencial en herramientas públicas o no autorizadas de IA.",
+    "action": "Bloquear la generación y definir herramientas aprobadas, anonimización y controles.",
+    "conditions": {
+      "all": [
+        {
+          "field": "ai_tools",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "EM4-S1",
+      "EM4-S2",
+      "EM4-S6",
+      "EM4-S7"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "EM4-R10",
+    "risk": "green",
+    "message": "Se confirmaron secretos empresariales o know-how crítico.",
+    "action": "Activar inventario, clasificación, acceso restringido y medidas razonables de reserva.",
+    "conditions": {
+      "all": [
+        {
+          "field": "trade_secrets",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "EM4-S1",
+      "EM4-S6"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "EM4-R11",
+    "risk": "yellow",
+    "message": "No está confirmado si la información reúne condiciones de secreto empresarial.",
+    "action": "Realizar clasificación y evidencia de medidas razonables de protección.",
+    "conditions": {
+      "all": [
+        {
+          "field": "trade_secrets",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "EM4-S1",
+      "EM4-S6"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "EM4-R12",
+    "risk": "green",
+    "message": "Existen materiales o activos preexistentes.",
+    "action": "Activar inventario de antecedentes, titularidad y licencias de uso.",
+    "conditions": {
+      "all": [
+        {
+          "field": "preexisting_materials",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "EM4-S3",
+      "EM4-S4",
+      "EM4-S5",
+      "EM4-S7"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "EM4-R13",
+    "risk": "yellow",
+    "message": "No se ha determinado si existen materiales preexistentes.",
+    "action": "Completar inventario antes de pactar licencias o cesiones.",
+    "conditions": {
+      "all": [
+        {
+          "field": "preexisting_materials",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "EM4-S3",
+      "EM4-S4",
+      "EM4-S5"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "EM4-R14",
+    "risk": "yellow",
+    "message": "El uso de software abierto o componentes de terceros exige inventario y compatibilidad de licencias.",
+    "action": "Activar anexo de OSS y registrar componentes, licencias y obligaciones.",
+    "conditions": {
+      "all": [
+        {
+          "field": "oss_components",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "EM4-S3",
+      "EM4-S4",
+      "EM4-S5",
+      "EM4-S7"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "EM4-R15",
+    "risk": "red",
+    "message": "No procede una cesión general de obras o resultados futuros aún indeterminados.",
+    "action": "Bloquear autoservicio y delimitar resultados, modalidades, territorio, plazo y contraprestación.",
+    "conditions": {
+      "all": [
+        {
+          "field": "future_ip_assignment",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "EM4-S3",
+      "EM4-S4",
+      "EM4-S5"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "EM4-R16",
+    "risk": "green",
+    "message": "La relación requiere un anexo especializado.",
+    "action": "Seleccionar el anexo comercial, laboral, software o contenidos correspondiente.",
+    "conditions": {
+      "all": [
+        {
+          "field": "relationship_context",
+          "op": "in",
+          "value": [
+            "Comercial/proveedor",
+            "Laboral/colaborador",
+            "Software/tecnología",
+            "Contenidos/creativo"
+          ]
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "EM4-S7"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "EM4-R17",
+    "risk": "green",
+    "message": "Existen destinatarios autorizados identificados.",
+    "action": "Incorporar matriz de acceso, necesidad de conocer y responsabilidad por terceros.",
+    "conditions": {
+      "all": [
+        {
+          "field": "authorized_recipients",
+          "op": "not_missing",
+          "value": null
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "EM4-S1",
+      "EM4-S2",
+      "EM4-S7"
+    ],
+    "blocking": false
+  }
+]

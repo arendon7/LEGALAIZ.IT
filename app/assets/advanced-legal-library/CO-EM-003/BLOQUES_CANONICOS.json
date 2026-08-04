@@ -1,0 +1,95 @@
+[
+  {
+    "id": "EM-TIT-001"
+  },
+  {
+    "id": "EM-CMP-001"
+  },
+  {
+    "id": "EM-CON-001"
+  },
+  {
+    "id": "EM-OBJ-001"
+  },
+  {
+    "id": "EM-SCOPE-001"
+  },
+  {
+    "id": "EM-DEL-001"
+  },
+  {
+    "id": "EM-ACC-001"
+  },
+  {
+    "id": "EM-CHG-001"
+  },
+  {
+    "id": "EM-AUT-001"
+  },
+  {
+    "id": "EM-NOLAB-001"
+  },
+  {
+    "id": "EM-TERM-001"
+  },
+  {
+    "id": "EM-FEES-001"
+  },
+  {
+    "id": "EM-INV-001"
+  },
+  {
+    "id": "EM-EXP-001"
+  },
+  {
+    "id": "EM-OBL-CNT-001"
+  },
+  {
+    "id": "EM-OBL-CNR-001"
+  },
+  {
+    "id": "EM-CONF-001"
+  },
+  {
+    "id": "EM-DATA-001"
+  },
+  {
+    "id": "EM-IP-001"
+  },
+  {
+    "id": "EM-AI-001"
+  },
+  {
+    "id": "EM-LIAB-001"
+  },
+  {
+    "id": "EM-INDEM-001"
+  },
+  {
+    "id": "EM-INS-001"
+  },
+  {
+    "id": "EM-FM-001"
+  },
+  {
+    "id": "EM-SUSP-001"
+  },
+  {
+    "id": "EM-TER-001"
+  },
+  {
+    "id": "EM-TRANS-001"
+  },
+  {
+    "id": "EM-DISP-001"
+  },
+  {
+    "id": "EM-NOT-001"
+  },
+  {
+    "id": "EM-INT-001"
+  },
+  {
+    "id": "EM-FIR-001"
+  }
+]

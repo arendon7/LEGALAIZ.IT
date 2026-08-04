@@ -1,0 +1,242 @@
+[
+  {
+    "id": "PROFILE-LA-001",
+    "name": "Auxiliar administrativo",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-002",
+    "name": "Director administrativo",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-003",
+    "name": "Ejecutivo comercial",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-004",
+    "name": "Auxiliar contable",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-005",
+    "name": "Desarrollador de software",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-006",
+    "name": "Profesional jurídico",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-007",
+    "name": "Operario de producción",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-008",
+    "name": "Operario de planta de tratamiento",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-009",
+    "name": "Conductor",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-010",
+    "name": "Supervisor o jefe de planta",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-011",
+    "name": "Investigador",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-012",
+    "name": "Profesional ambiental",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-013",
+    "name": "Mensajero",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-014",
+    "name": "Servicio doméstico externo",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-015",
+    "name": "Servicio doméstico interno",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-016",
+    "name": "Mayordomo de finca",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-017",
+    "name": "Niñera",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-018",
+    "name": "Persona cuidadora",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-019",
+    "name": "Auxiliar de cocina",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-020",
+    "name": "Cocinero",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-021",
+    "name": "Mesero",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-022",
+    "name": "Cajero",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-023",
+    "name": "Vendedor de mostrador",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-024",
+    "name": "Auxiliar de bodega",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-025",
+    "name": "Domiciliario",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-026",
+    "name": "Recepcionista",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-027",
+    "name": "Jardinero",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-028",
+    "name": "Trabajador agrícola",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-029",
+    "name": "Operario de aseo",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  },
+  {
+    "id": "PROFILE-LA-030",
+    "name": "Portero o conserje no armado",
+    "version": "2.36",
+    "requires_human_approval": true,
+    "auto_authorities": [],
+    "auto_sensitive_authorizations": []
+  }
+]

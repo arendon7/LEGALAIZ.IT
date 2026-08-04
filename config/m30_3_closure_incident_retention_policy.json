@@ -1,0 +1,93 @@
+{
+  "schema": "legalaizit-m30-3-governance-policy-v1",
+  "milestone": "M30.3",
+  "version": "4.7.0",
+  "created_at": "2026-08-03T13:18:00-05:00",
+  "scope": "controlled_pilot_communications_incidents_retention_and_closure",
+  "communication_templates": {
+    "invitation_reminder": {
+      "label": "Recordatorio de invitación",
+      "subject": "Tienes una invitación pendiente en LegalAIZ.it",
+      "body": "Ingresa a tu cuenta para revisar voluntariamente la invitación al piloto controlado. No envíes información jurídica por canales externos."
+    },
+    "consent_receipt": {
+      "label": "Constancia de consentimiento",
+      "subject": "Tu consentimiento del piloto quedó registrado",
+      "body": "La plataforma registró tu decisión y conserva una evidencia versionada. Puedes consultar el alcance, solicitar soporte o retirar tu participación desde tu cuenta."
+    },
+    "support_update": {
+      "label": "Actualización de soporte",
+      "subject": "Hay una actualización sobre tu solicitud de soporte",
+      "body": "Consulta el estado desde tu cuenta. Este aviso no contiene hechos, documentos ni datos sensibles del caso."
+    },
+    "pilot_closure_notice": {
+      "label": "Cierre de participación",
+      "subject": "Tu recorrido en el piloto controlado fue cerrado",
+      "body": "El recorrido fue cerrado y los registros quedan sujetos a la política de retención, derechos del titular y controles de auditoría aplicables."
+    },
+    "privacy_incident_notice": {
+      "label": "Aviso de incidente de privacidad",
+      "subject": "Información importante sobre seguridad y privacidad",
+      "body": "Existe una comunicación de seguridad disponible en tu cuenta. El detalle se presenta de forma controlada y no por canales externos."
+    }
+  },
+  "communication_statuses": ["ready", "exported", "acknowledged", "cancelled"],
+  "incident": {
+    "categories": ["privacy", "security", "legal_content", "document", "usability", "performance", "other"],
+    "data_classes": ["contact", "authentication", "case_metadata", "document", "special_category", "unknown"],
+    "affected_record_buckets": ["none", "one", "two_to_ten", "eleven_to_one_hundred", "over_one_hundred", "unknown"],
+    "containment_statuses": ["not_started", "contained", "monitoring", "recovered"],
+    "regulatory_assessments": ["pending", "report_required", "report_not_required"],
+    "reporting_channels": ["rnbd", "sic_incident_application", "other_authority", "not_applicable"],
+    "root_cause_codes": ["access_control", "configuration", "software_defect", "human_error", "third_party", "lost_device", "social_engineering", "unknown", "other"],
+    "regulatory_business_days": 15,
+    "deadline_note": "El cálculo excluye sábados y domingos. Los festivos y el canal aplicable deben verificarse jurídicamente antes de reportar."
+  },
+  "retention": {
+    "status": "approved_for_controlled_pilot",
+    "invitation_days_after_decline_or_expiry": 30,
+    "participant_days_after_withdrawal_or_cohort_closure": 180,
+    "support_days_after_closure": 180,
+    "audit_tombstone_days": 730,
+    "aggregated_metrics": "retain_without_direct_identifiers_while_useful_for_documented_pilot_purpose",
+    "automatic_execution_enabled": false,
+    "manual_dual_approval_execution_enabled": true,
+    "legal_hold_overrides_schedule": true,
+    "case_and_document_retention_outside_scope": true
+  },
+  "retention_actions": ["purge_invitation_record", "pseudonymize_pilot_participation"],
+  "retention_statuses": ["pending_legal", "pending_qa", "approved", "executed", "cancelled", "blocked_legal_hold"],
+  "closure": {
+    "decisions": ["close", "extend", "hold"],
+    "reason_codes": ["pilot_objective_met", "insufficient_evidence", "quality_threshold_not_met", "incident_open", "privacy_or_terms_pending", "support_backlog", "other"],
+    "statuses": ["pending_legal", "pending_qa", "approved", "closed", "cancelled"],
+    "require_terminal_case_plans": true,
+    "require_no_open_high_or_critical_incidents": true,
+    "require_no_open_high_or_critical_support": true,
+    "require_no_pending_invitations": true,
+    "require_evidence_gate": true
+  },
+  "confirmations": {
+    "legal_retention_approval": "APROBAR RETENCION JURIDICA M30.3",
+    "qa_retention_approval": "APROBAR RETENCION QA M30.3",
+    "execute_retention": "EJECUTAR DEPURACION CONTROLADA M30.3",
+    "legal_closure_approval": "APROBAR CIERRE JURIDICO M30.3",
+    "qa_closure_approval": "APROBAR CIERRE QA M30.3",
+    "execute_closure": "CERRAR COHORTE CONTROLADA M30.3"
+  },
+  "safeguards": {
+    "no_case_narratives_in_communications": true,
+    "no_raw_email_in_exports": true,
+    "no_automatic_external_send": true,
+    "no_automatic_deletion": true,
+    "distinct_legal_and_qa_approvers": true,
+    "public_production_blocked": true,
+    "real_payments_blocked": true,
+    "automatic_delivery_blocked": true
+  },
+  "official_references": [
+    "Ley 1581 de 2012, principios de finalidad, libertad, seguridad y confidencialidad.",
+    "Reglas vigentes de la SIC para reporte de incidentes de seguridad en datos personales dentro de quince días hábiles cuando corresponda.",
+    "Guía SIC para la Gestión de Incidentes de Seguridad en el Tratamiento de Datos Personales."
+  ]
+}

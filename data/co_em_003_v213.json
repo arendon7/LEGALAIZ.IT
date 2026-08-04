@@ -1,0 +1,134 @@
+{
+  "version": "2.13",
+  "product_code": "CO-EM-003",
+  "baseline": "2.12.1",
+  "status": "Maduración integral para prueba interna",
+  "objective": "Cerrar el recorrido público y documental de prestación de servicios sin reescribir la plataforma.",
+  "frozen_identifiers": {
+    "questions": [
+      "party_a",
+      "party_a_id",
+      "party_b",
+      "party_b_id",
+      "contract_city",
+      "contact_email_a",
+      "contact_email_b",
+      "state_entity",
+      "regulated_service",
+      "object_clear",
+      "fixed_schedule",
+      "permanent_orders",
+      "disciplinary_control",
+      "continuous_availability",
+      "exclusive",
+      "personal_data",
+      "confidentiality",
+      "ip_relevant",
+      "object",
+      "deliverables",
+      "fees",
+      "start_date",
+      "end_date",
+      "payment_scheme",
+      "acceptance_days",
+      "subcontractors",
+      "early_termination"
+    ],
+    "rules": [
+      "EM3-R1",
+      "EM3-R2",
+      "EM3-R3",
+      "EM3-R4",
+      "EM3-R5",
+      "EM3-R6",
+      "EM3-R7",
+      "EM3-R8",
+      "EM3-R9",
+      "EM3-R10",
+      "EM3-R11",
+      "EM3-R12",
+      "EM3-R13",
+      "EM3-R14"
+    ]
+  },
+  "metrics": {
+    "questions": 27,
+    "rules": 14,
+    "sources": 6,
+    "test_scenarios": 8,
+    "possible_documents": 6
+  },
+  "document_logic": {
+    "always": [
+      "contract",
+      "scope",
+      "closure"
+    ],
+    "conditional": {
+      "confidentiality": "confidentiality == Sí",
+      "intellectual_property": "ip_relevant == Sí",
+      "data_processing": "personal_data == Sí"
+    },
+    "blocked": [
+      "state_entity == Sí",
+      "regulated_service == Sí",
+      "fixed_schedule == Sí",
+      "permanent_orders == Sí",
+      "disciplinary_control == Sí"
+    ]
+  },
+  "maturity_matrix": [
+    {
+      "component": "Página pública",
+      "before": "Contenido genérico y dos documentos visibles",
+      "change": "Texto final de producto y seis documentos condicionales",
+      "validation": "Detalle público y biblioteca"
+    },
+    {
+      "component": "Entrevista",
+      "before": "27 preguntas con ayuda desigual",
+      "change": "27 IDs conservadas, ayudas, ejemplos y validaciones completas",
+      "validation": "Pruebas de esquema y formulario"
+    },
+    {
+      "component": "Reglas",
+      "before": "Módulos ordinarios elevaban el riesgo",
+      "change": "Módulos verdes; alertas amarillas delimitadas; bloqueos rojos expresos",
+      "validation": "Ocho escenarios jurídicos"
+    },
+    {
+      "component": "Generación",
+      "before": "Flujo normal generaba contrato y alcance",
+      "change": "Generación condicional de tres a seis documentos",
+      "validation": "Pruebas end-to-end y QA DOCX/PDF"
+    },
+    {
+      "component": "Revisión",
+      "before": "Validación humana marcada como obligatoria",
+      "change": "Opcional en estándar, recomendada en amarillo, obligatoria en rojo",
+      "validation": "Modalidades verde/amarillo/rojo"
+    }
+  ],
+  "qa_criteria": [
+    "No reducir los 11 productos, 176 preguntas o 96 reglas globales.",
+    "No producir variables rotas o textos centinela.",
+    "Generar exactamente los módulos aplicables.",
+    "Bloquear los cinco supuestos expresos de fuera de alcance o subordinación.",
+    "Verificar visualmente todos los DOCX/PDF avanzados del producto.",
+    "Mantener advertencia de uso interno hasta aprobación jurídica final."
+  ],
+  "legal_foundations": [
+    "EM3-S1",
+    "EM3-S2",
+    "EM3-S3",
+    "EM3-S4",
+    "EM3-S5",
+    "EM3-S6"
+  ],
+  "limitations": [
+    "No incorpora el binario canónico original verificado.",
+    "No autoriza firma, radicación o uso profesional.",
+    "La clasificación laboral depende de la realidad y las pruebas.",
+    "No incluye contratación estatal ni clausulados sectoriales especiales."
+  ]
+}

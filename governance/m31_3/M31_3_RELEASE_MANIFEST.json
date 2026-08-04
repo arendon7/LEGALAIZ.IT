@@ -1,0 +1,41 @@
+{
+  "schema": "legalaizit-m31-3-release-manifest-v1",
+  "milestone": "M31.3",
+  "version": "5.0.2",
+  "build_id": "M31-3-PREPRODUCCION-REPRODUCIBLE-2026-08-03",
+  "release_id": "M31-3-PREPRODUCCION-REPRODUCIBLE-5.0.2-2026-08-03",
+  "base_release": "M31.2 v5.0.1",
+  "production_authorized": false,
+  "status": "approved_for_managed_preproduction_candidate",
+  "validation": {
+    "tests_passed": 442,
+    "subtests_passed": 938,
+    "test_modules": 61,
+    "failures": 0,
+    "http_smoke": "5/5",
+    "source_release_audit": "7/7"
+  },
+  "outputs": [
+    "LegalAIZit_M31_3_COMPLETO_v5.0.2_2026-08-03.zip",
+    "LegalAIZit_M31_3_RUNTIME_v5.0.2_2026-08-03.zip",
+    "LegalAIZit_M31_3_EVIDENCIAS_HISTORICAS_v5.0.2_2026-08-03.zip"
+  ],
+  "distribution_guarantees": {
+    "runtime_state_excluded": true,
+    "secrets_excluded": true,
+    "databases_excluded": true,
+    "backups_excluded": true,
+    "generated_documents_excluded": true,
+    "bytecode_excluded": true,
+    "sha256_manifest_inside_each_package": true
+  },
+  "external_gates_pending": [
+    "PostgreSQL certificado en infraestructura objetivo",
+    "Pentest externo",
+    "Prueba formal de carga",
+    "Monitoreo y alertamiento externo",
+    "Backup y restauración en infraestructura objetivo",
+    "Rollback productivo verificado",
+    "Revisión jurídica y QA de liberación final"
+  ]
+}

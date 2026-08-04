@@ -1,0 +1,75 @@
+{
+  "product_id": "CO-TR-001",
+  "version": "2.57",
+  "verified_at": "2026-07-26",
+  "sources": [
+    {
+      "id": "ST-2026-37-WEB",
+      "authority": "Superintendencia de Transporte",
+      "type": "official_communication",
+      "title": "Gobierno Nacional investiga a 37 organismos de tránsito por presuntas irregularidades SAST",
+      "date": "2026-05-19",
+      "url": "https://www.supertransporte.gov.co/index.php/comunicaciones-2026/gobierno-nacional-investiga-a-37-organismos-de-transito-mas-de-75-millones-de-fotomultas-estan-bajo-la-lupa-y-58-millones-quedaran-sin-validez/",
+      "use": "Contexto de la actuación, causal general y advertencia sobre ausencia de decisión individual firme en el chequeo."
+    },
+    {
+      "id": "ST-2026-37-PDF",
+      "authority": "Superintendencia de Transporte",
+      "type": "official_matrix",
+      "title": "Sanciones SAST - matriz de 37 organismos y periodos",
+      "date": "2026-05-19",
+      "url": "https://www.supertransporte.gov.co/documentos/2026/Mayo/Comunicaciones_26/Sanciones_SAST1.pdf",
+      "use": "Rangos determinísticos del Grupo A."
+    },
+    {
+      "id": "ST-2026-12-WEB",
+      "authority": "Superintendencia de Transporte",
+      "type": "official_communication_and_table",
+      "title": "Investigación a otros 12 organismos por autorización ANSV ausente o vencida",
+      "date": "2026-05-29",
+      "url": "https://www.supertransporte.gov.co/index.php/comunicaciones-2026/la-supertransporte-abrio-investigacion-a-otros-12-organismos-de-transito-por-presuntas-irregularidades-en-sistemas-de-fotodeteccion/page/2/",
+      "use": "Rangos determinísticos del Grupo B y control de discrepancia Valledupar."
+    },
+    {
+      "id": "LEY-2251-2022-ART18",
+      "authority": "Congreso de Colombia / Función Pública",
+      "type": "law",
+      "title": "Ley 2251 de 2022, artículo 18 - artículo 158A del Código Nacional de Tránsito",
+      "date": "2022-07-14",
+      "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=189806",
+      "use": "La revocación oficiosa opera después de que quede en firme la decisión de la Superintendencia de Transporte."
+    },
+    {
+      "id": "LEY-1843-2017",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "type": "law",
+      "title": "Ley 1843 de 2017",
+      "date": "2017-07-14",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30032605",
+      "use": "Marco legal de los SAST y reglas de notificación."
+    },
+    {
+      "id": "LEY-769-2002",
+      "authority": "Congreso de Colombia / Función Pública",
+      "type": "code",
+      "title": "Ley 769 de 2002 - Código Nacional de Tránsito",
+      "date": "2002-08-06",
+      "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?7=&i=5557",
+      "use": "Proceso contravencional y marco general de tránsito."
+    },
+    {
+      "id": "MINTRANS-RES718-CONTEXT",
+      "authority": "Ministerio de Transporte",
+      "type": "official_guidance",
+      "title": "Cámaras salvavidas no aprobadas no pueden operar",
+      "date": "2018-12-10",
+      "url": "https://mintransporte.gov.co/publicaciones/7106/a-partir-de-hoy-camaras-salvavidas-que-no-esten-aprobadas-por-mintransporte-no-podran-seguir-operando-en-el-pais/",
+      "use": "Contexto oficial sobre autorización y Resolución 718 de 2018."
+    }
+  ],
+  "legal_control": {
+    "matrix_effect": "La coincidencia es preliminar y no equivale a revocación, devolución, nulidad ni archivo individual.",
+    "firm_decision_required": "El efecto del artículo 158A exige decisión firme de la Superintendencia de Transporte y verificación del periodo, autoridad, dispositivo y comparendo individual.",
+    "update_policy": "Revisión mensual mientras existan actuaciones SAST 2026 y extraordinaria ante decisiones firmes, correcciones oficiales o nuevas matrices."
+  }
+}

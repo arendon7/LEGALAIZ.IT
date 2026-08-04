@@ -1,0 +1,82 @@
+[
+  {
+    "id": "PROFILE-EM4-NEG-001",
+    "name": "Negociación preliminar",
+    "defaults": {
+      "relationship.context": "preliminary_negotiation"
+    },
+    "notes": "Intercambio exploratorio antes de contratar."
+  },
+  {
+    "id": "PROFILE-EM4-SUP-001",
+    "name": "Proveedor o aliado comercial",
+    "defaults": {
+      "relationship.context": "commercial_supplier"
+    },
+    "notes": "Información de precios, clientes, procesos y operación."
+  },
+  {
+    "id": "PROFILE-EM4-SVC-001",
+    "name": "Prestador de servicios independiente",
+    "defaults": {
+      "relationship.context": "independent_services"
+    },
+    "notes": "Acceso funcional limitado y deberes de cierre."
+  },
+  {
+    "id": "PROFILE-EM4-LAB-001",
+    "name": "Trabajador o colaborador",
+    "defaults": {
+      "relationship.context": "employment_collaboration"
+    },
+    "notes": "Complementa, pero no reemplaza, el contrato laboral."
+  },
+  {
+    "id": "PROFILE-EM4-SW-001",
+    "name": "Software, SaaS y tecnología",
+    "defaults": {
+      "relationship.context": "software_technology"
+    },
+    "notes": "Código fuente, OSS, credenciales y arquitectura."
+  },
+  {
+    "id": "PROFILE-EM4-CRE-001",
+    "name": "Contenidos y servicios creativos",
+    "defaults": {
+      "relationship.context": "creative_content"
+    },
+    "notes": "Obras, archivos editables, licencias y materiales previos."
+  },
+  {
+    "id": "PROFILE-EM4-RDI-001",
+    "name": "Investigación y desarrollo",
+    "defaults": {
+      "relationship.context": "research_development"
+    },
+    "notes": "Resultados, secretos, divulgaciones y publicaciones."
+  },
+  {
+    "id": "PROFILE-EM4-ALL-001",
+    "name": "Alianza estratégica",
+    "defaults": {
+      "relationship.context": "strategic_alliance"
+    },
+    "notes": "Intercambio recíproco y proyectos conjuntos."
+  },
+  {
+    "id": "PROFILE-EM4-DD-001",
+    "name": "Inversión, M&A o debida diligencia",
+    "defaults": {
+      "relationship.context": "investment_due_diligence"
+    },
+    "notes": "Data room, acceso restringido y trazabilidad."
+  },
+  {
+    "id": "PROFILE-EM4-DAT-001",
+    "name": "Tratamiento de datos y outsourcing",
+    "defaults": {
+      "relationship.context": "data_processing"
+    },
+    "notes": "Roles de responsable y encargado, subencargados y transferencias."
+  }
+]

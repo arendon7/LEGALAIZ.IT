@@ -1,0 +1,134 @@
+[
+  {
+    "id": "V-LA1-001",
+    "name": "Alcance privado colombiano",
+    "severity": "blocker",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-002",
+    "name": "Identidad de las partes",
+    "severity": "blocker",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-003",
+    "name": "Coherencia temporal",
+    "severity": "blocker",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-004",
+    "name": "Salario básico válido",
+    "severity": "blocker",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-005",
+    "name": "Salario integral verificable",
+    "severity": "review",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-006",
+    "name": "Variable soportada",
+    "severity": "review",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-007",
+    "name": "Auxilio aplicable",
+    "severity": "review",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-008",
+    "name": "Períodos verificables",
+    "severity": "review",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-009",
+    "name": "Pagos previos no negativos",
+    "severity": "blocker",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-010",
+    "name": "Descuentos legalmente soportados",
+    "severity": "review",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-011",
+    "name": "Indemnización según modalidad",
+    "severity": "review",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-012",
+    "name": "Datos de término fijo u obra",
+    "severity": "blocker",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-013",
+    "name": "Mora no automática",
+    "severity": "review",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-014",
+    "name": "Protección especial",
+    "severity": "review",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-015",
+    "name": "Sector público excluido",
+    "severity": "blocker",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-016",
+    "name": "Contrato realidad escalado",
+    "severity": "blocker",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-017",
+    "name": "Régimen colectivo",
+    "severity": "review",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-018",
+    "name": "Actuación previa",
+    "severity": "review",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-019",
+    "name": "Prescripción y reclamo escrito",
+    "severity": "review",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-020",
+    "name": "Acuerdo de pago completo",
+    "severity": "review",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-021",
+    "name": "Confirmación de hechos",
+    "severity": "blocker",
+    "professional_review": true
+  },
+  {
+    "id": "V-LA1-022",
+    "name": "Parámetros y fuentes vigentes",
+    "severity": "review",
+    "professional_review": true
+  }
+]

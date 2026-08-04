@@ -1,0 +1,22 @@
+{
+  "version": "2.38",
+  "root_domains": [
+    "employer",
+    "employerSignatory",
+    "worker",
+    "priorRelationship",
+    "role",
+    "authorities",
+    "work",
+    "remoteWork",
+    "mobility",
+    "schedule",
+    "availability",
+    "compensation",
+    "variableCompensation",
+    "benefits",
+    "specialConditions",
+    "assets",
+    "documents"
+  ]
+}

@@ -1,0 +1,80 @@
+[
+  {
+    "id": "DOC-AR-CONTRACT-001",
+    "name": "Contrato de arrendamiento de vivienda urbana",
+    "kind": "main",
+    "default": true
+  },
+  {
+    "id": "ANX-AR-PROPERTY-001",
+    "name": "Anexo de identificación del inmueble y bienes incluidos",
+    "kind": "annex",
+    "default": true
+  },
+  {
+    "id": "ANX-AR-INVENTORY-001",
+    "name": "Inventario y evidencia de estado",
+    "kind": "annex",
+    "default": true
+  },
+  {
+    "id": "ACT-AR-DELIVERY-001",
+    "name": "Acta de entrega material",
+    "kind": "act",
+    "default": true
+  },
+  {
+    "id": "ANX-AR-PH-001",
+    "name": "Propiedad horizontal y reglas de convivencia",
+    "kind": "annex",
+    "default": false
+  },
+  {
+    "id": "ANX-AR-SERVICES-001",
+    "name": "Servicios públicos, administración y usos adicionales",
+    "kind": "annex",
+    "default": false
+  },
+  {
+    "id": "ANX-AR-GUARANTEE-001",
+    "name": "Garantía personal o póliza",
+    "kind": "annex",
+    "default": false
+  },
+  {
+    "id": "ANX-AR-FURNISHED-001",
+    "name": "Muebles y bienes de valor",
+    "kind": "annex",
+    "default": false
+  },
+  {
+    "id": "ANX-AR-OCCUPANTS-001",
+    "name": "Ocupantes, mascotas y zonas compartidas",
+    "kind": "annex",
+    "default": false
+  },
+  {
+    "id": "AUT-AR-DATA-001",
+    "name": "Información y autorización para estudio y tratamiento de datos",
+    "kind": "authorization",
+    "default": false
+  },
+  {
+    "id": "COM-AR-ADJUSTMENT-001",
+    "name": "Comunicación de reajuste del canon",
+    "kind": "communication",
+    "default": false
+  },
+  {
+    "id": "NOT-AR-TERMINATION-001",
+    "name": "Modelo de preaviso o terminación",
+    "kind": "notice",
+    "default": false
+  },
+  {
+    "id": "ACT-AR-RESTITUTION-001",
+    "name": "Acta de restitución, liquidación y cierre",
+    "kind": "act",
+    "default": true
+  }
+]

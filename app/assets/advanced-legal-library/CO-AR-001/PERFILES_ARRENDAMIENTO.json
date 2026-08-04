@@ -1,0 +1,116 @@
+[
+  {
+    "id": "AR-P01",
+    "name": "Apartamento en propiedad horizontal no amoblado",
+    "description": "Vivienda individual en copropiedad, sin bienes muebles relevantes.",
+    "presets": {
+      "lease.configuration": "individual",
+      "property.type": "apartment",
+      "property.horizontal": true,
+      "property.furnished": false,
+      "property.high_value_assets": false
+    }
+  },
+  {
+    "id": "AR-P02",
+    "name": "Apartamento amoblado en propiedad horizontal",
+    "description": "Apartamento con inventario reforzado y bienes muebles.",
+    "presets": {
+      "lease.configuration": "individual",
+      "property.type": "apartment",
+      "property.horizontal": true,
+      "property.furnished": true,
+      "property.high_value_assets": true,
+      "delivery.inventory_method": "combined"
+    }
+  },
+  {
+    "id": "AR-P03",
+    "name": "Casa urbana independiente",
+    "description": "Casa de vivienda urbana no sometida a propiedad horizontal.",
+    "presets": {
+      "lease.configuration": "individual",
+      "property.type": "house",
+      "property.horizontal": false
+    }
+  },
+  {
+    "id": "AR-P04",
+    "name": "Habitación o parte de inmueble",
+    "description": "Arrendamiento parcial con zonas y servicios compartidos.",
+    "presets": {
+      "lease.configuration": "shared",
+      "property.type": "room",
+      "occupants.multiple": true
+    }
+  },
+  {
+    "id": "AR-P05",
+    "name": "Pensión de vivienda urbana",
+    "description": "Modalidad de pensión con reglas de convivencia y servicios.",
+    "presets": {
+      "lease.configuration": "pension",
+      "property.type": "room",
+      "occupants.multiple": true
+    }
+  },
+  {
+    "id": "AR-P06",
+    "name": "Arrendamiento mancomunado",
+    "description": "Pluralidad de arrendatarios y distribución de obligaciones.",
+    "presets": {
+      "lease.configuration": "joint",
+      "occupants.multiple": true,
+      "tenant.additional.solidarity": "to_define"
+    }
+  },
+  {
+    "id": "AR-P07",
+    "name": "Arrendamiento con codeudor solidario",
+    "description": "Garantía personal documentada.",
+    "presets": {
+      "guarantee.type": "codebtor"
+    }
+  },
+  {
+    "id": "AR-P08",
+    "name": "Arrendamiento con póliza",
+    "description": "Cobertura mediante aseguradora o afianzadora.",
+    "presets": {
+      "guarantee.type": "policy"
+    }
+  },
+  {
+    "id": "AR-P09",
+    "name": "Arrendador persona jurídica o inmobiliaria",
+    "description": "Requiere firmante, facultad y controles de matrícula cuando proceda.",
+    "presets": {
+      "landlord.identification.type": "legal"
+    }
+  },
+  {
+    "id": "AR-P10",
+    "name": "Vivienda con trabajo remoto",
+    "description": "Uso residencial con trabajo remoto sin atención al público.",
+    "presets": {
+      "use.destination": "residential_remote"
+    }
+  },
+  {
+    "id": "AR-P11",
+    "name": "Vivienda con mascotas",
+    "description": "Incluye reglas proporcionadas de convivencia y cuidado.",
+    "presets": {
+      "pets.exists": true
+    }
+  },
+  {
+    "id": "AR-P12",
+    "name": "Vivienda con parqueadero o depósito",
+    "description": "Incluye unidades privadas o anexos identificados.",
+    "presets": {
+      "property.included_units.parking": "Por identificar",
+      "property.included_units.storage": "Por identificar"
+    }
+  }
+]

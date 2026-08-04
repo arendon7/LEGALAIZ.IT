@@ -1,0 +1,100 @@
+{
+  "version": "2.14",
+  "release": "Maduración integral de CO-EM-004",
+  "product_code": "CO-EM-004",
+  "baseline_version": "2.13",
+  "date": "2026-07-17",
+  "status": "Base avanzada interna; no constituye aprobación jurídica final",
+  "objectives": [
+    "Separar confidencialidad, secretos, datos y propiedad intelectual.",
+    "Bloquear riesgos incompatibles con autoservicio.",
+    "Generar paquete modular según respuestas.",
+    "Conectar interfaz, API, motor, fábrica y QA."
+  ],
+  "invariants": [
+    "11 productos preservados",
+    "RBAC/MFA y trazabilidad preservados",
+    "Revisiones inmutables y aprobación dual preservadas",
+    "DOCX/PDF y portal/autoservicio preservados"
+  ],
+  "counts": {
+    "questions": 20,
+    "rules": 17,
+    "sources": 7,
+    "scenarios": 10,
+    "templates": 7,
+    "max_product_documents": 7
+  },
+  "question_ids": [
+    "party_a",
+    "party_b",
+    "nda_type",
+    "relationship_context",
+    "info_defined",
+    "info_categories",
+    "authorized_recipients",
+    "trade_secrets",
+    "personal_data",
+    "sensitive_data",
+    "crossborder",
+    "ai_tools",
+    "preexisting_materials",
+    "oss_components",
+    "future_ip_assignment",
+    "noncompete",
+    "moral_rights",
+    "purpose",
+    "duration_years",
+    "incident_protocol"
+  ],
+  "rule_ids": [
+    "EM4-R1",
+    "EM4-R2",
+    "EM4-R3",
+    "EM4-R4",
+    "EM4-R5",
+    "EM4-R6",
+    "EM4-R7",
+    "EM4-R8",
+    "EM4-R9",
+    "EM4-R10",
+    "EM4-R11",
+    "EM4-R12",
+    "EM4-R13",
+    "EM4-R14",
+    "EM4-R15",
+    "EM4-R16",
+    "EM4-R17"
+  ],
+  "source_ids": [
+    "EM4-S1",
+    "EM4-S2",
+    "EM4-S3",
+    "EM4-S4",
+    "EM4-S5",
+    "EM4-S6",
+    "EM4-S7"
+  ],
+  "template_ids": [
+    "TPL-CO-EM-004-NDA",
+    "TPL-CO-EM-004-INFORMATION-INVENTORY",
+    "TPL-CO-EM-004-RELATIONSHIP-ANNEX",
+    "TPL-CO-EM-004-IP-ANNEX",
+    "TPL-CO-EM-004-DATA-ANNEX",
+    "TPL-CO-EM-004-INCIDENT-PROTOCOL",
+    "TPL-CO-EM-004-CLOSURE-ACT"
+  ],
+  "red_blockers": [
+    "noncompete",
+    "moral_rights",
+    "sensitive_data",
+    "ai_tools",
+    "future_ip_assignment"
+  ],
+  "conditional_modules": [
+    "relationship_annex",
+    "ip_annex",
+    "data_annex",
+    "incident_protocol"
+  ]
+}

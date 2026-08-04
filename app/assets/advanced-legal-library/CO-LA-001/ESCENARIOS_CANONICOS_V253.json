@@ -1,0 +1,491 @@
+{
+  "version": "2.53",
+  "base_case": {
+    "scope": {
+      "private_relation": "yes"
+    },
+    "worker": {
+      "identity": {
+        "name": "María Fernanda López Gómez",
+        "id_number": "1.234.567.890",
+        "email": "maria@example.com",
+        "address": "Medellín, Antioquia"
+      }
+    },
+    "employer": {
+      "identity": {
+        "name": "Servicios Integrales Andinos S.A.S.",
+        "id_number": "900.123.456-7",
+        "email": "nomina@example.com",
+        "address": "Medellín, Antioquia"
+      },
+      "signatory": {
+        "name": "Carlos Pérez",
+        "capacity": "representante legal",
+        "authority_source": "certificado de existencia y representación legal"
+      }
+    },
+    "claim": {
+      "cutoff_date": "2026-07-24"
+    },
+    "claimant": {
+      "role": "advisor"
+    },
+    "relationship": {
+      "start_date": "2022-02-01",
+      "end_date": "2026-06-30",
+      "contract_type": "indefinite",
+      "termination_type": "resignation",
+      "special_term": {
+        "fixed_end_date": "",
+        "work_remaining_days": "",
+        "cause_document": "carta de terminación"
+      },
+      "service_status": "ended"
+    },
+    "compensation": {
+      "base_salary": 3500000,
+      "salary_type": "ordinary",
+      "variable": {
+        "exists": true,
+        "monthly_average": 500000,
+        "supports": "complete",
+        "components": "comisiones mensuales"
+      },
+      "transport_aid": "no",
+      "other_salary": {
+        "overtime": 100000,
+        "surcharges": 80000,
+        "in_kind": 0,
+        "description": "promedios soportados"
+      }
+    },
+    "periods": {
+      "salary_due_days": 15,
+      "cesantias_start_date": "2026-01-01",
+      "prima_start_date": "2026-01-01",
+      "vacation_pending_days": 12,
+      "vacation_basis": "last_salary",
+      "confirmation": "complete"
+    },
+    "payments": {
+      "prior": {
+        "salary": 0,
+        "cesantias": 0,
+        "interests": 0,
+        "prima": 0,
+        "vacation": 0,
+        "indemnity": 0
+      },
+      "deductions": {
+        "exists": false,
+        "amount": 0,
+        "reason": "",
+        "authorization": "",
+        "support": "complete"
+      }
+    },
+    "evidence": {
+      "support_level": "complete",
+      "items": {
+        "contract": "complete",
+        "payroll": "complete",
+        "bank": "complete",
+        "cesantias": "complete",
+        "termination_letter": "complete"
+      },
+      "employer_calculation": "partial"
+    },
+    "termination": {
+      "without_cause_claim": "no",
+      "cause_support": "complete",
+      "indemnity_already_paid": 0,
+      "moratory_claim": "no",
+      "delay_days": 0,
+      "good_faith_facts": "El empleador pagó parcialmente, pero no explicó las diferencias."
+    },
+    "risk": {
+      "special_protection": "no",
+      "protection_details": "",
+      "public_sector": "no",
+      "contract_reality": "no",
+      "collective_regime": "no",
+      "active_proceeding": "none"
+    },
+    "prescription": {
+      "last_written_claim": "2026-07-01",
+      "rights_dates": {
+        "earliest": "2026-01-01",
+        "latest": "2026-06-30"
+      }
+    },
+    "settlement": {
+      "generate": false,
+      "payment_terms": {
+        "installments": 3,
+        "initial_payment": 2000000,
+        "payment_channel": "transferencia bancaria"
+      }
+    },
+    "data": {
+      "confirmed": true
+    },
+    "documents": {
+      "selection": {
+        "claim": false,
+        "support_request": false,
+        "prescription_report": false,
+        "moratory_analysis": false
+      }
+    }
+  },
+  "scenarios": [
+    {
+      "id": "LA1-C01",
+      "name": "Relación vigente con corte de prestaciones",
+      "overrides": {
+        "relationship.service_status": "active",
+        "relationship.end_date": "2026-07-24",
+        "relationship.termination_type": "active",
+        "termination.without_cause_claim": "no",
+        "termination.moratory_claim": "no",
+        "termination.delay_days": 0,
+        "periods.salary_due_days": 0,
+        "payments.deductions.exists": false,
+        "compensation.variable.exists": false,
+        "prescription.rights_dates.earliest": "2026-01-01",
+        "prescription.rights_dates.latest": "2026-07-24"
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": false,
+        "status": "ready",
+        "document_count": 3,
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-C02",
+      "name": "Renuncia con prestaciones pendientes",
+      "overrides": {
+        "relationship.termination_type": "resignation",
+        "termination.without_cause_claim": "no",
+        "termination.moratory_claim": "no",
+        "payments.deductions.exists": false,
+        "compensation.variable.exists": false,
+        "documents.selection.claim": true
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": false,
+        "status": "ready",
+        "document_count": 4,
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001",
+          "DOC-LA1-CLAIM-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-C03",
+      "name": "Mutuo acuerdo con propuesta de pago",
+      "overrides": {
+        "relationship.termination_type": "mutual",
+        "termination.without_cause_claim": "no",
+        "termination.moratory_claim": "no",
+        "payments.deductions.exists": false,
+        "compensation.variable.exists": false,
+        "settlement.generate": true,
+        "settlement.payment_terms.installments": 4,
+        "settlement.payment_terms.initial_payment": 1500000,
+        "settlement.payment_terms.payment_channel": "transferencia bancaria"
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": false,
+        "status": "ready",
+        "document_count": 6,
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001",
+          "DOC-LA1-CONCILIATION-001",
+          "AGR-LA1-PAYMENT-001",
+          "ACT-LA1-CLOSE-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-C04",
+      "name": "Despido sin justa causa en contrato indefinido",
+      "overrides": {
+        "relationship.termination_type": "without_cause",
+        "termination.without_cause_claim": "yes",
+        "termination.moratory_claim": "review",
+        "termination.delay_days": 20,
+        "termination.indemnity_already_paid": 1000000,
+        "payments.prior.indemnity": 1000000,
+        "payments.deductions.exists": true,
+        "payments.deductions.amount": 250000,
+        "payments.deductions.reason": "préstamo alegado",
+        "payments.deductions.authorization": "no aportada",
+        "payments.deductions.support": "partial",
+        "termination.good_faith_facts": "El empleador pagó parcialmente, pero no explicó las diferencias.",
+        "settlement.generate": false,
+        "documents.selection.claim": true,
+        "documents.selection.moratory_analysis": true
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": false,
+        "status": "review_required",
+        "document_count": 5,
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001",
+          "DOC-LA1-CLAIM-001",
+          "DOC-LA1-MORATORY-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-C05",
+      "name": "Terminación anticipada de contrato a término fijo",
+      "overrides": {
+        "relationship.contract_type": "fixed",
+        "relationship.start_date": "2026-01-01",
+        "relationship.end_date": "2026-06-30",
+        "relationship.special_term.fixed_end_date": "2026-12-31",
+        "relationship.termination_type": "without_cause",
+        "termination.without_cause_claim": "yes",
+        "termination.moratory_claim": "no",
+        "payments.deductions.exists": false,
+        "compensation.variable.exists": false,
+        "documents.selection.claim": true
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": false,
+        "status": "ready",
+        "document_count": 4,
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001",
+          "DOC-LA1-CLAIM-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-C06",
+      "name": "Terminación anticipada de obra o labor",
+      "overrides": {
+        "relationship.contract_type": "work",
+        "relationship.start_date": "2025-09-01",
+        "relationship.end_date": "2026-06-30",
+        "relationship.special_term.work_remaining_days": 90,
+        "relationship.termination_type": "without_cause",
+        "termination.without_cause_claim": "yes",
+        "termination.moratory_claim": "no",
+        "payments.deductions.exists": false,
+        "compensation.variable.exists": false,
+        "documents.selection.claim": true
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": false,
+        "status": "ready",
+        "document_count": 4,
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001",
+          "DOC-LA1-CLAIM-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-C07",
+      "name": "Justa causa discutida",
+      "overrides": {
+        "relationship.termination_type": "just_cause",
+        "termination.without_cause_claim": "unknown",
+        "termination.cause_support": "partial",
+        "termination.moratory_claim": "no",
+        "payments.deductions.exists": false,
+        "compensation.variable.exists": false,
+        "documents.selection.claim": true
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": false,
+        "status": "review_required",
+        "document_count": 4,
+        "required_findings": [
+          "V-LA1-011"
+        ],
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001",
+          "DOC-LA1-CLAIM-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-C08",
+      "name": "Salario variable con soportes incompletos",
+      "overrides": {
+        "relationship.termination_type": "resignation",
+        "termination.without_cause_claim": "no",
+        "termination.moratory_claim": "no",
+        "compensation.variable.exists": true,
+        "compensation.variable.monthly_average": 800000,
+        "compensation.variable.supports": "partial",
+        "evidence.support_level": "partial",
+        "payments.deductions.exists": false,
+        "documents.selection.support_request": true
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": false,
+        "status": "review_required",
+        "document_count": 4,
+        "required_findings": [
+          "V-LA1-006"
+        ],
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001",
+          "DOC-LA1-SUPPORT-REQUEST-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-C09",
+      "name": "Salario integral sujeto a verificación",
+      "overrides": {
+        "relationship.termination_type": "resignation",
+        "termination.without_cause_claim": "no",
+        "termination.moratory_claim": "no",
+        "compensation.salary_type": "integral",
+        "compensation.base_salary": 18000000,
+        "compensation.variable.exists": false,
+        "payments.deductions.exists": false
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": false,
+        "status": "review_required",
+        "document_count": 3,
+        "required_findings": [
+          "V-LA1-005"
+        ],
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-C10",
+      "name": "Trabajo doméstico con auxilio de transporte",
+      "overrides": {
+        "profile_id": "domestic",
+        "worker.identity.name": "Ana Lucía Torres",
+        "employer.identity.name": "Patricia Gómez",
+        "employer.signatory.name": "Patricia Gómez",
+        "employer.signatory.capacity": "empleadora persona natural",
+        "employer.signatory.authority_source": "actuación en nombre propio",
+        "relationship.termination_type": "resignation",
+        "termination.without_cause_claim": "no",
+        "termination.moratory_claim": "no",
+        "compensation.base_salary": 1750905,
+        "compensation.transport_aid": "yes",
+        "compensation.variable.exists": false,
+        "payments.deductions.exists": false
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": false,
+        "status": "ready",
+        "document_count": 3,
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-C11",
+      "name": "Controversia de contrato realidad",
+      "overrides": {
+        "risk.contract_reality": "yes",
+        "relationship.contract_type": "verbal",
+        "termination.without_cause_claim": "unknown"
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "document_count": 4,
+        "required_findings": [
+          "V-LA1-016"
+        ],
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001",
+          "DOC-LA1-CLAIM-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-C12",
+      "name": "Estabilidad reforzada y proceso activo",
+      "overrides": {
+        "risk.special_protection": "yes",
+        "risk.protection_details": "situación de salud y posible estabilidad laboral reforzada",
+        "risk.active_proceeding": "lawsuit",
+        "termination.without_cause_claim": "yes"
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "document_count": 4,
+        "required_findings": [
+          "V-LA1-014"
+        ],
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001",
+          "DOC-LA1-CLAIM-001"
+        ]
+      }
+    }
+  ]
+}

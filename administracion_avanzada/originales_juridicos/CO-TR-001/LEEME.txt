@@ -1,0 +1,7 @@
+CO-TR-001 · Chequeo SAST
+
+Entregables esperados:
+- [OBLIGATORIO] Matriz maestra SAST · .xlsx · pistas: matriz, sast
+- [OBLIGATORIO] Metodología de cruce, reglas y advertencias · .docx, .xlsx, .pdf · pistas: metodologia, reglas, sast
+
+No cambie el contenido para ajustarlo al sistema. Debe conservarse el binario recibido.

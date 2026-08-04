@@ -1,0 +1,31 @@
+{
+  "schema": "legalaizit-public-product-routes-v1",
+  "version": "M26.3",
+  "routes": {
+    "contrato-trabajo": "CO-LA-002",
+    "contrato-prestacion-servicios": "CO-EM-003",
+    "arrendamiento-vivienda": "CO-AR-001",
+    "proteccion-consumidor": "CO-CD-003",
+    "verificacion-sistema-fotodeteccion": "CO-TR-001",
+    "reclamo-fotomulta-no-notificada": "CO-TR-002",
+    "liquidacion-laboral-reclamacion": "CO-LA-001",
+    "confidencialidad-propiedad-intelectual": "CO-EM-004",
+    "derecho-peticion-eps-ips": "CO-SA-001",
+    "reclamo-centrales-riesgo-habeas-data": "CO-CD-001",
+    "acuerdo-pago-pagare-cobro": "CO-CD-004"
+  },
+  "codes": {
+    "CO-LA-002": "contrato-trabajo",
+    "CO-EM-003": "contrato-prestacion-servicios",
+    "CO-AR-001": "arrendamiento-vivienda",
+    "CO-CD-003": "proteccion-consumidor",
+    "CO-TR-001": "verificacion-sistema-fotodeteccion",
+    "CO-TR-002": "reclamo-fotomulta-no-notificada",
+    "CO-LA-001": "liquidacion-laboral-reclamacion",
+    "CO-EM-004": "confidencialidad-propiedad-intelectual",
+    "CO-SA-001": "derecho-peticion-eps-ips",
+    "CO-CD-001": "reclamo-centrales-riesgo-habeas-data",
+    "CO-CD-004": "acuerdo-pago-pagare-cobro"
+  },
+  "legacy_code_route_supported": true
+}

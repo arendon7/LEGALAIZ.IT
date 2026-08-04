@@ -1,0 +1,82 @@
+{
+  "version": "2.59",
+  "product_id": "CO-TR-001",
+  "verified_at": "2026-07-26",
+  "policy": "official_sources_snapshot_and_pre_release_revalidation",
+  "sources": [
+    {
+      "id": "ST-2026-37-WEB",
+      "authority": "Superintendencia de Transporte",
+      "type": "official_communication",
+      "title": "Gobierno Nacional investiga a 37 organismos de tránsito por presuntas irregularidades SAST",
+      "date": "2026-05-19",
+      "url": "https://www.supertransporte.gov.co/index.php/comunicaciones-2026/gobierno-nacional-investiga-a-37-organismos-de-transito-mas-de-75-millones-de-fotomultas-estan-bajo-la-lupa-y-58-millones-quedaran-sin-validez/",
+      "binding_level": "official_communication_not_final_decision",
+      "requires_pre_release_recheck": true,
+      "legal_use": "Contexto oficial de la investigación y de los rangos; no se usa por sí sola como prueba de decisión firme individual."
+    },
+    {
+      "id": "ST-2026-37-PDF",
+      "authority": "Superintendencia de Transporte",
+      "type": "official_matrix",
+      "title": "Sanciones SAST - matriz de 37 organismos y periodos",
+      "date": "2026-05-19",
+      "url": "https://www.supertransporte.gov.co/documentos/2026/Mayo/Comunicaciones_26/Sanciones_SAST1.pdf",
+      "binding_level": "official_published_matrix_not_final_decision",
+      "requires_pre_release_recheck": true,
+      "legal_use": "Rangos determinísticos del Grupo A, sujetos a verificación del dispositivo, decisión firme y caso individual."
+    },
+    {
+      "id": "ST-2026-12-WEB",
+      "authority": "Superintendencia de Transporte",
+      "type": "official_communication_and_table",
+      "title": "Investigación a otros 12 organismos por presuntas irregularidades SAST",
+      "date": "2026-05-29",
+      "url": "https://www.supertransporte.gov.co/index.php/comunicaciones-2026/la-supertransporte-abrio-investigacion-a-otros-12-organismos-de-transito-por-presuntas-irregularidades-en-sistemas-de-fotodeteccion/page/2/",
+      "binding_level": "official_communication_not_final_decision",
+      "requires_pre_release_recheck": true,
+      "legal_use": "Rangos determinísticos del Grupo B; se conserva la fecha tabular de Valledupar y se documenta la discrepancia narrativa."
+    },
+    {
+      "id": "LEY-2251-2022-ART18",
+      "authority": "Congreso de Colombia / Función Pública",
+      "type": "law",
+      "title": "Ley 2251 de 2022, artículo 18 - artículo 158A del Código Nacional de Tránsito",
+      "date": "2022-07-14",
+      "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=189806",
+      "binding_level": "law_in_force",
+      "requires_pre_release_recheck": true,
+      "legal_use": "La revocación oficiosa debe ocurrir dentro de los 30 días hábiles siguientes a la firmeza de la decisión de la Superintendencia de Transporte."
+    },
+    {
+      "id": "LEY-1843-2017",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "type": "law",
+      "title": "Ley 1843 de 2017",
+      "date": "2017-07-14",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30032605",
+      "binding_level": "law_in_force",
+      "requires_pre_release_recheck": true,
+      "legal_use": "Marco legal SAST, operación, señalización, envío y notificación; debe leerse con la jurisprudencia incorporada por la fuente oficial."
+    },
+    {
+      "id": "LEY-1581-2012",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "type": "law",
+      "title": "Ley 1581 de 2012 - protección de datos personales",
+      "date": "2012-10-17",
+      "url": "https://www.suin-juriscol.gov.co/clp/contenidos.dll/Leyes/1684507",
+      "binding_level": "law_in_force",
+      "requires_pre_release_recheck": true,
+      "legal_use": "Finalidad, libertad, veracidad, acceso restringido, autorización y derechos del titular en el expediente verificado."
+    }
+  ],
+  "legal_control": {
+    "preliminary_only": true,
+    "firm_decision_required": true,
+    "individual_applicability_required": true,
+    "no_automatic_refund_or_revocation": true,
+    "monthly_update": true,
+    "extraordinary_update_on_official_decision": true
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "baseline_version": "2.20",
+  "created_from": "LegalAIZ.it v2.20 verified release",
+  "components": {
+    "legal_content": {
+      "sha256": "f0b6b48e3f4f6be901075d54afe56a4ac9efec2f40e7fea7a26df1ab1527cb35",
+      "files": 24,
+      "paths": [
+        "data/products.json",
+        "data/interviews.json",
+        "data/rules.json",
+        "data/sources.json",
+        "data/document_templates.json",
+        "complete_legal_models_v215.py",
+        "canonical_sources"
+      ]
+    },
+    "document_generation": {
+      "sha256": "7e68aa8528560b29fc658317b7aad0c1c56099e870808743873c55870772c350",
+      "files": 5,
+      "paths": [
+        "docx_builder.py",
+        "complete_models_backend_v215.py",
+        "extensive_generation_v216.py",
+        "co_em_003_v213.py",
+        "co_em_004_v214.py"
+      ]
+    },
+    "approval_release": {
+      "sha256": "f5e075699555d2bb1c7dc2378f843aa2a06d90a2f5e0ab7e1509b59ccd9eefbb",
+      "files": 1,
+      "paths": [
+        "extensive_review_v217.py"
+      ]
+    },
+    "security_rbac": {
+      "sha256": "5add0c8d0bb5b584a178d103871fcff0cbb248a8e318f5ad45881082c186de12",
+      "files": 2,
+      "paths": [
+        "security.py",
+        "infrastructure.py"
+      ]
+    },
+    "api_shell": {
+      "sha256": "223a8a81ad003facdbf817ab1c77ab99653f77dae80487008fa57f645abe5e4f",
+      "files": 1,
+      "paths": [
+        "run.py"
+      ]
+    },
+    "web_ui": {
+      "sha256": "d825af179573a028ce24e77fdf5b85778ec1c0c4eb7756ceffe0687cb68529af",
+      "files": 5,
+      "paths": [
+        "app/index.html",
+        "app/app-v217.js",
+        "app/app-v218.js",
+        "app/styles-v217.css",
+        "app/styles-v218.css"
+      ]
+    },
+    "visual_qa": {
+      "sha256": "e9cec9e20cb960d49eb8e6a05dad3672284920f53d6890d98c89cde1c744468a",
+      "files": 2,
+      "paths": [
+        "visual_qa_v218.py",
+        "tools/run_visual_qa_v218.py"
+      ]
+    },
+    "governance_v219": {
+      "sha256": "cda9efb43892e61aeed0d58165bdc09dffa03c9c97d9d50b7d227a2c6d078e64",
+      "files": 4,
+      "paths": [
+        "adaptive_validation_v219.py",
+        "app/app-v219.js",
+        "app/styles-v219.css",
+        "data/validation_baseline_v218.json"
+      ]
+    },
+    "change_control_v220": {
+      "sha256": "c3c08dea22260d2f140e40360239e6f3644c260ea23dde53c875af9797dd2424",
+      "files": 3,
+      "paths": [
+        "change_control_v220.py",
+        "app/app-v220.js",
+        "app/styles-v220.css",
+        "data/change_baseline_v220.json"
+      ]
+    },
+    "release_cycle_v221": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "files": 0,
+      "paths": [
+        "release_cycle_v221.py",
+        "app/app-v221.js",
+        "app/styles-v221.css",
+        "docs/ARQUITECTURA_V221.md",
+        "docs/RELEASE_NOTES_V221.md"
+      ]
+    }
+  },
+  "files": {
+    "adaptive_validation_v219.py": "99449df25f4ac96a57122d9ca8cceaf2d24994bf993991ca18fcf90f348131a7",
+    "app/app-v217.js": "1e4b9546a0cef85f942236905fd3a9d38e9c31c300491f84f7d61ada7c6d013f",
+    "app/app-v218.js": "24a2851249f136e87c49beba0902efee50e47b3540293986da4c945afb4ef50d",
+    "app/app-v219.js": "acf0f70f87cd380d88845e08f8d5e8d52b82e4d51cae3d6737097cdf4444d8c5",
+    "app/app-v220.js": "4971d0705e3a62c79280270a01ee21a7c03503f8903415c9b270faebaf861029",
+    "app/index.html": "1992ad9e37d4297e3c924a39a9990b30e4affd6389dad854b1fbde0bfac4fd42",
+    "app/styles-v217.css": "5a971f7f63e01e547a01590ced61d42f10b89a1681faf068588ee49392cff8f0",
+    "app/styles-v218.css": "4f4af0aaf995d343084b08cbb7cf17f75b5fe6f4da2ff05b886a802b50e67c21",
+    "app/styles-v219.css": "7bbb15d68e456672ac538a92e89fcb87e3377a758ca7057bbc962931ae9cd7db",
+    "app/styles-v220.css": "f190482451cabdd6030be0f8863b6ba617240f18740810d5fe805ca5aeb7e879",
+    "canonical_sources/candidates/CO-EM-003/LEEME.txt": "6d55fe818fc42dd72a842b486eb9c3d67b1ee54eb659dabe633280bdc9a15902",
+    "canonical_sources/candidates/CO-EM-003/LegalAIZit_CO-EM-003_Candidato_Estructurado_v2.8.docx": "fbb8eb64da4fa42e59560b53079453223611b5966405fe4edf7ddd8cff3c8a6d",
+    "canonical_sources/candidates/CO-EM-003/LegalAIZit_CO-EM-003_Candidato_Estructurado_v2.8.pdf": "afa4b11ca23a16bc3e3ad82ec1423e4e0a12f1a86b311294989c8f5d1df44a18",
+    "canonical_sources/candidates/CO-EM-003/co_em_003_candidate_map.json": "85fb181a4aab4bd2b299ac05031a1ca3e8adf8b5dc379e74375156d0fce3b8c3",
+    "canonical_sources/candidates/CO-EM-003/source_manifest.json": "17ee62f208452d7d56e4281bfe4337cadf858a0618a009764d37be50c9e19295",
+    "canonical_sources/candidates/CO-LA-001/LEEME.txt": "3c613a8bee8ded7a09659a834415bb26598aa91889fc03a3879f0663e50996c0",
+    "canonical_sources/candidates/CO-LA-001/LegalAIZit_CO-LA-001_Candidato_Estructurado_v2.9.docx": "23ff3964fcc822fe9094cedc5f9a0d45979776ed61a4a772d9e2d02b2a4f5a21",
+    "canonical_sources/candidates/CO-LA-001/LegalAIZit_CO-LA-001_Candidato_Estructurado_v2.9.pdf": "0b64b02c3ba4d456e60c0d6ba275ea6f88dfc6a857e4b3bc57c262ff0fed3849",
+    "canonical_sources/candidates/CO-LA-001/source_manifest_v29.json": "c2a4ee1e1bcc949431f56496dd87a8e0b6858cbcb09f7badc30550b3bbf3bd82",
+    "canonical_sources/candidates/CO-TR-001/LEEME.txt": "3c613a8bee8ded7a09659a834415bb26598aa91889fc03a3879f0663e50996c0",
+    "canonical_sources/candidates/CO-TR-001/LegalAIZit_CO-TR-001_SAST_Muestra_Estructurada_v2.9.csv": "aa9cb77fa48d2618e2f40a767c06beaab82f73f293e1526d4de20c4a63e6b1e0",
+    "canonical_sources/candidates/CO-TR-001/LegalAIZit_CO-TR-001_SAST_Resumen_Candidato_v2.9.pdf": "38df59829b026cdb7a6b6ab4e4643ac75be479ba96385dc96ed90028e7e8cc7f",
+    "canonical_sources/candidates/CO-TR-001/source_manifest_v29.json": "996b86377dc23c86dad86751991223d62fed413a1fc50127ae5eb080d6845714",
+    "canonical_sources/candidates/CO-TR-002/LEEME.txt": "3c613a8bee8ded7a09659a834415bb26598aa91889fc03a3879f0663e50996c0",
+    "canonical_sources/candidates/CO-TR-002/LegalAIZit_CO-TR-002_Candidato_Estructurado_v2.9.docx": "37740eac25e8be4f228beab4808f0dc075ba3ab9b3a972ad23ebf42eb8774646",
+    "canonical_sources/candidates/CO-TR-002/LegalAIZit_CO-TR-002_Candidato_Estructurado_v2.9.pdf": "5041dbbf9372e59e26f682e4034be07aa137702e45a083631b12301304f97963",
+    "canonical_sources/candidates/CO-TR-002/source_manifest_v29.json": "9430b62e15667263c483e49e82503406b9255caa4f8d9814beb4da88558ab3e3",
+    "canonical_sources/inbox/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "change_control_v220.py": "69de10b2d543d0e7751e107d063130506bc3beb399560e1c7b2c87ca3986a5cc",
+    "co_em_003_v213.py": "5b43abc3903d723e7decfce7677593847f156ac3c0e49b53059560c45f74f08d",
+    "co_em_004_v214.py": "67dc249832987cbbb9b45af4006d6e1fbef8162a65e1e4badbd79216c841646b",
+    "complete_legal_models_v215.py": "e387d6b7b404cfd21c7558e65ee010cd8ca6418cd045e089053dc8f902822157",
+    "complete_models_backend_v215.py": "546c1189726612caeab6b096e9659d52a3dd235445e73cc0ac4492d8ed42a06e",
+    "data/document_templates.json": "6d8e770a44ee82c55d9b0a8d05b9b59563476797d992e57b6388d24e8e8cd309",
+    "data/interviews.json": "0743f8cb0a73cb53187855b728b1ded1fa267ee7b3967ef75f4a6f9978543ce4",
+    "data/products.json": "88534521331c7d819eb705536ff92ff0c96343f8e3614af4529f24da639f2d8d",
+    "data/rules.json": "28ba60ba97aa0c312b12107f1862b68e7a060509a605a18e5f18dc1d362a28f5",
+    "data/sources.json": "5cc93b0d0e229014c1f9ff8082f2d42b20d55b4e5d7f195dcf391536a21e6614",
+    "data/validation_baseline_v218.json": "d9188e52328290ddb00ae951503046b19a6e910a4265342423a995623df5212c",
+    "docx_builder.py": "bcdb542e2d1aefd01d809d361e2de7c33cf9d081447d00474be2d77e33542a98",
+    "extensive_generation_v216.py": "82e212bbc2b63382c865fec74d0ed7e315194cca98e3eedebdd5cf537987cede",
+    "extensive_review_v217.py": "8154426065cadbc2dc32a639cb9d729cd9e69ad1c729acf47ec8b60884a44dda",
+    "infrastructure.py": "0e77cf56a6693d26657014f94e4ec587561b04cb45b4a70e382a88e2121c506c",
+    "run.py": "00b10f26bca756caa6455e93124351029842a6e622b75278b2343a2e08bbd4cf",
+    "security.py": "f549f7415c6e453bd539099a6d1897cb97be0697cd4bc8353395cd7d8613a075",
+    "tools/run_visual_qa_v218.py": "a784f00668f55bb107eb39d89f38eed1e3248628e04beda46c0fdc55b1262e57",
+    "visual_qa_v218.py": "f7e709b2390c3c90af3d5022d9b012f6e1b957464b61f6bce2a50cfb23f6d4df"
+  }
+}

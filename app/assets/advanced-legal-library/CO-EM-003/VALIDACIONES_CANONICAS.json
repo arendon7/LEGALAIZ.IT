@@ -1,0 +1,62 @@
+[
+  {
+    "id": "V-EM-001",
+    "severity": "blocker",
+    "condition": "confirmation.public_contracting == true",
+    "message": "Este producto no cubre contratación estatal."
+  },
+  {
+    "id": "V-EM-002",
+    "severity": "blocker",
+    "condition": "service.regulated == true and habilitation_not_verified",
+    "message": "Debe verificarse la habilitación profesional o regulatoria."
+  },
+  {
+    "id": "V-EM-003",
+    "severity": "blocker",
+    "condition": "labor_risk_score >= 8",
+    "message": "La configuración presenta riesgo alto de contrato realidad; debe rediseñarse o utilizar un contrato laboral."
+  },
+  {
+    "id": "V-EM-004",
+    "severity": "review",
+    "condition": "labor_risk_score between 4 and 7",
+    "message": "Existe riesgo material de subordinación y se requiere revisión jurídica."
+  },
+  {
+    "id": "V-EM-005",
+    "severity": "blocker",
+    "condition": "service.object is empty or scope.deliverables empty",
+    "message": "Objeto y entregables deben ser verificables."
+  },
+  {
+    "id": "V-EM-006",
+    "severity": "review",
+    "condition": "fees.model == success",
+    "message": "La remuneración por éxito requiere definir causación, verificación y pago posterior a terminación."
+  },
+  {
+    "id": "V-EM-007",
+    "severity": "review",
+    "condition": "liability.cap missing",
+    "message": "Debe definirse si existe límite de responsabilidad y sus exclusiones."
+  },
+  {
+    "id": "V-EM-008",
+    "severity": "blocker",
+    "condition": "data_processing.required and data_roles_missing",
+    "message": "Deben definirse roles, instrucciones y medidas de seguridad de datos."
+  },
+  {
+    "id": "V-EM-009",
+    "severity": "blocker",
+    "condition": "ip.required and ip_allocation_missing",
+    "message": "Debe definirse titularidad o licencia, materiales preexistentes y derechos de terceros."
+  },
+  {
+    "id": "V-EM-010",
+    "severity": "review",
+    "condition": "ai.required",
+    "message": "El uso de IA debe clasificarse y someterse a revisión humana y protección de información."
+  }
+]

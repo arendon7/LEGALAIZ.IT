@@ -1,0 +1,2045 @@
+[
+  {
+    "template_id": "TPL-CO-EM-003-CONTRACT",
+    "product_code": "CO-EM-003",
+    "kind": "contract",
+    "title": "Contrato de prestación de servicios independientes",
+    "subtitle": "Contrato principal personalizado · candidato estructurado pendiente de cotejo original",
+    "filename_suffix": "contrato_servicios",
+    "version_label": "2.8-candidato",
+    "canonical_status": "Candidato estructurado; original binario pendiente",
+    "source_package": "LegalAIZit_Paquete_01_Prestacion_de_Servicios_v1",
+    "variables": [
+      {
+        "id": "party_a",
+        "label": "Contratante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_a_id",
+        "label": "Identificación o NIT del contratante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_b",
+        "label": "Contratista",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_b_id",
+        "label": "Identificación o NIT del contratista",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "contract_city",
+        "label": "Ciudad principal de ejecución",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "contact_email_a",
+        "label": "Correo del contratante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "contact_email_b",
+        "label": "Correo del contratista",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "state_entity",
+        "label": "¿Alguna parte es una entidad estatal?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "regulated_service",
+        "label": "¿Es un servicio de salud, financiero, jurídico regulado o construcción compleja?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "object_clear",
+        "label": "¿El objeto y los entregables están claramente definidos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "fixed_schedule",
+        "label": "¿El contratante impondrá horario fijo y control de asistencia?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "permanent_orders",
+        "label": "¿Habrá órdenes permanentes sobre cómo ejecutar el servicio?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "disciplinary_control",
+        "label": "¿Habrá control disciplinario o sanciones internas?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "continuous_availability",
+        "label": "¿Se exige disponibilidad personal continua?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "exclusive",
+        "label": "¿Existe exclusividad total?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "personal_data",
+        "label": "¿El contratista tratará datos personales?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "confidentiality",
+        "label": "¿Se manejará información confidencial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "ip_relevant",
+        "label": "¿Creará software, contenidos, diseños u otros activos de PI?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "object",
+        "label": "Objeto concreto del servicio",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "deliverables",
+        "label": "Entregables verificables",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "fees",
+        "label": "Honorarios totales o mensuales (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha prevista de inicio",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha prevista de terminación",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "payment_scheme",
+        "label": "Esquema de pago",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "acceptance_days",
+        "label": "Días para revisión y aceptación de entregables",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "subcontractors",
+        "label": "¿Se permitirán subcontratistas?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "early_termination",
+        "label": "¿Se prevé terminación anticipada con entregables parciales?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "EM3-S1",
+      "EM3-S2",
+      "EM3-S3"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-EM-003-CONTRACT-B01",
+        "type": "section",
+        "heading": "1. Partes y contexto contractual",
+        "text": "Entre {{party_a}}, identificado(a) con {{party_a_id}}, en adelante EL CONTRATANTE, y {{party_b}}, identificado(a) con {{party_b_id}}, en adelante EL CONTRATISTA, se celebra este contrato para la ejecución independiente del servicio descrito. Las partes declaran capacidad y reconocen que la naturaleza jurídica depende de la realidad de la ejecución.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-CONTRACT-B02",
+        "type": "section",
+        "heading": "2. Objeto, alcance y entregables",
+        "text": "EL CONTRATISTA prestará con autonomía técnica, administrativa y operativa los servicios consistentes en: {{object}}. El alcance, los entregables y los criterios de aceptación se desarrollan en el Anexo No. 1.",
+        "bullets": [
+          "Entregables informados: {{deliverables}}.",
+          "Las actividades adicionales requieren acuerdo escrito sobre alcance, plazo y honorarios."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-CONTRACT-B03",
+        "type": "section",
+        "heading": "3. Obligaciones esenciales de las partes",
+        "text": "",
+        "bullets": [
+          "EL CONTRATISTA ejecutará con diligencia, conservará soportes, informará riesgos de retraso, protegerá la información y cumplirá sus obligaciones tributarias, laborales y de seguridad social respecto de su organización.",
+          "EL CONTRATANTE entregará información y accesos, designará un contacto, revisará entregables con criterios verificables, pagará oportunamente y respetará la autonomía profesional.",
+          "Ninguna comunicación de coordinación ampliará automáticamente el objeto ni creará facultades disciplinarias."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-CONTRACT-B04",
+        "type": "section",
+        "heading": "4. Honorarios, pagos, gastos y plazo",
+        "text": "Los honorarios pactados son COP ${{fees}}, bajo el esquema {{payment_scheme}}. La ejecución inicia el {{start_date}} y finaliza el {{end_date}} o con el cumplimiento documentado del hito final.",
+        "bullets": [
+          "Los pagos estarán sujetos a cuenta de cobro o factura y a los soportes convenidos.",
+          "Los gastos extraordinarios solo serán reembolsables cuando exista autorización previa y soporte suficiente.",
+          "Las retenciones e impuestos se aplicarán por quien legalmente corresponda."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-CONTRACT-B05",
+        "type": "section",
+        "heading": "5. Autonomía e inexistencia de subordinación pactada",
+        "text": "EL CONTRATISTA organiza sus medios, tiempos y métodos. Las partes podrán coordinar entregables, estándares, reuniones y fechas, sin convertirlos en horario obligatorio, órdenes permanentes o control disciplinario.",
+        "bullets": [
+          "Este texto no puede utilizarse para desconocer la realidad de la ejecución.",
+          "Si la práctica cambia y aparecen indicios de subordinación, las partes deberán revisar la modalidad jurídica."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-CONTRACT-B06",
+        "type": "section",
+        "heading": "6. Entrega, revisión, aceptación y cambios",
+        "text": "EL CONTRATANTE tendrá {{acceptance_days}} días hábiles para aceptar, formular observaciones concretas o rechazar motivadamente un entregable por incumplimiento material.",
+        "bullets": [
+          "Las correcciones comprendidas en el alcance no generan costo adicional.",
+          "Los cambios en objetivos, volumen, especificaciones, plazo o dedicación requieren solicitud y aceptación escrita.",
+          "La falta de observaciones dentro del término producirá los efectos de aceptación definidos para facturación, salvo defectos ocultos demostrables."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-CONTRACT-B07",
+        "type": "section",
+        "heading": "7. Responsabilidad, suspensión y terminación",
+        "text": "Cada parte responde por daños directos demostrados derivados de incumplimiento imputable. Las obligaciones sobre confidencialidad, propiedad intelectual, datos y responsabilidades no limitables conservan su régimen especial.",
+        "bullets": [
+          "El contrato podrá suspenderse por acuerdo escrito, fuerza mayor, falta de información indispensable, mora relevante o riesgo de seguridad.",
+          "Terminará por cumplimiento, vencimiento, mutuo acuerdo, incumplimiento grave no subsanado, imposibilidad definitiva o decisión unilateral cuando haya sido pactada.",
+          "Al cierre se entregarán trabajos causados, se devolverán accesos y activos, y se liquidarán servicios efectivamente aceptados."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-CONTRACT-B08",
+        "type": "section",
+        "heading": "8. Cumplimiento, comunicaciones y controversias",
+        "text": "Las partes actuarán de buena fe, informarán conflictos materiales y conservarán evidencia de las comunicaciones. Ninguna parte representa, obliga o actúa como mandataria de la otra sin autorización escrita.",
+        "bullets": [
+          "Correos autorizados: {{contact_email_a}} y {{contact_email_b}}.",
+          "Las partes procurarán arreglo directo y, si no hay acuerdo, acudirán al mecanismo de solución seleccionado conforme a la ley colombiana.",
+          "Las modificaciones deberán constar por escrito y la invalidez de una estipulación no afectará las restantes cuando sea posible conservar el contrato."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-CONTRACT-MOD-CONF",
+        "type": "clause",
+        "heading": "Módulo de confidencialidad",
+        "text": "La información no pública revelada para ejecutar el contrato se utilizará únicamente para esa finalidad, con acceso restringido y medidas razonables de protección. El anexo de confidencialidad desarrolla exclusiones, divulgaciones permitidas, incidentes, devolución y supervivencia.",
+        "bullets": [],
+        "table": [],
+        "condition": {
+          "field": "confidentiality",
+          "op": "equals",
+          "value": "Sí"
+        },
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-CONTRACT-MOD-DATA",
+        "type": "clause",
+        "heading": "Módulo de tratamiento de datos",
+        "text": "Cuando EL CONTRATISTA trate datos por cuenta de EL CONTRATANTE, actuará bajo instrucciones documentadas, finalidades autorizadas, medidas de seguridad y prohibición de uso propio. El anexo de datos define categorías, titulares, operaciones e incidentes.",
+        "bullets": [],
+        "table": [],
+        "condition": {
+          "field": "personal_data",
+          "op": "equals",
+          "value": "Sí"
+        },
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-CONTRACT-MOD-IP",
+        "type": "clause",
+        "heading": "Módulo de propiedad intelectual",
+        "text": "Los materiales preexistentes permanecen en cabeza de su titular. Los resultados del proyecto se sujetarán a la modalidad expresamente elegida, con alcance, territorio, plazo, remuneración e inventario de terceros. Los derechos morales no se transfieren.",
+        "bullets": [],
+        "table": [],
+        "condition": {
+          "field": "ip_relevant",
+          "op": "equals",
+          "value": "Sí"
+        },
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-CONTRACT-MOD-SUBCONTRACT",
+        "type": "clause",
+        "heading": "Módulo de subcontratación",
+        "text": "EL CONTRATISTA podrá apoyarse en terceros bajo su dirección y responsabilidad. Requerirá autorización previa para actividades esenciales o acceso a información sensible, y deberá imponer obligaciones equivalentes de confidencialidad, PI, datos y seguridad.",
+        "bullets": [],
+        "table": [],
+        "condition": {
+          "field": "subcontractors",
+          "op": "equals",
+          "value": "Sí"
+        },
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-CONTRACT-CONTROL",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "CANDIDATO ESTRUCTURADO V2.8. Este documento se genera para pruebas internas a partir de contenido accesible del paquete CO-EM-003. No es una copia binaria verificada del original ni está autorizado para uso profesional, firma o publicación hasta completar cotejo, aprobación jurídica y QA.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      }
+    ],
+    "source_ids": [
+      "EM3-S1",
+      "EM3-S2",
+      "EM3-S3",
+      "EM3-S4"
+    ],
+    "maturity_version": "2.13",
+    "advanced_status": "Aprobada para uso profesional controlado",
+    "professional_use": true,
+    "approval_model": "multi_stage_single_responsible",
+    "independent_reviewers": false
+  },
+  {
+    "template_id": "TPL-CO-EM-003-SCOPE",
+    "product_code": "CO-EM-003",
+    "kind": "scope",
+    "title": "Anexo No. 1 — Alcance, entregables y cronograma",
+    "subtitle": "Anexo No. 1 · alcance, entregables, cronograma y aceptación",
+    "filename_suffix": "anexo_alcance",
+    "version_label": "2.8-candidato",
+    "canonical_status": "Candidato estructurado; original binario pendiente",
+    "source_package": "LegalAIZit_Paquete_01_Prestacion_de_Servicios_v1",
+    "variables": [
+      {
+        "id": "party_a",
+        "label": "Contratante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_a_id",
+        "label": "Identificación o NIT del contratante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_b",
+        "label": "Contratista",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_b_id",
+        "label": "Identificación o NIT del contratista",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "contract_city",
+        "label": "Ciudad principal de ejecución",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "contact_email_a",
+        "label": "Correo del contratante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "contact_email_b",
+        "label": "Correo del contratista",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "state_entity",
+        "label": "¿Alguna parte es una entidad estatal?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "regulated_service",
+        "label": "¿Es un servicio de salud, financiero, jurídico regulado o construcción compleja?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "object_clear",
+        "label": "¿El objeto y los entregables están claramente definidos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "fixed_schedule",
+        "label": "¿El contratante impondrá horario fijo y control de asistencia?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "permanent_orders",
+        "label": "¿Habrá órdenes permanentes sobre cómo ejecutar el servicio?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "disciplinary_control",
+        "label": "¿Habrá control disciplinario o sanciones internas?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "continuous_availability",
+        "label": "¿Se exige disponibilidad personal continua?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "exclusive",
+        "label": "¿Existe exclusividad total?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "personal_data",
+        "label": "¿El contratista tratará datos personales?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "confidentiality",
+        "label": "¿Se manejará información confidencial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "ip_relevant",
+        "label": "¿Creará software, contenidos, diseños u otros activos de PI?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "object",
+        "label": "Objeto concreto del servicio",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "deliverables",
+        "label": "Entregables verificables",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "fees",
+        "label": "Honorarios totales o mensuales (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha prevista de inicio",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha prevista de terminación",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "payment_scheme",
+        "label": "Esquema de pago",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "acceptance_days",
+        "label": "Días para revisión y aceptación de entregables",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "subcontractors",
+        "label": "¿Se permitirán subcontratistas?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "early_termination",
+        "label": "¿Se prevé terminación anticipada con entregables parciales?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "EM3-S1",
+      "EM3-S2",
+      "EM3-S3"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-EM-003-SCOPE-B01",
+        "type": "section",
+        "heading": "1. Objetivo y resultado esperado",
+        "text": "{{object}}",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-SCOPE-B02",
+        "type": "section",
+        "heading": "2. Entregables y aceptación",
+        "text": "{{deliverables}}",
+        "bullets": [
+          "Plazo para observaciones: {{acceptance_days}} días hábiles.",
+          "Las observaciones deberán identificar el criterio incumplido y la corrección solicitada.",
+          "Las ampliaciones o nuevos entregables se documentarán como cambio de alcance."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-SCOPE-B03",
+        "type": "section",
+        "heading": "3. Cronograma económico",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Campo",
+            "Valor"
+          ],
+          [
+            "Inicio",
+            "{{start_date}}"
+          ],
+          [
+            "Fin o hito final",
+            "{{end_date}}"
+          ],
+          [
+            "Honorarios",
+            "COP ${{fees}}"
+          ],
+          [
+            "Forma de pago",
+            "{{payment_scheme}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-SCOPE-B04",
+        "type": "section",
+        "heading": "4. Responsabilidades operativas",
+        "text": "",
+        "bullets": [
+          "EL CONTRATANTE suministra información, decisiones, accesos y aprobaciones necesarias.",
+          "EL CONTRATISTA aporta organización, conocimiento, personal y medios propios, salvo lo pactado.",
+          "Las dependencias, supuestos y riesgos deberán informarse oportunamente."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-SCOPE-CONTROL",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "CANDIDATO ESTRUCTURADO V2.8. Verifique que cada entregable, fecha, valor y criterio corresponda al acuerdo real antes de firmar.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      }
+    ],
+    "source_ids": [
+      "EM3-S1",
+      "EM3-S2",
+      "EM3-S3",
+      "EM3-S4"
+    ],
+    "maturity_version": "2.13",
+    "advanced_status": "Aprobada para uso profesional controlado",
+    "professional_use": true,
+    "approval_model": "multi_stage_single_responsible",
+    "independent_reviewers": false
+  },
+  {
+    "product_code": "CO-EM-003",
+    "version_label": "2.8-candidato",
+    "jurisdiction": "Colombia",
+    "canonical_status": "Candidato estructurado; original binario pendiente",
+    "variables": [
+      {
+        "id": "party_a",
+        "label": "Contratante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_a_id",
+        "label": "Identificación o NIT del contratante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_b",
+        "label": "Contratista",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_b_id",
+        "label": "Identificación o NIT del contratista",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "contract_city",
+        "label": "Ciudad principal de ejecución",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "contact_email_a",
+        "label": "Correo del contratante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "contact_email_b",
+        "label": "Correo del contratista",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "state_entity",
+        "label": "¿Alguna parte es una entidad estatal?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "regulated_service",
+        "label": "¿Es un servicio de salud, financiero, jurídico regulado o construcción compleja?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "object_clear",
+        "label": "¿El objeto y los entregables están claramente definidos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "fixed_schedule",
+        "label": "¿El contratante impondrá horario fijo y control de asistencia?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "permanent_orders",
+        "label": "¿Habrá órdenes permanentes sobre cómo ejecutar el servicio?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "disciplinary_control",
+        "label": "¿Habrá control disciplinario o sanciones internas?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "continuous_availability",
+        "label": "¿Se exige disponibilidad personal continua?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "exclusive",
+        "label": "¿Existe exclusividad total?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "personal_data",
+        "label": "¿El contratista tratará datos personales?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "confidentiality",
+        "label": "¿Se manejará información confidencial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "ip_relevant",
+        "label": "¿Creará software, contenidos, diseños u otros activos de PI?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "object",
+        "label": "Objeto concreto del servicio",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "deliverables",
+        "label": "Entregables verificables",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "fees",
+        "label": "Honorarios totales o mensuales (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha prevista de inicio",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha prevista de terminación",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "payment_scheme",
+        "label": "Esquema de pago",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "acceptance_days",
+        "label": "Días para revisión y aceptación de entregables",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "subcontractors",
+        "label": "¿Se permitirán subcontratistas?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "early_termination",
+        "label": "¿Se prevé terminación anticipada con entregables parciales?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "EM3-S1",
+      "EM3-S2",
+      "EM3-S3",
+      "EM3-S4"
+    ],
+    "template_id": "TPL-CO-EM-003-NDA",
+    "kind": "confidentiality",
+    "title": "Anexo No. 2A — Confidencialidad y seguridad de la información",
+    "subtitle": "Protección proporcional de información reservada",
+    "filename_suffix": "anexo_confidencialidad",
+    "blocks": [
+      {
+        "id": "TPL-CO-EM-003-NDA-B01",
+        "type": "section",
+        "heading": "1. Finalidad e información protegida",
+        "text": "La información no pública se utilizará exclusivamente para ejecutar {{object}}. Comprende información técnica, comercial, financiera, estratégica, jurídica, operativa, credenciales y datos de terceros que se identifique o razonablemente deba entenderse reservada.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-NDA-B02",
+        "type": "section",
+        "heading": "2. Exclusiones y divulgaciones permitidas",
+        "text": "No se considera confidencial la información públicamente disponible sin incumplimiento, conocida legítimamente antes de la revelación, recibida válidamente de un tercero o desarrollada independientemente. La divulgación exigida por autoridad deberá limitarse a lo requerido e informarse cuando sea legalmente posible.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-NDA-B03",
+        "type": "section",
+        "heading": "3. Uso, acceso y medidas",
+        "text": "El acceso se limitará a quienes necesiten conocer y estén obligados a reserva. Se utilizarán canales autorizados, controles razonables, protección de credenciales y reporte sin demora indebida de incidentes.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-NDA-B04",
+        "type": "section",
+        "heading": "4. Terceros, devolución y eliminación",
+        "text": "Los subcontratistas autorizados asumirán obligaciones equivalentes. Al terminar, se devolverán activos, se revocarán accesos y se eliminarán copias activas, salvo conservación exigida por ley, defensa, auditoría o respaldos no accesibles ordinariamente.",
+        "bullets": [],
+        "table": [],
+        "condition": {
+          "field": "subcontractors",
+          "op": "equals",
+          "value": "Sí"
+        },
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-NDA-B05",
+        "type": "section",
+        "heading": "5. Vigencia y supervivencia",
+        "text": "La obligación subsistirá durante el contrato y por el término razonable que corresponda a la naturaleza de la información. Los secretos empresariales, credenciales y datos sometidos a régimen especial se protegerán mientras conserven tal carácter o durante el término aplicable.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-NDA-B06",
+        "type": "section",
+        "heading": "6. Comunicaciones",
+        "text": "Canales autorizados: {{contact_email_a}} y {{contact_email_b}}. Los avisos de incidentes deberán identificar hechos conocidos, medidas de contención y punto de contacto.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-NDA-CONTROL",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "CANDIDATO ESTRUCTURADO V2.8. Debe delimitarse la información real, los accesos y las medidas antes de firma. Pendiente cotejo con el paquete original.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": true,
+        "source_ids": [
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      }
+    ],
+    "maturity_version": "2.13",
+    "advanced_status": "Aprobada para uso profesional controlado",
+    "professional_use": true,
+    "approval_model": "multi_stage_single_responsible",
+    "independent_reviewers": false
+  },
+  {
+    "product_code": "CO-EM-003",
+    "version_label": "2.8-candidato",
+    "jurisdiction": "Colombia",
+    "canonical_status": "Candidato estructurado; original binario pendiente",
+    "variables": [
+      {
+        "id": "party_a",
+        "label": "Contratante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_a_id",
+        "label": "Identificación o NIT del contratante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_b",
+        "label": "Contratista",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_b_id",
+        "label": "Identificación o NIT del contratista",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "contract_city",
+        "label": "Ciudad principal de ejecución",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "contact_email_a",
+        "label": "Correo del contratante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "contact_email_b",
+        "label": "Correo del contratista",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "state_entity",
+        "label": "¿Alguna parte es una entidad estatal?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "regulated_service",
+        "label": "¿Es un servicio de salud, financiero, jurídico regulado o construcción compleja?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "object_clear",
+        "label": "¿El objeto y los entregables están claramente definidos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "fixed_schedule",
+        "label": "¿El contratante impondrá horario fijo y control de asistencia?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "permanent_orders",
+        "label": "¿Habrá órdenes permanentes sobre cómo ejecutar el servicio?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "disciplinary_control",
+        "label": "¿Habrá control disciplinario o sanciones internas?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "continuous_availability",
+        "label": "¿Se exige disponibilidad personal continua?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "exclusive",
+        "label": "¿Existe exclusividad total?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "personal_data",
+        "label": "¿El contratista tratará datos personales?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "confidentiality",
+        "label": "¿Se manejará información confidencial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "ip_relevant",
+        "label": "¿Creará software, contenidos, diseños u otros activos de PI?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "object",
+        "label": "Objeto concreto del servicio",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "deliverables",
+        "label": "Entregables verificables",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "fees",
+        "label": "Honorarios totales o mensuales (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha prevista de inicio",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha prevista de terminación",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "payment_scheme",
+        "label": "Esquema de pago",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "acceptance_days",
+        "label": "Días para revisión y aceptación de entregables",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "subcontractors",
+        "label": "¿Se permitirán subcontratistas?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "early_termination",
+        "label": "¿Se prevé terminación anticipada con entregables parciales?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "EM3-S1",
+      "EM3-S2",
+      "EM3-S3",
+      "EM3-S4"
+    ],
+    "template_id": "TPL-CO-EM-003-IP",
+    "kind": "intellectual_property",
+    "title": "Anexo No. 2B — Propiedad intelectual y entregables",
+    "subtitle": "Materiales preexistentes, resultados, terceros y modalidad de derechos",
+    "filename_suffix": "anexo_propiedad_intelectual",
+    "blocks": [
+      {
+        "id": "TPL-CO-EM-003-IP-B01",
+        "type": "section",
+        "heading": "1. Inventario de resultados",
+        "text": "Resultados previstos: {{deliverables}}. Las partes identificarán autores, fecha, formato, repositorio, materiales preexistentes y componentes de terceros.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-IP-B02",
+        "type": "section",
+        "heading": "2. Materiales preexistentes",
+        "text": "Cada parte conserva la titularidad de los activos creados o adquiridos antes o fuera del proyecto. Su incorporación a los entregables solo concede los derechos expresamente necesarios para usar el resultado.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-IP-B03",
+        "type": "section",
+        "heading": "3. Modalidad de derechos",
+        "text": "La cesión o licencia patrimonial deberá constar expresamente y definir derechos, usos, territorio, plazo y remuneración. A falta de selección aprobada, no se presumirá una transferencia más amplia que la necesaria para la finalidad documentada.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-IP-B04",
+        "type": "section",
+        "heading": "4. Derechos morales y reconocimientos",
+        "text": "Los derechos morales permanecen en cabeza de sus autores y no se entienden transferidos. Los créditos, modificaciones y divulgación se manejarán conforme a la ley y al acuerdo expreso.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-IP-B05",
+        "type": "section",
+        "heading": "5. Terceros, software abierto y garantías",
+        "text": "EL CONTRATISTA informará componentes de terceros, licencias y restricciones. No atribuirá al contratante derechos que no pueda transferir y mantendrá evidencia del origen o autorización de los entregables.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-IP-B06",
+        "type": "section",
+        "heading": "6. Entrega y continuidad",
+        "text": "La entrega incluirá los archivos, documentación, accesos y formatos acordados en el Anexo No. 1. La transferencia de repositorios o credenciales deberá registrarse sin exponer secretos innecesarios.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-IP-CONTROL",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "CANDIDATO ESTRUCTURADO V2.8. Antes de firma debe seleccionarse una modalidad concreta y revisar materiales preexistentes y terceros. Pendiente cotejo original.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": true,
+        "source_ids": [
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      }
+    ],
+    "maturity_version": "2.13",
+    "advanced_status": "Aprobada para uso profesional controlado",
+    "professional_use": true,
+    "approval_model": "multi_stage_single_responsible",
+    "independent_reviewers": false
+  },
+  {
+    "product_code": "CO-EM-003",
+    "version_label": "2.8-candidato",
+    "jurisdiction": "Colombia",
+    "canonical_status": "Candidato estructurado; original binario pendiente",
+    "variables": [
+      {
+        "id": "party_a",
+        "label": "Contratante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_a_id",
+        "label": "Identificación o NIT del contratante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_b",
+        "label": "Contratista",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_b_id",
+        "label": "Identificación o NIT del contratista",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "contract_city",
+        "label": "Ciudad principal de ejecución",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "contact_email_a",
+        "label": "Correo del contratante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "contact_email_b",
+        "label": "Correo del contratista",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "state_entity",
+        "label": "¿Alguna parte es una entidad estatal?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "regulated_service",
+        "label": "¿Es un servicio de salud, financiero, jurídico regulado o construcción compleja?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "object_clear",
+        "label": "¿El objeto y los entregables están claramente definidos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "fixed_schedule",
+        "label": "¿El contratante impondrá horario fijo y control de asistencia?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "permanent_orders",
+        "label": "¿Habrá órdenes permanentes sobre cómo ejecutar el servicio?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "disciplinary_control",
+        "label": "¿Habrá control disciplinario o sanciones internas?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "continuous_availability",
+        "label": "¿Se exige disponibilidad personal continua?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "exclusive",
+        "label": "¿Existe exclusividad total?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "personal_data",
+        "label": "¿El contratista tratará datos personales?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "confidentiality",
+        "label": "¿Se manejará información confidencial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "ip_relevant",
+        "label": "¿Creará software, contenidos, diseños u otros activos de PI?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "object",
+        "label": "Objeto concreto del servicio",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "deliverables",
+        "label": "Entregables verificables",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "fees",
+        "label": "Honorarios totales o mensuales (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha prevista de inicio",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha prevista de terminación",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "payment_scheme",
+        "label": "Esquema de pago",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "acceptance_days",
+        "label": "Días para revisión y aceptación de entregables",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "subcontractors",
+        "label": "¿Se permitirán subcontratistas?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "early_termination",
+        "label": "¿Se prevé terminación anticipada con entregables parciales?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "EM3-S1",
+      "EM3-S2",
+      "EM3-S3",
+      "EM3-S4"
+    ],
+    "template_id": "TPL-CO-EM-003-DATA",
+    "kind": "data_processing",
+    "title": "Anexo No. 2C — Tratamiento de datos personales",
+    "subtitle": "Instrucciones, seguridad, terceros, incidentes y cierre",
+    "filename_suffix": "anexo_tratamiento_datos",
+    "blocks": [
+      {
+        "id": "TPL-CO-EM-003-DATA-B01",
+        "type": "section",
+        "heading": "1. Roles y finalidad",
+        "text": "Cuando {{party_b}} trate datos por cuenta de {{party_a}}, actuará como encargado respecto de las operaciones documentadas para {{object}}. Cada parte será responsable independiente de sus finalidades propias.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-DATA-B02",
+        "type": "section",
+        "heading": "2. Instrucciones y límites",
+        "text": "El tratamiento se limitará a instrucciones documentadas, finalidades autorizadas y tiempo necesario. No se permite usar, combinar, monetizar o revelar datos para fines propios sin base jurídica independiente.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-DATA-B03",
+        "type": "section",
+        "heading": "3. Categorías y titulares",
+        "text": "Las partes deberán inventariar categorías de datos, titulares, operaciones, sistemas, ubicación, transferencias y períodos de conservación antes de iniciar el acceso.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-DATA-B04",
+        "type": "section",
+        "heading": "4. Seguridad y confidencialidad",
+        "text": "Se adoptarán controles proporcionales de acceso, autenticación, respaldo, transmisión, registro y eliminación. El personal autorizado estará sujeto a reserva y mínimo privilegio.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-DATA-B05",
+        "type": "section",
+        "heading": "5. Subencargados e incidentes",
+        "text": "Los subencargados requieren autorización y obligaciones equivalentes. Los incidentes se informarán sin demora indebida, preservando evidencia y colaborando en contención, análisis y comunicaciones aplicables.",
+        "bullets": [],
+        "table": [],
+        "condition": {
+          "field": "subcontractors",
+          "op": "equals",
+          "value": "Sí"
+        },
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-DATA-B06",
+        "type": "section",
+        "heading": "6. Atención de derechos y terminación",
+        "text": "EL CONTRATISTA colaborará razonablemente con consultas, reclamos y requerimientos. Al cierre devolverá o eliminará los datos según instrucciones, salvo conservación obligatoria documentada.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-DATA-CONTROL",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "CANDIDATO ESTRUCTURADO V2.8. Debe completarse el inventario de datos y verificar la operación real antes de iniciar tratamiento. Pendiente cotejo original.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": true,
+        "source_ids": [
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      }
+    ],
+    "maturity_version": "2.13",
+    "advanced_status": "Aprobada para uso profesional controlado",
+    "professional_use": true,
+    "approval_model": "multi_stage_single_responsible",
+    "independent_reviewers": false
+  },
+  {
+    "product_code": "CO-EM-003",
+    "version_label": "2.8-candidato",
+    "jurisdiction": "Colombia",
+    "canonical_status": "Candidato estructurado; original binario pendiente",
+    "variables": [
+      {
+        "id": "party_a",
+        "label": "Contratante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_a_id",
+        "label": "Identificación o NIT del contratante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_b",
+        "label": "Contratista",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "party_b_id",
+        "label": "Identificación o NIT del contratista",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "contract_city",
+        "label": "Ciudad principal de ejecución",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "contact_email_a",
+        "label": "Correo del contratante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "contact_email_b",
+        "label": "Correo del contratista",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "state_entity",
+        "label": "¿Alguna parte es una entidad estatal?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "regulated_service",
+        "label": "¿Es un servicio de salud, financiero, jurídico regulado o construcción compleja?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "object_clear",
+        "label": "¿El objeto y los entregables están claramente definidos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "fixed_schedule",
+        "label": "¿El contratante impondrá horario fijo y control de asistencia?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "permanent_orders",
+        "label": "¿Habrá órdenes permanentes sobre cómo ejecutar el servicio?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "disciplinary_control",
+        "label": "¿Habrá control disciplinario o sanciones internas?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "continuous_availability",
+        "label": "¿Se exige disponibilidad personal continua?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "exclusive",
+        "label": "¿Existe exclusividad total?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "personal_data",
+        "label": "¿El contratista tratará datos personales?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "confidentiality",
+        "label": "¿Se manejará información confidencial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "ip_relevant",
+        "label": "¿Creará software, contenidos, diseños u otros activos de PI?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "object",
+        "label": "Objeto concreto del servicio",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "deliverables",
+        "label": "Entregables verificables",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "fees",
+        "label": "Honorarios totales o mensuales (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha prevista de inicio",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha prevista de terminación",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "payment_scheme",
+        "label": "Esquema de pago",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "acceptance_days",
+        "label": "Días para revisión y aceptación de entregables",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "subcontractors",
+        "label": "¿Se permitirán subcontratistas?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "early_termination",
+        "label": "¿Se prevé terminación anticipada con entregables parciales?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "EM3-S1",
+      "EM3-S2",
+      "EM3-S3",
+      "EM3-S4"
+    ],
+    "template_id": "TPL-CO-EM-003-CLOSURE",
+    "kind": "closure",
+    "title": "Acta de cierre y liquidación documental",
+    "subtitle": "Entregables, saldos, accesos, información y reservas",
+    "filename_suffix": "acta_cierre",
+    "blocks": [
+      {
+        "id": "TPL-CO-EM-003-CLOSURE-B01",
+        "type": "section",
+        "heading": "1. Identificación",
+        "text": "Contrato entre {{party_a}} y {{party_b}} para {{object}}. Inicio: {{start_date}}. Terminación prevista: {{end_date}}.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-CLOSURE-B02",
+        "type": "section",
+        "heading": "2. Estado de entregables",
+        "text": "Entregables informados: {{deliverables}}.",
+        "bullets": [],
+        "table": [
+          [
+            "Entregable",
+            "Estado / reserva"
+          ],
+          [
+            "Entregable 1",
+            "[Registrar aceptación, pendiente o rechazo motivado]"
+          ],
+          [
+            "Entregable 2",
+            "[Registrar aceptación, pendiente o rechazo motivado]"
+          ]
+        ],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-CLOSURE-B03",
+        "type": "section",
+        "heading": "3. Liquidación económica",
+        "text": "Honorarios de referencia: COP ${{fees}} bajo esquema {{payment_scheme}}.",
+        "bullets": [],
+        "table": [
+          [
+            "Concepto",
+            "Estado"
+          ],
+          [
+            "Servicios aceptados",
+            "[Valor y soporte]"
+          ],
+          [
+            "Pagos realizados",
+            "[Valor y soporte]"
+          ],
+          [
+            "Saldo",
+            "[Valor conciliado]"
+          ],
+          [
+            "Gastos autorizados",
+            "[Valor y soporte]"
+          ]
+        ],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-CLOSURE-B04",
+        "type": "section",
+        "heading": "4. Activos, accesos e información",
+        "text": "Las partes registrarán devolución de activos, revocación de accesos, entrega de repositorios, devolución o eliminación de información y reservas de conservación.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-CLOSURE-B05",
+        "type": "section",
+        "heading": "5. Reservas y obligaciones sobrevivientes",
+        "text": "La firma del acta no implica renuncia a obligaciones pendientes, defectos ocultos, confidencialidad, propiedad intelectual, datos, impuestos o derechos irrenunciables. Las reservas deberán describirse con soporte y responsable.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "EM3-S1",
+          "EM3-S2",
+          "EM3-S3",
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      },
+      {
+        "id": "TPL-CO-EM-003-CLOSURE-CONTROL",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "CANDIDATO ESTRUCTURADO V2.8. Complete saldos, entregas, accesos y reservas con evidencia real. Pendiente cotejo con el original.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": false,
+        "locked": true,
+        "source_ids": [
+          "EM3-S4"
+        ],
+        "notes": "Texto candidato v2.8 derivado del paquete CO-EM-003 disponible en File Library. Pendiente cotejo literal y aprobación; no sustituye el binario original."
+      }
+    ],
+    "maturity_version": "2.13",
+    "advanced_status": "Aprobada para uso profesional controlado",
+    "professional_use": true,
+    "approval_model": "multi_stage_single_responsible",
+    "independent_reviewers": false
+  }
+]

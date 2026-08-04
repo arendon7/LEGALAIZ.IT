@@ -1,0 +1,539 @@
+[
+  {
+    "id": "LA2-R01",
+    "risk": "red",
+    "message": "El producto estándar no cubre servidores públicos, trabajadores oficiales, expatriación ni ejecución principal fuera de Colombia.",
+    "action": "Escalar a análisis especializado.",
+    "conditions": {
+      "all": [
+        {
+          "field": "public_or_crossborder",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "LA2-S1"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA2-R02",
+    "risk": "red",
+    "message": "La contratación de menores de edad requiere autorización y límites especiales.",
+    "action": "No generar contrato estándar.",
+    "conditions": {
+      "all": [
+        {
+          "field": "worker_age_status",
+          "op": "in",
+          "value": [
+            "Menor de edad",
+            "No confirmado"
+          ]
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "LA2-S2"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA2-R03",
+    "risk": "yellow",
+    "message": "Existe convención, pacto, laudo o régimen colectivo que puede modificar condiciones mínimas.",
+    "action": "Cotejar el texto colectivo antes de cerrar el contrato.",
+    "conditions": {
+      "all": [
+        {
+          "field": "collective_regime",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "LA2-S1"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA2-R04",
+    "risk": "red",
+    "message": "Las funciones no están suficientemente definidas.",
+    "action": "Completar el anexo de cargo y responsabilidades.",
+    "conditions": {
+      "all": [
+        {
+          "field": "role_clear",
+          "op": "in",
+          "value": [
+            "No",
+            "En construcción"
+          ]
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "LA2-S1"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA2-R05",
+    "risk": "yellow",
+    "message": "La obra o labor exige descripción precisa y un hito verificable de finalización.",
+    "action": "Activar control reforzado de objeto y terminación.",
+    "conditions": {
+      "all": [
+        {
+          "field": "need_type",
+          "op": "equals",
+          "value": "Obra o labor específica"
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "LA2-S2"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA2-R06",
+    "risk": "yellow",
+    "message": "El contrato a término fijo debe constar por escrito y respetar el máximo acumulado de cuatro años.",
+    "action": "Verificar fechas, prórrogas y preaviso.",
+    "conditions": {
+      "all": [
+        {
+          "field": "need_type",
+          "op": "equals",
+          "value": "Temporal con fecha cierta"
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "LA2-S2"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA2-R07",
+    "risk": "yellow",
+    "message": "La forma no presencial activa obligaciones específicas de ARL, SG-SST, equipos, desconexión y privacidad.",
+    "action": "Generar anexo de modalidad no presencial.",
+    "conditions": {
+      "all": [
+        {
+          "field": "remote",
+          "op": "not_equals",
+          "value": "Presencial"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "LA2-S6",
+      "LA2-S7",
+      "LA2-S8",
+      "LA2-S9"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA2-R08",
+    "risk": "red",
+    "message": "La jornada ordinaria supera 42 horas semanales.",
+    "action": "Ajustar la jornada o documentar un régimen legal especial fuera del producto.",
+    "conditions": {
+      "all": [
+        {
+          "field": "weekly_hours",
+          "op": "gt",
+          "value": 42
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "LA2-S2",
+      "LA2-S3"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA2-R09",
+    "risk": "red",
+    "message": "La jornada ordinaria diaria propuesta supera nueve horas.",
+    "action": "Reprogramar la distribución diaria.",
+    "conditions": {
+      "all": [
+        {
+          "field": "max_daily_hours",
+          "op": "gt",
+          "value": 9
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "LA2-S2"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA2-R10",
+    "risk": "red",
+    "message": "Las horas extra previstas exceden dos horas diarias.",
+    "action": "Ajustar la planeación de trabajo suplementario.",
+    "conditions": {
+      "all": [
+        {
+          "field": "planned_overtime_daily",
+          "op": "gt",
+          "value": 2
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "LA2-S2"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA2-R11",
+    "risk": "red",
+    "message": "Las horas extra previstas exceden doce horas semanales.",
+    "action": "Ajustar la planeación de trabajo suplementario.",
+    "conditions": {
+      "all": [
+        {
+          "field": "planned_overtime_weekly",
+          "op": "gt",
+          "value": 12
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "LA2-S2"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA2-R12",
+    "risk": "yellow",
+    "message": "El horario incluye jornada nocturna desde las 7:00 p. m.",
+    "action": "Aplicar recargo nocturno y reflejarlo en programación y nómina.",
+    "conditions": {
+      "all": [
+        {
+          "field": "night_work",
+          "op": "in",
+          "value": [
+            "Sí",
+            "Ocasional"
+          ]
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "LA2-S2"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA2-R13",
+    "risk": "yellow",
+    "message": "Se pactará período de prueba y debe respetar límites generales y proporcionales.",
+    "action": "Validar duración antes de generar.",
+    "conditions": {
+      "all": [
+        {
+          "field": "probation",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "LA2-S1"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA2-R14",
+    "risk": "yellow",
+    "message": "Los pagos variables requieren fórmula, causación, período de medición y reglas de pago.",
+    "action": "Generar anexo de compensación variable.",
+    "conditions": {
+      "all": [
+        {
+          "field": "variable_payments",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "LA2-S1"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA2-R15",
+    "risk": "red",
+    "message": "No se admiten autorizaciones generales o automáticas de descuentos por daños, pérdidas o faltantes.",
+    "action": "Eliminar la autorización general y usar debido proceso y soporte individual.",
+    "conditions": {
+      "all": [
+        {
+          "field": "automatic_deductions",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "LA2-S1"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA2-R16",
+    "risk": "red",
+    "message": "No está asegurado el proceso de afiliación y aportes al sistema de seguridad social.",
+    "action": "Definir y confirmar afiliaciones antes del inicio.",
+    "conditions": {
+      "all": [
+        {
+          "field": "social_security_plan_confirmed",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "LA2-S1"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA2-R17",
+    "risk": "yellow",
+    "message": "La afiliación y aportes aún están en proceso.",
+    "action": "Mantener tarea obligatoria previa al inicio.",
+    "conditions": {
+      "all": [
+        {
+          "field": "social_security_plan_confirmed",
+          "op": "equals",
+          "value": "En proceso"
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "LA2-S1"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA2-R18",
+    "risk": "yellow",
+    "message": "La evaluación médica ocupacional de ingreso no está confirmada.",
+    "action": "Programar y documentar el examen ocupacional.",
+    "conditions": {
+      "all": [
+        {
+          "field": "occupational_exam_ready",
+          "op": "in",
+          "value": [
+            "No",
+            "En proceso"
+          ]
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "LA2-S6"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA2-R19",
+    "risk": "yellow",
+    "message": "La protección especial no impide contratar; exige no discriminación y ajustes razonables.",
+    "action": "Documentar evaluación y medidas de inclusión.",
+    "conditions": {
+      "all": [
+        {
+          "field": "special_protection",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "LA2-S1",
+      "LA2-S2"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA2-R20",
+    "risk": "red",
+    "message": "La decisión contractual no puede basarse negativamente en embarazo, discapacidad, salud, fuero u otra condición protegida.",
+    "action": "Detener el flujo y escalar a revisión jurídica.",
+    "conditions": {
+      "all": [
+        {
+          "field": "protected_status_decision",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "LA2-S1",
+      "LA2-S2"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "LA2-R21",
+    "risk": "yellow",
+    "message": "La entrega de equipos y credenciales requiere inventario, seguridad y restitución.",
+    "action": "Generar acta de equipos y accesos.",
+    "conditions": {
+      "all": [
+        {
+          "field": "work_equipment",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "LA2-S6"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA2-R22",
+    "risk": "yellow",
+    "message": "El tratamiento de datos sensibles, biométricos o monitoreo exige finalidad, necesidad y controles separados.",
+    "action": "Generar anexo de datos y privacidad laboral.",
+    "conditions": {
+      "all": [
+        {
+          "field": "personal_data",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "LA2-S10"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA2-R23",
+    "risk": "yellow",
+    "message": "La creación de activos intelectuales requiere entregables determinables, materiales previos y reglas de derechos.",
+    "action": "Generar anexo de propiedad intelectual.",
+    "conditions": {
+      "all": [
+        {
+          "field": "ip_relevant",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "LA2-S11"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA2-R24",
+    "risk": "yellow",
+    "message": "El acceso a secretos empresariales requiere clasificación, acceso mínimo y protocolo de devolución.",
+    "action": "Generar anexo de confidencialidad.",
+    "conditions": {
+      "all": [
+        {
+          "field": "confidential_information",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "LA2-S10",
+      "LA2-S11"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "LA2-R25",
+    "risk": "yellow",
+    "message": "La exclusividad debe ser necesaria, proporcional y compatible con la libertad de trabajo.",
+    "action": "Revisar alcance y eliminar restricciones generales.",
+    "conditions": {
+      "all": [
+        {
+          "field": "exclusivity_clause",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "LA2-S1"
+    ],
+    "blocking": false
+  }
+]

@@ -1,0 +1,1285 @@
+{
+  "schema_version": "1.0.0",
+  "project": "LegalAIZ.it",
+  "target_release": "M25.0",
+  "jurisdiction": "Colombia",
+  "source_library": "M23.2",
+  "status": "runtime_bindings_resolved_internal_pilot_only",
+  "generated_at": "2026-08-02T18:24:00-05:00",
+  "product_count": 11,
+  "products": [
+    {
+      "product_code": "CO-LA-001",
+      "internal_name": "Reclamación y liquidación laboral",
+      "public_name": "Revisar y reclamar mi liquidación laboral",
+      "category": "Laboral",
+      "problem_solved": "La persona trabajadora necesita verificar acreencias laborales, liquidación final, deducciones, indemnizaciones y formular una reclamación documentada.",
+      "service_levels": [
+        "orientacion",
+        "documento_personalizado",
+        "solucion_revisada"
+      ],
+      "risk_level": "high",
+      "scope": [
+        "liquidación desglosada",
+        "reclamación directa",
+        "matriz de soportes",
+        "guía de radicación y seguimiento"
+      ],
+      "exclusions": [
+        "régimen público o especial sin revisión",
+        "proceso judicial o conciliación activa no analizada",
+        "cálculo definitivo con salario variable sin soportes"
+      ],
+      "required_evidence": [
+        "contrato o prueba de vinculación",
+        "comprobantes de pago",
+        "fecha y causa de terminación",
+        "liquidación entregada",
+        "soportes de deducciones"
+      ],
+      "pilot": false,
+      "jurisdiction": "CO",
+      "language": "es-CO",
+      "questionnaire_binding": {
+        "status": "resolved_m21_1_runtime",
+        "runtime_source": "data/interviews.json",
+        "runtime_key": "CO-LA-001",
+        "runtime_question_count": 38,
+        "asset_interview_source": "app/assets/advanced-legal-library/CO-LA-001/ENTREVISTA.json",
+        "canonical_question_source": "app/assets/advanced-legal-library/CO-LA-001/PREGUNTAS_CANONICAS.json",
+        "historical_expected_ref": "M22://questionnaires/CO-LA-001",
+        "resolution_note": "Vinculación resuelta sobre el runtime M21.1 efectivamente recuperado; no depende de M22."
+      },
+      "ruleset_binding": {
+        "status": "resolved_m21_1_runtime_plus_m23_2_candidate",
+        "source_file": "CO-LA-001/CO-LA-001_M23_Bloques_Reglas_y_Fuentes.json",
+        "rule_count": 8,
+        "rule_ids": [
+          "M23-LA1-001",
+          "M23-LA1-002",
+          "M23-LA1-003",
+          "M23-LA1-004",
+          "M23-LA1-005",
+          "M23-LA1-006",
+          "M23-LA1-007",
+          "M23-LA1-008"
+        ],
+        "runtime_source": "data/rules.json",
+        "runtime_key": "CO-LA-001",
+        "runtime_rule_count": 20,
+        "candidate_source_file": "CO-LA-001/CO-LA-001_M23_Bloques_Reglas_y_Fuentes.json",
+        "resolution_note": "Las reglas activas permanecen en M21.1 y M23.2 opera como revisión candidata aprobada para piloto interno."
+      },
+      "template_candidate": {
+        "revision_label": "M23.2",
+        "master_docx": "CO-LA-001_Modelo_Maestro_Reclamacion_Liquidacion_Laboral_M23.docx",
+        "master_pdf": "CO-LA-001_Modelo_Maestro_Reclamacion_Liquidacion_Laboral_M23.pdf",
+        "worked_example_docx": "CO-LA-001_Ejemplo_Final_Reclamacion_Liquidacion_M23.docx",
+        "worked_example_pdf": "CO-LA-001_Ejemplo_Final_Reclamacion_Liquidacion_M23.pdf",
+        "integration_mode": "new_immutable_revision_no_overwrite"
+      },
+      "conditional_modules": [
+        "reclamacion_laboral",
+        "liquidacion_desglosada",
+        "evidence_matrix",
+        "filing_guide"
+      ],
+      "legal_sources": [
+        "Constitución Política",
+        "Código Sustantivo del Trabajo",
+        "Ley 50 de 1990",
+        "Ley 2466 de 2025",
+        "Ley 1755 de 2015",
+        "Decretos 1469 y 1470 de 2025",
+        "Consejo de Estado, decisión informada 17-07-2026"
+      ],
+      "approvals": {
+        "status": "approved_for_internal_pilot",
+        "legal_owner": "Agustín Rendón Calle",
+        "qa_owner": "Agustín Rendón Calle",
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "same_person_disclosure": true,
+        "case_specific_review_required": true,
+        "policy_reference": "config/m24_10_human_approval_policy.json"
+      },
+      "publication_status": "approved_for_internal_pilot_not_public"
+    },
+    {
+      "product_code": "CO-LA-002",
+      "internal_name": "Contrato de trabajo",
+      "public_name": "Crear un contrato de trabajo completo",
+      "category": "Laboral",
+      "problem_solved": "El empleador necesita formalizar una relación laboral conforme a la modalidad, jornada, remuneración, funciones, riesgos y protecciones aplicables.",
+      "service_levels": [
+        "documento_personalizado",
+        "solucion_revisada"
+      ],
+      "risk_level": "high",
+      "scope": [
+        "contrato laboral",
+        "funciones y resultados",
+        "activos",
+        "confidencialidad y datos",
+        "módulos de jornada y modalidad"
+      ],
+      "exclusions": [
+        "decisiones de terminación con estabilidad reforzada sin revisión",
+        "jornadas contrarias al régimen aplicable",
+        "cláusulas de deducción automática o no competencia general"
+      ],
+      "required_evidence": [
+        "identificación de las partes",
+        "cargo y funciones",
+        "salario y pagos",
+        "jornada",
+        "lugar y modalidad",
+        "riesgos y herramientas"
+      ],
+      "pilot": true,
+      "jurisdiction": "CO",
+      "language": "es-CO",
+      "questionnaire_binding": {
+        "status": "resolved_m21_1_runtime",
+        "runtime_source": "data/interviews.json",
+        "runtime_key": "CO-LA-002",
+        "runtime_question_count": 44,
+        "asset_interview_source": "app/assets/advanced-legal-library/CO-LA-002/ENTREVISTA.json",
+        "canonical_question_source": "app/assets/advanced-legal-library/CO-LA-002/PREGUNTAS_CANONICAS.json",
+        "historical_expected_ref": "M22://questionnaires/CO-LA-002",
+        "resolution_note": "Vinculación resuelta sobre el runtime M21.1 efectivamente recuperado; no depende de M22."
+      },
+      "ruleset_binding": {
+        "status": "resolved_m21_1_runtime_plus_m23_2_candidate",
+        "source_file": "CO-LA-002/CO-LA-002_M23_Bloques_Reglas_y_Fuentes.json",
+        "rule_count": 14,
+        "rule_ids": [
+          "LAB-M23-001",
+          "LAB-M23-002",
+          "LAB-M23-003",
+          "LAB-M23-004",
+          "LAB-M23-005",
+          "LAB-M23-006",
+          "LAB-M23-007",
+          "LAB-M23-008",
+          "LAB-M23-009",
+          "LAB-M23-010",
+          "LAB-M23-011",
+          "LAB-M23-012",
+          "LAB-M23-013",
+          "LAB-M23-014"
+        ],
+        "runtime_source": "data/rules.json",
+        "runtime_key": "CO-LA-002",
+        "runtime_rule_count": 25,
+        "candidate_source_file": "CO-LA-002/CO-LA-002_M23_Bloques_Reglas_y_Fuentes.json",
+        "resolution_note": "Las reglas activas permanecen en M21.1 y M23.2 opera como revisión candidata aprobada para piloto interno."
+      },
+      "template_candidate": {
+        "revision_label": "M23.2",
+        "master_docx": "CO-LA-002_Modelo_Maestro_Contrato_Indefinido_M23.docx",
+        "master_pdf": "CO-LA-002_Modelo_Maestro_Contrato_Indefinido_M23.pdf",
+        "worked_example_docx": "CO-LA-002_Ejemplo_Final_Auxiliar_Administrativa_M23.docx",
+        "worked_example_pdf": "CO-LA-002_Ejemplo_Final_Auxiliar_Administrativa_M23.pdf",
+        "integration_mode": "new_immutable_revision_no_overwrite"
+      },
+      "conditional_modules": [
+        "parties_and_capacity",
+        "considerations",
+        "object_and_role",
+        "duration",
+        "probation",
+        "place_and_modality",
+        "working_time",
+        "overtime_and_surcharges",
+        "disconnection",
+        "salary",
+        "variable_compensation",
+        "benefits_and_social_security",
+        "subordination_limits",
+        "employer_obligations",
+        "worker_obligations",
+        "prohibitions",
+        "osh",
+        "harassment_and_discrimination",
+        "confidentiality",
+        "intellectual_property",
+        "personal_data_and_monitoring",
+        "technology_and_ai",
+        "assets",
+        "conflicts_of_interest",
+        "performance",
+        "policies",
+        "leaves",
+        "special_protections",
+        "disciplinary_due_process",
+        "termination",
+        "handover",
+        "notices",
+        "integration",
+        "applicable_law"
+      ],
+      "legal_sources": [
+        {
+          "source": "Código Sustantivo del Trabajo consolidado",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Codigo%2F30019323",
+          "verified": "2026-07-31"
+        },
+        {
+          "source": "Ley 2466 de 2025",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F30055086",
+          "verified": "2026-07-31"
+        },
+        {
+          "source": "Ley 2101 de 2021",
+          "official_url": "https://www.suin-juriscol.gov.co/",
+          "verified": "2026-07-31"
+        },
+        {
+          "source": "Ley 2191 de 2022",
+          "official_url": "https://www.suin-juriscol.gov.co/",
+          "verified": "2026-07-31"
+        },
+        {
+          "source": "Ley 1581 de 2012",
+          "official_url": "https://www.suin-juriscol.gov.co/",
+          "verified": "2026-07-31"
+        }
+      ],
+      "approvals": {
+        "status": "approved_for_internal_pilot",
+        "legal_owner": "Agustín Rendón Calle",
+        "qa_owner": "Agustín Rendón Calle",
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "same_person_disclosure": true,
+        "case_specific_review_required": true,
+        "policy_reference": "config/m24_10_human_approval_policy.json"
+      },
+      "publication_status": "approved_for_internal_pilot_not_public"
+    },
+    {
+      "product_code": "CO-EM-003",
+      "internal_name": "Contrato de prestación de servicios",
+      "public_name": "Contratar o prestar servicios con reglas claras",
+      "category": "Empresarial",
+      "problem_solved": "Las partes necesitan regular servicios independientes, entregables, aceptación, pagos, propiedad intelectual, datos, responsabilidad y terminación.",
+      "service_levels": [
+        "documento_personalizado",
+        "solucion_revisada"
+      ],
+      "risk_level": "high",
+      "scope": [
+        "contrato",
+        "alcance y entregables",
+        "criterios de aceptación",
+        "control de cambios",
+        "datos y seguridad",
+        "propiedad intelectual"
+      ],
+      "exclusions": [
+        "relación materialmente subordinada",
+        "objeto o criterios de aceptación indefinidos",
+        "transferencia general e indeterminada de derechos futuros"
+      ],
+      "required_evidence": [
+        "identificación de las partes",
+        "alcance",
+        "entregables",
+        "cronograma",
+        "precio y pagos",
+        "tratamiento de datos",
+        "componentes de terceros"
+      ],
+      "pilot": true,
+      "jurisdiction": "CO",
+      "language": "es-CO",
+      "questionnaire_binding": {
+        "status": "resolved_m21_1_runtime",
+        "runtime_source": "data/interviews.json",
+        "runtime_key": "CO-EM-003",
+        "runtime_question_count": 27,
+        "asset_interview_source": "app/assets/advanced-legal-library/CO-EM-003/ENTREVISTA.json",
+        "canonical_question_source": "app/assets/advanced-legal-library/CO-EM-003/PREGUNTAS_CANONICAS.json",
+        "historical_expected_ref": "M22://questionnaires/CO-EM-003",
+        "resolution_note": "Vinculación resuelta sobre el runtime M21.1 efectivamente recuperado; no depende de M22."
+      },
+      "ruleset_binding": {
+        "status": "resolved_m21_1_runtime_plus_m23_2_candidate",
+        "source_file": "CO-EM-003/CO-EM-003_M23_Bloques_Reglas_y_Fuentes.json",
+        "rule_count": 12,
+        "rule_ids": [
+          "SERV-M23-001",
+          "SERV-M23-002",
+          "SERV-M23-003",
+          "SERV-M23-004",
+          "SERV-M23-005",
+          "SERV-M23-006",
+          "SERV-M23-007",
+          "SERV-M23-008",
+          "SERV-M23-009",
+          "SERV-M23-010",
+          "SERV-M23-011",
+          "SERV-M23-012"
+        ],
+        "runtime_source": "data/rules.json",
+        "runtime_key": "CO-EM-003",
+        "runtime_rule_count": 14,
+        "candidate_source_file": "CO-EM-003/CO-EM-003_M23_Bloques_Reglas_y_Fuentes.json",
+        "resolution_note": "Las reglas activas permanecen en M21.1 y M23.2 opera como revisión candidata aprobada para piloto interno."
+      },
+      "template_candidate": {
+        "revision_label": "M23.2",
+        "master_docx": "CO-EM-003_Modelo_Maestro_Prestacion_Servicios_M23.docx",
+        "master_pdf": "CO-EM-003_Modelo_Maestro_Prestacion_Servicios_M23.pdf",
+        "worked_example_docx": "CO-EM-003_Ejemplo_Final_Solucion_Gestion_Contractual_M23.docx",
+        "worked_example_pdf": "CO-EM-003_Ejemplo_Final_Solucion_Gestion_Contractual_M23.pdf",
+        "integration_mode": "new_immutable_revision_no_overwrite"
+      },
+      "conditional_modules": [],
+      "legal_sources": [
+        {
+          "source": "Código Civil - Ley 84 de 1873",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1827111",
+          "verified": "2026-07-31"
+        },
+        {
+          "source": "Código de Comercio - Decreto 410 de 1971",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1833376",
+          "verified": "2026-07-31"
+        },
+        {
+          "source": "Ley 2024 de 2020 - pago en plazos justos",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F30039609",
+          "verified": "2026-07-31"
+        },
+        {
+          "source": "Ley 1581 de 2012",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1684507",
+          "verified": "2026-07-31"
+        },
+        {
+          "source": "Decreto 1074 de 2015",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Decretos%2F30019935",
+          "verified": "2026-07-31"
+        },
+        {
+          "source": "Ley 23 de 1982 y artículo 183 modificado",
+          "official_url": "https://suin-juriscol.gov.co/viewDocument.asp?id=30035790",
+          "verified": "2026-07-31"
+        },
+        {
+          "source": "Ley 527 de 1999",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1662013",
+          "verified": "2026-07-31"
+        },
+        {
+          "source": "Ley 1562 de 2012 y Decreto 723 de 2013",
+          "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Decretos%2F1153464",
+          "verified": "2026-07-31"
+        },
+        {
+          "source": "Decisión Andina 486 de 2000",
+          "official_url": "https://www.suin-juriscol.gov.co/otrosinformacion/dpi/decisiones_486.pdf",
+          "verified": "2026-07-31"
+        }
+      ],
+      "approvals": {
+        "status": "approved_for_internal_pilot",
+        "legal_owner": "Agustín Rendón Calle",
+        "qa_owner": "Agustín Rendón Calle",
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "same_person_disclosure": true,
+        "case_specific_review_required": true,
+        "policy_reference": "config/m24_10_human_approval_policy.json"
+      },
+      "publication_status": "approved_for_internal_pilot_not_public"
+    },
+    {
+      "product_code": "CO-EM-004",
+      "internal_name": "Acuerdo de confidencialidad y propiedad intelectual",
+      "public_name": "Proteger información, desarrollos y secretos empresariales",
+      "category": "Empresarial",
+      "problem_solved": "Las partes necesitan proteger información confidencial, secretos empresariales, datos, software, desarrollos y usos de inteligencia artificial.",
+      "service_levels": [
+        "documento_personalizado",
+        "solucion_revisada"
+      ],
+      "risk_level": "high",
+      "scope": [
+        "NDA unilateral o bilateral",
+        "inventario de información",
+        "secretos empresariales",
+        "datos personales",
+        "IA y proveedores externos",
+        "propiedad intelectual"
+      ],
+      "exclusions": [
+        "restricciones generales de competencia sin análisis",
+        "datos sensibles sin base y controles",
+        "secreto empresarial sin medidas verificables"
+      ],
+      "required_evidence": [
+        "roles de las partes",
+        "categorías de información",
+        "finalidad",
+        "personas autorizadas",
+        "medidas de seguridad",
+        "datos y herramientas externas"
+      ],
+      "pilot": false,
+      "jurisdiction": "CO",
+      "language": "es-CO",
+      "questionnaire_binding": {
+        "status": "resolved_m21_1_runtime",
+        "runtime_source": "data/interviews.json",
+        "runtime_key": "CO-EM-004",
+        "runtime_question_count": 20,
+        "asset_interview_source": "app/assets/advanced-legal-library/CO-EM-004/ENTREVISTA.json",
+        "canonical_question_source": "app/assets/advanced-legal-library/CO-EM-004/PREGUNTAS_CANONICAS.json",
+        "historical_expected_ref": "M22://questionnaires/CO-EM-004",
+        "resolution_note": "Vinculación resuelta sobre el runtime M21.1 efectivamente recuperado; no depende de M22."
+      },
+      "ruleset_binding": {
+        "status": "resolved_m21_1_runtime_plus_m23_2_candidate",
+        "source_file": "CO-EM-004/CO-EM-004_M23_Bloques_Reglas_y_Fuentes.json",
+        "rule_count": 7,
+        "rule_ids": [
+          "CONF-M23-001",
+          "CONF-M23-002",
+          "CONF-M23-003",
+          "CONF-M23-004",
+          "CONF-M23-005",
+          "CONF-M23-006",
+          "CONF-M23-007"
+        ],
+        "runtime_source": "data/rules.json",
+        "runtime_key": "CO-EM-004",
+        "runtime_rule_count": 17,
+        "candidate_source_file": "CO-EM-004/CO-EM-004_M23_Bloques_Reglas_y_Fuentes.json",
+        "resolution_note": "Las reglas activas permanecen en M21.1 y M23.2 opera como revisión candidata aprobada para piloto interno."
+      },
+      "template_candidate": {
+        "revision_label": "M23.2",
+        "master_docx": "CO-EM-004_Modelo_Maestro_Confidencialidad_PI_M23.docx",
+        "master_pdf": "CO-EM-004_Modelo_Maestro_Confidencialidad_PI_M23.pdf",
+        "worked_example_docx": "CO-EM-004_Ejemplo_Final_Nexo_BioData_M23.docx",
+        "worked_example_pdf": "CO-EM-004_Ejemplo_Final_Nexo_BioData_M23.pdf",
+        "integration_mode": "new_immutable_revision_no_overwrite"
+      },
+      "conditional_modules": [],
+      "legal_sources": [
+        {
+          "name": "Ley 256 de 1996",
+          "topic": "competencia desleal y violación de secretos",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1656946"
+        },
+        {
+          "name": "Ley 1581 de 2012",
+          "topic": "protección de datos personales",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1684507"
+        },
+        {
+          "name": "Decreto 1074 de 2015",
+          "topic": "reglamentación sector comercio y datos personales",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Decretos%2F30019935"
+        },
+        {
+          "name": "Ley 23 de 1982, modificada",
+          "topic": "derecho de autor",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F30035790"
+        },
+        {
+          "name": "Ley 527 de 1999",
+          "topic": "mensajes de datos y firma digital",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1662013"
+        }
+      ],
+      "approvals": {
+        "status": "approved_for_internal_pilot",
+        "legal_owner": "Agustín Rendón Calle",
+        "qa_owner": "Agustín Rendón Calle",
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "same_person_disclosure": true,
+        "case_specific_review_required": true,
+        "policy_reference": "config/m24_10_human_approval_policy.json"
+      },
+      "publication_status": "approved_for_internal_pilot_not_public"
+    },
+    {
+      "product_code": "CO-AR-001",
+      "internal_name": "Arrendamiento de vivienda urbana",
+      "public_name": "Arrendar una vivienda con un contrato completo",
+      "category": "Arrendamiento",
+      "problem_solved": "Arrendador y arrendatario necesitan regular vivienda urbana, canon, servicios, administración, inventario, garantías, terminación y restitución.",
+      "service_levels": [
+        "documento_personalizado",
+        "solucion_revisada"
+      ],
+      "risk_level": "high",
+      "scope": [
+        "contrato de vivienda",
+        "inventario",
+        "servicios",
+        "propiedad horizontal",
+        "terminación y restitución"
+      ],
+      "exclusions": [
+        "uso comercial o mixto",
+        "canon superior al límite legal",
+        "depósitos o garantías reales prohibidas"
+      ],
+      "required_evidence": [
+        "identificación",
+        "inmueble",
+        "canon",
+        "servicios",
+        "administración",
+        "inventario",
+        "duración",
+        "garantías permitidas"
+      ],
+      "pilot": true,
+      "jurisdiction": "CO",
+      "language": "es-CO",
+      "questionnaire_binding": {
+        "status": "resolved_m21_1_runtime",
+        "runtime_source": "data/interviews.json",
+        "runtime_key": "CO-AR-001",
+        "runtime_question_count": 32,
+        "asset_interview_source": "app/assets/advanced-legal-library/CO-AR-001/ENTREVISTA.json",
+        "canonical_question_source": "app/assets/advanced-legal-library/CO-AR-001/PREGUNTAS_CANONICAS.json",
+        "historical_expected_ref": "M22://questionnaires/CO-AR-001",
+        "resolution_note": "Vinculación resuelta sobre el runtime M21.1 efectivamente recuperado; no depende de M22."
+      },
+      "ruleset_binding": {
+        "status": "resolved_m21_1_runtime_plus_m23_2_candidate",
+        "source_file": "CO-AR-001/CO-AR-001_M23_Bloques_Reglas_y_Fuentes.json",
+        "rule_count": 7,
+        "rule_ids": [
+          "LEASE-M23-001",
+          "LEASE-M23-002",
+          "LEASE-M23-003",
+          "LEASE-M23-004",
+          "LEASE-M23-005",
+          "LEASE-M23-006",
+          "LEASE-M23-007"
+        ],
+        "runtime_source": "data/rules.json",
+        "runtime_key": "CO-AR-001",
+        "runtime_rule_count": 20,
+        "candidate_source_file": "CO-AR-001/CO-AR-001_M23_Bloques_Reglas_y_Fuentes.json",
+        "resolution_note": "Las reglas activas permanecen en M21.1 y M23.2 opera como revisión candidata aprobada para piloto interno."
+      },
+      "template_candidate": {
+        "revision_label": "M23.2",
+        "master_docx": "CO-AR-001_Modelo_Maestro_Arrendamiento_Vivienda_M23.docx",
+        "master_pdf": "CO-AR-001_Modelo_Maestro_Arrendamiento_Vivienda_M23.pdf",
+        "worked_example_docx": "CO-AR-001_Ejemplo_Final_Arrendamiento_Apartamento_M23.docx",
+        "worked_example_pdf": "CO-AR-001_Ejemplo_Final_Arrendamiento_Apartamento_M23.pdf",
+        "integration_mode": "new_immutable_revision_no_overwrite"
+      },
+      "conditional_modules": [],
+      "legal_sources": [
+        {
+          "name": "Ley 820 de 2003",
+          "topic": "arrendamiento de vivienda urbana",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1669010"
+        },
+        {
+          "name": "Decreto 3130 de 2003",
+          "topic": "servicios públicos en vivienda arrendada",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Decretos%2F1877380"
+        },
+        {
+          "name": "Decreto 51 de 2004, compilado",
+          "topic": "reglamentación de la Ley 820",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1840085"
+        },
+        {
+          "name": "Ley 675 de 2001",
+          "topic": "propiedad horizontal",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1665811"
+        },
+        {
+          "name": "Ley 1581 de 2012",
+          "topic": "protección de datos personales",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1684507"
+        },
+        {
+          "name": "Ley 527 de 1999",
+          "topic": "mensajes de datos y firmas",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1662013"
+        }
+      ],
+      "approvals": {
+        "status": "approved_for_internal_pilot",
+        "legal_owner": "Agustín Rendón Calle",
+        "qa_owner": "Agustín Rendón Calle",
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "same_person_disclosure": true,
+        "case_specific_review_required": true,
+        "policy_reference": "config/m24_10_human_approval_policy.json"
+      },
+      "publication_status": "approved_for_internal_pilot_not_public"
+    },
+    {
+      "product_code": "CO-SA-001",
+      "internal_name": "Petición y reclamo en salud",
+      "public_name": "Solicitar atención, continuidad o respuesta de una entidad de salud",
+      "category": "Salud",
+      "problem_solved": "La persona necesita solicitar autorización, continuidad, entrega, programación o respuesta de una entidad del sistema de salud.",
+      "service_levels": [
+        "orientacion",
+        "documento_personalizado",
+        "solucion_revisada"
+      ],
+      "risk_level": "critical",
+      "scope": [
+        "petición o reclamo",
+        "índice de pruebas",
+        "calendario de seguimiento",
+        "reiteración y escalamiento"
+      ],
+      "exclusions": [
+        "urgencia vital tratada solo por documento",
+        "tutela o incidente activo sin revisión",
+        "entrega de historia clínica a tercero no autorizado"
+      ],
+      "required_evidence": [
+        "orden médica",
+        "historia o resumen pertinente",
+        "negación o demora",
+        "identificación",
+        "datos de afiliación",
+        "radicados previos"
+      ],
+      "pilot": false,
+      "jurisdiction": "CO",
+      "language": "es-CO",
+      "questionnaire_binding": {
+        "status": "resolved_m21_1_runtime",
+        "runtime_source": "data/interviews.json",
+        "runtime_key": "CO-SA-001",
+        "runtime_question_count": 42,
+        "asset_interview_source": "app/assets/advanced-legal-library/CO-SA-001/ENTREVISTA.json",
+        "canonical_question_source": null,
+        "historical_expected_ref": "M22://questionnaires/CO-SA-001",
+        "resolution_note": "Vinculación resuelta sobre el runtime M21.1 efectivamente recuperado; no depende de M22."
+      },
+      "ruleset_binding": {
+        "status": "resolved_m21_1_runtime_plus_m23_2_candidate",
+        "source_file": "CO-SA-001/CO-SA-001_M23_Bloques_Reglas_y_Fuentes.json",
+        "rule_count": 8,
+        "rule_ids": [
+          "M23-SA1-001",
+          "M23-SA1-002",
+          "M23-SA1-003",
+          "M23-SA1-004",
+          "M23-SA1-005",
+          "M23-SA1-006",
+          "M23-SA1-007",
+          "M23-SA1-008"
+        ],
+        "runtime_source": "data/rules.json",
+        "runtime_key": "CO-SA-001",
+        "runtime_rule_count": 25,
+        "candidate_source_file": "CO-SA-001/CO-SA-001_M23_Bloques_Reglas_y_Fuentes.json",
+        "resolution_note": "Las reglas activas permanecen en M21.1 y M23.2 opera como revisión candidata aprobada para piloto interno."
+      },
+      "template_candidate": {
+        "revision_label": "M23.2",
+        "master_docx": "CO-SA-001_Modelo_Maestro_Peticion_Reclamo_Salud_M23.docx",
+        "master_pdf": "CO-SA-001_Modelo_Maestro_Peticion_Reclamo_Salud_M23.pdf",
+        "worked_example_docx": "CO-SA-001_Ejemplo_Final_Continuidad_Tratamiento_M23.docx",
+        "worked_example_pdf": "CO-SA-001_Ejemplo_Final_Continuidad_Tratamiento_M23.pdf",
+        "integration_mode": "new_immutable_revision_no_overwrite"
+      },
+      "conditional_modules": [
+        "health_petition",
+        "health_claim",
+        "evidence_index",
+        "deadline_calendar",
+        "reiteration_and_escalation"
+      ],
+      "legal_sources": [
+        "Constitución Política",
+        "Ley 1751 de 2015",
+        "Ley 1755 de 2015",
+        "Decreto 780 de 2016",
+        "Circular Externa 2023151000000010-5 de 2023",
+        "Resoluciones 1995 de 1999 y 839 de 2017",
+        "Ley 1581 de 2012"
+      ],
+      "approvals": {
+        "status": "approved_for_internal_pilot",
+        "legal_owner": "Agustín Rendón Calle",
+        "qa_owner": "Agustín Rendón Calle",
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "same_person_disclosure": true,
+        "case_specific_review_required": true,
+        "policy_reference": "config/m24_10_human_approval_policy.json"
+      },
+      "publication_status": "approved_for_internal_pilot_not_public"
+    },
+    {
+      "product_code": "CO-CD-001",
+      "internal_name": "Reclamación de hábeas data financiero",
+      "public_name": "Corregir o revisar un reporte en centrales de riesgo",
+      "category": "Crédito y datos",
+      "problem_solved": "El titular necesita consultar, corregir, actualizar o solicitar retiro procedente de información financiera o crediticia.",
+      "service_levels": [
+        "orientacion",
+        "documento_personalizado",
+        "solucion_revisada"
+      ],
+      "risk_level": "high",
+      "scope": [
+        "reclamación",
+        "matriz probatoria",
+        "cómputo de términos",
+        "escalamiento ante la SIC"
+      ],
+      "exclusions": [
+        "promesa de eliminar obligaciones válidas",
+        "suplantación sin revisión",
+        "proceso ejecutivo, insolvencia o acuerdo activo no analizado"
+      ],
+      "required_evidence": [
+        "reporte",
+        "obligación y titularidad",
+        "pago o extinción",
+        "comunicación previa",
+        "fechas de mora y reporte",
+        "reclamaciones anteriores"
+      ],
+      "pilot": false,
+      "jurisdiction": "CO",
+      "language": "es-CO",
+      "questionnaire_binding": {
+        "status": "resolved_m21_1_runtime",
+        "runtime_source": "data/interviews.json",
+        "runtime_key": "CO-CD-001",
+        "runtime_question_count": 52,
+        "asset_interview_source": "app/assets/advanced-legal-library/CO-CD-001/ENTREVISTA.json",
+        "canonical_question_source": null,
+        "historical_expected_ref": "M22://questionnaires/CO-CD-001",
+        "resolution_note": "Vinculación resuelta sobre el runtime M21.1 efectivamente recuperado; no depende de M22."
+      },
+      "ruleset_binding": {
+        "status": "resolved_m21_1_runtime_plus_m23_2_candidate",
+        "source_file": "CO-CD-001/CO-CD-001_M23_Bloques_Reglas_y_Fuentes.json",
+        "rule_count": 10,
+        "rule_ids": [
+          "M23-CD1-001",
+          "M23-CD1-002",
+          "M23-CD1-003",
+          "M23-CD1-004",
+          "M23-CD1-005",
+          "M23-CD1-006",
+          "M23-CD1-007",
+          "M23-CD1-008",
+          "M23-CD1-009",
+          "M23-CD1-010"
+        ],
+        "runtime_source": "data/rules.json",
+        "runtime_key": "CO-CD-001",
+        "runtime_rule_count": 28,
+        "candidate_source_file": "CO-CD-001/CO-CD-001_M23_Bloques_Reglas_y_Fuentes.json",
+        "resolution_note": "Las reglas activas permanecen en M21.1 y M23.2 opera como revisión candidata aprobada para piloto interno."
+      },
+      "template_candidate": {
+        "revision_label": "M23.2",
+        "master_docx": "CO-CD-001_Modelo_Maestro_Reclamacion_Habeas_Data_M23.docx",
+        "master_pdf": "CO-CD-001_Modelo_Maestro_Reclamacion_Habeas_Data_M23.pdf",
+        "worked_example_docx": "CO-CD-001_Ejemplo_Final_Retiro_Reporte_Pagado_M23.docx",
+        "worked_example_pdf": "CO-CD-001_Ejemplo_Final_Retiro_Reporte_Pagado_M23.pdf",
+        "integration_mode": "new_immutable_revision_no_overwrite"
+      },
+      "conditional_modules": [
+        "financial_habeas_data_claim",
+        "evidence_matrix",
+        "deadline_calendar",
+        "sic_escalation"
+      ],
+      "legal_sources": [
+        "Constitución Política",
+        "Ley 1266 de 2008",
+        "Ley 2157 de 2021",
+        "Decreto 1074 de 2015",
+        "Ley 1581 de 2012",
+        "Ley 2573 de 2026",
+        "Superintendencia de Industria y Comercio"
+      ],
+      "approvals": {
+        "status": "approved_for_internal_pilot",
+        "legal_owner": "Agustín Rendón Calle",
+        "qa_owner": "Agustín Rendón Calle",
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "same_person_disclosure": true,
+        "case_specific_review_required": true,
+        "policy_reference": "config/m24_10_human_approval_policy.json"
+      },
+      "publication_status": "approved_for_internal_pilot_not_public"
+    },
+    {
+      "product_code": "CO-CD-003",
+      "internal_name": "Reclamación de protección al consumidor",
+      "public_name": "Reclamar por una compra o servicio que salió mal",
+      "category": "Consumidor",
+      "problem_solved": "El consumidor necesita activar garantía, retracto, reversión, entrega o devolución según los hechos y la evidencia.",
+      "service_levels": [
+        "orientacion",
+        "documento_personalizado",
+        "solucion_revisada"
+      ],
+      "risk_level": "high",
+      "scope": [
+        "clasificación del mecanismo",
+        "reclamación directa",
+        "garantía",
+        "retracto",
+        "reversión",
+        "cadena de evidencia"
+      ],
+      "exclusions": [
+        "sector especial no identificado",
+        "lesiones o producto inseguro sin revisión",
+        "litigio activo o alta cuantía sin abogado"
+      ],
+      "required_evidence": [
+        "factura o prueba de compra",
+        "oferta y condiciones",
+        "defecto o incumplimiento",
+        "comunicaciones",
+        "medio de pago",
+        "entrega o devolución"
+      ],
+      "pilot": true,
+      "jurisdiction": "CO",
+      "language": "es-CO",
+      "questionnaire_binding": {
+        "status": "resolved_m21_1_runtime",
+        "runtime_source": "data/interviews.json",
+        "runtime_key": "CO-CD-003",
+        "runtime_question_count": 57,
+        "asset_interview_source": "app/assets/advanced-legal-library/CO-CD-003/ENTREVISTA.json",
+        "canonical_question_source": null,
+        "historical_expected_ref": "M22://questionnaires/CO-CD-003",
+        "resolution_note": "Vinculación resuelta sobre el runtime M21.1 efectivamente recuperado; no depende de M22."
+      },
+      "ruleset_binding": {
+        "status": "resolved_m21_1_runtime_plus_m23_2_candidate",
+        "source_file": "CO-CD-003/CO-CD-003_M23_Bloques_Reglas_y_Fuentes.json",
+        "rule_count": 10,
+        "rule_ids": [
+          "M23-CD3-001",
+          "M23-CD3-002",
+          "M23-CD3-003",
+          "M23-CD3-004",
+          "M23-CD3-005",
+          "M23-CD3-006",
+          "M23-CD3-007",
+          "M23-CD3-008",
+          "M23-CD3-009",
+          "M23-CD3-010"
+        ],
+        "runtime_source": "data/rules.json",
+        "runtime_key": "CO-CD-003",
+        "runtime_rule_count": 32,
+        "candidate_source_file": "CO-CD-003/CO-CD-003_M23_Bloques_Reglas_y_Fuentes.json",
+        "resolution_note": "Las reglas activas permanecen en M21.1 y M23.2 opera como revisión candidata aprobada para piloto interno."
+      },
+      "template_candidate": {
+        "revision_label": "M23.2",
+        "master_docx": "CO-CD-003_Modelo_Maestro_Reclamacion_Consumidor_M23.docx",
+        "master_pdf": "CO-CD-003_Modelo_Maestro_Reclamacion_Consumidor_M23.pdf",
+        "worked_example_docx": "CO-CD-003_Ejemplo_Final_Garantia_Reversion_M23.docx",
+        "worked_example_pdf": "CO-CD-003_Ejemplo_Final_Garantia_Reversion_M23.pdf",
+        "integration_mode": "new_immutable_revision_no_overwrite"
+      },
+      "conditional_modules": [
+        "consumer_direct_claim",
+        "legal_warranty",
+        "withdrawal",
+        "payment_reversal",
+        "evidence_chain",
+        "mechanism_classifier"
+      ],
+      "legal_sources": [
+        "Constitución Política",
+        "Ley 1480 de 2011",
+        "Decreto 735 de 2013",
+        "Decreto 587 de 2016",
+        "Decreto 1074 de 2015",
+        "Ley 2439 de 2024",
+        "Sentencia C-192 de 2026",
+        "Superintendencia de Industria y Comercio"
+      ],
+      "approvals": {
+        "status": "approved_for_internal_pilot",
+        "legal_owner": "Agustín Rendón Calle",
+        "qa_owner": "Agustín Rendón Calle",
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "same_person_disclosure": true,
+        "case_specific_review_required": true,
+        "policy_reference": "config/m24_10_human_approval_policy.json"
+      },
+      "publication_status": "approved_for_internal_pilot_not_public"
+    },
+    {
+      "product_code": "CO-CD-004",
+      "internal_name": "Acuerdo de pago y pagaré",
+      "public_name": "Formalizar una deuda y un acuerdo de pago",
+      "category": "Obligaciones y cartera",
+      "problem_solved": "Acreedor y deudor necesitan conciliar saldo, pactar pagos, regular mora, garantías, pagaré, cobranza y cierre.",
+      "service_levels": [
+        "documento_personalizado",
+        "solucion_revisada"
+      ],
+      "risk_level": "high",
+      "scope": [
+        "acuerdo de pago",
+        "conciliación del saldo",
+        "cronograma",
+        "pagaré e instrucciones",
+        "protocolo de cobranza",
+        "paz y salvo"
+      ],
+      "exclusions": [
+        "saldo no soportado",
+        "interés no validado",
+        "pagaré en blanco sin instrucciones precisas",
+        "insolvencia o cobro judicial sin revisión"
+      ],
+      "required_evidence": [
+        "origen de la deuda",
+        "saldo discriminado",
+        "pagos previos",
+        "tasa aplicable",
+        "cronograma",
+        "garantías",
+        "estado de cobro"
+      ],
+      "pilot": false,
+      "jurisdiction": "CO",
+      "language": "es-CO",
+      "questionnaire_binding": {
+        "status": "resolved_m21_1_runtime",
+        "runtime_source": "data/interviews.json",
+        "runtime_key": "CO-CD-004",
+        "runtime_question_count": 76,
+        "asset_interview_source": "app/assets/advanced-legal-library/CO-CD-004/ENTREVISTA.json",
+        "canonical_question_source": null,
+        "historical_expected_ref": "M22://questionnaires/CO-CD-004",
+        "resolution_note": "Vinculación resuelta sobre el runtime M21.1 efectivamente recuperado; no depende de M22."
+      },
+      "ruleset_binding": {
+        "status": "resolved_m21_1_runtime_plus_m23_2_candidate",
+        "source_file": "CO-CD-004/CO-CD-004_M23_Bloques_Reglas_y_Fuentes.json",
+        "rule_count": 10,
+        "rule_ids": [
+          "M23-CD4-001",
+          "M23-CD4-002",
+          "M23-CD4-003",
+          "M23-CD4-004",
+          "M23-CD4-005",
+          "M23-CD4-006",
+          "M23-CD4-007",
+          "M23-CD4-008",
+          "M23-CD4-009",
+          "M23-CD4-010"
+        ],
+        "runtime_source": "data/rules.json",
+        "runtime_key": "CO-CD-004",
+        "runtime_rule_count": 42,
+        "candidate_source_file": "CO-CD-004/CO-CD-004_M23_Bloques_Reglas_y_Fuentes.json",
+        "resolution_note": "Las reglas activas permanecen en M21.1 y M23.2 opera como revisión candidata aprobada para piloto interno."
+      },
+      "template_candidate": {
+        "revision_label": "M23.2",
+        "master_docx": "CO-CD-004_Modelo_Maestro_Acuerdo_Pago_Pagare_M23.docx",
+        "master_pdf": "CO-CD-004_Modelo_Maestro_Acuerdo_Pago_Pagare_M23.pdf",
+        "worked_example_docx": "CO-CD-004_Ejemplo_Final_Acuerdo_Pago_Pagare_M23.docx",
+        "worked_example_pdf": "CO-CD-004_Ejemplo_Final_Acuerdo_Pago_Pagare_M23.pdf",
+        "integration_mode": "new_immutable_revision_no_overwrite"
+      },
+      "conditional_modules": [
+        "payment_agreement",
+        "debt_reconciliation",
+        "promissory_note",
+        "payment_schedule",
+        "collection_protocol",
+        "closure_certificate"
+      ],
+      "legal_sources": [
+        "Código Civil",
+        "Código de Comercio — Decreto 410 de 1971",
+        "Ley 1564 de 2012",
+        "Ley 2300 de 2023",
+        "Ley 1581 de 2012",
+        "Ley 527 de 1999",
+        "Ley 1116 de 2006",
+        "Superintendencia Financiera de Colombia"
+      ],
+      "approvals": {
+        "status": "approved_for_internal_pilot",
+        "legal_owner": "Agustín Rendón Calle",
+        "qa_owner": "Agustín Rendón Calle",
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "same_person_disclosure": true,
+        "case_specific_review_required": true,
+        "policy_reference": "config/m24_10_human_approval_policy.json"
+      },
+      "publication_status": "approved_for_internal_pilot_not_public"
+    },
+    {
+      "product_code": "CO-TR-001",
+      "internal_name": "Verificación jurídico-técnica SAST",
+      "public_name": "Verificar un sistema de fotodetección y su soporte oficial",
+      "category": "Tránsito",
+      "problem_solved": "La persona necesita verificar fuentes oficiales, coincidencias y estado de un sistema automático o semiautomático de detección.",
+      "service_levels": [
+        "orientacion",
+        "solucion_revisada"
+      ],
+      "risk_level": "high",
+      "scope": [
+        "informe de verificación",
+        "matriz de fuentes",
+        "índice probatorio",
+        "seguimiento y solicitud de expediente"
+      ],
+      "exclusions": [
+        "concluir invalidez individual por una comunicación general",
+        "esperar alertas cuando existe término activo",
+        "prometer devolución sin acto favorable"
+      ],
+      "required_evidence": [
+        "organismo",
+        "ubicación y dispositivo",
+        "fecha",
+        "acto o comunicación",
+        "comparendo o sanción",
+        "estado de cobro"
+      ],
+      "pilot": false,
+      "jurisdiction": "CO",
+      "language": "es-CO",
+      "questionnaire_binding": {
+        "status": "resolved_m21_1_runtime",
+        "runtime_source": "data/interviews.json",
+        "runtime_key": "CO-TR-001",
+        "runtime_question_count": 40,
+        "asset_interview_source": "app/assets/advanced-legal-library/CO-TR-001/ENTREVISTA.json",
+        "canonical_question_source": null,
+        "historical_expected_ref": "M22://questionnaires/CO-TR-001",
+        "resolution_note": "Vinculación resuelta sobre el runtime M21.1 efectivamente recuperado; no depende de M22."
+      },
+      "ruleset_binding": {
+        "status": "resolved_m21_1_runtime_plus_m23_2_candidate",
+        "source_file": "CO-TR-001/CO-TR-001_M23_Bloques_Reglas_y_Fuentes.json",
+        "rule_count": 10,
+        "rule_ids": [
+          "M23-TR1-001",
+          "M23-TR1-002",
+          "M23-TR1-003",
+          "M23-TR1-004",
+          "M23-TR1-005",
+          "M23-TR1-006",
+          "M23-TR1-007",
+          "M23-TR1-008",
+          "M23-TR1-009",
+          "M23-TR1-010"
+        ],
+        "runtime_source": "data/rules.json",
+        "runtime_key": "CO-TR-001",
+        "runtime_rule_count": 24,
+        "candidate_source_file": "CO-TR-001/CO-TR-001_M23_Bloques_Reglas_y_Fuentes.json",
+        "resolution_note": "Las reglas activas permanecen en M21.1 y M23.2 opera como revisión candidata aprobada para piloto interno."
+      },
+      "template_candidate": {
+        "revision_label": "M23.2",
+        "master_docx": "CO-TR-001_Modelo_Maestro_Informe_Verificacion_SAST_M23.docx",
+        "master_pdf": "CO-TR-001_Modelo_Maestro_Informe_Verificacion_SAST_M23.pdf",
+        "worked_example_docx": "CO-TR-001_Ejemplo_Final_Chequeo_Inscripcion_SAST_M23.docx",
+        "worked_example_pdf": "CO-TR-001_Ejemplo_Final_Chequeo_Inscripcion_SAST_M23.pdf",
+        "integration_mode": "new_immutable_revision_no_overwrite"
+      },
+      "conditional_modules": [
+        "sast_verification_report",
+        "official_source_matrix",
+        "evidence_index",
+        "followup_enrollment",
+        "record_request_route"
+      ],
+      "legal_sources": [
+        "Ley 1843 de 2017",
+        "Ley 2251 de 2022",
+        "Ley 769 de 2002",
+        "Ley 1437 de 2011",
+        "Ley 1755 de 2015",
+        "Resolución 20203040011245 de 2020",
+        "Resolución 20223040045295 de 2022",
+        "Ministerio de Transporte",
+        "Superintendencia de Transporte",
+        "Instituto Nacional de Metrología",
+        "Corte Constitucional"
+      ],
+      "approvals": {
+        "status": "approved_for_internal_pilot",
+        "legal_owner": "Agustín Rendón Calle",
+        "qa_owner": "Agustín Rendón Calle",
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "same_person_disclosure": true,
+        "case_specific_review_required": true,
+        "policy_reference": "config/m24_10_human_approval_policy.json"
+      },
+      "publication_status": "approved_for_internal_pilot_not_public"
+    },
+    {
+      "product_code": "CO-TR-002",
+      "internal_name": "Petición por fotomulta no notificada",
+      "public_name": "Reclamar una fotomulta que no me notificaron correctamente",
+      "category": "Tránsito",
+      "problem_solved": "La persona necesita obtener el expediente, auditar la notificación y solicitar restablecimiento del debido proceso o correcciones procedentes.",
+      "service_levels": [
+        "orientacion",
+        "documento_personalizado",
+        "solucion_revisada"
+      ],
+      "risk_level": "high",
+      "scope": [
+        "derecho de petición",
+        "solicitud de expediente",
+        "auditoría de notificación",
+        "revocación condicionada",
+        "corrección de registros"
+      ],
+      "exclusions": [
+        "usar petición para sustituir recursos o acciones con término",
+        "prometer cancelación por no ser conductor",
+        "alegar caducidad o prescripción sin fechas certificadas"
+      ],
+      "required_evidence": [
+        "comparendo o consulta",
+        "datos RUNT vigentes al hecho",
+        "pruebas de notificación",
+        "acto sancionatorio",
+        "fechas",
+        "estado SIMIT y cobro"
+      ],
+      "pilot": false,
+      "jurisdiction": "CO",
+      "language": "es-CO",
+      "questionnaire_binding": {
+        "status": "resolved_m21_1_runtime",
+        "runtime_source": "data/interviews.json",
+        "runtime_key": "CO-TR-002",
+        "runtime_question_count": 45,
+        "asset_interview_source": "app/assets/advanced-legal-library/CO-TR-002/ENTREVISTA.json",
+        "canonical_question_source": "app/assets/advanced-legal-library/CO-TR-002/PREGUNTAS_CANONICAS.json",
+        "historical_expected_ref": "M22://questionnaires/CO-TR-002",
+        "resolution_note": "Vinculación resuelta sobre el runtime M21.1 efectivamente recuperado; no depende de M22."
+      },
+      "ruleset_binding": {
+        "status": "resolved_m21_1_runtime_plus_m23_2_candidate",
+        "source_file": "CO-TR-002/CO-TR-002_M23_Bloques_Reglas_y_Fuentes.json",
+        "rule_count": 12,
+        "rule_ids": [
+          "M23-TR2-001",
+          "M23-TR2-002",
+          "M23-TR2-003",
+          "M23-TR2-004",
+          "M23-TR2-005",
+          "M23-TR2-006",
+          "M23-TR2-007",
+          "M23-TR2-008",
+          "M23-TR2-009",
+          "M23-TR2-010",
+          "M23-TR2-011",
+          "M23-TR2-012"
+        ],
+        "runtime_source": "data/rules.json",
+        "runtime_key": "CO-TR-002",
+        "runtime_rule_count": 26,
+        "candidate_source_file": "CO-TR-002/CO-TR-002_M23_Bloques_Reglas_y_Fuentes.json",
+        "resolution_note": "Las reglas activas permanecen en M21.1 y M23.2 opera como revisión candidata aprobada para piloto interno."
+      },
+      "template_candidate": {
+        "revision_label": "M23.2",
+        "master_docx": "CO-TR-002_Modelo_Maestro_Peticion_Fotomulta_No_Notificada_M23.docx",
+        "master_pdf": "CO-TR-002_Modelo_Maestro_Peticion_Fotomulta_No_Notificada_M23.pdf",
+        "worked_example_docx": "CO-TR-002_Ejemplo_Final_Peticion_Fotomulta_No_Notificada_M23.docx",
+        "worked_example_pdf": "CO-TR-002_Ejemplo_Final_Peticion_Fotomulta_No_Notificada_M23.pdf",
+        "integration_mode": "new_immutable_revision_no_overwrite"
+      },
+      "conditional_modules": [
+        "right_to_petition",
+        "full_record_request",
+        "notification_audit",
+        "due_process_restoration",
+        "conditional_direct_revocation",
+        "collection_handoff",
+        "simit_runt_correction"
+      ],
+      "legal_sources": [
+        {
+          "title": "Ley 1843 de 2017",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30032605"
+        },
+        {
+          "title": "Ley 769 de 2002",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002.html"
+        },
+        {
+          "title": "Ley 2161 de 2021",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2161_2021.html"
+        },
+        {
+          "title": "Ley 1437 de 2011",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1437_2011.html"
+        },
+        {
+          "title": "Ley 1755 de 2015",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1755_2015.html"
+        },
+        {
+          "title": "Sentencia C-038 de 2020",
+          "url": "https://www.corteconstitucional.gov.co/relatoria/2020/C-038-20.htm"
+        },
+        {
+          "title": "Sentencia C-321 de 2022",
+          "url": "https://www.corteconstitucional.gov.co/relatoria/2022/C-321-22.htm"
+        },
+        {
+          "title": "Sentencia T-051 de 2016",
+          "url": "https://www.corteconstitucional.gov.co/relatoria/2016/T-051-16.htm"
+        }
+      ],
+      "approvals": {
+        "status": "approved_for_internal_pilot",
+        "legal_owner": "Agustín Rendón Calle",
+        "qa_owner": "Agustín Rendón Calle",
+        "approval_model": "multi_stage_single_responsible",
+        "independent_reviewers": false,
+        "same_person_disclosure": true,
+        "case_specific_review_required": true,
+        "policy_reference": "config/m24_10_human_approval_policy.json"
+      },
+      "publication_status": "approved_for_internal_pilot_not_public"
+    }
+  ],
+  "base_runtime": "M21.1",
+  "catalog_approval": "M24.10",
+  "public_production_ready": false
+}

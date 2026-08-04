@@ -1,0 +1,1016 @@
+{
+  "version": "2.35",
+  "title": "Aprobación jurídica interna de la tercera ola y consolidación de los 11 productos",
+  "verified_at": "2026-07-21",
+  "base_version": "2.34",
+  "jurisdiction": "Colombia",
+  "internal_legal_approval_completed": true,
+  "human_ratification_completed": false,
+  "dual_approval_completed": false,
+  "publication_authorized": false,
+  "decision_standard": [
+    "La aprobación interna habilita construcción, pruebas y generación controlada, no publicación profesional.",
+    "Cada decisión se vincula a una versión exacta, fuentes identificadas y huella de integridad del paquete de producto.",
+    "Los hechos, fechas, cuantías, legitimación, soportes y riesgos materiales deben validarse en cada caso.",
+    "Los parámetros normativos o económicos dinámicos se revalidan al momento de uso.",
+    "Los casos rojos se bloquean y se escalan a revisión profesional.",
+    "La ratificación del abogado titular puede confirmar, condicionar, modificar o devolver la decisión.",
+    "La liberación exige aprobación dual especialista jurídico + QA sobre el archivo exacto.",
+    "La trazabilidad, revisiones inmutables, hashes y auditoría se conservan."
+  ],
+  "products": [
+    {
+      "code": "CO-SA-001",
+      "name": "Derecho de petición a EPS o IPS",
+      "owner": "Salud y constitucional",
+      "maturity_version": "2.31",
+      "decision_version": "2.35",
+      "decision": "Aprobación jurídica interna asistida con condiciones",
+      "approval_scope": "Construcción, pruebas, diagnóstico y generación controlada; publicación profesional no autorizada.",
+      "approved_positions": [
+        "El producto orienta y documenta peticiones ante EPS o IPS, pero no sustituye atención médica urgente, triage, tutela ni representación judicial.",
+        "Las respuestas exigibles deben ser oportunas, completas, de fondo, claras, precisas, congruentes y efectivamente comunicadas.",
+        "La clasificación entre petición general, solicitud de información o documentos e historia clínica determina el término preliminar y los controles de reserva.",
+        "La historia clínica y los datos de salud son información reservada y sensible; el acceso exige identidad, legitimación, finalidad, minimización y entrega segura.",
+        "El acceso por familiares de paciente fallecido requiere análisis individual de cercanía, finalidad, necesidad y ausencia de oposición conocida; no es automático.",
+        "Urgencia, deterioro, continuidad terapéutica, menores, embarazo, discapacidad y riesgo de perjuicio irremediable elevan el caso y bloquean una salida autoservicio definitiva.",
+        "La ruta ante Supersalud es administrativa y complementaria; no garantiza el servicio ni reemplaza tutela o proceso judicial.",
+        "Los calendarios son preliminares y deben revalidar festivos, traslados, prórrogas, recepción efectiva y reglas especiales al momento de radicar."
+      ],
+      "mandatory_conditions": [
+        "Confirmar identidad, legitimación y datos de contacto antes de generar una petición nominal.",
+        "Activar advertencia de urgencias y ruta inmediata cuando exista riesgo actual para vida o integridad.",
+        "No revelar historia clínica ni datos sensibles sin soporte suficiente de acceso y canal seguro.",
+        "Separar petición inicial, reiteración, solicitud de historia clínica y escalamiento ante Supersalud.",
+        "Calcular términos como estimación y exigir confirmación de radicación, festivos y prórrogas.",
+        "Bloquear publicación profesional sin revisión jurídica y QA del archivo exacto."
+      ],
+      "residual_risks": [
+        "urgencia clínica",
+        "perjuicio irremediable",
+        "historia clínica de tercero o fallecido",
+        "tutela o trámite activo",
+        "datos sensibles"
+      ],
+      "verified_sources": [
+        {
+          "id": "SA-S1",
+          "title": "Constitución Política de Colombia — artículos 23, 44, 48 y 49",
+          "authority": "Secretaría Jurídica del Senado",
+          "type": "constitution",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/constitucion_politica_1991.html",
+          "status": "vigente con verificación oficial",
+          "last_verified": "2026-07-20",
+          "verification_status": "Verificada para v2.31; revalidar antes de publicación"
+        },
+        {
+          "id": "SA-S2",
+          "title": "Ley Estatutaria 1755 de 2015 — derecho fundamental de petición",
+          "authority": "Secretaría Jurídica del Senado",
+          "type": "statute",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1755_2015.html",
+          "status": "vigente con afectaciones consultables",
+          "last_verified": "2026-07-20",
+          "verification_status": "Verificada para v2.31; términos calculados de forma preliminar"
+        },
+        {
+          "id": "SA-S4",
+          "title": "Ley Estatutaria 1751 de 2015 — derecho fundamental a la salud",
+          "authority": "Secretaría Jurídica del Senado",
+          "type": "statute",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1751_2015.html",
+          "status": "vigente",
+          "last_verified": "2026-07-20",
+          "verification_status": "Verificada para acceso, continuidad, información e historia clínica"
+        },
+        {
+          "id": "SA-S5",
+          "title": "Resolución 1995 de 1999 — manejo de historia clínica",
+          "authority": "Ministerio de Salud y Protección Social",
+          "type": "resolution",
+          "url": "https://www.minsalud.gov.co/ihce/Paginas/Normatividad.aspx",
+          "status": "consultada en normatividad oficial",
+          "last_verified": "2026-07-20",
+          "verification_status": "Verificada como referencia sectorial; cotejar texto íntegro al publicar"
+        },
+        {
+          "id": "SA-S7",
+          "title": "Ley 1581 de 2012 — protección de datos personales y datos sensibles",
+          "authority": "Secretaría Jurídica del Senado",
+          "type": "statute",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html",
+          "status": "vigente con reglamentación",
+          "last_verified": "2026-07-20",
+          "verification_status": "Verificada para minimización, seguridad y acceso a datos de salud"
+        },
+        {
+          "id": "SA-S8",
+          "title": "Ley 2015 de 2020 — historia clínica electrónica interoperable",
+          "authority": "Secretaría Jurídica del Senado",
+          "type": "statute",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2015_2020.html",
+          "status": "vigente con reglamentación",
+          "last_verified": "2026-07-20",
+          "verification_status": "Verificada para acceso y circulación controlada de información clínica"
+        },
+        {
+          "id": "SA-S11",
+          "title": "Sentencia T-370 de 2025 — respuesta de EPS y Supersalud al derecho de petición",
+          "authority": "Corte Constitucional",
+          "type": "case_law",
+          "url": "https://www.corteconstitucional.gov.co/relatoria/2025/T-370-25.htm",
+          "status": "providencia oficial",
+          "last_verified": "2026-07-20",
+          "verification_status": "Verificada para respuesta oportuna, clara, congruente y efectivamente notificada"
+        },
+        {
+          "id": "SA-S12",
+          "title": "Sentencia T-343 de 2008 — acceso de familiares a historia clínica de paciente fallecido",
+          "authority": "Corte Constitucional",
+          "type": "case_law",
+          "url": "https://www.corteconstitucional.gov.co/relatoria/2008/t-343-08.htm",
+          "status": "providencia oficial",
+          "last_verified": "2026-07-20",
+          "verification_status": "Verificada como precedente; exige análisis individual de legitimación y finalidad"
+        },
+        {
+          "id": "SA-S13",
+          "title": "Canales, derechos y PQRD de la Superintendencia Nacional de Salud",
+          "authority": "Superintendencia Nacional de Salud",
+          "type": "official_guidance",
+          "url": "https://www.supersalud.gov.co/es-co/atencion-ciudadano/pqrd",
+          "status": "portal oficial operativo",
+          "last_verified": "2026-07-20",
+          "verification_status": "Verificada para ruta administrativa; canales y formularios pueden cambiar"
+        }
+      ],
+      "integrity": {
+        "folder": "app/assets/advanced-legal-library/CO-SA-001",
+        "files": 33,
+        "aggregate_sha256": "ea754c633b659e1f034147183e050e292014dd358b0a99fa973cfdeb141f24d6",
+        "package_manifest_sha256": "b6e0285bb459d37b4ff01a133840f9901fab2fcc79b97bedc9910fb37f81d2e7",
+        "templates_sha256": "36345a929aed800259e2841addd17f70e1a3b17c3563eed07f388c50dc2eeb41",
+        "interview_sha256": "60bb2458926751d1edf5df4e0a4e6ab06f8b30e787b2c92ca23ee6bc47633118",
+        "rules_sha256": "476958e3b0eaed58610d3d40cd7c248b28260cede7bd95f577c7e1159da55de5",
+        "sources_sha256": "d976e2f181d6bd6513431dd1ca95031606f6e7d96ec60ebe086e4ddf26c9c241",
+        "tests_sha256": "454ac758ad3debbe30713740fc0fb1e29f95d58d4f6ca8634d2bdbd3569741ee"
+      },
+      "counts": {
+        "questions": 42,
+        "rules": 25,
+        "sources": 13,
+        "scenarios": 14,
+        "templates": 7,
+        "blocks": 33,
+        "documents": 7
+      }
+    },
+    {
+      "code": "CO-CD-001",
+      "name": "Centrales de riesgo y hábeas data",
+      "owner": "Datos, consumo y financiero",
+      "maturity_version": "2.32",
+      "decision_version": "2.35",
+      "decision": "Aprobación jurídica interna asistida con condiciones",
+      "approval_scope": "Construcción, pruebas, diagnóstico y generación controlada; publicación profesional no autorizada.",
+      "approved_positions": [
+        "Consulta, reclamo, corrección, actualización, retiro y suplantación son rutas distintas; el producto debe seleccionar la pretensión y los destinatarios correctos.",
+        "El hábeas data financiero no extingue una obligación válida ni decide responsabilidad contractual; protege la calidad, actualización, circulación y temporalidad del dato.",
+        "Fuente, operador y usuario cumplen funciones diferentes y la trazabilidad debe identificar qué actor originó, administró o utilizó la información.",
+        "La comunicación previa, la leyenda de reclamo en trámite, la permanencia, la caducidad, el primer reporte y las obligaciones de baja cuantía deben evaluarse por separado.",
+        "La Ley 2573 de 2026 se controla temporalmente: no se anticipa su vigencia general y se aplican únicamente los efectos vigentes a la fecha concreta.",
+        "La suplantación exige preservación de evidencia, acceso a la información del titular sin barreras inconstitucionales y escalamiento cuando existan cobros, procesos o daño relevante.",
+        "El silencio favorable y los términos de consulta o reclamo se presentan como conclusiones preliminares sujetas a completitud, prórroga y competencia.",
+        "Toda publicación requiere revalidar SMLMV, vigencia normativa, términos, autoridades competentes y estado del caso."
+      ],
+      "mandatory_conditions": [
+        "Identificar fuente, operador, usuario, obligación y dato específico objeto de consulta o reclamo.",
+        "Conservar soporte de comunicación previa, pago, mora, reporte, reclamo y respuesta.",
+        "Aplicar un selector temporal explícito para la Ley 2573 de 2026 y registrar la fecha de análisis.",
+        "Revalidar SMLMV y umbrales de baja cuantía al momento de uso.",
+        "No condicionar el acceso del titular a su propia información a una denuncia penal.",
+        "Escalar suplantación compleja, proceso activo, afectación patrimonial relevante o pluralidad de obligaciones.",
+        "Bloquear publicación profesional sin revisión jurídica y QA del archivo exacto."
+      ],
+      "residual_risks": [
+        "suplantación",
+        "cobro o proceso activo",
+        "vigencia escalonada Ley 2573 de 2026",
+        "dato múltiple o complejo",
+        "daño patrimonial"
+      ],
+      "verified_sources": [
+        {
+          "id": "CD1-S2",
+          "title": "Ley Estatutaria 1266 de 2008 — régimen de hábeas data financiero",
+          "authority": "Congreso de la República",
+          "type": "statute",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1266_2008.html",
+          "status": "vigente con modificaciones",
+          "last_verified": "2026-07-20",
+          "verification_status": "Texto actualizado consultado en Secretaría del Senado."
+        },
+        {
+          "id": "CD1-S3",
+          "title": "Ley Estatutaria 2157 de 2021 — modificación de la Ley 1266",
+          "authority": "Congreso de la República",
+          "type": "statute",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2157_2021.html",
+          "status": "vigente",
+          "last_verified": "2026-07-20",
+          "verification_status": "Texto oficial actualizado consultado."
+        },
+        {
+          "id": "CD1-S4",
+          "title": "Sentencia C-1011 de 2008 — revisión constitucional de la Ley 1266",
+          "authority": "Corte Constitucional",
+          "type": "case_law",
+          "url": "https://www.corteconstitucional.gov.co/relatoria/2008/C-1011-08.htm",
+          "status": "precedente vigente",
+          "last_verified": "2026-07-20",
+          "verification_status": "Control previo y condicionamientos del régimen financiero."
+        },
+        {
+          "id": "CD1-S5",
+          "title": "Sentencia C-282 de 2021 — revisión constitucional de la reforma",
+          "authority": "Corte Constitucional",
+          "type": "case_law",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/c-282_2021.html",
+          "status": "precedente vigente",
+          "last_verified": "2026-07-20",
+          "verification_status": "Reglas de permanencia, caducidad y fortalecimiento del hábeas data."
+        },
+        {
+          "id": "CD1-S12",
+          "title": "Sentencia C-413 de 2025 — control previo del régimen de suplantación de identidad",
+          "authority": "Corte Constitucional",
+          "type": "case_law",
+          "url": "https://www.corteconstitucional.gov.co/relatoria/2025/C-413-25.htm",
+          "status": "precedente de control previo vigente",
+          "last_verified": "2026-07-20",
+          "verification_status": "Revisión constitucional del proyecto que culminó en la Ley 2573 de 2026; aplicar sus condicionamientos sobre carga dinámica, prueba, autoridades y alcance."
+        },
+        {
+          "id": "CD1-S13",
+          "title": "Ley Estatutaria 2573 de 2026 — suplantación, cobros y reportes negativos",
+          "authority": "Congreso de la República / SUIN-Juriscol",
+          "type": "statute",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30056451",
+          "status": "promulgada; vigencia general diferida al 20 de noviembre de 2026",
+          "last_verified": "2026-07-20",
+          "verification_status": "A la fecha de corte, solo los parágrafos 1 y 2 del artículo 5 rigen desde la promulgación; el resto entra en vigencia general el 20 de noviembre de 2026. No anticipar obligaciones futuras como vigentes."
+        },
+        {
+          "id": "CD1-S14",
+          "title": "Decreto 159 de 2026 — SMLMV transitorio 2026 y umbral del 15 %",
+          "authority": "Gobierno nacional / SUIN-Juriscol",
+          "type": "economic_parameter",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30056106",
+          "status": "vigente transitoriamente hasta la sentencia que ponga fin al proceso de nulidad",
+          "last_verified": "2026-07-20",
+          "verification_status": "Fija transitoriamente el SMLMV 2026 en COP 1.750.905 desde el 19 de febrero de 2026; el valor y su vigencia deben revalidarse al momento de uso por el trámite judicial en curso."
+        }
+      ],
+      "integrity": {
+        "folder": "app/assets/advanced-legal-library/CO-CD-001",
+        "files": 28,
+        "aggregate_sha256": "7cb4c29f1f2f290346fd6175ce83c2810130f8ea77ba4a5f8cea4c0c1dd57e7b",
+        "package_manifest_sha256": "cbe786457ed4a553788442ea32bdfbd02cc8300d54149f0ec55cd741c1bacb44",
+        "templates_sha256": "889b98cd0ca17fc8191595212f25cdc4dcafda22ed251f8614051943b320c445",
+        "interview_sha256": "0f1c3933cdea1e359b8e7fdb202f69c8ff9daa1beffd8b95ca516c85a2a67713",
+        "rules_sha256": "12b8e5af9d9172c3675b33dfdd972651e8d72ef18f14ab048dfcc9f944ad30ed",
+        "sources_sha256": "1e3affc067a5dc91ddb3c8d44c49e332f566a10574b8120347cb95e8b87b1df4",
+        "tests_sha256": "16539b298c8ca99d69088290f96ae20fcf1454baa77a072591d83f142278b1f6"
+      },
+      "counts": {
+        "questions": 52,
+        "rules": 28,
+        "sources": 14,
+        "scenarios": 16,
+        "templates": 7,
+        "blocks": 48,
+        "documents": 7
+      }
+    },
+    {
+      "code": "CO-CD-003",
+      "name": "Garantía, retracto y reversión del pago",
+      "owner": "Consumo y comercio electrónico",
+      "maturity_version": "2.33",
+      "decision_version": "2.35",
+      "decision": "Aprobación jurídica interna asistida con condiciones",
+      "approval_scope": "Construcción, pruebas, diagnóstico y generación controlada; publicación profesional no autorizada.",
+      "approved_positions": [
+        "Garantía, retracto, reversión del pago, revocación de débitos periódicos, falta de entrega y reclamación directa no son equivalentes y no deben acumularse sin fundamento.",
+        "La garantía legal exige identificar relación de consumo, defecto, entrega, vigencia, reparación previa, repetición de falla y remedio solicitado.",
+        "El retracto depende del canal, naturaleza del contrato, inicio de ejecución, excepciones y término de cinco días hábiles.",
+        "En comercio electrónico, el reembolso por retracto se controla con el término legal vigente y con el cumplimiento de devolución e información por el consumidor.",
+        "La reversión exige instrumento de pago electrónico, causal legal, queja al proveedor, aviso al emisor y actuación dentro del término; no se promete resultado.",
+        "La reclamación directa y la competencia de la SIC deben validarse antes de generar demanda o escalamiento.",
+        "Lesiones, productos peligrosos, fraude complejo, pluralidad de responsables, régimen sectorial especial o proceso activo bloquean el autoservicio definitivo.",
+        "Los calendarios y documentos deben conservar cronología, evidencia de envío, recepción, devolución, respuesta y pagos."
+      ],
+      "mandatory_conditions": [
+        "Clasificar un mecanismo principal y justificar cualquier acumulación subsidiaria.",
+        "Verificar canal, fechas, entrega, inicio de ejecución, medio de pago y causal.",
+        "Conservar reclamación directa y evidencia de envío, recepción y respuesta.",
+        "No generar reversión si falta aviso oportuno al proveedor o al emisor, salvo revisión profesional que sustente otra ruta.",
+        "Aplicar excepciones de retracto y regímenes sectoriales antes de producir una pretensión.",
+        "Escalar lesiones, seguridad, fraude complejo, proceso activo o cuantía material.",
+        "Bloquear publicación profesional sin revisión jurídica y QA del archivo exacto."
+      ],
+      "residual_risks": [
+        "lesión o seguridad",
+        "fraude complejo",
+        "régimen especial",
+        "proceso activo",
+        "pluralidad de proveedores o participantes de pago"
+      ],
+      "verified_sources": [
+        {
+          "id": "CD3-S2",
+          "title": "Ley 1480 de 2011 — garantía legal, responsables y efectividad",
+          "authority": "Congreso de la República",
+          "type": "statute",
+          "status": "Vigente con modificaciones",
+          "last_verified": "2026-07-20",
+          "verification_status": "Texto actualizado consultado en fuente oficial",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1480_2011.html"
+        },
+        {
+          "id": "CD3-S3",
+          "title": "Ley 1480 de 2011 — artículo 47, derecho de retracto",
+          "authority": "Congreso de la República",
+          "type": "statute",
+          "status": "Vigente con modificación de Ley 2439 de 2024",
+          "last_verified": "2026-07-20",
+          "verification_status": "Texto actualizado consultado en fuente oficial",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1480_2011_pr001.html"
+        },
+        {
+          "id": "CD3-S4",
+          "title": "Ley 2439 de 2024 — protección del consumidor de comercio electrónico",
+          "authority": "Congreso de la República",
+          "type": "statute",
+          "status": "Vigente",
+          "last_verified": "2026-07-20",
+          "verification_status": "Verificada en Secretaría del Senado y SUIN",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2439_2024.html"
+        },
+        {
+          "id": "CD3-S5",
+          "title": "Ley 1480 de 2011 — comercio electrónico y reversión del pago, artículos 50 y 51",
+          "authority": "Congreso de la República",
+          "type": "statute",
+          "status": "Vigente con modificaciones",
+          "last_verified": "2026-07-20",
+          "verification_status": "Texto actualizado consultado en fuente oficial",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1681955"
+        },
+        {
+          "id": "CD3-S6",
+          "title": "Decreto 735 de 2013 — efectividad de la garantía legal",
+          "authority": "Presidencia de la República / MinCIT",
+          "type": "regulation",
+          "status": "Vigente según SUIN",
+          "last_verified": "2026-07-20",
+          "verification_status": "Verificado en SUIN-Juriscol",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Decretos%2F1156200"
+        },
+        {
+          "id": "CD3-S8",
+          "title": "Decreto 587 de 2016 — procedimiento de reversión del pago",
+          "authority": "Presidencia de la República / MinCIT",
+          "type": "regulation",
+          "status": "Vigente; incorporado al Decreto 1074 de 2015",
+          "last_verified": "2026-07-20",
+          "verification_status": "Verificado en SUIN-Juriscol y Función Pública",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Decretos%2F30020299"
+        },
+        {
+          "id": "CD3-S9",
+          "title": "SIC — modelo y requisitos de reclamación directa",
+          "authority": "Superintendencia de Industria y Comercio",
+          "type": "official_guidance",
+          "status": "Página oficial vigente",
+          "last_verified": "2026-07-20",
+          "verification_status": "Verificada en sede electrónica SIC",
+          "url": "https://sedeelectronica.sic.gov.co/temas/asuntos-jurisdiccionales/proteccion-del-consumidor"
+        },
+        {
+          "id": "CD3-S12",
+          "title": "Sentencia C-439 de 2019 — reversión del pago y protección del consumidor",
+          "authority": "Corte Constitucional",
+          "type": "jurisprudence",
+          "status": "Vigente; revisar alcance exacto",
+          "last_verified": "2026-07-20",
+          "verification_status": "Relatoría oficial consultada",
+          "url": "https://www.corteconstitucional.gov.co/relatoria/2019/c-439-19.htm"
+        },
+        {
+          "id": "CD3-S13",
+          "title": "Ley 1480 de 2011 — acción de protección al consumidor y reclamación directa, artículo 58",
+          "authority": "Congreso de la República",
+          "type": "statute",
+          "status": "Vigente con modificaciones",
+          "last_verified": "2026-07-20",
+          "verification_status": "Texto actualizado consultado en fuente oficial",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1480_2011_pr001.html"
+        }
+      ],
+      "integrity": {
+        "folder": "app/assets/advanced-legal-library/CO-CD-003",
+        "files": 31,
+        "aggregate_sha256": "004e5dc6b74980fced539771e0b76db67cc6ce11fc659595d1058ce760f45ac9",
+        "package_manifest_sha256": "5afa77d4ce762276e428f55857fc8c3797d5d880072e7429ea8963cc4ca2d184",
+        "templates_sha256": "94e69281b9ccc50dde85debaea27d782bd9d5cbcde779c9ec9dab7a2d81f1d25",
+        "interview_sha256": "1915526e7d267455a13874525750762e9853428b7e2ed9715e7e02652a06c288",
+        "rules_sha256": "6e87287241c491b599609a0212f8b089e159bd6cb071edb5c9336383432fce75",
+        "sources_sha256": "d9303030f56f0bb9a7f78691e2b5bc93b3863a55b9860b7b6eddd2c617f6e389",
+        "tests_sha256": "b42f968793f6ab59a65db0f10716394db5f9e219c6ecabad4c32eeacabb4336e"
+      },
+      "counts": {
+        "questions": 57,
+        "rules": 32,
+        "sources": 14,
+        "scenarios": 18,
+        "templates": 8,
+        "blocks": 59,
+        "documents": 8
+      }
+    },
+    {
+      "code": "CO-CD-004",
+      "name": "Cobro, acuerdo de pago y pagaré",
+      "owner": "Civil, comercial y cartera",
+      "maturity_version": "2.34",
+      "decision_version": "2.35",
+      "decision": "Aprobación jurídica interna asistida con condiciones",
+      "approval_scope": "Construcción, pruebas, diagnóstico y generación controlada; publicación profesional no autorizada.",
+      "approved_positions": [
+        "Existencia de la obligación, exigibilidad ejecutiva, saldo, intereses, cobranza, negociación, título valor y cierre son capas distintas y deben documentarse separadamente.",
+        "No se presenta como cierto un saldo no conciliado, una obligación controvertida o un título cuya integridad, entrega, aceptación o exigibilidad no esté verificada.",
+        "Las tasas de interés, usura, SMLMV y demás variables económicas son parámetros dinámicos con fecha de vigencia y revalidación obligatoria.",
+        "La cobranza debe respetar canales autorizados, periodicidad, horarios, intimidad y prohibición de contactar terceros no obligados.",
+        "El reporte negativo exige comunicación previa y control reforzado en obligaciones de baja cuantía, sin confundir cobranza con administración de datos.",
+        "El acuerdo debe definir saldo, imputación, cuotas, eventos de incumplimiento, efectos sobre obligaciones y si existe o no novación.",
+        "El pagaré y la carta de instrucciones requieren requisitos formales, límites de diligenciamiento, trazabilidad y prohibición de completar valores no causados.",
+        "Prescripción dudosa, fraude, incapacidad, sucesión, garantías reales, insolvencia, embargo, proceso activo o medida cautelar bloquean el autoservicio definitivo."
+      ],
+      "mandatory_conditions": [
+        "Conciliar capital, abonos, gastos e intereses con soportes y fecha de corte.",
+        "Revalidar tasa máxima, modalidad, vigencia y SMLMV antes de cada generación.",
+        "No automatizar garantías reales, procesos, insolvencia, fraude, capacidad o prescripción dudosa.",
+        "Registrar canales autorizados y excluir terceros no obligados en comunicaciones de cobranza.",
+        "Diferenciar acuerdo con novación, acuerdo sin novación, recibo parcial y paz y salvo.",
+        "No emitir pagaré en blanco sin carta de instrucciones específica y firmada.",
+        "Bloquear publicación profesional sin revisión jurídica y QA del archivo exacto."
+      ],
+      "residual_risks": [
+        "prescripción",
+        "insolvencia",
+        "proceso o medida cautelar",
+        "tasa dinámica",
+        "pagaré incompleto",
+        "capacidad o sucesión"
+      ],
+      "verified_sources": [
+        {
+          "id": "CD4-S2",
+          "title": "Código Civil — obligaciones, pago, novación, compensación y prescripción",
+          "authority": "Secretaría del Senado",
+          "type": "statute",
+          "status": "vigente con modificaciones",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_civil.html",
+          "last_verified": "2026-07-21",
+          "verification_status": "Verificada en fuente oficial; aplicar norma especial cuando corresponda"
+        },
+        {
+          "id": "CD4-S3",
+          "title": "Código de Comercio, artículos 619 a 622 — títulos valores y espacios en blanco",
+          "authority": "Secretaría del Senado",
+          "type": "statute",
+          "status": "vigente",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio_pr019.html",
+          "last_verified": "2026-07-21",
+          "verification_status": "Verificada en fuente oficial"
+        },
+        {
+          "id": "CD4-S4",
+          "title": "Código de Comercio, artículos 709 a 711 — requisitos del pagaré",
+          "authority": "Secretaría del Senado",
+          "type": "statute",
+          "status": "vigente",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio_pr021.html",
+          "last_verified": "2026-07-21",
+          "verification_status": "Verificada en fuente oficial"
+        },
+        {
+          "id": "CD4-S5",
+          "title": "Código de Comercio, artículo 884 — límites de intereses y sanción por exceso",
+          "authority": "Secretaría del Senado",
+          "type": "statute",
+          "status": "vigente",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio_pr027.html",
+          "last_verified": "2026-07-21",
+          "verification_status": "Verificada en fuente oficial; tasa dinámica"
+        },
+        {
+          "id": "CD4-S7",
+          "title": "Código General del Proceso, artículo 422 — título ejecutivo",
+          "authority": "Secretaría del Senado",
+          "type": "statute",
+          "status": "vigente",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1564_2012_pr014.html",
+          "last_verified": "2026-07-21",
+          "verification_status": "Verificada en fuente oficial"
+        },
+        {
+          "id": "CD4-S8",
+          "title": "Ley 2300 de 2023 — canales, horarios y periodicidad de cobranza",
+          "authority": "SUIN-Juriscol",
+          "type": "statute",
+          "status": "vigente",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30046853",
+          "last_verified": "2026-07-21",
+          "verification_status": "Verificada en fuente oficial"
+        },
+        {
+          "id": "CD4-S9",
+          "title": "Sentencia C-278 de 2024 — control constitucional de la Ley 2300",
+          "authority": "Corte Constitucional",
+          "type": "case_law",
+          "status": "vigente",
+          "url": "https://www.corteconstitucional.gov.co/relatoria/2024/C-278-24.htm",
+          "last_verified": "2026-07-21",
+          "verification_status": "Verificada en fuente judicial oficial"
+        },
+        {
+          "id": "CD4-S10",
+          "title": "Ley 1266 de 2008 — hábeas data financiero y comunicación previa",
+          "authority": "SUIN-Juriscol",
+          "type": "statute",
+          "status": "vigente con modificaciones",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes/1676616",
+          "last_verified": "2026-07-21",
+          "verification_status": "Verificada en fuente oficial"
+        },
+        {
+          "id": "CD4-S11",
+          "title": "Ley 2157 de 2021 — borrón y cuenta nueva y reporte de obligaciones de baja cuantía",
+          "authority": "Secretaría del Senado",
+          "type": "statute",
+          "status": "vigente",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2157_2021.html",
+          "last_verified": "2026-07-21",
+          "verification_status": "Verificada en fuente oficial"
+        },
+        {
+          "id": "CD4-S12",
+          "title": "Decreto 1154 de 2020 — factura electrónica como título valor y RADIAN",
+          "authority": "SUIN-Juriscol",
+          "type": "regulation",
+          "status": "vigente",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30039720",
+          "last_verified": "2026-07-21",
+          "verification_status": "Verificada en fuente oficial"
+        },
+        {
+          "id": "CD4-S14",
+          "title": "Ley 2445 de 2025 — insolvencia de persona natural no comerciante y pequeña comerciante",
+          "authority": "Secretaría del Senado",
+          "type": "statute",
+          "status": "vigente con correcciones",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2445_2025.html",
+          "last_verified": "2026-07-21",
+          "verification_status": "Verificada; revisar expediente concursal concreto"
+        },
+        {
+          "id": "CD4-S15",
+          "title": "Resolución 0965 de 2026 — interés bancario corriente julio de 2026",
+          "authority": "Superintendencia Financiera de Colombia",
+          "type": "dynamic_parameter",
+          "status": "vigente 2026-07-01 a 2026-07-31",
+          "url": "https://www.superfinanciera.gov.co/publicaciones/10116173/superfinanciera-certifica-el-interes-bancario-corriente/",
+          "last_verified": "2026-07-21",
+          "verification_status": "Verificada; actualizar mensualmente antes de uso"
+        },
+        {
+          "id": "CD4-S16",
+          "title": "Decreto 159 de 2026 — SMLMV transitorio 2026",
+          "authority": "SUIN-Juriscol",
+          "type": "dynamic_parameter",
+          "status": "vigente transitoriamente",
+          "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30056106",
+          "last_verified": "2026-07-21",
+          "verification_status": "Verificada; revalidar por proceso de nulidad"
+        },
+        {
+          "id": "CD4-S17",
+          "title": "Ley 1231 de 2008 — factura como título valor, aceptación y pagos parciales",
+          "authority": "Secretaría del Senado",
+          "type": "statute",
+          "status": "vigente con modificaciones",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1231_2008.html",
+          "last_verified": "2026-07-21",
+          "verification_status": "Verificada; armonizar con factura electrónica y RADIAN"
+        },
+        {
+          "id": "CD4-S18",
+          "title": "Ley 2024 de 2020 — pago en plazos justos en operaciones mercantiles",
+          "authority": "Secretaría del Senado",
+          "type": "statute",
+          "status": "vigente",
+          "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2024_2020.html",
+          "last_verified": "2026-07-21",
+          "verification_status": "Verificada; aplicar exclusiones legales"
+        }
+      ],
+      "integrity": {
+        "folder": "app/assets/advanced-legal-library/CO-CD-004",
+        "files": 37,
+        "aggregate_sha256": "a8c3343768234a35d4a499b5f437bcc7c5db3ec804f7b8dbaa57d9425e6d9cb3",
+        "package_manifest_sha256": "b701a47effe472f6982aaea38aaba67bc708778157805958a84c0c6918fc3575",
+        "templates_sha256": "9083581392a4b94e6b1f3a47071c8cf0e6cc60e830d3636b9e8859e50aca4540",
+        "interview_sha256": "5a50fe235be04f1f97422b308fcbc7e72771776bd40e5046967c2c5f7a847563",
+        "rules_sha256": "a587099554dcea42883dd3ed8fd9cf118409275a4557d51836bbe8f0ebf40f1c",
+        "sources_sha256": "7be136a21a990a4d830c608f568a8567f1660b05669c962226a8b6eeca3d0780",
+        "tests_sha256": "b56c1383b3237f39feeafa31701553a94e4010cbba9b5fca0c45bc532964d44c"
+      },
+      "counts": {
+        "questions": 76,
+        "rules": 42,
+        "sources": 18,
+        "scenarios": 22,
+        "templates": 10,
+        "blocks": 88,
+        "documents": 10
+      }
+    }
+  ],
+  "consolidated_products": [
+    {
+      "code": "CO-TR-001",
+      "name": "Chequeo SAST + inscripción verificada",
+      "owner": "Tránsito y administrativo",
+      "wave": "Segunda ola",
+      "maturity_version": "2.26",
+      "decision_version": "2.30",
+      "internal_legal_status": "Aprobación jurídica interna asistida completada",
+      "human_ratification": "Pendiente",
+      "dual_approval": "Pendiente especialista jurídico + QA",
+      "professional_publication": "Bloqueada",
+      "questions": 40,
+      "rules": 24,
+      "sources": 13,
+      "scenarios": 14,
+      "documents": 7
+    },
+    {
+      "code": "CO-TR-002",
+      "name": "Fotomulta no notificada",
+      "owner": "Tránsito y administrativo",
+      "wave": "Segunda ola",
+      "maturity_version": "2.25",
+      "decision_version": "2.30",
+      "internal_legal_status": "Aprobación jurídica interna asistida completada",
+      "human_ratification": "Pendiente",
+      "dual_approval": "Pendiente especialista jurídico + QA",
+      "professional_publication": "Bloqueada",
+      "questions": 45,
+      "rules": 26,
+      "sources": 13,
+      "scenarios": 14,
+      "documents": 1
+    },
+    {
+      "code": "CO-LA-001",
+      "name": "Liquidación laboral + reclamación",
+      "owner": "Laboral",
+      "wave": "Segunda ola",
+      "maturity_version": "3.0",
+      "decision_version": "2.30",
+      "internal_legal_status": "Aprobación jurídica interna asistida completada",
+      "human_ratification": "Pendiente",
+      "dual_approval": "Pendiente especialista jurídico + QA",
+      "professional_publication": "Bloqueada",
+      "questions": 38,
+      "rules": 20,
+      "sources": 10,
+      "scenarios": 12,
+      "documents": 4
+    },
+    {
+      "code": "CO-LA-002",
+      "name": "Contrato de trabajo personalizado",
+      "owner": "Laboral",
+      "wave": "Primera ola",
+      "maturity_version": "2.24",
+      "decision_version": "2.28",
+      "internal_legal_status": "Aprobación jurídica interna asistida completada",
+      "human_ratification": "Pendiente",
+      "dual_approval": "Pendiente especialista jurídico + QA",
+      "professional_publication": "Bloqueada",
+      "questions": 44,
+      "rules": 25,
+      "sources": 12,
+      "scenarios": 14,
+      "documents": 8
+    },
+    {
+      "code": "CO-EM-003",
+      "name": "Contrato de prestación de servicios",
+      "owner": "Comercial y empresarial",
+      "wave": "Primera ola",
+      "maturity_version": "2.13",
+      "decision_version": "2.28",
+      "internal_legal_status": "Aprobación jurídica interna asistida completada",
+      "human_ratification": "Pendiente",
+      "dual_approval": "Pendiente especialista jurídico + QA",
+      "professional_publication": "Bloqueada",
+      "questions": 27,
+      "rules": 14,
+      "sources": 6,
+      "scenarios": 8,
+      "documents": 6
+    },
+    {
+      "code": "CO-EM-004",
+      "name": "Confidencialidad y propiedad intelectual",
+      "owner": "Comercial, tecnología y PI",
+      "wave": "Primera ola",
+      "maturity_version": "2.14",
+      "decision_version": "2.28",
+      "internal_legal_status": "Aprobación jurídica interna asistida completada",
+      "human_ratification": "Pendiente",
+      "dual_approval": "Pendiente especialista jurídico + QA",
+      "professional_publication": "Bloqueada",
+      "questions": 20,
+      "rules": 17,
+      "sources": 7,
+      "scenarios": 10,
+      "documents": 7
+    },
+    {
+      "code": "CO-AR-001",
+      "name": "Arrendamiento de vivienda urbana",
+      "owner": "Inmobiliario",
+      "wave": "Primera ola",
+      "maturity_version": "2.23",
+      "decision_version": "2.28",
+      "internal_legal_status": "Aprobación jurídica interna asistida completada",
+      "human_ratification": "Pendiente",
+      "dual_approval": "Pendiente especialista jurídico + QA",
+      "professional_publication": "Bloqueada",
+      "questions": 32,
+      "rules": 20,
+      "sources": 8,
+      "scenarios": 12,
+      "documents": 5
+    },
+    {
+      "code": "CO-SA-001",
+      "name": "Derecho de petición a EPS o IPS",
+      "owner": "Salud y constitucional",
+      "wave": "Tercera ola",
+      "maturity_version": "2.31",
+      "decision_version": "2.35",
+      "internal_legal_status": "Aprobación jurídica interna asistida completada",
+      "human_ratification": "Pendiente",
+      "dual_approval": "Pendiente especialista jurídico + QA",
+      "professional_publication": "Bloqueada",
+      "questions": 42,
+      "rules": 25,
+      "sources": 13,
+      "scenarios": 14,
+      "documents": 7
+    },
+    {
+      "code": "CO-CD-001",
+      "name": "Centrales de riesgo y hábeas data",
+      "owner": "Datos, consumo y financiero",
+      "wave": "Tercera ola",
+      "maturity_version": "2.32",
+      "decision_version": "2.35",
+      "internal_legal_status": "Aprobación jurídica interna asistida completada",
+      "human_ratification": "Pendiente",
+      "dual_approval": "Pendiente especialista jurídico + QA",
+      "professional_publication": "Bloqueada",
+      "questions": 52,
+      "rules": 28,
+      "sources": 14,
+      "scenarios": 16,
+      "documents": 7
+    },
+    {
+      "code": "CO-CD-003",
+      "name": "Garantía, retracto y reversión del pago",
+      "owner": "Consumo y comercio electrónico",
+      "wave": "Tercera ola",
+      "maturity_version": "2.33",
+      "decision_version": "2.35",
+      "internal_legal_status": "Aprobación jurídica interna asistida completada",
+      "human_ratification": "Pendiente",
+      "dual_approval": "Pendiente especialista jurídico + QA",
+      "professional_publication": "Bloqueada",
+      "questions": 57,
+      "rules": 32,
+      "sources": 14,
+      "scenarios": 18,
+      "documents": 8
+    },
+    {
+      "code": "CO-CD-004",
+      "name": "Cobro, acuerdo de pago y pagaré",
+      "owner": "Civil, comercial y cartera",
+      "wave": "Tercera ola",
+      "maturity_version": "2.34",
+      "decision_version": "2.35",
+      "internal_legal_status": "Aprobación jurídica interna asistida completada",
+      "human_ratification": "Pendiente",
+      "dual_approval": "Pendiente especialista jurídico + QA",
+      "professional_publication": "Bloqueada",
+      "questions": 76,
+      "rules": 42,
+      "sources": 18,
+      "scenarios": 22,
+      "documents": 10
+    }
+  ],
+  "quality_gates": [
+    {
+      "id": "G-01",
+      "name": "Maduración integral de 11 productos",
+      "owner": "Producto jurídico",
+      "status": "closed"
+    },
+    {
+      "id": "G-02",
+      "name": "Fuentes primarias identificadas",
+      "owner": "Especialista jurídico",
+      "status": "closed"
+    },
+    {
+      "id": "G-03",
+      "name": "Integridad de paquetes de tercera ola",
+      "owner": "QA documental",
+      "status": "closed"
+    },
+    {
+      "id": "G-04",
+      "name": "Aprobación jurídica interna asistida de tres olas",
+      "owner": "LegalAIZ.it",
+      "status": "closed"
+    },
+    {
+      "id": "G-05",
+      "name": "Ratificación del abogado titular",
+      "owner": "Abogado responsable",
+      "status": "pending"
+    },
+    {
+      "id": "G-06",
+      "name": "Aprobación especialista jurídico",
+      "owner": "Especialista jurídico",
+      "status": "pending"
+    },
+    {
+      "id": "G-07",
+      "name": "Aprobación QA del archivo exacto",
+      "owner": "QA",
+      "status": "pending"
+    },
+    {
+      "id": "G-08",
+      "name": "Publicación profesional",
+      "owner": "Gobernanza",
+      "status": "blocked"
+    }
+  ],
+  "temporal_controls": [
+    {
+      "product": "CO-CD-001",
+      "control": "Ley 2573 de 2026",
+      "rule": "Selector por fecha; vigencia general desde 20-11-2026 según fuente oficial, sin anticipar efectos no vigentes."
+    },
+    {
+      "product": "CO-CD-001",
+      "control": "SMLMV y umbral 15 %",
+      "rule": "Revalidación a la fecha de reporte o reclamación."
+    },
+    {
+      "product": "CO-CD-004",
+      "control": "Interés bancario corriente y usura",
+      "rule": "Revalidación por modalidad y período antes de cada cálculo o documento."
+    },
+    {
+      "product": "Todos",
+      "control": "Términos y festivos",
+      "rule": "Calendarios preliminares; confirmar recepción, prórrogas, suspensión y calendario aplicable."
+    }
+  ],
+  "packaging_policy": "Versión autocontenida vigente. Se reemplaza docs/v234 por docs/v235 y no se agregan carpetas históricas de release.",
+  "approval_documents": [
+    "docs/v235/CO-CD-001_ACTA_APROBACION_JURIDICA_INTERNA_V235.docx",
+    "docs/v235/CO-CD-001_ACTA_APROBACION_JURIDICA_INTERNA_V235.pdf",
+    "docs/v235/CO-CD-003_ACTA_APROBACION_JURIDICA_INTERNA_V235.docx",
+    "docs/v235/CO-CD-003_ACTA_APROBACION_JURIDICA_INTERNA_V235.pdf",
+    "docs/v235/CO-CD-004_ACTA_APROBACION_JURIDICA_INTERNA_V235.docx",
+    "docs/v235/CO-CD-004_ACTA_APROBACION_JURIDICA_INTERNA_V235.pdf",
+    "docs/v235/CO-SA-001_ACTA_APROBACION_JURIDICA_INTERNA_V235.docx",
+    "docs/v235/CO-SA-001_ACTA_APROBACION_JURIDICA_INTERNA_V235.pdf",
+    "docs/v235/LegalAIZit_MATRIZ_CONSOLIDADA_11_PRODUCTOS_V235.docx",
+    "docs/v235/LegalAIZit_MATRIZ_CONSOLIDADA_11_PRODUCTOS_V235.pdf",
+    "docs/v235/LegalAIZit_PROTOCOLO_PUBLICACION_CONTROLADA_V235.docx",
+    "docs/v235/LegalAIZit_PROTOCOLO_PUBLICACION_CONTROLADA_V235.pdf",
+    "docs/v235/LegalAIZit_RESOLUCION_INTERNA_TERCERA_OLA_V235.docx",
+    "docs/v235/LegalAIZit_RESOLUCION_INTERNA_TERCERA_OLA_V235.pdf"
+  ],
+  "next_release": "v2.36 — ratificación guiada, aprobación dual y preparación de piloto controlado",
+  "artifact_registry": [
+    {
+      "path": "docs/v235/CO-CD-001_ACTA_APROBACION_JURIDICA_INTERNA_V235.docx",
+      "format": "DOCX",
+      "sha256": "75d11c4d7ae053bdb16e870d8b32415d6fb4e67fe1a7f2d6dcf49c9961f74daf",
+      "bytes": 106285
+    },
+    {
+      "path": "docs/v235/CO-CD-001_ACTA_APROBACION_JURIDICA_INTERNA_V235.pdf",
+      "format": "PDF",
+      "sha256": "caaddc80cde0d53d9d090219fa76c841077868cae15b39ffdff21b08b54e1ba7",
+      "bytes": 149180
+    },
+    {
+      "path": "docs/v235/CO-CD-003_ACTA_APROBACION_JURIDICA_INTERNA_V235.docx",
+      "format": "DOCX",
+      "sha256": "fddfc54c3fd1fd0767da2254168875b576a4c8ff2341632f1f8dc241cea87257",
+      "bytes": 106091
+    },
+    {
+      "path": "docs/v235/CO-CD-003_ACTA_APROBACION_JURIDICA_INTERNA_V235.pdf",
+      "format": "PDF",
+      "sha256": "debb218e97bbcbeb2c4951c61062d6cff750e9d6bb2408e94f6c8883312ff9b9",
+      "bytes": 149445
+    },
+    {
+      "path": "docs/v235/CO-CD-004_ACTA_APROBACION_JURIDICA_INTERNA_V235.docx",
+      "format": "DOCX",
+      "sha256": "8cbde536d5ac8713ed341282741b900bf79292a030223c87de4ef85245d10723",
+      "bytes": 106531
+    },
+    {
+      "path": "docs/v235/CO-CD-004_ACTA_APROBACION_JURIDICA_INTERNA_V235.pdf",
+      "format": "PDF",
+      "sha256": "7e0a948245b5fc35fb71551ddc5ac8617832f103264a80567b9aaccb9e4a34b2",
+      "bytes": 157372
+    },
+    {
+      "path": "docs/v235/CO-SA-001_ACTA_APROBACION_JURIDICA_INTERNA_V235.docx",
+      "format": "DOCX",
+      "sha256": "a02f78a1dfe59551b9a76d4455d9ef2c1c81911e82f3f9f26cc6a88a248617c9",
+      "bytes": 106270
+    },
+    {
+      "path": "docs/v235/CO-SA-001_ACTA_APROBACION_JURIDICA_INTERNA_V235.pdf",
+      "format": "PDF",
+      "sha256": "b3f594b685b95b4c8ecb1c7948349de671d5df3880ce7a96d154785282dda04a",
+      "bytes": 148415
+    },
+    {
+      "path": "docs/v235/LegalAIZit_MATRIZ_CONSOLIDADA_11_PRODUCTOS_V235.docx",
+      "format": "DOCX",
+      "sha256": "a1920d698b0e7b5f427887af2c856bd95ecc2a1d377543adc8b2b961928266fc",
+      "bytes": 103740
+    },
+    {
+      "path": "docs/v235/LegalAIZit_MATRIZ_CONSOLIDADA_11_PRODUCTOS_V235.pdf",
+      "format": "PDF",
+      "sha256": "622ee3aff68d57288ea74708b3fcf1162307ad34d54c2194c3468564e68a47ae",
+      "bytes": 95445
+    },
+    {
+      "path": "docs/v235/LegalAIZit_PROTOCOLO_PUBLICACION_CONTROLADA_V235.docx",
+      "format": "DOCX",
+      "sha256": "2321f31a8642c6e8ee6f5618b5de7378374a06edfe94079baffcbf90df298d0a",
+      "bytes": 103748
+    },
+    {
+      "path": "docs/v235/LegalAIZit_PROTOCOLO_PUBLICACION_CONTROLADA_V235.pdf",
+      "format": "PDF",
+      "sha256": "59186bef40b6e31696726bb55f552acc86cb115ae22226c3196ed24b84cfbe6e",
+      "bytes": 86129
+    },
+    {
+      "path": "docs/v235/LegalAIZit_RESOLUCION_INTERNA_TERCERA_OLA_V235.docx",
+      "format": "DOCX",
+      "sha256": "a3697866476ab6855dbe04fec66db4f152765c2d981fb1a3d2c8b713f6838026",
+      "bytes": 104416
+    },
+    {
+      "path": "docs/v235/LegalAIZit_RESOLUCION_INTERNA_TERCERA_OLA_V235.pdf",
+      "format": "PDF",
+      "sha256": "34770c8bc7b64c9118b019fcc5e33d0f87b69d7216492c72a4fa0886fc5dfc1f",
+      "bytes": 112719
+    }
+  ]
+}

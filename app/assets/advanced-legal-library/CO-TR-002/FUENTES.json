@@ -1,0 +1,29 @@
+[
+  {
+    "id": "TR2-S1",
+    "title": "Constitución Política — debido proceso y petición",
+    "authority": "República de Colombia",
+    "type": "constitutional",
+    "status": "verificar vigente",
+    "last_verified": "2026-07-15",
+    "verification_status": "Pendiente de revalidación antes de publicación comercial"
+  },
+  {
+    "id": "TR2-S2",
+    "title": "Normativa de tránsito y procedimiento contravencional aplicable",
+    "authority": "Fuentes oficiales colombianas",
+    "type": "statute",
+    "status": "verificar antes de publicar",
+    "last_verified": "2026-07-15",
+    "verification_status": "Pendiente de revalidación antes de publicación comercial"
+  },
+  {
+    "id": "TR2-S3",
+    "title": "Paquete jurídico CO-TR-002 v2",
+    "authority": "LegalAIZ.it",
+    "type": "package",
+    "status": "pendiente validación especialista",
+    "last_verified": "2026-07-15",
+    "verification_status": "Pendiente de revalidación antes de publicación comercial"
+  }
+]

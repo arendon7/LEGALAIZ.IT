@@ -1,0 +1,343 @@
+{
+  "version": "2.47",
+  "base_case": {
+    "agreement": {
+      "type": "mutual",
+      "purpose": "Evaluar, desarrollar y ejecutar una plataforma tecnológica y sus integraciones autorizadas.",
+      "reference": "Proyecto Atlas, etapa de evaluación, desarrollo y despliegue controlado.",
+      "reciprocal": true
+    },
+    "party_a": {
+      "identification": {
+        "type": "legal_person",
+        "name": "ALFA TECNOLOGÍA S.A.S.",
+        "id_number": "901.111.222-3",
+        "address": "Medellín, Antioquia",
+        "email": "legal@alfa.example"
+      },
+      "signatory": {
+        "name": "Ana Representante",
+        "id_number": "43.111.222",
+        "capacity": "Representante legal",
+        "authority_source": "certificado de existencia y representación legal vigente"
+      }
+    },
+    "party_b": {
+      "identification": {
+        "type": "legal_person",
+        "name": "BETA SOLUCIONES S.A.S.",
+        "id_number": "901.444.555-6",
+        "address": "Bogotá D.C.",
+        "email": "legal@beta.example"
+      },
+      "signatory": {
+        "name": "Bruno Representante",
+        "id_number": "79.111.222",
+        "capacity": "Representante legal",
+        "authority_source": "certificado de existencia y representación legal vigente"
+      }
+    },
+    "relationship": {
+      "context": "software_technology"
+    },
+    "information": {
+      "categories": "Código fuente; arquitectura; credenciales; modelos de datos; información comercial; documentación técnica; precios y estrategia.",
+      "formats_sources": "Repositorios privados, sala de datos, reuniones, demostraciones, correo corporativo y documentación cifrada.",
+      "oral_visual_rule": "written_confirmation",
+      "exclusions": "Información pública sin incumplimiento, conocida legítimamente, recibida de tercero facultado o desarrollada independientemente.",
+      "trade_secrets": true,
+      "marking_rule": "hybrid"
+    },
+    "access": {
+      "authorized_recipients": "Equipos jurídico, arquitectura, seguridad y dirección del proyecto expresamente autorizados.",
+      "representatives": "Asesores jurídicos, auditores y subcontratistas previamente autorizados y sujetos a deberes equivalentes.",
+      "need_to_know": "Acceso por rol, mínimo privilegio, MFA, revisión trimestral y revocación inmediata al cambiar funciones.",
+      "permitted_use": "Evaluación, diseño, integración, pruebas autorizadas y ejecución del Proyecto Atlas.",
+      "compelled_disclosure": "Aviso previo cuando sea legalmente posible, revisión jurídica y revelación limitada a lo estrictamente exigido."
+    },
+    "security": {
+      "controls": {
+        "level": "critical",
+        "technical": "Cifrado en tránsito y reposo, MFA, registros de acceso, DLP y repositorios privados.",
+        "organizational": "Acuerdos individuales, capacitación, segregación de funciones, inventario y revisión periódica.",
+        "physical": "Áreas de acceso controlado y política de escritorio limpio."
+      },
+      "incident_protocol": "Reporte inicial dentro de las cuatro horas siguientes a la detección, contención inmediata, preservación de evidencia y actualización coordinada."
+    },
+    "data": {
+      "personal": true,
+      "roles": {
+        "party_a_role": "responsible",
+        "party_b_role": "processor",
+        "instructions": "Tratamiento por cuenta de la Parte A para integración, soporte y pruebas con datos minimizados."
+      },
+      "sensitive_or_children": false,
+      "crossborder": "no",
+      "lifecycle": "Conservación durante la finalidad y eliminación o devolución verificada al cierre, salvo obligación legal documentada."
+    },
+    "ip": {
+      "results_allocation": "license",
+      "preexisting_materials": "Framework propio de ALFA; librerías internas de BETA; marcas y documentación previa de cada parte.",
+      "oss_third_party": "Python bajo PSF; componentes bajo MIT; dependencias adicionales sujetas al inventario aprobado.",
+      "source_code_reverse_engineering": "Acceso a código fuente solo en repositorios autorizados; pruebas de seguridad en ambiente aislado; ingeniería inversa prohibida salvo autorización escrita o excepción legal.",
+      "future_assignment_broad": false,
+      "moral_rights_waiver": false
+    },
+    "ai": {
+      "used": true,
+      "public_upload": false,
+      "training_outputs": "Uso exclusivo de cuenta empresarial sin entrenamiento con entradas, retención desactivada y revisión humana obligatoria."
+    },
+    "term_remedies": {
+      "agreement_years": 3,
+      "ordinary_confidentiality_years": 5,
+      "trade_secret_rule": "while_secret",
+      "general_noncompete": false,
+      "penalty_or_liability": "Responsabilidad por daños directos y probados; cláusula penal determinable en el instrumento comercial específico y sin renuncia a medidas cautelares."
+    },
+    "closure_confirmation": {
+      "return_destroy": "Devolución de soportes y eliminación segura de copias de trabajo dentro de los diez días hábiles siguientes al cierre.",
+      "retained_copies": "Una copia legal aislada y copias de respaldo inalterables sujetas al ciclo ordinario, sin uso operativo.",
+      "dispute_mechanism": "negotiation_conciliation",
+      "electronic_signature": true,
+      "confirmed": true
+    }
+  },
+  "scenarios": [
+    {
+      "id": "EM4-N01",
+      "name": "Finalidad y categorías ausentes",
+      "overrides": {
+        "agreement.purpose": "",
+        "information.categories": ""
+      },
+      "remove": [],
+      "expected": {
+        "blocked": true,
+        "required_findings": [
+          "V-EM4-002"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-N02",
+      "name": "Secretos sin controles reforzados",
+      "overrides": {
+        "security.controls.level": "basic",
+        "access.need_to_know": "",
+        "security.incident_protocol": ""
+      },
+      "remove": [],
+      "expected": {
+        "blocked": true,
+        "required_findings": [
+          "V-EM4-004"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-N03",
+      "name": "Datos personales sin roles",
+      "overrides": {
+        "data.personal": true,
+        "data.roles": {}
+      },
+      "remove": [],
+      "expected": {
+        "blocked": true,
+        "required_findings": [
+          "V-EM4-005"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-N04",
+      "name": "Datos sensibles o de menores",
+      "overrides": {
+        "data.sensitive_or_children": true
+      },
+      "remove": [],
+      "expected": {
+        "blocked": true,
+        "required_findings": [
+          "V-EM4-006"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-N05",
+      "name": "Transferencia internacional por revisar",
+      "overrides": {
+        "data.crossborder": "yes"
+      },
+      "remove": [],
+      "expected": {
+        "blocked": false,
+        "readiness": "requires_review",
+        "required_findings": [
+          "V-EM4-007"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-N06",
+      "name": "Cesión futura general e indeterminada",
+      "overrides": {
+        "ip.future_assignment_broad": true
+      },
+      "remove": [],
+      "expected": {
+        "blocked": true,
+        "required_findings": [
+          "V-EM4-008"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-N07",
+      "name": "Renuncia a derechos morales",
+      "overrides": {
+        "ip.moral_rights_waiver": true
+      },
+      "remove": [],
+      "expected": {
+        "blocked": true,
+        "required_findings": [
+          "V-EM4-009"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-N08",
+      "name": "Carga de secretos en IA pública",
+      "overrides": {
+        "ai.public_upload": true
+      },
+      "remove": [],
+      "expected": {
+        "blocked": true,
+        "required_findings": [
+          "V-EM4-010"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-N09",
+      "name": "IA sin reglas de entrenamiento y retención",
+      "overrides": {
+        "ai.training_outputs": ""
+      },
+      "remove": [],
+      "expected": {
+        "blocked": false,
+        "readiness": "requires_review",
+        "required_findings": [
+          "V-EM4-AI-REVIEW"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-N10",
+      "name": "Reserva ordinaria excesiva sin justificación",
+      "overrides": {
+        "term_remedies.ordinary_confidentiality_years": 8
+      },
+      "remove": [],
+      "expected": {
+        "blocked": false,
+        "readiness": "requires_review",
+        "required_findings": [
+          "V-EM4-012"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-N11",
+      "name": "Prohibición general de competencia",
+      "overrides": {
+        "term_remedies.general_noncompete": true
+      },
+      "remove": [],
+      "expected": {
+        "blocked": true,
+        "required_findings": [
+          "V-EM4-013"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-N12",
+      "name": "Responsabilidad y remedios indeterminados",
+      "overrides": {
+        "term_remedies.penalty_or_liability": ""
+      },
+      "remove": [],
+      "expected": {
+        "blocked": false,
+        "readiness": "requires_review",
+        "required_findings": [
+          "V-EM4-015"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-N13",
+      "name": "Protección limitada solo a lo marcado",
+      "overrides": {
+        "information.marking_rule": "marked_only"
+      },
+      "remove": [],
+      "expected": {
+        "blocked": false,
+        "readiness": "requires_review",
+        "required_findings": [
+          "V-EM4-MARK"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-N14",
+      "name": "Acuerdo mutuo sin reciprocidad",
+      "overrides": {
+        "agreement.type": "mutual",
+        "agreement.reciprocal": false
+      },
+      "remove": [],
+      "expected": {
+        "blocked": false,
+        "readiness": "requires_review",
+        "required_findings": [
+          "V-EM4-CONFIG"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-N15",
+      "name": "Firmante sin fuente de facultad",
+      "overrides": {},
+      "remove": [
+        "party_b.signatory.authority_source"
+      ],
+      "expected": {
+        "blocked": false,
+        "readiness": "incomplete",
+        "missing": "party_b.signatory.authority_source"
+      },
+      "notes": ""
+    }
+  ]
+}

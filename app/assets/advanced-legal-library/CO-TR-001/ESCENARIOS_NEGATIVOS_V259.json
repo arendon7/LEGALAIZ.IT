@@ -1,0 +1,286 @@
+{
+  "version": "2.59",
+  "product_id": "CO-TR-001",
+  "base_case": {
+    "authority": {
+      "name": "Medellín"
+    },
+    "infraction": {
+      "date": "2025-01-10",
+      "comparendo_number": "SAST-259-NEG"
+    },
+    "device": {
+      "location": "Calle 10 con Carrera 20",
+      "id": "CAM-001"
+    },
+    "payment": {
+      "status": "unpaid"
+    },
+    "procedure": {
+      "stage": "none",
+      "imminent_deadline": false
+    },
+    "security": {
+      "possible_fraud": false
+    },
+    "consents": {
+      "preliminary": true,
+      "data_processing": false
+    },
+    "official_decision": {
+      "firm": false,
+      "reference": ""
+    }
+  },
+  "scenarios": [
+    {
+      "id": "V259-NEG-01",
+      "name": "Falta consentimiento preliminar",
+      "mode": "precheck",
+      "overrides": {
+        "consents.preliminary": false
+      },
+      "expected": {
+        "blocked": false,
+        "status": "incomplete",
+        "risk": "yellow",
+        "release_blocked": true,
+        "professional_review_required": false,
+        "decision_firmness_required": false,
+        "match_count": 0,
+        "missing": [
+          "consents.preliminary"
+        ],
+        "required_findings": [
+          "TR1-006"
+        ]
+      }
+    },
+    {
+      "id": "V259-NEG-02",
+      "name": "Falta autoridad",
+      "mode": "precheck",
+      "remove": [
+        "authority.name"
+      ],
+      "expected": {
+        "blocked": false,
+        "status": "incomplete",
+        "release_blocked": true,
+        "missing": [
+          "authority.name"
+        ],
+        "match_count": 0
+      }
+    },
+    {
+      "id": "V259-NEG-03",
+      "name": "Fecha inválida",
+      "mode": "precheck",
+      "overrides": {
+        "infraction.date": "31-31-2025"
+      },
+      "expected": {
+        "blocked": false,
+        "status": "incomplete",
+        "release_blocked": true,
+        "missing": [
+          "infraction.date"
+        ],
+        "required_findings": [
+          "TR1-005"
+        ],
+        "match_count": 0
+      }
+    },
+    {
+      "id": "V259-NEG-04",
+      "name": "Autoridad no normalizable",
+      "mode": "precheck",
+      "overrides": {
+        "authority.name": "Entidad inexistente de movilidad"
+      },
+      "expected": {
+        "blocked": false,
+        "status": "incomplete",
+        "release_blocked": true,
+        "missing": [
+          "authority.name"
+        ],
+        "required_findings": [
+          "TR1-004"
+        ],
+        "match_count": 0
+      }
+    },
+    {
+      "id": "V259-NEG-05",
+      "name": "Registro sin identidad ni consentimiento de datos",
+      "mode": "registration",
+      "expected": {
+        "blocked": false,
+        "status": "incomplete",
+        "release_blocked": true,
+        "missing": [
+          "identity.full_name",
+          "identity.email",
+          "consents.data_processing"
+        ]
+      }
+    },
+    {
+      "id": "V259-NEG-06",
+      "name": "Registro con correo inválido",
+      "mode": "registration",
+      "overrides": {
+        "identity.full_name": "Prueba",
+        "identity.email": "correo-invalido",
+        "consents.data_processing": true
+      },
+      "expected": {
+        "blocked": false,
+        "status": "incomplete",
+        "release_blocked": true,
+        "missing": [
+          "identity.email"
+        ]
+      }
+    },
+    {
+      "id": "V259-NEG-07",
+      "name": "Cobro coactivo",
+      "mode": "precheck",
+      "overrides": {
+        "procedure.stage": "collection"
+      },
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "risk": "red",
+        "release_blocked": true,
+        "professional_review_required": true,
+        "required_findings": [
+          "TR1-008",
+          "TR1-014"
+        ],
+        "documents": [
+          "sast_professional_review_request"
+        ]
+      }
+    },
+    {
+      "id": "V259-NEG-08",
+      "name": "Mandamiento de pago",
+      "mode": "precheck",
+      "overrides": {
+        "procedure.stage": "payment_order"
+      },
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "risk": "red",
+        "release_blocked": true,
+        "required_findings": [
+          "TR1-008"
+        ]
+      }
+    },
+    {
+      "id": "V259-NEG-09",
+      "name": "Embargo",
+      "mode": "precheck",
+      "overrides": {
+        "procedure.stage": "embargo"
+      },
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "risk": "red",
+        "release_blocked": true,
+        "required_findings": [
+          "TR1-008"
+        ]
+      }
+    },
+    {
+      "id": "V259-NEG-10",
+      "name": "Proceso judicial",
+      "mode": "precheck",
+      "overrides": {
+        "procedure.stage": "judicial"
+      },
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "risk": "red",
+        "release_blocked": true,
+        "required_findings": [
+          "TR1-008"
+        ]
+      }
+    },
+    {
+      "id": "V259-NEG-11",
+      "name": "Término urgente",
+      "mode": "precheck",
+      "overrides": {
+        "procedure.imminent_deadline": true
+      },
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "risk": "red",
+        "release_blocked": true,
+        "required_findings": [
+          "TR1-009"
+        ]
+      }
+    },
+    {
+      "id": "V259-NEG-12",
+      "name": "Posible fraude",
+      "mode": "precheck",
+      "overrides": {
+        "security.possible_fraud": true
+      },
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "risk": "red",
+        "release_blocked": true,
+        "required_findings": [
+          "TR1-010"
+        ],
+        "blocks": [
+          "B259-ALERTA-FRAUDE"
+        ]
+      }
+    },
+    {
+      "id": "V259-NEG-13",
+      "name": "Decisión firme declarada sin referencia",
+      "mode": "precheck",
+      "overrides": {
+        "official_decision.firm": true,
+        "official_decision.reference": ""
+      },
+      "expected": {
+        "blocked": false,
+        "status": "incomplete",
+        "risk": "yellow",
+        "release_blocked": true,
+        "professional_review_required": true,
+        "decision_firmness_required": false,
+        "missing": [
+          "official_decision.reference"
+        ],
+        "required_findings": [
+          "TR1-014-REF"
+        ],
+        "forbidden_findings": [
+          "TR1-014"
+        ]
+      }
+    }
+  ]
+}

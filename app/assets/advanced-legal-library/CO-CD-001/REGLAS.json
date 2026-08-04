@@ -1,0 +1,683 @@
+[
+  {
+    "id": "CD1-R01",
+    "risk": "red",
+    "category": "legitimacy",
+    "blocking": true,
+    "message": "Quien presenta no es el titular y no acredita legitimación suficiente.",
+    "action": "Completar autorización, poder, representación o calidad antes de generar una salida definitiva.",
+    "conditions": {
+      "all": [
+        {
+          "field": "acting_capacity",
+          "op": "not_equals",
+          "value": "Titular"
+        },
+        {
+          "field": "representation_support",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S1",
+      "CD1-S2",
+      "CD1-S7"
+    ]
+  },
+  {
+    "id": "CD1-R02",
+    "risk": "red",
+    "category": "exclusion",
+    "blocking": true,
+    "message": "Existe proceso judicial, insolvencia, cobro ejecutivo o embargo relacionado.",
+    "action": "Coordinar el reclamo con la estrategia procesal y revisar efectos de cosa juzgada, prescripción, pago y medidas cautelares.",
+    "conditions": {
+      "all": [
+        {
+          "field": "judicial_or_insolvency",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S1",
+      "CD1-S2",
+      "CD1-S5"
+    ]
+  },
+  {
+    "id": "CD1-R03",
+    "risk": "red",
+    "category": "identity_theft",
+    "blocking": true,
+    "message": "La suplantación es compleja o involucra múltiples productos, falsedad o investigación.",
+    "action": "Activar preservación de evidencia, reclamos separados y revisión profesional; aplicar el régimen vigente y controlar la entrada general en vigor de la Ley 2573 de 2026 el 20 de noviembre de 2026.",
+    "conditions": {
+      "all": [
+        {
+          "field": "identity_theft_complex",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S1",
+      "CD1-S2",
+      "CD1-S12",
+      "CD1-S13"
+    ]
+  },
+  {
+    "id": "CD1-R04",
+    "risk": "red",
+    "category": "impact",
+    "blocking": true,
+    "message": "Existe daño relevante, decisión crediticia crítica o término urgente.",
+    "action": "Revisión profesional prioritaria y coordinación con mecanismos administrativos o judiciales aplicables.",
+    "conditions": {
+      "all": [
+        {
+          "field": "high_damage_or_urgent_credit",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S1",
+      "CD1-S2",
+      "CD1-S5"
+    ]
+  },
+  {
+    "id": "CD1-R05",
+    "risk": "red",
+    "category": "data_quality",
+    "blocking": true,
+    "message": "Los datos esenciales no fueron confirmados.",
+    "action": "Verificar nombres, fechas, valores, reporte, soportes y pretensión.",
+    "conditions": {
+      "all": [
+        {
+          "field": "data_confirmed",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S1",
+      "CD1-S2"
+    ]
+  },
+  {
+    "id": "CD1-R06",
+    "risk": "yellow",
+    "category": "data_quality",
+    "blocking": false,
+    "message": "La confirmación de datos es parcial.",
+    "action": "Marcar supuestos y no afirmar hechos no acreditados.",
+    "conditions": {
+      "all": [
+        {
+          "field": "data_confirmed",
+          "op": "equals",
+          "value": "Parcial"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S1",
+      "CD1-S2"
+    ]
+  },
+  {
+    "id": "CD1-R07",
+    "risk": "yellow",
+    "category": "recipient",
+    "blocking": false,
+    "message": "La fuente reportante no está plenamente identificada.",
+    "action": "Solicitar consulta integral al operador y origen del dato antes de dirigir una pretensión de retiro.",
+    "conditions": {
+      "any": [
+        {
+          "field": "source_known",
+          "op": "equals",
+          "value": "No"
+        },
+        {
+          "field": "source_known",
+          "op": "equals",
+          "value": "Parcial"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S2"
+    ]
+  },
+  {
+    "id": "CD1-R08",
+    "risk": "yellow",
+    "category": "recipient",
+    "blocking": false,
+    "message": "El operador o central no está plenamente identificado.",
+    "action": "Obtener el reporte integral y separar destinatarios, responsabilidades y pretensiones.",
+    "conditions": {
+      "any": [
+        {
+          "field": "operator_known",
+          "op": "equals",
+          "value": "No"
+        },
+        {
+          "field": "operator_known",
+          "op": "equals",
+          "value": "Parcial"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S2"
+    ]
+  },
+  {
+    "id": "CD1-R09",
+    "risk": "yellow",
+    "category": "multiple_parties",
+    "blocking": false,
+    "message": "Existen múltiples fuentes, operadores o reportes.",
+    "action": "Construir expediente consolidado y reclamos individualizados por responsable y dato.",
+    "conditions": {
+      "all": [
+        {
+          "field": "multiple_sources",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S2",
+      "CD1-S7"
+    ]
+  },
+  {
+    "id": "CD1-R10",
+    "risk": "yellow",
+    "category": "debt",
+    "blocking": false,
+    "message": "El retiro o actualización del dato no extingue una obligación válida.",
+    "action": "Separar la discusión de la deuda del cumplimiento de los deberes de información.",
+    "conditions": {
+      "any": [
+        {
+          "field": "issue_type",
+          "op": "equals",
+          "value": "Obligación vigente discutida"
+        },
+        {
+          "field": "obligation_status",
+          "op": "equals",
+          "value": "Discutida"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S2",
+      "CD1-S5"
+    ]
+  },
+  {
+    "id": "CD1-R11",
+    "risk": "yellow",
+    "category": "evidence",
+    "blocking": false,
+    "message": "No existe soporte legible del reporte.",
+    "action": "Obtener consulta integral actual y preservar fecha, central, fuente, estado, monto y leyendas.",
+    "conditions": {
+      "all": [
+        {
+          "field": "report_support_available",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S2",
+      "CD1-S9"
+    ]
+  },
+  {
+    "id": "CD1-R12",
+    "risk": "yellow",
+    "category": "evidence",
+    "blocking": false,
+    "message": "No se ha solicitado o aportado soporte de la obligación.",
+    "action": "Exigir origen, contrato, título, estado de cuenta y trazabilidad del dato.",
+    "conditions": {
+      "any": [
+        {
+          "field": "source_obligation_support",
+          "op": "equals",
+          "value": "No"
+        },
+        {
+          "field": "source_obligation_support",
+          "op": "equals",
+          "value": "No solicitado"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S2",
+      "CD1-S9"
+    ]
+  },
+  {
+    "id": "CD1-R13",
+    "risk": "yellow",
+    "category": "communication",
+    "blocking": false,
+    "message": "No está acreditada la comunicación previa al reporte.",
+    "action": "Solicitar prueba individualizable, fecha, canal y contenido; aplicar la consecuencia según la obligación esté o no extinguida.",
+    "conditions": {
+      "any": [
+        {
+          "field": "prior_communication_received",
+          "op": "equals",
+          "value": "No"
+        },
+        {
+          "field": "prior_communication_received",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S2",
+      "CD1-S3",
+      "CD1-S6",
+      "CD1-S10",
+      "CD1-S11"
+    ]
+  },
+  {
+    "id": "CD1-R14",
+    "risk": "yellow",
+    "category": "communication",
+    "blocking": false,
+    "message": "La prueba de comunicación previa es incompleta o no ha sido solicitada.",
+    "action": "No concluir cumplimiento con afirmaciones genéricas; exigir soporte verificable.",
+    "conditions": {
+      "any": [
+        {
+          "field": "prior_communication_evidence",
+          "op": "equals",
+          "value": "Parcial"
+        },
+        {
+          "field": "prior_communication_evidence",
+          "op": "equals",
+          "value": "No"
+        },
+        {
+          "field": "prior_communication_evidence",
+          "op": "equals",
+          "value": "No solicitada"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S2",
+      "CD1-S6",
+      "CD1-S9"
+    ]
+  },
+  {
+    "id": "CD1-R15",
+    "risk": "yellow",
+    "category": "small_debt",
+    "blocking": false,
+    "message": "La obligación puede estar bajo el umbral del 15 % del SMLMV y no están acreditadas dos comunicaciones.",
+    "action": "Verificar el SMLMV aplicable, cuantía, dos comunicaciones en días distintos y veinte días desde la última.",
+    "conditions": {
+      "any": [
+        {
+          "field": "small_obligation_two_notices",
+          "op": "equals",
+          "value": "No"
+        },
+        {
+          "field": "small_obligation_two_notices",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S3",
+      "CD1-S5",
+      "CD1-S14"
+    ]
+  },
+  {
+    "id": "CD1-R16",
+    "risk": "green",
+    "category": "update",
+    "blocking": false,
+    "message": "Se solicita actualizar pago o extinción no reflejados.",
+    "action": "Adjuntar soporte y exigir actualización a fuente y operador.",
+    "conditions": {
+      "all": [
+        {
+          "field": "issue_type",
+          "op": "equals",
+          "value": "Pago o extinción no actualizados"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S2",
+      "CD1-S3"
+    ]
+  },
+  {
+    "id": "CD1-R17",
+    "risk": "green",
+    "category": "permanence",
+    "blocking": false,
+    "message": "Se invoca permanencia vencida después del pago o extinción.",
+    "action": "Calcular doble de la mora con máximo de cuatro años desde el pago o extinción y verificar fecha exacta.",
+    "conditions": {
+      "all": [
+        {
+          "field": "issue_type",
+          "op": "equals",
+          "value": "Permanencia vencida después del pago"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S3",
+      "CD1-S5"
+    ]
+  },
+  {
+    "id": "CD1-R18",
+    "risk": "green",
+    "category": "caducity",
+    "blocking": false,
+    "message": "Se invoca caducidad del dato negativo de una obligación insoluta.",
+    "action": "Verificar ocho años desde el inicio de mora y separar caducidad del dato de extinción de la deuda.",
+    "conditions": {
+      "all": [
+        {
+          "field": "issue_type",
+          "op": "equals",
+          "value": "Caducidad de obligación insoluta"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S3",
+      "CD1-S5"
+    ]
+  },
+  {
+    "id": "CD1-R19",
+    "risk": "yellow",
+    "category": "late_report",
+    "blocking": false,
+    "message": "Se alega que la fuente reportó después del plazo máximo de dieciocho meses desde la mora.",
+    "action": "Contrastar fechas y solicitar soporte de primer reporte.",
+    "conditions": {
+      "all": [
+        {
+          "field": "issue_type",
+          "op": "equals",
+          "value": "Reporte realizado tardíamente"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S2",
+      "CD1-S3",
+      "CD1-S9"
+    ]
+  },
+  {
+    "id": "CD1-R20",
+    "risk": "yellow",
+    "category": "prior_claim",
+    "blocking": false,
+    "message": "Existe actuación previa y debe preservarse su cronología.",
+    "action": "Preparar reiteración o escalamiento sin reiniciar ni ocultar fechas anteriores.",
+    "conditions": {
+      "all": [
+        {
+          "field": "prior_claim",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S2",
+      "CD1-S3",
+      "CD1-S11"
+    ]
+  },
+  {
+    "id": "CD1-R21",
+    "risk": "yellow",
+    "category": "claim_completeness",
+    "blocking": false,
+    "message": "El reclamo previo puede estar incompleto.",
+    "action": "Revisar identificación, hechos, dirección, pretensión y soportes; documentar cualquier requerimiento de subsanación.",
+    "conditions": {
+      "any": [
+        {
+          "field": "prior_claim_complete",
+          "op": "equals",
+          "value": "Parcial"
+        },
+        {
+          "field": "prior_claim_complete",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S2",
+      "CD1-S7",
+      "CD1-S11"
+    ]
+  },
+  {
+    "id": "CD1-R22",
+    "risk": "yellow",
+    "category": "response",
+    "blocking": false,
+    "message": "No existe respuesta completa o de fondo.",
+    "action": "Comparar la respuesta con cada solicitud y controlar término, prórroga, traslado y silencio legal.",
+    "conditions": {
+      "any": [
+        {
+          "field": "response_received",
+          "op": "equals",
+          "value": "No"
+        },
+        {
+          "field": "response_received",
+          "op": "equals",
+          "value": "Parcial"
+        },
+        {
+          "field": "response_quality",
+          "op": "not_equals",
+          "value": "De fondo y completa"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S2",
+      "CD1-S3",
+      "CD1-S11"
+    ]
+  },
+  {
+    "id": "CD1-R23",
+    "risk": "yellow",
+    "category": "legend",
+    "blocking": false,
+    "message": "No está confirmada la leyenda “reclamo en trámite”.",
+    "action": "Solicitar su inclusión y conservar evidencia del reporte durante la controversia.",
+    "conditions": {
+      "all": [
+        {
+          "field": "prior_claim",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "claim_legend_present",
+          "op": "not_equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S2",
+      "CD1-S3",
+      "CD1-S11"
+    ]
+  },
+  {
+    "id": "CD1-R24",
+    "risk": "yellow",
+    "category": "authority",
+    "blocking": false,
+    "message": "Existe una actuación activa ante autoridad.",
+    "action": "Evitar duplicidad y aportar el expediente completo a la estrategia existente.",
+    "conditions": {
+      "all": [
+        {
+          "field": "authority_case_active",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S2",
+      "CD1-S7",
+      "CD1-S11"
+    ]
+  },
+  {
+    "id": "CD1-R25",
+    "risk": "yellow",
+    "category": "filing",
+    "blocking": false,
+    "message": "El canal previsto no garantiza constancia suficiente.",
+    "action": "Usar portal, correo oficial o ventanilla que genere radicado y conservar copia íntegra.",
+    "conditions": {
+      "any": [
+        {
+          "field": "filing_channel",
+          "op": "equals",
+          "value": "Canal sin constancia"
+        },
+        {
+          "field": "filing_channel",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S2",
+      "CD1-S8"
+    ]
+  },
+  {
+    "id": "CD1-R26",
+    "risk": "red",
+    "category": "privacy",
+    "blocking": true,
+    "message": "Los anexos contienen datos excesivos o no protegidos.",
+    "action": "Ocultar claves, números completos, datos de terceros y anexos no necesarios.",
+    "conditions": {
+      "all": [
+        {
+          "field": "data_minimized",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S1",
+      "CD1-S2",
+      "CD1-S7"
+    ]
+  },
+  {
+    "id": "CD1-R27",
+    "risk": "yellow",
+    "category": "privacy",
+    "blocking": false,
+    "message": "La minimización de datos es parcial.",
+    "action": "Revisar cada anexo y ocultar información no necesaria antes de radicar.",
+    "conditions": {
+      "all": [
+        {
+          "field": "data_minimized",
+          "op": "equals",
+          "value": "Parcial"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S1",
+      "CD1-S2",
+      "CD1-S7"
+    ]
+  },
+  {
+    "id": "CD1-R28",
+    "risk": "yellow",
+    "category": "identity_theft",
+    "blocking": false,
+    "message": "Existe alegación de suplantación no clasificada como compleja.",
+    "action": "Preservar evidencia, alertar a fuente y operadores y solicitar bloqueo, corrección y trazabilidad sin afirmar fraude no probado. A la fecha de corte, distinguir el régimen vigente de la Ley 2573 de 2026, cuya vigencia general inicia el 20 de noviembre de 2026.",
+    "conditions": {
+      "all": [
+        {
+          "field": "identity_theft",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "identity_theft_complex",
+          "op": "not_equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "source_ids": [
+      "CD1-S1",
+      "CD1-S2",
+      "CD1-S12",
+      "CD1-S13"
+    ]
+  }
+]

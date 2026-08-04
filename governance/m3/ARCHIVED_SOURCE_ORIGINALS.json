@@ -1,0 +1,43 @@
+{
+  "version": "M3",
+  "archived_at": "2026-07-28T21:15:00-05:00",
+  "records": [
+    {
+      "original_path": "03_MODELOS_JURIDICOS_COMPLETOS/CO-EM-003/CO-EM-003_FUENTE_ORIGINAL_DISPONIBLE_v28.docx",
+      "archive_path": "governance/archive/m3/source_originals/03_MODELOS_JURIDICOS_COMPLETOS/CO-EM-003/CO-EM-003_FUENTE_ORIGINAL_DISPONIBLE_v28.docx",
+      "sha256": "fbb8eb64da4fa42e59560b53079453223611b5966405fe4edf7ddd8cff3c8a6d",
+      "reason": "Fuente histórica con variables sin resolver; excluida del catálogo aprobado y preservada únicamente para trazabilidad."
+    },
+    {
+      "original_path": "03_MODELOS_JURIDICOS_COMPLETOS/CO-EM-003/CO-EM-003_FUENTE_ORIGINAL_DISPONIBLE_v28.pdf",
+      "archive_path": "governance/archive/m3/source_originals/03_MODELOS_JURIDICOS_COMPLETOS/CO-EM-003/CO-EM-003_FUENTE_ORIGINAL_DISPONIBLE_v28.pdf",
+      "sha256": "afa4b11ca23a16bc3e3ad82ec1423e4e0a12f1a86b311294989c8f5d1df44a18",
+      "reason": "Fuente histórica con variables sin resolver; excluida del catálogo aprobado y preservada únicamente para trazabilidad."
+    },
+    {
+      "original_path": "03_MODELOS_JURIDICOS_COMPLETOS/CO-EM-003/CO-EM-003_FUENTE_ORIGINAL_DISPONIBLE_v28_PORTADA.png",
+      "archive_path": "governance/archive/m3/source_originals/03_MODELOS_JURIDICOS_COMPLETOS/CO-EM-003/CO-EM-003_FUENTE_ORIGINAL_DISPONIBLE_v28_PORTADA.png",
+      "sha256": "e153bbdf43409559ca308cc15ce80c346b49fdc7fc0439d0fd66eaaf305cf655",
+      "reason": "Fuente histórica con variables sin resolver; excluida del catálogo aprobado y preservada únicamente para trazabilidad."
+    },
+    {
+      "original_path": "app/assets/master-legal-models/CO-EM-003/CO-EM-003_FUENTE_ORIGINAL_DISPONIBLE_v28.docx",
+      "archive_path": "governance/archive/m3/source_originals/app/assets/master-legal-models/CO-EM-003/CO-EM-003_FUENTE_ORIGINAL_DISPONIBLE_v28.docx",
+      "sha256": "fbb8eb64da4fa42e59560b53079453223611b5966405fe4edf7ddd8cff3c8a6d",
+      "reason": "Fuente histórica con variables sin resolver; excluida del catálogo aprobado y preservada únicamente para trazabilidad."
+    },
+    {
+      "original_path": "app/assets/master-legal-models/CO-EM-003/CO-EM-003_FUENTE_ORIGINAL_DISPONIBLE_v28.pdf",
+      "archive_path": "governance/archive/m3/source_originals/app/assets/master-legal-models/CO-EM-003/CO-EM-003_FUENTE_ORIGINAL_DISPONIBLE_v28.pdf",
+      "sha256": "afa4b11ca23a16bc3e3ad82ec1423e4e0a12f1a86b311294989c8f5d1df44a18",
+      "reason": "Fuente histórica con variables sin resolver; excluida del catálogo aprobado y preservada únicamente para trazabilidad."
+    },
+    {
+      "original_path": "app/assets/master-legal-models/CO-EM-003/CO-EM-003_FUENTE_ORIGINAL_DISPONIBLE_v28_PORTADA.png",
+      "archive_path": "governance/archive/m3/source_originals/app/assets/master-legal-models/CO-EM-003/CO-EM-003_FUENTE_ORIGINAL_DISPONIBLE_v28_PORTADA.png",
+      "sha256": "e153bbdf43409559ca308cc15ce80c346b49fdc7fc0439d0fd66eaaf305cf655",
+      "reason": "Fuente histórica con variables sin resolver; excluida del catálogo aprobado y preservada únicamente para trazabilidad."
+    }
+  ],
+  "manifest_records_removed": 4
+}

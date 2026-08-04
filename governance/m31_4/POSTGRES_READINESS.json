@@ -1,0 +1,540 @@
+{
+  "schema": "legalaizit-postgres-readiness-v1",
+  "generated_at": "2026-08-04T04:15:08.602609+00:00",
+  "milestone": "M31.4",
+  "version": "5.0.3",
+  "adapter_implemented": true,
+  "external_certified": false,
+  "syntax_errors": [],
+  "pattern_counts": {
+    "autoincrement": 44,
+    "insert_or_ignore": 4,
+    "insert_or_replace": 1,
+    "lastrowid": 26,
+    "pragma": 17,
+    "sqlite_connect": 30,
+    "sqlite_master": 15
+  },
+  "findings": [
+    {
+      "file": "assisted_review_backend.py",
+      "pattern": "autoincrement",
+      "occurrences": 3,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "assisted_review_backend.py",
+      "pattern": "lastrowid",
+      "occurrences": 2,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "batch_review_backend.py",
+      "pattern": "autoincrement",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "canonical_import_backend.py",
+      "pattern": "autoincrement",
+      "occurrences": 3,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "canonical_import_backend.py",
+      "pattern": "pragma",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "canonical_import_backend.py",
+      "pattern": "lastrowid",
+      "occurrences": 3,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "core_v11.py",
+      "pattern": "autoincrement",
+      "occurrences": 3,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "document_delivery_backend.py",
+      "pattern": "pragma",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "factory_backend.py",
+      "pattern": "autoincrement",
+      "occurrences": 2,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "factory_backend.py",
+      "pattern": "lastrowid",
+      "occurrences": 3,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "infrastructure.py",
+      "pattern": "autoincrement",
+      "occurrences": 2,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "infrastructure.py",
+      "pattern": "pragma",
+      "occurrences": 2,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "infrastructure.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 4,
+      "status": "allowed"
+    },
+    {
+      "file": "legalai_platform/application_services.py",
+      "pattern": "autoincrement",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "legalai_platform/application_services.py",
+      "pattern": "pragma",
+      "occurrences": 2,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "legalai_platform/application_services.py",
+      "pattern": "sqlite_master",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "legalai_platform/database.py",
+      "pattern": "autoincrement",
+      "occurrences": 2,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "legalai_platform/database.py",
+      "pattern": "pragma",
+      "occurrences": 3,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "legalai_platform/database.py",
+      "pattern": "sqlite_master",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "legalai_platform/database.py",
+      "pattern": "lastrowid",
+      "occurrences": 7,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "legalai_platform/database.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 1,
+      "status": "allowed"
+    },
+    {
+      "file": "legalai_platform/m24_candidate_governance.py",
+      "pattern": "autoincrement",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "legalai_platform/m24_candidate_governance.py",
+      "pattern": "sqlite_master",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "legalai_platform/m24_case_journey.py",
+      "pattern": "sqlite_master",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "legalai_platform/m25_pilot_readiness.py",
+      "pattern": "sqlite_master",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "legalai_platform/m30_live_evaluation.py",
+      "pattern": "sqlite_master",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "legalai_platform/m30_participant_operations.py",
+      "pattern": "sqlite_master",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "legalai_platform/privacy_governance.py",
+      "pattern": "sqlite_master",
+      "occurrences": 2,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "legalai_runtime_modules/adaptive_validation_v219.py",
+      "pattern": "autoincrement",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "legalai_runtime_modules/canonical_activation_v210.py",
+      "pattern": "autoincrement",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "legalai_runtime_modules/change_control_v220.py",
+      "pattern": "autoincrement",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "legalai_runtime_modules/extensive_review_v217.py",
+      "pattern": "autoincrement",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "legalai_runtime_modules/release_cycle_v221.py",
+      "pattern": "autoincrement",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "normative_update_backend.py",
+      "pattern": "autoincrement",
+      "occurrences": 3,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "normative_update_backend.py",
+      "pattern": "lastrowid",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "pdf_acceptance_backend.py",
+      "pattern": "autoincrement",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "source_intake_backend.py",
+      "pattern": "autoincrement",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "studio_backend.py",
+      "pattern": "autoincrement",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "studio_backend.py",
+      "pattern": "lastrowid",
+      "occurrences": 2,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tests/test_m24_10_human_approval.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 1,
+      "status": "allowed"
+    },
+    {
+      "file": "tests/test_m24_3_pilot_validation.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 1,
+      "status": "allowed"
+    },
+    {
+      "file": "tests/test_m24_4_full_validation.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 1,
+      "status": "allowed"
+    },
+    {
+      "file": "tests/test_m24_5_case_journey.py",
+      "pattern": "autoincrement",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tests/test_m24_5_case_journey.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 1,
+      "status": "allowed"
+    },
+    {
+      "file": "tests/test_m24_6_client_journey.py",
+      "pattern": "autoincrement",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tests/test_m24_6_client_journey.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 2,
+      "status": "allowed"
+    },
+    {
+      "file": "tests/test_m24_8_pilot_operations.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 1,
+      "status": "allowed"
+    },
+    {
+      "file": "tests/test_m24_9_professional_network.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 1,
+      "status": "allowed"
+    },
+    {
+      "file": "tests/test_m25_0_pilot_readiness.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 1,
+      "status": "allowed"
+    },
+    {
+      "file": "tests/test_m27_2_legal_depth.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 1,
+      "status": "allowed"
+    },
+    {
+      "file": "tests/test_m27_3_legal_depth.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 1,
+      "status": "allowed"
+    },
+    {
+      "file": "tests/test_m27_4_legal_depth.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 1,
+      "status": "allowed"
+    },
+    {
+      "file": "tests/test_m28_1_premium_document_factory.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 1,
+      "status": "allowed"
+    },
+    {
+      "file": "tests/test_m28_2_economic_calculations.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 1,
+      "status": "allowed"
+    },
+    {
+      "file": "tests/test_m29_5_conversion_analytics_performance.py",
+      "pattern": "pragma",
+      "occurrences": 2,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tests/test_m29_5_conversion_analytics_performance.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 2,
+      "status": "allowed"
+    },
+    {
+      "file": "tests/test_m30_1_pilot_execution_center.py",
+      "pattern": "autoincrement",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tests/test_m30_1_pilot_execution_center.py",
+      "pattern": "insert_or_ignore",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tests/test_m30_1_pilot_execution_center.py",
+      "pattern": "pragma",
+      "occurrences": 2,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tests/test_m30_1_pilot_execution_center.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 1,
+      "status": "allowed"
+    },
+    {
+      "file": "tests/test_m30_2_participant_operations.py",
+      "pattern": "autoincrement",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tests/test_m30_2_participant_operations.py",
+      "pattern": "insert_or_ignore",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tests/test_m30_2_participant_operations.py",
+      "pattern": "pragma",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tests/test_m30_2_participant_operations.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 1,
+      "status": "allowed"
+    },
+    {
+      "file": "tests/test_m30_3_governance_closure.py",
+      "pattern": "autoincrement",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tests/test_m30_3_governance_closure.py",
+      "pattern": "insert_or_ignore",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tests/test_m30_3_governance_closure.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 1,
+      "status": "allowed"
+    },
+    {
+      "file": "tests/test_m30_4_simulated_cohort.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 1,
+      "status": "allowed"
+    },
+    {
+      "file": "tests/test_m30_5_live_pilot_evaluation.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 1,
+      "status": "allowed"
+    },
+    {
+      "file": "tests/test_m31_1_preproduction.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 2,
+      "status": "allowed"
+    },
+    {
+      "file": "tests/test_m31_4_postgres_foundation.py",
+      "pattern": "autoincrement",
+      "occurrences": 2,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tests/test_m31_4_postgres_foundation.py",
+      "pattern": "insert_or_ignore",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tests/test_m31_4_postgres_foundation.py",
+      "pattern": "insert_or_replace",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tests/test_m31_4_postgres_foundation.py",
+      "pattern": "lastrowid",
+      "occurrences": 3,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tests/test_security.py",
+      "pattern": "sqlite_master",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tools/export_postgres_schema.py",
+      "pattern": "sqlite_master",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tools/export_postgres_schema.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 1,
+      "status": "allowed"
+    },
+    {
+      "file": "tools/migrate_sqlite_to_postgres.py",
+      "pattern": "pragma",
+      "occurrences": 2,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tools/migrate_sqlite_to_postgres.py",
+      "pattern": "sqlite_master",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tools/migrate_sqlite_to_postgres.py",
+      "pattern": "sqlite_connect",
+      "occurrences": 1,
+      "status": "allowed"
+    },
+    {
+      "file": "tools/postgres_readiness.py",
+      "pattern": "autoincrement",
+      "occurrences": 3,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tools/postgres_readiness.py",
+      "pattern": "sqlite_master",
+      "occurrences": 3,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "tools/postgres_readiness.py",
+      "pattern": "lastrowid",
+      "occurrences": 3,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "traceability_backend.py",
+      "pattern": "autoincrement",
+      "occurrences": 5,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "traceability_backend.py",
+      "pattern": "lastrowid",
+      "occurrences": 2,
+      "status": "compatibility_layer"
+    },
+    {
+      "file": "ux_backend.py",
+      "pattern": "pragma",
+      "occurrences": 1,
+      "status": "compatibility_layer"
+    }
+  ],
+  "blockers": [],
+  "missing_artifacts": [],
+  "ready_for_external_certification": true,
+  "production_authorized": false
+}

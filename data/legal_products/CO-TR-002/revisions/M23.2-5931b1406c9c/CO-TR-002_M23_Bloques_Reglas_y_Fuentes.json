@@ -1,0 +1,123 @@
+{
+  "product_code": "CO-TR-002",
+  "version": "M23",
+  "integration_mode": "additive_immutable_revision",
+  "document_family": [
+    "right_to_petition",
+    "full_record_request",
+    "notification_audit",
+    "due_process_restoration",
+    "conditional_direct_revocation",
+    "collection_handoff",
+    "simit_runt_correction"
+  ],
+  "critical_rules": [
+    {
+      "id": "M23-TR2-001",
+      "when": "notification_not_proven",
+      "risk": "yellow",
+      "action": "request_full_record_and_valid_notification; restart_applicable_discount_terms_from_valid_notice"
+    },
+    {
+      "id": "M23-TR2-002",
+      "when": "sanction_exists_without_effective_linkage",
+      "risk": "red",
+      "action": "mandatory_legal_review_and_request_revocation_or_procedural_restoration_as_applicable"
+    },
+    {
+      "id": "M23-TR2-003",
+      "when": "owner_not_driver",
+      "risk": "yellow",
+      "action": "do_not_promise_cancellation; require_individual_imputation_fault_and_due_process"
+    },
+    {
+      "id": "M23-TR2-004",
+      "when": "runt_data_outdated_by_owner",
+      "risk": "yellow",
+      "action": "apply_last_registered_data_rule_and_assess_notice_evidence_without_false_guarantee"
+    },
+    {
+      "id": "M23-TR2-005",
+      "when": "active_appeal_or_judicial_deadline",
+      "risk": "red",
+      "action": "do_not_use_petition_as_substitute; immediate_professional_review"
+    },
+    {
+      "id": "M23-TR2-006",
+      "when": "coactive_collection_or_embargo",
+      "risk": "red",
+      "action": "obtain_collection_file_and_route_to_specialized_defense"
+    },
+    {
+      "id": "M23-TR2-007",
+      "when": "caducity_or_prescription_claim",
+      "risk": "red",
+      "action": "require_certified_dates_hearing_decision_finality_and_payment_order_notice"
+    },
+    {
+      "id": "M23-TR2-008",
+      "when": "paid_fine",
+      "risk": "red",
+      "action": "obtain_favorable_act_before_refund_request_and_reconcile_payment"
+    },
+    {
+      "id": "M23-TR2-009",
+      "when": "request_only_has_simit_screenshot",
+      "risk": "yellow",
+      "action": "do_not_conclude_invalidity; request_certified_complete_record"
+    },
+    {
+      "id": "M23-TR2-010",
+      "when": "favorable_decision",
+      "risk": "green",
+      "action": "verify_execution_and_updates_in_simit_runt_collection_and_clearance"
+    },
+    {
+      "id": "M23-TR2-011",
+      "when": "record_contains_personal_data",
+      "risk": "yellow",
+      "action": "minimize_disclosure_secure_storage_and_audit_access"
+    },
+    {
+      "id": "M23-TR2-012",
+      "when": "official_rule_or_case_law_changed",
+      "risk": "yellow",
+      "action": "revalidate_sources_and_create_new_immutable_revision_before_release"
+    }
+  ],
+  "official_sources": [
+    {
+      "title": "Ley 1843 de 2017",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30032605"
+    },
+    {
+      "title": "Ley 769 de 2002",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002.html"
+    },
+    {
+      "title": "Ley 2161 de 2021",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2161_2021.html"
+    },
+    {
+      "title": "Ley 1437 de 2011",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1437_2011.html"
+    },
+    {
+      "title": "Ley 1755 de 2015",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1755_2015.html"
+    },
+    {
+      "title": "Sentencia C-038 de 2020",
+      "url": "https://www.corteconstitucional.gov.co/relatoria/2020/C-038-20.htm"
+    },
+    {
+      "title": "Sentencia C-321 de 2022",
+      "url": "https://www.corteconstitucional.gov.co/relatoria/2022/C-321-22.htm"
+    },
+    {
+      "title": "Sentencia T-051 de 2016",
+      "url": "https://www.corteconstitucional.gov.co/relatoria/2016/T-051-16.htm"
+    }
+  ],
+  "legal_status_date": "2026-07-31"
+}

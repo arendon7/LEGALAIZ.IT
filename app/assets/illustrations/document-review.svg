@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" role="img" aria-labelledby="t d">
+  <title id="t">Revisión documental</title><desc id="d">Documento legal con comentarios, control de cambios y aprobación.</desc>
+  <defs><filter id="s"><feDropShadow dx="0" dy="10" stdDeviation="14" flood-opacity=".16"/></filter></defs>
+  <rect width="720" height="480" rx="34" fill="#F7F5F1"/>
+  <rect x="118" y="54" width="354" height="372" rx="20" fill="#fff" filter="url(#s)"/>
+  <rect x="154" y="91" width="190" height="16" rx="8" fill="#0D1324"/><rect x="154" y="126" width="276" height="8" rx="4" fill="#E6E6E1"/><rect x="154" y="145" width="242" height="8" rx="4" fill="#E6E6E1"/>
+  <rect x="154" y="183" width="138" height="12" rx="6" fill="#C9A96E"/><rect x="154" y="214" width="266" height="8" rx="4" fill="#E6E6E1"/><rect x="154" y="233" width="246" height="8" rx="4" fill="#E6E6E1"/><rect x="154" y="252" width="276" height="8" rx="4" fill="#E6E6E1"/>
+  <rect x="154" y="292" width="158" height="12" rx="6" fill="#132B4D"/><rect x="154" y="323" width="270" height="8" rx="4" fill="#E6E6E1"/><rect x="154" y="342" width="230" height="8" rx="4" fill="#E6E6E1"/>
+  <rect x="448" y="116" width="198" height="112" rx="20" fill="#fff" filter="url(#s)"/><circle cx="483" cy="154" r="19" fill="#F1F1F1"/><path d="m474 154 6 6 12-14" fill="none" stroke="#2563EB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><text x="514" y="151" fill="#0D1324" font-family="Arial" font-weight="700" font-size="16">Comentario abierto</text><text x="476" y="184" fill="#555" font-family="Arial" font-size="13">Validar alcance y fuente.</text>
+  <rect x="448" y="258" width="198" height="112" rx="20" fill="#0D1324" filter="url(#s)"/><circle cx="483" cy="297" r="19" fill="#C9A96E"/><path d="m474 297 6 6 12-14" fill="none" stroke="#0D1324" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><text x="514" y="294" fill="#fff" font-family="Arial" font-weight="700" font-size="16">Versión controlada</text><text x="476" y="327" fill="#E6E6E1" font-family="Arial" font-size="13">Revisión, hash y auditoría.</text>
+  <path d="M472 204 420 220M472 281 420 253" stroke="#C9A96E" stroke-width="3" stroke-dasharray="8 7"/>
+</svg>

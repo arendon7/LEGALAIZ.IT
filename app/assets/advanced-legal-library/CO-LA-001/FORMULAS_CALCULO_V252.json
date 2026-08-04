@@ -1,0 +1,50 @@
+{
+  "engine_version": "2.52",
+  "convention": "30/360 para prestaciones proporcionales",
+  "formulas": [
+    {
+      "key": "salary_due",
+      "formula": "salario mensual / 30 * días pendientes"
+    },
+    {
+      "key": "cesantias",
+      "formula": "base prestacional * días / 360"
+    },
+    {
+      "key": "cesantias_interest",
+      "formula": "cesantías del segmento * 12% * días del segmento / 360"
+    },
+    {
+      "key": "prima",
+      "formula": "base prestacional * días / 360"
+    },
+    {
+      "key": "vacation",
+      "formula": "salario mensual / 30 * días pendientes"
+    },
+    {
+      "key": "indefinite_indemnity_lt_10_smmlv",
+      "formula": "30 días primer año + 20 días proporcionales por tiempo adicional"
+    },
+    {
+      "key": "indefinite_indemnity_ge_10_smmlv",
+      "formula": "20 días primer año + 15 días proporcionales por tiempo adicional"
+    },
+    {
+      "key": "fixed_term_indemnity",
+      "formula": "salarios del tiempo calendario faltante"
+    },
+    {
+      "key": "work_indemnity",
+      "formula": "tiempo restante estimado, mínimo 15 días"
+    }
+  ],
+  "excluded_from_total": [
+    "indemnización moratoria",
+    "indexación",
+    "intereses judiciales",
+    "costas",
+    "perjuicios",
+    "descuentos controvertidos"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "product_code": "CO-EM-004",
+  "title": "Confidencialidad y propiedad intelectual",
+  "version": "2.14",
+  "status": "Producto madurado para pruebas internas; pendiente de validación jurídica final",
+  "source_package": "LegalAIZit_Paquete_04_Confidencialidad_PI_Consolidado_v2",
+  "metrics": {
+    "documents": 7,
+    "questions": 20,
+    "rules": 17,
+    "sources": 7,
+    "tests": 10,
+    "templates": 7,
+    "blocks": 38
+  },
+  "expected_documents": [
+    "Acuerdo de confidencialidad",
+    "Inventario de información y matriz de acceso",
+    "Anexo de confidencialidad según la relación",
+    "Anexo de propiedad intelectual, antecedentes y OSS",
+    "Anexo de datos personales y transferencias",
+    "Protocolo de incidentes de información",
+    "Acta de devolución, eliminación y cierre"
+  ],
+  "mandatory_controls": [
+    "La confidencialidad no equivale a cesión de PI.",
+    "No renuncia a derechos morales.",
+    "No cesión futura indeterminada.",
+    "Definir categorías, custodios, acceso y medidas.",
+    "Inventariar materiales preexistentes y OSS.",
+    "Bloquear datos sensibles e IA no autorizada."
+  ],
+  "validation_status": "Aprobación multietapa por responsable único completada",
+  "professional_use": true,
+  "container_version": "2.35",
+  "internal_legal_approval": {
+    "code": "CO-EM-004",
+    "name": "Confidencialidad y propiedad intelectual",
+    "owner": "Comercial, tecnología y PI",
+    "wave": "Primera ola",
+    "maturity_version": "2.14",
+    "decision_version": "2.28",
+    "internal_legal_status": "Aprobación jurídica interna asistida completada",
+    "human_ratification": true,
+    "dual_approval": true,
+    "professional_publication": "Bloqueada",
+    "questions": 20,
+    "rules": 17,
+    "sources": 7,
+    "scenarios": 10,
+    "documents": 7
+  },
+  "publication_status": "Aprobado para uso profesional controlado",
+  "approval_model": "multi_stage_single_responsible",
+  "approval_date": "2026-07-28",
+  "approval_disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+}

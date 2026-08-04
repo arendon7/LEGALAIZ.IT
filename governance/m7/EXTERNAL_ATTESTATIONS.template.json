@@ -1,0 +1,75 @@
+{
+  "schema": "legalaizit-m7-external-attestations-v1",
+  "attestations": [
+    {
+      "key": "postgres_runtime",
+      "approved": false,
+      "approved_by": "",
+      "approved_at": "",
+      "evidence_path": ""
+    },
+    {
+      "key": "tls_certificate",
+      "approved": false,
+      "approved_by": "",
+      "approved_at": "",
+      "evidence_path": ""
+    },
+    {
+      "key": "monitoring_alerts",
+      "approved": false,
+      "approved_by": "",
+      "approved_at": "",
+      "evidence_path": ""
+    },
+    {
+      "key": "restore_drill_production",
+      "approved": false,
+      "approved_by": "",
+      "approved_at": "",
+      "evidence_path": ""
+    },
+    {
+      "key": "load_test",
+      "approved": false,
+      "approved_by": "",
+      "approved_at": "",
+      "evidence_path": ""
+    },
+    {
+      "key": "pentest",
+      "approved": false,
+      "approved_by": "",
+      "approved_at": "",
+      "evidence_path": ""
+    },
+    {
+      "key": "privacy_approval",
+      "approved": false,
+      "approved_by": "",
+      "approved_at": "",
+      "evidence_path": ""
+    },
+    {
+      "key": "incident_drill",
+      "approved": false,
+      "approved_by": "",
+      "approved_at": "",
+      "evidence_path": ""
+    },
+    {
+      "key": "mac_windows_validation",
+      "approved": false,
+      "approved_by": "",
+      "approved_at": "",
+      "evidence_path": ""
+    },
+    {
+      "key": "rollback_drill",
+      "approved": false,
+      "approved_by": "",
+      "approved_at": "",
+      "evidence_path": ""
+    }
+  ]
+}

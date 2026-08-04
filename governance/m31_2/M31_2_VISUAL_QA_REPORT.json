@@ -1,0 +1,241 @@
+{
+  "schema": "legalaiz_m31_2_visual_qa_v1",
+  "release": "M31.2 v5.0.1",
+  "date": "2026-08-03",
+  "method": "Chromium headless contra servidor HTTP real, con proxy local de recursos por restricción del entorno de ejecución.",
+  "viewports": {
+    "desktop": [
+      1440,
+      1000
+    ],
+    "tablet": [
+      834,
+      1112
+    ],
+    "mobile": [
+      390,
+      844
+    ]
+  },
+  "captures": [
+    {
+      "path": "#/",
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "scrollHeight": 1633,
+      "brokenImages": [],
+      "h1": [
+        "Gestiona la operación jurídica sin perder trazabilidad."
+      ],
+      "view": "admin_home",
+      "viewport": "desktop",
+      "screenshot": "governance/m31_2/visual/admin_home_desktop.png",
+      "errors": []
+    },
+    {
+      "path": "#/",
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "scrollHeight": 3420,
+      "brokenImages": [],
+      "h1": [
+        "Gestiona la operación jurídica sin perder trazabilidad."
+      ],
+      "view": "admin_home",
+      "viewport": "mobile",
+      "screenshot": "governance/m31_2/visual/admin_home_mobile.png",
+      "errors": []
+    },
+    {
+      "path": "#/",
+      "scrollWidth": 834,
+      "clientWidth": 834,
+      "scrollHeight": 2374,
+      "brokenImages": [],
+      "h1": [
+        "Gestiona la operación jurídica sin perder trazabilidad."
+      ],
+      "view": "admin_home",
+      "viewport": "tablet",
+      "screenshot": "governance/m31_2/visual/admin_home_tablet.png",
+      "errors": []
+    },
+    {
+      "path": "#/preproduccion",
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "scrollHeight": 2802,
+      "brokenImages": [],
+      "h1": [
+        "Centro de Preproducción"
+      ],
+      "view": "admin_preproduction",
+      "viewport": "desktop",
+      "screenshot": "governance/m31_2/visual/admin_preproduction_desktop.png",
+      "errors": []
+    },
+    {
+      "path": "#/preproduccion",
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "scrollHeight": 5345,
+      "brokenImages": [],
+      "h1": [
+        "Centro de Preproducción"
+      ],
+      "view": "admin_preproduction",
+      "viewport": "mobile",
+      "screenshot": "governance/m31_2/visual/admin_preproduction_mobile.png",
+      "errors": []
+    },
+    {
+      "path": "#/",
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "scrollHeight": 1861,
+      "brokenImages": [],
+      "h1": [
+        "Hola, Juan. ¿Qué necesitas resolver hoy?"
+      ],
+      "view": "client_home",
+      "viewport": "desktop",
+      "screenshot": "governance/m31_2/visual/client_home_desktop.png",
+      "errors": []
+    },
+    {
+      "path": "#/",
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "scrollHeight": 3639,
+      "brokenImages": [],
+      "h1": [
+        "Hola, Juan. ¿Qué necesitas resolver hoy?"
+      ],
+      "view": "client_home",
+      "viewport": "mobile",
+      "screenshot": "governance/m31_2/visual/client_home_mobile.png",
+      "errors": []
+    },
+    {
+      "path": "#/",
+      "scrollWidth": 834,
+      "clientWidth": 834,
+      "scrollHeight": 2693,
+      "brokenImages": [],
+      "h1": [
+        "Hola, Juan. ¿Qué necesitas resolver hoy?"
+      ],
+      "view": "client_home",
+      "viewport": "tablet",
+      "screenshot": "governance/m31_2/visual/client_home_tablet.png",
+      "errors": []
+    },
+    {
+      "path": "#/",
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "scrollHeight": 7716,
+      "brokenImages": [],
+      "h1": [
+        "Tu problema legal merece algo más que una respuesta."
+      ],
+      "view": "public_landing",
+      "viewport": "desktop",
+      "screenshot": "governance/m31_2/visual/public_landing_desktop.png",
+      "errors": []
+    },
+    {
+      "path": "#/",
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "scrollHeight": 11719,
+      "brokenImages": [],
+      "h1": [
+        "Tu problema legal merece algo más que una respuesta."
+      ],
+      "view": "public_landing",
+      "viewport": "mobile",
+      "screenshot": "governance/m31_2/visual/public_landing_mobile.png",
+      "errors": []
+    },
+    {
+      "path": "#/",
+      "scrollWidth": 834,
+      "clientWidth": 834,
+      "scrollHeight": 8308,
+      "brokenImages": [],
+      "h1": [
+        "Tu problema legal merece algo más que una respuesta."
+      ],
+      "view": "public_landing",
+      "viewport": "tablet",
+      "screenshot": "governance/m31_2/visual/public_landing_tablet.png",
+      "errors": []
+    },
+    {
+      "path": "#/",
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "scrollHeight": 1351,
+      "brokenImages": [],
+      "h1": [
+        "Prioriza revisiones con todo el contexto del expediente."
+      ],
+      "view": "specialist_home",
+      "viewport": "desktop",
+      "screenshot": "governance/m31_2/visual/specialist_home_desktop.png",
+      "errors": []
+    },
+    {
+      "path": "#/",
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "scrollHeight": 2511,
+      "brokenImages": [],
+      "h1": [
+        "Prioriza revisiones con todo el contexto del expediente."
+      ],
+      "view": "specialist_home",
+      "viewport": "mobile",
+      "screenshot": "governance/m31_2/visual/specialist_home_mobile.png",
+      "errors": []
+    },
+    {
+      "path": "#/",
+      "scrollWidth": 834,
+      "clientWidth": 834,
+      "scrollHeight": 1891,
+      "brokenImages": [],
+      "h1": [
+        "Prioriza revisiones con todo el contexto del expediente."
+      ],
+      "view": "specialist_home",
+      "viewport": "tablet",
+      "screenshot": "governance/m31_2/visual/specialist_home_tablet.png",
+      "errors": []
+    }
+  ],
+  "summary": {
+    "screenshots": 14,
+    "views_with_horizontal_overflow": 0,
+    "broken_images": 0,
+    "console_or_page_errors": 0,
+    "public_viewports": 3,
+    "authenticated_role_viewports": 9,
+    "preproduction_viewports": 2
+  },
+  "manual_review": {
+    "performed": true,
+    "representative_surfaces": [
+      "public_landing_desktop",
+      "public_landing_mobile",
+      "client_home_desktop",
+      "specialist_home_desktop",
+      "specialist_home_mobile",
+      "admin_home_mobile",
+      "admin_preproduction_desktop"
+    ],
+    "result": "Sin roturas visuales críticas observadas. Jerarquía, marca, navegación y adaptación responsive se mantienen coherentes.",
+    "limitations": "La revisión automatizada no sustituye pruebas manuales en Safari, Chrome y dispositivos físicos."
+  }
+}

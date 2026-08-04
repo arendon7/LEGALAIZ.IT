@@ -1,0 +1,87 @@
+{
+  "version": "M20.1",
+  "generated_at": "2026-07-31T17:33:17.474652+00:00",
+  "products": {
+    "CO-CD-004": {
+      "previous_version": "M5.0",
+      "current_version": "M20.1",
+      "previous_metrics": {
+        "documents": 7,
+        "words": 3555,
+        "pages": 31,
+        "package_words": 1758,
+        "package_pages": 17
+      },
+      "current_metrics": {
+        "documents": 9,
+        "words": 8621,
+        "pages": 50,
+        "package_words": 4226,
+        "package_pages": 26
+      },
+      "delta": {
+        "documents": 2,
+        "words": 5066,
+        "pages": 19,
+        "package_words": 2468,
+        "package_pages": 9
+      },
+      "current_document_hashes": [
+        {
+          "kind": "diagnostic",
+          "docx": "CO-CD-004/CO-CD-004_DIAGNOSTIC_PLAYBOOK_PROFUNDO_M20.docx",
+          "docx_sha256": "06ed0a9aa04d75c6587a73b0e2ea2f5226bbde6e7cab96897e6b7ca019b47010",
+          "pdf_sha256": "393a12f94b86b028b69a8003331e45eae559620af39a5f2981fce1041433b13c"
+        },
+        {
+          "kind": "statement",
+          "docx": "CO-CD-004/CO-CD-004_STATEMENT_PLAYBOOK_PROFUNDO_M20.docx",
+          "docx_sha256": "0924a3478a25767d98cfc97b4492b1c5945e9755f36c0780cd714f7ce2efc705",
+          "pdf_sha256": "2c39796b5ac09b5386cd3d97c6b59ba251b3235403c2dc6941a2a30ce1ac0d80"
+        },
+        {
+          "kind": "collection",
+          "docx": "CO-CD-004/CO-CD-004_COLLECTION_PLAYBOOK_PROFUNDO_M20.docx",
+          "docx_sha256": "330f1a5aba96b5f486507b48e7ea5f3db5a27dd994ee3434941ee6e15f0ea767",
+          "pdf_sha256": "477040a6fd5ad2db52d74e0c5e571aff59470e7cddc1e1f2e7ae2eff6798ad2a"
+        },
+        {
+          "kind": "agreement",
+          "docx": "CO-CD-004/CO-CD-004_AGREEMENT_PLAYBOOK_PROFUNDO_M20.docx",
+          "docx_sha256": "ae00c126250f7fe0d4c9f07e9195c9d3afe5df64fe27ac3c2105b5ed4ca61c14",
+          "pdf_sha256": "810069da113925bce45bd4379cf979b7cf8f851aad41634cdeff3cd28ec49c59"
+        },
+        {
+          "kind": "note",
+          "docx": "CO-CD-004/CO-CD-004_NOTE_PLAYBOOK_PROFUNDO_M20.docx",
+          "docx_sha256": "bb0aea671eeb71ed370a76e4424eb93accd9c8b8dd9fe54c93ea94d1d8bb9a7a",
+          "pdf_sha256": "2e0ee397d1f854aae5ca914c67fa59b0d22243b4e0ce66c1d94e1c687f82e415"
+        },
+        {
+          "kind": "instructions",
+          "docx": "CO-CD-004/CO-CD-004_INSTRUCTIONS_PLAYBOOK_PROFUNDO_M20.docx",
+          "docx_sha256": "6fdc439ace7f79fe1d4519c2f01eec7f487d7a27be1a9f4a3493b59fe4710d45",
+          "pdf_sha256": "3595586e771671035a823e0f17fae88970bb414c73b6dd42292bec2a1c5cbe65"
+        },
+        {
+          "kind": "followup",
+          "docx": "CO-CD-004/CO-CD-004_FOLLOWUP_PLAYBOOK_PROFUNDO_M20.docx",
+          "docx_sha256": "b9622778d6a1c1012840529f4521044d039be650c931da3e4ca523152bb520a5",
+          "pdf_sha256": "aefa1443b441be67162b04acc8e549b996999356791338b70cf290a10c6bf5aa"
+        },
+        {
+          "kind": "closure",
+          "docx": "CO-CD-004/CO-CD-004_CLOSURE_PLAYBOOK_PROFUNDO_M20.docx",
+          "docx_sha256": "560da31783743c39f1d78d942d9cc1fd20e3f1ff965931cd4729cfd3a9cfbfc5",
+          "pdf_sha256": "6cb9484bef8644921181506e20af20f60ddc652ece19e32ba05286f3a3884ed1"
+        },
+        {
+          "kind": "consolidated_package",
+          "docx": "CO-CD-004/CO-CD-004_PAQUETE_JURIDICO_OPERATIVO_PROFUNDO_M20.docx",
+          "docx_sha256": "063d2d0eb37edfba2e454b7e69a2c29fe7b4789a00061dc9f556a3eb70f87bbb",
+          "pdf_sha256": "dc9aeff1bc9091dfe10c5e27d99ed9087be12791c126755229a1444739869a1a"
+        }
+      ]
+    }
+  }
+}

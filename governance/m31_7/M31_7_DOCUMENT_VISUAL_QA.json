@@ -1,0 +1,99 @@
+{
+  "schema": "legalaizit-m31-7-document-visual-qa-v1",
+  "milestone": "M31.7",
+  "version": "5.0.6",
+  "status": "passed",
+  "ok": true,
+  "selection_method": "Una salida DOCX representativa de cada uno de los 11 productos jurídicos.",
+  "documents_reviewed": 11,
+  "pages_reviewed": 36,
+  "checks": {
+    "clipping": 0,
+    "overlaps": 0,
+    "broken_tables": 0,
+    "missing_glyphs": 0,
+    "header_footer_errors": 0,
+    "sentinel_markers": 0,
+    "unresolved_variables": 0
+  },
+  "items": [
+    {
+      "document": "CO-AR-001_02_contrato_arrendamiento_FINAL_DEMO.docx",
+      "pages": 3,
+      "contact_sheet": "/tmp/m31_7_visual_qa_final/contact_sheets/CO-AR-001_02_contrato_arrendamiento_FINAL_DEMO.jpg",
+      "reviewed_at_100_percent": true,
+      "passed": true
+    },
+    {
+      "document": "CO-CD-001_02_reclamo_integral_habeas_data_FINAL_DEMO.docx",
+      "pages": 3,
+      "contact_sheet": "/tmp/m31_7_visual_qa_final/contact_sheets/CO-CD-001_02_reclamo_integral_habeas_data_FINAL_DEMO.jpg",
+      "reviewed_at_100_percent": true,
+      "passed": true
+    },
+    {
+      "document": "CO-CD-003_07_reclamacion_garantia_legal_FINAL_DEMO.docx",
+      "pages": 3,
+      "contact_sheet": "/tmp/m31_7_visual_qa_final/contact_sheets/CO-CD-003_07_reclamacion_garantia_legal_FINAL_DEMO.jpg",
+      "reviewed_at_100_percent": true,
+      "passed": true
+    },
+    {
+      "document": "CO-CD-004_06_acuerdo_pago_FINAL_DEMO.docx",
+      "pages": 3,
+      "contact_sheet": "/tmp/m31_7_visual_qa_final/contact_sheets/CO-CD-004_06_acuerdo_pago_FINAL_DEMO.jpg",
+      "reviewed_at_100_percent": true,
+      "passed": true
+    },
+    {
+      "document": "CO-EM-003_02_contrato_servicios_FINAL_DEMO.docx",
+      "pages": 4,
+      "contact_sheet": "/tmp/m31_7_visual_qa_final/contact_sheets/CO-EM-003_02_contrato_servicios_FINAL_DEMO.jpg",
+      "reviewed_at_100_percent": true,
+      "passed": true
+    },
+    {
+      "document": "CO-EM-004_06_acuerdo_confidencialidad_FINAL_DEMO.docx",
+      "pages": 3,
+      "contact_sheet": "/tmp/m31_7_visual_qa_final/contact_sheets/CO-EM-004_06_acuerdo_confidencialidad_FINAL_DEMO.jpg",
+      "reviewed_at_100_percent": true,
+      "passed": true
+    },
+    {
+      "document": "CO-LA-001_01_informe_liquidacion_v3_FINAL_DEMO.docx",
+      "pages": 5,
+      "contact_sheet": "/tmp/m31_7_visual_qa_final/contact_sheets/CO-LA-001_01_informe_liquidacion_v3_FINAL_DEMO.jpg",
+      "reviewed_at_100_percent": true,
+      "passed": true
+    },
+    {
+      "document": "CO-LA-002_01_paquete_juridico_laboral_consolidado_FINAL_DEMO.docx",
+      "pages": 3,
+      "contact_sheet": "/tmp/m31_7_visual_qa_final/contact_sheets/CO-LA-002_01_paquete_juridico_laboral_consolidado_FINAL_DEMO.jpg",
+      "reviewed_at_100_percent": true,
+      "passed": true
+    },
+    {
+      "document": "CO-SA-001_04_derecho_peticion_integral_salud_FINAL_DEMO.docx",
+      "pages": 3,
+      "contact_sheet": "/tmp/m31_7_visual_qa_final/contact_sheets/CO-SA-001_04_derecho_peticion_integral_salud_FINAL_DEMO.jpg",
+      "reviewed_at_100_percent": true,
+      "passed": true
+    },
+    {
+      "document": "CO-TR-001_01_registro_seguimiento_alertas_sast_FINAL_DEMO.docx",
+      "pages": 3,
+      "contact_sheet": "/tmp/m31_7_visual_qa_final/contact_sheets/CO-TR-001_01_registro_seguimiento_alertas_sast_FINAL_DEMO.jpg",
+      "reviewed_at_100_percent": true,
+      "passed": true
+    },
+    {
+      "document": "CO-TR-002_01_guia_escalamiento_profesional_FINAL_DEMO.docx",
+      "pages": 3,
+      "contact_sheet": "/tmp/m31_7_visual_qa_final/contact_sheets/CO-TR-002_01_guia_escalamiento_profesional_FINAL_DEMO.jpg",
+      "reviewed_at_100_percent": true,
+      "passed": true
+    }
+  ],
+  "note": "Las 36 páginas fueron renderizadas a PNG y revisadas visualmente. Las imágenes de QA no forman parte del paquete de distribución."
+}

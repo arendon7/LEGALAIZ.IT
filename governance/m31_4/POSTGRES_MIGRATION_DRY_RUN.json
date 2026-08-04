@@ -1,0 +1,13 @@
+{
+  "schema": "legalaizit-sqlite-postgres-migration-dry-run-v1",
+  "generated_at": "2026-08-04T04:16:41.158437+00:00",
+  "milestone": "M31.4",
+  "version": "5.0.3",
+  "dry_run": true,
+  "tables": 102,
+  "source_rows": 1870,
+  "changes_executed": false,
+  "external_postgres_contacted": false,
+  "ok": true,
+  "production_authorized": false
+}

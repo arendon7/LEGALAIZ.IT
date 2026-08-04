@@ -1,0 +1,89 @@
+{
+  "version": "2.33",
+  "product_code": "CO-CD-003",
+  "title": "Maduración integral de garantía, retracto y reversión del pago",
+  "verified_at": "2026-07-20",
+  "status": "Candidato interno para cierre jurídico del abogado responsable",
+  "legal_positioning": [
+    "Garantía, retracto, reversión, débito periódico e incumplimiento de entrega son mecanismos distintos y no deben mezclarse.",
+    "La garantía legal responde por calidad, idoneidad, seguridad y funcionamiento; la reparación gratuita es la regla general, con cambio o devolución en los supuestos legales.",
+    "El retracto ordinario debe ejercerse dentro de cinco días hábiles y está sujeto a canal, naturaleza del contrato y excepciones legales.",
+    "En comercio electrónico, el reembolso por retracto no puede exceder quince días calendario después de cumplir las obligaciones aplicables.",
+    "La reversión requiere compra por mecanismo electrónico, instrumento de pago electrónico, causal legal, queja al proveedor y notificación al emisor dentro de cinco días hábiles.",
+    "Los participantes del pago disponen de quince días hábiles para hacer efectiva la reversión, sin perjuicio de controversias posteriores.",
+    "Los pagos periódicos admiten revocación y reglas especiales de reversión; deben conservarse instrucciones y cargos posteriores.",
+    "La reclamación directa es requisito de procedibilidad ordinario para la acción de protección al consumidor, salvo excepciones legales.",
+    "Los calendarios son preliminares y no descuentan festivos; deben validarse recepción, completitud, régimen especial y hechos.",
+    "Lesiones, productos peligrosos, fraude complejo, procesos activos y regímenes especiales bloquean el autoservicio definitivo.",
+    "La publicación profesional permanece bloqueada hasta aprobación jurídica y QA dual sobre la versión exacta."
+  ],
+  "documents": [
+    {
+      "kind": "consumer_mechanism_diagnosis",
+      "title": "Diagnóstico jurídico del mecanismo de consumo",
+      "filename_suffix": "diagnostico_mecanismo_consumo"
+    },
+    {
+      "kind": "warranty_claim",
+      "title": "Reclamación directa de garantía legal",
+      "filename_suffix": "reclamacion_garantia_legal"
+    },
+    {
+      "kind": "withdrawal_notice",
+      "title": "Comunicación de ejercicio del derecho de retracto",
+      "filename_suffix": "ejercicio_retracto"
+    },
+    {
+      "kind": "payment_reversal_request",
+      "title": "Solicitud coordinada de reversión del pago",
+      "filename_suffix": "solicitud_reversion_pago"
+    },
+    {
+      "kind": "recurring_debit_revocation",
+      "title": "Revocación de débito periódico y control de cargos",
+      "filename_suffix": "revocacion_debito_periodico"
+    },
+    {
+      "kind": "ecommerce_non_delivery_termination",
+      "title": "Terminación por falta de entrega y devolución",
+      "filename_suffix": "terminacion_falta_entrega"
+    },
+    {
+      "kind": "consumer_evidence_matrix",
+      "title": "Matriz de evidencia, pretensiones y destinatarios",
+      "filename_suffix": "matriz_evidencia_consumidor"
+    },
+    {
+      "kind": "consumer_deadline_calendar",
+      "title": "Calendario de términos y actuaciones de consumo",
+      "filename_suffix": "calendario_terminos_consumo"
+    }
+  ],
+  "controls": [
+    "relación de consumo",
+    "mecanismo jurídico",
+    "garantía y falla repetida",
+    "retracto y excepciones",
+    "comercio electrónico y entrega",
+    "causal y término de reversión",
+    "queja al proveedor y notificación al emisor",
+    "reversión parcial",
+    "débito periódico",
+    "reclamación directa",
+    "régimen especial",
+    "lesión o seguridad",
+    "cronología",
+    "evidencia",
+    "privacidad",
+    "aprobación jurídica y QA"
+  ],
+  "approval_documents": [
+    "CO-CD-003_INFORME_MADURACION_JURIDICA_V233.docx",
+    "CO-CD-003_INFORME_MADURACION_JURIDICA_V233.pdf",
+    "CO-CD-003_MATRIZ_TRAZABILIDAD_V233.docx",
+    "CO-CD-003_MATRIZ_TRAZABILIDAD_V233.pdf",
+    "LegalAIZit_Paquete_Documental_CO-CD-003_V233.docx",
+    "LegalAIZit_Paquete_Documental_CO-CD-003_V233.pdf"
+  ],
+  "next_release": "v2.34 — maduración integral de CO-CD-004"
+}

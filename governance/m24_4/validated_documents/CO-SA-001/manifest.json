@@ -1,0 +1,8 @@
+{
+  "schema": "legalai_m24_4_validation_evidence_manifest_v1",
+  "product_code": "CO-SA-001",
+  "files": {
+    "M24-CO-SA-001-10-SUCCESS_Documento_Final.docx": "e8d70c8d8082754c8dcb802ca2f8b493a6e806dcb8eeaaa36dc6370669c73207",
+    "M24-CO-SA-001-10-SUCCESS_Documento_Final.pdf": "3422dac1eaf8884470845c0fe1a4c5e4261c8d5b920a481b077fa4e110cd561d"
+  }
+}

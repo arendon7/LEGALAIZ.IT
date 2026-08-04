@@ -1,0 +1,8 @@
+CO-EM-003 · Prestación de servicios
+
+Entregables esperados:
+- [OBLIGATORIO] Contrato o paquete consolidado · .docx, .pdf · pistas: prestacion, servicios, paquete_01
+- [OBLIGATORIO] Entrevista, reglas y riesgos · .docx, .xlsx, .pdf · pistas: reglas, formulario, entrevista
+- [OPCIONAL] Alcance, confidencialidad, PI y cierre · .docx, .pdf · pistas: alcance, confidencialidad, propiedad, cierre
+
+No cambie el contenido para ajustarlo al sistema. Debe conservarse el binario recibido.

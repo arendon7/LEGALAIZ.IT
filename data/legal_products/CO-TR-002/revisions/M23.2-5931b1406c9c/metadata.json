@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "migration_id": "M24.1-M23.2-PREINTEGRATION-20260801",
+  "product_code": "CO-TR-002",
+  "revision_id": "M23.2-5931b1406c9c",
+  "source_revision_label": "M23.2",
+  "status": "candidate_blocked_pending_legal_and_qa_approval",
+  "immutable": true,
+  "asset_hashes": {
+    "CO-TR-002_Modelo_Maestro_Peticion_Fotomulta_No_Notificada_M23.docx": "5931b1406c9cd7c39cf6445d1e561e8fe83c7f716a706d29b85d5d03203543ef",
+    "CO-TR-002_Modelo_Maestro_Peticion_Fotomulta_No_Notificada_M23.pdf": "9c105b985562653895eb49ee4fb6120511ea0d12965649f0abf3e2dad0026065",
+    "CO-TR-002_M23_Bloques_Reglas_y_Fuentes.json": "122ee555f7805a3695d246acd19d329c9329e29e15d2c686dbb854c54a2b5087",
+    "CO-TR-002_Ejemplo_Final_Peticion_Fotomulta_No_Notificada_M23.docx": "82172a739f89f3e01e1137a81ef0ff5f30d926f57c6cd79fd1e589a337bace95",
+    "CO-TR-002_Ejemplo_Final_Peticion_Fotomulta_No_Notificada_M23.pdf": "bebff9d745f03e4e2ae2674414199609886b762ce836d1248089dff03902e647"
+  },
+  "approvals": {
+    "legal": {
+      "required": true,
+      "approved": false,
+      "actor": null
+    },
+    "qa": {
+      "required": true,
+      "approved": false,
+      "actor": null
+    },
+    "must_be_distinct_users": true
+  },
+  "questionnaire_binding": {
+    "status": "pending_runtime_resolution",
+    "expected_legacy_ref": "M22://questionnaires/CO-TR-002",
+    "prohibition": "do_not_create_duplicate_questionnaire_before_runtime_audit"
+  },
+  "ruleset_binding": {
+    "status": "candidate_from_m23_2",
+    "source_file": "CO-TR-002/CO-TR-002_M23_Bloques_Reglas_y_Fuentes.json",
+    "rule_count": 12,
+    "rule_ids": [
+      "M23-TR2-001",
+      "M23-TR2-002",
+      "M23-TR2-003",
+      "M23-TR2-004",
+      "M23-TR2-005",
+      "M23-TR2-006",
+      "M23-TR2-007",
+      "M23-TR2-008",
+      "M23-TR2-009",
+      "M23-TR2-010",
+      "M23-TR2-011",
+      "M23-TR2-012"
+    ]
+  },
+  "created_at": "2026-08-01T05:58:46.990450+00:00",
+  "publication_change": "none"
+}

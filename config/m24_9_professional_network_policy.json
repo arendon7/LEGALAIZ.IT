@@ -1,0 +1,54 @@
+{
+  "version": "2026-08-M24.9-v1",
+  "mode": "closed_invitation_only",
+  "jurisdictions": ["Colombia"],
+  "default_max_active_cases": 5,
+  "absolute_max_active_cases": 20,
+  "response_sla_hours": 24,
+  "review_sla_hours_by_risk": {
+    "green": 72,
+    "yellow": 48,
+    "red": 24
+  },
+  "product_specialty_map": {
+    "CO-LA-001": "Derecho laboral",
+    "CO-LA-002": "Derecho laboral",
+    "CO-EM-003": "Contratos y derecho comercial",
+    "CO-EM-004": "Contratos, propiedad intelectual y datos",
+    "CO-AR-001": "Derecho inmobiliario y arrendamientos",
+    "CO-SA-001": "Derecho de la salud",
+    "CO-CD-001": "Protección de datos y hábeas data",
+    "CO-CD-003": "Protección al consumidor",
+    "CO-CD-004": "Obligaciones y cobranza",
+    "CO-TR-001": "Derecho de tránsito y administrativo",
+    "CO-TR-002": "Derecho de tránsito y administrativo"
+  },
+  "confirmations": {
+    "invite": "INVITAR ESPECIALISTA AL PILOTO",
+    "accept_invitation": "ACEPTAR INVITACION PROFESIONAL",
+    "verify": "VERIFICAR PERFIL PROFESIONAL",
+    "offer": "OFRECER EXPEDIENTE",
+    "accept_assignment": "ACEPTAR EXPEDIENTE Y DECLARAR CONFLICTO",
+    "resolve_conflict": "RESOLVER CONFLICTO DE INTERES",
+    "complete": "CERRAR ASIGNACION PROFESIONAL"
+  },
+  "privacy": {
+    "conflict_party_storage": "hmac_sha256_only",
+    "raw_party_names_persisted": false,
+    "production_secret_required": true
+  },
+  "commercial": {
+    "public_directory": false,
+    "automatic_assignment": false,
+    "real_compensation": false,
+    "fee_values_are_reference_only": true
+  },
+  "production_blockers": [
+    "Validación externa de tarjeta profesional y antecedentes aplicables",
+    "Política contractual con especialistas y tratamiento tributario",
+    "Proveedor productivo de notificaciones y monitoreo de SLA",
+    "Secreto externo para huellas de conflicto de interés",
+    "Aprobación jurídica y QA humana por producto",
+    "Prueba de conflictos, reasignación, indisponibilidad y continuidad"
+  ]
+}

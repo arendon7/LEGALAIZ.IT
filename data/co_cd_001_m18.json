@@ -1,0 +1,74 @@
+{
+  "version": "M18.1",
+  "product_code": "CO-CD-001",
+  "title": "Hábeas data financiero y suplantación",
+  "objective": "Conocer, actualizar, rectificar o retirar datos cuando proceda, controlar permanencia y comunicación, y activar una ruta probatoria segura ante suplantación.",
+  "verified_at": "2026-07-31",
+  "status": "Revalidado M18 para uso profesional controlado",
+  "documents": [
+    {
+      "kind": "diagnostic",
+      "title": "Diagnóstico jurídico de reporte financiero",
+      "conditional": false
+    },
+    {
+      "kind": "consultation",
+      "title": "Consulta integral de información y trazabilidad",
+      "conditional": false
+    },
+    {
+      "kind": "claim",
+      "title": "Reclamo de actualización, rectificación o retiro",
+      "conditional": false
+    },
+    {
+      "kind": "identity",
+      "title": "Protocolo de suplantación de identidad",
+      "conditional": true
+    },
+    {
+      "kind": "escalation",
+      "title": "Reiteración y escalamiento ante autoridad",
+      "conditional": true
+    },
+    {
+      "kind": "evidence",
+      "title": "Matriz de evidencia y responsables",
+      "conditional": false
+    },
+    {
+      "kind": "deadline",
+      "title": "Calendario de términos, permanencia y caducidad",
+      "conditional": false
+    }
+  ],
+  "controls": [
+    "fuente, operador y usuario",
+    "consulta 10+5",
+    "reclamo 15+8",
+    "leyenda en 2 días",
+    "comunicación previa",
+    "bajo monto 15 % SMLMV",
+    "primer reporte 18 meses",
+    "permanencia doble de mora máximo 4 años",
+    "caducidad 8 años",
+    "score simultáneo",
+    "silencio favorable controlado",
+    "suplantación y cotejo",
+    "vigencia Ley 2573",
+    "SIC/SFC",
+    "seguridad y minimización"
+  ],
+  "official_source_ids": [
+    "CD1-S1",
+    "CD1-S2",
+    "CD1-S3",
+    "CD1-S4",
+    "CD1-S5",
+    "CD1-S6",
+    "CD1-S7",
+    "CD1-S8",
+    "CD1-S9",
+    "CD1-S10"
+  ]
+}

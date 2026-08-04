@@ -1,0 +1,42 @@
+{
+  "product": "CO-EM-004",
+  "version": "2.47",
+  "date": "2026-07-24",
+  "scenario_validation": {
+    "canonical": 12,
+    "negative": 15,
+    "visual": 6,
+    "issues": 0,
+    "status": "passed"
+  },
+  "document_qa": {
+    "docx_generated": 21,
+    "pdf_rendered": 21,
+    "pages_rendered_and_inspected": 70,
+    "visual_scenarios": 6,
+    "clipping_or_overflow": 0,
+    "unexpected_blank_pages": 0,
+    "unresolved_markers": 0,
+    "sentinel_values": 0,
+    "visible_iso_dates": 0,
+    "visible_internal_tokens": 0,
+    "stale_fixture_values": 0,
+    "status": "passed"
+  },
+  "accessibility": {
+    "representative_documents": 5,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "status": "passed"
+  },
+  "review_scope": [
+    "acuerdo unilateral preliminar",
+    "software recíproco con datos, PI, IA, OSS e incidentes",
+    "investigación y desarrollo con secretos empresariales",
+    "debida diligencia con transferencia internacional",
+    "encargo de tratamiento de datos",
+    "servicios con datos, propiedad intelectual e inteligencia artificial"
+  ],
+  "professional_release_authorized": false
+}

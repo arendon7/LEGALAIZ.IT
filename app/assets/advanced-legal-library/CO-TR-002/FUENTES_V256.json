@@ -1,0 +1,116 @@
+{
+  "version": "2.56",
+  "verified_at": "2026-07-26",
+  "policy": "official_sources_with_binding_level_and_pre_filing_revalidation",
+  "sources": [
+    {
+      "id": "SRC-1843-2017",
+      "title": "Ley 1843 de 2017 — SAST, procedimiento y notificación",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30032605",
+      "source_type": "ley",
+      "binding_level": "norma",
+      "status": "vigente_con_control_jurisprudencial",
+      "relevant": [
+        "artículos 7, 8 y 9"
+      ],
+      "requires_pre_filing_recheck": true
+    },
+    {
+      "id": "SRC-769-2002",
+      "title": "Ley 769 de 2002 — Código Nacional de Tránsito Terrestre",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1826223",
+      "source_type": "ley",
+      "binding_level": "norma",
+      "status": "vigente_con_modificaciones",
+      "relevant": [
+        "artículos 129, 135, 136, 158A y 159"
+      ],
+      "requires_pre_filing_recheck": true
+    },
+    {
+      "id": "SRC-1437-2011",
+      "title": "Ley 1437 de 2011 — CPACA",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1680117",
+      "source_type": "ley",
+      "binding_level": "norma",
+      "status": "vigente_con_modificaciones",
+      "relevant": [
+        "artículos 56, 67 a 69 y 93 a 96"
+      ],
+      "requires_pre_filing_recheck": true
+    },
+    {
+      "id": "SRC-1755-2015",
+      "title": "Ley 1755 de 2015 — derecho fundamental de petición",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30043679",
+      "source_type": "ley_estatutaria",
+      "binding_level": "norma",
+      "status": "vigente",
+      "relevant": [
+        "artículos 13, 14, 15, 16 y 31"
+      ],
+      "requires_pre_filing_recheck": true
+    },
+    {
+      "id": "SRC-RUCT-2022",
+      "title": "Resolución 20223040045295 de 2022 — Resolución Única Compilatoria en materia de Tránsito",
+      "authority": "Ministerio de Transporte",
+      "url": "https://mintransporte.gov.co/documentos/1014/resolucion-unica-compilatoria-en-materia-de-transito/",
+      "source_type": "resolucion_compilatoria",
+      "binding_level": "acto_administrativo_general",
+      "status": "vigente_sujeta_a_adiciones_sustituciones_y_verificacion_del_titulo_aplicable",
+      "relevant": [
+        "reglamentación SAST y tránsito aplicable"
+      ],
+      "requires_pre_filing_recheck": true
+    },
+    {
+      "id": "SRC-C038-2020",
+      "title": "Sentencia C-038 de 2020",
+      "authority": "Corte Constitucional",
+      "url": "https://www.corteconstitucional.gov.co/Relatoria/2020/C-038-20.htm",
+      "source_type": "sentencia_constitucionalidad",
+      "binding_level": "precedente_constitucional",
+      "status": "vigente_sujeta_a_contextualizacion",
+      "relevant": [
+        "responsabilidad personal",
+        "culpabilidad",
+        "inexequibilidad de solidaridad automática"
+      ],
+      "requires_pre_filing_recheck": true
+    },
+    {
+      "id": "SRC-C321-2022",
+      "title": "Sentencia C-321 de 2022",
+      "authority": "Corte Constitucional",
+      "url": "https://www.corteconstitucional.gov.co/relatoria/2022/C-321-22.htm",
+      "source_type": "sentencia_constitucionalidad",
+      "binding_level": "precedente_constitucional",
+      "status": "vigente_sujeta_a_contextualizacion",
+      "relevant": [
+        "deberes del propietario",
+        "no sanción automática",
+        "prueba de culpabilidad"
+      ],
+      "requires_pre_filing_recheck": true
+    },
+    {
+      "id": "SRC-MT-FAQ-SAST",
+      "title": "ABC y FAQ oficiales sobre fotodetección",
+      "authority": "Ministerio de Transporte",
+      "url": "https://mintransporte.gov.co/publicaciones/5683/abc-de-las-fotomultas/",
+      "source_type": "orientacion_oficial",
+      "binding_level": "orientativo_no_vinculante",
+      "status": "orientacion_oficial_consultar_con_norma_vigente",
+      "relevant": [
+        "control de validación de diez días",
+        "envío dentro de tres días hábiles"
+      ],
+      "requires_pre_filing_recheck": true
+    }
+  ]
+}

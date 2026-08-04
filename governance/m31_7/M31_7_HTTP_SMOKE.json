@@ -1,0 +1,2402 @@
+{
+  "schema": "legalaizit-http-smoke-v1",
+  "milestone": "M31.7",
+  "version": "5.0.6",
+  "build_id": "M31-7-DEMO-DOCUMENTAL-REALISTA-2026-08-04",
+  "checks": [
+    {
+      "key": "live",
+      "passed": true,
+      "detail": {
+        "ok": true,
+        "build_id": "M31-7-DEMO-DOCUMENTAL-REALISTA-2026-08-04"
+      }
+    },
+    {
+      "key": "health",
+      "passed": true,
+      "detail": {
+        "ok": true,
+        "version": "5.0.6",
+        "build_id": "M31-7-DEMO-DOCUMENTAL-REALISTA-2026-08-04",
+        "release_id": "M31-7-DEMO-DOCUMENTAL-REALISTA-5.0.6-2026-08-04",
+        "release_name": "M31.7 — Demo documental realista y generación integral",
+        "production_authorized": false,
+        "professional_publication_authorized": true,
+        "experience": {
+          "architecture": "role_based_case_centered",
+          "release_channel": "controlled_demo_complete_document_generation",
+          "frontend_entry": "main.js",
+          "frontend_modules": [
+            "core.js",
+            "ux_m21.js",
+            "main.js"
+          ],
+          "frontend_extension_modules": [
+            "modules/ux_m24_7.js",
+            "modules/pilot_m24_8.js",
+            "modules/professional_m24_9.js",
+            "modules/readiness_m25_0.js",
+            "modules/pilot_center_m30_1.js",
+            "modules/preproduction_m31_1.js"
+          ],
+          "backend_route_modules": [
+            "public_routes.py",
+            "auth_routes.py",
+            "system_routes.py",
+            "product_quality_routes.py",
+            "m24_candidate_routes.py",
+            "m24_pilot_routes.py",
+            "m24_full_routes.py",
+            "m24_case_routes.py",
+            "m24_client_routes.py",
+            "m24_pilot_operations_routes.py",
+            "m24_professional_routes.py",
+            "m25_readiness_routes.py",
+            "m30_pilot_center_routes.py",
+            "m30_participant_routes.py",
+            "m30_governance_routes.py",
+            "m30_simulation_routes.py",
+            "m30_live_evaluation_routes.py",
+            "m31_preproduction_routes.py"
+          ],
+          "design_system": "app.css",
+          "legacy_workspace_available": false
+        },
+        "profile": "local",
+        "infrastructure_ready": false,
+        "runtime": {
+          "profile": "local",
+          "infrastructure_ready": false,
+          "api_contract": "2026-07-m21",
+          "extension_contract": "2026-08-m24-candidate-1",
+          "pilot_extension_contract": "2026-08-m24-pilot-2",
+          "full_validation_extension_contract": "2026-08-m24-full-3",
+          "case_journey_extension_contract": "2026-08-m24-case-4",
+          "client_journey_extension_contract": "2026-08-m24-client-5",
+          "guided_ux_extension_contract": "2026-08-m24-ux-7",
+          "pilot_operations_extension_contract": "2026-08-m24-pilot-ops-8",
+          "professional_network_extension_contract": "2026-08-m24-professional-9",
+          "human_approval_extension_contract": "2026-08-m24-human-approval-10",
+          "pilot_readiness_extension_contract": "2026-08-m25-readiness-0",
+          "pilot_execution_center_contract": "2026-08-m30-pilot-center-1",
+          "live_pilot_evaluation_contract": "2026-08-m30-live-evaluation-5",
+          "preproduction_base_contract": "2026-08-m31-preproduction-1",
+          "release_consolidation_contract": "2026-08-m31-consolidation-2",
+          "release_reproducibility_contract": "2026-08-m31-reproducibility-3",
+          "demo_documental_extension_contract": "2026-08-m31-demo-documental-7",
+          "m24_candidate_integration": true,
+          "m23_2_published": false,
+          "m24_3_pilot_validation": true,
+          "m24_3_distinct_dual_approval": true,
+          "m24_4_full_validation": true,
+          "m24_4_controlled_activation": true,
+          "m24_5_case_journey": true,
+          "m24_5_follow_up": true,
+          "m24_6_client_intake": true,
+          "m24_6_explainable_routing": true,
+          "m24_6_offer_levels": true,
+          "m24_6_checkout_to_case": true,
+          "m24_7_short_question_blocks": true,
+          "m24_7_review_before_analysis": true,
+          "m24_7_responsive_guided_journey": true,
+          "m24_7_fixture_visual_qa": true,
+          "m24_8_controlled_pilot_operations": true,
+          "m24_8_consent_and_privacy_minimization": true,
+          "m24_8_incident_and_feedback_registry": true,
+          "m24_8_release_gates_and_freeze": true,
+          "m24_9_closed_professional_network": true,
+          "m24_9_capacity_conflict_and_sla": true,
+          "m24_9_no_public_directory_or_real_compensation": true,
+          "m24_10_explicit_human_ratification": true,
+          "m24_10_multi_stage_single_responsible_catalog_approval": true,
+          "m24_10_public_production_still_blocked": true,
+          "m25_0_pilot_readiness_audit": true,
+          "m25_0_runtime_bindings_resolved": true,
+          "m25_0_twenty_case_plan_supported": true,
+          "m25_0_public_production_still_blocked": true,
+          "m30_1_pilot_execution_center": true,
+          "m30_1_structured_support_and_observations": true,
+          "m30_1_public_production_still_blocked": true,
+          "m30_5_live_pilot_evaluation": true,
+          "m30_5_simulation_comparison": true,
+          "m30_5_dual_go_no_go_approval": true,
+          "m30_5_public_production_still_blocked": true,
+          "m31_1_managed_preproduction_center": true,
+          "m31_1_backup_drill_and_snapshots": true,
+          "m31_1_public_production_still_blocked": true,
+          "m31_2_release_identity_consolidated": true,
+          "m31_2_distinct_document_approval_required": true
+        },
+        "approval": {
+          "version": "M3",
+          "build_id": "M3-CONTROLLED-APPROVAL-2026-07-28",
+          "catalog_status": "approved_controlled",
+          "professional_publication_authorized": true,
+          "approval_model": "multi_stage_single_responsible",
+          "independent_reviewers": false,
+          "approver": {
+            "name": "Agustín Rendón Calle",
+            "professional_card": "330845",
+            "city": "Medellín",
+            "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+          },
+          "approved_at": "2026-07-28T21:15:34-05:00",
+          "product_count": 11,
+          "document_count": 387,
+          "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables.",
+          "controlled_use_conditions": [
+            "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+            "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+            "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+            "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+            "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+          ],
+          "products": [
+            {
+              "product_code": "CO-TR-001",
+              "title": "Chequeo SAST + inscripción verificada",
+              "vertical": "Tránsito",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:03-05:00",
+              "approved_document_count": 13,
+              "approved_docx_count": 11,
+              "approved_pdf_count": 2,
+              "case_specific_review_required": false,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            },
+            {
+              "product_code": "CO-TR-002",
+              "title": "Fotomulta no notificada",
+              "vertical": "Tránsito",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:06-05:00",
+              "approved_document_count": 52,
+              "approved_docx_count": 26,
+              "approved_pdf_count": 26,
+              "case_specific_review_required": false,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            },
+            {
+              "product_code": "CO-LA-001",
+              "title": "Liquidación laboral + reclamación",
+              "vertical": "Laboral",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:09-05:00",
+              "approved_document_count": 18,
+              "approved_docx_count": 9,
+              "approved_pdf_count": 9,
+              "case_specific_review_required": true,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            },
+            {
+              "product_code": "CO-LA-002",
+              "title": "Contrato de trabajo personalizado",
+              "vertical": "Laboral",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:12-05:00",
+              "approved_document_count": 58,
+              "approved_docx_count": 29,
+              "approved_pdf_count": 29,
+              "case_specific_review_required": true,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            },
+            {
+              "product_code": "CO-EM-003",
+              "title": "Contrato de prestación de servicios",
+              "vertical": "Empresarial",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:15-05:00",
+              "approved_document_count": 38,
+              "approved_docx_count": 19,
+              "approved_pdf_count": 19,
+              "case_specific_review_required": false,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            },
+            {
+              "product_code": "CO-EM-004",
+              "title": "Confidencialidad y propiedad intelectual",
+              "vertical": "Empresarial",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:18-05:00",
+              "approved_document_count": 40,
+              "approved_docx_count": 20,
+              "approved_pdf_count": 20,
+              "case_specific_review_required": false,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            },
+            {
+              "product_code": "CO-AR-001",
+              "title": "Arrendamiento de vivienda urbana",
+              "vertical": "Inmobiliario",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:21-05:00",
+              "approved_document_count": 30,
+              "approved_docx_count": 15,
+              "approved_pdf_count": 15,
+              "case_specific_review_required": false,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            },
+            {
+              "product_code": "CO-SA-001",
+              "title": "Derecho de petición a EPS o IPS",
+              "vertical": "Salud",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:24-05:00",
+              "approved_document_count": 38,
+              "approved_docx_count": 19,
+              "approved_pdf_count": 19,
+              "case_specific_review_required": true,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            },
+            {
+              "product_code": "CO-CD-001",
+              "title": "Centrales de riesgo y hábeas data",
+              "vertical": "Consumo y datos",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:27-05:00",
+              "approved_document_count": 28,
+              "approved_docx_count": 14,
+              "approved_pdf_count": 14,
+              "case_specific_review_required": false,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            },
+            {
+              "product_code": "CO-CD-003",
+              "title": "Garantía, retracto y reversión del pago",
+              "vertical": "Consumo y datos",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:30-05:00",
+              "approved_document_count": 32,
+              "approved_docx_count": 16,
+              "approved_pdf_count": 16,
+              "case_specific_review_required": false,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            },
+            {
+              "product_code": "CO-CD-004",
+              "title": "Cobro, acuerdo de pago y pagaré",
+              "vertical": "Civil y comercial",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:33-05:00",
+              "approved_document_count": 40,
+              "approved_docx_count": 20,
+              "approved_pdf_count": 20,
+              "case_specific_review_required": true,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            }
+          ]
+        },
+        "security": "sessions-rbac-csrf-required-mfa-scrypt-aes-gcm-encrypted-storage-encrypted-backups-rate-limits-origin-control-malware-gate-observability-privacy-governance-integrity",
+        "security_controls": {
+          "authentication": true,
+          "rbac": true,
+          "csrf": true,
+          "mfa_available": true,
+          "mfa_required_for_privileged_roles": true,
+          "password_hashing": "scrypt",
+          "encrypted_storage": true,
+          "legacy_marker_deprecated": true
+        }
+      }
+    },
+    {
+      "key": "config",
+      "passed": true,
+      "detail": {
+        "version": "5.0.6",
+        "build_id": "M31-7-DEMO-DOCUMENTAL-REALISTA-2026-08-04",
+        "release_id": "M31-7-DEMO-DOCUMENTAL-REALISTA-5.0.6-2026-08-04",
+        "release_name": "M31.7 — Demo documental realista y generación integral",
+        "professional_publication_authorized": true,
+        "name": "LegalAIZ.it",
+        "slogan": "Más que respuestas, soluciones.",
+        "roles": [
+          "client",
+          "specialist",
+          "admin"
+        ],
+        "max_upload_mb": 10,
+        "allowed_uploads": [
+          ".docx",
+          ".jpeg",
+          ".jpg",
+          ".pdf",
+          ".png",
+          ".txt",
+          ".xlsx"
+        ],
+        "authentication": true,
+        "public_portal": true,
+        "anonymous_diagnosis": true,
+        "deployment": {
+          "profile": "local",
+          "app_env": "local",
+          "public_base_url": "http://127.0.0.1:8765",
+          "secure_cookies": false,
+          "trust_proxy": false,
+          "object_storage_backend": "local-encrypted",
+          "object_storage_encryption": true,
+          "database_backend": "sqlite",
+          "require_mfa_roles": [],
+          "backup_retention": 10,
+          "max_upload_mb": 10,
+          "volume_encryption_confirmed": true,
+          "malware_scanner": "none",
+          "trusted_proxy_ips": [
+            "127.0.0.1",
+            "::1"
+          ],
+          "session_idle_minutes_client": 120,
+          "session_idle_minutes_privileged": 30,
+          "require_origin_check": false,
+          "production_ready_claim": false
+        },
+        "mfa_available": true,
+        "encrypted_storage": true,
+        "server_drafts": true,
+        "anonymous_encrypted_drafts": true,
+        "payment_sandbox": true,
+        "accessibility_target": "WCAG 2.2 AA (objetivo no certificado)",
+        "experience_architecture": "role_based_case_centered",
+        "release_channel": "controlled_demo_complete_document_generation",
+        "legacy_workspace_available": false,
+        "api_contract": "2026-07-m21",
+        "extension_contract": "2026-08-m24-candidate-1",
+        "pilot_extension_contract": "2026-08-m24-pilot-2",
+        "full_validation_extension_contract": "2026-08-m24-full-3",
+        "case_journey_extension_contract": "2026-08-m24-case-4",
+        "client_journey_extension_contract": "2026-08-m24-client-5",
+        "guided_ux_extension_contract": "2026-08-m24-ux-7",
+        "pilot_operations_extension_contract": "2026-08-m24-pilot-ops-8",
+        "professional_network_extension_contract": "2026-08-m24-professional-9",
+        "human_approval_extension_contract": "2026-08-m24-human-approval-10",
+        "pilot_readiness_extension_contract": "2026-08-m25-readiness-0",
+        "pilot_execution_center_contract": "2026-08-m30-pilot-center-1",
+        "live_pilot_evaluation_contract": "2026-08-m30-live-evaluation-5",
+        "preproduction_base_contract": "2026-08-m31-preproduction-1",
+        "release_consolidation_contract": "2026-08-m31-consolidation-2",
+        "release_reproducibility_contract": "2026-08-m31-reproducibility-3",
+        "demo_documental_extension_contract": "2026-08-m31-demo-documental-7",
+        "m24_candidate_integration": {
+          "base_runtime": "M21.1",
+          "candidate_library": "M23.2",
+          "published": false,
+          "active_generation_unchanged": true,
+          "pilot_validation": "40/40",
+          "pilot_products": 4,
+          "full_validation": "110/110",
+          "validated_products": 11,
+          "activation_scope": "internal_professional_pilot_only"
+        },
+        "capabilities": {
+          "cases": true,
+          "documents": true,
+          "legal_catalog": true,
+          "review_workbench": true,
+          "source_traceability": true,
+          "document_factory": true,
+          "audit": true,
+          "deep_contractual_library_m4": true,
+          "deep_legal_playbooks_m5": true,
+          "release_candidate_m6": true,
+          "preproduction_hardening_m7": true,
+          "product_ux_m8": true,
+          "technical_modularization_m9": true,
+          "domain_routes_m10": true,
+          "product_quality_registry_m10": true,
+          "document_regeneration_m11": true,
+          "lease_revalidation_m11": true,
+          "product_quality_registry_m11": true,
+          "service_contract_revalidation_m12": true,
+          "product_quality_registry_m12": true,
+          "confidentiality_ip_data_ai_revalidation_m13": true,
+          "product_quality_registry_m13": true,
+          "sast_verified_screening_m14": true,
+          "product_quality_registry_m14": true,
+          "traffic_notice_due_process_m15": true,
+          "product_quality_registry_m15": true,
+          "labor_settlement_revalidation_m16": true,
+          "product_quality_registry_m16": true,
+          "health_petition_revalidation_m17": true,
+          "product_quality_registry_m17": true,
+          "financial_habeas_data_revalidation_m18": true,
+          "product_quality_registry_m18": true,
+          "consumer_protection_revalidation_m19": true,
+          "product_quality_registry_m19": true,
+          "collection_payment_note_revalidation_m20": true,
+          "product_quality_registry_m20": true,
+          "ux_navigation_audit_m21": true,
+          "role_based_navigation_m21": true,
+          "guided_progress_m21": true,
+          "m23_2_candidate_library_m24": true,
+          "immutable_candidate_revision_integration_m24": true,
+          "dual_approval_gate_m24": true,
+          "pilot_scenario_execution_m24_3": true,
+          "distinct_user_approvals_m24_3": true,
+          "pilot_document_generation_m24_3": true,
+          "full_scenario_execution_m24_4": true,
+          "all_product_document_generation_m24_4": true,
+          "controlled_internal_activation_m24_4": true,
+          "end_to_end_case_journey_m24_5": true,
+          "auditable_follow_up_m24_5": true,
+          "explainable_client_intake_m24_6": true,
+          "service_level_offer_m24_6": true,
+          "sandbox_checkout_to_case_m24_6": true,
+          "short_question_blocks_m24_7": true,
+          "review_before_analysis_m24_7": true,
+          "responsive_guided_journey_m24_7": true,
+          "fixture_visual_qa_m24_7": true,
+          "controlled_pilot_operations_m24_8": true,
+          "consent_privacy_minimization_m24_8": true,
+          "pilot_incident_feedback_m24_8": true,
+          "release_gates_freeze_m24_8": true,
+          "closed_professional_network_m24_9": true,
+          "professional_capacity_conflict_sla_m24_9": true,
+          "explicit_human_ratification_m24_10": true,
+          "multi_stage_single_responsible_catalog_approval_m24_10": true,
+          "pilot_readiness_audit_m25_0": true,
+          "runtime_binding_resolution_m25_0": true,
+          "controlled_twenty_case_plan_m25_0": true,
+          "pilot_execution_center_m30_1": true,
+          "structured_pilot_support_m30_1": true,
+          "pilot_evidence_snapshot_m30_1": true,
+          "participant_invitation_consent_m30_2": true,
+          "participant_support_sla_m30_2": true,
+          "participant_retention_schedule_m30_2": true,
+          "pilot_communications_m30_3": true,
+          "incident_governance_m30_3": true,
+          "dual_approval_retention_m30_3": true,
+          "cohort_closure_m30_3": true,
+          "simulated_cohort_m30_4": true,
+          "live_pilot_go_no_go_m30_5": true,
+          "managed_preproduction_center_m31_1": true,
+          "backup_restore_drill_m31_1": true,
+          "release_identity_consolidation_m31_2": true,
+          "distinct_document_approval_m31_2": true,
+          "release_reproducibility_m31_3": true,
+          "sanitized_distribution_m31_3": true,
+          "automated_http_smoke_m31_3": true,
+          "postgres_dual_persistence_m31_4": true,
+          "postgres_certification_gate_m31_5": true,
+          "external_certification_pipeline_m31_6": true,
+          "complete_demo_document_generation_m31_7": true,
+          "realistic_synthetic_portfolio_m31_7": true,
+          "verified_docx_portfolio_m31_7": true
+        },
+        "production_authorized": false,
+        "approval_governance": {
+          "catalog_ratification_model": "historical_multi_stage_single_responsible",
+          "document_release_model": "distinct_legal_and_qa_same_revision",
+          "distinct_people_required": true
+        },
+        "compatibility": {
+          "legacy_runtime_exposed": false,
+          "legacy_frontend_removed": true,
+          "historical_archive_packaged": false
+        },
+        "approval": {
+          "version": "M3",
+          "build_id": "M3-CONTROLLED-APPROVAL-2026-07-28",
+          "catalog_status": "approved_controlled",
+          "professional_publication_authorized": true,
+          "approval_model": "multi_stage_single_responsible",
+          "independent_reviewers": false,
+          "approver": {
+            "name": "Agustín Rendón Calle",
+            "professional_card": "330845",
+            "city": "Medellín",
+            "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+          },
+          "approved_at": "2026-07-28T21:15:34-05:00",
+          "product_count": 11,
+          "document_count": 387,
+          "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables.",
+          "controlled_use_conditions": [
+            "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+            "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+            "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+            "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+            "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+          ],
+          "products": [
+            {
+              "product_code": "CO-TR-001",
+              "title": "Chequeo SAST + inscripción verificada",
+              "vertical": "Tránsito",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:03-05:00",
+              "approved_document_count": 13,
+              "approved_docx_count": 11,
+              "approved_pdf_count": 2,
+              "case_specific_review_required": false,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            },
+            {
+              "product_code": "CO-TR-002",
+              "title": "Fotomulta no notificada",
+              "vertical": "Tránsito",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:06-05:00",
+              "approved_document_count": 52,
+              "approved_docx_count": 26,
+              "approved_pdf_count": 26,
+              "case_specific_review_required": false,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            },
+            {
+              "product_code": "CO-LA-001",
+              "title": "Liquidación laboral + reclamación",
+              "vertical": "Laboral",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:09-05:00",
+              "approved_document_count": 18,
+              "approved_docx_count": 9,
+              "approved_pdf_count": 9,
+              "case_specific_review_required": true,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            },
+            {
+              "product_code": "CO-LA-002",
+              "title": "Contrato de trabajo personalizado",
+              "vertical": "Laboral",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:12-05:00",
+              "approved_document_count": 58,
+              "approved_docx_count": 29,
+              "approved_pdf_count": 29,
+              "case_specific_review_required": true,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            },
+            {
+              "product_code": "CO-EM-003",
+              "title": "Contrato de prestación de servicios",
+              "vertical": "Empresarial",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:15-05:00",
+              "approved_document_count": 38,
+              "approved_docx_count": 19,
+              "approved_pdf_count": 19,
+              "case_specific_review_required": false,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            },
+            {
+              "product_code": "CO-EM-004",
+              "title": "Confidencialidad y propiedad intelectual",
+              "vertical": "Empresarial",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:18-05:00",
+              "approved_document_count": 40,
+              "approved_docx_count": 20,
+              "approved_pdf_count": 20,
+              "case_specific_review_required": false,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            },
+            {
+              "product_code": "CO-AR-001",
+              "title": "Arrendamiento de vivienda urbana",
+              "vertical": "Inmobiliario",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:21-05:00",
+              "approved_document_count": 30,
+              "approved_docx_count": 15,
+              "approved_pdf_count": 15,
+              "case_specific_review_required": false,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            },
+            {
+              "product_code": "CO-SA-001",
+              "title": "Derecho de petición a EPS o IPS",
+              "vertical": "Salud",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:24-05:00",
+              "approved_document_count": 38,
+              "approved_docx_count": 19,
+              "approved_pdf_count": 19,
+              "case_specific_review_required": true,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            },
+            {
+              "product_code": "CO-CD-001",
+              "title": "Centrales de riesgo y hábeas data",
+              "vertical": "Consumo y datos",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:27-05:00",
+              "approved_document_count": 28,
+              "approved_docx_count": 14,
+              "approved_pdf_count": 14,
+              "case_specific_review_required": false,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            },
+            {
+              "product_code": "CO-CD-003",
+              "title": "Garantía, retracto y reversión del pago",
+              "vertical": "Consumo y datos",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:30-05:00",
+              "approved_document_count": 32,
+              "approved_docx_count": 16,
+              "approved_pdf_count": 16,
+              "case_specific_review_required": false,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            },
+            {
+              "product_code": "CO-CD-004",
+              "title": "Cobro, acuerdo de pago y pagaré",
+              "vertical": "Civil y comercial",
+              "approval_status": "approved_controlled",
+              "publication_authorized": true,
+              "professional_use": true,
+              "human_ratification": true,
+              "specialist_approval": true,
+              "qa_approval": true,
+              "dual_approval": true,
+              "approval_model": "multi_stage_single_responsible",
+              "independent_reviewers": false,
+              "approver": {
+                "name": "Agustín Rendón Calle",
+                "professional_card": "330845",
+                "city": "Medellín",
+                "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+              },
+              "approved_at": "2026-07-28T21:15:33-05:00",
+              "approved_document_count": 40,
+              "approved_docx_count": 20,
+              "approved_pdf_count": 20,
+              "case_specific_review_required": true,
+              "controlled_use_conditions": [
+                "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+                "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+                "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+                "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+                "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+              ],
+              "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "key": "catalog",
+      "passed": true,
+      "detail": {
+        "brand": {
+          "slogan": "Más que respuestas, soluciones.",
+          "promise": "Tu solución legal, impulsada por IA y expertos.",
+          "home_title": "Soluciones legales que puedes entender, personalizar y utilizar.",
+          "home_intro": "Explora la solución adecuada, responde un formulario con ayudas claras y recibe documentos editables. Añade revisión profesional solamente cuando tu caso lo exige o cuando deseas una segunda validación.",
+          "how_it_works": [
+            "Elige la solución adecuada",
+            "Responde un formulario guiado",
+            "Revisa tus datos y alertas",
+            "Genera y descarga tus documentos"
+          ],
+          "trust_points": [
+            "Información guiada y editable",
+            "Documentos Word vinculados a tu expediente",
+            "Alertas claras antes de continuar",
+            "Revisión profesional disponible cuando aporta valor"
+          ],
+          "environment_notice": "Versión de demostración interna: los documentos deben cotejarse con las fuentes canónicas y aprobarse antes de uso profesional."
+        },
+        "products": [
+          {
+            "code": "CO-TR-001",
+            "title": "Verifica integralmente un SAST y organiza la actuación aplicable",
+            "internal_title": "Chequeo SAST + inscripción verificada",
+            "vertical": "Tránsito",
+            "icon": "⚖",
+            "summary": "Individualiza autoridad, dispositivo, autorización, vigencia, calibración, señalización, expediente y estado oficial sin convertir una coincidencia en nulidad automática.",
+            "best_for": "Personas que necesitan verificar la regularidad documental y técnica de un SAST o preparar solicitudes de información, revisión y seguimiento.",
+            "duration": "12 a 18 minutos",
+            "price_auto": 4900,
+            "price_review": 79900,
+            "documents": [
+              "Informe de coincidencia y diagnóstico SAST",
+              "Matriz individual de autorización y evidencia técnica",
+              "Solicitud de expediente técnico y acto de autorización",
+              "Solicitud de certificación del estado de la actuación oficial",
+              "Solicitud condicionada de revisión administrativa",
+              "Registro de alertas y seguimiento",
+              "Guía de verificación, términos y escalamiento"
+            ],
+            "review_default": "recommended",
+            "review_value": "El abogado responsable puede cerrar el análisis del expediente, la etapa procesal y la actuación procedente.",
+            "jurisdiction": "Colombia",
+            "outcomes": [
+              "Informe de coincidencia y diagnóstico",
+              "Matriz técnica individual",
+              "Solicitud de expediente y autorización",
+              "Certificación del estado oficial",
+              "Revisión administrativa condicionada",
+              "Registro de alertas",
+              "Guía de escalamiento"
+            ],
+            "exclusions": [
+              "Cobro coactivo, embargo o proceso judicial",
+              "Suplantación, clonación, hurto o fraude",
+              "Término urgente",
+              "Más de diez comparendos en lote",
+              "Datos no confirmados"
+            ],
+            "value_points": [
+              "Diagnóstico individualizado y trazable",
+              "Matriz de autorización y evidencia técnica",
+              "Solicitudes y ruta de escalamiento según el riesgo"
+            ],
+            "before_you_start": [
+              "Comparendo, resolución o consulta oficial",
+              "Datos del dispositivo, punto y fecha cuando estén disponibles",
+              "Notificaciones, pagos y actuaciones posteriores"
+            ],
+            "not_included": [
+              "No declara nulidad automática",
+              "No supone que una investigación general resuelva el expediente individual",
+              "No reemplaza representación judicial"
+            ],
+            "client_note": "La coincidencia, ausencia de coincidencia o apertura de investigación son insumos de verificación; la conclusión depende del expediente individual.",
+            "document_details": [
+              {
+                "template_id": "TPL-CO-TR-001-FOLLOW-UP",
+                "title": "Registro de seguimiento y alertas SAST",
+                "kind": "sast_follow_up",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Integrado en M27.1 desde biblioteca jurídica profunda; pendiente de aprobación jurídica y QA dual por revisión antes de liberación externa."
+              },
+              {
+                "template_id": "TPL-CO-TR-001-SAST-REPORT",
+                "title": "Informe preliminar de chequeo SAST",
+                "kind": "sast_preliminary_report",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Integrado en M27.1 desde biblioteca jurídica profunda; pendiente de aprobación jurídica y QA dual por revisión antes de liberación externa."
+              },
+              {
+                "template_id": "TPL-CO-TR-001-PROFESSIONAL-REVIEW",
+                "title": "Solicitud de revisión profesional de caso SAST",
+                "kind": "sast_professional_review_request",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Integrado en M27.1 desde biblioteca jurídica profunda; pendiente de aprobación jurídica y QA dual por revisión antes de liberación externa."
+              },
+              {
+                "template_id": "TPL-CO-TR-001-RECORD-REQUEST",
+                "title": "Solicitud de expediente, autorización y soportes SAST",
+                "kind": "sast_record_request",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Integrado en M27.1 desde biblioteca jurídica profunda; pendiente de aprobación jurídica y QA dual por revisión antes de liberación externa."
+              },
+              {
+                "template_id": "TPL-CO-TR-001-SOURCE-TRACE",
+                "title": "Ficha de trazabilidad de fuentes y coincidencias SAST",
+                "kind": "sast_source_trace",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Integrado en M27.1 desde biblioteca jurídica profunda; pendiente de aprobación jurídica y QA dual por revisión antes de liberación externa."
+              },
+              {
+                "template_id": "TPL-CO-TR-001-VERIFIED-CASE-FILE",
+                "title": "Expediente verificado de chequeo SAST",
+                "kind": "sast_verified_case_file",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Integrado en M27.1 desde biblioteca jurídica profunda; pendiente de aprobación jurídica y QA dual por revisión antes de liberación externa."
+              }
+            ]
+          },
+          {
+            "code": "CO-TR-002",
+            "title": "Reclama una fotomulta que no te fue notificada correctamente",
+            "internal_title": "Fotomulta no notificada",
+            "vertical": "Tránsito",
+            "icon": "◉",
+            "summary": "Organiza los hechos, solicita el expediente y genera una reclamación adaptada a la etapa del comparendo.",
+            "best_for": "Propietarios que conocieron la fotomulta por una consulta, un cobro u otra vía distinta de la notificación esperada.",
+            "duration": "10 a 15 minutos",
+            "price_auto": 19900,
+            "price_review": 99900,
+            "documents": [
+              "Solicitud integral de expediente y reclamación por notificación"
+            ],
+            "review_default": "optional",
+            "review_value": "La revisión es especialmente útil cuando existe resolución, cobro coactivo, embargo, término próximo o proceso judicial.",
+            "jurisdiction": "Colombia",
+            "outcomes": [
+              "Solicitud integral de expediente",
+              "Reclamación por notificación y debido proceso",
+              "Solicitud de audiencia, pruebas y contradicción",
+              "Revocatoria directa condicionada",
+              "Corrección SIMIT/RUNT",
+              "Matriz técnica SAST",
+              "Guía de términos y escalamiento"
+            ],
+            "exclusions": [
+              "Comparendo impuesto directamente en vía",
+              "Cobro coactivo, mandamiento o embargo",
+              "Pago o aceptación no aclarados",
+              "Proceso judicial activo",
+              "Hurto, suplantación, clonación o fraude",
+              "Término urgente",
+              "Dudas de autenticidad documental"
+            ],
+            "value_points": [
+              "Reclamación ajustada a la etapa conocida",
+              "Solicitud ordenada del expediente y pruebas de notificación",
+              "Alertas frente a cobro, embargo o términos críticos"
+            ],
+            "before_you_start": [
+              "Comparendo o captura de la consulta",
+              "Fecha en que conociste la multa",
+              "Datos de la autoridad y de la placa"
+            ],
+            "not_included": [
+              "No garantiza la revocatoria o anulación",
+              "No suspende por sí sola un cobro o embargo",
+              "No sustituye defensa judicial cuando ya existe proceso"
+            ],
+            "client_note": "El documento se adapta a la información confirmada y señala cuándo conviene escalar el caso.",
+            "document_details": [
+              {
+                "template_id": "TPL-CO-TR-002-ESCALATION-GUIDE",
+                "title": "Guía de escalamiento y control de riesgos",
+                "kind": "traffic_escalation_guide",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Integrado en M27.1 desde biblioteca jurídica profunda; pendiente de aprobación jurídica y QA dual por revisión antes de liberación externa."
+              },
+              {
+                "template_id": "TPL-CO-TR-002-HEARING-REQUEST",
+                "title": "Solicitud de audiencia, defensa y práctica de pruebas",
+                "kind": "traffic_hearing_request",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Integrado en M27.1 desde biblioteca jurídica profunda; pendiente de aprobación jurídica y QA dual por revisión antes de liberación externa."
+              },
+              {
+                "template_id": "TPL-CO-TR-002-NOTICE-CLAIM",
+                "title": "Reclamación por falta o irregularidad de notificación",
+                "kind": "traffic_notice_claim",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Integrado en M27.1 desde biblioteca jurídica profunda; pendiente de aprobación jurídica y QA dual por revisión antes de liberación externa."
+              },
+              {
+                "template_id": "TPL-CO-TR-002-TRAFFIC-REQUEST",
+                "title": "Solicitud integral de expediente administrativo",
+                "kind": "traffic_record_request",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Integrado en M27.1 desde biblioteca jurídica profunda; pendiente de aprobación jurídica y QA dual por revisión antes de liberación externa."
+              },
+              {
+                "template_id": "TPL-CO-TR-002-REGISTRY-CORRECTION",
+                "title": "Solicitud de verificación y corrección de registros SIMIT/RUNT",
+                "kind": "traffic_registry_correction",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Integrado en M27.1 desde biblioteca jurídica profunda; pendiente de aprobación jurídica y QA dual por revisión antes de liberación externa."
+              },
+              {
+                "template_id": "TPL-CO-TR-002-REITERATION",
+                "title": "Reiteración de petición y requerimiento de respuesta",
+                "kind": "traffic_reiteration",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Integrado en M27.1 desde biblioteca jurídica profunda; pendiente de aprobación jurídica y QA dual por revisión antes de liberación externa."
+              },
+              {
+                "template_id": "TPL-CO-TR-002-REVOCATION",
+                "title": "Solicitud condicionada de revocación directa",
+                "kind": "traffic_revocation_request",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Integrado en M27.1 desde biblioteca jurídica profunda; pendiente de aprobación jurídica y QA dual por revisión antes de liberación externa."
+              },
+              {
+                "template_id": "TPL-CO-TR-002-TRACEABILITY",
+                "title": "Ficha de trazabilidad de generación",
+                "kind": "traffic_traceability",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Integrado en M27.1 desde biblioteca jurídica profunda; pendiente de aprobación jurídica y QA dual por revisión antes de liberación externa."
+              }
+            ]
+          },
+          {
+            "code": "CO-LA-001",
+            "title": "Calcula tu liquidación laboral y prepara una reclamación",
+            "internal_title": "Liquidación laboral + reclamación",
+            "vertical": "Laboral",
+            "icon": "⌛",
+            "summary": "Estima prestaciones y valores confirmables, revisa el desglose y genera una reclamación con los datos suministrados.",
+            "best_for": "Trabajadores del sector privado que terminaron una relación laboral y necesitan ordenar cifras, períodos y pagos.",
+            "duration": "12 a 20 minutos",
+            "price_auto": 19900,
+            "price_review": 99900,
+            "documents": [
+              "Informe técnico de liquidación laboral por concepto",
+              "Reclamación directa de acreencias laborales",
+              "Matriz de soportes y conciliación de pagos",
+              "Propuesta de acuerdo de pago y cierre (opcional)"
+            ],
+            "review_default": "optional",
+            "review_value": "Un especialista puede revisar salario variable, indemnizaciones, estabilidad reforzada, pagos previos o hechos discutidos.",
+            "jurisdiction": "Colombia",
+            "outcomes": [
+              "Cálculo neto por concepto y período",
+              "Informe técnico extenso",
+              "Reclamación directa",
+              "Matriz de soportes y pagos",
+              "Propuesta de acuerdo condicional"
+            ],
+            "exclusions": [
+              "Sector público",
+              "Estabilidad reforzada o fuero",
+              "Salario integral",
+              "Contrato realidad",
+              "Régimen colectivo o extralegal",
+              "Litigio o conciliación activa",
+              "Salario variable sin soportes"
+            ],
+            "value_points": [
+              "Cálculo desglosado con parámetros versionados",
+              "Separación entre valores estimables y asuntos discutidos",
+              "Reclamación directa editable"
+            ],
+            "before_you_start": [
+              "Fechas de ingreso y retiro",
+              "Salario y pagos pendientes",
+              "Contrato, desprendibles o certificaciones disponibles"
+            ],
+            "not_included": [
+              "No fija judicialmente indemnizaciones discutidas",
+              "No reemplaza prueba de salario variable o pagos previos",
+              "No resuelve fueros o estabilidad reforzada sin revisión"
+            ],
+            "client_note": "Los valores dependen de que las fechas, salarios y pagos suministrados sean completos y correctos.",
+            "document_details": [
+              {
+                "template_id": "TPL-CO-LA-001-CALCULATION",
+                "title": "Informe técnico de liquidación laboral por concepto",
+                "kind": "calculation",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Borrador profundizado M27.4; pendiente de aprobación jurídica y QA sobre la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-LA-001-CLAIM",
+                "title": "Reclamación directa de acreencias laborales",
+                "kind": "claim",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Borrador profundizado M27.4; pendiente de aprobación jurídica y QA sobre la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-LA-001-EVIDENCE",
+                "title": "Matriz de soportes y conciliación de pagos",
+                "kind": "evidence_matrix",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Borrador profundizado M27.4; pendiente de aprobación jurídica y QA sobre la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-LA-001-SETTLEMENT",
+                "title": "Propuesta de acuerdo de pago y cierre",
+                "kind": "settlement",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Borrador profundizado M27.4; pendiente de aprobación jurídica y QA sobre la misma revisión."
+              }
+            ]
+          },
+          {
+            "code": "CO-LA-002",
+            "title": "Crea un contrato de trabajo adaptado al cargo y la modalidad",
+            "internal_title": "Contrato de trabajo personalizado",
+            "vertical": "Laboral",
+            "icon": "▤",
+            "summary": "Define las partes, funciones, jornada, remuneración y módulos especiales para generar el contrato y su anexo funcional.",
+            "best_for": "Empleadores que necesitan formalizar una relación laboral privada con información clara y condiciones estándar.",
+            "duration": "15 a 25 minutos",
+            "price_auto": 39900,
+            "price_review": 129900,
+            "documents": [
+              "Contrato de trabajo personalizado",
+              "Anexo de cargo, funciones y módulos laborales"
+            ],
+            "review_default": "optional",
+            "review_value": "La revisión agrega valor en esquemas variables, trabajo remoto, cargos sensibles, protección especial o modalidades atípicas.",
+            "jurisdiction": "Colombia",
+            "outcomes": [
+              "Contrato laboral completo",
+              "Anexos condicionales",
+              "Lista de alistamiento y cumplimiento",
+              "Ficha de trazabilidad",
+              "Paquete consolidado"
+            ],
+            "exclusions": [
+              "Servidor público o trabajador oficial",
+              "Expatriación o ejecución principal fuera de Colombia",
+              "Menor de edad",
+              "Régimen especial no parametrizado",
+              "Decisión discriminatoria"
+            ],
+            "value_points": [
+              "Contrato ajustado a modalidad, cargo y remuneración",
+              "Anexo de funciones y condiciones especiales",
+              "Módulos de confidencialidad, datos y trabajo remoto cuando apliquen"
+            ],
+            "before_you_start": [
+              "Datos de empleador y trabajador",
+              "Cargo, funciones, salario y jornada",
+              "Fecha de inicio y modalidad contractual"
+            ],
+            "not_included": [
+              "No valida estructuras de compensación complejas sin revisión",
+              "No sustituye reglamentos o políticas internas",
+              "No elimina obligaciones de seguridad social y SST"
+            ],
+            "client_note": "La plataforma ayuda a documentar la relación; la realidad de la prestación siempre prevalece sobre el nombre del contrato.",
+            "document_details": [
+              {
+                "template_id": "TPL-CO-LA-002-CONSOLIDATED-PACKAGE",
+                "title": "Paquete jurídico laboral consolidado",
+                "kind": "consolidated_package",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-LA-002-EMPLOYMENT-CONFIDENTIALITY-ANNEX",
+                "title": "Anexo de confidencialidad, propiedad intelectual y datos",
+                "kind": "employment_confidentiality_annex",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-LA-002-EMPLOYMENT-CONTRACT",
+                "title": "Contrato de trabajo personalizado",
+                "kind": "employment_contract",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-LA-002-EMPLOYMENT-EQUIPMENT-ANNEX",
+                "title": "Anexo de equipos, activos y credenciales",
+                "kind": "employment_equipment_annex",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-LA-002-EMPLOYMENT-ANNEX",
+                "title": "Anexo de perfil, cargo y funciones",
+                "kind": "employment_functions_annex",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-LA-002-EMPLOYMENT-ONBOARDING-CHECKLIST",
+                "title": "Lista de alistamiento, afiliaciones y cumplimiento",
+                "kind": "employment_onboarding_checklist",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-LA-002-EMPLOYMENT-REMOTE-ANNEX",
+                "title": "Anexo de modalidad no presencial",
+                "kind": "employment_remote_annex",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-LA-002-TRACEABILITY",
+                "title": "Ficha de diagnóstico y trazabilidad laboral",
+                "kind": "traceability",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              }
+            ]
+          },
+          {
+            "code": "CO-EM-003",
+            "title": "Crea tu contrato de prestación de servicios y sus anexos",
+            "internal_title": "Contrato de prestación de servicios",
+            "vertical": "Empresarial",
+            "icon": "▣",
+            "summary": "Define el servicio, los entregables, pagos y módulos de confidencialidad, datos y propiedad intelectual, con alertas responsables frente a posibles señales de subordinación.",
+            "best_for": "Empresas, emprendimientos y profesionales independientes que contratarán un servicio privado con autonomía real y entregables verificables.",
+            "duration": "12 a 20 minutos",
+            "price_auto": 39900,
+            "price_review": 129900,
+            "documents": [
+              "Contrato de prestación de servicios independientes",
+              "Anexo No. 1 — Alcance, entregables y cronograma",
+              "Acuerdo de confidencialidad cuando corresponda",
+              "Anexo de propiedad intelectual cuando corresponda",
+              "Anexo de tratamiento de datos personales cuando corresponda",
+              "Acta de terminación y cierre"
+            ],
+            "review_default": "optional",
+            "review_value": "Puedes generar el paquete estándar sin abogado. La revisión se recomienda únicamente si aparecen alertas por exclusividad, disponibilidad continua, subcontratación, cuantía elevada o condiciones particulares.",
+            "jurisdiction": "Colombia",
+            "outcomes": [
+              "Contrato de prestación de servicios independientes",
+              "Anexo No. 1 — Alcance, entregables y cronograma",
+              "Acuerdo de confidencialidad",
+              "Anexo de propiedad intelectual",
+              "Anexo de tratamiento de datos personales",
+              "Acta de terminación y cierre"
+            ],
+            "exclusions": [
+              "Contratación estatal",
+              "Relación laboral real",
+              "Servicios regulados",
+              "Litigio activo"
+            ],
+            "value_points": [
+              "Hasta seis documentos coherentes desde un solo formulario",
+              "Detección de horario, órdenes y control disciplinario incompatibles con el formato estándar",
+              "Módulos condicionales sin exigir abogado para un caso ordinario",
+              "Vista previa, corrección y regeneración del paquete"
+            ],
+            "before_you_start": [
+              "Identificación y correos de contratante y contratista",
+              "Descripción concreta del servicio, entregables y criterios de aceptación",
+              "Honorarios, fechas y forma de pago",
+              "Definición sobre confidencialidad, datos personales y propiedad intelectual"
+            ],
+            "not_included": [
+              "Contratación estatal o servicios sujetos a régimen especial",
+              "Conversión artificial de una relación laboral en contrato civil o comercial",
+              "Representación en controversias, procesos o trámites ante autoridades",
+              "Anexos técnicos sectoriales que no hayan sido suministrados"
+            ],
+            "client_note": "Los casos ordinarios pueden autogenerarse. Si se informan horario fijo, órdenes permanentes o control disciplinario, la versión contractual definitiva se bloquea para evitar documentar de forma irresponsable una posible relación laboral.",
+            "document_details": [
+              {
+                "template_id": "TPL-CO-EM-003-CLOSURE",
+                "title": "Acta de cierre y liquidación documental",
+                "kind": "closure",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.3; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-EM-003-NDA",
+                "title": "Anexo No. 2A — Confidencialidad y seguridad de la información",
+                "kind": "confidentiality",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.3; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-EM-003-CONTRACT",
+                "title": "Contrato de prestación de servicios independientes",
+                "kind": "contract",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.3; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-EM-003-DATA",
+                "title": "Anexo No. 2C — Tratamiento de datos personales",
+                "kind": "data_processing",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.3; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-EM-003-IP",
+                "title": "Anexo No. 2B — Propiedad intelectual y entregables",
+                "kind": "intellectual_property",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.3; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-EM-003-SCOPE",
+                "title": "Anexo No. 1 — Alcance, entregables y cronograma",
+                "kind": "scope",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.3; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              }
+            ]
+          },
+          {
+            "code": "CO-EM-004",
+            "title": "Protege información, secretos empresariales y activos intelectuales",
+            "internal_title": "Confidencialidad y propiedad intelectual",
+            "vertical": "Empresarial",
+            "icon": "◇",
+            "summary": "Configura un NDA unilateral o mutuo y activa inventarios, anexos de datos, propiedad intelectual, software, incidentes y cierre.",
+            "best_for": "Empresas, equipos, consultores o aliados que compartirán información estratégica, técnica, comercial o creativa.",
+            "duration": "12 a 20 minutos",
+            "price_auto": 29900,
+            "price_review": 99900,
+            "documents": [
+              "Acuerdo de confidencialidad",
+              "Inventario de información y matriz de acceso",
+              "Anexo según la relación",
+              "Anexo de propiedad intelectual, antecedentes y OSS",
+              "Anexo de datos personales y transferencias",
+              "Protocolo de incidentes de información",
+              "Acta de devolución, eliminación y cierre"
+            ],
+            "review_default": "optional",
+            "review_value": "Un abogado puede ajustar secretos empresariales, desarrollos de software, datos personales y relaciones internacionales.",
+            "jurisdiction": "Colombia",
+            "outcomes": [
+              "NDA unilateral o mutuo",
+              "Inventario y matriz de acceso",
+              "Anexo por relación",
+              "Anexo de PI/antecedentes/OSS",
+              "Anexo de datos",
+              "Protocolo de incidentes",
+              "Acta de cierre"
+            ],
+            "exclusions": [
+              "Prohibición general de trabajar",
+              "Renuncia a derechos morales",
+              "Descuentos automáticos",
+              "Transferencias internacionales complejas sin revisión"
+            ],
+            "value_points": [
+              "Diferencia confidencialidad, datos personales y propiedad intelectual",
+              "Clasifica información y accesos autorizados",
+              "Bloquea restricciones incompatibles con autoservicio",
+              "Genera módulos proporcionales al caso"
+            ],
+            "before_you_start": [
+              "Identificación de las partes y relación principal",
+              "Categorías de información y personas autorizadas",
+              "Finalidad, duración, sistemas, nubes y herramientas de IA",
+              "Materiales preexistentes y componentes de terceros"
+            ],
+            "not_included": [
+              "No reemplaza evaluación especializada de datos sensibles",
+              "No admite renuncia a derechos morales ni cesión futura indeterminada",
+              "No autoriza prohibición general de trabajar",
+              "No cubre automáticamente transferencias internacionales complejas"
+            ],
+            "client_note": "La protección efectiva también depende de controles operativos, clasificación y acceso restringido a la información.",
+            "document_details": [
+              {
+                "template_id": "TPL-CO-EM-004-CLOSURE-ACT",
+                "title": "Acta de devolución, eliminación y cierre",
+                "kind": "closure_act",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-EM-004-DATA-ANNEX",
+                "title": "Anexo de datos personales y transferencias",
+                "kind": "data_annex",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-EM-004-INCIDENT-PROTOCOL",
+                "title": "Protocolo de incidentes de información",
+                "kind": "incident_protocol",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-EM-004-INFORMATION-INVENTORY",
+                "title": "Inventario de información y matriz de acceso",
+                "kind": "information_inventory",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-EM-004-IP-ANNEX",
+                "title": "Anexo de propiedad intelectual, antecedentes y OSS",
+                "kind": "ip_annex",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-EM-004-NDA",
+                "title": "Acuerdo de confidencialidad",
+                "kind": "nda",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-EM-004-RELATIONSHIP-ANNEX",
+                "title": "Anexo de confidencialidad según la relación",
+                "kind": "relationship_annex",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              }
+            ]
+          },
+          {
+            "code": "CO-AR-001",
+            "title": "Prepara un arrendamiento de vivienda urbana",
+            "internal_title": "Arrendamiento de vivienda urbana",
+            "vertical": "Inmobiliario",
+            "icon": "⌂",
+            "summary": "Genera el contrato, el inventario y el acta de entrega con los datos del inmueble, las partes y las condiciones acordadas.",
+            "best_for": "Propietarios y arrendatarios que celebrarán un arrendamiento residencial ordinario en Colombia.",
+            "duration": "15 a 25 minutos",
+            "price_auto": 49900,
+            "price_review": 129900,
+            "documents": [
+              "Contrato de arrendamiento de vivienda urbana",
+              "Inventario del inmueble y evidencia de estado",
+              "Acta de entrega del inmueble"
+            ],
+            "review_default": "optional",
+            "review_value": "La revisión es útil en garantías complejas, copropiedad, codeudores, situaciones de ocupación o cláusulas especiales.",
+            "jurisdiction": "Colombia",
+            "outcomes": [
+              "Contrato completo de vivienda urbana",
+              "Validación económica del canon",
+              "Inventario ampliado",
+              "Acta de entrega",
+              "Acta de restitución y cierre",
+              "Guía operativa"
+            ],
+            "exclusions": [
+              "Uso comercial, rural o turístico",
+              "Tenencia controvertida o proceso activo",
+              "Defectos graves no corregidos",
+              "Depósito prohibido",
+              "Canon que excede el límite legal"
+            ],
+            "value_points": [
+              "Contrato, inventario y acta de entrega coordinados",
+              "Condiciones económicas y de uso organizadas",
+              "Alertas sobre garantías o cláusulas sensibles"
+            ],
+            "before_you_start": [
+              "Datos de las partes y del inmueble",
+              "Canon, administración, servicios y duración",
+              "Inventario y estado de entrega"
+            ],
+            "not_included": [
+              "No sustituye estudio de títulos o certificado de tradición",
+              "No resuelve ocupaciones o restituciones en curso",
+              "No valida garantías atípicas sin revisión"
+            ],
+            "client_note": "Las condiciones deben coincidir con el estado real del inmueble y con lo efectivamente acordado.",
+            "document_details": [
+              {
+                "template_id": "TPL-CO-AR-001-DELIVERY-ACT",
+                "title": "Acta de entrega del inmueble",
+                "kind": "delivery_act",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-AR-001-LEASE-CONTRACT",
+                "title": "Contrato de arrendamiento de vivienda urbana",
+                "kind": "lease_contract",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-AR-001-LEASE-GUIDE",
+                "title": "Guía operativa de firma, ejecución y cierre",
+                "kind": "lease_guide",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-AR-001-LEASE-INVENTORY",
+                "title": "Inventario del inmueble y evidencia de estado",
+                "kind": "lease_inventory",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-AR-001-RESTITUTION-ACT",
+                "title": "Acta de restitución del inmueble",
+                "kind": "lease_restitution_act",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              }
+            ]
+          },
+          {
+            "code": "CO-SA-001",
+            "title": "Presenta y controla un derecho de petición ante una EPS, IPS u otro actor de salud",
+            "internal_title": "Derecho de petición a EPS o IPS",
+            "vertical": "Salud",
+            "icon": "✚",
+            "summary": "Organiza identidad, legitimación, hechos, solicitud, soportes, privacidad y términos para producir un paquete documental trazable.",
+            "best_for": "Pacientes y representantes con una solicitud administrativa de salud que no sustituye atención de urgencias ni un proceso judicial activo.",
+            "duration": "20 a 35 minutos",
+            "price_auto": 19900,
+            "price_review": 79900,
+            "documents": [
+              "Derecho de petición integral ante EPS o IPS",
+              "Solicitud de historia clínica y entrega segura",
+              "Reiteración por falta o insuficiencia de respuesta",
+              "Ruta y borrador de PQRD ante Supersalud",
+              "Matriz de soportes, legitimación y privacidad",
+              "Calendario preliminar de términos y seguimiento",
+              "Guía de radicación, privacidad y seguimiento"
+            ],
+            "review_default": "recommended",
+            "review_value": "La revisión profesional valida urgencia, acceso a historia clínica, términos y estrategia antes de radicar.",
+            "jurisdiction": "Colombia",
+            "outcomes": [
+              "Derecho de petición integral",
+              "Solicitud de historia clínica y entrega segura",
+              "Reiteración por falta o insuficiencia de respuesta",
+              "Ruta de escalamiento ante Supersalud",
+              "Matriz de soportes y legitimación",
+              "Calendario preliminar de términos",
+              "Guía de radicación, privacidad y seguimiento"
+            ],
+            "exclusions": [
+              "Urgencia vital o deterioro grave que exige atención asistencial inmediata",
+              "Tutela o actuación administrativa activa que requiere coordinación profesional",
+              "Paciente fallecido, menor o persona con capacidad limitada sin soporte de legitimación suficiente",
+              "Historia clínica solicitada por tercero sin autorización o base jurídica acreditada",
+              "Información personal o clínica no minimizada o no confirmada"
+            ],
+            "value_points": [
+              "42 preguntas guiadas y 25 reglas de control",
+              "Término preliminar según tipo de petición",
+              "Privacidad y legitimación para datos de salud",
+              "Siete documentos especializados y trazables"
+            ],
+            "before_you_start": [
+              "Identificación del peticionario y del paciente",
+              "Entidad y canal oficial de radicación",
+              "Orden, fórmula o soporte pertinente",
+              "Radicados y respuestas previas",
+              "Autorización o soporte de representación cuando aplique"
+            ],
+            "not_included": [
+              "No reemplaza atención médica urgente",
+              "No interpone automáticamente tutela o demanda",
+              "No garantiza autorización, diagnóstico o prestación",
+              "No autoriza acceso a historia clínica sin legitimación"
+            ],
+            "client_note": "Ante riesgo vital, deterioro grave o signos de alarma, busca atención asistencial inmediata y no esperes la respuesta a una petición.",
+            "document_details": [
+              {
+                "template_id": "TPL-CO-SA-001-HEALTH-DEADLINE-CALENDAR",
+                "title": "Calendario preliminar de términos y seguimiento",
+                "kind": "health_deadline_calendar",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-SA-001-HEALTH-EVIDENCE-INDEX",
+                "title": "Matriz de soportes, legitimación y privacidad",
+                "kind": "health_evidence_index",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-SA-001-HEALTH-FILING-GUIDE",
+                "title": "Guía de radicación, privacidad y seguimiento",
+                "kind": "health_filing_guide",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-SA-001-HEALTH-PETITION",
+                "title": "Derecho de petición integral ante EPS o IPS",
+                "kind": "health_petition",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-SA-001-HEALTH-REITERATION",
+                "title": "Reiteración por falta o insuficiencia de respuesta",
+                "kind": "health_reiteration",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-SA-001-MEDICAL-RECORD-REQUEST",
+                "title": "Solicitud de historia clínica y entrega segura",
+                "kind": "medical_record_request",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-SA-001-SUPERSALUD-ESCALATION",
+                "title": "Ruta y borrador de PQRD ante Supersalud",
+                "kind": "supersalud_escalation",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              }
+            ]
+          },
+          {
+            "code": "CO-CD-001",
+            "title": "Solicita la corrección de un reporte en centrales de riesgo",
+            "internal_title": "Centrales de riesgo y hábeas data",
+            "vertical": "Consumo y datos",
+            "icon": "◈",
+            "summary": "Identifica el dato discutido, organiza evidencias y genera una reclamación de hábeas data financiero.",
+            "best_for": "Personas que detectaron información inexacta, desactualizada, no autorizada o sin soporte en su historial crediticio.",
+            "duration": "10 a 18 minutos",
+            "price_auto": 19900,
+            "price_review": 99900,
+            "documents": [
+              "Reclamo de hábeas data financiero y crediticio",
+              "Índice de evidencia del reporte"
+            ],
+            "review_default": "optional",
+            "review_value": "La revisión ayuda cuando existen suplantación, fraude, múltiples obligaciones, procesos activos o daños relevantes.",
+            "jurisdiction": "Colombia",
+            "outcomes": [
+              "Consulta integral del dato, fuente, usuarios y soportes",
+              "Reclamo integral de hábeas data financiero",
+              "Reiteración, leyenda y control de silencio",
+              "Ruta y borrador de escalamiento ante autoridad",
+              "Matriz de evidencia, responsables y trazabilidad",
+              "Calendario de términos, permanencia y caducidad",
+              "Protocolo de suplantación, alertas y preservación"
+            ],
+            "exclusions": [
+              "Proceso judicial, insolvencia, cobro ejecutivo o embargo relacionado",
+              "Suplantación compleja o múltiples productos falsos",
+              "Daño patrimonial relevante o término crítico",
+              "Representación o legitimación no acreditada",
+              "Datos esenciales o anexos no confirmados y protegidos"
+            ],
+            "value_points": [
+              "Identificación precisa del dato cuestionado",
+              "Reclamo y evidencia organizados",
+              "Seguimiento de respuesta y escalamiento"
+            ],
+            "before_you_start": [
+              "Reporte o consulta donde aparece el dato",
+              "Entidad que reporta y obligación discutida",
+              "Soportes de pago, suplantación o inconsistencia"
+            ],
+            "not_included": [
+              "No elimina reportes correctos y vigentes",
+              "No garantiza indemnizaciones",
+              "No sustituye denuncia o acciones adicionales en fraude"
+            ],
+            "client_note": "La procedencia depende del origen, exactitud, autorización, permanencia y actualización del dato.",
+            "document_details": [
+              {
+                "template_id": "TPL-CO-CD-001-HABEAS-AUTHORITY-ESCALATION",
+                "title": "Ruta y borrador de escalamiento ante autoridad",
+                "kind": "habeas_authority_escalation",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-001-HABEAS-CLAIM",
+                "title": "Reclamo integral de hábeas data financiero",
+                "kind": "habeas_claim",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-001-HABEAS-CONSULTATION",
+                "title": "Consulta integral del dato, fuente, usuarios y soportes",
+                "kind": "habeas_consultation",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-001-HABEAS-DEADLINE-CALENDAR",
+                "title": "Calendario de términos, permanencia y caducidad",
+                "kind": "habeas_deadline_calendar",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-001-HABEAS-EVIDENCE-MATRIX",
+                "title": "Matriz de evidencia, responsables y trazabilidad",
+                "kind": "habeas_evidence_matrix",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-001-HABEAS-REITERATION",
+                "title": "Reiteración, leyenda y control de silencio",
+                "kind": "habeas_reiteration",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-001-IDENTITY-THEFT-PROTOCOL",
+                "title": "Protocolo de suplantación, alertas y preservación",
+                "kind": "identity_theft_protocol",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              }
+            ]
+          },
+          {
+            "code": "CO-CD-003",
+            "title": "Identifica el mecanismo correcto entre garantía, retracto, reversión y falta de entrega",
+            "internal_title": "Garantía, retracto y reversión del pago",
+            "vertical": "Consumo y datos",
+            "icon": "♢",
+            "summary": "Clasifica la situación de consumo, organiza la evidencia, calcula términos preliminares y genera comunicaciones separadas para cada mecanismo.",
+            "best_for": "Consumidores que necesitan reclamar por calidad, ejercer retracto, solicitar reversión del pago, detener débitos periódicos o actuar por falta de entrega.",
+            "duration": "12 a 20 minutos",
+            "price_auto": 19900,
+            "price_review": 79900,
+            "documents": [
+              "Diagnóstico jurídico del mecanismo de consumo",
+              "Reclamación directa de garantía legal",
+              "Comunicación de ejercicio del derecho de retracto",
+              "Solicitud coordinada de reversión del pago",
+              "Revocación de débito periódico y control de cargos",
+              "Terminación por falta de entrega y devolución",
+              "Matriz de evidencia, pretensiones y destinatarios",
+              "Calendario de términos y actuaciones de consumo"
+            ],
+            "review_default": "recommended",
+            "review_value": "La revisión jurídica permite validar el mecanismo, los destinatarios, la cronología, las pretensiones y los términos aplicables al caso concreto.",
+            "jurisdiction": "Colombia",
+            "outcomes": [
+              "Diagnóstico jurídico del mecanismo de consumo",
+              "Reclamación directa de garantía legal",
+              "Comunicación de ejercicio del derecho de retracto",
+              "Solicitud coordinada de reversión del pago",
+              "Revocación de débito periódico y control de cargos",
+              "Terminación por falta de entrega y devolución",
+              "Matriz de evidencia, pretensiones y destinatarios",
+              "Calendario de términos y actuaciones de consumo"
+            ],
+            "exclusions": [
+              "Lesión o riesgo de seguridad",
+              "Fraude complejo o suplantación",
+              "Régimen sectorial especial sin definir",
+              "Proceso activo por los mismos hechos",
+              "Legitimación o datos esenciales no acreditados"
+            ],
+            "value_points": [
+              "Clasificación separada de cada mecanismo",
+              "Cronología, términos y destinatarios trazables",
+              "Documentos y matriz de evidencia según el riesgo"
+            ],
+            "before_you_start": [
+              "Factura, contrato, orden o comprobante de compra",
+              "Comprobantes de pago, extractos y datos del medio de pago",
+              "Comunicaciones, respuestas, evidencia del defecto o de la falta de entrega"
+            ],
+            "not_included": [
+              "No declara automáticamente la procedencia de garantía, retracto o reversión",
+              "No reemplaza peritajes técnicos ni prueba del defecto o del fraude",
+              "No sustituye representación administrativa o judicial"
+            ],
+            "client_note": "Garantía, retracto, reversión del pago, revocación de débitos y terminación por falta de entrega son mecanismos distintos; la salida depende del canal, las fechas, la causal, el pago y la evidencia.",
+            "document_details": [
+              {
+                "template_id": "TPL-CO-CD-003-CONSUMER-DEADLINE-CALENDAR",
+                "title": "Calendario de términos y actuaciones de consumo",
+                "kind": "consumer_deadline_calendar",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.3; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-003-CONSUMER-EVIDENCE-MATRIX",
+                "title": "Matriz de evidencia, pretensiones y destinatarios",
+                "kind": "consumer_evidence_matrix",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.3; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-003-CONSUMER-MECHANISM-DIAGNOSIS",
+                "title": "Diagnóstico jurídico del mecanismo de consumo",
+                "kind": "consumer_mechanism_diagnosis",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.3; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-003-ECOMMERCE-NON-DELIVERY-TERMINATION",
+                "title": "Terminación por falta de entrega y devolución",
+                "kind": "ecommerce_non_delivery_termination",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.3; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-003-PAYMENT-REVERSAL-REQUEST",
+                "title": "Solicitud coordinada de reversión del pago",
+                "kind": "payment_reversal_request",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.3; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-003-RECURRING-DEBIT-REVOCATION",
+                "title": "Revocación de débito periódico y control de cargos",
+                "kind": "recurring_debit_revocation",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.3; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-003-WARRANTY-CLAIM",
+                "title": "Reclamación directa de garantía legal",
+                "kind": "warranty_claim",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.3; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-003-WITHDRAWAL-NOTICE",
+                "title": "Comunicación de ejercicio del derecho de retracto",
+                "kind": "withdrawal_notice",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.3; pendiente de aprobación jurídica y QA dual de la misma revisión."
+              }
+            ]
+          },
+          {
+            "code": "CO-CD-004",
+            "title": "Organiza un cobro documentado, un acuerdo de pago o un pagaré sin mezclar etapas",
+            "internal_title": "Cobro, acuerdo de pago, pagaré, garantías y cierre",
+            "vertical": "Civil y comercial",
+            "icon": "$",
+            "summary": "Verifica obligación, saldo, intereses, cobranza, negociación y título valor antes de generar documentos trazables.",
+            "best_for": "Acreedores y empresas que necesitan ordenar cartera civil o comercial, negociar pagos, documentar cuotas o cerrar obligaciones.",
+            "duration": "15 a 25 minutos",
+            "price_auto": 29900,
+            "price_review": 129900,
+            "documents": [
+              "Diagnóstico de obligación, título y ruta de cobro",
+              "Estado de cuenta conciliable y liquidación preliminar",
+              "Requerimiento de pago y propuesta de solución",
+              "Acuerdo de pago integral",
+              "Cronograma e imputación de cuotas",
+              "Pagaré diligenciado y controlado",
+              "Carta de instrucciones para pagaré",
+              "Recibo de pago y actualización de saldo",
+              "Paz y salvo o constancia de cierre condicionada",
+              "Matriz de evidencia, comunicaciones y trazabilidad"
+            ],
+            "review_default": "recommended",
+            "review_value": "La revisión jurídica valida exigibilidad, prescripción, interés, insolvencia, título valor, garantías y estrategia.",
+            "jurisdiction": "Colombia",
+            "outcomes": [
+              "Diagnóstico integral de obligación, título y ruta de recuperación",
+              "Estado de cuenta conciliable y memoria de liquidación",
+              "Requerimiento prejurídico y propuesta de solución",
+              "Acuerdo integral de pago",
+              "Pagaré diligenciado y controlado",
+              "Carta de instrucciones específica y limitada",
+              "Matriz probatoria, seguimiento, pagos y reportes",
+              "Cierre de cartera, cancelación de garantías y constancia condicionada",
+              "Paquete documental consolidado M20"
+            ],
+            "exclusions": [
+              "Obligaciones laborales, familiares o tributarias",
+              "Fraude, capacidad o sucesión por definir",
+              "Prescripción o caducidad dudosa",
+              "Proceso judicial, insolvencia, embargo o medida activa",
+              "Garantías reales",
+              "Tasa superior al límite vigente",
+              "Pagaré en blanco sin instrucciones"
+            ],
+            "value_points": [
+              "Saldo y abonos conciliables",
+              "Cobranza respetuosa y control de datos",
+              "Acuerdo, pagaré, recibos y cierre por etapas"
+            ],
+            "before_you_start": [
+              "Contrato, factura, pagaré o soporte del negocio",
+              "Extracto de movimientos, abonos y notas crédito",
+              "Canales autorizados, comunicaciones y estado procesal"
+            ],
+            "not_included": [
+              "No declara automáticamente mérito ejecutivo o prescripción",
+              "No perfecciona garantías reales",
+              "No representa judicialmente ni promete recaudo"
+            ],
+            "client_note": "El cobro, el acuerdo, el pagaré, el recibo y el paz y salvo son documentos distintos; el sistema selecciona la salida según la etapa y los riesgos.",
+            "document_details": [
+              {
+                "template_id": "TPL-CO-CD-004-ACCOUNT-STATEMENT",
+                "title": "Estado de cuenta conciliable y liquidación preliminar",
+                "kind": "account_statement",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-004-COLLECTION-EVIDENCE-MATRIX",
+                "title": "Matriz de evidencia, comunicaciones y trazabilidad",
+                "kind": "collection_evidence_matrix",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-004-COLLECTION-LETTER",
+                "title": "Requerimiento de pago y propuesta de solución",
+                "kind": "collection_letter",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-004-DEBT-DIAGNOSTIC",
+                "title": "Diagnóstico de obligación, título y ruta de cobro",
+                "kind": "debt_diagnostic",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-004-INSTRUCTION-LETTER",
+                "title": "Carta de instrucciones para pagaré",
+                "kind": "instruction_letter",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-004-PAYMENT-AGREEMENT",
+                "title": "Acuerdo de pago integral",
+                "kind": "payment_agreement",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-004-PAYMENT-RECEIPT",
+                "title": "Recibo de pago y actualización de saldo",
+                "kind": "payment_receipt",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-004-PAYMENT-SCHEDULE",
+                "title": "Cronograma e imputación de cuotas",
+                "kind": "payment_schedule",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-004-PROMISSORY-NOTE",
+                "title": "Pagaré diligenciado y controlado",
+                "kind": "promissory_note",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              },
+              {
+                "template_id": "TPL-CO-CD-004-SETTLEMENT-CERTIFICATE",
+                "title": "Paz y salvo o constancia de cierre condicionada",
+                "kind": "settlement_certificate",
+                "format": "DOCX",
+                "status": "Estructurada para demostración",
+                "canonical_status": "Paquete especializado integrado en M27.4; liberación externa bloqueada hasta aprobación jurídica y QA de la misma revisión."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "catalog_summary",
+      "passed": true,
+      "detail": {
+        "products": 11,
+        "pilot_products": 5,
+        "documental_products": 2,
+        "questions": 473,
+        "rules": 273,
+        "sources": 129,
+        "tests": 154,
+        "sast_rows": 10
+      }
+    }
+  ],
+  "ok": true,
+  "server_output_tail": "LegalAIZ.it v5.0.6 · M31.7 — Demo documental realista y generación integral · M31-7-DEMO-DOCUMENTAL-REALISTA-2026-08-04 disponible en http://127.0.0.1:55755\nExpedientes · documentos · revisión controlada · trazabilidad · seguridad por rol\n\nServidor detenido.\n"
+}

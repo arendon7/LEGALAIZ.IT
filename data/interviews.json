@@ -1,0 +1,5635 @@
+{
+  "CO-TR-001": {
+    "version": "2.26",
+    "intro": "Este flujo cruza datos del comparendo con una muestra curada y exige verificación individual en fuentes oficiales. Una coincidencia no equivale a nulidad, revocatoria o devolución.",
+    "sections": [
+      "Interesado",
+      "Comparendo",
+      "Dispositivo",
+      "Actuación oficial",
+      "Control técnico",
+      "Etapa",
+      "Complejidad",
+      "Evidencia",
+      "Riesgo",
+      "Consentimientos"
+    ],
+    "questions": [
+      {
+        "id": "requester_name",
+        "label": "Nombre completo del interesado",
+        "type": "text",
+        "required": true,
+        "section": "Interesado",
+        "min_length": 3
+      },
+      {
+        "id": "requester_id",
+        "label": "Número de identificación",
+        "type": "text",
+        "required": true,
+        "section": "Interesado",
+        "min_length": 5
+      },
+      {
+        "id": "email",
+        "label": "Correo para el expediente y las alertas",
+        "type": "text",
+        "required": true,
+        "section": "Interesado",
+        "format": "email"
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": false,
+        "section": "Interesado"
+      },
+      {
+        "id": "address",
+        "label": "Dirección para notificaciones",
+        "type": "text",
+        "required": false,
+        "section": "Interesado"
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa",
+        "type": "select",
+        "required": true,
+        "section": "Interesado",
+        "options": [
+          "Propietario",
+          "Conductor",
+          "Apoderado",
+          "Otro interesado legítimo"
+        ]
+      },
+      {
+        "id": "plate",
+        "label": "Placa del vehículo",
+        "type": "text",
+        "required": true,
+        "section": "Comparendo",
+        "min_length": 5,
+        "max_length": 8
+      },
+      {
+        "id": "comparendo_number",
+        "label": "Número del comparendo o actuación",
+        "type": "text",
+        "required": false,
+        "section": "Comparendo"
+      },
+      {
+        "id": "authority",
+        "label": "Organismo o autoridad de tránsito",
+        "type": "text",
+        "required": true,
+        "section": "Comparendo",
+        "min_length": 3
+      },
+      {
+        "id": "territory",
+        "label": "Municipio o distrito",
+        "type": "text",
+        "required": true,
+        "section": "Comparendo",
+        "min_length": 2
+      },
+      {
+        "id": "department",
+        "label": "Departamento",
+        "type": "text",
+        "required": true,
+        "section": "Comparendo",
+        "min_length": 2
+      },
+      {
+        "id": "event_date",
+        "label": "Fecha de la presunta infracción",
+        "type": "date",
+        "required": true,
+        "section": "Comparendo"
+      },
+      {
+        "id": "event_time",
+        "label": "Hora aproximada",
+        "type": "text",
+        "required": false,
+        "section": "Comparendo"
+      },
+      {
+        "id": "event_location",
+        "label": "Ubicación o dirección del punto",
+        "type": "text",
+        "required": false,
+        "section": "Comparendo"
+      },
+      {
+        "id": "conduct_code",
+        "label": "Código o descripción de la conducta",
+        "type": "text",
+        "required": false,
+        "section": "Comparendo"
+      },
+      {
+        "id": "device_known",
+        "label": "¿Identifica el dispositivo o cámara exactos?",
+        "type": "select",
+        "required": true,
+        "section": "Dispositivo",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ]
+      },
+      {
+        "id": "device_id",
+        "label": "Código, serial o identificación del dispositivo",
+        "type": "text",
+        "required": false,
+        "section": "Dispositivo"
+      },
+      {
+        "id": "exact_point_match",
+        "label": "¿La ubicación del comparendo coincide con el punto autorizado consultado?",
+        "type": "select",
+        "required": true,
+        "section": "Dispositivo",
+        "options": [
+          "Sí",
+          "No",
+          "No sé",
+          "No fue posible consultar"
+        ]
+      },
+      {
+        "id": "official_2026_match",
+        "label": "¿Existe coincidencia con una actuación oficial SAST de 2026?",
+        "type": "select",
+        "required": true,
+        "section": "Actuación oficial",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ]
+      },
+      {
+        "id": "official_act_number",
+        "label": "Número del acto o radicado oficial identificado",
+        "type": "text",
+        "required": false,
+        "section": "Actuación oficial"
+      },
+      {
+        "id": "official_act_status",
+        "label": "Estado del acto o actuación oficial",
+        "type": "select",
+        "required": true,
+        "section": "Actuación oficial",
+        "options": [
+          "Sin actuación identificada",
+          "Apertura o formulación de cargos",
+          "Investigación en curso",
+          "Decisión firme favorable individual",
+          "Decisión firme desfavorable individual",
+          "Estado no confirmado"
+        ]
+      },
+      {
+        "id": "official_act_source",
+        "label": "Fuente oficial o enlace de consulta",
+        "type": "text",
+        "required": false,
+        "section": "Actuación oficial"
+      },
+      {
+        "id": "ansv_authorization",
+        "label": "¿Existe soporte de autorización ANSV para el punto?",
+        "type": "select",
+        "required": true,
+        "section": "Control técnico",
+        "options": [
+          "Sí",
+          "No",
+          "No sé",
+          "Excepción legal identificada"
+        ]
+      },
+      {
+        "id": "authorization_number",
+        "label": "Número de autorización",
+        "type": "text",
+        "required": false,
+        "section": "Control técnico"
+      },
+      {
+        "id": "authorization_issue_date",
+        "label": "Fecha de expedición de la autorización",
+        "type": "date",
+        "required": false,
+        "section": "Control técnico"
+      },
+      {
+        "id": "authorization_expiry_date",
+        "label": "Fecha de vencimiento o fin de vigencia",
+        "type": "date",
+        "required": false,
+        "section": "Control técnico"
+      },
+      {
+        "id": "calibration_traceability",
+        "label": "¿Existe calibración y trazabilidad metrológica aplicable?",
+        "type": "select",
+        "required": true,
+        "section": "Control técnico",
+        "options": [
+          "Sí",
+          "No",
+          "No sé",
+          "No aplica a la conducta"
+        ]
+      },
+      {
+        "id": "calibration_date",
+        "label": "Fecha del certificado o verificación técnica",
+        "type": "date",
+        "required": false,
+        "section": "Control técnico"
+      },
+      {
+        "id": "signage_verified",
+        "label": "¿La señalización preventiva fue verificada para el punto y la fecha?",
+        "type": "select",
+        "required": true,
+        "section": "Control técnico",
+        "options": [
+          "Sí",
+          "No",
+          "No sé",
+          "No aplica"
+        ]
+      },
+      {
+        "id": "performance_concept",
+        "label": "Soporte del concepto de desempeño para el período histórico aplicable",
+        "type": "select",
+        "required": true,
+        "section": "Control técnico",
+        "options": [
+          "Existe soporte propio y previo",
+          "No existe soporte",
+          "No sé",
+          "No aplica por fecha"
+        ]
+      },
+      {
+        "id": "notice_status",
+        "label": "¿Cómo conoció el comparendo o la actuación?",
+        "type": "select",
+        "required": true,
+        "section": "Etapa",
+        "options": [
+          "Notificación recibida",
+          "Consulta SIMIT/RUNT",
+          "Cobro persuasivo",
+          "Cobro coactivo",
+          "Embargo",
+          "Otro"
+        ]
+      },
+      {
+        "id": "first_knowledge_date",
+        "label": "Fecha de conocimiento efectivo",
+        "type": "date",
+        "required": false,
+        "section": "Etapa"
+      },
+      {
+        "id": "enforcement",
+        "label": "Estado procesal actual conocido",
+        "type": "select",
+        "required": true,
+        "section": "Etapa",
+        "options": [
+          "Sin proceso conocido",
+          "Comparendo sin decisión conocida",
+          "Resolución sancionatoria",
+          "Cobro coactivo",
+          "Embargo",
+          "Proceso judicial"
+        ]
+      },
+      {
+        "id": "paid",
+        "label": "¿La obligación fue pagada total o parcialmente?",
+        "type": "select",
+        "required": true,
+        "section": "Etapa",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "case_count",
+        "label": "Número de comparendos relacionados",
+        "type": "number",
+        "required": true,
+        "section": "Complejidad",
+        "min": 1,
+        "max": 1000
+      },
+      {
+        "id": "evidence_available",
+        "label": "Nivel de soportes disponibles",
+        "type": "select",
+        "required": true,
+        "section": "Evidencia",
+        "options": [
+          "Expediente técnico completo",
+          "Comparendo y consultas oficiales",
+          "Solo consulta o captura",
+          "Sin soportes verificables"
+        ]
+      },
+      {
+        "id": "deadline_urgent",
+        "label": "¿Existe término, audiencia o actuación en menos de 10 días?",
+        "type": "select",
+        "required": true,
+        "section": "Riesgo",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "identity_fraud",
+        "label": "¿Hay suplantación, clonación, hurto o fraude de identidad/placa?",
+        "type": "select",
+        "required": true,
+        "section": "Riesgo",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "consent_alerts",
+        "label": "¿Autoriza seguimiento y alertas del expediente?",
+        "type": "select",
+        "required": true,
+        "section": "Consentimientos",
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que los datos fueron verificados antes de generar el informe?",
+        "type": "select",
+        "required": true,
+        "section": "Consentimientos",
+        "options": [
+          "Sí",
+          "No"
+        ]
+      }
+    ],
+    "confirmation_required": true
+  },
+  "CO-TR-002": {
+    "version": "2.25",
+    "intro": "Reconstruye la cronología, la etapa, la imputación personal y la evidencia técnica. El sistema no presume nulidad ni anulación automática.",
+    "sections": [
+      "Peticionario",
+      "Actuación",
+      "Cronología",
+      "Notificación",
+      "Etapa",
+      "Imputación",
+      "Control técnico",
+      "Evidencia",
+      "Resultado",
+      "Control"
+    ],
+    "questions": [
+      {
+        "id": "petitioner_name",
+        "label": "Nombre completo o razón social del peticionario",
+        "type": "text",
+        "required": true,
+        "section": "Peticionario",
+        "min_length": 3
+      },
+      {
+        "id": "petitioner_id",
+        "label": "Documento de identidad o NIT",
+        "type": "text",
+        "required": true,
+        "section": "Peticionario"
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa",
+        "type": "select",
+        "required": true,
+        "section": "Peticionario",
+        "options": [
+          "Propietario",
+          "Conductor",
+          "Apoderado",
+          "Representante legal"
+        ]
+      },
+      {
+        "id": "email",
+        "label": "Correo para notificaciones",
+        "type": "text",
+        "required": true,
+        "section": "Peticionario",
+        "format": "email"
+      },
+      {
+        "id": "address",
+        "label": "Dirección física para notificaciones",
+        "type": "text",
+        "required": true,
+        "section": "Peticionario"
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio del peticionario",
+        "type": "text",
+        "required": true,
+        "section": "Peticionario"
+      },
+      {
+        "id": "authority",
+        "label": "Autoridad de tránsito que registra la actuación",
+        "type": "text",
+        "required": true,
+        "section": "Actuación"
+      },
+      {
+        "id": "territory",
+        "label": "Municipio o distrito de ocurrencia",
+        "type": "text",
+        "required": true,
+        "section": "Actuación"
+      },
+      {
+        "id": "plate",
+        "label": "Placa del vehículo",
+        "type": "text",
+        "required": true,
+        "section": "Actuación"
+      },
+      {
+        "id": "vehicle_service",
+        "label": "Servicio del vehículo",
+        "type": "select",
+        "required": true,
+        "section": "Actuación",
+        "options": [
+          "Particular",
+          "Público",
+          "Oficial",
+          "Diplomático",
+          "Otro"
+        ]
+      },
+      {
+        "id": "comparendo_number",
+        "label": "Número del comparendo",
+        "type": "text",
+        "required": true,
+        "section": "Actuación"
+      },
+      {
+        "id": "event_date",
+        "label": "Fecha de la presunta infracción",
+        "type": "date",
+        "required": true,
+        "section": "Actuación"
+      },
+      {
+        "id": "event_time",
+        "label": "Hora aproximada de la detección",
+        "type": "text",
+        "required": false,
+        "section": "Actuación"
+      },
+      {
+        "id": "event_location",
+        "label": "Lugar exacto informado",
+        "type": "text",
+        "required": true,
+        "section": "Actuación"
+      },
+      {
+        "id": "infraction_code",
+        "label": "Código o descripción de la infracción",
+        "type": "text",
+        "required": true,
+        "section": "Actuación"
+      },
+      {
+        "id": "conduct_category",
+        "label": "Tipo de conducta",
+        "type": "select",
+        "required": true,
+        "section": "Actuación",
+        "options": [
+          "Exceso de velocidad",
+          "Semáforo en rojo",
+          "SOAT",
+          "Revisión técnico-mecánica",
+          "Pico y placa o restricción",
+          "Estacionamiento",
+          "Otra conducta de conducción",
+          "No sé"
+        ]
+      },
+      {
+        "id": "electronic",
+        "label": "¿Fue detectada por cámara o medio tecnológico?",
+        "type": "select",
+        "required": true,
+        "section": "Actuación",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ]
+      },
+      {
+        "id": "device_id",
+        "label": "Identificador del dispositivo o punto SAST",
+        "type": "text",
+        "required": false,
+        "section": "Actuación"
+      },
+      {
+        "id": "validation_date",
+        "label": "Fecha de validación del comparendo por agente",
+        "type": "date",
+        "required": false,
+        "section": "Cronología"
+      },
+      {
+        "id": "sent_date",
+        "label": "Fecha de envío para notificación",
+        "type": "date",
+        "required": false,
+        "section": "Cronología"
+      },
+      {
+        "id": "delivery_date",
+        "label": "Fecha de entrega o notificación acreditada",
+        "type": "date",
+        "required": false,
+        "section": "Cronología"
+      },
+      {
+        "id": "first_knowledge_date",
+        "label": "Fecha en que conoció efectivamente la actuación",
+        "type": "date",
+        "required": true,
+        "section": "Cronología"
+      },
+      {
+        "id": "notice_received",
+        "label": "¿Recibió una notificación verificable?",
+        "type": "select",
+        "required": true,
+        "section": "Notificación",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ]
+      },
+      {
+        "id": "notice_channel",
+        "label": "Canal de notificación informado",
+        "type": "select",
+        "required": true,
+        "section": "Notificación",
+        "options": [
+          "Correo físico",
+          "Correo electrónico autorizado",
+          "Aviso",
+          "Publicación web",
+          "Entrega personal",
+          "No sé",
+          "Ninguno"
+        ]
+      },
+      {
+        "id": "notice_address_match",
+        "label": "¿La dirección usada coincide con la registrada en RUNT para esa fecha?",
+        "type": "select",
+        "required": true,
+        "section": "Notificación",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ]
+      },
+      {
+        "id": "notice_support",
+        "label": "¿Existe guía, constancia de entrega, devolución, aviso o soporte equivalente?",
+        "type": "select",
+        "required": true,
+        "section": "Notificación",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ]
+      },
+      {
+        "id": "owner_updated_runt",
+        "label": "¿Los datos del propietario estaban actualizados en RUNT?",
+        "type": "select",
+        "required": true,
+        "section": "Notificación",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ]
+      },
+      {
+        "id": "resolution",
+        "label": "¿Existe resolución sancionatoria?",
+        "type": "select",
+        "required": true,
+        "section": "Etapa",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "hearing_held",
+        "label": "¿Se realizó audiencia o actuación de descargos?",
+        "type": "select",
+        "required": true,
+        "section": "Etapa",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "coercive",
+        "label": "¿Hay cobro coactivo, mandamiento de pago o embargo?",
+        "type": "select",
+        "required": true,
+        "section": "Etapa",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "paid",
+        "label": "¿La obligación fue pagada o aceptada con descuento?",
+        "type": "select",
+        "required": true,
+        "section": "Etapa",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "court",
+        "label": "¿Existe proceso judicial activo sobre esta actuación?",
+        "type": "select",
+        "required": true,
+        "section": "Etapa",
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "deadline_urgent",
+        "label": "¿Hay un término próximo o actuación en menos de 10 días?",
+        "type": "select",
+        "required": true,
+        "section": "Etapa",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "owner_was_driver",
+        "label": "¿El propietario era quien conducía?",
+        "type": "select",
+        "required": true,
+        "section": "Imputación",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ]
+      },
+      {
+        "id": "special_vehicle_event",
+        "label": "¿Hubo venta previa, hurto, suplantación, placas clonadas o uso no autorizado?",
+        "type": "select",
+        "required": true,
+        "section": "Imputación",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "sast_authorization",
+        "label": "¿Cuenta con soporte de autorización del punto SAST para la fecha?",
+        "type": "select",
+        "required": true,
+        "section": "Control técnico",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ]
+      },
+      {
+        "id": "calibration_traceability",
+        "label": "¿Cuenta con certificado de calibración y trazabilidad aplicable?",
+        "type": "select",
+        "required": true,
+        "section": "Control técnico",
+        "options": [
+          "Sí",
+          "No",
+          "No aplica",
+          "No sé"
+        ]
+      },
+      {
+        "id": "signage_verified",
+        "label": "¿Está verificada la señalización preventiva exigible?",
+        "type": "select",
+        "required": true,
+        "section": "Control técnico",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ]
+      },
+      {
+        "id": "performance_concept",
+        "label": "Estado del concepto de desempeño de la tecnología",
+        "type": "select",
+        "required": true,
+        "section": "Control técnico",
+        "options": [
+          "Existe soporte",
+          "No existe soporte",
+          "No sé",
+          "No aplica por fecha"
+        ]
+      },
+      {
+        "id": "official_2026_match",
+        "label": "¿La autoridad o actuación coincide con investigaciones o anuncios oficiales de 2026?",
+        "type": "select",
+        "required": true,
+        "section": "Control técnico",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "evidence",
+        "label": "Soportes disponibles",
+        "type": "multiselect",
+        "required": false,
+        "section": "Evidencia",
+        "options": [
+          "Comparendo",
+          "Fotografías o video",
+          "Consulta SIMIT",
+          "Consulta RUNT",
+          "Guía de correo",
+          "Resolución",
+          "Mandamiento de pago",
+          "Certificado de tradición",
+          "Denuncia por hurto o suplantación",
+          "Autorización SAST",
+          "Calibración",
+          "Señalización",
+          "Petición previa",
+          "Ninguno"
+        ]
+      },
+      {
+        "id": "prior_request",
+        "label": "¿Ya presentó petición, recurso o reclamación ante la autoridad?",
+        "type": "select",
+        "required": true,
+        "section": "Evidencia",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "requested_outcome",
+        "label": "Resultado principal esperado",
+        "type": "select",
+        "required": true,
+        "section": "Resultado",
+        "options": [
+          "Acceso al expediente",
+          "Audiencia y contradicción",
+          "Revisión de notificación",
+          "Revocatoria directa condicionada",
+          "Corrección SIMIT/RUNT",
+          "Definir ruta jurídica"
+        ]
+      },
+      {
+        "id": "document_integrity_issue",
+        "label": "¿Hay documentos alterados, ilegibles o con dudas de autenticidad?",
+        "type": "select",
+        "required": true,
+        "section": "Control",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que la información fue verificada con los soportes disponibles?",
+        "type": "select",
+        "required": true,
+        "section": "Control",
+        "options": [
+          "Sí",
+          "No"
+        ]
+      }
+    ],
+    "confirmation_required": true
+  },
+  "CO-LA-001": {
+    "version": "3.0-v2.22",
+    "intro": "Reconstruye por separado salarios, cesantías, intereses, prima, vacaciones e indemnización. Los períodos y pagos previos deben confirmarse por concepto para evitar duplicidades.",
+    "sections": [
+      "Identificación",
+      "Vínculo",
+      "Salario",
+      "Períodos pendientes",
+      "Pagos y descuentos",
+      "Controles de riesgo",
+      "Confirmación"
+    ],
+    "questions": [
+      {
+        "id": "worker_name",
+        "label": "Nombre completo del trabajador",
+        "type": "text",
+        "required": true,
+        "section": "Identificación"
+      },
+      {
+        "id": "worker_id",
+        "label": "Identificación del trabajador",
+        "type": "text",
+        "required": true,
+        "section": "Identificación"
+      },
+      {
+        "id": "employer_name",
+        "label": "Nombre o razón social del empleador",
+        "type": "text",
+        "required": true,
+        "section": "Identificación"
+      },
+      {
+        "id": "employer_id",
+        "label": "NIT o identificación del empleador",
+        "type": "text",
+        "required": false,
+        "section": "Identificación"
+      },
+      {
+        "id": "claim_email",
+        "label": "Correo para recibir el borrador y la respuesta",
+        "type": "email",
+        "required": true,
+        "section": "Identificación",
+        "format": "email"
+      },
+      {
+        "id": "private_relation",
+        "label": "¿La relación corresponde a un empleador privado en Colombia?",
+        "type": "select",
+        "required": true,
+        "section": "Identificación",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ]
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha de ingreso",
+        "type": "date",
+        "required": true,
+        "section": "Vínculo"
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha de terminación o fecha de corte",
+        "type": "date",
+        "required": true,
+        "section": "Vínculo"
+      },
+      {
+        "id": "contract_type",
+        "label": "Modalidad contractual",
+        "type": "select",
+        "required": true,
+        "section": "Vínculo",
+        "options": [
+          "Indefinido",
+          "Término fijo",
+          "Obra o labor",
+          "Verbal / no sé"
+        ]
+      },
+      {
+        "id": "termination",
+        "label": "Situación o causa informada al corte",
+        "type": "select",
+        "required": true,
+        "section": "Vínculo",
+        "options": [
+          "Renuncia",
+          "Mutuo acuerdo",
+          "Sin justa causa",
+          "Justa causa",
+          "Fin de término/obra",
+          "Sigue vigente"
+        ]
+      },
+      {
+        "id": "fixed_term_end",
+        "label": "Fecha final pactada del contrato",
+        "type": "date",
+        "required": true,
+        "section": "Vínculo",
+        "show_if": {
+          "field": "contract_type",
+          "equals": "Término fijo"
+        }
+      },
+      {
+        "id": "work_remaining_days",
+        "label": "Días estimados que faltaban para terminar la obra o labor",
+        "type": "number",
+        "required": true,
+        "section": "Vínculo",
+        "show_if": {
+          "field": "contract_type",
+          "equals": "Obra o labor"
+        },
+        "min": 0,
+        "max": 3650
+      },
+      {
+        "id": "monthly_salary",
+        "label": "Salario básico mensual fijo (COP)",
+        "type": "number",
+        "required": true,
+        "section": "Salario",
+        "min": 1
+      },
+      {
+        "id": "integral_salary",
+        "label": "¿El salario fue pactado como integral?",
+        "type": "select",
+        "required": true,
+        "section": "Salario",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "variable_salary",
+        "label": "¿Existieron comisiones, recargos, horas extra u otros pagos salariales variables?",
+        "type": "select",
+        "required": true,
+        "section": "Salario",
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "variable_salary_supports",
+        "label": "¿Existen soportes suficientes para reconstruir el promedio variable?",
+        "type": "select",
+        "required": true,
+        "section": "Salario",
+        "options": [
+          "Sí",
+          "No"
+        ],
+        "show_if": {
+          "field": "variable_salary",
+          "equals": "Sí"
+        }
+      },
+      {
+        "id": "variable_average",
+        "label": "Promedio mensual variable confirmado para el período aplicable (COP)",
+        "type": "number",
+        "required": true,
+        "section": "Salario",
+        "show_if": {
+          "field": "variable_salary",
+          "equals": "Sí"
+        },
+        "min": 0
+      },
+      {
+        "id": "transport_aid",
+        "label": "¿Tenía derecho y recibía auxilio de transporte?",
+        "type": "select",
+        "required": true,
+        "section": "Salario",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ]
+      },
+      {
+        "id": "salary_due_days",
+        "label": "Días de salario ordinario pendientes al corte",
+        "type": "number",
+        "required": true,
+        "section": "Salario",
+        "min": 0,
+        "max": 360
+      },
+      {
+        "id": "cesantias_start_date",
+        "label": "Fecha desde la cual están pendientes las cesantías",
+        "type": "date",
+        "required": true,
+        "section": "Períodos pendientes"
+      },
+      {
+        "id": "prima_start_date",
+        "label": "Fecha desde la cual está pendiente la prima de servicios",
+        "type": "date",
+        "required": true,
+        "section": "Períodos pendientes"
+      },
+      {
+        "id": "vacation_pending_days",
+        "label": "Días de vacaciones causados y pendientes de disfrute o compensación",
+        "type": "number",
+        "required": true,
+        "section": "Períodos pendientes",
+        "min": 0,
+        "max": 180
+      },
+      {
+        "id": "periods_confirmed",
+        "label": "¿Los períodos pendientes fueron contrastados con desprendibles, fondo de cesantías o soportes?",
+        "type": "select",
+        "required": true,
+        "section": "Períodos pendientes",
+        "options": [
+          "Sí",
+          "Parcial",
+          "No"
+        ]
+      },
+      {
+        "id": "prior_salary_paid",
+        "label": "Salario ya pagado correspondiente a los días informados (COP)",
+        "type": "number",
+        "required": false,
+        "section": "Pagos y descuentos",
+        "min": 0
+      },
+      {
+        "id": "prior_cesantias_paid",
+        "label": "Cesantías ya pagadas o consignadas del período informado (COP)",
+        "type": "number",
+        "required": false,
+        "section": "Pagos y descuentos",
+        "min": 0
+      },
+      {
+        "id": "prior_interest_paid",
+        "label": "Intereses a las cesantías ya pagados del período informado (COP)",
+        "type": "number",
+        "required": false,
+        "section": "Pagos y descuentos",
+        "min": 0
+      },
+      {
+        "id": "prior_prima_paid",
+        "label": "Prima ya pagada del período informado (COP)",
+        "type": "number",
+        "required": false,
+        "section": "Pagos y descuentos",
+        "min": 0
+      },
+      {
+        "id": "prior_vacation_paid",
+        "label": "Vacaciones ya pagadas o compensadas de los días informados (COP)",
+        "type": "number",
+        "required": false,
+        "section": "Pagos y descuentos",
+        "min": 0
+      },
+      {
+        "id": "prior_indemnity_paid",
+        "label": "Indemnización por terminación ya pagada (COP)",
+        "type": "number",
+        "required": false,
+        "section": "Pagos y descuentos",
+        "min": 0
+      },
+      {
+        "id": "disputed_deductions",
+        "label": "¿El empleador aplicó o anuncia descuentos discutidos por daños, equipos, préstamos u otros conceptos?",
+        "type": "select",
+        "required": true,
+        "section": "Pagos y descuentos",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "salary_supports",
+        "label": "¿Cuenta con contrato, desprendibles, extractos o comprobantes de pago?",
+        "type": "select",
+        "required": true,
+        "section": "Controles de riesgo",
+        "options": [
+          "Sí",
+          "Parcial",
+          "No"
+        ]
+      },
+      {
+        "id": "special_protection",
+        "label": "¿Existe embarazo, discapacidad, situación de salud, fuero u otra estabilidad reforzada?",
+        "type": "select",
+        "required": true,
+        "section": "Controles de riesgo",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "public_sector",
+        "label": "¿El empleador o vínculo pertenece al sector público?",
+        "type": "select",
+        "required": true,
+        "section": "Controles de riesgo",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "active_litigation",
+        "label": "¿Existe demanda, conciliación, transacción o proceso activo sobre estos conceptos?",
+        "type": "select",
+        "required": true,
+        "section": "Controles de riesgo",
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "contract_reality",
+        "label": "¿La discusión principal consiste en demostrar que una prestación de servicios fue realmente laboral?",
+        "type": "select",
+        "required": true,
+        "section": "Controles de riesgo",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "collective_regime",
+        "label": "¿Existe convención colectiva, pacto, laudo, sindicato o régimen extralegal aplicable?",
+        "type": "select",
+        "required": true,
+        "section": "Controles de riesgo",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que los datos corresponden a hechos y soportes verificables?",
+        "type": "select",
+        "required": true,
+        "section": "Confirmación",
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "generate_settlement",
+        "label": "¿Desea incluir una propuesta de acuerdo de pago y cierre?",
+        "type": "select",
+        "required": true,
+        "section": "Confirmación",
+        "options": [
+          "Sí",
+          "No"
+        ]
+      }
+    ],
+    "confirmation_required": true
+  },
+  "CO-LA-002": {
+    "version": "2.24",
+    "intro": "Responde con datos confirmados. El sistema selecciona la modalidad real, verifica límites legales y activa únicamente los anexos necesarios.",
+    "sections": [
+      "Partes",
+      "Alcance",
+      "Modalidad",
+      "Cargo",
+      "Lugar",
+      "Jornada",
+      "Prueba",
+      "Compensación",
+      "Cumplimiento",
+      "Protecciones",
+      "Anexos"
+    ],
+    "questions": [
+      {
+        "id": "employer_name",
+        "label": "Nombre o razón social del empleador",
+        "type": "text",
+        "required": true,
+        "section": "Partes",
+        "min_length": 3,
+        "help": {
+          "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+          "how_to_answer": "Responde con el dato confirmado para “Nombre o razón social del empleador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "employer_id",
+        "label": "NIT o identificación del empleador",
+        "type": "text",
+        "required": true,
+        "section": "Partes",
+        "min_length": 5,
+        "help": {
+          "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+          "how_to_answer": "Responde con el dato confirmado para “NIT o identificación del empleador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "employer_address",
+        "label": "Domicilio y dirección del empleador",
+        "type": "text",
+        "required": true,
+        "section": "Partes",
+        "min_length": 5,
+        "help": {
+          "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+          "how_to_answer": "Responde con el dato confirmado para “Domicilio y dirección del empleador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "employer_representative",
+        "label": "Representante o persona que firma por el empleador",
+        "type": "text",
+        "required": true,
+        "section": "Partes",
+        "min_length": 3,
+        "help": {
+          "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+          "how_to_answer": "Responde con el dato confirmado para “Representante o persona que firma por el empleador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "worker_name",
+        "label": "Nombre completo del trabajador",
+        "type": "text",
+        "required": true,
+        "section": "Partes",
+        "min_length": 3,
+        "help": {
+          "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+          "how_to_answer": "Responde con el dato confirmado para “Nombre completo del trabajador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "worker_id",
+        "label": "Documento de identidad del trabajador",
+        "type": "text",
+        "required": true,
+        "section": "Partes",
+        "min_length": 5,
+        "help": {
+          "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+          "how_to_answer": "Responde con el dato confirmado para “Documento de identidad del trabajador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "worker_address",
+        "label": "Domicilio y dirección del trabajador",
+        "type": "text",
+        "required": true,
+        "section": "Partes",
+        "min_length": 5,
+        "help": {
+          "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+          "how_to_answer": "Responde con el dato confirmado para “Domicilio y dirección del trabajador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "worker_email",
+        "label": "Correo del trabajador",
+        "type": "text",
+        "required": true,
+        "section": "Partes",
+        "format": "email",
+        "help": {
+          "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+          "how_to_answer": "Responde con el dato confirmado para “Correo del trabajador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "worker_age_status",
+        "label": "Condición de edad del trabajador",
+        "type": "select",
+        "required": true,
+        "section": "Alcance",
+        "options": [
+          "Mayor de edad",
+          "Menor de edad",
+          "No confirmado"
+        ],
+        "help": {
+          "why_asked": "Determina si el caso está dentro del producto estándar o requiere un tratamiento especial.",
+          "how_to_answer": "Responde con el dato confirmado para “Condición de edad del trabajador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "public_or_crossborder",
+        "label": "¿Es servidor público, trabajador oficial, expatriado o laborará principalmente fuera de Colombia?",
+        "type": "select",
+        "required": true,
+        "section": "Alcance",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "help": {
+          "why_asked": "Determina si el caso está dentro del producto estándar o requiere un tratamiento especial.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Es servidor público, trabajador oficial, expatriado o laborará principalmente fuera de Colombia?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "collective_regime",
+        "label": "¿La relación está cubierta por convención colectiva, pacto, laudo o régimen especial?",
+        "type": "select",
+        "required": true,
+        "section": "Alcance",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "help": {
+          "why_asked": "Determina si el caso está dentro del producto estándar o requiere un tratamiento especial.",
+          "how_to_answer": "Responde con el dato confirmado para “¿La relación está cubierta por convención colectiva, pacto, laudo o régimen especial?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "need_type",
+        "label": "Naturaleza real de la necesidad",
+        "type": "select",
+        "required": true,
+        "section": "Modalidad",
+        "options": [
+          "Permanente",
+          "Temporal con fecha cierta",
+          "Obra o labor específica"
+        ],
+        "help": {
+          "why_asked": "Permite seleccionar la modalidad contractual según la necesidad real y controlar su duración.",
+          "how_to_answer": "Responde con el dato confirmado para “Naturaleza real de la necesidad”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha real de inicio",
+        "type": "date",
+        "required": true,
+        "section": "Modalidad",
+        "help": {
+          "why_asked": "Permite seleccionar la modalidad contractual según la necesidad real y controlar su duración.",
+          "how_to_answer": "Responde con el dato confirmado para “Fecha real de inicio”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha de terminación propuesta",
+        "type": "date",
+        "required": false,
+        "section": "Modalidad",
+        "show_if": {
+          "field": "need_type",
+          "equals": "Temporal con fecha cierta"
+        },
+        "after_field": "start_date",
+        "help": {
+          "why_asked": "Permite seleccionar la modalidad contractual según la necesidad real y controlar su duración.",
+          "how_to_answer": "Responde con el dato confirmado para “Fecha de terminación propuesta”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "prior_fixed_term_months",
+        "label": "Meses acumulados de contratos fijos desde la vigencia de la Ley 2466 de 2025",
+        "type": "number",
+        "required": false,
+        "section": "Modalidad",
+        "show_if": {
+          "field": "need_type",
+          "equals": "Temporal con fecha cierta"
+        },
+        "min": 0,
+        "max": 48,
+        "help": {
+          "why_asked": "Permite seleccionar la modalidad contractual según la necesidad real y controlar su duración.",
+          "how_to_answer": "Responde con el dato confirmado para “Meses acumulados de contratos fijos desde la vigencia de la Ley 2466 de 2025”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "work_description",
+        "label": "Descripción precisa de la obra o labor",
+        "type": "textarea",
+        "required": false,
+        "section": "Modalidad",
+        "show_if": {
+          "field": "need_type",
+          "equals": "Obra o labor específica"
+        },
+        "help": {
+          "why_asked": "Permite seleccionar la modalidad contractual según la necesidad real y controlar su duración.",
+          "how_to_answer": "Responde con el dato confirmado para “Descripción precisa de la obra o labor”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "completion_milestone",
+        "label": "Hito objetivo y verificable de terminación",
+        "type": "textarea",
+        "required": false,
+        "section": "Modalidad",
+        "show_if": {
+          "field": "need_type",
+          "equals": "Obra o labor específica"
+        },
+        "help": {
+          "why_asked": "Permite seleccionar la modalidad contractual según la necesidad real y controlar su duración.",
+          "how_to_answer": "Responde con el dato confirmado para “Hito objetivo y verificable de terminación”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "job_title",
+        "label": "Denominación del cargo",
+        "type": "text",
+        "required": true,
+        "section": "Cargo",
+        "min_length": 3,
+        "help": {
+          "why_asked": "Define el servicio personal, las funciones y los límites razonables del cargo.",
+          "how_to_answer": "Responde con el dato confirmado para “Denominación del cargo”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "role_clear",
+        "label": "¿Las funciones y responsabilidades están detalladas en un anexo?",
+        "type": "select",
+        "required": true,
+        "section": "Cargo",
+        "options": [
+          "Sí",
+          "No",
+          "En construcción"
+        ],
+        "help": {
+          "why_asked": "Define el servicio personal, las funciones y los límites razonables del cargo.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Las funciones y responsabilidades están detalladas en un anexo?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "workplace",
+        "label": "Lugar principal de trabajo",
+        "type": "text",
+        "required": true,
+        "section": "Lugar",
+        "min_length": 3,
+        "help": {
+          "why_asked": "Determina el lugar y la figura aplicable al trabajo presencial o no presencial.",
+          "how_to_answer": "Responde con el dato confirmado para “Lugar principal de trabajo”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "remote",
+        "label": "Forma de ejecución del trabajo",
+        "type": "select",
+        "required": true,
+        "section": "Lugar",
+        "options": [
+          "Presencial",
+          "Teletrabajo suplementario",
+          "Teletrabajo autónomo",
+          "Trabajo remoto integral",
+          "Trabajo en casa temporal",
+          "Híbrido por acuerdo"
+        ],
+        "help": {
+          "why_asked": "Determina el lugar y la figura aplicable al trabajo presencial o no presencial.",
+          "how_to_answer": "Responde con el dato confirmado para “Forma de ejecución del trabajo”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "remote_compliance_ready",
+        "label": "¿Se documentaron ARL, SG-SST, equipos, desconexión y lugar autorizado?",
+        "type": "select",
+        "required": false,
+        "section": "Lugar",
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ],
+        "show_if": {
+          "field": "remote",
+          "equals": "Trabajo remoto integral"
+        },
+        "help": {
+          "why_asked": "Determina el lugar y la figura aplicable al trabajo presencial o no presencial.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Se documentaron ARL, SG-SST, equipos, desconexión y lugar autorizado?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "weekly_hours",
+        "label": "Horas ordinarias semanales",
+        "type": "number",
+        "required": true,
+        "section": "Jornada",
+        "min": 1,
+        "max": 60,
+        "help": {
+          "why_asked": "Permite verificar la jornada ordinaria, descansos, nocturnidad y trabajo suplementario.",
+          "how_to_answer": "Responde con el dato confirmado para “Horas ordinarias semanales”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "max_daily_hours",
+        "label": "Máximo de horas ordinarias en un día",
+        "type": "number",
+        "required": true,
+        "section": "Jornada",
+        "min": 1,
+        "max": 16,
+        "help": {
+          "why_asked": "Permite verificar la jornada ordinaria, descansos, nocturnidad y trabajo suplementario.",
+          "how_to_answer": "Responde con el dato confirmado para “Máximo de horas ordinarias en un día”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "night_work",
+        "label": "¿El horario incluye trabajo desde las 7:00 p. m. hasta las 6:00 a. m.?",
+        "type": "select",
+        "required": true,
+        "section": "Jornada",
+        "options": [
+          "No",
+          "Sí",
+          "Ocasional"
+        ],
+        "help": {
+          "why_asked": "Permite verificar la jornada ordinaria, descansos, nocturnidad y trabajo suplementario.",
+          "how_to_answer": "Responde con el dato confirmado para “¿El horario incluye trabajo desde las 7:00 p. m. hasta las 6:00 a. m.?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "planned_overtime_daily",
+        "label": "Horas extra máximas previstas por día",
+        "type": "number",
+        "required": true,
+        "section": "Jornada",
+        "min": 0,
+        "max": 8,
+        "help": {
+          "why_asked": "Permite verificar la jornada ordinaria, descansos, nocturnidad y trabajo suplementario.",
+          "how_to_answer": "Responde con el dato confirmado para “Horas extra máximas previstas por día”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "planned_overtime_weekly",
+        "label": "Horas extra máximas previstas por semana",
+        "type": "number",
+        "required": true,
+        "section": "Jornada",
+        "min": 0,
+        "max": 30,
+        "help": {
+          "why_asked": "Permite verificar la jornada ordinaria, descansos, nocturnidad y trabajo suplementario.",
+          "how_to_answer": "Responde con el dato confirmado para “Horas extra máximas previstas por semana”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "probation",
+        "label": "¿Se pactará período de prueba escrito?",
+        "type": "select",
+        "required": true,
+        "section": "Prueba",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "help": {
+          "why_asked": "Controla que el período de prueba sea escrito y respete los límites aplicables.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Se pactará período de prueba escrito?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "probation_months",
+        "label": "Duración del período de prueba en meses",
+        "type": "number",
+        "required": false,
+        "section": "Prueba",
+        "show_if": {
+          "field": "probation",
+          "equals": "Sí"
+        },
+        "min": 0.1,
+        "max": 3,
+        "help": {
+          "why_asked": "Controla que el período de prueba sea escrito y respete los límites aplicables.",
+          "how_to_answer": "Responde con el dato confirmado para “Duración del período de prueba en meses”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "monthly_salary",
+        "label": "Salario básico mensual acordado (COP)",
+        "type": "number",
+        "required": true,
+        "section": "Compensación",
+        "min": 1,
+        "help": {
+          "why_asked": "Permite validar salario, pagos variables, beneficios y descuentos.",
+          "how_to_answer": "Responde con el dato confirmado para “Salario básico mensual acordado (COP)”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "salary_type",
+        "label": "Tipo de salario",
+        "type": "select",
+        "required": true,
+        "section": "Compensación",
+        "options": [
+          "Ordinario",
+          "Integral"
+        ],
+        "help": {
+          "why_asked": "Permite validar salario, pagos variables, beneficios y descuentos.",
+          "how_to_answer": "Responde con el dato confirmado para “Tipo de salario”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "variable_payments",
+        "label": "¿Habrá comisiones, bonos o pagos variables?",
+        "type": "select",
+        "required": true,
+        "section": "Compensación",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "help": {
+          "why_asked": "Permite validar salario, pagos variables, beneficios y descuentos.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Habrá comisiones, bonos o pagos variables?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "variable_formula_clear",
+        "label": "¿La fórmula, causación, período y pago están definidos?",
+        "type": "select",
+        "required": false,
+        "section": "Compensación",
+        "options": [
+          "Sí",
+          "No",
+          "En construcción"
+        ],
+        "show_if": {
+          "field": "variable_payments",
+          "equals": "Sí"
+        },
+        "help": {
+          "why_asked": "Permite validar salario, pagos variables, beneficios y descuentos.",
+          "how_to_answer": "Responde con el dato confirmado para “¿La fórmula, causación, período y pago están definidos?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "automatic_deductions",
+        "label": "¿Se pretende autorizar descuentos generales o automáticos por daños, pérdidas o faltantes?",
+        "type": "select",
+        "required": true,
+        "section": "Compensación",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "help": {
+          "why_asked": "Permite validar salario, pagos variables, beneficios y descuentos.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Se pretende autorizar descuentos generales o automáticos por daños, pérdidas o faltantes?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "social_security_plan_confirmed",
+        "label": "¿Está definido el proceso de afiliación y aportes a seguridad social y parafiscales?",
+        "type": "select",
+        "required": true,
+        "section": "Cumplimiento",
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ],
+        "help": {
+          "why_asked": "Verifica afiliaciones, examen ocupacional y controles previos al inicio.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Está definido el proceso de afiliación y aportes a seguridad social y parafiscales?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "occupational_exam_ready",
+        "label": "¿Está programada la evaluación médica ocupacional de ingreso?",
+        "type": "select",
+        "required": true,
+        "section": "Cumplimiento",
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ],
+        "help": {
+          "why_asked": "Verifica afiliaciones, examen ocupacional y controles previos al inicio.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Está programada la evaluación médica ocupacional de ingreso?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "special_protection",
+        "label": "¿Existe embarazo, discapacidad, condición de salud, fuero, calidad de cuidador u otra protección conocida?",
+        "type": "select",
+        "required": true,
+        "section": "Protecciones",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "help": {
+          "why_asked": "Evita decisiones discriminatorias y activa ajustes o análisis reforzado cuando corresponde.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Existe embarazo, discapacidad, condición de salud, fuero, calidad de cuidador u otra protección conocida?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "protected_status_decision",
+        "label": "¿La decisión de contratar o las condiciones dependen negativamente de esa protección?",
+        "type": "select",
+        "required": false,
+        "section": "Protecciones",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "show_if": {
+          "field": "special_protection",
+          "equals": "Sí"
+        },
+        "help": {
+          "why_asked": "Evita decisiones discriminatorias y activa ajustes o análisis reforzado cuando corresponde.",
+          "how_to_answer": "Responde con el dato confirmado para “¿La decisión de contratar o las condiciones dependen negativamente de esa protección?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "reasonable_adjustments",
+        "label": "¿Se evaluaron ajustes razonables y medidas de no discriminación?",
+        "type": "select",
+        "required": false,
+        "section": "Protecciones",
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ],
+        "show_if": {
+          "field": "special_protection",
+          "equals": "Sí"
+        },
+        "help": {
+          "why_asked": "Evita decisiones discriminatorias y activa ajustes o análisis reforzado cuando corresponde.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Se evaluaron ajustes razonables y medidas de no discriminación?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "work_equipment",
+        "label": "¿El empleador entregará equipos, herramientas, accesos o credenciales?",
+        "type": "select",
+        "required": true,
+        "section": "Anexos",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "help": {
+          "why_asked": "Activa únicamente los anexos documentales necesarios para el cargo y sus riesgos.",
+          "how_to_answer": "Responde con el dato confirmado para “¿El empleador entregará equipos, herramientas, accesos o credenciales?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "personal_data",
+        "label": "¿Se tratarán datos sensibles, biométricos o de monitoreo intensivo?",
+        "type": "select",
+        "required": true,
+        "section": "Anexos",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "help": {
+          "why_asked": "Activa únicamente los anexos documentales necesarios para el cargo y sus riesgos.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Se tratarán datos sensibles, biométricos o de monitoreo intensivo?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "ip_relevant",
+        "label": "¿El cargo creará software, diseños, contenidos, invenciones u otros activos de PI?",
+        "type": "select",
+        "required": true,
+        "section": "Anexos",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "help": {
+          "why_asked": "Activa únicamente los anexos documentales necesarios para el cargo y sus riesgos.",
+          "how_to_answer": "Responde con el dato confirmado para “¿El cargo creará software, diseños, contenidos, invenciones u otros activos de PI?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "confidential_information",
+        "label": "¿El cargo tendrá acceso a secretos empresariales o información confidencial relevante?",
+        "type": "select",
+        "required": true,
+        "section": "Anexos",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "help": {
+          "why_asked": "Activa únicamente los anexos documentales necesarios para el cargo y sus riesgos.",
+          "how_to_answer": "Responde con el dato confirmado para “¿El cargo tendrá acceso a secretos empresariales o información confidencial relevante?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "exclusivity_clause",
+        "label": "¿Se pretende pactar exclusividad o restricción de actividades externas?",
+        "type": "select",
+        "required": true,
+        "section": "Anexos",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "help": {
+          "why_asked": "Activa únicamente los anexos documentales necesarios para el cargo y sus riesgos.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Se pretende pactar exclusividad o restricción de actividades externas?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      }
+    ],
+    "confirmation_required": true
+  },
+  "CO-EM-003": {
+    "version": "2.13",
+    "intro": "Completa la información confirmada del servicio. Las ayudas explican cada término y el sistema separa coordinación contractual de posibles señales de subordinación laboral.",
+    "sections": [
+      "Partes y comunicaciones",
+      "Alcance del servicio",
+      "Independencia y riesgos",
+      "Condiciones económicas y plazo",
+      "Módulos documentales"
+    ],
+    "questions": [
+      {
+        "id": "party_a",
+        "label": "¿Quién contratará el servicio?",
+        "type": "text",
+        "required": true,
+        "section": "Partes y comunicaciones",
+        "help": {
+          "short": "Escribe el nombre completo o la razón social del contratante.",
+          "example": "Ejemplo: Acme S.A.S.",
+          "where_to_find": "RUT, certificado de existencia o documento de identidad.",
+          "why_asked": "Identifica a la parte que recibe el servicio y asume el pago."
+        },
+        "min_length": 2,
+        "max_length": 160
+      },
+      {
+        "id": "party_a_id",
+        "label": "Identificación o NIT del contratante",
+        "type": "text",
+        "required": true,
+        "section": "Partes y comunicaciones",
+        "help": {
+          "short": "Incluye dígito de verificación cuando sea un NIT.",
+          "example": "Ejemplo: 901.000.111-2",
+          "where_to_find": "RUT, certificado de existencia o cédula.",
+          "why_asked": "Individualiza al contratante y evita errores en firmas y facturación."
+        },
+        "min_length": 2,
+        "max_length": 160
+      },
+      {
+        "id": "party_b",
+        "label": "¿Quién prestará el servicio?",
+        "type": "text",
+        "required": true,
+        "section": "Partes y comunicaciones",
+        "help": {
+          "short": "Escribe el nombre completo o la razón social del contratista independiente.",
+          "example": "Ejemplo: Consultor Demo S.A.S.",
+          "where_to_find": "RUT, certificado de existencia o documento de identidad.",
+          "why_asked": "Identifica a quien ejecutará los entregables y responderá por ellos."
+        },
+        "min_length": 2,
+        "max_length": 160
+      },
+      {
+        "id": "party_b_id",
+        "label": "Identificación o NIT del contratista",
+        "type": "text",
+        "required": true,
+        "section": "Partes y comunicaciones",
+        "help": {
+          "short": "Incluye dígito de verificación cuando sea un NIT.",
+          "example": "Ejemplo: 1.000.000.001 o 900.555.444-3",
+          "where_to_find": "RUT, certificado de existencia o cédula.",
+          "why_asked": "Permite identificar correctamente al prestador."
+        },
+        "min_length": 2,
+        "max_length": 160
+      },
+      {
+        "id": "contract_city",
+        "label": "Ciudad principal de ejecución o coordinación",
+        "type": "text",
+        "required": true,
+        "section": "Partes y comunicaciones",
+        "help": {
+          "short": "Indica la ciudad desde la cual se coordinará principalmente el servicio.",
+          "example": "Ejemplo: Medellín",
+          "where_to_find": "Propuesta, cotización o acuerdo entre las partes.",
+          "why_asked": "Ayuda a organizar comunicaciones y el contexto territorial del contrato."
+        },
+        "min_length": 2,
+        "max_length": 160
+      },
+      {
+        "id": "contact_email_a",
+        "label": "Correo autorizado del contratante",
+        "type": "email",
+        "required": true,
+        "section": "Partes y comunicaciones",
+        "help": {
+          "short": "Usa un correo que pueda recibir entregables y avisos contractuales.",
+          "example": "Ejemplo: legal@empresa.co",
+          "where_to_find": "Correo corporativo o personal revisado regularmente.",
+          "why_asked": "Define un canal trazable para avisos, entregas y observaciones."
+        },
+        "format": "email"
+      },
+      {
+        "id": "contact_email_b",
+        "label": "Correo autorizado del contratista",
+        "type": "email",
+        "required": true,
+        "section": "Partes y comunicaciones",
+        "help": {
+          "short": "Usa el correo habitual del prestador.",
+          "example": "Ejemplo: consultor@correo.co",
+          "where_to_find": "Correo corporativo o personal revisado regularmente.",
+          "why_asked": "Define un canal trazable para coordinación y notificaciones."
+        },
+        "format": "email"
+      },
+      {
+        "id": "state_entity",
+        "label": "¿Alguna parte pertenece al sector público?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Independencia y riesgos",
+        "help": {
+          "short": "Selecciona Sí si interviene una entidad estatal o un régimen de contratación pública.",
+          "example": "Ejemplo: Alcaldía, ministerio, establecimiento público o empresa estatal.",
+          "where_to_find": "Naturaleza jurídica, RUT, invitación o contrato proyectado.",
+          "why_asked": "La contratación estatal tiene reglas especiales y no corresponde a este producto estándar."
+        },
+        "allow_unknown": false
+      },
+      {
+        "id": "regulated_service",
+        "label": "¿El servicio está sometido a un régimen profesional o sectorial especial?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Independencia y riesgos",
+        "help": {
+          "short": "Incluye servicios que requieren licencia, habilitación o clausulado sectorial especializado.",
+          "example": "Ejemplo: Servicios médicos habilitados, intermediación financiera o representación judicial.",
+          "where_to_find": "Objeto, licencias, habilitaciones o regulación aplicable.",
+          "why_asked": "Permite bloquear el formato estándar cuando la actividad requiere tratamiento especializado."
+        },
+        "allow_unknown": false
+      },
+      {
+        "id": "object_clear",
+        "label": "¿El servicio y sus resultados están suficientemente definidos?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No"
+        ],
+        "required": true,
+        "section": "Alcance del servicio",
+        "help": {
+          "short": "Responde Sí cuando puedes describir qué se hará, qué se entregará y cómo se verificará.",
+          "example": "Ejemplo: Diseñar un prototipo y entregar código, manual y acta de aceptación.",
+          "where_to_find": "Propuesta, cotización, correo o términos de referencia.",
+          "why_asked": "Un alcance verificable reduce disputas y permite construir el anexo operativo."
+        },
+        "allow_unknown": false
+      },
+      {
+        "id": "fixed_schedule",
+        "label": "¿Se impondrá un horario fijo con control de asistencia?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Independencia y riesgos",
+        "help": {
+          "short": "No confundas una reunión o una fecha de entrega con un horario laboral diario.",
+          "example": "Ejemplo: Exigir conexión de 8:00 a. m. a 5:00 p. m. y registro de entrada.",
+          "where_to_find": "Forma real prevista de ejecución, mensajes o políticas.",
+          "why_asked": "Un horario rígido y controlado puede ser señal de subordinación."
+        },
+        "allow_unknown": false
+      },
+      {
+        "id": "permanent_orders",
+        "label": "¿El contratante dará órdenes continuas sobre la forma diaria de trabajar?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Independencia y riesgos",
+        "help": {
+          "short": "Coordinar resultados es normal; dirigir de manera permanente el método de trabajo puede afectar la autonomía.",
+          "example": "Ejemplo: Un supervisor asigna diariamente tareas y define cómo ejecutarlas.",
+          "where_to_find": "Modelo operativo previsto, propuesta o comunicaciones.",
+          "why_asked": "Ayuda a distinguir coordinación contractual de subordinación material."
+        },
+        "allow_unknown": false
+      },
+      {
+        "id": "disciplinary_control",
+        "label": "¿Se aplicarán sanciones internas o control disciplinario?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Independencia y riesgos",
+        "help": {
+          "short": "Incluye memorandos, permisos laborales, suspensiones o sanciones propias de empleados.",
+          "example": "Ejemplo: Llamados de atención disciplinarios o descuentos sancionatorios.",
+          "where_to_find": "Políticas internas o dinámica proyectada.",
+          "why_asked": "Es una señal fuerte de posible relación laboral y bloquea el formato estándar."
+        },
+        "allow_unknown": false
+      },
+      {
+        "id": "continuous_availability",
+        "label": "¿Se exigirá disponibilidad personal permanente o respuesta inmediata continua?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Independencia y riesgos",
+        "help": {
+          "short": "Una ventana razonable de atención no equivale a disponibilidad permanente.",
+          "example": "Ejemplo: Estar conectado todo el día y responder de inmediato incluso fuera de hitos.",
+          "where_to_find": "Acuerdos de servicio, propuesta o práctica prevista.",
+          "why_asked": "Puede limitar la autonomía y requiere precisar ventanas, canales y niveles de servicio."
+        },
+        "allow_unknown": false
+      },
+      {
+        "id": "exclusive",
+        "label": "¿Se pactará exclusividad total durante el contrato?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Independencia y riesgos",
+        "help": {
+          "short": "Indica Sí cuando el contratista no podrá atender a ningún otro cliente.",
+          "example": "Ejemplo: Prohibición general de prestar servicios a terceros.",
+          "where_to_find": "Propuesta o acuerdo comercial.",
+          "why_asked": "Una exclusividad amplia puede aumentar dependencia y debe justificarse y delimitarse."
+        },
+        "allow_unknown": false
+      },
+      {
+        "id": "personal_data",
+        "label": "¿El contratista accederá o tratará datos personales por cuenta del contratante?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Módulos documentales",
+        "help": {
+          "short": "Incluye bases de clientes, empleados, usuarios, historias o datos identificables.",
+          "example": "Ejemplo: Acceso a CRM con nombres, correos y teléfonos.",
+          "where_to_find": "Mapa de datos, alcance técnico o sistemas que utilizará.",
+          "why_asked": "Activa un anexo sobre instrucciones, seguridad, confidencialidad, incidentes y devolución."
+        },
+        "allow_unknown": false
+      },
+      {
+        "id": "confidentiality",
+        "label": "¿El servicio implica información reservada o confidencial?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No"
+        ],
+        "required": true,
+        "section": "Módulos documentales",
+        "help": {
+          "short": "Incluye información comercial, técnica, financiera, estratégica o de clientes no pública.",
+          "example": "Ejemplo: Precios, código fuente, listas de clientes o planes de negocio.",
+          "where_to_find": "Clasificación de información, alcance o propuesta.",
+          "why_asked": "Activa un acuerdo específico de confidencialidad y devolución de información."
+        },
+        "allow_unknown": false
+      },
+      {
+        "id": "ip_relevant",
+        "label": "¿El contratista creará software, contenidos, diseños u otros resultados protegibles?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Módulos documentales",
+        "help": {
+          "short": "Responde Sí cuando se producirán obras, código, marcas, diseños, metodologías o materiales creativos.",
+          "example": "Ejemplo: Software, fotografías, manuales, diseños o contenidos.",
+          "where_to_find": "Lista de entregables y activos preexistentes.",
+          "why_asked": "Activa un anexo que diferencia materiales previos, titularidad, cesión o licencia y usos autorizados."
+        },
+        "allow_unknown": false
+      },
+      {
+        "id": "object",
+        "label": "Describe el objeto concreto del servicio",
+        "type": "textarea",
+        "required": true,
+        "section": "Alcance del servicio",
+        "min_length": 20,
+        "help": {
+          "short": "Explica en una frase qué realizará el contratista y para qué resultado. Evita expresiones abiertas como “apoyar en lo que se necesite”.",
+          "example": "Ejemplo: Diseñar e implementar un prototipo web para gestionar solicitudes de clientes.",
+          "where_to_find": "Propuesta, cotización o correo de alcance.",
+          "why_asked": "Se convierte en la cláusula de objeto y debe ser preciso y verificable."
+        },
+        "max_length": 1500
+      },
+      {
+        "id": "deliverables",
+        "label": "Describe los entregables y criterios de aceptación",
+        "type": "textarea",
+        "required": true,
+        "section": "Alcance del servicio",
+        "min_length": 20,
+        "help": {
+          "short": "Enumera resultados, formato, fecha o hito y cómo se verificará cada uno.",
+          "example": "Ejemplo: Prototipo funcional, repositorio de código, manual y sesión de entrega.",
+          "where_to_find": "Propuesta, cronograma o términos acordados.",
+          "why_asked": "Alimenta el anexo de alcance y el proceso de aceptación."
+        },
+        "max_length": 2500
+      },
+      {
+        "id": "fees",
+        "label": "Valor total o mensual de los honorarios (COP)",
+        "type": "number",
+        "required": true,
+        "section": "Condiciones económicas y plazo",
+        "help": {
+          "short": "Ingresa solo números, sin puntos ni símbolo de moneda.",
+          "example": "Ejemplo: 3900000",
+          "where_to_find": "Cotización, propuesta o acuerdo económico.",
+          "why_asked": "Personaliza honorarios, resumen económico y controles de cuantía."
+        },
+        "min": 1,
+        "max": 999999999999
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha prevista de inicio",
+        "type": "date",
+        "required": true,
+        "section": "Condiciones económicas y plazo",
+        "help": {
+          "short": "Selecciona la fecha desde la cual comenzarán las obligaciones.",
+          "example": "Ejemplo: 2026-08-01",
+          "where_to_find": "Cronograma o acuerdo entre las partes.",
+          "why_asked": "Define vigencia, hitos y fecha de inicio de ejecución."
+        }
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha prevista de terminación o hito final",
+        "type": "date",
+        "required": false,
+        "section": "Condiciones económicas y plazo",
+        "help": {
+          "short": "Debe ser posterior a la fecha de inicio.",
+          "example": "Ejemplo: 2026-11-30",
+          "where_to_find": "Cronograma o acuerdo entre las partes.",
+          "why_asked": "Define duración y cierre del contrato."
+        },
+        "after_field": "start_date"
+      },
+      {
+        "id": "payment_scheme",
+        "label": "¿Cómo se pagarán los honorarios?",
+        "type": "select",
+        "options": [
+          "Pago único",
+          "Anticipo e hitos",
+          "Mensual",
+          "Por entregable"
+        ],
+        "required": true,
+        "section": "Condiciones económicas y plazo",
+        "help": {
+          "short": "Selecciona el esquema que mejor refleje el acuerdo real.",
+          "example": "Ejemplo: Anticipo e hitos",
+          "where_to_find": "Cotización o propuesta económica.",
+          "why_asked": "Determina la tabla económica y la relación entre pagos y entregables."
+        }
+      },
+      {
+        "id": "acceptance_days",
+        "label": "Días para revisar y formular observaciones a los entregables",
+        "type": "number",
+        "min": 1,
+        "required": true,
+        "section": "Alcance del servicio",
+        "help": {
+          "short": "Indica un plazo razonable contado desde la entrega.",
+          "example": "Ejemplo: 5",
+          "where_to_find": "Propuesta o acuerdo operativo.",
+          "why_asked": "Define un procedimiento claro de revisión y evita aceptaciones ambiguas."
+        },
+        "max": 60
+      },
+      {
+        "id": "subcontractors",
+        "label": "¿El contratista podrá apoyarse en subcontratistas?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Módulos documentales",
+        "help": {
+          "short": "Responde Sí si podrá delegar parte del servicio a terceros bajo su responsabilidad.",
+          "example": "Ejemplo: Equipo técnico o consultor especializado de apoyo.",
+          "where_to_find": "Modelo de ejecución y propuesta.",
+          "why_asked": "Activa autorización, responsabilidad y obligaciones equivalentes para terceros."
+        },
+        "allow_unknown": false
+      },
+      {
+        "id": "early_termination",
+        "label": "¿Desean regular la terminación anticipada y los entregables parciales?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Condiciones económicas y plazo",
+        "help": {
+          "short": "Es recomendable cuando existen fases, anticipos o entregables acumulativos.",
+          "example": "Ejemplo: Pago proporcional de hitos aceptados y devolución de información.",
+          "where_to_find": "Cronograma, anticipos y riesgos del proyecto.",
+          "why_asked": "Activa reglas de cierre, liquidación, entrega y obligaciones que sobreviven."
+        },
+        "allow_unknown": false
+      }
+    ],
+    "confirmation_required": true
+  },
+  "CO-EM-004": {
+    "version": "2.14",
+    "intro": "Responde con datos confirmados. La herramienta diferencia confidencialidad, datos personales y propiedad intelectual, y bloquea riesgos incompatibles con autoservicio.",
+    "sections": [
+      "Partes",
+      "Configuración",
+      "Información",
+      "Datos",
+      "Propiedad intelectual",
+      "Riesgo",
+      "Vigencia",
+      "Seguridad"
+    ],
+    "questions": [
+      {
+        "id": "party_a",
+        "label": "Parte reveladora principal",
+        "type": "text",
+        "required": true,
+        "section": "Partes"
+      },
+      {
+        "id": "party_b",
+        "label": "Parte receptora principal",
+        "type": "text",
+        "required": true,
+        "section": "Partes"
+      },
+      {
+        "id": "nda_type",
+        "label": "Tipo de acuerdo",
+        "type": "select",
+        "required": true,
+        "section": "Configuración",
+        "options": [
+          "Unilateral",
+          "Mutuo"
+        ]
+      },
+      {
+        "id": "relationship_context",
+        "label": "Relación principal entre las partes",
+        "type": "select",
+        "required": true,
+        "section": "Configuración",
+        "options": [
+          "Comercial/proveedor",
+          "Laboral/colaborador",
+          "Software/tecnología",
+          "Contenidos/creativo",
+          "Otra"
+        ]
+      },
+      {
+        "id": "info_defined",
+        "label": "¿La información protegida está definida por categorías?",
+        "type": "select",
+        "required": true,
+        "section": "Información",
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "info_categories",
+        "label": "Categorías concretas de información protegida",
+        "type": "textarea",
+        "required": true,
+        "section": "Información",
+        "min_length": 15
+      },
+      {
+        "id": "authorized_recipients",
+        "label": "Personas, áreas o terceros autorizados para acceder",
+        "type": "textarea",
+        "required": true,
+        "section": "Información",
+        "min_length": 10
+      },
+      {
+        "id": "trade_secrets",
+        "label": "¿Incluye secretos empresariales o know-how crítico?",
+        "type": "select",
+        "required": true,
+        "section": "Información",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "personal_data",
+        "label": "¿Incluye datos personales?",
+        "type": "select",
+        "required": true,
+        "section": "Datos",
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "sensitive_data",
+        "label": "¿Incluye datos sensibles, biométricos o de salud?",
+        "type": "select",
+        "required": true,
+        "section": "Datos",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "crossborder",
+        "label": "¿Habrá transferencia internacional o nube fuera de Colombia?",
+        "type": "select",
+        "required": true,
+        "section": "Datos",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "ai_tools",
+        "label": "¿Se cargará información en herramientas públicas o no autorizadas de IA?",
+        "type": "select",
+        "required": true,
+        "section": "Seguridad",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "preexisting_materials",
+        "label": "¿Existen materiales, tecnología o contenidos preexistentes de alguna parte?",
+        "type": "select",
+        "required": true,
+        "section": "Propiedad intelectual",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "oss_components",
+        "label": "¿El proyecto utiliza software de código abierto o componentes de terceros?",
+        "type": "select",
+        "required": true,
+        "section": "Propiedad intelectual",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "future_ip_assignment",
+        "label": "¿Se pretende ceder de forma general obras o resultados futuros aún indeterminados?",
+        "type": "select",
+        "required": true,
+        "section": "Propiedad intelectual",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "noncompete",
+        "label": "¿Se pretende prohibir de forma general trabajar después de terminar?",
+        "type": "select",
+        "required": true,
+        "section": "Riesgo",
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "moral_rights",
+        "label": "¿Se pretende renunciar o transferir derechos morales?",
+        "type": "select",
+        "required": true,
+        "section": "Riesgo",
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "purpose",
+        "label": "Finalidad autorizada de uso de la información",
+        "type": "textarea",
+        "required": true,
+        "section": "Información",
+        "min_length": 15
+      },
+      {
+        "id": "duration_years",
+        "label": "Duración propuesta de la obligación (años)",
+        "type": "number",
+        "required": true,
+        "section": "Vigencia",
+        "min": 1,
+        "max": 30
+      },
+      {
+        "id": "incident_protocol",
+        "label": "¿Se requiere protocolo de incidentes, devolución y eliminación?",
+        "type": "select",
+        "required": true,
+        "section": "Seguridad",
+        "options": [
+          "No",
+          "Sí"
+        ]
+      }
+    ],
+    "confirmation_required": true
+  },
+  "CO-AR-001": {
+    "version": "2.23",
+    "intro": "El flujo valida alcance, autorización, habitabilidad, canon, garantías, propiedad horizontal, entrega y terminación antes de generar el paquete completo.",
+    "sections": [
+      "Partes",
+      "Alcance",
+      "Riesgo",
+      "Garantías",
+      "Inmueble",
+      "Entrega",
+      "Uso",
+      "Canon",
+      "Servicios",
+      "Plazo",
+      "Terminación",
+      "Confirmación"
+    ],
+    "questions": [
+      {
+        "id": "landlord",
+        "label": "Nombre o razón social del arrendador",
+        "type": "text",
+        "required": true,
+        "section": "Partes",
+        "min_length": 3
+      },
+      {
+        "id": "landlord_id",
+        "label": "Identificación del arrendador",
+        "type": "text",
+        "required": true,
+        "section": "Partes",
+        "min_length": 5
+      },
+      {
+        "id": "landlord_email",
+        "label": "Correo del arrendador",
+        "type": "email",
+        "format": "email",
+        "required": true,
+        "section": "Partes"
+      },
+      {
+        "id": "tenant",
+        "label": "Nombre del arrendatario principal",
+        "type": "text",
+        "required": true,
+        "section": "Partes",
+        "min_length": 3
+      },
+      {
+        "id": "tenant_id",
+        "label": "Identificación del arrendatario",
+        "type": "text",
+        "required": true,
+        "section": "Partes",
+        "min_length": 5
+      },
+      {
+        "id": "tenant_email",
+        "label": "Correo del arrendatario",
+        "type": "email",
+        "format": "email",
+        "required": true,
+        "section": "Partes"
+      },
+      {
+        "id": "urban_home",
+        "label": "¿El inmueble es vivienda urbana ordinaria?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No"
+        ],
+        "required": true,
+        "section": "Alcance"
+      },
+      {
+        "id": "lease_type",
+        "label": "Modalidad del arrendamiento",
+        "type": "select",
+        "options": [
+          "Individual",
+          "Mancomunado",
+          "Compartido",
+          "Pensión"
+        ],
+        "required": true,
+        "section": "Alcance"
+      },
+      {
+        "id": "authority",
+        "label": "¿El arrendador acredita propiedad o autorización vigente?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "Pendiente"
+        ],
+        "required": true,
+        "section": "Partes"
+      },
+      {
+        "id": "active_dispute",
+        "label": "¿Existe litigio, restitución o controversia de tenencia?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Riesgo"
+      },
+      {
+        "id": "cash_deposit",
+        "label": "¿Se pretende exigir depósito en dinero o caución real a favor del arrendador?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Garantías"
+      },
+      {
+        "id": "ph",
+        "label": "¿El inmueble está sometido a propiedad horizontal?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Inmueble"
+      },
+      {
+        "id": "ph_rules_delivered",
+        "label": "¿Se entregará la parte normativa del reglamento de propiedad horizontal?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Inmueble",
+        "show_if": {
+          "field": "ph",
+          "equals": "Sí"
+        }
+      },
+      {
+        "id": "furnished_high_value",
+        "label": "¿El inmueble es amoblado o contiene bienes de valor relevante?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Inmueble"
+      },
+      {
+        "id": "unsafe",
+        "label": "¿Hay defectos graves de sanidad, seguridad o servicios esenciales?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Entrega"
+      },
+      {
+        "id": "tourism_sublease",
+        "label": "¿Se usará para turismo, plataforma, hospedaje por días o subarriendo?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Uso"
+      },
+      {
+        "id": "property",
+        "label": "Dirección e identificación completa del inmueble",
+        "type": "textarea",
+        "required": true,
+        "section": "Inmueble",
+        "min_length": 12
+      },
+      {
+        "id": "property_registration",
+        "label": "Matrícula inmobiliaria o identificación registral",
+        "type": "text",
+        "required": true,
+        "section": "Inmueble",
+        "min_length": 4
+      },
+      {
+        "id": "occupants",
+        "label": "Ocupantes autorizados",
+        "type": "textarea",
+        "required": true,
+        "section": "Uso",
+        "min_length": 3
+      },
+      {
+        "id": "pets",
+        "label": "¿Habrá mascotas?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Uso"
+      },
+      {
+        "id": "rent",
+        "label": "Canon mensual (COP)",
+        "type": "number",
+        "required": true,
+        "section": "Canon",
+        "min": 1
+      },
+      {
+        "id": "commercial_value_known",
+        "label": "¿Se conoce el valor comercial o soporte equivalente?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No"
+        ],
+        "required": true,
+        "section": "Canon"
+      },
+      {
+        "id": "commercial_value",
+        "label": "Valor comercial soportado (COP)",
+        "type": "number",
+        "required": true,
+        "section": "Canon",
+        "min": 1,
+        "show_if": {
+          "field": "commercial_value_known",
+          "equals": "Sí"
+        }
+      },
+      {
+        "id": "cadastral_value",
+        "label": "Avalúo catastral vigente (COP, si se conoce)",
+        "type": "number",
+        "required": false,
+        "section": "Canon",
+        "min": 0
+      },
+      {
+        "id": "administration_charge",
+        "label": "Administración ordinaria mensual (COP)",
+        "type": "number",
+        "required": false,
+        "section": "Canon",
+        "min": 0
+      },
+      {
+        "id": "utilities_responsible",
+        "label": "Responsable principal de servicios públicos",
+        "type": "select",
+        "options": [
+          "Arrendatario",
+          "Arrendador",
+          "Distribución especial"
+        ],
+        "required": true,
+        "section": "Servicios"
+      },
+      {
+        "id": "duration_months",
+        "label": "Duración inicial en meses",
+        "type": "number",
+        "required": true,
+        "section": "Plazo",
+        "min": 1,
+        "max": 120
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha de inicio",
+        "type": "date",
+        "required": true,
+        "section": "Plazo"
+      },
+      {
+        "id": "payment_day",
+        "label": "Día límite mensual de pago",
+        "type": "number",
+        "required": true,
+        "section": "Canon",
+        "min": 1,
+        "max": 28
+      },
+      {
+        "id": "co_debtor",
+        "label": "Garantía personal o póliza",
+        "type": "select",
+        "options": [
+          "No",
+          "Codeudor solidario",
+          "Fiador",
+          "Póliza"
+        ],
+        "required": true,
+        "section": "Garantías"
+      },
+      {
+        "id": "special_termination",
+        "label": "¿Se propone terminación atípica, venta próxima o cláusula especial?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Terminación"
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que los datos y soportes fueron revisados?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No"
+        ],
+        "required": true,
+        "section": "Confirmación"
+      }
+    ],
+    "confirmation_required": true
+  },
+  "CO-SA-001": {
+    "version": "2.31",
+    "intro": "Responde únicamente con información confirmada. El flujo distingue urgencia asistencial, legitimación, privacidad, términos preliminares y rutas de seguimiento.",
+    "sections": [
+      "Peticionario",
+      "Paciente y legitimación",
+      "Entidad y canal",
+      "Solicitud",
+      "Urgencia y continuidad",
+      "Historia clínica y privacidad",
+      "Antecedentes",
+      "Procesos y control",
+      "Términos y seguimiento",
+      "Privacidad y confirmación"
+    ],
+    "questions": [
+      {
+        "id": "petitioner_name",
+        "label": "Nombre completo de quien presenta la petición",
+        "type": "text",
+        "required": true,
+        "section": "Peticionario",
+        "min_length": 3
+      },
+      {
+        "id": "petitioner_id",
+        "label": "Identificación de quien presenta la petición",
+        "type": "text",
+        "required": true,
+        "section": "Peticionario",
+        "min_length": 4
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa",
+        "type": "select",
+        "options": [
+          "Paciente",
+          "Madre, padre o representante legal",
+          "Apoderado o autorizado",
+          "Familiar de paciente fallecido",
+          "Tercero con interés acreditado"
+        ],
+        "required": true,
+        "section": "Peticionario"
+      },
+      {
+        "id": "email",
+        "label": "Correo electrónico para notificaciones",
+        "type": "text",
+        "format": "email",
+        "required": true,
+        "section": "Peticionario"
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true,
+        "section": "Peticionario",
+        "min_length": 7
+      },
+      {
+        "id": "address",
+        "label": "Dirección de contacto",
+        "type": "text",
+        "required": true,
+        "section": "Peticionario",
+        "min_length": 5
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio del peticionario",
+        "type": "text",
+        "required": true,
+        "section": "Peticionario"
+      },
+      {
+        "id": "notification_channel",
+        "label": "Canal preferido de respuesta",
+        "type": "select",
+        "options": [
+          "Correo electrónico",
+          "Dirección física",
+          "Ambos"
+        ],
+        "required": true,
+        "section": "Peticionario"
+      },
+      {
+        "id": "patient_name",
+        "label": "Nombre completo del paciente",
+        "type": "text",
+        "required": true,
+        "section": "Paciente y legitimación",
+        "min_length": 3
+      },
+      {
+        "id": "patient_id",
+        "label": "Identificación del paciente",
+        "type": "text",
+        "required": true,
+        "section": "Paciente y legitimación",
+        "min_length": 4
+      },
+      {
+        "id": "patient_status",
+        "label": "Situación jurídica del paciente",
+        "type": "select",
+        "options": [
+          "Adulto con capacidad",
+          "Menor de edad",
+          "Persona con capacidad limitada",
+          "Fallecido"
+        ],
+        "required": true,
+        "section": "Paciente y legitimación"
+      },
+      {
+        "id": "relationship_to_patient",
+        "label": "Relación de quien presenta con el paciente",
+        "type": "select",
+        "options": [
+          "El mismo paciente",
+          "Madre o padre",
+          "Representante legal",
+          "Cónyuge o compañero permanente",
+          "Hijo o hija",
+          "Otro familiar",
+          "Apoderado o autorizado",
+          "Otro tercero"
+        ],
+        "required": true,
+        "section": "Paciente y legitimación"
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de representación o legitimación disponible",
+        "type": "select",
+        "options": [
+          "Completo",
+          "Parcial",
+          "No",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Paciente y legitimación"
+      },
+      {
+        "id": "entity_type",
+        "label": "Tipo de entidad destinataria",
+        "type": "select",
+        "options": [
+          "EPS",
+          "IPS",
+          "Gestor farmacéutico",
+          "Medicina prepagada",
+          "Entidad territorial",
+          "Otra"
+        ],
+        "required": true,
+        "section": "Entidad y canal"
+      },
+      {
+        "id": "entity",
+        "label": "Nombre de la entidad destinataria",
+        "type": "text",
+        "required": true,
+        "section": "Entidad y canal",
+        "min_length": 3
+      },
+      {
+        "id": "entity_city",
+        "label": "Ciudad o municipio de la entidad",
+        "type": "text",
+        "required": true,
+        "section": "Entidad y canal"
+      },
+      {
+        "id": "filing_channel",
+        "label": "Canal previsto para radicar",
+        "type": "select",
+        "options": [
+          "Formulario web institucional",
+          "Correo electrónico oficial",
+          "Ventanilla física",
+          "Línea telefónica con radicado",
+          "Canal verbal sin constancia",
+          "Red social o mensajería",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Entidad y canal"
+      },
+      {
+        "id": "request_type",
+        "label": "Necesidad principal",
+        "type": "select",
+        "options": [
+          "Autorización o servicio",
+          "Medicamento o insumo",
+          "Cita o procedimiento",
+          "Historia clínica",
+          "Información o documentos",
+          "Respuesta o reiteración"
+        ],
+        "required": true,
+        "section": "Solicitud"
+      },
+      {
+        "id": "request_detail",
+        "label": "Hechos y solicitud concreta",
+        "type": "textarea",
+        "required": true,
+        "section": "Solicitud",
+        "min_length": 40,
+        "max_length": 5000
+      },
+      {
+        "id": "medical_support",
+        "label": "Orden, fórmula, historia o soporte médico disponible",
+        "type": "select",
+        "options": [
+          "Sí",
+          "Parcial",
+          "No",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Solicitud"
+      },
+      {
+        "id": "prescription_date",
+        "label": "Fecha de la orden o fórmula médica",
+        "type": "date",
+        "required": false,
+        "section": "Solicitud"
+      },
+      {
+        "id": "requested_outcome",
+        "label": "Resultado concreto que solicita a la entidad",
+        "type": "textarea",
+        "required": true,
+        "section": "Solicitud",
+        "min_length": 20,
+        "max_length": 2000
+      },
+      {
+        "id": "urgent",
+        "label": "¿Existe riesgo vital o urgencia médica inmediata?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Urgencia y continuidad"
+      },
+      {
+        "id": "deterioration",
+        "label": "Nivel de deterioro o afectación actual",
+        "type": "select",
+        "options": [
+          "No",
+          "Leve",
+          "Relevante",
+          "Grave",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Urgencia y continuidad"
+      },
+      {
+        "id": "priority_condition",
+        "label": "Condición de especial protección o priorización",
+        "type": "select",
+        "options": [
+          "No",
+          "Niño/niña/adolescente",
+          "Embarazo",
+          "Persona mayor",
+          "Discapacidad",
+          "Enfermedad grave o huérfana",
+          "Otra"
+        ],
+        "required": true,
+        "section": "Urgencia y continuidad"
+      },
+      {
+        "id": "continuity_risk",
+        "label": "¿Hay riesgo de interrupción de tratamiento o continuidad?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Urgencia y continuidad"
+      },
+      {
+        "id": "immediate_attention_sought",
+        "label": "¿Ya buscó atención asistencial inmediata cuando era necesaria?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Urgencia y continuidad"
+      },
+      {
+        "id": "medical_record_scope",
+        "label": "Alcance exacto de la historia clínica solicitada",
+        "type": "textarea",
+        "required": true,
+        "section": "Historia clínica y privacidad",
+        "min_length": 15,
+        "show_if": {
+          "field": "request_type",
+          "equals": "Historia clínica"
+        }
+      },
+      {
+        "id": "secure_delivery",
+        "label": "¿Se solicitó entrega por canal seguro y reservado?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No sé",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Historia clínica y privacidad"
+      },
+      {
+        "id": "third_party_authorization",
+        "label": "Autorización o base de acceso del tercero",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "Parcial",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Historia clínica y privacidad"
+      },
+      {
+        "id": "deceased_access_purpose",
+        "label": "Finalidad concreta y legítima del acceso a la historia del paciente fallecido",
+        "type": "textarea",
+        "required": true,
+        "section": "Historia clínica y privacidad",
+        "min_length": 20,
+        "show_if": {
+          "field": "patient_status",
+          "equals": "Fallecido"
+        }
+      },
+      {
+        "id": "prior_request",
+        "label": "¿Existe petición o radicado previo?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Antecedentes"
+      },
+      {
+        "id": "prior_request_date",
+        "label": "Fecha de la petición previa",
+        "type": "date",
+        "required": true,
+        "section": "Antecedentes",
+        "show_if": {
+          "field": "prior_request",
+          "equals": "Sí"
+        }
+      },
+      {
+        "id": "prior_radicado",
+        "label": "Número o constancia del radicado previo",
+        "type": "text",
+        "required": true,
+        "section": "Antecedentes",
+        "min_length": 3,
+        "show_if": {
+          "field": "prior_request",
+          "equals": "Sí"
+        }
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta recibida frente a la petición previa",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "Parcial",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Antecedentes"
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de la respuesta recibida",
+        "type": "date",
+        "required": false,
+        "section": "Antecedentes"
+      },
+      {
+        "id": "response_quality",
+        "label": "Calidad de la respuesta recibida",
+        "type": "select",
+        "options": [
+          "De fondo y completa",
+          "Parcial",
+          "Evasiva o incongruente",
+          "Negativa motivada",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Antecedentes"
+      },
+      {
+        "id": "tutela_active",
+        "label": "¿Existe tutela o proceso judicial activo sobre los mismos hechos?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Procesos y control"
+      },
+      {
+        "id": "supersalud_case_active",
+        "label": "¿Existe PQRD o actuación activa ante Supersalud?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Procesos y control"
+      },
+      {
+        "id": "filing_date",
+        "label": "Fecha prevista de radicación de esta petición",
+        "type": "date",
+        "required": true,
+        "section": "Términos y seguimiento"
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos contienen solo datos personales y clínicos necesarios?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Privacidad y confirmación"
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que los hechos, nombres, fechas y soportes fueron revisados?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No"
+        ],
+        "required": true,
+        "section": "Privacidad y confirmación"
+      }
+    ],
+    "confirmation_required": true
+  },
+  "CO-CD-001": {
+    "version": "2.32",
+    "intro": "Responde únicamente con información confirmada. El sistema distingue consulta, reclamo, responsables, comunicación previa, permanencia, suplantación, términos y escalamiento.",
+    "sections": [
+      "Titular y legitimación",
+      "Clasificación jurídica",
+      "Intervinientes",
+      "Obligación y reporte",
+      "Comunicación previa",
+      "Gestiones previas",
+      "Riesgo y escalamiento",
+      "Términos y control"
+    ],
+    "questions": [
+      {
+        "id": "data_subject_name",
+        "label": "Nombre completo del titular de la información",
+        "type": "text",
+        "required": true,
+        "section": "Titular y legitimación",
+        "min_length": 3
+      },
+      {
+        "id": "data_subject_id",
+        "label": "Identificación del titular",
+        "type": "text",
+        "required": true,
+        "section": "Titular y legitimación",
+        "min_length": 4
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa quien presenta",
+        "type": "select",
+        "options": [
+          "Titular",
+          "Apoderado o autorizado",
+          "Representante legal",
+          "Causahabiente",
+          "Otro tercero con legitimación acreditada"
+        ],
+        "required": true,
+        "section": "Titular y legitimación"
+      },
+      {
+        "id": "representative_name",
+        "label": "Nombre del representante o autorizado",
+        "type": "text",
+        "required": true,
+        "section": "Titular y legitimación",
+        "min_length": 3,
+        "show_if": {
+          "field": "acting_capacity",
+          "equals": "Apoderado o autorizado"
+        }
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de legitimación disponible",
+        "type": "select",
+        "options": [
+          "Completo",
+          "Parcial",
+          "No",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Titular y legitimación"
+      },
+      {
+        "id": "email",
+        "label": "Correo electrónico para notificaciones",
+        "type": "text",
+        "format": "email",
+        "required": true,
+        "section": "Titular y legitimación"
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true,
+        "section": "Titular y legitimación",
+        "min_length": 7
+      },
+      {
+        "id": "address",
+        "label": "Dirección de contacto",
+        "type": "text",
+        "required": true,
+        "section": "Titular y legitimación",
+        "min_length": 5
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio",
+        "type": "text",
+        "required": true,
+        "section": "Titular y legitimación"
+      },
+      {
+        "id": "request_mode",
+        "label": "Actuación principal",
+        "type": "select",
+        "options": [
+          "Consulta de información",
+          "Reclamo de corrección, actualización o retiro",
+          "Reiteración de reclamo",
+          "Escalamiento ante autoridad"
+        ],
+        "required": true,
+        "section": "Clasificación jurídica"
+      },
+      {
+        "id": "issue_type",
+        "label": "Problema principal",
+        "type": "select",
+        "options": [
+          "Obligación inexistente",
+          "Saldo, estado o fecha inexactos",
+          "Pago o extinción no actualizados",
+          "Falta de comunicación previa",
+          "Permanencia vencida después del pago",
+          "Caducidad de obligación insoluta",
+          "Reporte realizado tardíamente",
+          "Suplantación de identidad",
+          "Obligación vigente discutida",
+          "Fuente o soporte desconocidos",
+          "Uso o consulta indebida",
+          "Otro"
+        ],
+        "required": true,
+        "section": "Clasificación jurídica"
+      },
+      {
+        "id": "data_category",
+        "label": "Categoría del dato controvertido",
+        "type": "select",
+        "options": [
+          "Financiero o crediticio",
+          "Comercial o de servicios",
+          "Proveniente de terceros países",
+          "Calificación o score",
+          "Consulta realizada por usuario",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Clasificación jurídica"
+      },
+      {
+        "id": "claim_goal",
+        "label": "Pretensión principal",
+        "type": "select",
+        "options": [
+          "Conocer dato, fuente, usuarios y soportes",
+          "Corregir dato inexacto",
+          "Actualizar pago o estado",
+          "Retirar reporte por falta de comunicación",
+          "Retirar por permanencia o caducidad",
+          "Registrar reclamo en trámite",
+          "Responder y trasladar al competente",
+          "Preservar evidencia por suplantación",
+          "Explicar consulta o decisión crediticia",
+          "Otra"
+        ],
+        "required": true,
+        "section": "Clasificación jurídica"
+      },
+      {
+        "id": "facts_detail",
+        "label": "Relato de hechos confirmados y pretensiones",
+        "type": "textarea",
+        "required": true,
+        "section": "Clasificación jurídica",
+        "min_length": 50,
+        "max_length": 6000
+      },
+      {
+        "id": "source_known",
+        "label": "¿Identifica la fuente que reportó la información?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "Parcial"
+        ],
+        "required": true,
+        "section": "Intervinientes"
+      },
+      {
+        "id": "source_name",
+        "label": "Nombre de la fuente reportante",
+        "type": "text",
+        "required": true,
+        "section": "Intervinientes",
+        "min_length": 3,
+        "show_if": {
+          "field": "source_known",
+          "equals": "Sí"
+        }
+      },
+      {
+        "id": "operator_known",
+        "label": "¿Identifica el operador o central de información?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "Parcial"
+        ],
+        "required": true,
+        "section": "Intervinientes"
+      },
+      {
+        "id": "operator_name",
+        "label": "Nombre del operador o central",
+        "type": "text",
+        "required": true,
+        "section": "Intervinientes",
+        "min_length": 3,
+        "show_if": {
+          "field": "operator_known",
+          "equals": "Sí"
+        }
+      },
+      {
+        "id": "user_entity_known",
+        "label": "¿Identifica algún usuario que consultó o utilizó el dato?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Intervinientes"
+      },
+      {
+        "id": "user_entity_name",
+        "label": "Usuario o entidad que consultó/utilizó el dato",
+        "type": "text",
+        "required": true,
+        "section": "Intervinientes",
+        "min_length": 3,
+        "show_if": {
+          "field": "user_entity_known",
+          "equals": "Sí"
+        }
+      },
+      {
+        "id": "obligation_identifier",
+        "label": "Número parcial de obligación, producto o cuenta",
+        "type": "text",
+        "required": true,
+        "section": "Obligación y reporte",
+        "min_length": 3
+      },
+      {
+        "id": "obligation_status",
+        "label": "Estado actual de la obligación",
+        "type": "select",
+        "options": [
+          "Vigente y en mora",
+          "Pagada",
+          "Extinguida por otro modo",
+          "No reconocida por el titular",
+          "Discutida",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Obligación y reporte"
+      },
+      {
+        "id": "obligation_amount",
+        "label": "Valor aproximado de la obligación o cuota reportada",
+        "type": "number",
+        "required": false,
+        "section": "Obligación y reporte",
+        "min": 0
+      },
+      {
+        "id": "mora_start_date",
+        "label": "Fecha de inicio de mora",
+        "type": "date",
+        "required": false,
+        "section": "Obligación y reporte"
+      },
+      {
+        "id": "payment_or_extinction_date",
+        "label": "Fecha de pago o extinción",
+        "type": "date",
+        "required": false,
+        "section": "Obligación y reporte"
+      },
+      {
+        "id": "report_date",
+        "label": "Fecha del reporte negativo",
+        "type": "date",
+        "required": false,
+        "section": "Obligación y reporte"
+      },
+      {
+        "id": "report_discovery_date",
+        "label": "Fecha en que conoció el reporte",
+        "type": "date",
+        "required": false,
+        "section": "Obligación y reporte"
+      },
+      {
+        "id": "report_support_available",
+        "label": "¿Cuenta con consulta o soporte legible del reporte?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "Parcial",
+          "No"
+        ],
+        "required": true,
+        "section": "Obligación y reporte"
+      },
+      {
+        "id": "source_obligation_support",
+        "label": "¿La fuente aportó contrato, título o soporte de la obligación?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "Parcial",
+          "No",
+          "No solicitado"
+        ],
+        "required": true,
+        "section": "Obligación y reporte"
+      },
+      {
+        "id": "prior_communication_received",
+        "label": "¿Recibió comunicación previa al reporte?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Comunicación previa"
+      },
+      {
+        "id": "prior_communication_date",
+        "label": "Fecha de la última comunicación previa",
+        "type": "date",
+        "required": false,
+        "section": "Comunicación previa"
+      },
+      {
+        "id": "prior_communication_evidence",
+        "label": "Prueba de envío o recepción de la comunicación",
+        "type": "select",
+        "options": [
+          "Completa",
+          "Parcial",
+          "No",
+          "No solicitada"
+        ],
+        "required": true,
+        "section": "Comunicación previa"
+      },
+      {
+        "id": "small_obligation_two_notices",
+        "label": "Si la obligación es igual o inferior al 15 % del SMLMV, ¿existen dos comunicaciones en días diferentes?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No sé",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Comunicación previa"
+      },
+      {
+        "id": "prior_claim",
+        "label": "¿Ya presentó consulta o reclamo a la fuente u operador?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Gestiones previas"
+      },
+      {
+        "id": "prior_claim_date",
+        "label": "Fecha de la actuación previa",
+        "type": "date",
+        "required": true,
+        "section": "Gestiones previas",
+        "show_if": {
+          "field": "prior_claim",
+          "equals": "Sí"
+        }
+      },
+      {
+        "id": "prior_claim_radicado",
+        "label": "Número o constancia del radicado previo",
+        "type": "text",
+        "required": true,
+        "section": "Gestiones previas",
+        "min_length": 3,
+        "show_if": {
+          "field": "prior_claim",
+          "equals": "Sí"
+        }
+      },
+      {
+        "id": "prior_claim_complete",
+        "label": "¿La actuación previa contenía identificación, hechos, pretensión, dirección y soportes disponibles?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "Parcial",
+          "No",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Gestiones previas"
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta recibida",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "Parcial",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Gestiones previas"
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de respuesta",
+        "type": "date",
+        "required": false,
+        "section": "Gestiones previas"
+      },
+      {
+        "id": "response_quality",
+        "label": "Calidad de la respuesta",
+        "type": "select",
+        "options": [
+          "De fondo y completa",
+          "Incompleta o incongruente",
+          "Solo acuse o traslado",
+          "Negativa sin soportes",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Gestiones previas"
+      },
+      {
+        "id": "claim_legend_present",
+        "label": "¿El reporte muestra la leyenda “reclamo en trámite”?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No sé",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Gestiones previas"
+      },
+      {
+        "id": "extension_notified",
+        "label": "¿Fue notificada una prórroga motivada antes del vencimiento?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No sé",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Gestiones previas"
+      },
+      {
+        "id": "identity_theft",
+        "label": "¿Alega suplantación de identidad?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Riesgo y escalamiento"
+      },
+      {
+        "id": "identity_theft_complex",
+        "label": "¿La suplantación involucra varios productos, documentos falsos, investigación penal o pérdidas relevantes?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Riesgo y escalamiento"
+      },
+      {
+        "id": "multiple_sources",
+        "label": "¿Existen múltiples fuentes, operadores o reportes?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Riesgo y escalamiento"
+      },
+      {
+        "id": "judicial_or_insolvency",
+        "label": "¿Existe proceso judicial, insolvencia, cobro ejecutivo o embargo relacionado?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Riesgo y escalamiento"
+      },
+      {
+        "id": "high_damage_or_urgent_credit",
+        "label": "¿Existe daño patrimonial relevante, rechazo crítico de crédito o término urgente?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Riesgo y escalamiento"
+      },
+      {
+        "id": "authority_case_active",
+        "label": "¿Existe queja o actuación activa ante SIC, Superfinanciera u otra autoridad?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Riesgo y escalamiento"
+      },
+      {
+        "id": "filing_date",
+        "label": "Fecha prevista de radicación de esta actuación",
+        "type": "date",
+        "required": true,
+        "section": "Términos y control"
+      },
+      {
+        "id": "filing_channel",
+        "label": "Canal previsto de radicación",
+        "type": "select",
+        "options": [
+          "Portal oficial",
+          "Correo electrónico oficial",
+          "Ventanilla física",
+          "Canal telefónico con radicado",
+          "Canal sin constancia",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Términos y control"
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos ocultan números completos, claves y datos no necesarios?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "Parcial",
+          "No"
+        ],
+        "required": true,
+        "section": "Términos y control"
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que nombres, fechas, valores, soportes y pretensiones fueron revisados?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "Parcial",
+          "No"
+        ],
+        "required": true,
+        "section": "Términos y control"
+      }
+    ]
+  },
+  "CO-CD-003": {
+    "version": "2.33",
+    "intro": "Responde únicamente con información confirmada. El sistema separa garantía, retracto, reversión, débito periódico, falta de entrega y escalamiento.",
+    "sections": [
+      "Consumidor y legitimación",
+      "Relación y operación",
+      "Clasificación jurídica",
+      "Pago y reversión",
+      "Gestiones y términos",
+      "Evidencia, riesgo y privacidad"
+    ],
+    "questions": [
+      {
+        "id": "consumer_name",
+        "label": "Nombre completo del consumidor",
+        "type": "text",
+        "required": true,
+        "section": "Consumidor y legitimación",
+        "min_length": 3
+      },
+      {
+        "id": "consumer_id",
+        "label": "Identificación del consumidor",
+        "type": "text",
+        "required": true,
+        "section": "Consumidor y legitimación",
+        "min_length": 4
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa",
+        "type": "select",
+        "options": [
+          "Consumidor directo",
+          "Apoderado o autorizado",
+          "Representante legal",
+          "Causahabiente",
+          "Otro legitimado"
+        ],
+        "required": true,
+        "section": "Consumidor y legitimación"
+      },
+      {
+        "id": "representative_name",
+        "label": "Nombre del representante o autorizado",
+        "type": "text",
+        "required": true,
+        "section": "Consumidor y legitimación",
+        "min_length": 3,
+        "show_if": {
+          "field": "acting_capacity",
+          "equals": "Apoderado o autorizado"
+        }
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de representación o legitimación",
+        "type": "select",
+        "options": [
+          "Completo",
+          "Parcial",
+          "No",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Consumidor y legitimación"
+      },
+      {
+        "id": "email",
+        "label": "Correo para notificaciones",
+        "type": "text",
+        "format": "email",
+        "required": true,
+        "section": "Consumidor y legitimación"
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true,
+        "section": "Consumidor y legitimación",
+        "min_length": 7
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio",
+        "type": "text",
+        "required": true,
+        "section": "Consumidor y legitimación",
+        "min_length": 2
+      },
+      {
+        "id": "consumer_relationship",
+        "label": "¿Existe una relación de consumo en Colombia?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Relación y operación"
+      },
+      {
+        "id": "provider_name",
+        "label": "Productor, proveedor o expendedor",
+        "type": "text",
+        "required": true,
+        "section": "Relación y operación",
+        "min_length": 3
+      },
+      {
+        "id": "provider_country",
+        "label": "Domicilio principal conocido del proveedor",
+        "type": "select",
+        "options": [
+          "Colombia",
+          "Exterior",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Relación y operación"
+      },
+      {
+        "id": "product_type",
+        "label": "Tipo de objeto adquirido",
+        "type": "select",
+        "options": [
+          "Bien nuevo",
+          "Bien usado",
+          "Servicio",
+          "Suscripción o prestación periódica",
+          "Bien inmueble",
+          "Otro"
+        ],
+        "required": true,
+        "section": "Relación y operación"
+      },
+      {
+        "id": "product_description",
+        "label": "Descripción precisa del bien o servicio",
+        "type": "textarea",
+        "required": true,
+        "section": "Relación y operación",
+        "min_length": 20,
+        "max_length": 1500
+      },
+      {
+        "id": "order_or_contract",
+        "label": "Número de pedido, factura o contrato",
+        "type": "text",
+        "required": true,
+        "section": "Relación y operación",
+        "min_length": 3
+      },
+      {
+        "id": "purchase_value",
+        "label": "Valor total pagado o controvertido",
+        "type": "number",
+        "required": true,
+        "section": "Relación y operación",
+        "min": 0
+      },
+      {
+        "id": "purchase_date",
+        "label": "Fecha de compra o celebración del contrato",
+        "type": "date",
+        "required": true,
+        "section": "Relación y operación"
+      },
+      {
+        "id": "purchase_channel",
+        "label": "Canal de compra",
+        "type": "select",
+        "options": [
+          "Presencial",
+          "Internet o aplicación",
+          "PSE o enlace de pago",
+          "Call center o teléfono",
+          "Red social o mensajería",
+          "Venta no tradicional fuera del establecimiento",
+          "Otro"
+        ],
+        "required": true,
+        "section": "Relación y operación"
+      },
+      {
+        "id": "delivery_date",
+        "label": "Fecha de entrega, inicio del servicio o fecha esperada",
+        "type": "date",
+        "required": false,
+        "section": "Relación y operación"
+      },
+      {
+        "id": "request_mode",
+        "label": "Mecanismo principal que desea ejercer",
+        "type": "select",
+        "options": [
+          "Garantía legal",
+          "Derecho de retracto",
+          "Reversión del pago",
+          "Revocación de débito periódico",
+          "Terminación por falta de entrega",
+          "Reclamación directa general",
+          "Escalamiento ante autoridad",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Clasificación jurídica"
+      },
+      {
+        "id": "problem_type",
+        "label": "Problema principal",
+        "type": "select",
+        "options": [
+          "Producto defectuoso",
+          "Servicio defectuoso",
+          "Falla repetida",
+          "Producto distinto a lo solicitado",
+          "Producto no recibido",
+          "Operación no solicitada",
+          "Fraude",
+          "Arrepentimiento de compra",
+          "Débito periódico que debe cesar",
+          "Incumplimiento de información o publicidad",
+          "Otro"
+        ],
+        "required": true,
+        "section": "Clasificación jurídica"
+      },
+      {
+        "id": "claim_goal",
+        "label": "Resultado principal solicitado",
+        "type": "select",
+        "options": [
+          "Reparación gratuita",
+          "Repetición del servicio",
+          "Cambio o reposición",
+          "Devolución del dinero",
+          "Terminación del contrato",
+          "Reversión total",
+          "Reversión parcial",
+          "Cesación de débitos",
+          "Respuesta y soportes",
+          "Otra"
+        ],
+        "required": true,
+        "section": "Clasificación jurídica"
+      },
+      {
+        "id": "facts_detail",
+        "label": "Relato de hechos confirmados",
+        "type": "textarea",
+        "required": true,
+        "section": "Clasificación jurídica",
+        "min_length": 60,
+        "max_length": 6000
+      },
+      {
+        "id": "defect_detail",
+        "label": "Defecto, incumplimiento o diferencia concreta",
+        "type": "textarea",
+        "required": true,
+        "section": "Clasificación jurídica",
+        "min_length": 20,
+        "max_length": 2500
+      },
+      {
+        "id": "repeated_failure",
+        "label": "¿La falla se repitió después de una reparación?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No aplica",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Clasificación jurídica"
+      },
+      {
+        "id": "warranty_announced",
+        "label": "Término de garantía anunciado",
+        "type": "select",
+        "options": [
+          "Vigente y documentado",
+          "Vencido",
+          "No fue informado",
+          "No sé",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Clasificación jurídica"
+      },
+      {
+        "id": "withdrawal_exception",
+        "label": "¿El bien o servicio encaja en una excepción legal al retracto?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Clasificación jurídica"
+      },
+      {
+        "id": "service_started_with_consent",
+        "label": "En servicios, ¿la ejecución comenzó con acuerdo del consumidor?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Clasificación jurídica"
+      },
+      {
+        "id": "electronic_payment",
+        "label": "¿El pago se realizó con instrumento electrónico?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Pago y reversión"
+      },
+      {
+        "id": "payment_instrument",
+        "label": "Instrumento de pago",
+        "type": "select",
+        "options": [
+          "Tarjeta crédito",
+          "Tarjeta débito",
+          "PSE o transferencia electrónica",
+          "Billetera o instrumento electrónico",
+          "Débito automático",
+          "Efectivo",
+          "Otro",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Pago y reversión"
+      },
+      {
+        "id": "instrument_holder_same",
+        "label": "¿El consumidor es titular del instrumento de pago?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No sé",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Pago y reversión"
+      },
+      {
+        "id": "transaction_reference",
+        "label": "Referencia parcial de la transacción",
+        "type": "text",
+        "required": false,
+        "section": "Pago y reversión",
+        "min_length": 3
+      },
+      {
+        "id": "transaction_date",
+        "label": "Fecha de la transacción",
+        "type": "date",
+        "required": false,
+        "section": "Pago y reversión"
+      },
+      {
+        "id": "reversal_cause",
+        "label": "Causal alegada para reversión",
+        "type": "select",
+        "options": [
+          "Fraude",
+          "Operación no solicitada",
+          "Producto no recibido",
+          "Producto no corresponde",
+          "Producto defectuoso",
+          "Pago periódico",
+          "No aplica",
+          "Otra"
+        ],
+        "required": true,
+        "section": "Pago y reversión"
+      },
+      {
+        "id": "reversal_event_date",
+        "label": "Fecha en que conoció la causal o ocurrió el incumplimiento",
+        "type": "date",
+        "required": false,
+        "section": "Pago y reversión"
+      },
+      {
+        "id": "reversal_amount",
+        "label": "Valor cuya reversión solicita",
+        "type": "number",
+        "required": false,
+        "section": "Pago y reversión",
+        "min": 0
+      },
+      {
+        "id": "partial_reversal",
+        "label": "¿La reversión solicitada es parcial?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Pago y reversión"
+      },
+      {
+        "id": "prior_claim",
+        "label": "¿Presentó reclamación directa al proveedor?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Gestiones y términos"
+      },
+      {
+        "id": "prior_claim_date",
+        "label": "Fecha de reclamación directa",
+        "type": "date",
+        "required": true,
+        "section": "Gestiones y términos",
+        "show_if": {
+          "field": "prior_claim",
+          "equals": "Sí"
+        }
+      },
+      {
+        "id": "prior_claim_radicado",
+        "label": "Número o constancia de radicación",
+        "type": "text",
+        "required": true,
+        "section": "Gestiones y términos",
+        "min_length": 3,
+        "show_if": {
+          "field": "prior_claim",
+          "equals": "Sí"
+        }
+      },
+      {
+        "id": "provider_complaint_for_reversal",
+        "label": "¿La queja de reversión fue presentada al proveedor?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Gestiones y términos"
+      },
+      {
+        "id": "issuer_notification",
+        "label": "¿Se notificó al emisor del instrumento de pago?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Gestiones y términos"
+      },
+      {
+        "id": "issuer_notification_date",
+        "label": "Fecha de notificación al emisor",
+        "type": "date",
+        "required": false,
+        "section": "Gestiones y términos"
+      },
+      {
+        "id": "withdrawal_exercised_date",
+        "label": "Fecha en que ejerció el retracto",
+        "type": "date",
+        "required": false,
+        "section": "Gestiones y términos"
+      },
+      {
+        "id": "return_status",
+        "label": "Estado de devolución o puesta a disposición del bien",
+        "type": "select",
+        "options": [
+          "Devuelto",
+          "Puesto a disposición",
+          "Pendiente",
+          "Imposible por seguridad",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Gestiones y términos"
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta del proveedor",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí completa",
+          "Sí parcial",
+          "Negativa sin soporte",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Gestiones y términos"
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de respuesta",
+        "type": "date",
+        "required": false,
+        "section": "Gestiones y términos"
+      },
+      {
+        "id": "recurring_debit_revoked_date",
+        "label": "Fecha de revocación del débito periódico",
+        "type": "date",
+        "required": false,
+        "section": "Gestiones y términos"
+      },
+      {
+        "id": "latest_periodic_charge_date",
+        "label": "Fecha del último cargo periódico controvertido",
+        "type": "date",
+        "required": false,
+        "section": "Gestiones y términos"
+      },
+      {
+        "id": "evidence_status",
+        "label": "Estado de factura, comprobante, comunicaciones y evidencia",
+        "type": "select",
+        "options": [
+          "Completa",
+          "Parcial",
+          "No"
+        ],
+        "required": true,
+        "section": "Evidencia, riesgo y privacidad"
+      },
+      {
+        "id": "advertising_support",
+        "label": "¿Conserva publicidad, oferta o descripción del producto?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "Parcial",
+          "No",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Evidencia, riesgo y privacidad"
+      },
+      {
+        "id": "injury_or_safety",
+        "label": "¿Hubo lesión, afectación a la salud o riesgo de seguridad?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Evidencia, riesgo y privacidad"
+      },
+      {
+        "id": "regulated_sector",
+        "label": "¿Existe régimen sectorial especial?",
+        "type": "select",
+        "options": [
+          "No",
+          "Financiero vigilado",
+          "Salud o producto sanitario",
+          "Telecomunicaciones",
+          "Transporte aéreo o turismo",
+          "Servicios públicos",
+          "Otro",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Evidencia, riesgo y privacidad"
+      },
+      {
+        "id": "complex_fraud",
+        "label": "¿Existe fraude complejo, múltiples transacciones o suplantación?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Evidencia, riesgo y privacidad"
+      },
+      {
+        "id": "active_process",
+        "label": "¿Existe demanda, investigación o trámite activo por los mismos hechos?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Evidencia, riesgo y privacidad"
+      },
+      {
+        "id": "high_value_or_damage",
+        "label": "¿La cuantía o el daño exige estrategia individual?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Evidencia, riesgo y privacidad"
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos están minimizados y sin credenciales o números completos?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Evidencia, riesgo y privacidad"
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Los datos y fechas esenciales están confirmados?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "Parcial"
+        ],
+        "required": true,
+        "section": "Evidencia, riesgo y privacidad"
+      }
+    ]
+  },
+  "CO-CD-004": {
+    "version": "2.34",
+    "intro": "Responde únicamente con información confirmada. La plataforma separa cobro, conciliación, acuerdo, pagaré, recibos y cierre, y bloquea los casos que requieren estrategia individual.",
+    "sections": [
+      "Objetivo y etapa",
+      "Partes y legitimación",
+      "Origen y exigibilidad",
+      "Saldo, abonos e intereses",
+      "Controversias y procesos",
+      "Cobranza y datos personales",
+      "Acuerdo y pagos",
+      "Pagaré y garantías",
+      "Evidencia y control final"
+    ],
+    "questions": [
+      {
+        "id": "package_stage",
+        "label": "Etapa principal del expediente",
+        "type": "select",
+        "options": [
+          "Cobro inicial",
+          "Negociación",
+          "Formalización",
+          "Seguimiento de pagos",
+          "Cierre"
+        ],
+        "required": true,
+        "section": "Objetivo y etapa"
+      },
+      {
+        "id": "creditor_name",
+        "label": "Nombre o razón social del acreedor",
+        "type": "text",
+        "required": true,
+        "section": "Partes y legitimación",
+        "min_length": 3
+      },
+      {
+        "id": "creditor_id",
+        "label": "Identificación del acreedor",
+        "type": "text",
+        "required": true,
+        "section": "Partes y legitimación",
+        "min_length": 4
+      },
+      {
+        "id": "creditor_type",
+        "label": "Tipo de acreedor",
+        "type": "select",
+        "options": [
+          "Persona natural",
+          "Persona jurídica privada",
+          "Entidad vigilada por la SFC",
+          "Entidad pública"
+        ],
+        "required": true,
+        "section": "Partes y legitimación"
+      },
+      {
+        "id": "creditor_representative",
+        "label": "Representante o apoderado que actuará",
+        "type": "text",
+        "required": false,
+        "section": "Partes y legitimación"
+      },
+      {
+        "id": "creditor_authority",
+        "label": "Soporte de representación o facultad para cobrar",
+        "type": "select",
+        "options": [
+          "Completo",
+          "Parcial",
+          "No",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Partes y legitimación"
+      },
+      {
+        "id": "creditor_email",
+        "label": "Correo del acreedor para notificaciones",
+        "type": "text",
+        "format": "email",
+        "required": true,
+        "section": "Partes y legitimación"
+      },
+      {
+        "id": "debtor_name",
+        "label": "Nombre o razón social del deudor",
+        "type": "text",
+        "required": true,
+        "section": "Partes y legitimación",
+        "min_length": 3
+      },
+      {
+        "id": "debtor_id",
+        "label": "Identificación del deudor",
+        "type": "text",
+        "required": true,
+        "section": "Partes y legitimación",
+        "min_length": 4
+      },
+      {
+        "id": "debtor_type",
+        "label": "Tipo de deudor",
+        "type": "select",
+        "options": [
+          "Persona natural no comerciante",
+          "Persona natural comerciante",
+          "Persona jurídica privada",
+          "Entidad pública"
+        ],
+        "required": true,
+        "section": "Partes y legitimación"
+      },
+      {
+        "id": "debtor_email",
+        "label": "Correo o canal principal conocido del deudor",
+        "type": "text",
+        "required": true,
+        "section": "Partes y legitimación",
+        "min_length": 5
+      },
+      {
+        "id": "debtor_contact_confirmed",
+        "label": "¿El canal de contacto pertenece al deudor o fue autorizado?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Partes y legitimación"
+      },
+      {
+        "id": "obligation_type",
+        "label": "Naturaleza principal de la obligación",
+        "type": "select",
+        "options": [
+          "Civil",
+          "Mercantil",
+          "Consumo",
+          "Financiera",
+          "Laboral",
+          "Familiar o alimentos",
+          "Tributaria o pública",
+          "Otra"
+        ],
+        "required": true,
+        "section": "Origen y exigibilidad"
+      },
+      {
+        "id": "origin_description",
+        "label": "Descripción completa del negocio y origen de la deuda",
+        "type": "textarea",
+        "required": true,
+        "section": "Origen y exigibilidad",
+        "min_length": 50,
+        "max_length": 5000
+      },
+      {
+        "id": "source_document_type",
+        "label": "Documento principal que soporta la obligación",
+        "type": "select",
+        "options": [
+          "Contrato",
+          "Factura electrónica",
+          "Factura física",
+          "Pagaré",
+          "Acta de conciliación",
+          "Sentencia o providencia",
+          "Reconocimiento escrito",
+          "Mensajes de datos",
+          "Sin documento",
+          "Otro"
+        ],
+        "required": true,
+        "section": "Origen y exigibilidad"
+      },
+      {
+        "id": "document_reference",
+        "label": "Número o referencia del documento",
+        "type": "text",
+        "required": true,
+        "section": "Origen y exigibilidad",
+        "min_length": 2
+      },
+      {
+        "id": "document_date",
+        "label": "Fecha del documento u obligación",
+        "type": "date",
+        "required": true,
+        "section": "Origen y exigibilidad"
+      },
+      {
+        "id": "due_date",
+        "label": "Fecha de vencimiento o exigibilidad",
+        "type": "date",
+        "required": true,
+        "section": "Origen y exigibilidad"
+      },
+      {
+        "id": "principal",
+        "label": "Capital originalmente adeudado (COP)",
+        "type": "number",
+        "required": true,
+        "section": "Origen y exigibilidad",
+        "min": 0
+      },
+      {
+        "id": "currency",
+        "label": "Moneda de la obligación",
+        "type": "select",
+        "options": [
+          "COP",
+          "USD",
+          "EUR",
+          "Otra"
+        ],
+        "required": true,
+        "section": "Origen y exigibilidad"
+      },
+      {
+        "id": "obligation_status",
+        "label": "Estado temporal de la obligación",
+        "type": "select",
+        "options": [
+          "Vencida y exigible",
+          "No vencida",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Origen y exigibilidad"
+      },
+      {
+        "id": "express_clear_enforceable",
+        "label": "¿La obligación consta como expresa, clara y exigible?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Origen y exigibilidad"
+      },
+      {
+        "id": "debtor_signature_status",
+        "label": "Firma, aceptación o atribución al deudor",
+        "type": "select",
+        "options": [
+          "Acreditada",
+          "Parcial",
+          "No acreditada",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Origen y exigibilidad"
+      },
+      {
+        "id": "original_integrity_status",
+        "label": "Original, integridad y cadena de custodia del soporte",
+        "type": "select",
+        "options": [
+          "Completa",
+          "Parcial",
+          "No acreditada",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Origen y exigibilidad"
+      },
+      {
+        "id": "invoice_acceptance_status",
+        "label": "Aceptación de la factura cuando aplica",
+        "type": "select",
+        "options": [
+          "Expresa",
+          "Tácita acreditada",
+          "Rechazada",
+          "No acreditada",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Origen y exigibilidad"
+      },
+      {
+        "id": "radian_status",
+        "label": "Estado en RADIAN cuando aplica",
+        "type": "select",
+        "options": [
+          "Registrada y trazable",
+          "No registrada",
+          "Trazabilidad incompleta",
+          "No aplica",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Origen y exigibilidad"
+      },
+      {
+        "id": "reported_balance",
+        "label": "Saldo total que se pretende cobrar (COP)",
+        "type": "number",
+        "required": true,
+        "section": "Saldo, abonos e intereses",
+        "min": 0
+      },
+      {
+        "id": "partial_payments",
+        "label": "¿Existen abonos, notas crédito o compensaciones?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Saldo, abonos e intereses"
+      },
+      {
+        "id": "partial_payments_total",
+        "label": "Total de abonos confirmados (COP)",
+        "type": "number",
+        "required": true,
+        "section": "Saldo, abonos e intereses",
+        "min": 0
+      },
+      {
+        "id": "balance_reconciled",
+        "label": "¿El saldo está conciliado con soportes y movimientos?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "Parcial"
+        ],
+        "required": true,
+        "section": "Saldo, abonos e intereses"
+      },
+      {
+        "id": "interest_agreed",
+        "label": "¿Se pactaron intereses?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Saldo, abonos e intereses"
+      },
+      {
+        "id": "interest_type",
+        "label": "Clase de interés pretendido",
+        "type": "select",
+        "options": [
+          "Remuneratorio",
+          "Moratorio",
+          "Ambos",
+          "No aplica",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Saldo, abonos e intereses"
+      },
+      {
+        "id": "interest_rate",
+        "label": "Tasa pactada o pretendida (%)",
+        "type": "number",
+        "required": true,
+        "section": "Saldo, abonos e intereses",
+        "min": 0
+      },
+      {
+        "id": "interest_period",
+        "label": "Periodicidad de la tasa",
+        "type": "select",
+        "options": [
+          "Efectiva anual",
+          "Mensual vencida",
+          "Nominal anual mes vencido",
+          "No aplica",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Saldo, abonos e intereses"
+      },
+      {
+        "id": "interest_modality",
+        "label": "Modalidad crediticia de referencia",
+        "type": "select",
+        "options": [
+          "Consumo y ordinario",
+          "Consumo bajo monto",
+          "Productivo mayor monto",
+          "Productivo rural",
+          "Productivo urbano",
+          "Popular productivo rural",
+          "Popular productivo urbano",
+          "No definida"
+        ],
+        "required": true,
+        "section": "Saldo, abonos e intereses"
+      },
+      {
+        "id": "other_charges",
+        "label": "Otros cobros incluidos (COP)",
+        "type": "number",
+        "required": true,
+        "section": "Saldo, abonos e intereses",
+        "min": 0
+      },
+      {
+        "id": "other_charges_supported",
+        "label": "¿Los gastos, honorarios o cargos están pactados y soportados?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No aplica",
+          "Parcial"
+        ],
+        "required": true,
+        "section": "Saldo, abonos e intereses"
+      },
+      {
+        "id": "disputed",
+        "label": "¿El deudor discute existencia, monto o exigibilidad?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Controversias y procesos"
+      },
+      {
+        "id": "dispute_ground",
+        "label": "Fundamento de la controversia informada",
+        "type": "textarea",
+        "required": false,
+        "section": "Controversias y procesos",
+        "max_length": 2500
+      },
+      {
+        "id": "setoff_claimed",
+        "label": "¿Se alega compensación, cruce de cuentas o excepción?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Controversias y procesos"
+      },
+      {
+        "id": "prescription_concern",
+        "label": "¿Existe duda sobre prescripción o caducidad?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Controversias y procesos"
+      },
+      {
+        "id": "fraud_impersonation",
+        "label": "¿Existe fraude, suplantación o firma controvertida?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Controversias y procesos"
+      },
+      {
+        "id": "debtor_capacity_issue",
+        "label": "¿El deudor falleció o existen dudas de capacidad/representación?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Controversias y procesos"
+      },
+      {
+        "id": "judicial_process_active",
+        "label": "¿Existe proceso judicial o arbitral activo por la obligación?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Controversias y procesos"
+      },
+      {
+        "id": "insolvency_active",
+        "label": "¿Existe negociación de deudas, insolvencia o reorganización activa?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Controversias y procesos"
+      },
+      {
+        "id": "embargo_or_measure",
+        "label": "¿Existe embargo, medida cautelar o limitación registrada?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Controversias y procesos"
+      },
+      {
+        "id": "assignment_factoring",
+        "label": "¿La obligación fue cedida, endosada o negociada?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí y trazabilidad completa",
+          "Sí con trazabilidad parcial",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Controversias y procesos"
+      },
+      {
+        "id": "consumer_debt",
+        "label": "¿La cobranza recae sobre un consumidor?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Cobranza y datos personales"
+      },
+      {
+        "id": "authorized_channels",
+        "label": "¿Se conocen y respetan los canales autorizados?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Cobranza y datos personales"
+      },
+      {
+        "id": "direct_contact_today",
+        "label": "¿Ya hubo contacto directo con el deudor hoy?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Cobranza y datos personales"
+      },
+      {
+        "id": "channels_same_week",
+        "label": "¿Se han usado varios canales en la misma semana después de contacto directo?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Cobranza y datos personales"
+      },
+      {
+        "id": "contact_time_compliant",
+        "label": "¿El contacto previsto respeta horario legal o autorización posterior?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Cobranza y datos personales"
+      },
+      {
+        "id": "third_party_contact",
+        "label": "¿Se pretende contactar referencias, familiares o terceros no obligados?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Cobranza y datos personales"
+      },
+      {
+        "id": "negative_report_planned",
+        "label": "¿Se pretende efectuar reporte negativo a central de riesgo?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Cobranza y datos personales"
+      },
+      {
+        "id": "prior_report_notice_status",
+        "label": "Estado de la comunicación previa al reporte",
+        "type": "select",
+        "options": [
+          "No aplica",
+          "Dos comunicaciones en días distintos",
+          "Una comunicación",
+          "No enviada",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Cobranza y datos personales"
+      },
+      {
+        "id": "report_notice_date",
+        "label": "Fecha de la última comunicación previa al reporte",
+        "type": "date",
+        "required": false,
+        "section": "Cobranza y datos personales"
+      },
+      {
+        "id": "settlement_goal",
+        "label": "Objetivo de negociación",
+        "type": "select",
+        "options": [
+          "Cobro inmediato sin acuerdo",
+          "Pago único con plazo",
+          "Acuerdo por cuotas",
+          "Dación o fórmula especial",
+          "Registrar pago recibido",
+          "Cerrar obligación"
+        ],
+        "required": true,
+        "section": "Acuerdo y pagos"
+      },
+      {
+        "id": "agreement_total",
+        "label": "Valor total del eventual acuerdo (COP)",
+        "type": "number",
+        "required": true,
+        "section": "Acuerdo y pagos",
+        "min": 0
+      },
+      {
+        "id": "installments",
+        "label": "Número de cuotas",
+        "type": "number",
+        "required": true,
+        "section": "Acuerdo y pagos",
+        "min": 1,
+        "max": 240
+      },
+      {
+        "id": "frequency",
+        "label": "Periodicidad de las cuotas",
+        "type": "select",
+        "options": [
+          "Única",
+          "Semanal",
+          "Quincenal",
+          "Mensual",
+          "Bimestral",
+          "Otra"
+        ],
+        "required": true,
+        "section": "Acuerdo y pagos"
+      },
+      {
+        "id": "first_payment_date",
+        "label": "Fecha del primer pago",
+        "type": "date",
+        "required": true,
+        "section": "Acuerdo y pagos"
+      },
+      {
+        "id": "grace_days",
+        "label": "Días de gracia pactados",
+        "type": "number",
+        "required": true,
+        "section": "Acuerdo y pagos",
+        "min": 0,
+        "max": 90
+      },
+      {
+        "id": "acceleration_clause",
+        "label": "¿Se incluirá cláusula aceleratoria?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Acuerdo y pagos"
+      },
+      {
+        "id": "novation_intent",
+        "label": "¿Las partes quieren novar o sustituir la obligación anterior?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Acuerdo y pagos"
+      },
+      {
+        "id": "payment_channel",
+        "label": "Canal de pago acordado",
+        "type": "text",
+        "required": true,
+        "section": "Acuerdo y pagos",
+        "min_length": 4
+      },
+      {
+        "id": "promissory_note_requested",
+        "label": "¿Se generará pagaré?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "required": true,
+        "section": "Pagaré y garantías"
+      },
+      {
+        "id": "note_format",
+        "label": "Formato del pagaré",
+        "type": "select",
+        "options": [
+          "Totalmente diligenciado",
+          "Con espacios autorizados",
+          "Electrónico",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Pagaré y garantías"
+      },
+      {
+        "id": "blanks_present",
+        "label": "¿El pagaré tendrá espacios en blanco?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Pagaré y garantías"
+      },
+      {
+        "id": "instructions_signed",
+        "label": "¿Existe carta de instrucciones específica y firmada?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No aplica",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Pagaré y garantías"
+      },
+      {
+        "id": "maturity_form",
+        "label": "Forma de vencimiento del pagaré",
+        "type": "select",
+        "options": [
+          "Fecha cierta",
+          "Cuotas sucesivas",
+          "A la vista",
+          "Otra",
+          "No aplica"
+        ],
+        "required": true,
+        "section": "Pagaré y garantías"
+      },
+      {
+        "id": "guarantor_or_aval",
+        "label": "¿Habrá avalista, codeudor o deudor solidario?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Pagaré y garantías"
+      },
+      {
+        "id": "real_collateral",
+        "label": "¿Se pretende constituir hipoteca, prenda u otra garantía real?",
+        "type": "select",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Pagaré y garantías"
+      },
+      {
+        "id": "evidence_status",
+        "label": "Estado general de los soportes",
+        "type": "select",
+        "options": [
+          "Completo",
+          "Parcial",
+          "No"
+        ],
+        "required": true,
+        "section": "Evidencia y control final"
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos excluyen claves, datos innecesarios y números completos?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "No sé"
+        ],
+        "required": true,
+        "section": "Evidencia y control final"
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Los nombres, fechas, valores y referencias están confirmados?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No",
+          "Parcial"
+        ],
+        "required": true,
+        "section": "Evidencia y control final"
+      },
+      {
+        "id": "professional_review_ack",
+        "label": "¿Se entiende que casos rojos exigen revisión profesional?",
+        "type": "select",
+        "options": [
+          "Sí",
+          "No"
+        ],
+        "required": true,
+        "section": "Evidencia y control final"
+      }
+    ],
+    "confirmation_required": true
+  }
+}

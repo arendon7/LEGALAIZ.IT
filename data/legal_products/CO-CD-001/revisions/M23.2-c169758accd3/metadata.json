@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "migration_id": "M24.1-M23.2-PREINTEGRATION-20260801",
+  "product_code": "CO-CD-001",
+  "revision_id": "M23.2-c169758accd3",
+  "source_revision_label": "M23.2",
+  "status": "candidate_blocked_pending_legal_and_qa_approval",
+  "immutable": true,
+  "asset_hashes": {
+    "CO-CD-001_Modelo_Maestro_Reclamacion_Habeas_Data_M23.docx": "c169758accd369692cdfdd99e9c5897e9b66e96d1e6e7f2d3bcbc3ff886c8b2e",
+    "CO-CD-001_Modelo_Maestro_Reclamacion_Habeas_Data_M23.pdf": "34fea6ca517882af73de4a23e4d03bde5f1379f4f202c5c3f891197094cbb5c2",
+    "CO-CD-001_M23_Bloques_Reglas_y_Fuentes.json": "0516e26e1e94258f18d9eec2015ff3382f516c7c5ffd6834740a63db082f275f",
+    "CO-CD-001_Ejemplo_Final_Retiro_Reporte_Pagado_M23.docx": "0d7366aa03d70c53424c7ec838f6e123e76d68668facd379b21b731ec21b7e85",
+    "CO-CD-001_Ejemplo_Final_Retiro_Reporte_Pagado_M23.pdf": "9bd698e9eb6a25f8e776b01b28aabc786567cf66eb7cac8dbfcc2d432238585d"
+  },
+  "approvals": {
+    "legal": {
+      "required": true,
+      "approved": false,
+      "actor": null
+    },
+    "qa": {
+      "required": true,
+      "approved": false,
+      "actor": null
+    },
+    "must_be_distinct_users": true
+  },
+  "questionnaire_binding": {
+    "status": "pending_runtime_resolution",
+    "expected_legacy_ref": "M22://questionnaires/CO-CD-001",
+    "prohibition": "do_not_create_duplicate_questionnaire_before_runtime_audit"
+  },
+  "ruleset_binding": {
+    "status": "candidate_from_m23_2",
+    "source_file": "CO-CD-001/CO-CD-001_M23_Bloques_Reglas_y_Fuentes.json",
+    "rule_count": 10,
+    "rule_ids": [
+      "M23-CD1-001",
+      "M23-CD1-002",
+      "M23-CD1-003",
+      "M23-CD1-004",
+      "M23-CD1-005",
+      "M23-CD1-006",
+      "M23-CD1-007",
+      "M23-CD1-008",
+      "M23-CD1-009",
+      "M23-CD1-010"
+    ]
+  },
+  "created_at": "2026-08-01T05:58:46.984878+00:00",
+  "publication_change": "none"
+}

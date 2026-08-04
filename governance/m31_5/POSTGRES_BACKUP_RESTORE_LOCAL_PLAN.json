@@ -1,0 +1,19 @@
+{
+  "schema": "legalaizit-postgres-backup-restore-plan-v1",
+  "generated_at": "2026-08-04T14:47:30.018955+00:00",
+  "milestone": "M31.5",
+  "version": "5.0.4",
+  "binaries": {
+    "pg_dump": false,
+    "pg_restore": false
+  },
+  "driver_available": false,
+  "source_configured": false,
+  "restore_configured": false,
+  "source_fingerprint": null,
+  "restore_fingerprint": null,
+  "restore_target_is_distinct": false,
+  "destructive_guard_confirmed": false,
+  "ready": false,
+  "production_authorized": false
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "legalaizit-per-file-test-segment-v1",
+  "generated_at": "2026-08-04T14:37:08.319508+00:00",
+  "start": 0,
+  "stop": 16,
+  "results": [
+    {
+      "file": "tests/test_assisted_review.py",
+      "returncode": 0,
+      "passed": 7,
+      "subtests_passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "timed_out": false,
+      "ok": true,
+      "output_tail": ".......                                                                  [100%]\n7 passed in 9.13s"
+    },
+    {
+      "file": "tests/test_continuity_delivery.py",
+      "returncode": 0,
+      "passed": 5,
+      "subtests_passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "timed_out": false,
+      "ok": true,
+      "output_tail": ".....                                                                    [100%]\n5 passed in 6.66s"
+    }
+  ]
+}

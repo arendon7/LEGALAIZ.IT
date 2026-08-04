@@ -1,0 +1,881 @@
+{
+  "version": "2.34",
+  "intro": "Responde únicamente con información confirmada. La plataforma separa cobro, conciliación, acuerdo, pagaré, recibos y cierre, y bloquea los casos que requieren estrategia individual.",
+  "sections": [
+    "Objetivo y etapa",
+    "Partes y legitimación",
+    "Origen y exigibilidad",
+    "Saldo, abonos e intereses",
+    "Controversias y procesos",
+    "Cobranza y datos personales",
+    "Acuerdo y pagos",
+    "Pagaré y garantías",
+    "Evidencia y control final"
+  ],
+  "questions": [
+    {
+      "id": "package_stage",
+      "label": "Etapa principal del expediente",
+      "type": "select",
+      "options": [
+        "Cobro inicial",
+        "Negociación",
+        "Formalización",
+        "Seguimiento de pagos",
+        "Cierre"
+      ],
+      "required": true,
+      "section": "Objetivo y etapa"
+    },
+    {
+      "id": "creditor_name",
+      "label": "Nombre o razón social del acreedor",
+      "type": "text",
+      "required": true,
+      "section": "Partes y legitimación",
+      "min_length": 3
+    },
+    {
+      "id": "creditor_id",
+      "label": "Identificación del acreedor",
+      "type": "text",
+      "required": true,
+      "section": "Partes y legitimación",
+      "min_length": 4
+    },
+    {
+      "id": "creditor_type",
+      "label": "Tipo de acreedor",
+      "type": "select",
+      "options": [
+        "Persona natural",
+        "Persona jurídica privada",
+        "Entidad vigilada por la SFC",
+        "Entidad pública"
+      ],
+      "required": true,
+      "section": "Partes y legitimación"
+    },
+    {
+      "id": "creditor_representative",
+      "label": "Representante o apoderado que actuará",
+      "type": "text",
+      "required": false,
+      "section": "Partes y legitimación"
+    },
+    {
+      "id": "creditor_authority",
+      "label": "Soporte de representación o facultad para cobrar",
+      "type": "select",
+      "options": [
+        "Completo",
+        "Parcial",
+        "No",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Partes y legitimación"
+    },
+    {
+      "id": "creditor_email",
+      "label": "Correo del acreedor para notificaciones",
+      "type": "text",
+      "format": "email",
+      "required": true,
+      "section": "Partes y legitimación"
+    },
+    {
+      "id": "debtor_name",
+      "label": "Nombre o razón social del deudor",
+      "type": "text",
+      "required": true,
+      "section": "Partes y legitimación",
+      "min_length": 3
+    },
+    {
+      "id": "debtor_id",
+      "label": "Identificación del deudor",
+      "type": "text",
+      "required": true,
+      "section": "Partes y legitimación",
+      "min_length": 4
+    },
+    {
+      "id": "debtor_type",
+      "label": "Tipo de deudor",
+      "type": "select",
+      "options": [
+        "Persona natural no comerciante",
+        "Persona natural comerciante",
+        "Persona jurídica privada",
+        "Entidad pública"
+      ],
+      "required": true,
+      "section": "Partes y legitimación"
+    },
+    {
+      "id": "debtor_email",
+      "label": "Correo o canal principal conocido del deudor",
+      "type": "text",
+      "required": true,
+      "section": "Partes y legitimación",
+      "min_length": 5
+    },
+    {
+      "id": "debtor_contact_confirmed",
+      "label": "¿El canal de contacto pertenece al deudor o fue autorizado?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Partes y legitimación"
+    },
+    {
+      "id": "obligation_type",
+      "label": "Naturaleza principal de la obligación",
+      "type": "select",
+      "options": [
+        "Civil",
+        "Mercantil",
+        "Consumo",
+        "Financiera",
+        "Laboral",
+        "Familiar o alimentos",
+        "Tributaria o pública",
+        "Otra"
+      ],
+      "required": true,
+      "section": "Origen y exigibilidad"
+    },
+    {
+      "id": "origin_description",
+      "label": "Descripción completa del negocio y origen de la deuda",
+      "type": "textarea",
+      "required": true,
+      "section": "Origen y exigibilidad",
+      "min_length": 50,
+      "max_length": 5000
+    },
+    {
+      "id": "source_document_type",
+      "label": "Documento principal que soporta la obligación",
+      "type": "select",
+      "options": [
+        "Contrato",
+        "Factura electrónica",
+        "Factura física",
+        "Pagaré",
+        "Acta de conciliación",
+        "Sentencia o providencia",
+        "Reconocimiento escrito",
+        "Mensajes de datos",
+        "Sin documento",
+        "Otro"
+      ],
+      "required": true,
+      "section": "Origen y exigibilidad"
+    },
+    {
+      "id": "document_reference",
+      "label": "Número o referencia del documento",
+      "type": "text",
+      "required": true,
+      "section": "Origen y exigibilidad",
+      "min_length": 2
+    },
+    {
+      "id": "document_date",
+      "label": "Fecha del documento u obligación",
+      "type": "date",
+      "required": true,
+      "section": "Origen y exigibilidad"
+    },
+    {
+      "id": "due_date",
+      "label": "Fecha de vencimiento o exigibilidad",
+      "type": "date",
+      "required": true,
+      "section": "Origen y exigibilidad"
+    },
+    {
+      "id": "principal",
+      "label": "Capital originalmente adeudado (COP)",
+      "type": "number",
+      "required": true,
+      "section": "Origen y exigibilidad",
+      "min": 0
+    },
+    {
+      "id": "currency",
+      "label": "Moneda de la obligación",
+      "type": "select",
+      "options": [
+        "COP",
+        "USD",
+        "EUR",
+        "Otra"
+      ],
+      "required": true,
+      "section": "Origen y exigibilidad"
+    },
+    {
+      "id": "obligation_status",
+      "label": "Estado temporal de la obligación",
+      "type": "select",
+      "options": [
+        "Vencida y exigible",
+        "No vencida",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Origen y exigibilidad"
+    },
+    {
+      "id": "express_clear_enforceable",
+      "label": "¿La obligación consta como expresa, clara y exigible?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Origen y exigibilidad"
+    },
+    {
+      "id": "debtor_signature_status",
+      "label": "Firma, aceptación o atribución al deudor",
+      "type": "select",
+      "options": [
+        "Acreditada",
+        "Parcial",
+        "No acreditada",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Origen y exigibilidad"
+    },
+    {
+      "id": "original_integrity_status",
+      "label": "Original, integridad y cadena de custodia del soporte",
+      "type": "select",
+      "options": [
+        "Completa",
+        "Parcial",
+        "No acreditada",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Origen y exigibilidad"
+    },
+    {
+      "id": "invoice_acceptance_status",
+      "label": "Aceptación de la factura cuando aplica",
+      "type": "select",
+      "options": [
+        "Expresa",
+        "Tácita acreditada",
+        "Rechazada",
+        "No acreditada",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Origen y exigibilidad"
+    },
+    {
+      "id": "radian_status",
+      "label": "Estado en RADIAN cuando aplica",
+      "type": "select",
+      "options": [
+        "Registrada y trazable",
+        "No registrada",
+        "Trazabilidad incompleta",
+        "No aplica",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Origen y exigibilidad"
+    },
+    {
+      "id": "reported_balance",
+      "label": "Saldo total que se pretende cobrar (COP)",
+      "type": "number",
+      "required": true,
+      "section": "Saldo, abonos e intereses",
+      "min": 0
+    },
+    {
+      "id": "partial_payments",
+      "label": "¿Existen abonos, notas crédito o compensaciones?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Saldo, abonos e intereses"
+    },
+    {
+      "id": "partial_payments_total",
+      "label": "Total de abonos confirmados (COP)",
+      "type": "number",
+      "required": true,
+      "section": "Saldo, abonos e intereses",
+      "min": 0
+    },
+    {
+      "id": "balance_reconciled",
+      "label": "¿El saldo está conciliado con soportes y movimientos?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "Parcial"
+      ],
+      "required": true,
+      "section": "Saldo, abonos e intereses"
+    },
+    {
+      "id": "interest_agreed",
+      "label": "¿Se pactaron intereses?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Saldo, abonos e intereses"
+    },
+    {
+      "id": "interest_type",
+      "label": "Clase de interés pretendido",
+      "type": "select",
+      "options": [
+        "Remuneratorio",
+        "Moratorio",
+        "Ambos",
+        "No aplica",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Saldo, abonos e intereses"
+    },
+    {
+      "id": "interest_rate",
+      "label": "Tasa pactada o pretendida (%)",
+      "type": "number",
+      "required": true,
+      "section": "Saldo, abonos e intereses",
+      "min": 0
+    },
+    {
+      "id": "interest_period",
+      "label": "Periodicidad de la tasa",
+      "type": "select",
+      "options": [
+        "Efectiva anual",
+        "Mensual vencida",
+        "Nominal anual mes vencido",
+        "No aplica",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Saldo, abonos e intereses"
+    },
+    {
+      "id": "interest_modality",
+      "label": "Modalidad crediticia de referencia",
+      "type": "select",
+      "options": [
+        "Consumo y ordinario",
+        "Consumo bajo monto",
+        "Productivo mayor monto",
+        "Productivo rural",
+        "Productivo urbano",
+        "Popular productivo rural",
+        "Popular productivo urbano",
+        "No definida"
+      ],
+      "required": true,
+      "section": "Saldo, abonos e intereses"
+    },
+    {
+      "id": "other_charges",
+      "label": "Otros cobros incluidos (COP)",
+      "type": "number",
+      "required": true,
+      "section": "Saldo, abonos e intereses",
+      "min": 0
+    },
+    {
+      "id": "other_charges_supported",
+      "label": "¿Los gastos, honorarios o cargos están pactados y soportados?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No aplica",
+        "Parcial"
+      ],
+      "required": true,
+      "section": "Saldo, abonos e intereses"
+    },
+    {
+      "id": "disputed",
+      "label": "¿El deudor discute existencia, monto o exigibilidad?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Controversias y procesos"
+    },
+    {
+      "id": "dispute_ground",
+      "label": "Fundamento de la controversia informada",
+      "type": "textarea",
+      "required": false,
+      "section": "Controversias y procesos",
+      "max_length": 2500
+    },
+    {
+      "id": "setoff_claimed",
+      "label": "¿Se alega compensación, cruce de cuentas o excepción?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Controversias y procesos"
+    },
+    {
+      "id": "prescription_concern",
+      "label": "¿Existe duda sobre prescripción o caducidad?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Controversias y procesos"
+    },
+    {
+      "id": "fraud_impersonation",
+      "label": "¿Existe fraude, suplantación o firma controvertida?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Controversias y procesos"
+    },
+    {
+      "id": "debtor_capacity_issue",
+      "label": "¿El deudor falleció o existen dudas de capacidad/representación?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Controversias y procesos"
+    },
+    {
+      "id": "judicial_process_active",
+      "label": "¿Existe proceso judicial o arbitral activo por la obligación?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Controversias y procesos"
+    },
+    {
+      "id": "insolvency_active",
+      "label": "¿Existe negociación de deudas, insolvencia o reorganización activa?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Controversias y procesos"
+    },
+    {
+      "id": "embargo_or_measure",
+      "label": "¿Existe embargo, medida cautelar o limitación registrada?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Controversias y procesos"
+    },
+    {
+      "id": "assignment_factoring",
+      "label": "¿La obligación fue cedida, endosada o negociada?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí y trazabilidad completa",
+        "Sí con trazabilidad parcial",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Controversias y procesos"
+    },
+    {
+      "id": "consumer_debt",
+      "label": "¿La cobranza recae sobre un consumidor?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Cobranza y datos personales"
+    },
+    {
+      "id": "authorized_channels",
+      "label": "¿Se conocen y respetan los canales autorizados?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Cobranza y datos personales"
+    },
+    {
+      "id": "direct_contact_today",
+      "label": "¿Ya hubo contacto directo con el deudor hoy?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Cobranza y datos personales"
+    },
+    {
+      "id": "channels_same_week",
+      "label": "¿Se han usado varios canales en la misma semana después de contacto directo?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Cobranza y datos personales"
+    },
+    {
+      "id": "contact_time_compliant",
+      "label": "¿El contacto previsto respeta horario legal o autorización posterior?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Cobranza y datos personales"
+    },
+    {
+      "id": "third_party_contact",
+      "label": "¿Se pretende contactar referencias, familiares o terceros no obligados?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Cobranza y datos personales"
+    },
+    {
+      "id": "negative_report_planned",
+      "label": "¿Se pretende efectuar reporte negativo a central de riesgo?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Cobranza y datos personales"
+    },
+    {
+      "id": "prior_report_notice_status",
+      "label": "Estado de la comunicación previa al reporte",
+      "type": "select",
+      "options": [
+        "No aplica",
+        "Dos comunicaciones en días distintos",
+        "Una comunicación",
+        "No enviada",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Cobranza y datos personales"
+    },
+    {
+      "id": "report_notice_date",
+      "label": "Fecha de la última comunicación previa al reporte",
+      "type": "date",
+      "required": false,
+      "section": "Cobranza y datos personales"
+    },
+    {
+      "id": "settlement_goal",
+      "label": "Objetivo de negociación",
+      "type": "select",
+      "options": [
+        "Cobro inmediato sin acuerdo",
+        "Pago único con plazo",
+        "Acuerdo por cuotas",
+        "Dación o fórmula especial",
+        "Registrar pago recibido",
+        "Cerrar obligación"
+      ],
+      "required": true,
+      "section": "Acuerdo y pagos"
+    },
+    {
+      "id": "agreement_total",
+      "label": "Valor total del eventual acuerdo (COP)",
+      "type": "number",
+      "required": true,
+      "section": "Acuerdo y pagos",
+      "min": 0
+    },
+    {
+      "id": "installments",
+      "label": "Número de cuotas",
+      "type": "number",
+      "required": true,
+      "section": "Acuerdo y pagos",
+      "min": 1,
+      "max": 240
+    },
+    {
+      "id": "frequency",
+      "label": "Periodicidad de las cuotas",
+      "type": "select",
+      "options": [
+        "Única",
+        "Semanal",
+        "Quincenal",
+        "Mensual",
+        "Bimestral",
+        "Otra"
+      ],
+      "required": true,
+      "section": "Acuerdo y pagos"
+    },
+    {
+      "id": "first_payment_date",
+      "label": "Fecha del primer pago",
+      "type": "date",
+      "required": true,
+      "section": "Acuerdo y pagos"
+    },
+    {
+      "id": "grace_days",
+      "label": "Días de gracia pactados",
+      "type": "number",
+      "required": true,
+      "section": "Acuerdo y pagos",
+      "min": 0,
+      "max": 90
+    },
+    {
+      "id": "acceleration_clause",
+      "label": "¿Se incluirá cláusula aceleratoria?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Acuerdo y pagos"
+    },
+    {
+      "id": "novation_intent",
+      "label": "¿Las partes quieren novar o sustituir la obligación anterior?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Acuerdo y pagos"
+    },
+    {
+      "id": "payment_channel",
+      "label": "Canal de pago acordado",
+      "type": "text",
+      "required": true,
+      "section": "Acuerdo y pagos",
+      "min_length": 4
+    },
+    {
+      "id": "promissory_note_requested",
+      "label": "¿Se generará pagaré?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Pagaré y garantías"
+    },
+    {
+      "id": "note_format",
+      "label": "Formato del pagaré",
+      "type": "select",
+      "options": [
+        "Totalmente diligenciado",
+        "Con espacios autorizados",
+        "Electrónico",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Pagaré y garantías"
+    },
+    {
+      "id": "blanks_present",
+      "label": "¿El pagaré tendrá espacios en blanco?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Pagaré y garantías"
+    },
+    {
+      "id": "instructions_signed",
+      "label": "¿Existe carta de instrucciones específica y firmada?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No aplica",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Pagaré y garantías"
+    },
+    {
+      "id": "maturity_form",
+      "label": "Forma de vencimiento del pagaré",
+      "type": "select",
+      "options": [
+        "Fecha cierta",
+        "Cuotas sucesivas",
+        "A la vista",
+        "Otra",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Pagaré y garantías"
+    },
+    {
+      "id": "guarantor_or_aval",
+      "label": "¿Habrá avalista, codeudor o deudor solidario?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Pagaré y garantías"
+    },
+    {
+      "id": "real_collateral",
+      "label": "¿Se pretende constituir hipoteca, prenda u otra garantía real?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Pagaré y garantías"
+    },
+    {
+      "id": "evidence_status",
+      "label": "Estado general de los soportes",
+      "type": "select",
+      "options": [
+        "Completo",
+        "Parcial",
+        "No"
+      ],
+      "required": true,
+      "section": "Evidencia y control final"
+    },
+    {
+      "id": "data_minimized",
+      "label": "¿Los anexos excluyen claves, datos innecesarios y números completos?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Evidencia y control final"
+    },
+    {
+      "id": "data_confirmed",
+      "label": "¿Los nombres, fechas, valores y referencias están confirmados?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "Parcial"
+      ],
+      "required": true,
+      "section": "Evidencia y control final"
+    },
+    {
+      "id": "professional_review_ack",
+      "label": "¿Se entiende que casos rojos exigen revisión profesional?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No"
+      ],
+      "required": true,
+      "section": "Evidencia y control final"
+    }
+  ],
+  "confirmation_required": true
+}

@@ -1,0 +1,1823 @@
+{
+  "CO-TR-001": {
+    "product_code": "CO-TR-001",
+    "title": "Chequeo SAST + inscripción verificada",
+    "audience": "Propietarios o interesados que necesitan verificar preliminarmente si una actuación SAST puede relacionarse con su comparendo.",
+    "promise": "Organizar los datos y producir una coincidencia preliminar trazable, sin presentar la coincidencia como anulación o decisión definitiva.",
+    "estimated_time": "10–15 minutos para el diagnóstico inicial",
+    "steps": [
+      {
+        "number": 1,
+        "title": "Identificar el comparendo",
+        "description": "Confirma autoridad, municipio, placa, número y fecha aproximada."
+      },
+      {
+        "number": 2,
+        "title": "Cruzar la matriz piloto",
+        "description": "El motor compara territorio y período con las actuaciones SAST incorporadas."
+      },
+      {
+        "number": 3,
+        "title": "Validar la etapa",
+        "description": "Se revisan pago, cobro, embargo, términos urgentes y existencia de proceso."
+      },
+      {
+        "number": 4,
+        "title": "Organizar la evidencia",
+        "description": "Relaciona comparendo, consulta oficial y notificaciones con requisitos del expediente."
+      },
+      {
+        "number": 5,
+        "title": "Definir seguimiento",
+        "description": "El resultado explica coincidencias, vacíos y acciones que requieren especialista."
+      }
+    ],
+    "deliverables": [
+      "Informe preliminar de coincidencia SAST",
+      "Ficha de trazabilidad del cruce",
+      "Expediente y lista de soportes pendientes",
+      "Ruta de seguimiento o escalamiento"
+    ],
+    "required_documents": [
+      {
+        "key": "comparendo",
+        "label": "Comparendo o acto consultado",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ],
+        "help": "Documento o captura donde se identifique número, autoridad, fecha y placa."
+      },
+      {
+        "key": "consulta_oficial",
+        "label": "Consulta oficial disponible",
+        "category": "Consulta oficial",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ],
+        "help": "Consulta SIMIT, RUNT u otra fuente oficial disponible."
+      }
+    ],
+    "optional_documents": [
+      {
+        "key": "notificacion",
+        "label": "Notificación recibida",
+        "category": "Comunicación o notificación",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "pago",
+        "label": "Comprobante de pago",
+        "category": "Comprobante o pago",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      }
+    ],
+    "decision_points": [
+      "¿La autoridad y fecha coinciden con una actuación registrada?",
+      "¿Existe cobro coactivo, embargo o término urgente?",
+      "¿El archivo permite identificar dispositivo, acto y etapa?"
+    ],
+    "human_review": {
+      "required": true,
+      "reason": "La revisión profesional valida hechos, soportes, riesgos y la versión documental antes de cualquier uso de impacto."
+    },
+    "faqs": [
+      {
+        "question": "¿Una coincidencia elimina automáticamente la multa?",
+        "answer": "No. Solo activa una revisión preliminar que debe contrastarse con el expediente, el acto individual, la etapa y los soportes."
+      },
+      {
+        "question": "¿Puedo usar una captura de SIMIT?",
+        "answer": "Puede incorporarse como soporte, pero la ruta final depende de su legibilidad, fecha y correspondencia con el caso."
+      },
+      {
+        "question": "¿Qué ocurre si ya pagué?",
+        "answer": "El sistema conserva el dato y dirige el asunto a revisión, porque la vía y los efectos pueden ser diferentes."
+      }
+    ],
+    "related_products": [
+      "CO-TR-002"
+    ],
+    "demo_journey": [
+      "Juan registra un comparendo de Medellín.",
+      "El sistema detecta una coincidencia temporal preliminar.",
+      "La consulta oficial queda pendiente de carga.",
+      "Laura revisa la etapa y solicita el acto individual.",
+      "El expediente queda abierto para seguimiento."
+    ],
+    "notice": "Solución Gold Standard para demostración y piloto local controlado. La versión de cada expediente requiere validación de hechos, vigencia y revisión profesional según el riesgo.",
+    "gold_standard": {
+      "status": "Gold Standard",
+      "version": "M26.3",
+      "headline": "Verifica el soporte oficial de un sistema de fotodetección y organiza una ruta trazable para tu caso.",
+      "why_gold": "Conecta identificación del comparendo, consulta de fuentes oficiales, coincidencia territorial y temporal, etapa del trámite, evidencia y seguimiento sin presentar una coincidencia como anulación automática.",
+      "pillars": [
+        "Identificación del acto y autoridad",
+        "Cruce con fuentes oficiales",
+        "Validación de etapa y urgencia",
+        "Expediente probatorio",
+        "Seguimiento profesional"
+      ],
+      "included": [
+        "Informe preliminar de coincidencia SAST",
+        "Ficha de trazabilidad de fuentes y fechas",
+        "Lista de documentos y soportes faltantes",
+        "Alertas por etapa, pago, cobro o embargo",
+        "Ruta de seguimiento o escalamiento profesional"
+      ],
+      "not_included": [
+        "Declaración automática de invalidez de una multa",
+        "Representación ante autoridades o jueces",
+        "Conclusiones definitivas sin expediente individual y soportes verificables"
+      ],
+      "legal_basis": [
+        {
+          "title": "Ley 1843 de 2017",
+          "focus": "Sistemas automáticos y semiautomáticos, requisitos y notificación"
+        },
+        {
+          "title": "Resolución 20203040011245 de 2020",
+          "focus": "Criterios técnicos y autorización de sistemas de fotodetección"
+        },
+        {
+          "title": "Sentencias C-038 de 2020 y C-321 de 2022",
+          "focus": "Responsabilidad, debido proceso e identificación del infractor"
+        }
+      ],
+      "slug": "verificacion-sistema-fotodeteccion"
+    }
+  },
+  "CO-TR-002": {
+    "product_code": "CO-TR-002",
+    "title": "Fotomulta no notificada",
+    "audience": "Personas que conocieron una fotomulta sin una notificación verificable o que necesitan ordenar su expediente antes de reclamar.",
+    "promise": "Clasificar la etapa y generar el documento compatible con los hechos confirmados, evitando reclamaciones genéricas o fuera de término.",
+    "estimated_time": "15–25 minutos más revisión de soportes",
+    "steps": [
+      {
+        "number": 1,
+        "title": "Identificar autoridad y acto",
+        "description": "Registra comparendo, resolución, placa, fecha y medio tecnológico."
+      },
+      {
+        "number": 2,
+        "title": "Reconstruir la notificación",
+        "description": "Diferencia ausencia, duda o existencia de evidencia verificable."
+      },
+      {
+        "number": 3,
+        "title": "Determinar etapa procesal",
+        "description": "Separa comparendo, resolución, cobro coactivo, embargo y proceso judicial."
+      },
+      {
+        "number": 4,
+        "title": "Seleccionar el documento",
+        "description": "El sistema propone solicitud de expediente, reclamación, audiencia o escalamiento."
+      },
+      {
+        "number": 5,
+        "title": "Controlar términos y revisión",
+        "description": "Los escenarios urgentes o avanzados bloquean una salida automática definitiva."
+      }
+    ],
+    "deliverables": [
+      "Diagnóstico de etapa y notificación",
+      "Solicitud de expediente o reclamación preliminar",
+      "Índice de evidencias",
+      "Guía de próximos pasos"
+    ],
+    "required_documents": [
+      {
+        "key": "comparendo",
+        "label": "Comparendo o resolución",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ],
+        "help": "Acto que permita determinar etapa, autoridad y fecha."
+      },
+      {
+        "key": "consulta_oficial",
+        "label": "Consulta SIMIT/RUNT",
+        "category": "Consulta oficial",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      }
+    ],
+    "optional_documents": [
+      {
+        "key": "notificacion",
+        "label": "Constancia o evidencia de notificación",
+        "category": "Comunicación o notificación",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "cobro",
+        "label": "Mandamiento de pago o cobro coactivo",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF"
+        ]
+      }
+    ],
+    "decision_points": [
+      "¿Existe resolución sancionatoria?",
+      "¿Hay cobro coactivo, mandamiento o embargo?",
+      "¿La notificación puede demostrarse?",
+      "¿Existe un término próximo?"
+    ],
+    "human_review": {
+      "required": true,
+      "reason": "La revisión profesional valida hechos, soportes, riesgos y la versión documental antes de cualquier uso de impacto."
+    },
+    "faqs": [
+      {
+        "question": "¿El producto garantiza la anulación?",
+        "answer": "No. Organiza el expediente y genera una ruta preliminar; la decisión corresponde a la autoridad o al juez competente."
+      },
+      {
+        "question": "¿Qué documento se genera?",
+        "answer": "Depende de la etapa confirmada y de los soportes. El sistema evita producir una reclamación incompatible con el estado del proceso."
+      },
+      {
+        "question": "¿Puedo continuar si no conozco el número?",
+        "answer": "Puede iniciar, pero la identificación del acto será un requisito pendiente antes de una revisión concluyente."
+      }
+    ],
+    "related_products": [
+      "CO-TR-001"
+    ],
+    "demo_journey": [
+      "Juan carga la consulta SIMIT y el comparendo.",
+      "La entrevista revela que existe resolución, pero no se conoce la notificación.",
+      "El sistema marca riesgo amarillo.",
+      "Laura solicita constancia de envío y revisa la etapa.",
+      "Se prepara una reclamación preliminar versionada."
+    ],
+    "notice": "Solución Gold Standard para demostración y piloto local controlado. La versión de cada expediente requiere validación de hechos, vigencia y revisión profesional según el riesgo.",
+    "gold_standard": {
+      "status": "Gold Standard",
+      "version": "M26.3",
+      "headline": "Reconstruye la notificación, identifica la etapa y prepara la actuación compatible con el expediente de tránsito.",
+      "why_gold": "Diferencia consulta, comparendo, resolución, cobro y proceso judicial; organiza evidencia y términos y evita generar reclamaciones genéricas incompatibles con la etapa real.",
+      "pillars": [
+        "Identificación del acto",
+        "Auditoría de notificación",
+        "Clasificación de etapa",
+        "Documento compatible",
+        "Control de términos y seguimiento"
+      ],
+      "included": [
+        "Diagnóstico de etapa y notificación",
+        "Solicitud de expediente o reclamación compatible",
+        "Índice y cronología de evidencias",
+        "Calendario preliminar de términos",
+        "Ruta de audiencia, recurso o escalamiento según el caso"
+      ],
+      "not_included": [
+        "Garantía de anulación o archivo",
+        "Defensa judicial o en cobro coactivo",
+        "Afirmaciones sobre notificación sin revisar soportes oficiales"
+      ],
+      "legal_basis": [
+        {
+          "title": "Constitución Política, artículos 23 y 29",
+          "focus": "Derecho de petición y debido proceso"
+        },
+        {
+          "title": "Ley 1843 de 2017 y Ley 769 de 2002",
+          "focus": "Fotodetección, tránsito, actuación y notificación"
+        },
+        {
+          "title": "Ley 1437 de 2011",
+          "focus": "Actuaciones administrativas, recursos y control del expediente"
+        }
+      ],
+      "slug": "reclamo-fotomulta-no-notificada"
+    }
+  },
+  "CO-LA-001": {
+    "product_code": "CO-LA-001",
+    "title": "Liquidación laboral + reclamación",
+    "audience": "Trabajadores que requieren una estimación organizada de conceptos laborales y una reclamación preliminar.",
+    "promise": "Separar cálculos matemáticos estándar de conceptos que dependen de prueba, interpretación o valoración profesional.",
+    "estimated_time": "20–30 minutos para completar datos y soportes básicos",
+    "steps": [
+      {
+        "number": 1,
+        "title": "Confirmar la relación",
+        "description": "Identifica empleador, fechas, modalidad y causa de terminación."
+      },
+      {
+        "number": 2,
+        "title": "Definir bases de cálculo",
+        "description": "Registra salario fijo, variable, auxilio, días pendientes y pagos previos confirmados."
+      },
+      {
+        "number": 3,
+        "title": "Ejecutar fórmulas versionadas",
+        "description": "Calcula partidas estándar con parámetros identificados."
+      },
+      {
+        "number": 4,
+        "title": "Detectar escenarios especiales",
+        "description": "Estabilidad reforzada, fuero, sector público, contrato realidad o litigio bloquean la salida simple."
+      },
+      {
+        "number": 5,
+        "title": "Preparar informe y reclamación",
+        "description": "Genera desglose, advertencias y carta preliminar para revisión."
+      }
+    ],
+    "deliverables": [
+      "Informe estimativo de liquidación",
+      "Desglose de partidas y parámetros",
+      "Carta de reclamación preliminar",
+      "Ficha de riesgos y soportes"
+    ],
+    "required_documents": [
+      {
+        "key": "contrato",
+        "label": "Contrato de trabajo",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF",
+          "DOCX",
+          "JPG",
+          "PNG"
+        ],
+        "help": "Contrato y otrosíes que definan modalidad, salario y vigencia."
+      },
+      {
+        "key": "pagos",
+        "label": "Desprendibles o soportes de pago",
+        "category": "Comprobante o pago",
+        "formats": [
+          "PDF",
+          "XLSX",
+          "JPG",
+          "PNG"
+        ],
+        "help": "Soportes necesarios para validar salario, pagos y deducciones."
+      }
+    ],
+    "optional_documents": [
+      {
+        "key": "terminacion",
+        "label": "Carta de terminación o renuncia",
+        "category": "Comunicación o notificación",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "historia",
+        "label": "Historia de pagos o certificación laboral",
+        "category": "Soporte general",
+        "formats": [
+          "PDF",
+          "XLSX"
+        ]
+      }
+    ],
+    "decision_points": [
+      "¿Los datos salariales están confirmados?",
+      "¿Existe protección especial, fuero o litigio?",
+      "¿El salario variable tiene soportes suficientes?",
+      "¿La terminación activa una indemnización estándar?"
+    ],
+    "human_review": {
+      "required": true,
+      "reason": "La revisión profesional valida hechos, soportes, riesgos y la versión documental antes de cualquier uso de impacto."
+    },
+    "faqs": [
+      {
+        "question": "¿El total es una cifra definitiva?",
+        "answer": "No. Es una estimación basada en datos confirmados y parámetros versionados; no incluye automáticamente conceptos que dependan de prueba o valoración."
+      },
+      {
+        "question": "¿Qué pasa si el salario variaba?",
+        "answer": "Se solicita información adicional y puede exigirse revisión profesional antes de usar el cálculo."
+      },
+      {
+        "question": "¿Incluye sanciones?",
+        "answer": "Las sanciones y perjuicios no se agregan automáticamente sin hechos, soporte y análisis jurídico específico."
+      }
+    ],
+    "related_products": [
+      "CO-LA-002"
+    ],
+    "demo_journey": [
+      "Juan confirma fechas, salario y terminación.",
+      "El motor calcula partidas estándar.",
+      "Falta un soporte de pagos previos.",
+      "María solicita el documento y revisa la indemnización.",
+      "Se genera una segunda versión del informe y la reclamación."
+    ],
+    "notice": "Solución Gold Standard para demostración y piloto local controlado. La versión de cada expediente requiere validación de hechos, vigencia y revisión profesional según el riesgo.",
+    "gold_standard": {
+      "status": "Gold Standard",
+      "version": "M26.3",
+      "headline": "Estima acreencias laborales con parámetros trazables y prepara una reclamación separando cálculo, prueba y valoración jurídica.",
+      "why_gold": "Integra fechas, salario, pagos, prestaciones, vacaciones, indemnizaciones y escenarios especiales sin presentar como definitivos conceptos que dependen de prueba o interpretación.",
+      "pillars": [
+        "Validación de la relación",
+        "Bases y períodos de cálculo",
+        "Fórmulas versionadas",
+        "Bloqueos por riesgo especial",
+        "Informe, reclamación y seguimiento"
+      ],
+      "included": [
+        "Informe estimativo de liquidación",
+        "Desglose de bases, períodos y partidas",
+        "Carta de reclamación preliminar",
+        "Matriz de pagos y soportes",
+        "Alertas sobre conceptos que requieren análisis profesional"
+      ],
+      "not_included": [
+        "Cálculo definitivo cuando faltan datos o existe controversia probatoria",
+        "Representación en conciliación o proceso judicial",
+        "Reconocimiento automático de sanciones, fueros o indemnizaciones discutidas"
+      ],
+      "legal_basis": [
+        {
+          "title": "Código Sustantivo del Trabajo",
+          "focus": "Salarios, prestaciones, vacaciones, terminación e indemnizaciones"
+        },
+        {
+          "title": "Ley 50 de 1990 y Ley 52 de 1975",
+          "focus": "Cesantías e intereses a las cesantías"
+        },
+        {
+          "title": "Ley 2466 de 2025",
+          "focus": "Modificaciones laborales vigentes y parámetros aplicables"
+        }
+      ],
+      "slug": "liquidacion-laboral-reclamacion"
+    }
+  },
+  "CO-LA-002": {
+    "product_code": "CO-LA-002",
+    "title": "Contrato de trabajo personalizado",
+    "audience": "Empleadores y trabajadores que necesitan documentar una relación laboral según modalidad, funciones y condiciones reales.",
+    "promise": "Construir un contrato coherente con la modalidad elegida y detectar cláusulas o hechos que requieren ajuste profesional.",
+    "estimated_time": "20–35 minutos según modalidad y anexos",
+    "steps": [
+      {
+        "number": 1,
+        "title": "Elegir modalidad",
+        "description": "Indefinido, fijo u obra/labor con datos consistentes."
+      },
+      {
+        "number": 2,
+        "title": "Definir cargo y funciones",
+        "description": "Registra lugar, jornada, funciones, supervisión y herramientas."
+      },
+      {
+        "number": 3,
+        "title": "Configurar compensación",
+        "description": "Salario, pagos, beneficios y conceptos no salariales se presentan por separado."
+      },
+      {
+        "number": 4,
+        "title": "Activar módulos",
+        "description": "Confidencialidad, datos, propiedad intelectual, teletrabajo u otros anexos según el caso."
+      },
+      {
+        "number": 5,
+        "title": "Revisar y aprobar",
+        "description": "El especialista valida coherencia, restricciones y versión antes de firma."
+      }
+    ],
+    "deliverables": [
+      "Contrato laboral según modalidad",
+      "Anexo de funciones",
+      "Módulos condicionales aplicables",
+      "Checklist de firma y entrega"
+    ],
+    "required_documents": [
+      {
+        "key": "identidad_empleador",
+        "label": "Identificación del empleador",
+        "category": "Documento de identidad",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "identidad_trabajador",
+        "label": "Identificación del trabajador",
+        "category": "Documento de identidad",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "oferta",
+        "label": "Oferta, cargo o descripción funcional",
+        "category": "Soporte general",
+        "formats": [
+          "PDF",
+          "DOCX",
+          "TXT"
+        ]
+      }
+    ],
+    "optional_documents": [
+      {
+        "key": "politicas",
+        "label": "Políticas o reglamentos aplicables",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF",
+          "DOCX"
+        ]
+      }
+    ],
+    "decision_points": [
+      "¿La modalidad coincide con la necesidad real?",
+      "¿Las funciones y la jornada están suficientemente definidas?",
+      "¿Existen cláusulas sensibles o beneficios especiales?"
+    ],
+    "human_review": {
+      "required": true,
+      "reason": "La revisión profesional valida hechos, soportes, riesgos y la versión documental antes de cualquier uso de impacto."
+    },
+    "faqs": [
+      {
+        "question": "¿El sistema decide la modalidad por mí?",
+        "answer": "No. Orienta y verifica coherencia, pero la elección debe corresponder a la realidad de la relación."
+      },
+      {
+        "question": "¿Incluye período de prueba?",
+        "answer": "Solo cuando los datos y la modalidad permiten incorporarlo y queda sometido a revisión."
+      },
+      {
+        "question": "¿Puedo agregar funciones?",
+        "answer": "Sí. Deben redactarse de forma concreta y coherente con el cargo y la subordinación laboral."
+      }
+    ],
+    "related_products": [
+      "CO-LA-001",
+      "CO-EM-004"
+    ],
+    "demo_journey": [
+      "Una empresa selecciona contrato indefinido.",
+      "Define cargo, funciones, salario y lugar de trabajo.",
+      "Activa confidencialidad y tratamiento de datos.",
+      "María revisa el anexo funcional.",
+      "La versión aprobada queda lista para descarga interna."
+    ],
+    "notice": "Disponible para piloto profesional controlado. La solución organiza información y documentos; los casos de riesgo requieren revisión específica antes de su uso.",
+    "gold_standard": {
+      "status": "Gold Standard",
+      "version": "M26.2",
+      "headline": "Formaliza una relación laboral con condiciones claras, módulos pertinentes y controles de riesgo.",
+      "why_gold": "Integra modalidad, funciones, jornada, remuneración, protección reforzada, anexos y revisión jurídica en un solo recorrido.",
+      "pillars": [
+        "Diagnóstico de modalidad",
+        "Formulario progresivo",
+        "Contrato y anexos completos",
+        "Revisión profesional",
+        "Seguimiento de firma y ejecución"
+      ],
+      "included": [
+        "Contrato según modalidad",
+        "Anexo de funciones y responsabilidades",
+        "Módulos de confidencialidad, datos y propiedad intelectual cuando correspondan",
+        "Checklist de firma, entrega y afiliaciones",
+        "Seguimiento dentro del expediente"
+      ],
+      "not_included": [
+        "Representación judicial o administrativa",
+        "Decisiones automáticas sobre estabilidad laboral reforzada",
+        "Definición unilateral de una modalidad incompatible con la realidad"
+      ],
+      "legal_basis": [
+        {
+          "title": "Código Sustantivo del Trabajo",
+          "focus": "Elementos, modalidades, período de prueba, jornada, remuneración y terminación"
+        },
+        {
+          "title": "Ley 2466 de 2025",
+          "focus": "Actualizaciones laborales aplicables, incluidas jornada y trabajo nocturno"
+        },
+        {
+          "title": "Ley 1581 de 2012",
+          "focus": "Tratamiento de datos personales"
+        }
+      ]
+    }
+  },
+  "CO-EM-003": {
+    "product_code": "CO-EM-003",
+    "title": "Contrato de prestación de servicios y paquete de anexos",
+    "audience": "Empresas, emprendimientos y prestadores independientes que necesitan documentar un servicio privado con autonomía, resultados y pagos definidos.",
+    "promise": "Generar hasta seis documentos coherentes desde un solo formulario y advertir cuando la realidad proyectada no es compatible con un contrato de servicios independiente.",
+    "estimated_time": "12–20 minutos; puedes guardar y continuar después.",
+    "steps": [
+      {
+        "number": 1,
+        "title": "Identifica a las partes",
+        "description": "Confirma nombres, identificaciones, ciudad y canales autorizados."
+      },
+      {
+        "number": 2,
+        "title": "Define el servicio",
+        "description": "Describe objeto, entregables, aceptación, cronograma y precio."
+      },
+      {
+        "number": 3,
+        "title": "Confirma la autonomía",
+        "description": "Diferencia coordinación por resultados de horario, órdenes o control disciplinario."
+      },
+      {
+        "number": 4,
+        "title": "Activa los anexos",
+        "description": "Selecciona confidencialidad, datos personales, propiedad intelectual, subcontratación y cierre."
+      },
+      {
+        "number": 5,
+        "title": "Revisa y genera",
+        "description": "Confirma el resumen, conoce los documentos incluidos y genera el paquete Word/PDF de prueba."
+      }
+    ],
+    "deliverables": [
+      "Contrato de prestación de servicios independientes",
+      "Anexo de alcance, entregables y cronograma",
+      "Acuerdo de confidencialidad condicional",
+      "Anexo de propiedad intelectual condicional",
+      "Anexo de tratamiento de datos condicional",
+      "Acta de terminación y cierre"
+    ],
+    "required_documents": [
+      {
+        "key": "identificacion_partes",
+        "label": "Identificación de las partes",
+        "category": "Documento de identidad",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ],
+        "help": "Cédula, RUT o certificado aplicable."
+      },
+      {
+        "key": "alcance",
+        "label": "Propuesta o alcance de servicios",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF",
+          "DOCX",
+          "XLSX",
+          "TXT"
+        ],
+        "help": "Objetivo, entregables, hitos y condiciones económicas."
+      }
+    ],
+    "optional_documents": [
+      {
+        "key": "oferta",
+        "label": "Cotización o propuesta económica",
+        "category": "Comprobante o pago",
+        "formats": [
+          "PDF",
+          "XLSX"
+        ]
+      },
+      {
+        "key": "datos_pi",
+        "label": "Anexos de datos, confidencialidad o PI",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF",
+          "DOCX"
+        ]
+      }
+    ],
+    "decision_points": [
+      "¿La coordinación respeta la autonomía del contratista?",
+      "¿El objeto y los entregables son verificables?",
+      "¿Se requiere confidencialidad, datos o propiedad intelectual?",
+      "¿La cuantía o los terceros justifican revisión opcional?"
+    ],
+    "human_review": {
+      "required": false,
+      "reason": "El caso estándar es autogenerable. La revisión es opcional o recomendada salvo que una regla roja bloquee el formato por posible subordinación, contratación estatal o régimen especial."
+    },
+    "faqs": [
+      {
+        "question": "¿Necesito un abogado para generar el contrato?",
+        "answer": "No en un caso estándar. Puedes generar el paquete de prueba directamente; la revisión profesional es opcional o recomendada cuando aparecen alertas específicas."
+      },
+      {
+        "question": "¿Qué ocurre si existe horario, órdenes permanentes o control disciplinario?",
+        "answer": "El sistema bloquea la versión definitiva del contrato de servicios y recomienda revisar si el instrumento adecuado es laboral u otro producto especializado."
+      },
+      {
+        "question": "¿Los anexos se generan siempre?",
+        "answer": "El alcance y el acta de cierre forman parte del paquete base. Confidencialidad, datos personales y propiedad intelectual se activan según tus respuestas."
+      },
+      {
+        "question": "¿Puedo corregir la información después?",
+        "answer": "Sí. Puedes volver al formulario, modificar respuestas y regenerar una nueva versión trazable del paquete."
+      }
+    ],
+    "related_products": [
+      "CO-EM-004",
+      "CO-LA-002"
+    ],
+    "demo_journey": [
+      "Acme define un proyecto tecnológico con cuatro entregables.",
+      "El sistema confirma que no habrá horario, órdenes permanentes ni sanciones internas.",
+      "Acme activa confidencialidad, datos personales y propiedad intelectual.",
+      "Se muestran seis documentos antes de generar.",
+      "El usuario revisa, genera, previsualiza y descarga el paquete; la revisión profesional queda como opción adicional."
+    ],
+    "notice": "Disponible para piloto profesional controlado. La solución organiza información y documentos; los casos de riesgo requieren revisión específica antes de su uso.",
+    "gold_standard": {
+      "status": "Gold Standard",
+      "version": "M26.2",
+      "headline": "Contrata servicios independientes con alcance verificable, autonomía real y anexos coherentes.",
+      "why_gold": "Conecta objeto, entregables, aceptación, pagos, cambios, responsabilidad, datos, propiedad intelectual y cierre sin confundir coordinación con subordinación.",
+      "pillars": [
+        "Validación de autonomía",
+        "Alcance y entregables",
+        "Paquete modular de anexos",
+        "Gestión de cambios y cierre",
+        "Revisión según riesgo"
+      ],
+      "included": [
+        "Contrato de prestación de servicios",
+        "Anexo de alcance, entregables y cronograma",
+        "Módulos condicionales de confidencialidad, datos y propiedad intelectual",
+        "Procedimiento de aceptación y control de cambios",
+        "Acta de terminación y cierre"
+      ],
+      "not_included": [
+        "Contratación estatal",
+        "Relaciones que en la práctica sean laborales",
+        "Regímenes sectoriales que exijan instrumento especial"
+      ],
+      "legal_basis": [
+        {
+          "title": "Código Civil",
+          "focus": "Fuerza obligatoria, buena fe y responsabilidad contractual"
+        },
+        {
+          "title": "Código de Comercio",
+          "focus": "Obligaciones mercantiles y formación contractual"
+        },
+        {
+          "title": "Ley 1581 de 2012",
+          "focus": "Tratamiento de datos personales"
+        },
+        {
+          "title": "Ley 23 de 1982",
+          "focus": "Derechos de autor y obras creadas por encargo"
+        }
+      ]
+    }
+  },
+  "CO-EM-004": {
+    "product_code": "CO-EM-004",
+    "title": "Confidencialidad y propiedad intelectual",
+    "audience": "Empresas, colaboradores y proveedores que compartirán información confidencial o crearán activos intelectuales.",
+    "promise": "Definir qué se protege, cómo puede usarse y quién conserva derechos o licencias sobre los resultados.",
+    "estimated_time": "15–25 minutos según el tipo de relación",
+    "steps": [
+      {
+        "number": 1,
+        "title": "Identificar relación y partes",
+        "description": "Clasifica acuerdo unilateral, mutuo, laboral, proveedor o desarrollo."
+      },
+      {
+        "number": 2,
+        "title": "Delimitar información",
+        "description": "Define categorías, exclusiones, acceso y finalidad autorizada."
+      },
+      {
+        "number": 3,
+        "title": "Asignar propiedad intelectual",
+        "description": "Diferencia antecedentes, resultados, cesión y licencias."
+      },
+      {
+        "number": 4,
+        "title": "Configurar protección",
+        "description": "Incluye seguridad, datos personales, incidentes, devolución y destrucción."
+      },
+      {
+        "number": 5,
+        "title": "Revisar proporcionalidad",
+        "description": "El especialista valida alcance, duración, territorio y remedios."
+      }
+    ],
+    "deliverables": [
+      "Acuerdo de confidencialidad",
+      "Módulo de propiedad intelectual",
+      "Protocolo de devolución o incidente",
+      "Ficha de obligaciones y excepciones"
+    ],
+    "required_documents": [
+      {
+        "key": "identificacion_partes",
+        "label": "Identificación de las partes",
+        "category": "Documento de identidad",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "informacion",
+        "label": "Descripción de la información protegida",
+        "category": "Soporte general",
+        "formats": [
+          "PDF",
+          "DOCX",
+          "TXT"
+        ]
+      }
+    ],
+    "optional_documents": [
+      {
+        "key": "antecedente",
+        "label": "Contrato o relación principal",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF",
+          "DOCX"
+        ]
+      },
+      {
+        "key": "inventario_pi",
+        "label": "Inventario de activos o desarrollos",
+        "category": "Soporte general",
+        "formats": [
+          "PDF",
+          "XLSX"
+        ]
+      }
+    ],
+    "decision_points": [
+      "¿El acuerdo es unilateral o mutuo?",
+      "¿Qué activos existían antes del proyecto?",
+      "¿Se pretende cesión, licencia o reserva?",
+      "¿Se tratarán datos personales?"
+    ],
+    "human_review": {
+      "required": true,
+      "reason": "La revisión profesional valida hechos, soportes, riesgos y la versión documental antes de cualquier uso de impacto."
+    },
+    "faqs": [
+      {
+        "question": "¿Todo puede declararse confidencial?",
+        "answer": "El acuerdo debe delimitar razonablemente la información y sus exclusiones."
+      },
+      {
+        "question": "¿Confidencialidad equivale a propiedad intelectual?",
+        "answer": "No. Son controles distintos y deben redactarse de forma coordinada."
+      },
+      {
+        "question": "¿Puedo usar el mismo acuerdo con empleados y proveedores?",
+        "answer": "La estructura y los riesgos cambian; el flujo selecciona módulos según la relación."
+      }
+    ],
+    "related_products": [
+      "CO-EM-003",
+      "CO-LA-002"
+    ],
+    "demo_journey": [
+      "Dos empresas preparan una negociación.",
+      "Seleccionan acuerdo mutuo.",
+      "Diferencian información previa y resultados futuros.",
+      "Carlos propone una licencia limitada.",
+      "El documento queda pendiente de QA y firma."
+    ],
+    "notice": "Solución Gold Standard para demostración y piloto local controlado. La versión de cada expediente requiere validación de hechos, vigencia y revisión profesional según el riesgo.",
+    "gold_standard": {
+      "status": "Gold Standard",
+      "version": "M26.3",
+      "headline": "Protege información, datos y desarrollos con obligaciones proporcionadas y reglas claras de titularidad y uso.",
+      "why_gold": "Distingue confidencialidad, secreto empresarial, datos personales y propiedad intelectual; adapta duración, finalidad, acceso, devolución, incidentes, antecedentes y resultados al tipo de relación.",
+      "pillars": [
+        "Relación y finalidad",
+        "Información y excepciones",
+        "Propiedad intelectual",
+        "Seguridad, datos e incidentes",
+        "Cierre y revisión de proporcionalidad"
+      ],
+      "included": [
+        "Acuerdo de confidencialidad modular",
+        "Módulo de propiedad intelectual y licencias",
+        "Reglas de datos personales y seguridad cuando correspondan",
+        "Protocolo de devolución, destrucción e incidentes",
+        "Ficha de obligaciones, excepciones y vigencia"
+      ],
+      "not_included": [
+        "Cesiones genéricas sin identificar derechos y resultados",
+        "Protección de información ilícita o de terceros sin autorización",
+        "Litigios por infracción, competencia desleal o secretos empresariales"
+      ],
+      "legal_basis": [
+        {
+          "title": "Decisión Andina 486 de 2000",
+          "focus": "Secretos empresariales y propiedad industrial"
+        },
+        {
+          "title": "Decisión Andina 351 de 1993 y Ley 23 de 1982",
+          "focus": "Derecho de autor, titularidad y licencias"
+        },
+        {
+          "title": "Ley 1581 de 2012",
+          "focus": "Tratamiento de datos personales y medidas de responsabilidad"
+        }
+      ],
+      "slug": "confidencialidad-propiedad-intelectual"
+    }
+  },
+  "CO-AR-001": {
+    "product_code": "CO-AR-001",
+    "title": "Arrendamiento de vivienda urbana",
+    "audience": "Arrendadores y arrendatarios de vivienda urbana que necesitan contrato, inventario y entrega coherentes.",
+    "promise": "Organizar las condiciones del arrendamiento y advertir prácticas sensibles antes de generar documentos.",
+    "estimated_time": "20–35 minutos más inventario del inmueble",
+    "steps": [
+      {
+        "number": 1,
+        "title": "Identificar partes e inmueble",
+        "description": "Datos de arrendador, arrendatario, dirección, uso y ocupantes."
+      },
+      {
+        "number": 2,
+        "title": "Definir condiciones económicas",
+        "description": "Canon, reajuste, servicios, administración, plazo y forma de pago."
+      },
+      {
+        "number": 3,
+        "title": "Preparar inventario",
+        "description": "Estado, elementos, medidores, llaves y evidencias de entrega."
+      },
+      {
+        "number": 4,
+        "title": "Revisar garantías y prohibiciones",
+        "description": "El sistema alerta sobre depósitos, cláusulas desproporcionadas y usos incompatibles."
+      },
+      {
+        "number": 5,
+        "title": "Generar paquete de entrega",
+        "description": "Contrato, inventario, acta y guía de seguimiento."
+      }
+    ],
+    "deliverables": [
+      "Contrato de arrendamiento",
+      "Inventario del inmueble",
+      "Acta de entrega",
+      "Guía de pagos, comunicaciones y restitución"
+    ],
+    "required_documents": [
+      {
+        "key": "identidad",
+        "label": "Identificación de arrendador y arrendatario",
+        "category": "Documento de identidad",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "inmueble",
+        "label": "Información del inmueble",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ],
+        "help": "Certificado, dirección, matrícula o soporte disponible."
+      },
+      {
+        "key": "inventario",
+        "label": "Inventario o registro de estado",
+        "category": "Soporte general",
+        "formats": [
+          "PDF",
+          "DOCX",
+          "XLSX",
+          "JPG",
+          "PNG"
+        ]
+      }
+    ],
+    "optional_documents": [
+      {
+        "key": "servicios",
+        "label": "Servicios, administración o facturas",
+        "category": "Comprobante o pago",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      }
+    ],
+    "decision_points": [
+      "¿El uso corresponde a vivienda urbana?",
+      "¿Canon, plazo y reajuste son coherentes?",
+      "¿Se pretende un depósito prohibido o una garantía sensible?",
+      "¿El inventario está completo?"
+    ],
+    "human_review": {
+      "required": true,
+      "reason": "La revisión profesional valida hechos, soportes, riesgos y la versión documental antes de cualquier uso de impacto."
+    },
+    "faqs": [
+      {
+        "question": "¿La aplicación reemplaza la visita al inmueble?",
+        "answer": "No. El inventario y la evidencia deben corresponder al estado real de entrega."
+      },
+      {
+        "question": "¿Puedo cobrar depósito en dinero?",
+        "answer": "El flujo alerta sobre esta práctica y exige revisar la alternativa jurídica aplicable."
+      },
+      {
+        "question": "¿Incluye servicios públicos?",
+        "answer": "Permite definir responsabilidades y registrar lecturas y cuentas relacionadas."
+      }
+    ],
+    "related_products": [
+      "CO-CD-004"
+    ],
+    "demo_journey": [
+      "El arrendador registra inmueble, canon y plazo.",
+      "Carga fotografías y lecturas como soportes.",
+      "El sistema detecta una garantía sensible.",
+      "El especialista propone una alternativa.",
+      "Se genera contrato, inventario y acta de entrega."
+    ],
+    "notice": "Disponible para piloto profesional controlado. La solución organiza información y documentos; los casos de riesgo requieren revisión específica antes de su uso.",
+    "gold_standard": {
+      "status": "Gold Standard",
+      "version": "M26.2",
+      "headline": "Documenta un arrendamiento de vivienda con contrato, inventario, entrega y restitución coherentes.",
+      "why_gold": "Evita que el contrato se limite al canon y plazo: integra servicios, administración, garantías permitidas, inventario, comunicaciones y cierre.",
+      "pillars": [
+        "Uso y partes validados",
+        "Condiciones económicas",
+        "Inventario y evidencia",
+        "Garantías compatibles",
+        "Entrega, seguimiento y restitución"
+      ],
+      "included": [
+        "Contrato de arrendamiento",
+        "Inventario detallado",
+        "Acta de entrega",
+        "Guía de pagos, comunicaciones y restitución",
+        "Acta de restitución"
+      ],
+      "not_included": [
+        "Locales comerciales o usos mixtos",
+        "Procesos judiciales de restitución",
+        "Garantías o depósitos prohibidos por la ley"
+      ],
+      "legal_basis": [
+        {
+          "title": "Ley 820 de 2003",
+          "focus": "Arrendamiento de vivienda urbana, obligaciones, terminación, reajuste y garantías"
+        },
+        {
+          "title": "Código Civil",
+          "focus": "Reglas generales del arrendamiento y obligaciones"
+        },
+        {
+          "title": "Ley 1581 de 2012",
+          "focus": "Datos de partes, codeudores y ocupantes"
+        }
+      ]
+    }
+  },
+  "CO-SA-001": {
+    "product_code": "CO-SA-001",
+    "title": "Derecho de petición a EPS o IPS",
+    "audience": "Pacientes, representantes o familiares con legitimación que necesitan estructurar y seguir una petición de salud.",
+    "promise": "Transformar hechos confirmados, soportes y una solicitud concreta en un paquete trazable, con alertas de urgencia, privacidad y términos preliminares.",
+    "estimated_time": "20–35 minutos",
+    "steps": [
+      {
+        "number": 1,
+        "title": "Identificar peticionario y paciente",
+        "description": "Valida identidad, calidad, relación y soporte de legitimación."
+      },
+      {
+        "number": 2,
+        "title": "Definir entidad, canal y petición",
+        "description": "Individualiza destinatario, necesidad, hechos y resultado concreto."
+      },
+      {
+        "number": 3,
+        "title": "Detectar urgencia, continuidad y prioridad",
+        "description": "Bloquea cuando una petición no es la ruta suficiente y visibiliza especial protección."
+      },
+      {
+        "number": 4,
+        "title": "Proteger historia clínica y datos",
+        "description": "Controla autorización, finalidad, minimización y entrega segura."
+      },
+      {
+        "number": 5,
+        "title": "Reconstruir antecedentes y términos",
+        "description": "Ordena radicados, respuestas y fechas de seguimiento preliminares."
+      },
+      {
+        "number": 6,
+        "title": "Generar y revisar el paquete",
+        "description": "Produce siete documentos, trazabilidad y alertas para aprobación profesional."
+      }
+    ],
+    "deliverables": [
+      "Derecho de petición integral ante EPS o IPS",
+      "Solicitud de historia clínica y entrega segura",
+      "Reiteración por falta o insuficiencia de respuesta",
+      "Ruta y borrador de PQRD ante Supersalud",
+      "Matriz de soportes, legitimación y privacidad",
+      "Calendario preliminar de términos y seguimiento",
+      "Guía de radicación, privacidad y seguimiento"
+    ],
+    "required_documents": [
+      {
+        "key": "identidad_peticionario",
+        "label": "Documento de identidad del peticionario",
+        "category": "Identidad",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "identidad_paciente",
+        "label": "Documento de identidad del paciente",
+        "category": "Identidad",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "soporte_legitimacion",
+        "label": "Autorización, registro civil, poder o soporte de legitimación",
+        "category": "Representación",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ],
+        "help": "Aplica cuando la petición no la presenta directamente el paciente adulto con capacidad."
+      },
+      {
+        "key": "soporte_medico",
+        "label": "Orden, fórmula o soporte médico pertinente",
+        "category": "Soporte clínico",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ],
+        "help": "Adjunta solo la información necesaria para la solicitud."
+      }
+    ],
+    "optional_documents": [
+      {
+        "key": "peticion_previa",
+        "label": "Petición previa y constancia de radicación",
+        "category": "Antecedentes",
+        "formats": [
+          "PDF",
+          "EML",
+          "MSG",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "respuesta_previa",
+        "label": "Respuesta, negación o autorización recibida",
+        "category": "Antecedentes",
+        "formats": [
+          "PDF",
+          "EML",
+          "MSG",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "historia_delimitada",
+        "label": "Extracto pertinente de historia clínica",
+        "category": "Dato sensible",
+        "formats": [
+          "PDF"
+        ],
+        "help": "Evita cargar la historia completa cuando no sea necesaria."
+      },
+      {
+        "key": "actuacion_activa",
+        "label": "Tutela o PQRD activa, si existe",
+        "category": "Proceso activo",
+        "formats": [
+          "PDF"
+        ]
+      }
+    ],
+    "decision_points": [
+      "¿Hay urgencia o deterioro que exige atención inmediata?",
+      "¿Quién está legitimado para presentar y acceder a la información?",
+      "¿Qué tipo de petición determina el término preliminar?",
+      "¿Existen radicados, respuestas o procesos activos?",
+      "¿Los anexos están minimizados y protegidos?"
+    ],
+    "human_review": {
+      "required": true,
+      "reason": "La revisión profesional valida urgencia, legitimación, privacidad, términos, estrategia y versión documental exacta antes de uso de impacto."
+    },
+    "faqs": [
+      {
+        "question": "¿Sirve para una emergencia?",
+        "answer": "No. Ante riesgo vital o deterioro grave debe usarse atención asistencial inmediata; el flujo bloquea la salida ordinaria."
+      },
+      {
+        "question": "¿Cuánto deben tardar en responder?",
+        "answer": "El sistema calcula de forma preliminar 10 días hábiles para información o documentos y 15 para peticiones generales, sin descontar festivos ni sustituir la verificación jurídica del caso."
+      },
+      {
+        "question": "¿Puedo pedir historia clínica de otra persona?",
+        "answer": "Solo con legitimación, finalidad y soporte suficientes; la historia clínica es reservada y los datos de salud son sensibles."
+      },
+      {
+        "question": "¿Qué pasa si no responden?",
+        "answer": "Se genera reiteración, calendario y ruta administrativa; una tutela o actuación activa requiere revisión profesional."
+      }
+    ],
+    "related_products": [],
+    "demo_journey": [
+      "El usuario identifica paciente, entidad y calidad en la que actúa.",
+      "El sistema clasifica la solicitud y detecta urgencia, continuidad y privacidad.",
+      "Calcula un término preliminar y organiza antecedentes.",
+      "Genera siete documentos y una matriz de trazabilidad.",
+      "El expediente queda bloqueado para publicación hasta aprobación jurídica y QA."
+    ],
+    "notice": "Solución Gold Standard para demostración y piloto local controlado. La versión de cada expediente requiere validación de hechos, vigencia y revisión profesional según el riesgo.",
+    "gold_standard": {
+      "status": "Gold Standard",
+      "version": "M26.3",
+      "headline": "Estructura una petición de salud con hechos, legitimación, privacidad, urgencia, soportes y seguimiento trazable.",
+      "why_gold": "Diferencia petición ordinaria, historia clínica, continuidad, autorización, reiteración y escalamiento; bloquea situaciones que requieren atención inmediata o actuación judicial específica.",
+      "pillars": [
+        "Legitimación y destinatario",
+        "Hechos y solicitud concreta",
+        "Urgencia y continuidad",
+        "Privacidad y soportes",
+        "Términos, documentos y seguimiento"
+      ],
+      "included": [
+        "Derecho de petición integral",
+        "Solicitud de historia clínica y entrega segura",
+        "Reiteración por falta o insuficiencia de respuesta",
+        "Matriz de soportes, legitimación y privacidad",
+        "Calendario preliminar y ruta ante Supersalud"
+      ],
+      "not_included": [
+        "Atención de urgencias o emergencias médicas",
+        "Acción de tutela automática",
+        "Acceso a historia clínica de terceros sin legitimación ni soporte"
+      ],
+      "legal_basis": [
+        {
+          "title": "Ley Estatutaria 1755 de 2015",
+          "focus": "Derecho fundamental de petición y términos generales"
+        },
+        {
+          "title": "Ley Estatutaria 1751 de 2015",
+          "focus": "Derecho fundamental a la salud, continuidad y acceso"
+        },
+        {
+          "title": "Resolución 1995 de 1999 y Ley 1581 de 2012",
+          "focus": "Reserva de historia clínica y datos sensibles"
+        }
+      ],
+      "slug": "derecho-peticion-eps-ips"
+    }
+  },
+  "CO-CD-001": {
+    "product_code": "CO-CD-001",
+    "title": "Centrales de riesgo y hábeas data",
+    "audience": "Titulares que detectan información inexacta, desactualizada o sin soporte en centrales de riesgo.",
+    "promise": "Organizar la reclamación de hábeas data y la evidencia de consultas, pagos y comunicaciones previas.",
+    "estimated_time": "20–30 minutos",
+    "steps": [
+      {
+        "number": 1,
+        "title": "Identificar el reporte",
+        "description": "Fuente, obligación, central, fecha de consulta y estado visible."
+      },
+      {
+        "number": 2,
+        "title": "Definir la inconsistencia",
+        "description": "Pago no actualizado, obligación desconocida, dato incompleto, falta de soporte u otra situación."
+      },
+      {
+        "number": 3,
+        "title": "Ordenar evidencia",
+        "description": "Consulta, paz y salvo, extractos, comunicaciones y respuesta previa."
+      },
+      {
+        "number": 4,
+        "title": "Generar reclamación",
+        "description": "Formula solicitudes concretas y canal de respuesta."
+      },
+      {
+        "number": 5,
+        "title": "Escalar y seguir",
+        "description": "Registra respuesta, pendientes y eventual revisión ante autoridad competente."
+      }
+    ],
+    "deliverables": [
+      "Reclamación de hábeas data",
+      "Índice probatorio",
+      "Cronología de comunicaciones",
+      "Guía de seguimiento y escalamiento"
+    ],
+    "required_documents": [
+      {
+        "key": "identidad",
+        "label": "Documento de identidad",
+        "category": "Documento de identidad",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "reporte",
+        "label": "Reporte o consulta de la central de riesgo",
+        "category": "Consulta oficial",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      }
+    ],
+    "optional_documents": [
+      {
+        "key": "paz_salvo",
+        "label": "Paz y salvo o soportes de pago",
+        "category": "Comprobante o pago",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "reclamo_previo",
+        "label": "Reclamo o respuesta previa",
+        "category": "Comunicación o notificación",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      }
+    ],
+    "decision_points": [
+      "¿El titular reconoce la obligación?",
+      "¿Existe prueba de pago o inexistencia?",
+      "¿Ya se reclamó ante la fuente o el operador?",
+      "¿Hay respuesta pendiente o negativa?"
+    ],
+    "human_review": {
+      "required": true,
+      "reason": "La revisión profesional valida hechos, soportes, riesgos y la versión documental antes de cualquier uso de impacto."
+    },
+    "faqs": [
+      {
+        "question": "¿El sistema elimina el reporte?",
+        "answer": "No. Prepara y organiza la reclamación; la corrección depende de la fuente, el operador o la autoridad competente."
+      },
+      {
+        "question": "¿Necesito una consulta reciente?",
+        "answer": "Es recomendable porque permite identificar el dato exacto que se cuestiona."
+      },
+      {
+        "question": "¿Puedo reclamar una deuda que sí existe?",
+        "answer": "El flujo diferencia existencia, actualización, permanencia y soporte; no presupone que todo reporte sea improcedente."
+      }
+    ],
+    "related_products": [
+      "CO-CD-004"
+    ],
+    "demo_journey": [
+      "Juan carga una consulta y un paz y salvo.",
+      "Identifica que el pago no aparece actualizado.",
+      "El sistema organiza la cronología.",
+      "Carlos revisa las solicitudes concretas.",
+      "La reclamación queda lista para radicación y seguimiento."
+    ],
+    "notice": "Solución Gold Standard para demostración y piloto local controlado. La versión de cada expediente requiere validación de hechos, vigencia y revisión profesional según el riesgo.",
+    "gold_standard": {
+      "status": "Gold Standard",
+      "version": "M26.3",
+      "headline": "Organiza un reclamo de hábeas data financiero con identificación del reporte, evidencia, solicitudes y seguimiento.",
+      "why_gold": "Separa existencia de la obligación, actualización, permanencia, comunicación previa, suplantación y falta de soporte; dirige la reclamación al actor correcto y conserva la cronología.",
+      "pillars": [
+        "Identificación del reporte",
+        "Clasificación de inconsistencia",
+        "Evidencia y comunicación previa",
+        "Reclamación al destinatario correcto",
+        "Seguimiento y escalamiento"
+      ],
+      "included": [
+        "Reclamación de hábeas data",
+        "Índice probatorio y cronología",
+        "Solicitudes diferenciadas a fuente u operador",
+        "Reiteración y ruta de escalamiento",
+        "Alertas de identidad, términos y reporte en discusión"
+      ],
+      "not_included": [
+        "Eliminación automática de reportes",
+        "Declaración de inexistencia de una obligación sin prueba",
+        "Representación ante la SIC o en proceso judicial"
+      ],
+      "legal_basis": [
+        {
+          "title": "Ley Estatutaria 1266 de 2008",
+          "focus": "Hábeas data financiero, calidad, circulación y reclamaciones"
+        },
+        {
+          "title": "Ley Estatutaria 2157 de 2021",
+          "focus": "Actualización del régimen de permanencia, comunicación y obligaciones"
+        },
+        {
+          "title": "Ley 1581 de 2012",
+          "focus": "Protección general de datos y derechos del titular"
+        }
+      ],
+      "slug": "reclamo-centrales-riesgo-habeas-data"
+    }
+  },
+  "CO-CD-003": {
+    "product_code": "CO-CD-003",
+    "title": "Garantía, retracto y reversión del pago",
+    "audience": "Consumidores que requieren clasificar una controversia de garantía, retracto, reversión, débito periódico o entrega.",
+    "promise": "Elegir la ruta de reclamación adecuada según canal, fecha, bien o servicio y evidencia disponible.",
+    "estimated_time": "15–25 minutos",
+    "steps": [
+      {
+        "number": 1,
+        "title": "Identificar compra y proveedor",
+        "description": "Producto o servicio, canal, precio, fecha y forma de pago."
+      },
+      {
+        "number": 2,
+        "title": "Clasificar la situación",
+        "description": "Garantía, retracto, reversión, débito periódico, entrega o publicidad."
+      },
+      {
+        "number": 3,
+        "title": "Revisar tiempo y condiciones",
+        "description": "Las preguntas distinguen hechos y fechas relevantes sin prometer procedencia."
+      },
+      {
+        "number": 4,
+        "title": "Preparar evidencia y solicitud",
+        "description": "Factura, pago, comunicaciones, fotografías y pretensión concreta."
+      },
+      {
+        "number": 5,
+        "title": "Generar reclamación y calendario",
+        "description": "Produce el documento y muestra términos o seguimientos que deben verificarse."
+      }
+    ],
+    "deliverables": [
+      "Reclamación al proveedor",
+      "Solicitud de garantía, retracto o reversión según clasificación",
+      "Índice de evidencias",
+      "Calendario de seguimiento"
+    ],
+    "required_documents": [
+      {
+        "key": "compra",
+        "label": "Factura o comprobante de compra",
+        "category": "Comprobante o pago",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "producto",
+        "label": "Evidencia del producto, servicio o incumplimiento",
+        "category": "Soporte general",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG",
+          "TXT"
+        ]
+      }
+    ],
+    "optional_documents": [
+      {
+        "key": "reclamo",
+        "label": "Reclamación o respuesta del proveedor",
+        "category": "Comunicación o notificación",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "pago_electronico",
+        "label": "Soporte de pago electrónico",
+        "category": "Comprobante o pago",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      }
+    ],
+    "decision_points": [
+      "¿La compra fue presencial, a distancia o electrónica?",
+      "¿El problema es calidad, entrega, cobro o decisión de retractarse?",
+      "¿Las fechas y el medio de pago están confirmados?"
+    ],
+    "human_review": {
+      "required": true,
+      "reason": "La revisión profesional valida hechos, soportes, riesgos y la versión documental antes de cualquier uso de impacto."
+    },
+    "faqs": [
+      {
+        "question": "¿Garantía y retracto son lo mismo?",
+        "answer": "No. Responden a hechos y requisitos diferentes; el flujo evita mezclarlos."
+      },
+      {
+        "question": "¿La reversión se solicita solo al comercio?",
+        "answer": "El producto identifica los actores y soportes relevantes según la situación, pero la ruta final debe revisarse."
+      },
+      {
+        "question": "¿Qué pasa si no tengo factura?",
+        "answer": "Puede iniciar con otros soportes, pero el expediente señalará la evidencia pendiente."
+      }
+    ],
+    "related_products": [
+      "CO-CD-001",
+      "CO-CD-004"
+    ],
+    "demo_journey": [
+      "Juan registra una compra electrónica no entregada.",
+      "El sistema diferencia entrega, retracto y reversión.",
+      "Carga comprobante y conversaciones.",
+      "Carlos revisa la solicitud y los destinatarios.",
+      "Se genera reclamación con calendario."
+    ],
+    "notice": "Disponible para piloto profesional controlado. La solución organiza información y documentos; los casos de riesgo requieren revisión específica antes de su uso.",
+    "gold_standard": {
+      "status": "Gold Standard",
+      "version": "M26.2",
+      "headline": "Clasifica correctamente garantía, retracto, reversión, entrega o cobro y reclama con evidencia.",
+      "why_gold": "Separa mecanismos que suelen confundirse, controla fechas y destinatarios y produce una reclamación con índice probatorio y calendario.",
+      "pillars": [
+        "Clasificación del mecanismo",
+        "Control de fechas",
+        "Evidencia y pretensión",
+        "Destinatarios correctos",
+        "Seguimiento y escalamiento"
+      ],
+      "included": [
+        "Clasificación jurídica preliminar",
+        "Reclamación directa al proveedor",
+        "Solicitud adicional al emisor del pago cuando corresponda",
+        "Índice de evidencias",
+        "Calendario y ruta de escalamiento"
+      ],
+      "not_included": [
+        "Promesa de devolución o sanción",
+        "Demanda judicial automática",
+        "Reclamaciones sin identificación mínima del proveedor y de la operación"
+      ],
+      "legal_basis": [
+        {
+          "title": "Ley 1480 de 2011",
+          "focus": "Garantía legal, retracto, comercio electrónico y reversión del pago"
+        },
+        {
+          "title": "Ley 2439 de 2024",
+          "focus": "Actualización del término de devolución por retracto en comercio electrónico"
+        },
+        {
+          "title": "Decreto 587 de 2016",
+          "focus": "Procedimiento reglamentario de reversión del pago"
+        }
+      ]
+    }
+  },
+  "CO-CD-004": {
+    "product_code": "CO-CD-004",
+    "title": "Cobro, acuerdo de pago y pagaré",
+    "audience": "Acreedores y deudores que necesitan documentar un cobro, negociar pagos y cerrar obligaciones de forma trazable.",
+    "promise": "Organizar capital, soportes, pagos, intereses y condiciones antes de generar requerimiento, acuerdo o pagaré.",
+    "estimated_time": "20–35 minutos",
+    "steps": [
+      {
+        "number": 1,
+        "title": "Identificar obligación y partes",
+        "description": "Origen, acreedor, deudor, capital, vencimiento y documentos."
+      },
+      {
+        "number": 2,
+        "title": "Conciliar saldo",
+        "description": "Registra pagos, abonos, intereses y valores sujetos a verificación."
+      },
+      {
+        "number": 3,
+        "title": "Evaluar ruta",
+        "description": "Cobro amistoso, requerimiento, negociación, acuerdo o escalamiento."
+      },
+      {
+        "number": 4,
+        "title": "Diseñar plan de pago",
+        "description": "Cuotas, fechas, incumplimiento, garantías y comprobantes."
+      },
+      {
+        "number": 5,
+        "title": "Generar y controlar cierre",
+        "description": "Produce documentos, recibos y constancia de terminación cuando corresponda."
+      }
+    ],
+    "deliverables": [
+      "Requerimiento de pago",
+      "Acuerdo y cronograma",
+      "Pagaré y carta de instrucciones bajo controles",
+      "Recibos y constancia de cierre"
+    ],
+    "required_documents": [
+      {
+        "key": "obligacion",
+        "label": "Documento que soporta la obligación",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF",
+          "DOCX",
+          "JPG",
+          "PNG"
+        ],
+        "help": "Contrato, factura, cuenta de cobro, pagaré u otro soporte."
+      },
+      {
+        "key": "saldo",
+        "label": "Relación del saldo y pagos",
+        "category": "Comprobante o pago",
+        "formats": [
+          "PDF",
+          "XLSX",
+          "JPG",
+          "PNG"
+        ]
+      }
+    ],
+    "optional_documents": [
+      {
+        "key": "comunicaciones",
+        "label": "Comunicaciones de cobro previas",
+        "category": "Comunicación o notificación",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      },
+      {
+        "key": "garantias",
+        "label": "Garantías o títulos adicionales",
+        "category": "Contrato o acto",
+        "formats": [
+          "PDF",
+          "JPG",
+          "PNG"
+        ]
+      }
+    ],
+    "decision_points": [
+      "¿La obligación está documentada y es exigible?",
+      "¿El saldo está conciliado?",
+      "¿Los intereses y costos tienen soporte?",
+      "¿El pagaré y la carta corresponden al acuerdo real?"
+    ],
+    "human_review": {
+      "required": true,
+      "reason": "La revisión profesional valida hechos, soportes, riesgos y la versión documental antes de cualquier uso de impacto."
+    },
+    "faqs": [
+      {
+        "question": "¿El sistema inicia un proceso judicial?",
+        "answer": "No. Genera documentos prejurídicos y de negociación; la representación judicial requiere un profesional."
+      },
+      {
+        "question": "¿Puedo fijar cualquier interés?",
+        "answer": "No. El sistema exige fuente y validación de la tasa y no congela parámetros sensibles en la plantilla."
+      },
+      {
+        "question": "¿El pagaré reemplaza el acuerdo?",
+        "answer": "No necesariamente. Deben conservar coherencia sobre obligación, saldo, pagos y condiciones."
+      }
+    ],
+    "related_products": [
+      "CO-CD-001",
+      "CO-AR-001",
+      "CO-CD-003"
+    ],
+    "demo_journey": [
+      "Una empresa registra una factura vencida.",
+      "Concilia abonos y saldo.",
+      "El sistema identifica una tasa pendiente de verificar.",
+      "Carlos ajusta el plan de cuotas.",
+      "Se genera requerimiento, acuerdo y controles del pagaré."
+    ],
+    "notice": "Solución Gold Standard para demostración y piloto local controlado. La versión de cada expediente requiere validación de hechos, vigencia y revisión profesional según el riesgo.",
+    "gold_standard": {
+      "status": "Gold Standard",
+      "version": "M26.3",
+      "headline": "Concilia una obligación y estructura cobro, acuerdo, pagaré y cierre con saldos y condiciones coherentes.",
+      "why_gold": "Controla origen, exigibilidad, capital, abonos, intereses, plan de pago, cobranza, garantías y documentos de cierre sin convertir un dato controvertido en reconocimiento automático.",
+      "pillars": [
+        "Origen y exigibilidad",
+        "Conciliación de saldo",
+        "Ruta de cobro o negociación",
+        "Acuerdo, garantías y pagaré",
+        "Pagos, cierre y trazabilidad"
+      ],
+      "included": [
+        "Conciliación preliminar del saldo",
+        "Requerimiento de pago",
+        "Acuerdo y cronograma de cuotas",
+        "Pagaré y carta de instrucciones cuando procedan",
+        "Recibos, constancia de pago y cierre"
+      ],
+      "not_included": [
+        "Proceso ejecutivo o representación judicial",
+        "Cobro de intereses sin soporte o por encima de límites aplicables",
+        "Reconocimiento automático de una deuda discutida o prescrita"
+      ],
+      "legal_basis": [
+        {
+          "title": "Código Civil y Código de Comercio",
+          "focus": "Obligaciones, pago, títulos valores, pagaré e intereses"
+        },
+        {
+          "title": "Código General del Proceso, artículo 422",
+          "focus": "Requisitos generales del título ejecutivo"
+        },
+        {
+          "title": "Ley 2300 de 2023",
+          "focus": "Canales, horarios y periodicidad de cobranza"
+        }
+      ],
+      "slug": "acuerdo-pago-pagare-cobro"
+    }
+  }
+}

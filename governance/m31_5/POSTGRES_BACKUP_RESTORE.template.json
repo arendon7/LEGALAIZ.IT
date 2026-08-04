@@ -1,0 +1,13 @@
+{
+  "schema": "legalaizit-postgres-backup-restore-evidence-v1",
+  "milestone": "M31.5",
+  "version": "5.0.4",
+  "source_fingerprint": null,
+  "restore_fingerprint": null,
+  "destructive_guard_confirmed": false,
+  "missing_tables": null,
+  "mismatched_tables": null,
+  "restored": false,
+  "ok": false,
+  "production_authorized": false
+}

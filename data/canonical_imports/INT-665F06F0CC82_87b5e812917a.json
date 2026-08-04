@@ -1,0 +1,31 @@
+{
+  "format": "docx",
+  "paragraph_count": 8,
+  "table_count": 1,
+  "paragraphs": [
+    "Contrato de prestación de servicios",
+    "Fuente de prueba para ingreso canónico",
+    "Autonomía",
+    "El contratista actúa con autonomía técnica y administrativa, sin subordinación laboral.",
+    "Honorarios",
+    "Las partes definen honorarios, entregables y forma de pago.",
+    "CONTROL DE USO",
+    "Documento candidato interno. Su liberación depende del cierre del abogado responsable del alcance y del QA aplicable según impacto; no está autorizado para firma o publicación mientras el ciclo permanezca abierto."
+  ],
+  "tables": [
+    [
+      [
+        "Campo",
+        "Información"
+      ],
+      [
+        "Producto",
+        "CO-EM-003"
+      ]
+    ]
+  ],
+  "original_name": "LegalAIZit_Paquete_01_Prestacion_Servicios.docx",
+  "sha256": "87b5e812917a03fc75ecb78e3a9a83abe56b37acf997a480ac8de264272806f8",
+  "size_bytes": 102931,
+  "intake_id": "INT-665F06F0CC82"
+}

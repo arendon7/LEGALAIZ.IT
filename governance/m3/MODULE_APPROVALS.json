@@ -1,0 +1,281 @@
+{
+  "version": "M3",
+  "approved_at": "2026-07-28T21:15:00-05:00",
+  "modules": [
+    {
+      "product_code": "CO-TR-001",
+      "title": "Chequeo SAST + inscripción verificada",
+      "approval_status": "approved_controlled",
+      "approved_at": "2026-07-28T21:15:00-05:00",
+      "module_counts": {
+        "questions": 40,
+        "rules": 24,
+        "sources": 13,
+        "scenarios": 14,
+        "templates": 1
+      },
+      "canonical_data_hashes": {
+        "products": "e33edae3c085fc8c932bab1b06335f4d8a389a1dc52beb0dfdb031d13233778e",
+        "interviews": "785e8cc65697db09e8c8044bf361d3a17285df0ace16589c5046d2715d5ffc0c",
+        "rules": "01e17b2d2fed411817bf773cfa14207dfd3cb74b2e5122536dd337296e740f52",
+        "sources": "7bc792616ab4344727012e2d1262dd988988923048d51d52881fc5e8e9b02161",
+        "scenarios": "221aad354262c07fc5e85a9fabb3cfef10eb6dcbb82f8614ea9054ae382e2d53",
+        "templates": "0d382fd036845b011518716676e7d5cb656649d57e6ee56ca1c4f8e6f8912741",
+        "parameters": "818d1cff230a579bc641dc9bc93b3e6140c7098461b5103f772d05d4cb12adbd"
+      },
+      "approval_model": "multi_stage_single_responsible",
+      "independent_reviewers": false,
+      "case_specific_review_required": false
+    },
+    {
+      "product_code": "CO-TR-002",
+      "title": "Fotomulta no notificada",
+      "approval_status": "approved_controlled",
+      "approved_at": "2026-07-28T21:15:00-05:00",
+      "module_counts": {
+        "questions": 45,
+        "rules": 26,
+        "sources": 13,
+        "scenarios": 14,
+        "templates": 1
+      },
+      "canonical_data_hashes": {
+        "products": "e33edae3c085fc8c932bab1b06335f4d8a389a1dc52beb0dfdb031d13233778e",
+        "interviews": "785e8cc65697db09e8c8044bf361d3a17285df0ace16589c5046d2715d5ffc0c",
+        "rules": "01e17b2d2fed411817bf773cfa14207dfd3cb74b2e5122536dd337296e740f52",
+        "sources": "7bc792616ab4344727012e2d1262dd988988923048d51d52881fc5e8e9b02161",
+        "scenarios": "221aad354262c07fc5e85a9fabb3cfef10eb6dcbb82f8614ea9054ae382e2d53",
+        "templates": "0d382fd036845b011518716676e7d5cb656649d57e6ee56ca1c4f8e6f8912741",
+        "parameters": "818d1cff230a579bc641dc9bc93b3e6140c7098461b5103f772d05d4cb12adbd"
+      },
+      "approval_model": "multi_stage_single_responsible",
+      "independent_reviewers": false,
+      "case_specific_review_required": false
+    },
+    {
+      "product_code": "CO-LA-001",
+      "title": "Liquidación laboral + reclamación",
+      "approval_status": "approved_controlled",
+      "approved_at": "2026-07-28T21:15:00-05:00",
+      "module_counts": {
+        "questions": 38,
+        "rules": 20,
+        "sources": 10,
+        "scenarios": 12,
+        "templates": 4
+      },
+      "canonical_data_hashes": {
+        "products": "e33edae3c085fc8c932bab1b06335f4d8a389a1dc52beb0dfdb031d13233778e",
+        "interviews": "785e8cc65697db09e8c8044bf361d3a17285df0ace16589c5046d2715d5ffc0c",
+        "rules": "01e17b2d2fed411817bf773cfa14207dfd3cb74b2e5122536dd337296e740f52",
+        "sources": "7bc792616ab4344727012e2d1262dd988988923048d51d52881fc5e8e9b02161",
+        "scenarios": "221aad354262c07fc5e85a9fabb3cfef10eb6dcbb82f8614ea9054ae382e2d53",
+        "templates": "0d382fd036845b011518716676e7d5cb656649d57e6ee56ca1c4f8e6f8912741",
+        "parameters": "818d1cff230a579bc641dc9bc93b3e6140c7098461b5103f772d05d4cb12adbd"
+      },
+      "approval_model": "multi_stage_single_responsible",
+      "independent_reviewers": false,
+      "case_specific_review_required": true
+    },
+    {
+      "product_code": "CO-LA-002",
+      "title": "Contrato de trabajo personalizado",
+      "approval_status": "approved_controlled",
+      "approved_at": "2026-07-28T21:15:00-05:00",
+      "module_counts": {
+        "questions": 44,
+        "rules": 25,
+        "sources": 12,
+        "scenarios": 14,
+        "templates": 2
+      },
+      "canonical_data_hashes": {
+        "products": "e33edae3c085fc8c932bab1b06335f4d8a389a1dc52beb0dfdb031d13233778e",
+        "interviews": "785e8cc65697db09e8c8044bf361d3a17285df0ace16589c5046d2715d5ffc0c",
+        "rules": "01e17b2d2fed411817bf773cfa14207dfd3cb74b2e5122536dd337296e740f52",
+        "sources": "7bc792616ab4344727012e2d1262dd988988923048d51d52881fc5e8e9b02161",
+        "scenarios": "221aad354262c07fc5e85a9fabb3cfef10eb6dcbb82f8614ea9054ae382e2d53",
+        "templates": "0d382fd036845b011518716676e7d5cb656649d57e6ee56ca1c4f8e6f8912741",
+        "parameters": "818d1cff230a579bc641dc9bc93b3e6140c7098461b5103f772d05d4cb12adbd"
+      },
+      "approval_model": "multi_stage_single_responsible",
+      "independent_reviewers": false,
+      "case_specific_review_required": true
+    },
+    {
+      "product_code": "CO-EM-003",
+      "title": "Contrato de prestación de servicios",
+      "approval_status": "approved_controlled",
+      "approved_at": "2026-07-28T21:15:00-05:00",
+      "module_counts": {
+        "questions": 27,
+        "rules": 14,
+        "sources": 6,
+        "scenarios": 8,
+        "templates": 6
+      },
+      "canonical_data_hashes": {
+        "products": "e33edae3c085fc8c932bab1b06335f4d8a389a1dc52beb0dfdb031d13233778e",
+        "interviews": "785e8cc65697db09e8c8044bf361d3a17285df0ace16589c5046d2715d5ffc0c",
+        "rules": "01e17b2d2fed411817bf773cfa14207dfd3cb74b2e5122536dd337296e740f52",
+        "sources": "7bc792616ab4344727012e2d1262dd988988923048d51d52881fc5e8e9b02161",
+        "scenarios": "221aad354262c07fc5e85a9fabb3cfef10eb6dcbb82f8614ea9054ae382e2d53",
+        "templates": "0d382fd036845b011518716676e7d5cb656649d57e6ee56ca1c4f8e6f8912741",
+        "parameters": "818d1cff230a579bc641dc9bc93b3e6140c7098461b5103f772d05d4cb12adbd"
+      },
+      "approval_model": "multi_stage_single_responsible",
+      "independent_reviewers": false,
+      "case_specific_review_required": false
+    },
+    {
+      "product_code": "CO-EM-004",
+      "title": "Confidencialidad y propiedad intelectual",
+      "approval_status": "approved_controlled",
+      "approved_at": "2026-07-28T21:15:00-05:00",
+      "module_counts": {
+        "questions": 20,
+        "rules": 17,
+        "sources": 7,
+        "scenarios": 10,
+        "templates": 7
+      },
+      "canonical_data_hashes": {
+        "products": "e33edae3c085fc8c932bab1b06335f4d8a389a1dc52beb0dfdb031d13233778e",
+        "interviews": "785e8cc65697db09e8c8044bf361d3a17285df0ace16589c5046d2715d5ffc0c",
+        "rules": "01e17b2d2fed411817bf773cfa14207dfd3cb74b2e5122536dd337296e740f52",
+        "sources": "7bc792616ab4344727012e2d1262dd988988923048d51d52881fc5e8e9b02161",
+        "scenarios": "221aad354262c07fc5e85a9fabb3cfef10eb6dcbb82f8614ea9054ae382e2d53",
+        "templates": "0d382fd036845b011518716676e7d5cb656649d57e6ee56ca1c4f8e6f8912741",
+        "parameters": "818d1cff230a579bc641dc9bc93b3e6140c7098461b5103f772d05d4cb12adbd"
+      },
+      "approval_model": "multi_stage_single_responsible",
+      "independent_reviewers": false,
+      "case_specific_review_required": false
+    },
+    {
+      "product_code": "CO-AR-001",
+      "title": "Arrendamiento de vivienda urbana",
+      "approval_status": "approved_controlled",
+      "approved_at": "2026-07-28T21:15:00-05:00",
+      "module_counts": {
+        "questions": 32,
+        "rules": 20,
+        "sources": 8,
+        "scenarios": 12,
+        "templates": 3
+      },
+      "canonical_data_hashes": {
+        "products": "e33edae3c085fc8c932bab1b06335f4d8a389a1dc52beb0dfdb031d13233778e",
+        "interviews": "785e8cc65697db09e8c8044bf361d3a17285df0ace16589c5046d2715d5ffc0c",
+        "rules": "01e17b2d2fed411817bf773cfa14207dfd3cb74b2e5122536dd337296e740f52",
+        "sources": "7bc792616ab4344727012e2d1262dd988988923048d51d52881fc5e8e9b02161",
+        "scenarios": "221aad354262c07fc5e85a9fabb3cfef10eb6dcbb82f8614ea9054ae382e2d53",
+        "templates": "0d382fd036845b011518716676e7d5cb656649d57e6ee56ca1c4f8e6f8912741",
+        "parameters": "818d1cff230a579bc641dc9bc93b3e6140c7098461b5103f772d05d4cb12adbd"
+      },
+      "approval_model": "multi_stage_single_responsible",
+      "independent_reviewers": false,
+      "case_specific_review_required": false
+    },
+    {
+      "product_code": "CO-SA-001",
+      "title": "Derecho de petición a EPS o IPS",
+      "approval_status": "approved_controlled",
+      "approved_at": "2026-07-28T21:15:00-05:00",
+      "module_counts": {
+        "questions": 42,
+        "rules": 25,
+        "sources": 13,
+        "scenarios": 14,
+        "templates": 7
+      },
+      "canonical_data_hashes": {
+        "products": "e33edae3c085fc8c932bab1b06335f4d8a389a1dc52beb0dfdb031d13233778e",
+        "interviews": "785e8cc65697db09e8c8044bf361d3a17285df0ace16589c5046d2715d5ffc0c",
+        "rules": "01e17b2d2fed411817bf773cfa14207dfd3cb74b2e5122536dd337296e740f52",
+        "sources": "7bc792616ab4344727012e2d1262dd988988923048d51d52881fc5e8e9b02161",
+        "scenarios": "221aad354262c07fc5e85a9fabb3cfef10eb6dcbb82f8614ea9054ae382e2d53",
+        "templates": "0d382fd036845b011518716676e7d5cb656649d57e6ee56ca1c4f8e6f8912741",
+        "parameters": "818d1cff230a579bc641dc9bc93b3e6140c7098461b5103f772d05d4cb12adbd"
+      },
+      "approval_model": "multi_stage_single_responsible",
+      "independent_reviewers": false,
+      "case_specific_review_required": true
+    },
+    {
+      "product_code": "CO-CD-001",
+      "title": "Centrales de riesgo y hábeas data",
+      "approval_status": "approved_controlled",
+      "approved_at": "2026-07-28T21:15:00-05:00",
+      "module_counts": {
+        "questions": 52,
+        "rules": 28,
+        "sources": 14,
+        "scenarios": 16,
+        "templates": 7
+      },
+      "canonical_data_hashes": {
+        "products": "e33edae3c085fc8c932bab1b06335f4d8a389a1dc52beb0dfdb031d13233778e",
+        "interviews": "785e8cc65697db09e8c8044bf361d3a17285df0ace16589c5046d2715d5ffc0c",
+        "rules": "01e17b2d2fed411817bf773cfa14207dfd3cb74b2e5122536dd337296e740f52",
+        "sources": "7bc792616ab4344727012e2d1262dd988988923048d51d52881fc5e8e9b02161",
+        "scenarios": "221aad354262c07fc5e85a9fabb3cfef10eb6dcbb82f8614ea9054ae382e2d53",
+        "templates": "0d382fd036845b011518716676e7d5cb656649d57e6ee56ca1c4f8e6f8912741",
+        "parameters": "818d1cff230a579bc641dc9bc93b3e6140c7098461b5103f772d05d4cb12adbd"
+      },
+      "approval_model": "multi_stage_single_responsible",
+      "independent_reviewers": false,
+      "case_specific_review_required": false
+    },
+    {
+      "product_code": "CO-CD-003",
+      "title": "Garantía, retracto y reversión del pago",
+      "approval_status": "approved_controlled",
+      "approved_at": "2026-07-28T21:15:00-05:00",
+      "module_counts": {
+        "questions": 57,
+        "rules": 32,
+        "sources": 14,
+        "scenarios": 18,
+        "templates": 8
+      },
+      "canonical_data_hashes": {
+        "products": "e33edae3c085fc8c932bab1b06335f4d8a389a1dc52beb0dfdb031d13233778e",
+        "interviews": "785e8cc65697db09e8c8044bf361d3a17285df0ace16589c5046d2715d5ffc0c",
+        "rules": "01e17b2d2fed411817bf773cfa14207dfd3cb74b2e5122536dd337296e740f52",
+        "sources": "7bc792616ab4344727012e2d1262dd988988923048d51d52881fc5e8e9b02161",
+        "scenarios": "221aad354262c07fc5e85a9fabb3cfef10eb6dcbb82f8614ea9054ae382e2d53",
+        "templates": "0d382fd036845b011518716676e7d5cb656649d57e6ee56ca1c4f8e6f8912741",
+        "parameters": "818d1cff230a579bc641dc9bc93b3e6140c7098461b5103f772d05d4cb12adbd"
+      },
+      "approval_model": "multi_stage_single_responsible",
+      "independent_reviewers": false,
+      "case_specific_review_required": false
+    },
+    {
+      "product_code": "CO-CD-004",
+      "title": "Cobro, acuerdo de pago y pagaré",
+      "approval_status": "approved_controlled",
+      "approved_at": "2026-07-28T21:15:00-05:00",
+      "module_counts": {
+        "questions": 76,
+        "rules": 42,
+        "sources": 18,
+        "scenarios": 22,
+        "templates": 10
+      },
+      "canonical_data_hashes": {
+        "products": "e33edae3c085fc8c932bab1b06335f4d8a389a1dc52beb0dfdb031d13233778e",
+        "interviews": "785e8cc65697db09e8c8044bf361d3a17285df0ace16589c5046d2715d5ffc0c",
+        "rules": "01e17b2d2fed411817bf773cfa14207dfd3cb74b2e5122536dd337296e740f52",
+        "sources": "7bc792616ab4344727012e2d1262dd988988923048d51d52881fc5e8e9b02161",
+        "scenarios": "221aad354262c07fc5e85a9fabb3cfef10eb6dcbb82f8614ea9054ae382e2d53",
+        "templates": "0d382fd036845b011518716676e7d5cb656649d57e6ee56ca1c4f8e6f8912741",
+        "parameters": "818d1cff230a579bc641dc9bc93b3e6140c7098461b5103f772d05d4cb12adbd"
+      },
+      "approval_model": "multi_stage_single_responsible",
+      "independent_reviewers": false,
+      "case_specific_review_required": true
+    }
+  ]
+}

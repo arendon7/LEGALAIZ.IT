@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="t d">
+<title id="t">Paso del proceso jurídico</title><desc id="d">Ilustración del recorrido guiado de LegalAIZ.it</desc>
+<defs>
+  <linearGradient id="navyG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0D1324"/><stop offset="1" stop-color="#18375E"/></linearGradient>
+  <linearGradient id="goldG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#E6C98F"/><stop offset="1" stop-color="#B1843C"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#0D1324" flood-opacity=".14"/></filter>
+</defs><rect width="640" height="480" rx="36" fill="#F7F5F1"/><circle cx="530" cy="90" r="95" fill="#C9A96E" opacity=".12"/><g filter="url(#shadow)"><rect x="90" y="70" width="460" height="340" rx="30" fill="#fff"/></g><rect x="218" y="135" width="204" height="210" rx="24" fill="#fff" stroke="#E6E6E1" stroke-width="4"/><circle cx="257" cy="187" r="13" fill="#2563EB"/><rect x="285" y="178" width="102" height="16" rx="8" fill="#0D1324"/><circle cx="257" cy="239" r="13" fill="#C9A96E"/><rect x="285" y="230" width="84" height="16" rx="8" fill="#0D1324"/><circle cx="257" cy="291" r="13" fill="#E6E6E1"/><rect x="285" y="282" width="111" height="16" rx="8" fill="#A8AEB8"/></svg>

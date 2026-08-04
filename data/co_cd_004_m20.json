@@ -1,0 +1,79 @@
+{
+  "version": "M20.1",
+  "product_code": "CO-CD-004",
+  "title": "Cobro, acuerdo de pago, pagaré, garantías y cierre",
+  "objective": "Recuperar cartera de forma jurídicamente trazable, respetuosa y compatible con títulos, datos, insolvencia y cierre.",
+  "verified_at": "2026-07-31",
+  "status": "Revalidado M20 para uso profesional controlado",
+  "documents": [
+    {
+      "kind": "diagnostic",
+      "title": "Diagnóstico integral de cartera"
+    },
+    {
+      "kind": "statement",
+      "title": "Estado de cuenta y memoria de liquidación"
+    },
+    {
+      "kind": "collection",
+      "title": "Requerimiento prejurídico y propuesta"
+    },
+    {
+      "kind": "agreement",
+      "title": "Acuerdo integral de pago"
+    },
+    {
+      "kind": "note",
+      "title": "Pagaré diligenciado y controlado"
+    },
+    {
+      "kind": "instructions",
+      "title": "Carta de instrucciones para pagaré"
+    },
+    {
+      "kind": "followup",
+      "title": "Matriz de evidencia y seguimiento"
+    },
+    {
+      "kind": "closure",
+      "title": "Cierre, paz y salvo y cancelación"
+    }
+  ],
+  "controls": [
+    "obligación y legitimación",
+    "título ejecutivo",
+    "título valor",
+    "saldo y abonos",
+    "intereses dinámicos",
+    "prescripción",
+    "Ley 2300",
+    "reporte negativo",
+    "acuerdo y novación",
+    "pagaré",
+    "instrucciones",
+    "garantías",
+    "insolvencia",
+    "pagos",
+    "cierre y cancelación"
+  ],
+  "official_source_ids": [
+    "CD4-S1",
+    "CD4-S2",
+    "CD4-S3",
+    "CD4-S4",
+    "CD4-S5",
+    "CD4-S6",
+    "CD4-S7",
+    "CD4-S8",
+    "CD4-S9",
+    "CD4-S10",
+    "CD4-S11",
+    "CD4-S12",
+    "CD4-S13",
+    "CD4-S14",
+    "CD4-S15",
+    "CD4-S16",
+    "CD4-S17",
+    "CD4-S18"
+  ]
+}

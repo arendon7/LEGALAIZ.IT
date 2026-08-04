@@ -1,0 +1,102 @@
+{
+  "verification_date": "2026-07-28",
+  "scope": "Verificación núcleo de fuentes transversales; no reemplaza la verificación específica por caso.",
+  "verified_by": {
+    "name": "Agustín Rendón Calle",
+    "professional_card": "330845",
+    "city": "Medellín",
+    "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+  },
+  "records": [
+    {
+      "area": "Laboral",
+      "source": "Ley 2466 de 2025",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes/30055086",
+      "verification_result": "Vigente; reforma laboral aplicable al Código Sustantivo del Trabajo.",
+      "status": "verified_official_core"
+    },
+    {
+      "area": "Arrendamiento",
+      "source": "Ley 820 de 2003",
+      "official_url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=8738",
+      "verification_result": "Régimen de arrendamiento de vivienda urbana.",
+      "status": "verified_official_core"
+    },
+    {
+      "area": "Datos",
+      "source": "Ley 1581 de 2012",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html",
+      "verification_result": "Protección de datos personales.",
+      "status": "verified_official_core"
+    },
+    {
+      "area": "Consumidor",
+      "source": "Ley 1480 de 2011",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1480_2011.html",
+      "verification_result": "Estatuto del Consumidor, actualizado en la fuente oficial consultada.",
+      "status": "verified_official_core"
+    },
+    {
+      "area": "Comercio electrónico",
+      "source": "Ley 2439 de 2024",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2439_2024.html",
+      "verification_result": "Modificaciones en protección del consumidor de comercio electrónico.",
+      "status": "verified_official_core"
+    },
+    {
+      "area": "Petición",
+      "source": "Ley 1755 de 2015",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1755_2015.html",
+      "verification_result": "Derecho fundamental de petición.",
+      "status": "verified_official_core"
+    },
+    {
+      "area": "Salud",
+      "source": "Ley 1751 de 2015",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1751_2015.html",
+      "verification_result": "Ley estatutaria de salud.",
+      "status": "verified_official_core"
+    },
+    {
+      "area": "Hábeas data financiero",
+      "source": "Ley 1266 de 2008",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1266_2008.html",
+      "verification_result": "Régimen especial de información financiera, crediticia y comercial.",
+      "status": "verified_official_core"
+    },
+    {
+      "area": "Tránsito",
+      "source": "Ley 1843 de 2017",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1843_2017.html",
+      "verification_result": "Sistemas automáticos y semiautomáticos de detección de infracciones.",
+      "status": "verified_official_core"
+    },
+    {
+      "area": "Tránsito",
+      "source": "Ley 2251 de 2022",
+      "official_url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=189806",
+      "verification_result": "Incluye el artículo 158A del Código Nacional de Tránsito.",
+      "status": "verified_official_core"
+    },
+    {
+      "area": "Justicia digital",
+      "source": "Ley 2213 de 2022",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2213_2022.html",
+      "verification_result": "Uso de tecnologías en actuaciones judiciales.",
+      "status": "verified_official_core"
+    },
+    {
+      "area": "Propiedad intelectual",
+      "source": "Decisión 486 de 2000",
+      "official_url": "https://www.sic.gov.co/sites/default/files/normatividad/Decisión_486_2000.pdf",
+      "verification_result": "Régimen común sobre propiedad industrial.",
+      "status": "verified_official_core"
+    }
+  ],
+  "expiry_policy": {
+    "default_days": 90,
+    "traffic_and_rates_days": 30,
+    "alert_based_reverification": true
+  },
+  "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+}

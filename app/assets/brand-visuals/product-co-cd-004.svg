@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="t d">
+<title id="t">Acuerdo de pago</title><desc id="d">Ilustración de la solución Acuerdo de pago</desc>
+<defs>
+  <linearGradient id="navyG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0D1324"/><stop offset="1" stop-color="#18375E"/></linearGradient>
+  <linearGradient id="goldG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#E6C98F"/><stop offset="1" stop-color="#B1843C"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#0D1324" flood-opacity=".14"/></filter>
+</defs><rect width="640" height="480" rx="36" fill="#F7F5F1"/><circle cx="525" cy="82" r="90" fill="#C9A96E" opacity=".14"/><circle cx="100" cy="405" r="70" fill="#2563EB" opacity=".07"/><g filter="url(#shadow)"><rect x="86" y="70" width="468" height="340" rx="30" fill="#fff"/></g><rect x="185" y="135" width="270" height="210" rx="24" fill="#fff" stroke="#E6E6E1" stroke-width="4"/><path d="M230 190h180M230 230h180M230 270h95" stroke="#0D1324" stroke-width="9" stroke-linecap="round"/><circle cx="390" cy="310" r="45" fill="#C9A96E"/><path d="M370 310h40M390 290v40" stroke="#0D1324" stroke-width="8" stroke-linecap="round"/></svg>

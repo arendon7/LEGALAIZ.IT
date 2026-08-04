@@ -1,0 +1,5226 @@
+[
+  {
+    "template_id": "TPL-CO-LA-002-CONSOLIDATED-PACKAGE",
+    "product_code": "CO-LA-002",
+    "kind": "consolidated_package",
+    "title": "Paquete jurídico laboral consolidado",
+    "subtitle": "Índice de documentos, módulos activados, instrucciones y control de versión",
+    "filename_suffix": "paquete_juridico_laboral_consolidado",
+    "version_label": "3.5.0-m27.2",
+    "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión.",
+    "source_package": "LegalAIZit_Paquete_03_Contrato_Trabajo_Consolidado_v2",
+    "variables": [
+      {
+        "id": "employer_name",
+        "label": "Nombre o razón social del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_id",
+        "label": "NIT o identificación del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_address",
+        "label": "Domicilio y dirección del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_representative",
+        "label": "Representante o persona que firma por el empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_name",
+        "label": "Nombre completo del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_id",
+        "label": "Documento de identidad del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_address",
+        "label": "Domicilio y dirección del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_email",
+        "label": "Correo del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_age_status",
+        "label": "Condición de edad del trabajador",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Mayor de edad",
+          "Menor de edad",
+          "No confirmado"
+        ]
+      },
+      {
+        "id": "public_or_crossborder",
+        "label": "¿Es servidor público, trabajador oficial, expatriado o laborará principalmente fuera de Colombia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "collective_regime",
+        "label": "¿La relación está cubierta por convención colectiva, pacto, laudo o régimen especial?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "need_type",
+        "label": "Naturaleza real de la necesidad",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Permanente",
+          "Temporal con fecha cierta",
+          "Obra o labor específica"
+        ]
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha real de inicio",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha de terminación propuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "prior_fixed_term_months",
+        "label": "Meses acumulados de contratos fijos desde la vigencia de la Ley 2466 de 2025",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "work_description",
+        "label": "Descripción precisa de la obra o labor",
+        "type": "textarea",
+        "required": false
+      },
+      {
+        "id": "completion_milestone",
+        "label": "Hito objetivo y verificable de terminación",
+        "type": "textarea",
+        "required": false
+      },
+      {
+        "id": "job_title",
+        "label": "Denominación del cargo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "role_clear",
+        "label": "¿Las funciones y responsabilidades están detalladas en un anexo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En construcción"
+        ]
+      },
+      {
+        "id": "workplace",
+        "label": "Lugar principal de trabajo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "remote",
+        "label": "Forma de ejecución del trabajo",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Presencial",
+          "Teletrabajo suplementario",
+          "Teletrabajo autónomo",
+          "Trabajo remoto integral",
+          "Trabajo en casa temporal",
+          "Híbrido por acuerdo"
+        ]
+      },
+      {
+        "id": "remote_compliance_ready",
+        "label": "¿Se documentaron ARL, SG-SST, equipos, desconexión y lugar autorizado?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "weekly_hours",
+        "label": "Horas ordinarias semanales",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "max_daily_hours",
+        "label": "Máximo de horas ordinarias en un día",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "night_work",
+        "label": "¿El horario incluye trabajo desde las 7:00 p. m. hasta las 6:00 a. m.?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "Ocasional"
+        ]
+      },
+      {
+        "id": "planned_overtime_daily",
+        "label": "Horas extra máximas previstas por día",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "planned_overtime_weekly",
+        "label": "Horas extra máximas previstas por semana",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "probation",
+        "label": "¿Se pactará período de prueba escrito?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "probation_months",
+        "label": "Duración del período de prueba en meses",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "monthly_salary",
+        "label": "Salario básico mensual acordado (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "salary_type",
+        "label": "Tipo de salario",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Ordinario",
+          "Integral"
+        ]
+      },
+      {
+        "id": "variable_payments",
+        "label": "¿Habrá comisiones, bonos o pagos variables?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "variable_formula_clear",
+        "label": "¿La fórmula, causación, período y pago están definidos?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En construcción"
+        ]
+      },
+      {
+        "id": "automatic_deductions",
+        "label": "¿Se pretende autorizar descuentos generales o automáticos por daños, pérdidas o faltantes?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "social_security_plan_confirmed",
+        "label": "¿Está definido el proceso de afiliación y aportes a seguridad social y parafiscales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "occupational_exam_ready",
+        "label": "¿Está programada la evaluación médica ocupacional de ingreso?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "special_protection",
+        "label": "¿Existe embarazo, discapacidad, condición de salud, fuero, calidad de cuidador u otra protección conocida?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "protected_status_decision",
+        "label": "¿La decisión de contratar o las condiciones dependen negativamente de esa protección?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "reasonable_adjustments",
+        "label": "¿Se evaluaron ajustes razonables y medidas de no discriminación?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "work_equipment",
+        "label": "¿El empleador entregará equipos, herramientas, accesos o credenciales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "personal_data",
+        "label": "¿Se tratarán datos sensibles, biométricos o de monitoreo intensivo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "ip_relevant",
+        "label": "¿El cargo creará software, diseños, contenidos, invenciones u otros activos de PI?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "confidential_information",
+        "label": "¿El cargo tendrá acceso a secretos empresariales o información confidencial relevante?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "exclusivity_clause",
+        "label": "¿Se pretende pactar exclusividad o restricción de actividades externas?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "LA2-S1",
+      "LA2-S2",
+      "LA2-S3",
+      "LA2-S6",
+      "LA2-S7",
+      "LA2-S8",
+      "LA2-S9",
+      "LA2-S10",
+      "LA2-S11",
+      "LA2-S12"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-LA-002-CONSOLIDATED-PACKAGE-B01",
+        "type": "section",
+        "heading": "1. Resumen del vínculo",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Campo",
+            "Información"
+          ],
+          [
+            "Empleador",
+            "{{employer_name}}"
+          ],
+          [
+            "Trabajador",
+            "{{worker_name}}"
+          ],
+          [
+            "Cargo",
+            "{{job_title}}"
+          ],
+          [
+            "Necesidad",
+            "{{need_type}}"
+          ],
+          [
+            "Inicio",
+            "{{start_date}}"
+          ],
+          [
+            "Modalidad",
+            "{{remote}}"
+          ],
+          [
+            "Salario",
+            "COP ${{monthly_salary}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-CONSOLIDATED-PACKAGE-B02",
+        "type": "section",
+        "heading": "2. Documentos del paquete",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Documento",
+            "Finalidad"
+          ],
+          [
+            "Contrato de trabajo",
+            "Condiciones esenciales, derechos, obligaciones y terminación"
+          ],
+          [
+            "Anexo de perfil, cargo y funciones",
+            "Resultados, autoridad, coordinación y riesgos"
+          ],
+          [
+            "Anexo de confidencialidad, PI y datos",
+            "Reserva, activos intelectuales, datos e incidentes"
+          ],
+          [
+            "Anexo de equipos, activos y credenciales",
+            "Inventario, custodia, soporte y devolución"
+          ],
+          [
+            "Anexo de modalidad no presencial",
+            "Figura, jornada, equipos, SST, privacidad y desconexión"
+          ],
+          [
+            "Ficha de diagnóstico y trazabilidad",
+            "Supuestos, alertas, fuentes y decisiones"
+          ],
+          [
+            "Lista de alistamiento",
+            "Controles previos a ingreso y pendientes"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S12"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-CONSOLIDATED-PACKAGE-B03",
+        "type": "section",
+        "heading": "3. Módulos activados",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Módulo",
+            "Estado declarado"
+          ],
+          [
+            "No presencial",
+            "{{remote}}"
+          ],
+          [
+            "Equipos",
+            "{{work_equipment}}"
+          ],
+          [
+            "Confidencialidad",
+            "{{confidential_information}}"
+          ],
+          [
+            "Datos",
+            "{{personal_data}}"
+          ],
+          [
+            "Propiedad intelectual",
+            "{{ip_relevant}}"
+          ],
+          [
+            "Protección especial",
+            "{{special_protection}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S6",
+          "LA2-S7",
+          "LA2-S8",
+          "LA2-S10",
+          "LA2-S11"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-CONSOLIDATED-PACKAGE-B04",
+        "type": "section",
+        "heading": "4. Instrucciones de firma y entrega",
+        "text": "",
+        "bullets": [
+          "Verificar nombres, identificaciones, fechas, modalidad, salario, jornada y anexos.",
+          "Usar la misma revisión aprobada para todas las copias.",
+          "Firmar o aceptar mediante mecanismo trazable y entregar copia completa a cada parte.",
+          "Conservar evidencias de afiliación, entrega de equipos, políticas y formación.",
+          "No ocultar anexos ni incorporar cláusulas externas sin nuevo cotejo."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2",
+          "LA2-S12"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-CONSOLIDATED-PACKAGE-B05",
+        "type": "section",
+        "heading": "5. Alertas de liberación",
+        "text": "Debe bloquearse la entrega externa cuando existan datos no confirmados, protección especial sin análisis, modalidad incompatible con la ejecución, jornada o salario ilegales, anexos contradictorios, ausencia de afiliaciones o falta de aprobación jurídica y QA de la misma revisión.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2",
+          "LA2-S3",
+          "LA2-S6",
+          "LA2-S7",
+          "LA2-S8",
+          "LA2-S9",
+          "LA2-S10",
+          "LA2-S11",
+          "LA2-S12"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-CONSOLIDATED-PACKAGE-B06",
+        "type": "section",
+        "heading": "6. Control de versiones",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Elemento",
+            "Registro"
+          ],
+          [
+            "Versión contractual",
+            "3.5.0-m27.2"
+          ],
+          [
+            "Expediente",
+            "Identificador de caso y revisión inmutable"
+          ],
+          [
+            "Aprobación jurídica",
+            "Actor, fecha, decisión y comentario"
+          ],
+          [
+            "QA técnico",
+            "Actor, fecha, decisión y comentario"
+          ],
+          [
+            "Hash e integridad",
+            "Generado por la plataforma al publicar"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S12"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-CONSOLIDATED-PACKAGE-CONTROL",
+        "type": "control",
+        "heading": "Control de uso, revisión y liberación",
+        "text": "Documento generado por LegalAIZ.it dentro de un flujo jurídico controlado. Antes de firmar, radicar, enviar, publicar o entregar, deben verificarse los hechos, soportes, vigencia normativa, términos, variables económicas, anexos y coherencia con el expediente; la misma revisión requiere aprobación jurídica y QA técnico. La plataforma no sustituye representación judicial ni garantiza resultados.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de gobierno; no puede eliminarse desde el editor."
+      }
+    ],
+    "canonical_evidence": [
+      "04_BIBLIOTECA_CONTRACTUAL_PROFUNDA/CO-LA-002",
+      "app/assets/advanced-legal-library/CO-LA-002"
+    ],
+    "release_gates": [
+      "legal_approval_same_revision",
+      "qa_approval_same_revision",
+      "case_data_validation",
+      "normative_currency_check"
+    ],
+    "professional_review_required": true,
+    "external_release_authorized": false
+  },
+  {
+    "template_id": "TPL-CO-LA-002-EMPLOYMENT-CONFIDENTIALITY-ANNEX",
+    "product_code": "CO-LA-002",
+    "kind": "employment_confidentiality_annex",
+    "title": "Anexo de confidencialidad, propiedad intelectual y datos",
+    "subtitle": "Información reservada, activos de PI, tratamiento de datos y cierre seguro",
+    "filename_suffix": "anexo_confidencialidad_pi_datos",
+    "version_label": "3.5.0-m27.2",
+    "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión.",
+    "source_package": "LegalAIZit_Paquete_03_Contrato_Trabajo_Consolidado_v2",
+    "variables": [
+      {
+        "id": "employer_name",
+        "label": "Nombre o razón social del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_id",
+        "label": "NIT o identificación del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_address",
+        "label": "Domicilio y dirección del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_representative",
+        "label": "Representante o persona que firma por el empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_name",
+        "label": "Nombre completo del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_id",
+        "label": "Documento de identidad del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_address",
+        "label": "Domicilio y dirección del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_email",
+        "label": "Correo del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_age_status",
+        "label": "Condición de edad del trabajador",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Mayor de edad",
+          "Menor de edad",
+          "No confirmado"
+        ]
+      },
+      {
+        "id": "public_or_crossborder",
+        "label": "¿Es servidor público, trabajador oficial, expatriado o laborará principalmente fuera de Colombia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "collective_regime",
+        "label": "¿La relación está cubierta por convención colectiva, pacto, laudo o régimen especial?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "need_type",
+        "label": "Naturaleza real de la necesidad",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Permanente",
+          "Temporal con fecha cierta",
+          "Obra o labor específica"
+        ]
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha real de inicio",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha de terminación propuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "prior_fixed_term_months",
+        "label": "Meses acumulados de contratos fijos desde la vigencia de la Ley 2466 de 2025",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "work_description",
+        "label": "Descripción precisa de la obra o labor",
+        "type": "textarea",
+        "required": false
+      },
+      {
+        "id": "completion_milestone",
+        "label": "Hito objetivo y verificable de terminación",
+        "type": "textarea",
+        "required": false
+      },
+      {
+        "id": "job_title",
+        "label": "Denominación del cargo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "role_clear",
+        "label": "¿Las funciones y responsabilidades están detalladas en un anexo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En construcción"
+        ]
+      },
+      {
+        "id": "workplace",
+        "label": "Lugar principal de trabajo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "remote",
+        "label": "Forma de ejecución del trabajo",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Presencial",
+          "Teletrabajo suplementario",
+          "Teletrabajo autónomo",
+          "Trabajo remoto integral",
+          "Trabajo en casa temporal",
+          "Híbrido por acuerdo"
+        ]
+      },
+      {
+        "id": "remote_compliance_ready",
+        "label": "¿Se documentaron ARL, SG-SST, equipos, desconexión y lugar autorizado?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "weekly_hours",
+        "label": "Horas ordinarias semanales",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "max_daily_hours",
+        "label": "Máximo de horas ordinarias en un día",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "night_work",
+        "label": "¿El horario incluye trabajo desde las 7:00 p. m. hasta las 6:00 a. m.?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "Ocasional"
+        ]
+      },
+      {
+        "id": "planned_overtime_daily",
+        "label": "Horas extra máximas previstas por día",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "planned_overtime_weekly",
+        "label": "Horas extra máximas previstas por semana",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "probation",
+        "label": "¿Se pactará período de prueba escrito?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "probation_months",
+        "label": "Duración del período de prueba en meses",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "monthly_salary",
+        "label": "Salario básico mensual acordado (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "salary_type",
+        "label": "Tipo de salario",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Ordinario",
+          "Integral"
+        ]
+      },
+      {
+        "id": "variable_payments",
+        "label": "¿Habrá comisiones, bonos o pagos variables?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "variable_formula_clear",
+        "label": "¿La fórmula, causación, período y pago están definidos?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En construcción"
+        ]
+      },
+      {
+        "id": "automatic_deductions",
+        "label": "¿Se pretende autorizar descuentos generales o automáticos por daños, pérdidas o faltantes?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "social_security_plan_confirmed",
+        "label": "¿Está definido el proceso de afiliación y aportes a seguridad social y parafiscales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "occupational_exam_ready",
+        "label": "¿Está programada la evaluación médica ocupacional de ingreso?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "special_protection",
+        "label": "¿Existe embarazo, discapacidad, condición de salud, fuero, calidad de cuidador u otra protección conocida?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "protected_status_decision",
+        "label": "¿La decisión de contratar o las condiciones dependen negativamente de esa protección?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "reasonable_adjustments",
+        "label": "¿Se evaluaron ajustes razonables y medidas de no discriminación?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "work_equipment",
+        "label": "¿El empleador entregará equipos, herramientas, accesos o credenciales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "personal_data",
+        "label": "¿Se tratarán datos sensibles, biométricos o de monitoreo intensivo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "ip_relevant",
+        "label": "¿El cargo creará software, diseños, contenidos, invenciones u otros activos de PI?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "confidential_information",
+        "label": "¿El cargo tendrá acceso a secretos empresariales o información confidencial relevante?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "exclusivity_clause",
+        "label": "¿Se pretende pactar exclusividad o restricción de actividades externas?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "LA2-S1",
+      "LA2-S2",
+      "LA2-S10",
+      "LA2-S11",
+      "LA2-S12"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONFIDENTIALITY-ANNEX-B01",
+        "type": "section",
+        "heading": "1. Partes, relación y alcance",
+        "text": "Este anexo se celebra entre {{employer_name}} y {{worker_name}} como parte del contrato de trabajo. Aplica a información, datos, obras, software, diseños, credenciales, secretos empresariales y demás activos a los que el trabajador acceda o contribuya por razón del cargo {{job_title}}.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONFIDENTIALITY-ANNEX-B02",
+        "type": "section",
+        "heading": "2. Clasificación de información",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Categoría",
+            "Tratamiento"
+          ],
+          [
+            "Pública",
+            "Uso permitido conforme a fuente y finalidad"
+          ],
+          [
+            "Interna",
+            "Acceso limitado a funciones autorizadas"
+          ],
+          [
+            "Confidencial",
+            "Necesidad de conocer, controles y prohibición de divulgación"
+          ],
+          [
+            "Secreto empresarial",
+            "Medidas reforzadas, trazabilidad y acceso mínimo"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S10",
+          "LA2-S12"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONFIDENTIALITY-ANNEX-B03",
+        "type": "section",
+        "heading": "3. Deberes de confidencialidad",
+        "text": "",
+        "bullets": [
+          "Usar la información únicamente para fines laborales autorizados.",
+          "No copiar, descargar, transferir ni revelar información fuera de canales aprobados.",
+          "Proteger credenciales, dispositivos, archivos físicos y repositorios.",
+          "Informar incidentes, pérdidas, accesos indebidos o solicitudes sospechosas sin demora.",
+          "Mantener reserva después de terminar el vínculo mientras subsista la naturaleza protegida de la información."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S10"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONFIDENTIALITY-ANNEX-B04",
+        "type": "section",
+        "heading": "4. Datos personales y monitoreo",
+        "text": "El tratamiento de datos laborales debe responder a finalidades informadas, necesidad, proporcionalidad, seguridad y acceso restringido. Datos sensibles o biométricos: {{personal_data}}. El monitoreo no autoriza vigilancia permanente, acceso indiscriminado ni afectación injustificada de la intimidad.",
+        "bullets": [],
+        "table": [],
+        "condition": {
+          "field": "personal_data",
+          "op": "not_in",
+          "value": [
+            "No"
+          ]
+        },
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S10"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONFIDENTIALITY-ANNEX-B05",
+        "type": "section",
+        "heading": "5. Propiedad intelectual y entregables",
+        "text": "Relevancia de propiedad intelectual: {{ip_relevant}}. Los derechos morales permanecen en cabeza de sus autores. La titularidad o cesión de derechos patrimoniales debe constar por escrito, delimitar modalidades de explotación, territorio, plazo, remuneración cuando corresponda y respetar las normas imperativas.",
+        "bullets": [],
+        "table": [],
+        "condition": {
+          "field": "ip_relevant",
+          "op": "not_in",
+          "value": [
+            "No"
+          ]
+        },
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S11"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONFIDENTIALITY-ANNEX-B06",
+        "type": "section",
+        "heading": "6. Herramientas, IA y terceros",
+        "text": "",
+        "bullets": [
+          "No ingresar información confidencial o datos personales en herramientas no autorizadas.",
+          "Verificar licencias, términos de uso, procedencia y restricciones de componentes de terceros.",
+          "Conservar registro de versiones, fuentes y revisiones cuando se utilicen sistemas automatizados o IA.",
+          "No presentar como propio contenido de terceros ni eludir controles de seguridad."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S10",
+          "LA2-S11",
+          "LA2-S12"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONFIDENTIALITY-ANNEX-B07",
+        "type": "section",
+        "heading": "7. Incidentes, devolución y eliminación",
+        "text": "Al terminar o cambiar funciones, el trabajador devolverá equipos, documentos y credenciales; transferirá archivos de trabajo; declarará copias bajo su control y seguirá el protocolo verificable de eliminación o conservación. La empresa documentará accesos revocados, respaldos y excepciones legales.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S10",
+          "LA2-S12"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONFIDENTIALITY-ANNEX-CONTROL",
+        "type": "control",
+        "heading": "Control de uso, revisión y liberación",
+        "text": "Documento generado por LegalAIZ.it dentro de un flujo jurídico controlado. Antes de firmar, radicar, enviar, publicar o entregar, deben verificarse los hechos, soportes, vigencia normativa, términos, variables económicas, anexos y coherencia con el expediente; la misma revisión requiere aprobación jurídica y QA técnico. La plataforma no sustituye representación judicial ni garantiza resultados.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de gobierno; no puede eliminarse desde el editor."
+      }
+    ],
+    "canonical_evidence": [
+      "04_BIBLIOTECA_CONTRACTUAL_PROFUNDA/CO-LA-002",
+      "app/assets/advanced-legal-library/CO-LA-002"
+    ],
+    "release_gates": [
+      "legal_approval_same_revision",
+      "qa_approval_same_revision",
+      "case_data_validation",
+      "normative_currency_check"
+    ],
+    "professional_review_required": true,
+    "external_release_authorized": false
+  },
+  {
+    "template_id": "TPL-CO-LA-002-EMPLOYMENT-CONTRACT",
+    "product_code": "CO-LA-002",
+    "kind": "employment_contract",
+    "title": "Contrato de trabajo personalizado",
+    "subtitle": "Condiciones esenciales, módulos aplicables y controles previos a firma",
+    "filename_suffix": "contrato_trabajo",
+    "version_label": "3.5.0-m27.2",
+    "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión.",
+    "source_package": "LegalAIZit_Paquete_03_Contrato_Trabajo_Consolidado_v2",
+    "variables": [
+      {
+        "id": "employer_name",
+        "label": "Nombre o razón social del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_id",
+        "label": "NIT o identificación del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_address",
+        "label": "Domicilio y dirección del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_representative",
+        "label": "Representante o persona que firma por el empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_name",
+        "label": "Nombre completo del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_id",
+        "label": "Documento de identidad del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_address",
+        "label": "Domicilio y dirección del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_email",
+        "label": "Correo del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_age_status",
+        "label": "Condición de edad del trabajador",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Mayor de edad",
+          "Menor de edad",
+          "No confirmado"
+        ]
+      },
+      {
+        "id": "public_or_crossborder",
+        "label": "¿Es servidor público, trabajador oficial, expatriado o laborará principalmente fuera de Colombia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "collective_regime",
+        "label": "¿La relación está cubierta por convención colectiva, pacto, laudo o régimen especial?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "need_type",
+        "label": "Naturaleza real de la necesidad",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Permanente",
+          "Temporal con fecha cierta",
+          "Obra o labor específica"
+        ]
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha real de inicio",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha de terminación propuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "prior_fixed_term_months",
+        "label": "Meses acumulados de contratos fijos desde la vigencia de la Ley 2466 de 2025",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "work_description",
+        "label": "Descripción precisa de la obra o labor",
+        "type": "textarea",
+        "required": false
+      },
+      {
+        "id": "completion_milestone",
+        "label": "Hito objetivo y verificable de terminación",
+        "type": "textarea",
+        "required": false
+      },
+      {
+        "id": "job_title",
+        "label": "Denominación del cargo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "role_clear",
+        "label": "¿Las funciones y responsabilidades están detalladas en un anexo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En construcción"
+        ]
+      },
+      {
+        "id": "workplace",
+        "label": "Lugar principal de trabajo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "remote",
+        "label": "Forma de ejecución del trabajo",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Presencial",
+          "Teletrabajo suplementario",
+          "Teletrabajo autónomo",
+          "Trabajo remoto integral",
+          "Trabajo en casa temporal",
+          "Híbrido por acuerdo"
+        ]
+      },
+      {
+        "id": "remote_compliance_ready",
+        "label": "¿Se documentaron ARL, SG-SST, equipos, desconexión y lugar autorizado?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "weekly_hours",
+        "label": "Horas ordinarias semanales",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "max_daily_hours",
+        "label": "Máximo de horas ordinarias en un día",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "night_work",
+        "label": "¿El horario incluye trabajo desde las 7:00 p. m. hasta las 6:00 a. m.?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "Ocasional"
+        ]
+      },
+      {
+        "id": "planned_overtime_daily",
+        "label": "Horas extra máximas previstas por día",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "planned_overtime_weekly",
+        "label": "Horas extra máximas previstas por semana",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "probation",
+        "label": "¿Se pactará período de prueba escrito?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "probation_months",
+        "label": "Duración del período de prueba en meses",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "monthly_salary",
+        "label": "Salario básico mensual acordado (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "salary_type",
+        "label": "Tipo de salario",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Ordinario",
+          "Integral"
+        ]
+      },
+      {
+        "id": "variable_payments",
+        "label": "¿Habrá comisiones, bonos o pagos variables?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "variable_formula_clear",
+        "label": "¿La fórmula, causación, período y pago están definidos?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En construcción"
+        ]
+      },
+      {
+        "id": "automatic_deductions",
+        "label": "¿Se pretende autorizar descuentos generales o automáticos por daños, pérdidas o faltantes?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "social_security_plan_confirmed",
+        "label": "¿Está definido el proceso de afiliación y aportes a seguridad social y parafiscales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "occupational_exam_ready",
+        "label": "¿Está programada la evaluación médica ocupacional de ingreso?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "special_protection",
+        "label": "¿Existe embarazo, discapacidad, condición de salud, fuero, calidad de cuidador u otra protección conocida?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "protected_status_decision",
+        "label": "¿La decisión de contratar o las condiciones dependen negativamente de esa protección?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "reasonable_adjustments",
+        "label": "¿Se evaluaron ajustes razonables y medidas de no discriminación?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "work_equipment",
+        "label": "¿El empleador entregará equipos, herramientas, accesos o credenciales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "personal_data",
+        "label": "¿Se tratarán datos sensibles, biométricos o de monitoreo intensivo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "ip_relevant",
+        "label": "¿El cargo creará software, diseños, contenidos, invenciones u otros activos de PI?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "confidential_information",
+        "label": "¿El cargo tendrá acceso a secretos empresariales o información confidencial relevante?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "exclusivity_clause",
+        "label": "¿Se pretende pactar exclusividad o restricción de actividades externas?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "LA2-S1",
+      "LA2-S2",
+      "LA2-S3",
+      "LA2-S6",
+      "LA2-S7",
+      "LA2-S8",
+      "LA2-S9",
+      "LA2-S10",
+      "LA2-S11",
+      "LA2-S12"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONTRACT-B01",
+        "type": "section",
+        "heading": "1. Partes, capacidad y objeto",
+        "text": "Entre {{employer_name}}, identificado con {{employer_id}}, representado por {{employer_representative}}, y {{worker_name}}, identificado con {{worker_id}}, se celebra un contrato de trabajo para el cargo {{job_title}}. La prestación será personal, remunerada y subordinada dentro de los límites constitucionales y legales; la realidad de la ejecución prevalece sobre denominaciones incompatibles.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONTRACT-B02",
+        "type": "section",
+        "heading": "2. Necesidad, modalidad y funciones",
+        "text": "Las funciones se desarrollan en el anexo de perfil y cargo. Las tareas conexas deben ser razonables, compatibles con la categoría, la seguridad, la dignidad y la formación del trabajador.",
+        "bullets": [],
+        "table": [
+          [
+            "Campo",
+            "Información"
+          ],
+          [
+            "Necesidad",
+            "{{need_type}}"
+          ],
+          [
+            "Descripción",
+            "{{work_description}}"
+          ],
+          [
+            "Cargo",
+            "{{job_title}}"
+          ],
+          [
+            "Lugar principal",
+            "{{workplace}}"
+          ],
+          [
+            "Modalidad no presencial",
+            "{{remote}}"
+          ],
+          [
+            "Claridad del rol",
+            "{{role_clear}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2",
+          "LA2-S12"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONTRACT-B03",
+        "type": "section",
+        "heading": "3. Duración, inicio y período de prueba",
+        "text": "La regla general es el término indefinido. El término fijo debe constar por escrito, responder a la necesidad real y no superar los límites vigentes; la obra o labor debe ser determinada y verificable. El período de prueba solo produce efectos si se pacta por escrito y dentro de los límites legales.",
+        "bullets": [],
+        "table": [
+          [
+            "Variable",
+            "Dato declarado"
+          ],
+          [
+            "Fecha de inicio",
+            "{{start_date}}"
+          ],
+          [
+            "Fecha final",
+            "{{end_date}}"
+          ],
+          [
+            "Hito de obra o labor",
+            "{{completion_milestone}}"
+          ],
+          [
+            "Meses de términos fijos previos",
+            "{{prior_fixed_term_months}}"
+          ],
+          [
+            "Período de prueba",
+            "{{probation}} — {{probation_months}} mes(es)"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONTRACT-B04",
+        "type": "section",
+        "heading": "4. Salario, pagos variables y prestaciones",
+        "text": "La naturaleza salarial depende de la finalidad y realidad del pago. Se reconocerán prestaciones, aportes, recargos y demás conceptos obligatorios. No se autorizan descuentos automáticos por pérdidas, daños, equipos o faltantes sin fundamento legal, prueba y debido proceso.",
+        "bullets": [],
+        "table": [
+          [
+            "Concepto",
+            "Condición"
+          ],
+          [
+            "Salario mensual",
+            "COP ${{monthly_salary}}"
+          ],
+          [
+            "Tipo de salario",
+            "{{salary_type}}"
+          ],
+          [
+            "Pagos variables",
+            "{{variable_payments}}"
+          ],
+          [
+            "Fórmula definida",
+            "{{variable_formula_clear}}"
+          ],
+          [
+            "Deducciones automáticas",
+            "{{automatic_deductions}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONTRACT-B05",
+        "type": "section",
+        "heading": "5. Jornada, descansos y desconexión",
+        "text": "La jornada máxima ordinaria es de cuarenta y dos (42) horas semanales desde el 15 de julio de 2026, distribuibles conforme a la ley. Se respetarán descansos, recargos, autorización y registro de trabajo suplementario, así como el derecho a la desconexión.",
+        "bullets": [],
+        "table": [
+          [
+            "Variable",
+            "Dato declarado"
+          ],
+          [
+            "Horas semanales",
+            "{{weekly_hours}}"
+          ],
+          [
+            "Máximo diario",
+            "{{max_daily_hours}}"
+          ],
+          [
+            "Trabajo nocturno",
+            "{{night_work}}"
+          ],
+          [
+            "Horas extra diarias",
+            "{{planned_overtime_daily}}"
+          ],
+          [
+            "Horas extra semanales",
+            "{{planned_overtime_weekly}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2",
+          "LA2-S3",
+          "LA2-S9"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONTRACT-B06",
+        "type": "section",
+        "heading": "6. Seguridad social y seguridad y salud en el trabajo",
+        "text": "El empleador debe gestionar afiliaciones, prevención, formación, equipos y controles antes o al inicio efectivo. El trabajador reportará riesgos, accidentes e instrucciones inseguras por canales trazables.",
+        "bullets": [],
+        "table": [
+          [
+            "Control",
+            "Estado"
+          ],
+          [
+            "Afiliación y aportes",
+            "{{social_security_plan_confirmed}}"
+          ],
+          [
+            "Examen ocupacional",
+            "{{occupational_exam_ready}}"
+          ],
+          [
+            "Ajustes razonables",
+            "{{reasonable_adjustments}}"
+          ],
+          [
+            "Preparación remota",
+            "{{remote_compliance_ready}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S6"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONTRACT-B07",
+        "type": "section",
+        "heading": "7. Equipos, información, datos y propiedad intelectual",
+        "text": "Los módulos especializados integran el contrato cuando correspondan. No se incorporan cesiones genéricas de derechos, vigilancia indiscriminada, restricciones desproporcionadas ni obligaciones de confidencialidad que impidan denunciar hechos ilícitos o ejercer derechos.",
+        "bullets": [],
+        "table": [
+          [
+            "Módulo",
+            "Estado"
+          ],
+          [
+            "Equipos",
+            "{{work_equipment}}"
+          ],
+          [
+            "Información confidencial",
+            "{{confidential_information}}"
+          ],
+          [
+            "Datos personales o biométricos",
+            "{{personal_data}}"
+          ],
+          [
+            "Propiedad intelectual",
+            "{{ip_relevant}}"
+          ],
+          [
+            "Exclusividad",
+            "{{exclusivity_clause}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S10",
+          "LA2-S11",
+          "LA2-S12"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONTRACT-B08",
+        "type": "section",
+        "heading": "8. Protección especial, igualdad y ajustes",
+        "text": "Cualquier embarazo, condición de salud, discapacidad, fuero, minoría de edad, situación migratoria o protección constitucional exige análisis especializado antes de contratar, modificar o terminar. Se prohíbe discriminación y represalia.",
+        "bullets": [],
+        "table": [
+          [
+            "Variable",
+            "Resultado"
+          ],
+          [
+            "Protección especial",
+            "{{special_protection}}"
+          ],
+          [
+            "Decisión documentada",
+            "{{protected_status_decision}}"
+          ],
+          [
+            "Mayoría de edad",
+            "{{worker_age_status}}"
+          ],
+          [
+            "Régimen público o transnacional",
+            "{{public_or_crossborder}}"
+          ],
+          [
+            "Régimen colectivo",
+            "{{collective_regime}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONTRACT-B09",
+        "type": "section",
+        "heading": "9. Obligaciones y debido proceso",
+        "text": "",
+        "bullets": [
+          "Cumplir órdenes lícitas, funciones y políticas válidamente comunicadas.",
+          "Proteger información, equipos y datos dentro del alcance autorizado.",
+          "Informar conflictos, riesgos e incidentes relevantes.",
+          "Aplicar comunicación de hechos, oportunidad de defensa, valoración de pruebas y decisión motivada en actuaciones disciplinarias.",
+          "Evitar renuncias generales, sanciones no previstas o descuentos automáticos."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONTRACT-B10",
+        "type": "section",
+        "heading": "10. Terminación, entrega y cierre",
+        "text": "La terminación se regirá por la causal, procedimiento, estabilidad aplicable y prueba disponible. Deben liquidarse conceptos causados, entregar certificaciones, devolver activos, cerrar accesos, transferir información y documentar reservas sin afectar derechos irrenunciables.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2",
+          "LA2-S10",
+          "LA2-S12"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONTRACT-MOD-REMOTE",
+        "type": "clause",
+        "heading": "Módulo de modalidad no presencial",
+        "text": "La modalidad informada es {{remote}}. Deben definirse figura jurídica, lugar, presencialidad, equipos, conectividad, gastos, seguridad y salud, privacidad, reversibilidad y desconexión.",
+        "bullets": [],
+        "table": [],
+        "condition": {
+          "field": "remote",
+          "op": "not_in",
+          "value": [
+            "Presencial",
+            "No"
+          ]
+        },
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "LA2-S6",
+          "LA2-S7",
+          "LA2-S8",
+          "LA2-S9"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONTRACT-MOD-EQUIPMENT",
+        "type": "clause",
+        "heading": "Módulo de equipos y herramientas",
+        "text": "",
+        "bullets": [
+          "Anexar inventario, estado, seriales, accesorios y credenciales.",
+          "Definir custodia, soporte, seguridad, mantenimiento, devolución y respuesta a incidentes.",
+          "No efectuar descuentos automáticos por pérdida o daño."
+        ],
+        "table": [],
+        "condition": {
+          "field": "work_equipment",
+          "op": "equals",
+          "value": "Sí"
+        },
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S6",
+          "LA2-S10"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONTRACT-MOD-DATA",
+        "type": "clause",
+        "heading": "Módulo de datos personales",
+        "text": "",
+        "bullets": [
+          "Delimitar finalidades, categorías, accesos, conservación y medidas de seguridad.",
+          "Aplicar necesidad y proporcionalidad reforzada a datos sensibles, biometría y monitoreo."
+        ],
+        "table": [],
+        "condition": {
+          "field": "personal_data",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        },
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "LA2-S10"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONTRACT-MOD-IP",
+        "type": "clause",
+        "heading": "Módulo de propiedad intelectual",
+        "text": "",
+        "bullets": [
+          "Identificar obras, software, diseños, datos, materiales preexistentes y aportes de terceros.",
+          "Definir por escrito la cesión o licencia patrimonial y respetar derechos morales."
+        ],
+        "table": [],
+        "condition": {
+          "field": "ip_relevant",
+          "op": "equals",
+          "value": "Sí"
+        },
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "LA2-S11"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-CONTRACT-CONTROL",
+        "type": "control",
+        "heading": "Control de uso, revisión y liberación",
+        "text": "Documento generado por LegalAIZ.it dentro de un flujo jurídico controlado. Antes de firmar, radicar, enviar, publicar o entregar, deben verificarse los hechos, soportes, vigencia normativa, términos, variables económicas, anexos y coherencia con el expediente; la misma revisión requiere aprobación jurídica y QA técnico. La plataforma no sustituye representación judicial ni garantiza resultados.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de gobierno; no puede eliminarse desde el editor."
+      }
+    ],
+    "canonical_evidence": [
+      "04_BIBLIOTECA_CONTRACTUAL_PROFUNDA/CO-LA-002",
+      "app/assets/advanced-legal-library/CO-LA-002"
+    ],
+    "release_gates": [
+      "legal_approval_same_revision",
+      "qa_approval_same_revision",
+      "case_data_validation",
+      "normative_currency_check"
+    ],
+    "professional_review_required": true,
+    "external_release_authorized": false
+  },
+  {
+    "template_id": "TPL-CO-LA-002-EMPLOYMENT-EQUIPMENT-ANNEX",
+    "product_code": "CO-LA-002",
+    "kind": "employment_equipment_annex",
+    "title": "Anexo de equipos, activos y credenciales",
+    "subtitle": "Entrega, custodia, seguridad, soporte y devolución",
+    "filename_suffix": "anexo_equipos_activos_credenciales",
+    "version_label": "3.5.0-m27.2",
+    "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión.",
+    "source_package": "LegalAIZit_Paquete_03_Contrato_Trabajo_Consolidado_v2",
+    "variables": [
+      {
+        "id": "employer_name",
+        "label": "Nombre o razón social del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_id",
+        "label": "NIT o identificación del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_address",
+        "label": "Domicilio y dirección del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_representative",
+        "label": "Representante o persona que firma por el empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_name",
+        "label": "Nombre completo del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_id",
+        "label": "Documento de identidad del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_address",
+        "label": "Domicilio y dirección del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_email",
+        "label": "Correo del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_age_status",
+        "label": "Condición de edad del trabajador",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Mayor de edad",
+          "Menor de edad",
+          "No confirmado"
+        ]
+      },
+      {
+        "id": "public_or_crossborder",
+        "label": "¿Es servidor público, trabajador oficial, expatriado o laborará principalmente fuera de Colombia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "collective_regime",
+        "label": "¿La relación está cubierta por convención colectiva, pacto, laudo o régimen especial?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "need_type",
+        "label": "Naturaleza real de la necesidad",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Permanente",
+          "Temporal con fecha cierta",
+          "Obra o labor específica"
+        ]
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha real de inicio",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha de terminación propuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "prior_fixed_term_months",
+        "label": "Meses acumulados de contratos fijos desde la vigencia de la Ley 2466 de 2025",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "work_description",
+        "label": "Descripción precisa de la obra o labor",
+        "type": "textarea",
+        "required": false
+      },
+      {
+        "id": "completion_milestone",
+        "label": "Hito objetivo y verificable de terminación",
+        "type": "textarea",
+        "required": false
+      },
+      {
+        "id": "job_title",
+        "label": "Denominación del cargo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "role_clear",
+        "label": "¿Las funciones y responsabilidades están detalladas en un anexo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En construcción"
+        ]
+      },
+      {
+        "id": "workplace",
+        "label": "Lugar principal de trabajo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "remote",
+        "label": "Forma de ejecución del trabajo",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Presencial",
+          "Teletrabajo suplementario",
+          "Teletrabajo autónomo",
+          "Trabajo remoto integral",
+          "Trabajo en casa temporal",
+          "Híbrido por acuerdo"
+        ]
+      },
+      {
+        "id": "remote_compliance_ready",
+        "label": "¿Se documentaron ARL, SG-SST, equipos, desconexión y lugar autorizado?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "weekly_hours",
+        "label": "Horas ordinarias semanales",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "max_daily_hours",
+        "label": "Máximo de horas ordinarias en un día",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "night_work",
+        "label": "¿El horario incluye trabajo desde las 7:00 p. m. hasta las 6:00 a. m.?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "Ocasional"
+        ]
+      },
+      {
+        "id": "planned_overtime_daily",
+        "label": "Horas extra máximas previstas por día",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "planned_overtime_weekly",
+        "label": "Horas extra máximas previstas por semana",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "probation",
+        "label": "¿Se pactará período de prueba escrito?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "probation_months",
+        "label": "Duración del período de prueba en meses",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "monthly_salary",
+        "label": "Salario básico mensual acordado (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "salary_type",
+        "label": "Tipo de salario",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Ordinario",
+          "Integral"
+        ]
+      },
+      {
+        "id": "variable_payments",
+        "label": "¿Habrá comisiones, bonos o pagos variables?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "variable_formula_clear",
+        "label": "¿La fórmula, causación, período y pago están definidos?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En construcción"
+        ]
+      },
+      {
+        "id": "automatic_deductions",
+        "label": "¿Se pretende autorizar descuentos generales o automáticos por daños, pérdidas o faltantes?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "social_security_plan_confirmed",
+        "label": "¿Está definido el proceso de afiliación y aportes a seguridad social y parafiscales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "occupational_exam_ready",
+        "label": "¿Está programada la evaluación médica ocupacional de ingreso?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "special_protection",
+        "label": "¿Existe embarazo, discapacidad, condición de salud, fuero, calidad de cuidador u otra protección conocida?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "protected_status_decision",
+        "label": "¿La decisión de contratar o las condiciones dependen negativamente de esa protección?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "reasonable_adjustments",
+        "label": "¿Se evaluaron ajustes razonables y medidas de no discriminación?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "work_equipment",
+        "label": "¿El empleador entregará equipos, herramientas, accesos o credenciales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "personal_data",
+        "label": "¿Se tratarán datos sensibles, biométricos o de monitoreo intensivo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "ip_relevant",
+        "label": "¿El cargo creará software, diseños, contenidos, invenciones u otros activos de PI?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "confidential_information",
+        "label": "¿El cargo tendrá acceso a secretos empresariales o información confidencial relevante?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "exclusivity_clause",
+        "label": "¿Se pretende pactar exclusividad o restricción de actividades externas?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "LA2-S1",
+      "LA2-S2",
+      "LA2-S6",
+      "LA2-S10",
+      "LA2-S12"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-EQUIPMENT-ANNEX-B01",
+        "type": "section",
+        "heading": "1. Identificación y finalidad",
+        "text": "{{employer_name}} entrega a {{worker_name}} los equipos, activos, licencias o credenciales necesarios para el cargo {{job_title}}. La entrega se realiza para fines laborales y no modifica la titularidad de los bienes.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S6"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-EQUIPMENT-ANNEX-B02",
+        "type": "section",
+        "heading": "2. Inventario trazable",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Activo",
+            "Marca/modelo/serial/estado/accesorios/valor de referencia"
+          ],
+          [
+            "Equipo principal",
+            "Registrar en acta de entrega"
+          ],
+          [
+            "Periféricos",
+            "Registrar cantidad y estado"
+          ],
+          [
+            "Licencias y cuentas",
+            "Registrar sistema, rol y vigencia"
+          ],
+          [
+            "Credenciales físicas",
+            "Registrar tipo, número y alcance"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S6",
+          "LA2-S12"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-EQUIPMENT-ANNEX-B03",
+        "type": "section",
+        "heading": "3. Uso permitido y custodia",
+        "text": "",
+        "bullets": [
+          "Usar los activos conforme al cargo, políticas informadas y licencias aplicables.",
+          "Evitar préstamo, cesión, manipulación o instalación no autorizada.",
+          "Aplicar contraseñas robustas, bloqueo, cifrado y actualizaciones definidas por el empleador.",
+          "Separar información personal y laboral cuando se autorice uso mixto."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S6",
+          "LA2-S10"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-EQUIPMENT-ANNEX-B04",
+        "type": "section",
+        "heading": "4. Soporte, mantenimiento y gastos",
+        "text": "El empleador define canales de soporte, mantenimiento, reposición y reporte. No se efectuarán descuentos automáticos por pérdida o daño; cualquier responsabilidad requiere hechos, debido proceso, proporcionalidad y respeto de límites legales.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-EQUIPMENT-ANNEX-B05",
+        "type": "section",
+        "heading": "5. Incidentes y evidencia",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Evento",
+            "Acción inmediata"
+          ],
+          [
+            "Pérdida o hurto",
+            "Reportar, preservar denuncia o soporte y bloquear accesos"
+          ],
+          [
+            "Daño o falla",
+            "Suspender uso inseguro y solicitar soporte"
+          ],
+          [
+            "Acceso indebido",
+            "Cambiar credenciales, aislar equipo y activar respuesta"
+          ],
+          [
+            "Salida de información",
+            "Preservar evidencia y notificar al responsable de seguridad"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S6",
+          "LA2-S10"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-EQUIPMENT-ANNEX-B06",
+        "type": "section",
+        "heading": "6. Devolución y cierre",
+        "text": "La devolución debe registrar fecha, estado, accesorios, archivos transferidos, credenciales revocadas, limpieza segura y reservas. La terminación del vínculo no autoriza retener información ni impide formular observaciones sobre el estado del activo.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S10",
+          "LA2-S12"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-EQUIPMENT-ANNEX-CONTROL",
+        "type": "control",
+        "heading": "Control de uso, revisión y liberación",
+        "text": "Documento generado por LegalAIZ.it dentro de un flujo jurídico controlado. Antes de firmar, radicar, enviar, publicar o entregar, deben verificarse los hechos, soportes, vigencia normativa, términos, variables económicas, anexos y coherencia con el expediente; la misma revisión requiere aprobación jurídica y QA técnico. La plataforma no sustituye representación judicial ni garantiza resultados.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de gobierno; no puede eliminarse desde el editor."
+      }
+    ],
+    "canonical_evidence": [
+      "04_BIBLIOTECA_CONTRACTUAL_PROFUNDA/CO-LA-002",
+      "app/assets/advanced-legal-library/CO-LA-002"
+    ],
+    "release_gates": [
+      "legal_approval_same_revision",
+      "qa_approval_same_revision",
+      "case_data_validation",
+      "normative_currency_check"
+    ],
+    "professional_review_required": true,
+    "external_release_authorized": false
+  },
+  {
+    "template_id": "TPL-CO-LA-002-EMPLOYMENT-ANNEX",
+    "product_code": "CO-LA-002",
+    "kind": "employment_functions_annex",
+    "title": "Anexo de perfil, cargo y funciones",
+    "subtitle": "Responsabilidades, autoridad, indicadores, riesgos y coordinación",
+    "filename_suffix": "anexo_perfil_cargo_funciones",
+    "version_label": "3.5.0-m27.2",
+    "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión.",
+    "source_package": "LegalAIZit_Paquete_03_Contrato_Trabajo_Consolidado_v2",
+    "variables": [
+      {
+        "id": "employer_name",
+        "label": "Nombre o razón social del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_id",
+        "label": "NIT o identificación del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_address",
+        "label": "Domicilio y dirección del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_representative",
+        "label": "Representante o persona que firma por el empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_name",
+        "label": "Nombre completo del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_id",
+        "label": "Documento de identidad del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_address",
+        "label": "Domicilio y dirección del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_email",
+        "label": "Correo del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_age_status",
+        "label": "Condición de edad del trabajador",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Mayor de edad",
+          "Menor de edad",
+          "No confirmado"
+        ]
+      },
+      {
+        "id": "public_or_crossborder",
+        "label": "¿Es servidor público, trabajador oficial, expatriado o laborará principalmente fuera de Colombia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "collective_regime",
+        "label": "¿La relación está cubierta por convención colectiva, pacto, laudo o régimen especial?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "need_type",
+        "label": "Naturaleza real de la necesidad",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Permanente",
+          "Temporal con fecha cierta",
+          "Obra o labor específica"
+        ]
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha real de inicio",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha de terminación propuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "prior_fixed_term_months",
+        "label": "Meses acumulados de contratos fijos desde la vigencia de la Ley 2466 de 2025",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "work_description",
+        "label": "Descripción precisa de la obra o labor",
+        "type": "textarea",
+        "required": false
+      },
+      {
+        "id": "completion_milestone",
+        "label": "Hito objetivo y verificable de terminación",
+        "type": "textarea",
+        "required": false
+      },
+      {
+        "id": "job_title",
+        "label": "Denominación del cargo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "role_clear",
+        "label": "¿Las funciones y responsabilidades están detalladas en un anexo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En construcción"
+        ]
+      },
+      {
+        "id": "workplace",
+        "label": "Lugar principal de trabajo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "remote",
+        "label": "Forma de ejecución del trabajo",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Presencial",
+          "Teletrabajo suplementario",
+          "Teletrabajo autónomo",
+          "Trabajo remoto integral",
+          "Trabajo en casa temporal",
+          "Híbrido por acuerdo"
+        ]
+      },
+      {
+        "id": "remote_compliance_ready",
+        "label": "¿Se documentaron ARL, SG-SST, equipos, desconexión y lugar autorizado?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "weekly_hours",
+        "label": "Horas ordinarias semanales",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "max_daily_hours",
+        "label": "Máximo de horas ordinarias en un día",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "night_work",
+        "label": "¿El horario incluye trabajo desde las 7:00 p. m. hasta las 6:00 a. m.?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "Ocasional"
+        ]
+      },
+      {
+        "id": "planned_overtime_daily",
+        "label": "Horas extra máximas previstas por día",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "planned_overtime_weekly",
+        "label": "Horas extra máximas previstas por semana",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "probation",
+        "label": "¿Se pactará período de prueba escrito?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "probation_months",
+        "label": "Duración del período de prueba en meses",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "monthly_salary",
+        "label": "Salario básico mensual acordado (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "salary_type",
+        "label": "Tipo de salario",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Ordinario",
+          "Integral"
+        ]
+      },
+      {
+        "id": "variable_payments",
+        "label": "¿Habrá comisiones, bonos o pagos variables?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "variable_formula_clear",
+        "label": "¿La fórmula, causación, período y pago están definidos?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En construcción"
+        ]
+      },
+      {
+        "id": "automatic_deductions",
+        "label": "¿Se pretende autorizar descuentos generales o automáticos por daños, pérdidas o faltantes?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "social_security_plan_confirmed",
+        "label": "¿Está definido el proceso de afiliación y aportes a seguridad social y parafiscales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "occupational_exam_ready",
+        "label": "¿Está programada la evaluación médica ocupacional de ingreso?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "special_protection",
+        "label": "¿Existe embarazo, discapacidad, condición de salud, fuero, calidad de cuidador u otra protección conocida?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "protected_status_decision",
+        "label": "¿La decisión de contratar o las condiciones dependen negativamente de esa protección?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "reasonable_adjustments",
+        "label": "¿Se evaluaron ajustes razonables y medidas de no discriminación?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "work_equipment",
+        "label": "¿El empleador entregará equipos, herramientas, accesos o credenciales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "personal_data",
+        "label": "¿Se tratarán datos sensibles, biométricos o de monitoreo intensivo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "ip_relevant",
+        "label": "¿El cargo creará software, diseños, contenidos, invenciones u otros activos de PI?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "confidential_information",
+        "label": "¿El cargo tendrá acceso a secretos empresariales o información confidencial relevante?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "exclusivity_clause",
+        "label": "¿Se pretende pactar exclusividad o restricción de actividades externas?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "LA2-S1",
+      "LA2-S2",
+      "LA2-S3",
+      "LA2-S6",
+      "LA2-S7",
+      "LA2-S8",
+      "LA2-S9",
+      "LA2-S10",
+      "LA2-S11",
+      "LA2-S12"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-ANNEX-B01",
+        "type": "section",
+        "heading": "1. Identificación del cargo",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Campo",
+            "Información"
+          ],
+          [
+            "Empleador",
+            "{{employer_name}} — {{employer_id}}"
+          ],
+          [
+            "Trabajador",
+            "{{worker_name}} — {{worker_id}}"
+          ],
+          [
+            "Cargo",
+            "{{job_title}}"
+          ],
+          [
+            "Lugar principal",
+            "{{workplace}}"
+          ],
+          [
+            "Modalidad",
+            "{{remote}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2",
+          "LA2-S12"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-ANNEX-B02",
+        "type": "section",
+        "heading": "2. Propósito y alcance funcional",
+        "text": "El cargo responde a la necesidad {{need_type}} descrita como: {{work_description}}. Sus funciones deben guardar relación con el cargo, la competencia del trabajador, la seguridad y la operación real, sin habilitar desmejoras ni modificaciones esenciales arbitrarias.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-ANNEX-B03",
+        "type": "section",
+        "heading": "3. Funciones verificables",
+        "text": "",
+        "bullets": [
+          "Ejecutar las actividades nucleares descritas en la ficha del expediente y producir evidencia verificable de cumplimiento.",
+          "Coordinar con los responsables autorizados, informar desviaciones y conservar trazabilidad de decisiones relevantes.",
+          "Cumplir políticas lícitas de seguridad, calidad, datos, confidencialidad y prevención de riesgos aplicables al cargo.",
+          "Realizar funciones conexas razonables, compatibles con la categoría, la formación y la dignidad del trabajador."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2",
+          "LA2-S12"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-ANNEX-B04",
+        "type": "section",
+        "heading": "4. Autoridad, indicadores y coordinación",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Aspecto",
+            "Definición"
+          ],
+          [
+            "Claridad del cargo",
+            "{{role_clear}}"
+          ],
+          [
+            "Dependencia y autorizaciones",
+            "Según organigrama y matriz de permisos del empleador"
+          ],
+          [
+            "Resultados",
+            "Calidad, oportunidad, seguridad y trazabilidad; no disponibilidad permanente"
+          ],
+          [
+            "Cambios",
+            "Deben documentarse y revisarse cuando alteren cargo, salario, lugar, jornada o riesgos"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-ANNEX-B05",
+        "type": "section",
+        "heading": "5. Jornada, lugar y modalidad",
+        "text": "La jornada informada es de {{weekly_hours}} horas semanales, distribuida conforme a la ley y al acuerdo válido. La modalidad es {{remote}} y el lugar principal {{workplace}}. Los límites de jornada, descansos, horas extra, nocturnidad y desconexión prevalecen sobre metas o prácticas informales.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2",
+          "LA2-S3",
+          "LA2-S9"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-ANNEX-B06",
+        "type": "section",
+        "heading": "6. Riesgos, ajustes y protección",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Control",
+            "Estado"
+          ],
+          [
+            "Protección especial",
+            "{{special_protection}}"
+          ],
+          [
+            "Ajustes razonables",
+            "{{reasonable_adjustments}}"
+          ],
+          [
+            "Examen ocupacional",
+            "{{occupational_exam_ready}}"
+          ],
+          [
+            "Seguridad social",
+            "{{social_security_plan_confirmed}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2",
+          "LA2-S6"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-ANNEX-B07",
+        "type": "section",
+        "heading": "7. Integración y firma",
+        "text": "Este anexo integra el contrato de trabajo. Cualquier actualización deberá indicar fecha, motivo, impacto, responsable, revisión jurídica y aceptación de las partes cuando corresponda. La firma no implica renuncia a derechos mínimos ni convalida instrucciones ilegales o inseguras.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-ANNEX-CONTROL",
+        "type": "control",
+        "heading": "Control de uso, revisión y liberación",
+        "text": "Documento generado por LegalAIZ.it dentro de un flujo jurídico controlado. Antes de firmar, radicar, enviar, publicar o entregar, deben verificarse los hechos, soportes, vigencia normativa, términos, variables económicas, anexos y coherencia con el expediente; la misma revisión requiere aprobación jurídica y QA técnico. La plataforma no sustituye representación judicial ni garantiza resultados.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de gobierno; no puede eliminarse desde el editor."
+      }
+    ],
+    "canonical_evidence": [
+      "04_BIBLIOTECA_CONTRACTUAL_PROFUNDA/CO-LA-002",
+      "app/assets/advanced-legal-library/CO-LA-002"
+    ],
+    "release_gates": [
+      "legal_approval_same_revision",
+      "qa_approval_same_revision",
+      "case_data_validation",
+      "normative_currency_check"
+    ],
+    "professional_review_required": true,
+    "external_release_authorized": false,
+    "library_template_id": "TPL-CO-LA-002-EMPLOYMENT-FUNCTIONS-ANNEX"
+  },
+  {
+    "template_id": "TPL-CO-LA-002-EMPLOYMENT-ONBOARDING-CHECKLIST",
+    "product_code": "CO-LA-002",
+    "kind": "employment_onboarding_checklist",
+    "title": "Lista de alistamiento, afiliaciones y cumplimiento",
+    "subtitle": "Controles previos a firma, ingreso, primer día y cierre de pendientes",
+    "filename_suffix": "lista_alistamiento_laboral",
+    "version_label": "3.5.0-m27.2",
+    "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión.",
+    "source_package": "LegalAIZit_Paquete_03_Contrato_Trabajo_Consolidado_v2",
+    "variables": [
+      {
+        "id": "employer_name",
+        "label": "Nombre o razón social del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_id",
+        "label": "NIT o identificación del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_address",
+        "label": "Domicilio y dirección del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_representative",
+        "label": "Representante o persona que firma por el empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_name",
+        "label": "Nombre completo del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_id",
+        "label": "Documento de identidad del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_address",
+        "label": "Domicilio y dirección del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_email",
+        "label": "Correo del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_age_status",
+        "label": "Condición de edad del trabajador",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Mayor de edad",
+          "Menor de edad",
+          "No confirmado"
+        ]
+      },
+      {
+        "id": "public_or_crossborder",
+        "label": "¿Es servidor público, trabajador oficial, expatriado o laborará principalmente fuera de Colombia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "collective_regime",
+        "label": "¿La relación está cubierta por convención colectiva, pacto, laudo o régimen especial?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "need_type",
+        "label": "Naturaleza real de la necesidad",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Permanente",
+          "Temporal con fecha cierta",
+          "Obra o labor específica"
+        ]
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha real de inicio",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha de terminación propuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "prior_fixed_term_months",
+        "label": "Meses acumulados de contratos fijos desde la vigencia de la Ley 2466 de 2025",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "work_description",
+        "label": "Descripción precisa de la obra o labor",
+        "type": "textarea",
+        "required": false
+      },
+      {
+        "id": "completion_milestone",
+        "label": "Hito objetivo y verificable de terminación",
+        "type": "textarea",
+        "required": false
+      },
+      {
+        "id": "job_title",
+        "label": "Denominación del cargo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "role_clear",
+        "label": "¿Las funciones y responsabilidades están detalladas en un anexo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En construcción"
+        ]
+      },
+      {
+        "id": "workplace",
+        "label": "Lugar principal de trabajo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "remote",
+        "label": "Forma de ejecución del trabajo",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Presencial",
+          "Teletrabajo suplementario",
+          "Teletrabajo autónomo",
+          "Trabajo remoto integral",
+          "Trabajo en casa temporal",
+          "Híbrido por acuerdo"
+        ]
+      },
+      {
+        "id": "remote_compliance_ready",
+        "label": "¿Se documentaron ARL, SG-SST, equipos, desconexión y lugar autorizado?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "weekly_hours",
+        "label": "Horas ordinarias semanales",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "max_daily_hours",
+        "label": "Máximo de horas ordinarias en un día",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "night_work",
+        "label": "¿El horario incluye trabajo desde las 7:00 p. m. hasta las 6:00 a. m.?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "Ocasional"
+        ]
+      },
+      {
+        "id": "planned_overtime_daily",
+        "label": "Horas extra máximas previstas por día",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "planned_overtime_weekly",
+        "label": "Horas extra máximas previstas por semana",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "probation",
+        "label": "¿Se pactará período de prueba escrito?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "probation_months",
+        "label": "Duración del período de prueba en meses",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "monthly_salary",
+        "label": "Salario básico mensual acordado (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "salary_type",
+        "label": "Tipo de salario",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Ordinario",
+          "Integral"
+        ]
+      },
+      {
+        "id": "variable_payments",
+        "label": "¿Habrá comisiones, bonos o pagos variables?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "variable_formula_clear",
+        "label": "¿La fórmula, causación, período y pago están definidos?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En construcción"
+        ]
+      },
+      {
+        "id": "automatic_deductions",
+        "label": "¿Se pretende autorizar descuentos generales o automáticos por daños, pérdidas o faltantes?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "social_security_plan_confirmed",
+        "label": "¿Está definido el proceso de afiliación y aportes a seguridad social y parafiscales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "occupational_exam_ready",
+        "label": "¿Está programada la evaluación médica ocupacional de ingreso?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "special_protection",
+        "label": "¿Existe embarazo, discapacidad, condición de salud, fuero, calidad de cuidador u otra protección conocida?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "protected_status_decision",
+        "label": "¿La decisión de contratar o las condiciones dependen negativamente de esa protección?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "reasonable_adjustments",
+        "label": "¿Se evaluaron ajustes razonables y medidas de no discriminación?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "work_equipment",
+        "label": "¿El empleador entregará equipos, herramientas, accesos o credenciales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "personal_data",
+        "label": "¿Se tratarán datos sensibles, biométricos o de monitoreo intensivo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "ip_relevant",
+        "label": "¿El cargo creará software, diseños, contenidos, invenciones u otros activos de PI?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "confidential_information",
+        "label": "¿El cargo tendrá acceso a secretos empresariales o información confidencial relevante?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "exclusivity_clause",
+        "label": "¿Se pretende pactar exclusividad o restricción de actividades externas?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "LA2-S1",
+      "LA2-S2",
+      "LA2-S3",
+      "LA2-S6",
+      "LA2-S7",
+      "LA2-S8",
+      "LA2-S9",
+      "LA2-S10",
+      "LA2-S11",
+      "LA2-S12"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-ONBOARDING-CHECKLIST-B01",
+        "type": "section",
+        "heading": "1. Datos y capacidad",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Control",
+            "Estado"
+          ],
+          [
+            "Identidad de empleador y representante",
+            "{{employer_name}} / {{employer_representative}}"
+          ],
+          [
+            "Identidad y mayoría de edad del trabajador",
+            "{{worker_name}} / {{worker_age_status}}"
+          ],
+          [
+            "Régimen público o transnacional",
+            "{{public_or_crossborder}}"
+          ],
+          [
+            "Datos de contacto confirmados",
+            "{{worker_email}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-ONBOARDING-CHECKLIST-B02",
+        "type": "section",
+        "heading": "2. Contrato y anexos",
+        "text": "",
+        "bullets": [
+          "Modalidad y duración justificadas por la necesidad real.",
+          "Cargo, funciones, lugar, jornada, salario y periodo de prueba definidos.",
+          "Anexos de funciones, equipos, modalidad no presencial, confidencialidad, datos y PI activados cuando correspondan.",
+          "Versiones listas para firma y copia de cada parte."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2",
+          "LA2-S12"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-ONBOARDING-CHECKLIST-B03",
+        "type": "section",
+        "heading": "3. Seguridad social y SST",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Control",
+            "Estado"
+          ],
+          [
+            "Plan de afiliación",
+            "{{social_security_plan_confirmed}}"
+          ],
+          [
+            "Examen ocupacional",
+            "{{occupational_exam_ready}}"
+          ],
+          [
+            "Lugar y modalidad",
+            "{{workplace}} / {{remote}}"
+          ],
+          [
+            "Ajustes razonables",
+            "{{reasonable_adjustments}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S6"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-ONBOARDING-CHECKLIST-B04",
+        "type": "section",
+        "heading": "4. Jornada y remuneración",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Control",
+            "Dato"
+          ],
+          [
+            "Jornada semanal",
+            "{{weekly_hours}}"
+          ],
+          [
+            "Trabajo nocturno",
+            "{{night_work}}"
+          ],
+          [
+            "Horas extra previstas",
+            "{{planned_overtime_daily}} diarias / {{planned_overtime_weekly}} semanales"
+          ],
+          [
+            "Salario",
+            "COP ${{monthly_salary}} — {{salary_type}}"
+          ],
+          [
+            "Pagos variables",
+            "{{variable_payments}} — fórmula: {{variable_formula_clear}}"
+          ],
+          [
+            "Deducciones automáticas",
+            "{{automatic_deductions}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2",
+          "LA2-S3"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-ONBOARDING-CHECKLIST-B05",
+        "type": "section",
+        "heading": "5. Equipos, accesos y seguridad",
+        "text": "",
+        "bullets": [
+          "Inventario firmado de equipos, licencias y credenciales.",
+          "Accesos bajo mínimo privilegio y fecha de revisión.",
+          "Políticas de seguridad, datos, incidentes y uso aceptable comunicadas.",
+          "Canal de soporte y reporte de pérdida o falla habilitado."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S6",
+          "LA2-S10"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-ONBOARDING-CHECKLIST-B06",
+        "type": "section",
+        "heading": "6. Protección y cumplimiento especial",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Control",
+            "Estado"
+          ],
+          [
+            "Protección especial",
+            "{{special_protection}}"
+          ],
+          [
+            "Decisión documentada",
+            "{{protected_status_decision}}"
+          ],
+          [
+            "Datos sensibles",
+            "{{personal_data}}"
+          ],
+          [
+            "Propiedad intelectual",
+            "{{ip_relevant}}"
+          ],
+          [
+            "Exclusividad",
+            "{{exclusivity_clause}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2",
+          "LA2-S10",
+          "LA2-S11"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-ONBOARDING-CHECKLIST-B07",
+        "type": "section",
+        "heading": "7. Evidencia y responsables",
+        "text": "Cada control debe tener responsable, fecha, soporte y estado: completado, bloqueado o requiere escalamiento. No se debe iniciar la prestación sin afiliaciones y controles indispensables ni firmar documentos con datos no confirmados.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S6",
+          "LA2-S12"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-ONBOARDING-CHECKLIST-CONTROL",
+        "type": "control",
+        "heading": "Control de uso, revisión y liberación",
+        "text": "Documento generado por LegalAIZ.it dentro de un flujo jurídico controlado. Antes de firmar, radicar, enviar, publicar o entregar, deben verificarse los hechos, soportes, vigencia normativa, términos, variables económicas, anexos y coherencia con el expediente; la misma revisión requiere aprobación jurídica y QA técnico. La plataforma no sustituye representación judicial ni garantiza resultados.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de gobierno; no puede eliminarse desde el editor."
+      }
+    ],
+    "canonical_evidence": [
+      "04_BIBLIOTECA_CONTRACTUAL_PROFUNDA/CO-LA-002",
+      "app/assets/advanced-legal-library/CO-LA-002"
+    ],
+    "release_gates": [
+      "legal_approval_same_revision",
+      "qa_approval_same_revision",
+      "case_data_validation",
+      "normative_currency_check"
+    ],
+    "professional_review_required": true,
+    "external_release_authorized": false
+  },
+  {
+    "template_id": "TPL-CO-LA-002-EMPLOYMENT-REMOTE-ANNEX",
+    "product_code": "CO-LA-002",
+    "kind": "employment_remote_annex",
+    "title": "Anexo de modalidad no presencial",
+    "subtitle": "Teletrabajo, trabajo remoto, trabajo en casa o esquema híbrido",
+    "filename_suffix": "anexo_modalidad_no_presencial",
+    "version_label": "3.5.0-m27.2",
+    "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión.",
+    "source_package": "LegalAIZit_Paquete_03_Contrato_Trabajo_Consolidado_v2",
+    "variables": [
+      {
+        "id": "employer_name",
+        "label": "Nombre o razón social del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_id",
+        "label": "NIT o identificación del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_address",
+        "label": "Domicilio y dirección del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_representative",
+        "label": "Representante o persona que firma por el empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_name",
+        "label": "Nombre completo del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_id",
+        "label": "Documento de identidad del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_address",
+        "label": "Domicilio y dirección del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_email",
+        "label": "Correo del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_age_status",
+        "label": "Condición de edad del trabajador",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Mayor de edad",
+          "Menor de edad",
+          "No confirmado"
+        ]
+      },
+      {
+        "id": "public_or_crossborder",
+        "label": "¿Es servidor público, trabajador oficial, expatriado o laborará principalmente fuera de Colombia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "collective_regime",
+        "label": "¿La relación está cubierta por convención colectiva, pacto, laudo o régimen especial?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "need_type",
+        "label": "Naturaleza real de la necesidad",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Permanente",
+          "Temporal con fecha cierta",
+          "Obra o labor específica"
+        ]
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha real de inicio",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha de terminación propuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "prior_fixed_term_months",
+        "label": "Meses acumulados de contratos fijos desde la vigencia de la Ley 2466 de 2025",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "work_description",
+        "label": "Descripción precisa de la obra o labor",
+        "type": "textarea",
+        "required": false
+      },
+      {
+        "id": "completion_milestone",
+        "label": "Hito objetivo y verificable de terminación",
+        "type": "textarea",
+        "required": false
+      },
+      {
+        "id": "job_title",
+        "label": "Denominación del cargo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "role_clear",
+        "label": "¿Las funciones y responsabilidades están detalladas en un anexo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En construcción"
+        ]
+      },
+      {
+        "id": "workplace",
+        "label": "Lugar principal de trabajo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "remote",
+        "label": "Forma de ejecución del trabajo",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Presencial",
+          "Teletrabajo suplementario",
+          "Teletrabajo autónomo",
+          "Trabajo remoto integral",
+          "Trabajo en casa temporal",
+          "Híbrido por acuerdo"
+        ]
+      },
+      {
+        "id": "remote_compliance_ready",
+        "label": "¿Se documentaron ARL, SG-SST, equipos, desconexión y lugar autorizado?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "weekly_hours",
+        "label": "Horas ordinarias semanales",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "max_daily_hours",
+        "label": "Máximo de horas ordinarias en un día",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "night_work",
+        "label": "¿El horario incluye trabajo desde las 7:00 p. m. hasta las 6:00 a. m.?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "Ocasional"
+        ]
+      },
+      {
+        "id": "planned_overtime_daily",
+        "label": "Horas extra máximas previstas por día",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "planned_overtime_weekly",
+        "label": "Horas extra máximas previstas por semana",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "probation",
+        "label": "¿Se pactará período de prueba escrito?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "probation_months",
+        "label": "Duración del período de prueba en meses",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "monthly_salary",
+        "label": "Salario básico mensual acordado (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "salary_type",
+        "label": "Tipo de salario",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Ordinario",
+          "Integral"
+        ]
+      },
+      {
+        "id": "variable_payments",
+        "label": "¿Habrá comisiones, bonos o pagos variables?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "variable_formula_clear",
+        "label": "¿La fórmula, causación, período y pago están definidos?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En construcción"
+        ]
+      },
+      {
+        "id": "automatic_deductions",
+        "label": "¿Se pretende autorizar descuentos generales o automáticos por daños, pérdidas o faltantes?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "social_security_plan_confirmed",
+        "label": "¿Está definido el proceso de afiliación y aportes a seguridad social y parafiscales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "occupational_exam_ready",
+        "label": "¿Está programada la evaluación médica ocupacional de ingreso?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "special_protection",
+        "label": "¿Existe embarazo, discapacidad, condición de salud, fuero, calidad de cuidador u otra protección conocida?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "protected_status_decision",
+        "label": "¿La decisión de contratar o las condiciones dependen negativamente de esa protección?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "reasonable_adjustments",
+        "label": "¿Se evaluaron ajustes razonables y medidas de no discriminación?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "work_equipment",
+        "label": "¿El empleador entregará equipos, herramientas, accesos o credenciales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "personal_data",
+        "label": "¿Se tratarán datos sensibles, biométricos o de monitoreo intensivo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "ip_relevant",
+        "label": "¿El cargo creará software, diseños, contenidos, invenciones u otros activos de PI?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "confidential_information",
+        "label": "¿El cargo tendrá acceso a secretos empresariales o información confidencial relevante?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "exclusivity_clause",
+        "label": "¿Se pretende pactar exclusividad o restricción de actividades externas?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "LA2-S1",
+      "LA2-S2",
+      "LA2-S3",
+      "LA2-S6",
+      "LA2-S7",
+      "LA2-S8",
+      "LA2-S9",
+      "LA2-S10",
+      "LA2-S12"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-REMOTE-ANNEX-B01",
+        "type": "section",
+        "heading": "1. Figura aplicable",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Campo",
+            "Información"
+          ],
+          [
+            "Modalidad declarada",
+            "{{remote}}"
+          ],
+          [
+            "Lugar principal",
+            "{{workplace}}"
+          ],
+          [
+            "Preparación de cumplimiento",
+            "{{remote_compliance_ready}}"
+          ],
+          [
+            "Jornada semanal",
+            "{{weekly_hours}} horas"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S6",
+          "LA2-S7",
+          "LA2-S8"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-REMOTE-ANNEX-B02",
+        "type": "section",
+        "heading": "2. Alcance y presencialidad",
+        "text": "La modalidad deberá corresponder a la ejecución real. Deben definirse días o eventos de presencialidad, disponibilidad razonable, territorio autorizado, viajes, reuniones, reversibilidad y cambios. Ninguna modalidad habilita disponibilidad permanente.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S6",
+          "LA2-S7",
+          "LA2-S8",
+          "LA2-S9"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-REMOTE-ANNEX-B03",
+        "type": "section",
+        "heading": "3. Jornada, horas extra y desconexión",
+        "text": "La jornada máxima y su distribución se rigen por la ley vigente. Las horas adicionales requieren autorización y registro cuando proceda. Se respetarán pausas, descansos, límites nocturnos y derecho a la desconexión fuera de la jornada, salvo excepciones legales debidamente documentadas.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S2",
+          "LA2-S3",
+          "LA2-S9"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-REMOTE-ANNEX-B04",
+        "type": "section",
+        "heading": "4. Equipos, conectividad y gastos",
+        "text": "Equipos suministrados por la empresa: {{work_equipment}}. El anexo operativo debe identificar herramientas, mantenimiento, soporte, conectividad, energía, auxilios o compensaciones aplicables y procedimiento de devolución. No se trasladarán al trabajador costos propios del empleador sin soporte legal.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S6",
+          "LA2-S7"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-REMOTE-ANNEX-B05",
+        "type": "section",
+        "heading": "5. Seguridad y salud en el trabajo",
+        "text": "",
+        "bullets": [
+          "Identificar lugar autorizado y condiciones ergonómicas.",
+          "Actualizar matriz de peligros y controles.",
+          "Coordinar afiliación, reporte de accidentes y acompañamiento de la ARL.",
+          "Definir pausas, autocuidado y canal para reportar riesgos.",
+          "Evitar instrucciones que comprometan la seguridad o la privacidad del hogar."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S6"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-REMOTE-ANNEX-B06",
+        "type": "section",
+        "heading": "6. Privacidad, monitoreo y datos",
+        "text": "El monitoreo debe ser informado, necesario y proporcional. No se activarán cámaras, micrófonos, geolocalización ni acceso a dispositivos personales de forma indiscriminada. Datos sensibles o biométricos: {{personal_data}}.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S10"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-REMOTE-ANNEX-B07",
+        "type": "section",
+        "heading": "7. Seguridad de la información",
+        "text": "",
+        "bullets": [
+          "Usar redes, VPN, autenticación y repositorios autorizados.",
+          "No compartir equipos o credenciales.",
+          "Aplicar clasificación de información y escritorio limpio.",
+          "Reportar pérdida, intrusión o indisponibilidad.",
+          "Respetar licencias y restricciones de terceros."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S6",
+          "LA2-S10"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-REMOTE-ANNEX-B08",
+        "type": "section",
+        "heading": "8. Modificación, suspensión y cierre",
+        "text": "Los cambios de modalidad, lugar o jornada deben registrarse con fecha, motivo, impacto y responsables. La terminación o reversión exige devolución de equipos, cierre de accesos, transferencia de información y continuidad operativa.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S6",
+          "LA2-S7",
+          "LA2-S8",
+          "LA2-S12"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-EMPLOYMENT-REMOTE-ANNEX-CONTROL",
+        "type": "control",
+        "heading": "Control de uso, revisión y liberación",
+        "text": "Documento generado por LegalAIZ.it dentro de un flujo jurídico controlado. Antes de firmar, radicar, enviar, publicar o entregar, deben verificarse los hechos, soportes, vigencia normativa, términos, variables económicas, anexos y coherencia con el expediente; la misma revisión requiere aprobación jurídica y QA técnico. La plataforma no sustituye representación judicial ni garantiza resultados.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de gobierno; no puede eliminarse desde el editor."
+      }
+    ],
+    "canonical_evidence": [
+      "04_BIBLIOTECA_CONTRACTUAL_PROFUNDA/CO-LA-002",
+      "app/assets/advanced-legal-library/CO-LA-002"
+    ],
+    "release_gates": [
+      "legal_approval_same_revision",
+      "qa_approval_same_revision",
+      "case_data_validation",
+      "normative_currency_check"
+    ],
+    "professional_review_required": true,
+    "external_release_authorized": false
+  },
+  {
+    "template_id": "TPL-CO-LA-002-TRACEABILITY",
+    "product_code": "CO-LA-002",
+    "kind": "traceability",
+    "title": "Ficha de diagnóstico y trazabilidad laboral",
+    "subtitle": "Supuestos, variables, módulos, alertas y decisiones del expediente",
+    "filename_suffix": "ficha_diagnostico_trazabilidad",
+    "version_label": "3.5.0-m27.2",
+    "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión.",
+    "source_package": "LegalAIZit_Paquete_03_Contrato_Trabajo_Consolidado_v2",
+    "variables": [
+      {
+        "id": "employer_name",
+        "label": "Nombre o razón social del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_id",
+        "label": "NIT o identificación del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_address",
+        "label": "Domicilio y dirección del empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "employer_representative",
+        "label": "Representante o persona que firma por el empleador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_name",
+        "label": "Nombre completo del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_id",
+        "label": "Documento de identidad del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_address",
+        "label": "Domicilio y dirección del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_email",
+        "label": "Correo del trabajador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "worker_age_status",
+        "label": "Condición de edad del trabajador",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Mayor de edad",
+          "Menor de edad",
+          "No confirmado"
+        ]
+      },
+      {
+        "id": "public_or_crossborder",
+        "label": "¿Es servidor público, trabajador oficial, expatriado o laborará principalmente fuera de Colombia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "collective_regime",
+        "label": "¿La relación está cubierta por convención colectiva, pacto, laudo o régimen especial?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "need_type",
+        "label": "Naturaleza real de la necesidad",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Permanente",
+          "Temporal con fecha cierta",
+          "Obra o labor específica"
+        ]
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha real de inicio",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha de terminación propuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "prior_fixed_term_months",
+        "label": "Meses acumulados de contratos fijos desde la vigencia de la Ley 2466 de 2025",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "work_description",
+        "label": "Descripción precisa de la obra o labor",
+        "type": "textarea",
+        "required": false
+      },
+      {
+        "id": "completion_milestone",
+        "label": "Hito objetivo y verificable de terminación",
+        "type": "textarea",
+        "required": false
+      },
+      {
+        "id": "job_title",
+        "label": "Denominación del cargo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "role_clear",
+        "label": "¿Las funciones y responsabilidades están detalladas en un anexo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En construcción"
+        ]
+      },
+      {
+        "id": "workplace",
+        "label": "Lugar principal de trabajo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "remote",
+        "label": "Forma de ejecución del trabajo",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Presencial",
+          "Teletrabajo suplementario",
+          "Teletrabajo autónomo",
+          "Trabajo remoto integral",
+          "Trabajo en casa temporal",
+          "Híbrido por acuerdo"
+        ]
+      },
+      {
+        "id": "remote_compliance_ready",
+        "label": "¿Se documentaron ARL, SG-SST, equipos, desconexión y lugar autorizado?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "weekly_hours",
+        "label": "Horas ordinarias semanales",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "max_daily_hours",
+        "label": "Máximo de horas ordinarias en un día",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "night_work",
+        "label": "¿El horario incluye trabajo desde las 7:00 p. m. hasta las 6:00 a. m.?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "Ocasional"
+        ]
+      },
+      {
+        "id": "planned_overtime_daily",
+        "label": "Horas extra máximas previstas por día",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "planned_overtime_weekly",
+        "label": "Horas extra máximas previstas por semana",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "probation",
+        "label": "¿Se pactará período de prueba escrito?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "probation_months",
+        "label": "Duración del período de prueba en meses",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "monthly_salary",
+        "label": "Salario básico mensual acordado (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "salary_type",
+        "label": "Tipo de salario",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Ordinario",
+          "Integral"
+        ]
+      },
+      {
+        "id": "variable_payments",
+        "label": "¿Habrá comisiones, bonos o pagos variables?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "variable_formula_clear",
+        "label": "¿La fórmula, causación, período y pago están definidos?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En construcción"
+        ]
+      },
+      {
+        "id": "automatic_deductions",
+        "label": "¿Se pretende autorizar descuentos generales o automáticos por daños, pérdidas o faltantes?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "social_security_plan_confirmed",
+        "label": "¿Está definido el proceso de afiliación y aportes a seguridad social y parafiscales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "occupational_exam_ready",
+        "label": "¿Está programada la evaluación médica ocupacional de ingreso?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "special_protection",
+        "label": "¿Existe embarazo, discapacidad, condición de salud, fuero, calidad de cuidador u otra protección conocida?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "protected_status_decision",
+        "label": "¿La decisión de contratar o las condiciones dependen negativamente de esa protección?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "reasonable_adjustments",
+        "label": "¿Se evaluaron ajustes razonables y medidas de no discriminación?",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ]
+      },
+      {
+        "id": "work_equipment",
+        "label": "¿El empleador entregará equipos, herramientas, accesos o credenciales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "personal_data",
+        "label": "¿Se tratarán datos sensibles, biométricos o de monitoreo intensivo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ]
+      },
+      {
+        "id": "ip_relevant",
+        "label": "¿El cargo creará software, diseños, contenidos, invenciones u otros activos de PI?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "confidential_information",
+        "label": "¿El cargo tendrá acceso a secretos empresariales o información confidencial relevante?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "exclusivity_clause",
+        "label": "¿Se pretende pactar exclusividad o restricción de actividades externas?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "LA2-S1",
+      "LA2-S2",
+      "LA2-S3",
+      "LA2-S6",
+      "LA2-S7",
+      "LA2-S8",
+      "LA2-S9",
+      "LA2-S10",
+      "LA2-S11",
+      "LA2-S12"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-LA-002-TRACEABILITY-B01",
+        "type": "section",
+        "heading": "1. Identificación del expediente",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Campo",
+            "Información"
+          ],
+          [
+            "Empleador",
+            "{{employer_name}} — {{employer_id}}"
+          ],
+          [
+            "Trabajador",
+            "{{worker_name}} — {{worker_id}}"
+          ],
+          [
+            "Cargo",
+            "{{job_title}}"
+          ],
+          [
+            "Inicio",
+            "{{start_date}}"
+          ],
+          [
+            "Necesidad",
+            "{{need_type}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-TRACEABILITY-B02",
+        "type": "section",
+        "heading": "2. Modalidad y duración",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Variable",
+            "Resultado"
+          ],
+          [
+            "Necesidad",
+            "{{need_type}}"
+          ],
+          [
+            "Fecha final",
+            "{{end_date}}"
+          ],
+          [
+            "Obra o hito",
+            "{{completion_milestone}}"
+          ],
+          [
+            "Meses fijos previos",
+            "{{prior_fixed_term_months}}"
+          ],
+          [
+            "Modalidad no presencial",
+            "{{remote}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2",
+          "LA2-S6",
+          "LA2-S7",
+          "LA2-S8"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-TRACEABILITY-B03",
+        "type": "section",
+        "heading": "3. Jornada y compensación",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Variable",
+            "Resultado"
+          ],
+          [
+            "Horas semanales",
+            "{{weekly_hours}}"
+          ],
+          [
+            "Máximo diario",
+            "{{max_daily_hours}}"
+          ],
+          [
+            "Trabajo nocturno",
+            "{{night_work}}"
+          ],
+          [
+            "Horas extra diarias/semanales",
+            "{{planned_overtime_daily}} / {{planned_overtime_weekly}}"
+          ],
+          [
+            "Salario mensual",
+            "COP ${{monthly_salary}}"
+          ],
+          [
+            "Tipo de salario",
+            "{{salary_type}}"
+          ],
+          [
+            "Pagos variables",
+            "{{variable_payments}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2",
+          "LA2-S3"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-TRACEABILITY-B04",
+        "type": "section",
+        "heading": "4. Cumplimiento y protecciones",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Control",
+            "Estado"
+          ],
+          [
+            "Seguridad social",
+            "{{social_security_plan_confirmed}}"
+          ],
+          [
+            "Examen ocupacional",
+            "{{occupational_exam_ready}}"
+          ],
+          [
+            "Protección especial",
+            "{{special_protection}}"
+          ],
+          [
+            "Decisión sobre protección",
+            "{{protected_status_decision}}"
+          ],
+          [
+            "Ajustes razonables",
+            "{{reasonable_adjustments}}"
+          ],
+          [
+            "Régimen colectivo",
+            "{{collective_regime}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2",
+          "LA2-S6"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-TRACEABILITY-B05",
+        "type": "section",
+        "heading": "5. Módulos documentales",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Módulo",
+            "Activación"
+          ],
+          [
+            "Confidencialidad",
+            "{{confidential_information}}"
+          ],
+          [
+            "Datos personales",
+            "{{personal_data}}"
+          ],
+          [
+            "Propiedad intelectual",
+            "{{ip_relevant}}"
+          ],
+          [
+            "Equipos",
+            "{{work_equipment}}"
+          ],
+          [
+            "Exclusividad",
+            "{{exclusivity_clause}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S10",
+          "LA2-S11",
+          "LA2-S12"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-TRACEABILITY-B06",
+        "type": "section",
+        "heading": "6. Alertas de revisión",
+        "text": "",
+        "bullets": [
+          "Confirmar que la modalidad escrita coincide con la necesidad y la ejecución real.",
+          "Validar término fijo, obra o labor, período de prueba y preavisos según norma vigente.",
+          "Revisar jornada, horas extra, nocturnidad, descansos y desconexión.",
+          "Escalar estabilidad reforzada, minoría de edad, condición transnacional o régimen público.",
+          "Verificar salario, deducciones, seguridad social, auxilios y pagos variables.",
+          "Cotejar anexos de datos, PI, equipos y modalidad no presencial."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S1",
+          "LA2-S2",
+          "LA2-S3",
+          "LA2-S6",
+          "LA2-S7",
+          "LA2-S8",
+          "LA2-S9",
+          "LA2-S10",
+          "LA2-S11",
+          "LA2-S12"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-TRACEABILITY-B07",
+        "type": "section",
+        "heading": "7. Gobierno de la revisión",
+        "text": "La ficha registra datos declarados y controles; no constituye aprobación automática. La liberación exige expediente completo, comparación de versión, aprobación jurídica y QA técnico sobre la misma revisión, con trazabilidad de responsables.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "LA2-S12"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-LA-002-TRACEABILITY-CONTROL",
+        "type": "control",
+        "heading": "Control de uso, revisión y liberación",
+        "text": "Documento generado por LegalAIZ.it dentro de un flujo jurídico controlado. Antes de firmar, radicar, enviar, publicar o entregar, deben verificarse los hechos, soportes, vigencia normativa, términos, variables económicas, anexos y coherencia con el expediente; la misma revisión requiere aprobación jurídica y QA técnico. La plataforma no sustituye representación judicial ni garantiza resultados.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de gobierno; no puede eliminarse desde el editor."
+      }
+    ],
+    "canonical_evidence": [
+      "04_BIBLIOTECA_CONTRACTUAL_PROFUNDA/CO-LA-002",
+      "app/assets/advanced-legal-library/CO-LA-002"
+    ],
+    "release_gates": [
+      "legal_approval_same_revision",
+      "qa_approval_same_revision",
+      "case_data_validation",
+      "normative_currency_check"
+    ],
+    "professional_review_required": true,
+    "external_release_authorized": false
+  }
+]

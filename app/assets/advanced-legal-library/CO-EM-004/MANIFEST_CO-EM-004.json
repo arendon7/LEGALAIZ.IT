@@ -1,0 +1,58 @@
+{
+  "id": "CO-EM-004",
+  "name": "Confidencialidad y propiedad intelectual",
+  "version": "2.47",
+  "status": "macro_c_closed",
+  "steps": 8,
+  "questions": 38,
+  "profiles": 10,
+  "documents": 10,
+  "validations": 15,
+  "blocks": 45,
+  "sources": 9,
+  "compatibility": [
+    "v2.14",
+    "v2.45",
+    "v2.46"
+  ],
+  "dual_approval": true,
+  "immutable_revisions": true,
+  "document_factory": true,
+  "source_verification_date": "2026-07-24",
+  "canonical_scope_frozen": true,
+  "document_types_generated": 10,
+  "main_contract_clauses": 36,
+  "governance": {
+    "immutable_revisions": true,
+    "version_comparison": true,
+    "legal_approval": true,
+    "qa_approval": true,
+    "separate_approvers_required": true,
+    "approval_invalidation_on_revision": true,
+    "controlled_release": true,
+    "chained_audit": true
+  },
+  "visual_qa": {
+    "visual_scenarios": 6,
+    "docx_rendered": 21,
+    "pages_inspected": 70,
+    "status": "passed_multiconfiguration_full_inspection",
+    "unresolved_markers": 0,
+    "visible_iso_dates": 0,
+    "visible_internal_tokens": 0,
+    "clipping_or_overflow": 0
+  },
+  "accessibility_audit": {
+    "representative_documents": 5,
+    "high_findings": 0,
+    "medium_findings": 0,
+    "low_findings": 0
+  },
+  "canonical_scenarios": 12,
+  "negative_scenarios": 15,
+  "visual_scenarios": 6,
+  "macro_c_closed": true,
+  "approval_model": "multi_stage_single_responsible",
+  "approval_date": "2026-07-28",
+  "approval_disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+}

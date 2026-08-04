@@ -1,0 +1,488 @@
+[
+  {
+    "id": "TR2-B001",
+    "name": "Control de alcance y jurisdicción",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B002",
+    "name": "Identificación del peticionario",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B003",
+    "name": "Representación y legitimación",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B004",
+    "name": "Autoridad competente",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B005",
+    "name": "Canales de notificación",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B006",
+    "name": "Vehículo y titularidad",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B007",
+    "name": "Identificación del comparendo",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B008",
+    "name": "Cronología de hechos",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B009",
+    "name": "Pluralidad de actuaciones",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B010",
+    "name": "Consulta RUNT",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B011",
+    "name": "Naturaleza del sistema SAST",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B012",
+    "name": "Identificación del dispositivo",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B013",
+    "name": "Autorización del sistema",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B014",
+    "name": "Señalización",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B015",
+    "name": "Metrología y calibración",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B016",
+    "name": "Validación humana",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B017",
+    "name": "Evidencia técnica",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B018",
+    "name": "Notificación del comparendo",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B019",
+    "name": "Medio de notificación",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B020",
+    "name": "Cronología de envío y entrega",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B021",
+    "name": "Dirección RUNT",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B022",
+    "name": "Notificación electrónica",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B023",
+    "name": "Conocimiento efectivo",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B024",
+    "name": "Resolución sancionatoria",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B025",
+    "name": "Notificación de resolución",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B026",
+    "name": "Audiencia y comparecencia",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B027",
+    "name": "Recursos",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B028",
+    "name": "Ejecutoria",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B029",
+    "name": "Pago",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B030",
+    "name": "Cobro persuasivo",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B031",
+    "name": "Cobro coactivo",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B032",
+    "name": "Medidas cautelares",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B033",
+    "name": "Proceso judicial",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B034",
+    "name": "Imputación personal",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B035",
+    "name": "Propietario no conductor",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B036",
+    "name": "Obligaciones del propietario",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B037",
+    "name": "Conductor identificado",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B038",
+    "name": "Venta y entrega",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B039",
+    "name": "Hurto o uso no autorizado",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B040",
+    "name": "Relato de defensa",
+    "category": "functional",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B041",
+    "name": "Solicitud de expediente",
+    "category": "documentary",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B042",
+    "name": "Solicitud de pruebas",
+    "category": "documentary",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B043",
+    "name": "Restablecimiento de oportunidad",
+    "category": "documentary",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B044",
+    "name": "Revocatoria condicionada",
+    "category": "documentary",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B045",
+    "name": "Corrección de registros",
+    "category": "documentary",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B046",
+    "name": "Matriz de evidencia",
+    "category": "documentary",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B047",
+    "name": "Calendario de términos",
+    "category": "documentary",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B048",
+    "name": "Ficha SAST",
+    "category": "documentary",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B049",
+    "name": "Radicación y seguimiento",
+    "category": "documentary",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B050",
+    "name": "Reiteración",
+    "category": "documentary",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B051",
+    "name": "Traslado por competencia",
+    "category": "documentary",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B052",
+    "name": "Advertencia profesional",
+    "category": "documentary",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B053",
+    "name": "Protección de datos",
+    "category": "documentary",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  },
+  {
+    "id": "TR2-B054",
+    "name": "Cierre y confirmación",
+    "category": "documentary",
+    "source_ids": [
+      "TR2-S02",
+      "TR2-S03"
+    ]
+  }
+]

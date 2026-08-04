@@ -1,0 +1,423 @@
+[
+  {
+    "id": "AR-R01",
+    "risk": "red",
+    "message": "El producto solo cubre vivienda urbana ordinaria.",
+    "action": "Seleccionar un producto especial para uso comercial, rural, turístico o de otra naturaleza.",
+    "conditions": {
+      "all": [
+        {
+          "field": "urban_home",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "AR-S1"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "AR-R02",
+    "risk": "red",
+    "message": "No está acreditada la facultad para entregar el inmueble en arrendamiento.",
+    "action": "Verificar propiedad, mandato, administración o autorización antes de generar.",
+    "conditions": {
+      "all": [
+        {
+          "field": "authority",
+          "op": "in",
+          "value": [
+            "No",
+            "Pendiente"
+          ]
+        }
+      ]
+    },
+    "category": "authority",
+    "source_ids": [
+      "AR-S1",
+      "AR-S3"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "AR-R03",
+    "risk": "red",
+    "message": "Existe controversia de tenencia o proceso activo.",
+    "action": "Escalar el expediente; no generar contrato ordinario como solución del conflicto.",
+    "conditions": {
+      "all": [
+        {
+          "field": "active_dispute",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "litigation",
+    "source_ids": [
+      "AR-S4"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "AR-R04",
+    "risk": "red",
+    "message": "El depósito en dinero o caución real a favor del arrendador está prohibido para garantizar obligaciones residenciales.",
+    "action": "Eliminar la exigencia y utilizar garantías personales, póliza o el régimen específico de servicios cuando proceda.",
+    "conditions": {
+      "all": [
+        {
+          "field": "cash_deposit",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "guarantee",
+    "source_ids": [
+      "AR-S1"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "AR-R05",
+    "risk": "red",
+    "message": "El inmueble presenta una condición grave de seguridad, sanidad o servicios esenciales.",
+    "action": "Bloquear la entrega hasta documentar y cerrar un plan de corrección seguro.",
+    "conditions": {
+      "all": [
+        {
+          "field": "unsafe",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "habitability",
+    "source_ids": [
+      "AR-S1",
+      "AR-S3"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "AR-R06",
+    "risk": "red",
+    "message": "La destinación turística, por plataforma o el subarriendo excede el producto estándar.",
+    "action": "Utilizar producto especial y verificar propiedad horizontal, uso del suelo y autorizaciones.",
+    "conditions": {
+      "all": [
+        {
+          "field": "tourism_sublease",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "use",
+    "source_ids": [
+      "AR-S1",
+      "AR-S2"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "AR-R07",
+    "risk": "red",
+    "message": "Los datos y soportes no fueron confirmados.",
+    "action": "Completar la revisión de identidad, inmueble, canon y anexos.",
+    "conditions": {
+      "all": [
+        {
+          "field": "data_confirmed",
+          "op": "not_equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "confirmation",
+    "source_ids": [
+      "AR-S8"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "AR-R08",
+    "risk": "yellow",
+    "message": "No se conoce el valor comercial necesario para validar el límite legal del canon.",
+    "action": "Incorporar avalúo o soporte comercial antes de firma.",
+    "conditions": {
+      "all": [
+        {
+          "field": "commercial_value_known",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "rent",
+    "source_ids": [
+      "AR-S1"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "AR-R09",
+    "risk": "yellow",
+    "message": "Propiedad horizontal detectada.",
+    "action": "Entregar la parte normativa del reglamento y definir expensas, multas y bienes comunes.",
+    "conditions": {
+      "all": [
+        {
+          "field": "ph",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "AR-S1",
+      "AR-S2"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "AR-R10",
+    "risk": "red",
+    "message": "No se prevé entregar la parte normativa del reglamento de propiedad horizontal.",
+    "action": "Adjuntar el reglamento aplicable antes de la entrega.",
+    "conditions": {
+      "all": [
+        {
+          "field": "ph",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "ph_rules_delivered",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "property_horizontal",
+    "source_ids": [
+      "AR-S1",
+      "AR-S2"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "AR-R11",
+    "risk": "yellow",
+    "message": "El inmueble amoblado o con bienes relevantes requiere inventario ampliado.",
+    "action": "Activar seriales, fotografías, estado funcional y valores de referencia.",
+    "conditions": {
+      "all": [
+        {
+          "field": "furnished_high_value",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "inventory",
+    "source_ids": [
+      "AR-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "AR-R12",
+    "risk": "green",
+    "message": "Garantía personal o póliza seleccionada.",
+    "action": "Activar módulo de garantía, notificaciones y tratamiento de datos del garante.",
+    "conditions": {
+      "all": [
+        {
+          "field": "co_debtor",
+          "op": "not_equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "AR-S1",
+      "AR-S7"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "AR-R13",
+    "risk": "yellow",
+    "message": "Se propone una terminación atípica o vinculada a venta próxima.",
+    "action": "Revisar causal, preaviso, indemnización y mecanismo de entrega.",
+    "conditions": {
+      "all": [
+        {
+          "field": "special_termination",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "termination",
+    "source_ids": [
+      "AR-S1",
+      "AR-S3"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "AR-R14",
+    "risk": "green",
+    "message": "La presencia de mascotas debe regularse de manera razonable y compatible con propiedad horizontal.",
+    "action": "Activar inventario, convivencia y responsabilidad por daños probados.",
+    "conditions": {
+      "all": [
+        {
+          "field": "pets",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "AR-S2"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "AR-R15",
+    "risk": "yellow",
+    "message": "La distribución especial de servicios públicos requiere detalle verificable.",
+    "action": "Describir medidores, fórmulas, responsables, facturación y soportes.",
+    "conditions": {
+      "all": [
+        {
+          "field": "utilities_responsible",
+          "op": "equals",
+          "value": "Distribución especial"
+        }
+      ]
+    },
+    "category": "services",
+    "source_ids": [
+      "AR-S1"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "AR-R16",
+    "risk": "yellow",
+    "message": "La modalidad compartida o de pensión exige controles adicionales.",
+    "action": "Individualizar áreas, servicios comunes, ocupantes y reglas de sanidad y convivencia.",
+    "conditions": {
+      "all": [
+        {
+          "field": "lease_type",
+          "op": "in",
+          "value": [
+            "Compartido",
+            "Pensión"
+          ]
+        }
+      ]
+    },
+    "category": "classification",
+    "source_ids": [
+      "AR-S1"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "AR-R17",
+    "risk": "green",
+    "message": "Se activa control anual de reajuste del canon.",
+    "action": "Aplicar solo después de doce meses bajo el mismo precio, hasta el IPC del año anterior y mediante comunicación verificable.",
+    "conditions": {
+      "all": [
+        {
+          "field": "duration_months",
+          "op": "gte",
+          "value": 12
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "AR-S1",
+      "AR-S6"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "AR-R18",
+    "risk": "yellow",
+    "message": "La administración ordinaria debe quedar separada del canon y de expensas extraordinarias.",
+    "action": "Identificar concepto, responsable, variación y soporte de cobro.",
+    "conditions": {
+      "all": [
+        {
+          "field": "administration_charge",
+          "op": "gt",
+          "value": 0
+        }
+      ]
+    },
+    "category": "economics",
+    "source_ids": [
+      "AR-S1",
+      "AR-S2"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "AR-R19",
+    "risk": "green",
+    "message": "Se activa expediente de entrega y restitución comparada.",
+    "action": "Generar inventario, acta de entrega, lecturas, llaves, evidencia y acta de cierre.",
+    "conditions": {
+      "all": [
+        {
+          "field": "data_confirmed",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "AR-S1",
+      "AR-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "AR-R20",
+    "risk": "green",
+    "message": "Se activa tratamiento de datos contractuales y de contacto.",
+    "action": "Limitar datos a celebración, ejecución, cobro y cierre; proteger información de ocupantes y garantes.",
+    "conditions": {
+      "all": [
+        {
+          "field": "data_confirmed",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "AR-S7"
+    ],
+    "blocking": false
+  }
+]

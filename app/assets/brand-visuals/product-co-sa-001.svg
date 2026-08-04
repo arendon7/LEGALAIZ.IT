@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="t d">
+<title id="t">Salud</title><desc id="d">Ilustración de la solución Salud</desc>
+<defs>
+  <linearGradient id="navyG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0D1324"/><stop offset="1" stop-color="#18375E"/></linearGradient>
+  <linearGradient id="goldG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#E6C98F"/><stop offset="1" stop-color="#B1843C"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#0D1324" flood-opacity=".14"/></filter>
+</defs><rect width="640" height="480" rx="36" fill="#F7F5F1"/><circle cx="525" cy="82" r="90" fill="#C9A96E" opacity=".14"/><circle cx="100" cy="405" r="70" fill="#2563EB" opacity=".07"/><g filter="url(#shadow)"><rect x="86" y="70" width="468" height="340" rx="30" fill="#fff"/></g><circle cx="320" cy="240" r="132" fill="#fff" stroke="#E6E6E1" stroke-width="4"/><path d="M292 155h56v57h57v56h-57v57h-56v-57h-57v-56h57z" fill="#2563EB"/></svg>

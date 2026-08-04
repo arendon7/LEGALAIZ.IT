@@ -1,0 +1,513 @@
+{
+  "version": "M20.1",
+  "visual_inspection": "50 DOCX-rendered pages inspected through high-resolution contact sheets",
+  "pdf_verification": "50 published PDF pages rendered and compared against DOCX renders",
+  "documents": 9,
+  "pages": 50,
+  "docx_pages_inspected": 50,
+  "pdf_pages_inspected": 50,
+  "sentinel_findings": [],
+  "manual_visual_findings": 0,
+  "passed": true,
+  "records": [
+    {
+      "product_code": "CO-CD-004",
+      "document": "CO-CD-004_AGREEMENT_PLAYBOOK_PROFUNDO_M20",
+      "expected_pages": 3,
+      "docx_render_pages": 3,
+      "pdf_render_pages": 3,
+      "page_count_passed": true,
+      "pages": [
+        {
+          "page": 1,
+          "mae": 1.2025,
+          "correlation": 0.980789,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.05918,
+          "passed": true
+        },
+        {
+          "page": 2,
+          "mae": 3.1195,
+          "correlation": 0.977813,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.149379,
+          "passed": true
+        },
+        {
+          "page": 3,
+          "mae": 2.1445,
+          "correlation": 0.970998,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.10191,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "product_code": "CO-CD-004",
+      "document": "CO-CD-004_CLOSURE_PLAYBOOK_PROFUNDO_M20",
+      "expected_pages": 3,
+      "docx_render_pages": 3,
+      "pdf_render_pages": 3,
+      "page_count_passed": true,
+      "pages": [
+        {
+          "page": 1,
+          "mae": 1.2755,
+          "correlation": 0.979462,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.060136,
+          "passed": true
+        },
+        {
+          "page": 2,
+          "mae": 2.7782,
+          "correlation": 0.978877,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.137254,
+          "passed": true
+        },
+        {
+          "page": 3,
+          "mae": 1.5276,
+          "correlation": 0.963696,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.064235,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "product_code": "CO-CD-004",
+      "document": "CO-CD-004_COLLECTION_PLAYBOOK_PROFUNDO_M20",
+      "expected_pages": 3,
+      "docx_render_pages": 3,
+      "pdf_render_pages": 3,
+      "page_count_passed": true,
+      "pages": [
+        {
+          "page": 1,
+          "mae": 1.3044,
+          "correlation": 0.980021,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.06201,
+          "passed": true
+        },
+        {
+          "page": 2,
+          "mae": 3.1032,
+          "correlation": 0.972568,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.143436,
+          "passed": true
+        },
+        {
+          "page": 3,
+          "mae": 1.4573,
+          "correlation": 0.976934,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.073822,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "product_code": "CO-CD-004",
+      "document": "CO-CD-004_DIAGNOSTIC_PLAYBOOK_PROFUNDO_M20",
+      "expected_pages": 3,
+      "docx_render_pages": 3,
+      "pdf_render_pages": 3,
+      "page_count_passed": true,
+      "pages": [
+        {
+          "page": 1,
+          "mae": 1.2727,
+          "correlation": 0.979805,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.060568,
+          "passed": true
+        },
+        {
+          "page": 2,
+          "mae": 3.8839,
+          "correlation": 0.971336,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.178073,
+          "passed": true
+        },
+        {
+          "page": 3,
+          "mae": 2.1089,
+          "correlation": 0.974816,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.100004,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "product_code": "CO-CD-004",
+      "document": "CO-CD-004_FOLLOWUP_PLAYBOOK_PROFUNDO_M20",
+      "expected_pages": 3,
+      "docx_render_pages": 3,
+      "pdf_render_pages": 3,
+      "page_count_passed": true,
+      "pages": [
+        {
+          "page": 1,
+          "mae": 1.2307,
+          "correlation": 0.981104,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.06078,
+          "passed": true
+        },
+        {
+          "page": 2,
+          "mae": 4.448,
+          "correlation": 0.970955,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.195533,
+          "passed": true
+        },
+        {
+          "page": 3,
+          "mae": 1.8482,
+          "correlation": 0.979158,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.09398,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "product_code": "CO-CD-004",
+      "document": "CO-CD-004_INSTRUCTIONS_PLAYBOOK_PROFUNDO_M20",
+      "expected_pages": 3,
+      "docx_render_pages": 3,
+      "pdf_render_pages": 3,
+      "page_count_passed": true,
+      "pages": [
+        {
+          "page": 1,
+          "mae": 1.297,
+          "correlation": 0.97939,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.060935,
+          "passed": true
+        },
+        {
+          "page": 2,
+          "mae": 3.2143,
+          "correlation": 0.979631,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.163054,
+          "passed": true
+        },
+        {
+          "page": 3,
+          "mae": 0.8957,
+          "correlation": 0.981478,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.0533,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "product_code": "CO-CD-004",
+      "document": "CO-CD-004_NOTE_PLAYBOOK_PROFUNDO_M20",
+      "expected_pages": 3,
+      "docx_render_pages": 3,
+      "pdf_render_pages": 3,
+      "page_count_passed": true,
+      "pages": [
+        {
+          "page": 1,
+          "mae": 1.2523,
+          "correlation": 0.980548,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.060745,
+          "passed": true
+        },
+        {
+          "page": 2,
+          "mae": 2.6471,
+          "correlation": 0.976788,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.124211,
+          "passed": true
+        },
+        {
+          "page": 3,
+          "mae": 0.9417,
+          "correlation": 0.970565,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.047554,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "product_code": "CO-CD-004",
+      "document": "CO-CD-004_PAQUETE_JURIDICO_OPERATIVO_PROFUNDO_M20",
+      "expected_pages": 26,
+      "docx_render_pages": 26,
+      "pdf_render_pages": 26,
+      "page_count_passed": true,
+      "pages": [
+        {
+          "page": 1,
+          "mae": 1.3865,
+          "correlation": 0.970576,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.059125,
+          "passed": true
+        },
+        {
+          "page": 2,
+          "mae": 1.7562,
+          "correlation": 0.972234,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.084379,
+          "passed": true
+        },
+        {
+          "page": 3,
+          "mae": 0.3015,
+          "correlation": 0.970557,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.013996,
+          "passed": true
+        },
+        {
+          "page": 4,
+          "mae": 3.8864,
+          "correlation": 0.971338,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.178399,
+          "passed": true
+        },
+        {
+          "page": 5,
+          "mae": 2.1119,
+          "correlation": 0.974806,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.100333,
+          "passed": true
+        },
+        {
+          "page": 6,
+          "mae": 0.2998,
+          "correlation": 0.983789,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.015554,
+          "passed": true
+        },
+        {
+          "page": 7,
+          "mae": 4.1309,
+          "correlation": 0.972412,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.183595,
+          "passed": true
+        },
+        {
+          "page": 8,
+          "mae": 0.9023,
+          "correlation": 0.976859,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.047491,
+          "passed": true
+        },
+        {
+          "page": 9,
+          "mae": 0.2923,
+          "correlation": 0.983526,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.015479,
+          "passed": true
+        },
+        {
+          "page": 10,
+          "mae": 3.107,
+          "correlation": 0.972569,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.143825,
+          "passed": true
+        },
+        {
+          "page": 11,
+          "mae": 1.4605,
+          "correlation": 0.976942,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.074186,
+          "passed": true
+        },
+        {
+          "page": 12,
+          "mae": 0.2317,
+          "correlation": 0.980962,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.012664,
+          "passed": true
+        },
+        {
+          "page": 13,
+          "mae": 3.1239,
+          "correlation": 0.977803,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.149761,
+          "passed": true
+        },
+        {
+          "page": 14,
+          "mae": 2.148,
+          "correlation": 0.971004,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.102294,
+          "passed": true
+        },
+        {
+          "page": 15,
+          "mae": 0.2442,
+          "correlation": 0.98586,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.014222,
+          "passed": true
+        },
+        {
+          "page": 16,
+          "mae": 2.6511,
+          "correlation": 0.976785,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.124598,
+          "passed": true
+        },
+        {
+          "page": 17,
+          "mae": 0.9453,
+          "correlation": 0.970568,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.04792,
+          "passed": true
+        },
+        {
+          "page": 18,
+          "mae": 0.2891,
+          "correlation": 0.979929,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.014422,
+          "passed": true
+        },
+        {
+          "page": 19,
+          "mae": 3.2185,
+          "correlation": 0.979625,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.163438,
+          "passed": true
+        },
+        {
+          "page": 20,
+          "mae": 0.9007,
+          "correlation": 0.981416,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.053699,
+          "passed": true
+        },
+        {
+          "page": 21,
+          "mae": 0.2777,
+          "correlation": 0.980924,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.014247,
+          "passed": true
+        },
+        {
+          "page": 22,
+          "mae": 4.4539,
+          "correlation": 0.970934,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.195927,
+          "passed": true
+        },
+        {
+          "page": 23,
+          "mae": 1.8538,
+          "correlation": 0.97912,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.094374,
+          "passed": true
+        },
+        {
+          "page": 24,
+          "mae": 0.2717,
+          "correlation": 0.979595,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.013656,
+          "passed": true
+        },
+        {
+          "page": 25,
+          "mae": 2.7836,
+          "correlation": 0.97885,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.137649,
+          "passed": true
+        },
+        {
+          "page": 26,
+          "mae": 1.5327,
+          "correlation": 0.963668,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.064636,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "product_code": "CO-CD-004",
+      "document": "CO-CD-004_STATEMENT_PLAYBOOK_PROFUNDO_M20",
+      "expected_pages": 3,
+      "docx_render_pages": 3,
+      "pdf_render_pages": 3,
+      "page_count_passed": true,
+      "pages": [
+        {
+          "page": 1,
+          "mae": 1.3115,
+          "correlation": 0.980088,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.062083,
+          "passed": true
+        },
+        {
+          "page": 2,
+          "mae": 4.129,
+          "correlation": 0.972411,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.183287,
+          "passed": true
+        },
+        {
+          "page": 3,
+          "mae": 0.899,
+          "correlation": 0.976882,
+          "edge_dark_ratio": 0.0,
+          "nonwhite_ratio": 0.047159,
+          "passed": true
+        }
+      ],
+      "passed": true
+    }
+  ]
+}

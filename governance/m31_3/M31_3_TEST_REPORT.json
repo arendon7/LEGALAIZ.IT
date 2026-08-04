@@ -1,0 +1,46 @@
+{
+  "schema": "legalaizit-m31-3-test-report-v1",
+  "milestone": "M31.3",
+  "version": "5.0.2",
+  "build_id": "M31-3-PREPRODUCCION-REPRODUCIBLE-2026-08-03",
+  "status": "passed",
+  "production_authorized": false,
+  "execution": {
+    "strategy": "61 archivos ejecutados en 16 segmentos deterministas con directorio runtime temporal independiente",
+    "reason": "evitar interferencias entre pruebas que usan SQLite y evidencia runtime",
+    "tests_passed": 442,
+    "subtests_passed": 938,
+    "test_modules": 61,
+    "failures": 0,
+    "timeouts": 0
+  },
+  "static_validation": {
+    "python_files_compiled": 239,
+    "javascript_files_checked": 19,
+    "json_files_parsed": 666,
+    "svg_files_parsed": 113,
+    "python_compilation": "passed",
+    "javascript_syntax": "passed",
+    "json_parse": "passed",
+    "svg_parse": "passed"
+  },
+  "http_smoke": {
+    "status": "passed",
+    "endpoints": 5,
+    "routes": [
+      "/api/live",
+      "/api/health",
+      "/api/config",
+      "/api/public/catalog",
+      "/api/catalog-summary"
+    ],
+    "version": "5.0.2",
+    "production_authorized": false,
+    "catalog_products": 11
+  },
+  "release_audit": {
+    "source_tree": "7/7 passed",
+    "strict_package_audit": "required_for_each_generated_zip"
+  },
+  "result": "approved_for_managed_preproduction_candidate_external_gates_pending"
+}

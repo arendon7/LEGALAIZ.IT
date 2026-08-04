@@ -1,0 +1,86 @@
+[
+  {
+    "id": "LA1-S1",
+    "title": "Código Sustantivo del Trabajo consolidado",
+    "authority": "SUIN-Juriscol",
+    "official_reference": "https://www.suin-juriscol.gov.co/viewdocument.asp?ruta=codigo%2F30019323",
+    "last_verified": "2026-07-24"
+  },
+  {
+    "id": "LA1-S2",
+    "title": "Ley 50 de 1990 — régimen anualizado de cesantías",
+    "authority": "SUIN-Juriscol",
+    "official_reference": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1604809",
+    "last_verified": "2026-07-24"
+  },
+  {
+    "id": "LA1-S3",
+    "title": "Ley 52 de 1975 — intereses a las cesantías",
+    "authority": "SUIN-Juriscol",
+    "official_reference": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1606193",
+    "last_verified": "2026-07-24"
+  },
+  {
+    "id": "LA1-S4",
+    "title": "Ley 789 de 2002 — indemnización y mora",
+    "authority": "SUIN-Juriscol",
+    "official_reference": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1668469",
+    "last_verified": "2026-07-24"
+  },
+  {
+    "id": "LA1-S5",
+    "title": "Ley 2466 de 2025 — reforma laboral",
+    "authority": "SUIN-Juriscol",
+    "official_reference": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F30055086",
+    "last_verified": "2026-07-24"
+  },
+  {
+    "id": "LA1-S6",
+    "title": "Decreto 159 de 2026 — salario mínimo transitorio",
+    "authority": "SUIN-Juriscol",
+    "official_reference": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30056106",
+    "last_verified": "2026-07-24"
+  },
+  {
+    "id": "LA1-S7",
+    "title": "Decreto 1470 de 2025 — auxilio de transporte 2026",
+    "authority": "SUIN-Juriscol",
+    "official_reference": "https://www.suin-juriscol.gov.co/clp/contenidos.dll/Decretos/30055941",
+    "last_verified": "2026-07-24"
+  },
+  {
+    "id": "LA1-S8",
+    "title": "Constitución Política — garantías laborales y debido proceso",
+    "authority": "SUIN-Juriscol",
+    "official_reference": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1687988",
+    "last_verified": "2026-07-24"
+  },
+  {
+    "id": "LA1-S9",
+    "title": "Corte Suprema SL2338-2023 — artículo 65 CST",
+    "authority": "Corte Suprema de Justicia",
+    "official_reference": "https://cortesuprema.gov.co/rl_dl_sl2338-2023/",
+    "last_verified": "2026-07-24"
+  },
+  {
+    "id": "LA1-S10",
+    "title": "Código Procesal del Trabajo — prescripción",
+    "authority": "SUIN-Juriscol",
+    "official_reference": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Decretos%2F1871227",
+    "last_verified": "2026-07-24"
+  },
+  {
+    "id": "LA1-S11",
+    "title": "Ley 2220 de 2022 — Estatuto de Conciliación",
+    "authority": "SUIN-Juriscol",
+    "official_reference": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F30044356",
+    "last_verified": "2026-07-24"
+  },
+  {
+    "id": "LA1-S12",
+    "title": "Parámetros laborales LegalAIZ.it 2026.3",
+    "authority": "LegalAIZ.it",
+    "official_reference": "data/parameters.json#CO-LA-001",
+    "last_verified": "2026-07-24"
+  }
+]

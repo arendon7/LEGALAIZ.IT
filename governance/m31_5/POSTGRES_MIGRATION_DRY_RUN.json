@@ -1,0 +1,2066 @@
+{
+  "schema": "legalaizit-sqlite-postgres-migration-v2",
+  "generated_at": "2026-08-04T14:34:09.335516+00:00",
+  "milestone": "M31.5",
+  "version": "5.0.4",
+  "build_id": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-2026-08-04",
+  "source_sha256": "483bb5ba6fcc7cb45116710c83aac33d924e024dacec01f6a6df8d1315b6e0bd",
+  "source_tables": 102,
+  "source_rows": 1870,
+  "dry_run": true,
+  "tables": [
+    {
+      "table": "activity",
+      "rows": 0,
+      "columns": [
+        "id",
+        "case_id",
+        "kind",
+        "text",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "audit_log",
+      "rows": 0,
+      "columns": [
+        "id",
+        "actor",
+        "entity_type",
+        "entity_id",
+        "action",
+        "detail",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_activation_events_v210",
+      "rows": 0,
+      "columns": [
+        "id",
+        "product_code",
+        "event_type",
+        "actor_id",
+        "detail_json",
+        "previous_event_hash",
+        "event_hash",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_candidate_sources",
+      "rows": 2,
+      "columns": [
+        "id",
+        "product_code",
+        "candidate_version",
+        "source_name",
+        "file_path",
+        "mime_type",
+        "sha256",
+        "original_source_name",
+        "original_binary_embedded",
+        "original_identity_verified",
+        "status",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_cotejo_issues",
+      "rows": 34,
+      "columns": [
+        "id",
+        "product_code",
+        "area",
+        "severity",
+        "title",
+        "detail",
+        "status",
+        "owner_role",
+        "source_ref",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_intake_records",
+      "rows": 0,
+      "columns": [
+        "id",
+        "product_code",
+        "artifact_key",
+        "original_name",
+        "stored_name",
+        "stored_path",
+        "extraction_path",
+        "sha256",
+        "size_bytes",
+        "detected_type",
+        "extraction_format",
+        "extraction_error",
+        "status",
+        "duplicate_of",
+        "uploaded_by",
+        "uploaded_at",
+        "legal_decision",
+        "legal_actor",
+        "legal_comment",
+        "legal_at",
+        "qa_decision",
+        "qa_actor",
+        "qa_comment",
+        "qa_at",
+        "source_file_id"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_package_snapshots",
+      "rows": 11,
+      "columns": [
+        "id",
+        "product_code",
+        "snapshot_json",
+        "snapshot_hash",
+        "source_file",
+        "source_sha256",
+        "source_size",
+        "created_by",
+        "note",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_publication_decisions",
+      "rows": 0,
+      "columns": [
+        "id",
+        "product_code",
+        "snapshot_hash",
+        "decision",
+        "actor",
+        "actor_role",
+        "comment",
+        "gate_json",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_review_batches",
+      "rows": 0,
+      "columns": [
+        "id",
+        "name",
+        "product_code",
+        "template_id",
+        "priority",
+        "status",
+        "assigned_to",
+        "due_at",
+        "notes",
+        "manifest_json",
+        "manifest_hash",
+        "total_jobs",
+        "version",
+        "created_by",
+        "created_at",
+        "updated_at",
+        "closed_by",
+        "closed_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_review_jobs",
+      "rows": 536,
+      "columns": [
+        "id",
+        "product_code",
+        "template_id",
+        "block_id",
+        "revision_id",
+        "block_hash",
+        "required_for_gate",
+        "priority",
+        "status",
+        "assigned_to",
+        "assigned_at",
+        "due_at",
+        "active_proposal_id",
+        "version",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_semantic_runs",
+      "rows": 0,
+      "columns": [
+        "id",
+        "product_code",
+        "template_id",
+        "revision_id",
+        "block_id",
+        "fragment_id",
+        "similarity_score",
+        "semantic_class",
+        "block_hash",
+        "fragment_hash",
+        "algorithm",
+        "created_by",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_source_files",
+      "rows": 0,
+      "columns": [
+        "id",
+        "product_code",
+        "filename",
+        "sha256",
+        "size_bytes",
+        "source_format",
+        "extraction_path",
+        "verified",
+        "imported_by",
+        "imported_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_template_versions",
+      "rows": 76,
+      "columns": [
+        "id",
+        "template_id",
+        "product_code",
+        "kind",
+        "version_label",
+        "workflow_status",
+        "content_json",
+        "content_hash",
+        "created_by",
+        "note",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_variable_mappings",
+      "rows": 473,
+      "columns": [
+        "id",
+        "product_code",
+        "canonical_token",
+        "canonical_label",
+        "app_field",
+        "template_variable",
+        "status",
+        "note",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "change_control_results_v220",
+      "rows": 0,
+      "columns": [
+        "change_set_id",
+        "control_code",
+        "label",
+        "category",
+        "owner_role",
+        "required",
+        "status",
+        "result",
+        "notes",
+        "evidence_ref",
+        "evidence_sha256",
+        "completed_by",
+        "completed_at"
+      ],
+      "primary_key": [
+        "change_set_id",
+        "control_code"
+      ]
+    },
+    {
+      "table": "change_events_v220",
+      "rows": 0,
+      "columns": [
+        "id",
+        "change_set_id",
+        "event_type",
+        "actor",
+        "actor_role",
+        "detail_json",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "change_sets_v220",
+      "rows": 0,
+      "columns": [
+        "id",
+        "title",
+        "summary",
+        "baseline_version",
+        "target_version",
+        "declared_paths_json",
+        "affected_components_json",
+        "inherited_components_json",
+        "impact_level",
+        "validation_plan_json",
+        "plan_sha256",
+        "legal_signoff_required",
+        "status",
+        "created_by",
+        "created_at",
+        "updated_at",
+        "closed_by",
+        "closed_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "infrastructure_backups",
+      "rows": 0,
+      "columns": [
+        "id",
+        "filename",
+        "file_path",
+        "status",
+        "encrypted",
+        "sha256",
+        "size_bytes",
+        "manifest_json",
+        "created_by",
+        "created_at",
+        "verified_at",
+        "verification_detail"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "infrastructure_events",
+      "rows": 0,
+      "columns": [
+        "id",
+        "event_type",
+        "actor",
+        "detail_json",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "infrastructure_objects",
+      "rows": 0,
+      "columns": [
+        "id",
+        "namespace",
+        "original_name",
+        "stored_path",
+        "content_type",
+        "plaintext_sha256",
+        "ciphertext_sha256",
+        "size_bytes",
+        "encrypted",
+        "owner_id",
+        "created_at",
+        "last_verified_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "legal_content_versions",
+      "rows": 11,
+      "columns": [
+        "id",
+        "product_code",
+        "version_label",
+        "workflow_status",
+        "actor",
+        "note",
+        "content_json",
+        "content_hash",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "m24_candidate_activation",
+      "rows": 11,
+      "columns": [
+        "product_code",
+        "candidate_revision",
+        "state",
+        "actor_id",
+        "actor_role",
+        "actor_name",
+        "comment",
+        "created_at"
+      ],
+      "primary_key": [
+        "product_code",
+        "candidate_revision"
+      ]
+    },
+    {
+      "table": "m24_candidate_approvals",
+      "rows": 22,
+      "columns": [
+        "product_code",
+        "candidate_revision",
+        "approval_type",
+        "decision",
+        "actor_id",
+        "actor_role",
+        "actor_name",
+        "comment",
+        "created_at"
+      ],
+      "primary_key": [
+        "product_code",
+        "candidate_revision",
+        "approval_type"
+      ]
+    },
+    {
+      "table": "m24_candidate_audit",
+      "rows": 22,
+      "columns": [
+        "id",
+        "product_code",
+        "candidate_revision",
+        "event_type",
+        "actor_id",
+        "actor_role",
+        "payload_json",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "m24_human_approval_attestation",
+      "rows": 1,
+      "columns": [
+        "attestation_sha256",
+        "milestone",
+        "actor_id",
+        "actor_name",
+        "approval_model",
+        "independent_reviewers",
+        "scope_json",
+        "disclosure",
+        "authorized_at",
+        "source_sha256",
+        "created_at"
+      ],
+      "primary_key": [
+        "attestation_sha256"
+      ]
+    },
+    {
+      "table": "m24_pilot_control",
+      "rows": 1,
+      "columns": [
+        "id",
+        "state",
+        "reason",
+        "actor_id",
+        "actor_name",
+        "updated_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "m24_pilot_control_history",
+      "rows": 0,
+      "columns": [
+        "id",
+        "from_state",
+        "to_state",
+        "actor_id",
+        "actor_role",
+        "reason",
+        "snapshot_json",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "m24_pilot_manual_validation",
+      "rows": 0,
+      "columns": [
+        "check_id",
+        "status",
+        "evidence_note",
+        "actor_id",
+        "actor_name",
+        "updated_at"
+      ],
+      "primary_key": [
+        "check_id"
+      ]
+    },
+    {
+      "table": "m24_professional_event",
+      "rows": 0,
+      "columns": [
+        "id",
+        "entity_type",
+        "entity_id",
+        "event_type",
+        "actor_id",
+        "actor_role",
+        "detail_json",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "m25_pilot_cohort",
+      "rows": 0,
+      "columns": [
+        "id",
+        "title",
+        "status",
+        "target_cases",
+        "product_codes_json",
+        "created_by",
+        "created_by_name",
+        "created_at",
+        "updated_at",
+        "archived_at",
+        "archive_reason"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "m25_readiness_decision",
+      "rows": 0,
+      "columns": [
+        "id",
+        "decision",
+        "actor_id",
+        "actor_name",
+        "reason",
+        "snapshot_json",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "m31_preproduction_snapshots",
+      "rows": 0,
+      "columns": [
+        "id",
+        "profile",
+        "status",
+        "passed",
+        "total",
+        "blocking_json",
+        "detail_json",
+        "snapshot_hash",
+        "created_by",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "migration_runs",
+      "rows": 0,
+      "columns": [
+        "id",
+        "target",
+        "status",
+        "manifest_hash",
+        "detail_json",
+        "created_by",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "normative_monitor_checks",
+      "rows": 0,
+      "columns": [
+        "id",
+        "product_code",
+        "source_id",
+        "result",
+        "notes",
+        "checked_by",
+        "checked_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "normative_source_registry",
+      "rows": 12,
+      "columns": [
+        "id",
+        "name",
+        "authority",
+        "source_type",
+        "url",
+        "scope_json",
+        "product_codes_json",
+        "frequency",
+        "notes",
+        "active",
+        "official",
+        "registry_reviewed_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "normative_updates",
+      "rows": 0,
+      "columns": [
+        "id",
+        "source_id",
+        "title",
+        "authority",
+        "document_type",
+        "identifier",
+        "publication_date",
+        "effective_date",
+        "source_url",
+        "source_sha256",
+        "record_hash",
+        "abstract",
+        "severity",
+        "evidence_status",
+        "status",
+        "detected_by",
+        "assigned_to",
+        "verified_by",
+        "verified_at",
+        "verification_comment",
+        "created_at",
+        "updated_at",
+        "version"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "normative_watch_profiles",
+      "rows": 11,
+      "columns": [
+        "product_code",
+        "frequency",
+        "owner_specialty",
+        "topics_json",
+        "source_ids_json",
+        "last_checked_at",
+        "next_review_at",
+        "status",
+        "updated_at"
+      ],
+      "primary_key": [
+        "product_code"
+      ]
+    },
+    {
+      "table": "priority_candidate_sources_v29",
+      "rows": 6,
+      "columns": [
+        "id",
+        "product_code",
+        "candidate_version",
+        "source_name",
+        "file_path",
+        "mime_type",
+        "sha256",
+        "original_sources_json",
+        "original_binary_embedded",
+        "original_identity_verified",
+        "professional_use_authorized",
+        "status",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "release_cycles_v221",
+      "rows": 0,
+      "columns": [
+        "id",
+        "version",
+        "title",
+        "summary",
+        "baseline_version",
+        "status",
+        "change_set_ids_json",
+        "aggregate_paths_json",
+        "affected_components_json",
+        "inherited_components_json",
+        "impact_level",
+        "legal_scope_required",
+        "snapshot_json",
+        "snapshot_sha256",
+        "legal_status",
+        "legal_statement",
+        "legal_confirmed_by",
+        "legal_confirmed_at",
+        "qa_status",
+        "qa_statement",
+        "qa_confirmed_by",
+        "qa_confirmed_at",
+        "release_manifest_json",
+        "manifest_sha256",
+        "created_by",
+        "created_at",
+        "updated_at",
+        "published_by",
+        "published_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "release_events_v221",
+      "rows": 0,
+      "columns": [
+        "id",
+        "release_id",
+        "event_type",
+        "actor",
+        "actor_role",
+        "detail_json",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "security_events",
+      "rows": 0,
+      "columns": [
+        "id",
+        "user_id",
+        "event_type",
+        "outcome",
+        "ip_address",
+        "user_agent",
+        "detail",
+        "created_at",
+        "previous_hash",
+        "event_hash"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "users",
+      "rows": 5,
+      "columns": [
+        "id",
+        "name",
+        "email",
+        "role",
+        "specialty",
+        "verified",
+        "password_hash",
+        "failed_attempts",
+        "locked_until",
+        "active",
+        "created_at",
+        "last_login_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "validation_events_v219",
+      "rows": 0,
+      "columns": [
+        "id",
+        "governance_id",
+        "event_type",
+        "actor",
+        "actor_role",
+        "detail_json",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "validation_governance_v219",
+      "rows": 1,
+      "columns": [
+        "id",
+        "baseline_version",
+        "current_version",
+        "validation_mode",
+        "legal_owner_user_id",
+        "legal_owner_name",
+        "legal_owner_statement",
+        "legal_owner_confirmed_at",
+        "technical_actor",
+        "technical_decision",
+        "technical_comment",
+        "technical_at",
+        "status",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "visual_qa_baselines_v218",
+      "rows": 1,
+      "columns": [
+        "id",
+        "version",
+        "manifest_sha256",
+        "evidence_sha256",
+        "status",
+        "captured_at",
+        "screen_count",
+        "route_count",
+        "open_high_findings",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_custody_events",
+      "rows": 0,
+      "columns": [
+        "id",
+        "intake_id",
+        "event_type",
+        "actor",
+        "actor_role",
+        "detail_json",
+        "previous_event_hash",
+        "event_hash",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_package_state",
+      "rows": 11,
+      "columns": [
+        "product_code",
+        "stage",
+        "current_snapshot_id",
+        "technical_score",
+        "canonical_score",
+        "source_binary_status",
+        "legal_approval_status",
+        "legal_approved_by",
+        "qa_status",
+        "qa_approved_by",
+        "updated_by",
+        "updated_at"
+      ],
+      "primary_key": [
+        "product_code"
+      ]
+    },
+    {
+      "table": "canonical_review_batch_events",
+      "rows": 0,
+      "columns": [
+        "id",
+        "batch_id",
+        "event_type",
+        "actor",
+        "actor_role",
+        "detail_json",
+        "previous_event_hash",
+        "event_hash",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_review_batch_jobs",
+      "rows": 0,
+      "columns": [
+        "batch_id",
+        "job_id",
+        "revision_id",
+        "block_hash",
+        "job_version_at_snapshot",
+        "status_at_snapshot",
+        "added_at"
+      ],
+      "primary_key": [
+        "batch_id",
+        "job_id"
+      ]
+    },
+    {
+      "table": "canonical_review_events",
+      "rows": 536,
+      "columns": [
+        "id",
+        "job_id",
+        "event_type",
+        "actor",
+        "actor_role",
+        "detail_json",
+        "previous_event_hash",
+        "event_hash",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_source_fragments",
+      "rows": 0,
+      "columns": [
+        "id",
+        "source_file_id",
+        "product_code",
+        "locator_type",
+        "locator",
+        "ordinal",
+        "fragment_text",
+        "normalized_text",
+        "fragment_hash",
+        "metadata_json",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_template_approvals",
+      "rows": 0,
+      "columns": [
+        "id",
+        "template_id",
+        "revision_id",
+        "approval_type",
+        "actor",
+        "actor_role",
+        "decision",
+        "comment",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_template_state",
+      "rows": 76,
+      "columns": [
+        "template_id",
+        "current_revision_id",
+        "workflow_status",
+        "publication_revision_id",
+        "updated_by",
+        "updated_at"
+      ],
+      "primary_key": [
+        "template_id"
+      ]
+    },
+    {
+      "table": "m31_backup_drills",
+      "rows": 0,
+      "columns": [
+        "id",
+        "backup_id",
+        "status",
+        "evidence_json",
+        "evidence_hash",
+        "created_by",
+        "created_at",
+        "completed_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "legal_content_state",
+      "rows": 11,
+      "columns": [
+        "product_code",
+        "workflow_status",
+        "current_revision_id",
+        "updated_at",
+        "updated_by"
+      ],
+      "primary_key": [
+        "product_code"
+      ]
+    },
+    {
+      "table": "m31_preproduction_decisions",
+      "rows": 0,
+      "columns": [
+        "id",
+        "snapshot_id",
+        "decision",
+        "reason",
+        "production_authorized",
+        "created_by",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "normative_impacts",
+      "rows": 0,
+      "columns": [
+        "id",
+        "update_id",
+        "product_code",
+        "component_type",
+        "component_id",
+        "action",
+        "status",
+        "rationale",
+        "proposed_change",
+        "legal_effect",
+        "component_snapshot_hash",
+        "proposed_by",
+        "legal_decision",
+        "legal_by",
+        "legal_at",
+        "legal_comment",
+        "qa_decision",
+        "qa_by",
+        "qa_at",
+        "qa_comment",
+        "implementation_evidence",
+        "implementation_hash",
+        "implemented_by",
+        "implemented_at",
+        "created_at",
+        "updated_at",
+        "proposal_version"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "normative_update_events",
+      "rows": 0,
+      "columns": [
+        "id",
+        "update_id",
+        "event_type",
+        "actor",
+        "actor_role",
+        "detail_json",
+        "previous_event_hash",
+        "event_hash",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "normative_update_products",
+      "rows": 0,
+      "columns": [
+        "update_id",
+        "product_code",
+        "relevance",
+        "release_hold"
+      ],
+      "primary_key": [
+        "update_id",
+        "product_code"
+      ]
+    },
+    {
+      "table": "activity_reads",
+      "rows": 0,
+      "columns": [
+        "user_id",
+        "last_seen_at"
+      ],
+      "primary_key": [
+        "user_id"
+      ]
+    },
+    {
+      "table": "anonymous_service_drafts",
+      "rows": 0,
+      "columns": [
+        "id",
+        "token_hash",
+        "product_code",
+        "payload_encrypted",
+        "payload_sha256",
+        "current_step",
+        "status",
+        "expires_at",
+        "created_at",
+        "updated_at",
+        "transferred_user_id",
+        "transferred_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_activation_rehearsals_v210",
+      "rows": 0,
+      "columns": [
+        "id",
+        "product_code",
+        "status",
+        "score",
+        "snapshot_json",
+        "snapshot_sha256",
+        "created_by",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_dropbox_scans_v210",
+      "rows": 0,
+      "columns": [
+        "id",
+        "actor_id",
+        "status",
+        "files_found",
+        "files_ingested",
+        "files_skipped",
+        "errors",
+        "manifest_json",
+        "manifest_sha256",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "cases",
+      "rows": 0,
+      "columns": [
+        "id",
+        "product_code",
+        "title",
+        "risk",
+        "status",
+        "owner_id",
+        "specialist_id",
+        "review_status",
+        "created_at",
+        "updated_at",
+        "answers",
+        "result"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "factory_working_drafts",
+      "rows": 0,
+      "columns": [
+        "template_id",
+        "actor_id",
+        "base_revision_id",
+        "content_json",
+        "content_hash",
+        "note",
+        "updated_at"
+      ],
+      "primary_key": [
+        "template_id",
+        "actor_id"
+      ]
+    },
+    {
+      "table": "m24_pilot_enrollment",
+      "rows": 0,
+      "columns": [
+        "id",
+        "user_id",
+        "status",
+        "consent_version",
+        "product_codes_json",
+        "non_production_ack",
+        "privacy_ack",
+        "no_representation_ack",
+        "fictitious_or_minimized_data_ack",
+        "confirmation_text",
+        "consented_at",
+        "withdrawn_at",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "m24_professional_profile",
+      "rows": 0,
+      "columns": [
+        "user_id",
+        "invitation_status",
+        "verification_status",
+        "jurisdiction",
+        "bar_registration_last4",
+        "specialties_json",
+        "product_codes_json",
+        "availability_status",
+        "max_active_cases",
+        "response_sla_hours",
+        "review_sla_hours",
+        "fee_reference_json",
+        "invited_by",
+        "invited_at",
+        "accepted_at",
+        "verified_by",
+        "verified_at",
+        "verification_note",
+        "updated_at"
+      ],
+      "primary_key": [
+        "user_id"
+      ]
+    },
+    {
+      "table": "mfa_credentials",
+      "rows": 0,
+      "columns": [
+        "user_id",
+        "secret_encrypted",
+        "enabled",
+        "pending",
+        "created_at",
+        "enabled_at",
+        "last_used_step"
+      ],
+      "primary_key": [
+        "user_id"
+      ]
+    },
+    {
+      "table": "mfa_recovery_codes",
+      "rows": 0,
+      "columns": [
+        "id",
+        "user_id",
+        "code_hash",
+        "used_at",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "service_drafts",
+      "rows": 0,
+      "columns": [
+        "id",
+        "user_id",
+        "product_code",
+        "title",
+        "answers",
+        "result",
+        "current_step",
+        "status",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "sessions",
+      "rows": 0,
+      "columns": [
+        "id",
+        "user_id",
+        "token_hash",
+        "csrf_token",
+        "created_at",
+        "expires_at",
+        "last_seen_at",
+        "ip_address",
+        "user_agent",
+        "revoked",
+        "auth_level",
+        "mfa_verified_at",
+        "idle_expires_at",
+        "reauthenticated_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_block_trace_links",
+      "rows": 0,
+      "columns": [
+        "id",
+        "product_code",
+        "template_id",
+        "revision_id",
+        "block_id",
+        "fragment_id",
+        "link_type",
+        "status",
+        "similarity_score",
+        "semantic_class",
+        "legal_note",
+        "exception_reason",
+        "linked_by",
+        "linked_at",
+        "legal_decision",
+        "legal_actor",
+        "legal_comment",
+        "legal_at",
+        "qa_decision",
+        "qa_actor",
+        "qa_comment",
+        "qa_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_review_proposals",
+      "rows": 0,
+      "columns": [
+        "id",
+        "job_id",
+        "proposal_version",
+        "fragment_id",
+        "link_type",
+        "legal_rationale",
+        "effect_assessment",
+        "exception_reason",
+        "block_hash",
+        "source_fragment_hash",
+        "similarity_score",
+        "semantic_class",
+        "discrepancy_level",
+        "added_terms_json",
+        "omitted_terms_json",
+        "trace_link_id",
+        "status",
+        "created_by",
+        "created_at",
+        "decided_by",
+        "decided_at",
+        "qa_comment"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "attachments",
+      "rows": 0,
+      "columns": [
+        "id",
+        "case_id",
+        "name",
+        "mime_type",
+        "size_bytes",
+        "category",
+        "file_path",
+        "created_at",
+        "sha256",
+        "detected_type",
+        "security_status",
+        "uploaded_by",
+        "requirement_key",
+        "description",
+        "updated_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "candidate_generation_runs_v28",
+      "rows": 0,
+      "columns": [
+        "id",
+        "case_id",
+        "product_code",
+        "source_snapshot_json",
+        "source_snapshot_sha256",
+        "documents_json",
+        "created_by",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "canonical_generation_runs",
+      "rows": 0,
+      "columns": [
+        "id",
+        "case_id",
+        "product_code",
+        "mode",
+        "gate_json",
+        "gate_sha256",
+        "documents_json",
+        "created_by",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "case_messages",
+      "rows": 0,
+      "columns": [
+        "id",
+        "case_id",
+        "author_id",
+        "message_type",
+        "visibility",
+        "body",
+        "parent_id",
+        "created_at",
+        "edited_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "case_tasks",
+      "rows": 0,
+      "columns": [
+        "id",
+        "case_id",
+        "label",
+        "status",
+        "owner_role",
+        "position",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "checkout_orders",
+      "rows": 0,
+      "columns": [
+        "id",
+        "user_id",
+        "product_code",
+        "case_id",
+        "service_mode",
+        "review_selected",
+        "document_price",
+        "review_price",
+        "total",
+        "currency",
+        "status",
+        "payment_method",
+        "receipt_number",
+        "detail",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "document_packages",
+      "rows": 0,
+      "columns": [
+        "id",
+        "case_id",
+        "file_path",
+        "manifest_json",
+        "manifest_sha256",
+        "package_sha256",
+        "status",
+        "created_by",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "documents",
+      "rows": 0,
+      "columns": [
+        "id",
+        "case_id",
+        "product_code",
+        "kind",
+        "name",
+        "mime_type",
+        "file_path",
+        "content",
+        "created_at",
+        "updated_at",
+        "version",
+        "status",
+        "content_sha256",
+        "template_id",
+        "template_revision_id",
+        "template_hash",
+        "canonical_status",
+        "generation_engine",
+        "lineage_json"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "m24_pilot_incident",
+      "rows": 0,
+      "columns": [
+        "id",
+        "reporter_id",
+        "reporter_role",
+        "case_id",
+        "category",
+        "severity",
+        "title",
+        "description",
+        "status",
+        "owner_id",
+        "resolution_note",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "m24_professional_assignment",
+      "rows": 0,
+      "columns": [
+        "id",
+        "case_id",
+        "product_code",
+        "specialist_id",
+        "status",
+        "conflict_status",
+        "offer_reason",
+        "decision_note",
+        "match_score",
+        "response_due_at",
+        "review_due_at",
+        "offered_by",
+        "offered_at",
+        "decided_at",
+        "completed_at",
+        "previous_assignment_id",
+        "updated_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "m25_pilot_case_plan",
+      "rows": 0,
+      "columns": [
+        "id",
+        "cohort_id",
+        "product_code",
+        "archetype",
+        "status",
+        "case_id",
+        "assigned_specialist_id",
+        "independent_reviewer_id",
+        "qa_reviewer_id",
+        "evidence_note",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "priority_generation_runs_v29",
+      "rows": 0,
+      "columns": [
+        "id",
+        "case_id",
+        "product_code",
+        "source_snapshot_json",
+        "source_snapshot_sha256",
+        "documents_json",
+        "created_by",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "reviews",
+      "rows": 0,
+      "columns": [
+        "id",
+        "case_id",
+        "specialist_id",
+        "action",
+        "comment",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "m24_pilot_event",
+      "rows": 0,
+      "columns": [
+        "id",
+        "enrollment_id",
+        "actor_id",
+        "actor_role",
+        "case_id",
+        "product_code",
+        "event_type",
+        "duration_bucket",
+        "success",
+        "error_code",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "m24_pilot_feedback",
+      "rows": 0,
+      "columns": [
+        "id",
+        "enrollment_id",
+        "case_id",
+        "user_id",
+        "clarity",
+        "ease",
+        "confidence",
+        "goal_met",
+        "comment",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "case_task_details",
+      "rows": 0,
+      "columns": [
+        "task_id",
+        "description",
+        "assigned_to",
+        "due_at",
+        "priority",
+        "created_by",
+        "source"
+      ],
+      "primary_key": [
+        "task_id"
+      ]
+    },
+    {
+      "table": "payment_intents",
+      "rows": 0,
+      "columns": [
+        "id",
+        "order_id",
+        "user_id",
+        "provider",
+        "provider_reference",
+        "idempotency_key",
+        "amount",
+        "currency",
+        "status",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "document_comments",
+      "rows": 0,
+      "columns": [
+        "id",
+        "document_id",
+        "case_id",
+        "author_id",
+        "section_key",
+        "quote",
+        "comment",
+        "visibility",
+        "status",
+        "created_at",
+        "resolved_at",
+        "resolved_by"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "document_compare_runs",
+      "rows": 0,
+      "columns": [
+        "id",
+        "document_id",
+        "from_ref",
+        "to_ref",
+        "actor_id",
+        "summary_json",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "document_package_items",
+      "rows": 0,
+      "columns": [
+        "package_id",
+        "document_id",
+        "version",
+        "name",
+        "sha256",
+        "size_bytes"
+      ],
+      "primary_key": [
+        "package_id",
+        "document_id",
+        "version"
+      ]
+    },
+    {
+      "table": "document_pdf_previews",
+      "rows": 0,
+      "columns": [
+        "id",
+        "document_id",
+        "document_sha256",
+        "source_version",
+        "file_path",
+        "pdf_sha256",
+        "size_bytes",
+        "page_count",
+        "created_by",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "document_versions",
+      "rows": 0,
+      "columns": [
+        "id",
+        "document_id",
+        "version",
+        "created_at",
+        "note",
+        "file_path"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "extensive_generation_proofs",
+      "rows": 0,
+      "columns": [
+        "id",
+        "case_id",
+        "product_code",
+        "generation_version",
+        "source_model_version",
+        "status",
+        "proof_sha256",
+        "proof_json",
+        "proof_path",
+        "package_document_id",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "extensive_review_cycles",
+      "rows": 0,
+      "columns": [
+        "id",
+        "case_id",
+        "product_code",
+        "package_document_id",
+        "package_version",
+        "package_sha256",
+        "proof_id",
+        "proof_sha256",
+        "status",
+        "legal_actor",
+        "legal_decision",
+        "legal_comment",
+        "legal_at",
+        "qa_actor",
+        "qa_decision",
+        "qa_comment",
+        "qa_at",
+        "release_actor",
+        "release_comment",
+        "release_at",
+        "release_path",
+        "release_sha256",
+        "certificate_path",
+        "certificate_sha256",
+        "version",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "m24_professional_conflict",
+      "rows": 0,
+      "columns": [
+        "id",
+        "assignment_id",
+        "case_id",
+        "specialist_id",
+        "declaration",
+        "party_hashes_json",
+        "relationship_category",
+        "note_redacted",
+        "resolution_status",
+        "declared_at",
+        "resolved_by",
+        "resolved_at",
+        "resolution_note"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "payment_sandbox_events",
+      "rows": 0,
+      "columns": [
+        "id",
+        "intent_id",
+        "event_type",
+        "payload_json",
+        "payload_sha256",
+        "signature",
+        "valid_signature",
+        "actor",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "document_acceptances",
+      "rows": 0,
+      "columns": [
+        "id",
+        "document_id",
+        "case_id",
+        "user_id",
+        "signer_name",
+        "signer_email",
+        "acceptance_type",
+        "acceptance_text",
+        "document_sha256",
+        "document_version",
+        "preview_id",
+        "preview_sha256",
+        "receipt_json",
+        "receipt_sha256",
+        "receipt_hmac",
+        "receipt_path",
+        "ip_address",
+        "user_agent",
+        "status",
+        "created_at",
+        "revoked_at",
+        "revoked_by",
+        "revocation_reason"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "extensive_review_events",
+      "rows": 0,
+      "columns": [
+        "id",
+        "cycle_id",
+        "event_type",
+        "actor",
+        "actor_role",
+        "detail_json",
+        "previous_event_hash",
+        "event_hash",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    },
+    {
+      "table": "document_acceptance_events",
+      "rows": 0,
+      "columns": [
+        "id",
+        "acceptance_id",
+        "event_type",
+        "actor_id",
+        "detail_json",
+        "previous_hash",
+        "event_hash",
+        "created_at"
+      ],
+      "primary_key": [
+        "id"
+      ]
+    }
+  ],
+  "verified": false,
+  "sequences_reconciled": false,
+  "ok": true,
+  "production_authorized": false
+}

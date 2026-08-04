@@ -1,0 +1,20 @@
+{
+  "schema": "legalaizit-per-file-test-segment-v1",
+  "generated_at": "2026-08-04T14:42:05.687962+00:00",
+  "start": 0,
+  "stop": 5,
+  "results": [
+    {
+      "file": "tests/test_assisted_review.py",
+      "returncode": 0,
+      "passed": 7,
+      "subtests_passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "timed_out": false,
+      "ok": true,
+      "runtime_dir": "/tmp/legalaiz-test-y644u_lx",
+      "output_tail": ".......                                                                  [100%]\n7 passed in 22.34s"
+    }
+  ]
+}

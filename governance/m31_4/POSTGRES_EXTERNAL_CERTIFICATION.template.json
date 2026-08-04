@@ -1,0 +1,10 @@
+{
+  "schema": "legalaizit-postgres-external-certification-v1",
+  "milestone": "M31.4",
+  "version": "5.0.3",
+  "status": "not_executed_in_build_environment",
+  "ok": false,
+  "external_certified": false,
+  "required_tool": "tools/postgres_certify.py",
+  "production_authorized": false
+}

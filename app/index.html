@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0D1324">
+  <meta name="description" content="LegalAIZ.it: soluciones jurídicas guiadas para personas y empresas, documentos completos, expedientes y revisión profesional.">
+  <title>LegalAIZ.it — Más que respuestas, soluciones.</title>
+  <link rel="icon" type="image/png" href="/assets/app-icon.png">
+  <link rel="preload" as="image" href="/assets/logo-legalaizit-web.png" fetchpriority="high">
+  <link rel="preload" as="image" href="/assets/brand-visuals/hero-guided-solution.svg" fetchpriority="high">
+  <link rel="modulepreload" href="/core.js">
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+  <div id="app" aria-live="polite">
+    <div class="boot-screen">
+      <img src="/assets/logo-legalaizit-web.png" alt="LegalAIZ.it" width="320" height="96" fetchpriority="high">
+      <div class="boot-spinner" aria-hidden="true"></div>
+      <p>Preparando tu espacio jurídico…</p>
+    </div>
+  </div>
+  <div id="route-announcer" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="dialog-root"></div>
+  <script type="module" src="/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+[
+  {
+    "file": "test_source_intake.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 8,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 11.31,
+    "summary": "........                                                                 [100%] 8 passed in 9.74s"
+  },
+  {
+    "file": "test_traceability.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 7,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 8.32,
+    "summary": ".......                                                                  [100%] 7 passed in 6.80s"
+  },
+  {
+    "file": "test_workflows.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 6,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 7.9,
+    "summary": "......                                                                   [100%] 6 passed in 6.27s"
+  }
+]

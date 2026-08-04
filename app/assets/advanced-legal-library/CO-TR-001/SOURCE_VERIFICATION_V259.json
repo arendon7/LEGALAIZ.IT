@@ -1,0 +1,76 @@
+{
+  "version": "2.59",
+  "product_id": "CO-TR-001",
+  "verified_at": "2026-07-26T23:50:00+00:00",
+  "max_age_days": 31,
+  "method": "Revisión directa de páginas y matrices oficiales; contraste del estado procesal publicado con el artículo 158A de la Ley 769 de 2002, adicionado por la Ley 2251 de 2022.",
+  "checks": [
+    {
+      "source_id": "ST-2026-37-WEB",
+      "status": "verified",
+      "procedural_status": "investigation_published",
+      "firm_decision_found": false,
+      "verified_facts": [
+        "publicación del 19/05/2026",
+        "investigación administrativa anunciada",
+        "no se identificó en la publicación una decisión firme individual"
+      ]
+    },
+    {
+      "source_id": "ST-2026-37-PDF",
+      "status": "verified",
+      "procedural_status": "official_matrix_published",
+      "firm_decision_found": false,
+      "verified_facts": [
+        "37 rangos del Grupo A",
+        "matriz oficial descargable",
+        "uso limitado a cruce preliminar"
+      ]
+    },
+    {
+      "source_id": "ST-2026-12-WEB",
+      "status": "verified",
+      "procedural_status": "investigation_published",
+      "firm_decision_found": false,
+      "verified_facts": [
+        "12 rangos del Grupo B",
+        "tabla oficial Valledupar termina 13/08/2025",
+        "narrativa menciona 14/08/2025"
+      ]
+    },
+    {
+      "source_id": "LEY-2251-2022-ART18",
+      "status": "verified",
+      "procedural_status": "law_in_force",
+      "firm_decision_found": false,
+      "verified_facts": [
+        "artículo 158A",
+        "firmeza de decisión de Supertransporte como hito",
+        "plazo de 30 días hábiles para revocación oficiosa"
+      ]
+    },
+    {
+      "source_id": "LEY-1843-2017",
+      "status": "verified",
+      "procedural_status": "law_in_force",
+      "firm_decision_found": false,
+      "verified_facts": [
+        "estado de vigencia publicado",
+        "marco SAST",
+        "reglas de envío y notificación"
+      ]
+    },
+    {
+      "source_id": "LEY-1581-2012",
+      "status": "verified",
+      "procedural_status": "law_in_force",
+      "firm_decision_found": false,
+      "verified_facts": [
+        "protección de datos",
+        "autorización y finalidad",
+        "acceso restringido"
+      ]
+    }
+  ],
+  "pre_release_action": "Revisar si existen decisiones firmes, correcciones de matrices, nuevos comunicados o cambios normativos. Si existen, bloquear y versionar antes de liberar."
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "id": "DOC-TR2-DIAG-001",
+    "name": "Informe jurídico y ruta procesal",
+    "trigger": "always",
+    "status": "implementation_planned_v255",
+    "independent_review": false
+  },
+  {
+    "id": "DOC-TR2-PETITION-001",
+    "name": "Solicitud integral de expediente y trazabilidad",
+    "trigger": "always",
+    "status": "implementation_planned_v255",
+    "independent_review": false
+  },
+  {
+    "id": "DOC-TR2-NOTICE-001",
+    "name": "Reclamación por falta o defecto de notificación",
+    "trigger": "notice_issue",
+    "status": "implementation_planned_v255",
+    "independent_review": false
+  },
+  {
+    "id": "DOC-TR2-HEARING-001",
+    "name": "Solicitud de audiencia, comparecencia y pruebas",
+    "trigger": "defense_opportunity",
+    "status": "implementation_planned_v255",
+    "independent_review": false
+  },
+  {
+    "id": "DOC-TR2-REVOCATION-001",
+    "name": "Solicitud condicionada de revocatoria directa",
+    "trigger": "resolution_review",
+    "status": "implementation_planned_v255",
+    "independent_review": true
+  },
+  {
+    "id": "DOC-TR2-COERCIVE-001",
+    "name": "Solicitud de expediente de cobro coactivo y análisis inicial",
+    "trigger": "coercive_stage",
+    "status": "implementation_planned_v255",
+    "independent_review": true
+  },
+  {
+    "id": "DOC-TR2-CORRECTION-001",
+    "name": "Solicitud de corrección o actualización SIMIT/RUNT",
+    "trigger": "registry_issue",
+    "status": "implementation_planned_v255",
+    "independent_review": false
+  },
+  {
+    "id": "ANX-TR2-EVIDENCE-001",
+    "name": "Matriz de evidencias y vacíos probatorios",
+    "trigger": "always",
+    "status": "implementation_planned_v255",
+    "independent_review": false
+  },
+  {
+    "id": "ANX-TR2-DEADLINES-001",
+    "name": "Calendario de términos y actuaciones",
+    "trigger": "always",
+    "status": "implementation_planned_v255",
+    "independent_review": false
+  },
+  {
+    "id": "ANX-TR2-SAST-001",
+    "name": "Ficha técnica y legal del sistema SAST",
+    "trigger": "technical_review",
+    "status": "implementation_planned_v255",
+    "independent_review": false
+  },
+  {
+    "id": "ACT-TR2-FILING-001",
+    "name": "Registro de radicación y seguimiento",
+    "trigger": "always",
+    "status": "implementation_planned_v255",
+    "independent_review": false
+  },
+  {
+    "id": "DOC-TR2-REITERATION-001",
+    "name": "Reiteración, traslado y escalamiento",
+    "trigger": "prior_unanswered",
+    "status": "implementation_planned_v255",
+    "independent_review": false
+  }
+]

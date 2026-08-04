@@ -1,0 +1,10 @@
+{
+  "schema": "legalaizit-postgres-external-certification-v2",
+  "milestone": "M31.5",
+  "version": "5.0.4",
+  "target_fingerprint": null,
+  "checks": [],
+  "ok": false,
+  "postgres_preproduction_certified": false,
+  "production_authorized": false
+}

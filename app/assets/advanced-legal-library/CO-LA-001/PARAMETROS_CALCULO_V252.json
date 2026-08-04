@@ -1,0 +1,19 @@
+{
+  "product_id": "CO-LA-001",
+  "version": "2.52",
+  "effective_date": "2026-01-01",
+  "verified_at": "2026-07-24",
+  "smmlv": 1750905,
+  "transport_aid": 249095,
+  "transport_threshold_smmlv": 2,
+  "cesantias_interest_rate": 0.12,
+  "vacation_days_per_year": 15,
+  "benefit_year_days": 360,
+  "sources": [
+    "LA1-S1",
+    "LA1-S2",
+    "LA1-S3",
+    "LA1-S4"
+  ],
+  "notice": "Parámetros versionados; no sustituyen la revisión de procedencia por período y caso."
+}

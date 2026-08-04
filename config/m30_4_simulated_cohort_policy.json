@@ -1,0 +1,78 @@
+{
+  "schema": "legalaizit-m30-4-simulation-policy-v1",
+  "milestone": "M30.4",
+  "version": "4.8.0",
+  "created_at": "2026-08-03T14:12:00-05:00",
+  "scope": "synthetic_full_cohort_simulation_and_documented_decision",
+  "target_cases": 20,
+  "pilot_products": [
+    "CO-LA-002",
+    "CO-EM-003",
+    "CO-AR-001",
+    "CO-CD-003"
+  ],
+  "archetypes": [
+    "ordinary",
+    "incomplete_information",
+    "contradictory_answers",
+    "high_risk_escalation",
+    "conditional_module_and_evidence"
+  ],
+  "profiles": {
+    "baseline": {
+      "label": "Escenario base",
+      "blocked_cases": 0,
+      "friction_cases": 2,
+      "support_cases": 3,
+      "high_incidents": 0,
+      "score_offset": 0.0
+    },
+    "recovery": {
+      "label": "Escenario de recuperación",
+      "blocked_cases": 0,
+      "friction_cases": 3,
+      "support_cases": 4,
+      "high_incidents": 0,
+      "score_offset": -0.25
+    },
+    "stress": {
+      "label": "Escenario de tensión",
+      "blocked_cases": 2,
+      "friction_cases": 4,
+      "support_cases": 7,
+      "high_incidents": 1,
+      "score_offset": -0.7
+    }
+  },
+  "thresholds": {
+    "completion_rate": 0.95,
+    "success_rate": 0.85,
+    "average_clarity": 4.3,
+    "average_ease": 4.1,
+    "average_confidence": 4.2,
+    "goal_met_rate": 0.85,
+    "manual_validation_rate": 1.0,
+    "document_qa_rate": 1.0,
+    "support_rate_max": 0.25,
+    "high_or_critical_incidents_max": 0
+  },
+  "decisions": [
+    "proceed_limited",
+    "extend",
+    "hold"
+  ],
+  "confirmations": {
+    "create": "CREAR SIMULACION COHORTE M30.4",
+    "execute": "EJECUTAR SIMULACION COHORTE M30.4",
+    "decision": "REGISTRAR DECISION SIMULADA M30.4"
+  },
+  "safeguards": {
+    "synthetic_only": true,
+    "no_user_accounts": true,
+    "no_real_cases": true,
+    "no_case_narratives": true,
+    "no_automatic_production_activation": true,
+    "no_real_payments": true,
+    "no_automatic_delivery": true
+  }
+}

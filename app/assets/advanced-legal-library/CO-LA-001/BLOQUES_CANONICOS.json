@@ -1,0 +1,450 @@
+[
+  {
+    "id": "LA1-B001",
+    "name": "Título y control de versión",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B002",
+    "name": "Alcance del informe",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B003",
+    "name": "Identificación de partes",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B004",
+    "name": "Resumen de vínculo",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B005",
+    "name": "Cronología",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B006",
+    "name": "Fuentes y parámetros",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B007",
+    "name": "Metodología de cálculo",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B008",
+    "name": "Base salarial",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B009",
+    "name": "Salario ordinario",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B010",
+    "name": "Salario variable",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B011",
+    "name": "Salario integral",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B012",
+    "name": "Auxilio de transporte",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B013",
+    "name": "Salarios pendientes",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B014",
+    "name": "Cesantías",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B015",
+    "name": "Intereses a cesantías",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B016",
+    "name": "Prima de servicios",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B017",
+    "name": "Vacaciones",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B018",
+    "name": "Indemnización indefinido",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B019",
+    "name": "Indemnización término fijo",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B020",
+    "name": "Indemnización obra o labor",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B021",
+    "name": "Pagos previos",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B022",
+    "name": "Deducciones discutidas",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B023",
+    "name": "Total estimado",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B024",
+    "name": "Diferencias",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B025",
+    "name": "Escenarios de cálculo",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B026",
+    "name": "Supuestos",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B027",
+    "name": "Exclusiones",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B028",
+    "name": "Sensibilidad",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B029",
+    "name": "Soportes disponibles",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B030",
+    "name": "Soportes faltantes",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B031",
+    "name": "Matriz probatoria",
+    "category": "core",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B032",
+    "name": "Reclamación: encabezado",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B033",
+    "name": "Reclamación: hechos",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B034",
+    "name": "Reclamación: pretensiones",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B035",
+    "name": "Reclamación: cuadro de valores",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B036",
+    "name": "Reclamación: solicitud de soportes",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B037",
+    "name": "Reclamación: respuesta",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B038",
+    "name": "Prescripción: exigibilidad",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B039",
+    "name": "Prescripción: interrupción",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B040",
+    "name": "Prescripción: alertas",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B041",
+    "name": "Mora: marco legal",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B042",
+    "name": "Mora: buena fe",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B043",
+    "name": "Mora: cálculo eventual",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B044",
+    "name": "Protección reforzada",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B045",
+    "name": "Contrato realidad",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B046",
+    "name": "Régimen colectivo",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B047",
+    "name": "Actuaciones previas",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B048",
+    "name": "Conciliación",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B049",
+    "name": "Acuerdo de pago",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B050",
+    "name": "Cuotas e incumplimiento",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B051",
+    "name": "No renuncia",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B052",
+    "name": "Paz y salvo limitado",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B053",
+    "name": "Cumplimiento",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B054",
+    "name": "Cierre",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B055",
+    "name": "Firmas",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "id": "LA1-B056",
+    "name": "Advertencia profesional",
+    "category": "documentary",
+    "source_ids": [
+      "LA1-S1"
+    ]
+  }
+]

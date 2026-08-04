@@ -1,0 +1,81 @@
+[
+  {
+    "id": "AR-S1",
+    "title": "Ley 820 de 2003 - régimen de arrendamiento de vivienda urbana",
+    "authority": "Congreso de Colombia",
+    "type": "statute",
+    "status": "vigente/verificada",
+    "last_verified": "2026-08-02",
+    "verification_status": "Revalidada para contenido mínimo, canon, garantías, obligaciones, reajuste, terminación y restitución en vivienda urbana.",
+    "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1669010"
+  },
+  {
+    "id": "AR-S2",
+    "title": "Ley 675 de 2001 - régimen de propiedad horizontal",
+    "authority": "Congreso de Colombia",
+    "type": "statute",
+    "status": "vigente/verificada",
+    "last_verified": "2026-07-17",
+    "verification_status": "Verificada para v2.23; revalidación automática ante cambio normativo",
+    "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1665811"
+  },
+  {
+    "id": "AR-S3",
+    "title": "Código Civil - contrato de arrendamiento, reparaciones y restitución",
+    "authority": "Congreso de Colombia",
+    "type": "statute",
+    "status": "vigente/verificada",
+    "last_verified": "2026-08-02",
+    "verification_status": "Revalidada como marco civil complementario sobre arrendamiento, conservación, reparaciones, incumplimiento y restitución.",
+    "official_url": "https://suin-juriscol.gov.co/viewDocument.asp?id=1827111"
+  },
+  {
+    "id": "AR-S4",
+    "title": "Ley 1564 de 2012 - artículo 384, restitución de inmueble arrendado",
+    "authority": "Congreso de Colombia",
+    "type": "statute",
+    "status": "vigente/verificada",
+    "last_verified": "2026-07-17",
+    "verification_status": "Verificada para v2.23; revalidación automática ante cambio normativo",
+    "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1564_2012_pr013.html"
+  },
+  {
+    "id": "AR-S5",
+    "title": "Decreto 51 de 2004 / Decreto 1077 de 2015 - matrícula de arrendadores",
+    "authority": "Ministerio de Vivienda",
+    "type": "regulation",
+    "status": "vigente/verificada",
+    "last_verified": "2026-07-17",
+    "verification_status": "Verificada para v2.23; revalidación automática ante cambio normativo",
+    "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1840085"
+  },
+  {
+    "id": "AR-S6",
+    "title": "IPC total nacional 2025: variación anual 5,10%",
+    "authority": "DANE",
+    "type": "official_statistic",
+    "status": "vigente/verificada",
+    "last_verified": "2026-07-17",
+    "verification_status": "Verificada para v2.23; revalidación automática ante cambio normativo",
+    "official_url": "https://www.dane.gov.co/files/operaciones/IPC/dic2025/graf-IPC-dic2025.html"
+  },
+  {
+    "id": "AR-S7",
+    "title": "Ley 1581 de 2012 - protección de datos personales",
+    "authority": "Congreso de Colombia",
+    "type": "statute",
+    "status": "vigente/verificada",
+    "last_verified": "2026-07-17",
+    "verification_status": "Verificada para v2.23; revalidación automática ante cambio normativo",
+    "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1684507"
+  },
+  {
+    "id": "AR-S8",
+    "title": "Paquete jurídico completo CO-AR-001",
+    "authority": "LegalAIZ.it",
+    "type": "canonical_package",
+    "status": "modelo completo integrado",
+    "last_verified": "2026-07-17",
+    "verification_status": "Cotejo funcional v2.23; aprobación del abogado responsable según impacto"
+  }
+]

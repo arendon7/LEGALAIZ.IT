@@ -1,0 +1,60 @@
+{
+  "version": "2.56",
+  "scope": "CO-TR-002 macro C",
+  "inherited_evidence": {
+    "base": "v2.54 macro A",
+    "documental": "v2.55 macro B"
+  },
+  "matrix": [
+    {
+      "area": "evaluación",
+      "tests": [
+        "12 canónicos",
+        "12 negativos",
+        "fechas hábiles",
+        "contradicciones",
+        "exclusiones"
+      ]
+    },
+    {
+      "area": "documentos",
+      "tests": [
+        "selección",
+        "variables",
+        "sentinelas",
+        "estructura DOCX",
+        "metadatos",
+        "render visual"
+      ]
+    },
+    {
+      "area": "gobierno",
+      "tests": [
+        "revisiones inmutables",
+        "comparación",
+        "RBAC",
+        "aprobación dual",
+        "auditoría",
+        "tamper"
+      ]
+    },
+    {
+      "area": "API",
+      "tests": [
+        "errores seguros",
+        "actor externo",
+        "rutas",
+        "no exposición de rutas locales"
+      ]
+    },
+    {
+      "area": "instalación",
+      "tests": [
+        "base v2.54",
+        "hash opcional exacto",
+        "no borrado",
+        "requisitos"
+      ]
+    }
+  ]
+}

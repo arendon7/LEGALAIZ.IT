@@ -1,0 +1,92 @@
+[
+  {
+    "id": "V-EM4-001",
+    "severity": "blocker",
+    "condition": "parties_or_signatories_missing",
+    "message": "Deben identificarse las partes y la fuente de facultad de sus firmantes."
+  },
+  {
+    "id": "V-EM4-002",
+    "severity": "blocker",
+    "condition": "purpose_or_categories_missing",
+    "message": "La finalidad y las categorías de información deben quedar delimitadas."
+  },
+  {
+    "id": "V-EM4-003",
+    "severity": "review",
+    "condition": "exclusions_or_recipients_missing",
+    "message": "Deben definirse exclusiones y destinatarios autorizados."
+  },
+  {
+    "id": "V-EM4-004",
+    "severity": "blocker",
+    "condition": "trade_secrets and controls_missing",
+    "message": "Los secretos empresariales requieren medidas razonables de reserva, control de acceso e inventario."
+  },
+  {
+    "id": "V-EM4-005",
+    "severity": "blocker",
+    "condition": "personal_data and roles_missing",
+    "message": "El tratamiento de datos personales exige definir roles, instrucciones, finalidades y ciclo de vida."
+  },
+  {
+    "id": "V-EM4-006",
+    "severity": "blocker",
+    "condition": "sensitive_or_children",
+    "message": "Los datos sensibles, biométricos, de salud o de menores requieren revisión jurídica especializada."
+  },
+  {
+    "id": "V-EM4-007",
+    "severity": "review",
+    "condition": "crossborder in yes_or_unknown",
+    "message": "La transferencia internacional o nube externa requiere análisis de país, proveedor, garantías y roles."
+  },
+  {
+    "id": "V-EM4-008",
+    "severity": "blocker",
+    "condition": "future_assignment_broad",
+    "message": "No procede una cesión general de obras o resultados futuros indeterminados."
+  },
+  {
+    "id": "V-EM4-009",
+    "severity": "blocker",
+    "condition": "moral_rights_waiver",
+    "message": "Los derechos morales son inalienables, imprescriptibles e irrenunciables."
+  },
+  {
+    "id": "V-EM4-010",
+    "severity": "blocker",
+    "condition": "ai_public_upload",
+    "message": "No debe cargarse información confidencial en herramientas públicas o no autorizadas de IA."
+  },
+  {
+    "id": "V-EM4-011",
+    "severity": "review",
+    "condition": "oss_or_preexisting_without_inventory",
+    "message": "Materiales preexistentes, OSS y componentes de terceros deben inventariarse y conservar sus licencias."
+  },
+  {
+    "id": "V-EM4-012",
+    "severity": "review",
+    "condition": "ordinary_confidentiality_over_5",
+    "message": "Una reserva ordinaria superior a cinco años debe justificarse y diferenciarse de los secretos empresariales."
+  },
+  {
+    "id": "V-EM4-013",
+    "severity": "blocker",
+    "condition": "general_noncompete",
+    "message": "El acuerdo de confidencialidad no debe imponer una prohibición general de trabajar después de terminar."
+  },
+  {
+    "id": "V-EM4-014",
+    "severity": "review",
+    "condition": "trade_secrets_without_incident_protocol",
+    "message": "La información crítica requiere protocolo de incidentes, notificación y preservación de evidencia."
+  },
+  {
+    "id": "V-EM4-015",
+    "severity": "review",
+    "condition": "penalty_or_liability_undefined",
+    "message": "Debe precisarse el régimen de responsabilidad, prueba del daño, cláusula penal y remedios."
+  }
+]

@@ -1,0 +1,210 @@
+{
+  "version": "M23.2-2026-07-31",
+  "product_code": "CO-LA-002",
+  "document": "employment_indefinite",
+  "strategy": "additive_maturation",
+  "preserve": [
+    "existing questions, variables and rules that remain legally and functionally useful",
+    "existing annexes and case-specific modules",
+    "RBAC, immutable reviews, version comparison, dual approval and DOCX/PDF generation"
+  ],
+  "final_document_exclusions": [
+    "product price",
+    "risk semaphore",
+    "internal approval status",
+    "QA notes",
+    "hashes",
+    "demo labels",
+    "publication controls",
+    "rules engine explanations"
+  ],
+  "mandatory_blocks": [
+    "parties_and_capacity",
+    "considerations",
+    "object_and_role",
+    "duration",
+    "probation",
+    "place_and_modality",
+    "working_time",
+    "overtime_and_surcharges",
+    "disconnection",
+    "salary",
+    "variable_compensation",
+    "benefits_and_social_security",
+    "subordination_limits",
+    "employer_obligations",
+    "worker_obligations",
+    "prohibitions",
+    "osh",
+    "harassment_and_discrimination",
+    "confidentiality",
+    "intellectual_property",
+    "personal_data_and_monitoring",
+    "technology_and_ai",
+    "assets",
+    "conflicts_of_interest",
+    "performance",
+    "policies",
+    "leaves",
+    "special_protections",
+    "disciplinary_due_process",
+    "termination",
+    "handover",
+    "notices",
+    "integration",
+    "applicable_law"
+  ],
+  "conditional_rules": [
+    {
+      "id": "LAB-M23-001",
+      "when": "employment_need_is_permanent_or_has_no_objective_end",
+      "then": "use_indefinite_term",
+      "risk": "green"
+    },
+    {
+      "id": "LAB-M23-002",
+      "when": "fixed_term_selected",
+      "then": "validate_written_form_and_four_year_maximum_and_renewal_history",
+      "risk": "yellow"
+    },
+    {
+      "id": "LAB-M23-003",
+      "when": "work_or_task_selected",
+      "then": "require_precise_detailed_verifiable_work_and_end_event",
+      "risk": "yellow"
+    },
+    {
+      "id": "LAB-M23-004",
+      "when": "weekly_hours_gt_42_without_special_regime",
+      "then": "block_generation",
+      "risk": "red"
+    },
+    {
+      "id": "LAB-M23-005",
+      "when": "work_after_19_00_or_before_06_00",
+      "then": "activate_night_surcharge",
+      "risk": "yellow"
+    },
+    {
+      "id": "LAB-M23-006",
+      "when": "rest_day_work_date_between_2026_07_01_and_2027_06_30",
+      "then": "apply_90_percent_surcharge_unless_employer_adopts_100_percent",
+      "risk": "yellow"
+    },
+    {
+      "id": "LAB-M23-007",
+      "when": "disciplinary_process_and_employer_has_10_or_more_workers",
+      "then": "apply_full_article_115_procedure_and_minimum_five_day_defence_term",
+      "risk": "red"
+    },
+    {
+      "id": "LAB-M23-008",
+      "when": "micro_or_small_employer_with_fewer_than_10_workers",
+      "then": "at_minimum_hear_worker_before_decision_and_respect_defence_and_due_process",
+      "risk": "yellow"
+    },
+    {
+      "id": "LAB-M23-009",
+      "when": "pregnancy_disability_health_union_protection_or_other_enhanced_stability",
+      "then": "mandatory_human_legal_review_before_high_impact_decision",
+      "risk": "red"
+    },
+    {
+      "id": "LAB-M23-010",
+      "when": "non_salary_label_on_regular_service_payment",
+      "then": "reclassify_or_mandatory_review",
+      "risk": "red"
+    },
+    {
+      "id": "LAB-M23-011",
+      "when": "public_ai_tool_or_unapproved_cloud_will_receive_confidential_or_personal_data",
+      "then": "prohibit_and_warn",
+      "risk": "red"
+    },
+    {
+      "id": "LAB-M23-012",
+      "when": "automatic_salary_deduction_for_loss_damage_or_equipment",
+      "then": "remove_and_require_evidence_authorisation_or_legal_basis_and_due_process",
+      "risk": "red"
+    },
+    {
+      "id": "LAB-M23-013",
+      "when": "general_post_contract_non_compete",
+      "then": "remove_or_escalate",
+      "risk": "red"
+    },
+    {
+      "id": "LAB-M23-014",
+      "when": "employee_resignation_without_30_day_notice",
+      "then": "do_not_apply_contractual_penalty",
+      "risk": "green"
+    }
+  ],
+  "legal_sources": [
+    {
+      "source": "Código Sustantivo del Trabajo consolidado",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Codigo%2F30019323",
+      "verified": "2026-07-31"
+    },
+    {
+      "source": "Ley 2466 de 2025",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F30055086",
+      "verified": "2026-07-31"
+    },
+    {
+      "source": "Ley 2101 de 2021",
+      "official_url": "https://www.suin-juriscol.gov.co/",
+      "verified": "2026-07-31"
+    },
+    {
+      "source": "Ley 2191 de 2022",
+      "official_url": "https://www.suin-juriscol.gov.co/",
+      "verified": "2026-07-31"
+    },
+    {
+      "source": "Ley 1581 de 2012",
+      "official_url": "https://www.suin-juriscol.gov.co/",
+      "verified": "2026-07-31"
+    }
+  ],
+  "template_variables_added_m23_2": [
+    "cargo_proposito",
+    "personas_a_cargo",
+    "riesgos_cargo",
+    "herramientas_principales",
+    "funcion_1",
+    "funcion_2",
+    "funcion_3",
+    "funcion_4",
+    "funcion_5",
+    "funcion_6",
+    "funcion_7",
+    "funcion_8",
+    "resultado_esperado_1",
+    "resultado_esperado_2",
+    "resultado_esperado_3",
+    "resultado_esperado_4",
+    "resultado_esperado_5",
+    "activo_1_tipo",
+    "activo_1_marca_modelo",
+    "activo_1_identificador",
+    "activo_1_estado",
+    "activo_1_observaciones",
+    "activo_2_tipo",
+    "activo_2_marca_modelo",
+    "activo_2_identificador",
+    "activo_2_estado",
+    "activo_2_observaciones",
+    "activo_3_tipo",
+    "activo_3_marca_modelo",
+    "activo_3_identificador",
+    "activo_3_estado",
+    "activo_3_observaciones"
+  ],
+  "template_quality_rules_m23_2": [
+    "no_example_specific_job_content_in_master_template",
+    "no_release_identifier_in_client_document",
+    "no_NA_or_unresolved_sentinel_in_final_document",
+    "all_job_functions_and_assets_must_come_from_validated_answers_or_selected_modules"
+  ]
+}

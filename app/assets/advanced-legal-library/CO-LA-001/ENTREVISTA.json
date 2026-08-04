@@ -1,0 +1,397 @@
+{
+  "version": "3.0-v2.22",
+  "intro": "Reconstruye por separado salarios, cesantías, intereses, prima, vacaciones e indemnización. Los períodos y pagos previos deben confirmarse por concepto para evitar duplicidades.",
+  "sections": [
+    "Identificación",
+    "Vínculo",
+    "Salario",
+    "Períodos pendientes",
+    "Pagos y descuentos",
+    "Controles de riesgo",
+    "Confirmación"
+  ],
+  "questions": [
+    {
+      "id": "worker_name",
+      "label": "Nombre completo del trabajador",
+      "type": "text",
+      "required": true,
+      "section": "Identificación"
+    },
+    {
+      "id": "worker_id",
+      "label": "Identificación del trabajador",
+      "type": "text",
+      "required": true,
+      "section": "Identificación"
+    },
+    {
+      "id": "employer_name",
+      "label": "Nombre o razón social del empleador",
+      "type": "text",
+      "required": true,
+      "section": "Identificación"
+    },
+    {
+      "id": "employer_id",
+      "label": "NIT o identificación del empleador",
+      "type": "text",
+      "required": false,
+      "section": "Identificación"
+    },
+    {
+      "id": "claim_email",
+      "label": "Correo para recibir el borrador y la respuesta",
+      "type": "email",
+      "required": true,
+      "section": "Identificación",
+      "format": "email"
+    },
+    {
+      "id": "private_relation",
+      "label": "¿La relación corresponde a un empleador privado en Colombia?",
+      "type": "select",
+      "required": true,
+      "section": "Identificación",
+      "options": [
+        "Sí",
+        "No",
+        "No sé"
+      ]
+    },
+    {
+      "id": "start_date",
+      "label": "Fecha de ingreso",
+      "type": "date",
+      "required": true,
+      "section": "Vínculo"
+    },
+    {
+      "id": "end_date",
+      "label": "Fecha de terminación o fecha de corte",
+      "type": "date",
+      "required": true,
+      "section": "Vínculo"
+    },
+    {
+      "id": "contract_type",
+      "label": "Modalidad contractual",
+      "type": "select",
+      "required": true,
+      "section": "Vínculo",
+      "options": [
+        "Indefinido",
+        "Término fijo",
+        "Obra o labor",
+        "Verbal / no sé"
+      ]
+    },
+    {
+      "id": "termination",
+      "label": "Situación o causa informada al corte",
+      "type": "select",
+      "required": true,
+      "section": "Vínculo",
+      "options": [
+        "Renuncia",
+        "Mutuo acuerdo",
+        "Sin justa causa",
+        "Justa causa",
+        "Fin de término/obra",
+        "Sigue vigente"
+      ]
+    },
+    {
+      "id": "fixed_term_end",
+      "label": "Fecha final pactada del contrato",
+      "type": "date",
+      "required": true,
+      "section": "Vínculo",
+      "show_if": {
+        "field": "contract_type",
+        "equals": "Término fijo"
+      }
+    },
+    {
+      "id": "work_remaining_days",
+      "label": "Días estimados que faltaban para terminar la obra o labor",
+      "type": "number",
+      "required": true,
+      "section": "Vínculo",
+      "show_if": {
+        "field": "contract_type",
+        "equals": "Obra o labor"
+      },
+      "min": 0,
+      "max": 3650
+    },
+    {
+      "id": "monthly_salary",
+      "label": "Salario básico mensual fijo (COP)",
+      "type": "number",
+      "required": true,
+      "section": "Salario",
+      "min": 1
+    },
+    {
+      "id": "integral_salary",
+      "label": "¿El salario fue pactado como integral?",
+      "type": "select",
+      "required": true,
+      "section": "Salario",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ]
+    },
+    {
+      "id": "variable_salary",
+      "label": "¿Existieron comisiones, recargos, horas extra u otros pagos salariales variables?",
+      "type": "select",
+      "required": true,
+      "section": "Salario",
+      "options": [
+        "No",
+        "Sí"
+      ]
+    },
+    {
+      "id": "variable_salary_supports",
+      "label": "¿Existen soportes suficientes para reconstruir el promedio variable?",
+      "type": "select",
+      "required": true,
+      "section": "Salario",
+      "options": [
+        "Sí",
+        "No"
+      ],
+      "show_if": {
+        "field": "variable_salary",
+        "equals": "Sí"
+      }
+    },
+    {
+      "id": "variable_average",
+      "label": "Promedio mensual variable confirmado para el período aplicable (COP)",
+      "type": "number",
+      "required": true,
+      "section": "Salario",
+      "show_if": {
+        "field": "variable_salary",
+        "equals": "Sí"
+      },
+      "min": 0
+    },
+    {
+      "id": "transport_aid",
+      "label": "¿Tenía derecho y recibía auxilio de transporte?",
+      "type": "select",
+      "required": true,
+      "section": "Salario",
+      "options": [
+        "Sí",
+        "No",
+        "No sé"
+      ]
+    },
+    {
+      "id": "salary_due_days",
+      "label": "Días de salario ordinario pendientes al corte",
+      "type": "number",
+      "required": true,
+      "section": "Salario",
+      "min": 0,
+      "max": 360
+    },
+    {
+      "id": "cesantias_start_date",
+      "label": "Fecha desde la cual están pendientes las cesantías",
+      "type": "date",
+      "required": true,
+      "section": "Períodos pendientes"
+    },
+    {
+      "id": "prima_start_date",
+      "label": "Fecha desde la cual está pendiente la prima de servicios",
+      "type": "date",
+      "required": true,
+      "section": "Períodos pendientes"
+    },
+    {
+      "id": "vacation_pending_days",
+      "label": "Días de vacaciones causados y pendientes de disfrute o compensación",
+      "type": "number",
+      "required": true,
+      "section": "Períodos pendientes",
+      "min": 0,
+      "max": 180
+    },
+    {
+      "id": "periods_confirmed",
+      "label": "¿Los períodos pendientes fueron contrastados con desprendibles, fondo de cesantías o soportes?",
+      "type": "select",
+      "required": true,
+      "section": "Períodos pendientes",
+      "options": [
+        "Sí",
+        "Parcial",
+        "No"
+      ]
+    },
+    {
+      "id": "prior_salary_paid",
+      "label": "Salario ya pagado correspondiente a los días informados (COP)",
+      "type": "number",
+      "required": false,
+      "section": "Pagos y descuentos",
+      "min": 0
+    },
+    {
+      "id": "prior_cesantias_paid",
+      "label": "Cesantías ya pagadas o consignadas del período informado (COP)",
+      "type": "number",
+      "required": false,
+      "section": "Pagos y descuentos",
+      "min": 0
+    },
+    {
+      "id": "prior_interest_paid",
+      "label": "Intereses a las cesantías ya pagados del período informado (COP)",
+      "type": "number",
+      "required": false,
+      "section": "Pagos y descuentos",
+      "min": 0
+    },
+    {
+      "id": "prior_prima_paid",
+      "label": "Prima ya pagada del período informado (COP)",
+      "type": "number",
+      "required": false,
+      "section": "Pagos y descuentos",
+      "min": 0
+    },
+    {
+      "id": "prior_vacation_paid",
+      "label": "Vacaciones ya pagadas o compensadas de los días informados (COP)",
+      "type": "number",
+      "required": false,
+      "section": "Pagos y descuentos",
+      "min": 0
+    },
+    {
+      "id": "prior_indemnity_paid",
+      "label": "Indemnización por terminación ya pagada (COP)",
+      "type": "number",
+      "required": false,
+      "section": "Pagos y descuentos",
+      "min": 0
+    },
+    {
+      "id": "disputed_deductions",
+      "label": "¿El empleador aplicó o anuncia descuentos discutidos por daños, equipos, préstamos u otros conceptos?",
+      "type": "select",
+      "required": true,
+      "section": "Pagos y descuentos",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ]
+    },
+    {
+      "id": "salary_supports",
+      "label": "¿Cuenta con contrato, desprendibles, extractos o comprobantes de pago?",
+      "type": "select",
+      "required": true,
+      "section": "Controles de riesgo",
+      "options": [
+        "Sí",
+        "Parcial",
+        "No"
+      ]
+    },
+    {
+      "id": "special_protection",
+      "label": "¿Existe embarazo, discapacidad, situación de salud, fuero u otra estabilidad reforzada?",
+      "type": "select",
+      "required": true,
+      "section": "Controles de riesgo",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ]
+    },
+    {
+      "id": "public_sector",
+      "label": "¿El empleador o vínculo pertenece al sector público?",
+      "type": "select",
+      "required": true,
+      "section": "Controles de riesgo",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ]
+    },
+    {
+      "id": "active_litigation",
+      "label": "¿Existe demanda, conciliación, transacción o proceso activo sobre estos conceptos?",
+      "type": "select",
+      "required": true,
+      "section": "Controles de riesgo",
+      "options": [
+        "No",
+        "Sí"
+      ]
+    },
+    {
+      "id": "contract_reality",
+      "label": "¿La discusión principal consiste en demostrar que una prestación de servicios fue realmente laboral?",
+      "type": "select",
+      "required": true,
+      "section": "Controles de riesgo",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ]
+    },
+    {
+      "id": "collective_regime",
+      "label": "¿Existe convención colectiva, pacto, laudo, sindicato o régimen extralegal aplicable?",
+      "type": "select",
+      "required": true,
+      "section": "Controles de riesgo",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ]
+    },
+    {
+      "id": "data_confirmed",
+      "label": "¿Confirma que los datos corresponden a hechos y soportes verificables?",
+      "type": "select",
+      "required": true,
+      "section": "Confirmación",
+      "options": [
+        "Sí",
+        "No"
+      ]
+    },
+    {
+      "id": "generate_settlement",
+      "label": "¿Desea incluir una propuesta de acuerdo de pago y cierre?",
+      "type": "select",
+      "required": true,
+      "section": "Confirmación",
+      "options": [
+        "Sí",
+        "No"
+      ]
+    }
+  ],
+  "confirmation_required": true
+}

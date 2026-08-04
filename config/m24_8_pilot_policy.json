@@ -1,0 +1,36 @@
+{
+  "schema": "legalai_m24_8_pilot_policy_v1",
+  "policy_version": "M24.8-PILOT-POLICY-1",
+  "consent_version": "2026-08-M24.8-v1",
+  "scope": "internal_controlled_pilot_only",
+  "pilot_products": ["CO-LA-002", "CO-EM-003", "CO-AR-001", "CO-CD-003"],
+  "notice": "El piloto es interno, controlado y no productivo. No procesa pagos reales, no publica M23.2 y no sustituye asesoría, representación ni atención urgente.",
+  "event_types": [
+    "intake_completed", "offer_viewed", "wizard_started", "wizard_completed",
+    "checkout_confirmed", "case_generated", "review_submitted", "qa_completed",
+    "delivered", "follow_up_completed", "abandoned"
+  ],
+  "manual_validations": [
+    {"id": "macos_desktop", "label": "macOS · escritorio"},
+    {"id": "windows_desktop", "label": "Windows · escritorio"},
+    {"id": "android_mobile", "label": "Android · móvil"},
+    {"id": "ios_mobile", "label": "iOS · móvil"},
+    {"id": "keyboard_only", "label": "Navegación solo con teclado"},
+    {"id": "screen_reader", "label": "Tecnología de asistencia / lector de pantalla"},
+    {"id": "downloads_docx_pdf", "label": "Descarga y apertura de DOCX y PDF"}
+  ],
+  "gates": {
+    "minimum_active_products": 1,
+    "minimum_consented_participants": 4,
+    "minimum_delivered_cases": 4,
+    "minimum_feedback_responses": 4,
+    "minimum_average_clarity": 4.0,
+    "minimum_average_ease": 4.0,
+    "maximum_open_high_or_critical_incidents": 0,
+    "all_manual_validations_must_pass": true
+  },
+  "confirmations": {
+    "activate": "ACTIVAR PILOTO OPERATIVO",
+    "freeze": "CONGELAR PILOTO Y PRESERVAR DATOS"
+  }
+}

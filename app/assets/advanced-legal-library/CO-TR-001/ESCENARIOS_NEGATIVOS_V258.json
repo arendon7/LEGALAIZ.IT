@@ -1,0 +1,47 @@
+{
+  "version": "2.58",
+  "base_case": {
+    "authority": {"name": "Medellín"},
+    "infraction": {"date": "2025-01-10", "comparendo_number": "SAST-258-NEG"},
+    "payment": {"status": "unpaid"},
+    "procedure": {"stage": "none", "imminent_deadline": false},
+    "security": {"possible_fraud": false},
+    "consents": {"preliminary": true, "data_processing": false}
+  },
+  "scenarios": [
+    {
+      "id": "V258-NEG-01",
+      "name": "Falta consentimiento preliminar",
+      "mode": "precheck",
+      "overrides": {"consents.preliminary": false},
+      "expected": {"blocked": false, "status": "incomplete", "missing": "consents.preliminary", "match_count": 0}
+    },
+    {
+      "id": "V258-NEG-02",
+      "name": "Registro sin identidad",
+      "mode": "registration",
+      "expected": {"blocked": false, "status": "incomplete", "missing": "identity.full_name"}
+    },
+    {
+      "id": "V258-NEG-03",
+      "name": "Cobro coactivo",
+      "mode": "precheck",
+      "overrides": {"procedure.stage": "collection"},
+      "expected": {"blocked": true, "status": "blocked", "required_findings": ["TR1-008"], "documents": ["sast_professional_review_request"]}
+    },
+    {
+      "id": "V258-NEG-04",
+      "name": "Término urgente",
+      "mode": "precheck",
+      "overrides": {"procedure.imminent_deadline": true},
+      "expected": {"blocked": true, "status": "blocked", "required_findings": ["TR1-009"]}
+    },
+    {
+      "id": "V258-NEG-05",
+      "name": "Posible fraude",
+      "mode": "precheck",
+      "overrides": {"security.possible_fraud": true},
+      "expected": {"blocked": true, "status": "blocked", "required_findings": ["TR1-010"]}
+    }
+  ]
+}

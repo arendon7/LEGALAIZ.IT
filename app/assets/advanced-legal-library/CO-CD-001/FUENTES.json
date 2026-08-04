@@ -1,0 +1,142 @@
+[
+  {
+    "id": "CD1-S1",
+    "title": "Constitución Política de Colombia — artículos 15, 20 y 23",
+    "authority": "Asamblea Nacional Constituyente / Secretaría del Senado",
+    "type": "constitutional",
+    "url": "https://www.secretariasenado.gov.co/constitucion-politica",
+    "status": "vigente",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificada en fuente oficial; controlar reformas y jurisprudencia aplicable."
+  },
+  {
+    "id": "CD1-S2",
+    "title": "Ley Estatutaria 1266 de 2008 — régimen de hábeas data financiero",
+    "authority": "Congreso de la República",
+    "type": "statute",
+    "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1266_2008.html",
+    "status": "vigente con modificaciones",
+    "last_verified": "2026-07-20",
+    "verification_status": "Texto actualizado consultado en Secretaría del Senado."
+  },
+  {
+    "id": "CD1-S3",
+    "title": "Ley Estatutaria 2157 de 2021 — modificación de la Ley 1266",
+    "authority": "Congreso de la República",
+    "type": "statute",
+    "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2157_2021.html",
+    "status": "vigente",
+    "last_verified": "2026-07-20",
+    "verification_status": "Texto oficial actualizado consultado."
+  },
+  {
+    "id": "CD1-S4",
+    "title": "Sentencia C-1011 de 2008 — revisión constitucional de la Ley 1266",
+    "authority": "Corte Constitucional",
+    "type": "case_law",
+    "url": "https://www.corteconstitucional.gov.co/relatoria/2008/C-1011-08.htm",
+    "status": "precedente vigente",
+    "last_verified": "2026-07-20",
+    "verification_status": "Control previo y condicionamientos del régimen financiero."
+  },
+  {
+    "id": "CD1-S5",
+    "title": "Sentencia C-282 de 2021 — revisión constitucional de la reforma",
+    "authority": "Corte Constitucional",
+    "type": "case_law",
+    "url": "https://www.secretariasenado.gov.co/senado/basedoc/c-282_2021.html",
+    "status": "precedente vigente",
+    "last_verified": "2026-07-20",
+    "verification_status": "Reglas de permanencia, caducidad y fortalecimiento del hábeas data."
+  },
+  {
+    "id": "CD1-S6",
+    "title": "Decreto 1074 de 2015 — Decreto Único del sector Comercio, Industria y Turismo",
+    "authority": "Presidencia de la República / Función Pública",
+    "type": "decree",
+    "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=76608",
+    "status": "vigente con modificaciones",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificar sección reglamentaria aplicable a comunicación previa y protección de datos."
+  },
+  {
+    "id": "CD1-S7",
+    "title": "Ley 1581 de 2012 — régimen general de protección de datos personales",
+    "authority": "Congreso de la República",
+    "type": "statute",
+    "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html",
+    "status": "vigente",
+    "last_verified": "2026-07-20",
+    "verification_status": "Aplicación complementaria cuando el supuesto no queda cubierto exclusivamente por Ley 1266."
+  },
+  {
+    "id": "CD1-S8",
+    "title": "Ley 527 de 1999 — mensajes de datos y comercio electrónico",
+    "authority": "Congreso de la República",
+    "type": "statute",
+    "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0527_1999.html",
+    "status": "vigente",
+    "last_verified": "2026-07-20",
+    "verification_status": "Relevante para comunicaciones previas y radicaciones electrónicas verificables."
+  },
+  {
+    "id": "CD1-S9",
+    "title": "Concepto SIC 22-228073 — soporte de la obligación, comunicación previa y reporte máximo de 18 meses",
+    "authority": "Superintendencia de Industria y Comercio",
+    "type": "official_concept",
+    "url": "https://sedeelectronica.sic.gov.co/publicaciones/boletin-juridico/concepto/el-reporte-negativo-de-informacion-financiera-debe-ser-sustentando-con-la-obligacion-respectiva",
+    "status": "criterio administrativo",
+    "last_verified": "2026-07-20",
+    "verification_status": "Criterio oficial no equivalente a ley; usar como orientación administrativa."
+  },
+  {
+    "id": "CD1-S10",
+    "title": "Resolución SIC 2828 de 2017 — comunicación previa al reporte negativo",
+    "authority": "Superintendencia de Industria y Comercio",
+    "type": "administrative_decision",
+    "url": "https://www.sic.gov.co/boletin-juridico-abril-2017/violacion-del-deber-de-comunicacion-previa-al-reporte-negativo",
+    "status": "decisión administrativa",
+    "last_verified": "2026-07-20",
+    "verification_status": "Aplicar con análisis del supuesto concreto y evolución normativa posterior."
+  },
+  {
+    "id": "CD1-S11",
+    "title": "Decisiones de apelación SIC 2020 — comunicación previa y respuesta de fondo",
+    "authority": "Superintendencia de Industria y Comercio",
+    "type": "administrative_decisions",
+    "url": "https://www.sic.gov.co/decisiones-de-apelaci%C3%B3n-2020",
+    "status": "criterios administrativos",
+    "last_verified": "2026-07-20",
+    "verification_status": "Apoyo para deber de leyenda, comunicación y respuesta integral."
+  },
+  {
+    "id": "CD1-S12",
+    "title": "Sentencia C-413 de 2025 — control previo del régimen de suplantación de identidad",
+    "authority": "Corte Constitucional",
+    "type": "case_law",
+    "url": "https://www.corteconstitucional.gov.co/relatoria/2025/C-413-25.htm",
+    "status": "precedente de control previo vigente",
+    "last_verified": "2026-07-20",
+    "verification_status": "Revisión constitucional del proyecto que culminó en la Ley 2573 de 2026; aplicar sus condicionamientos sobre carga dinámica, prueba, autoridades y alcance."
+  },
+  {
+    "id": "CD1-S13",
+    "title": "Ley Estatutaria 2573 de 2026 — suplantación, cobros y reportes negativos",
+    "authority": "Congreso de la República / SUIN-Juriscol",
+    "type": "statute",
+    "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30056451",
+    "status": "promulgada; vigencia general diferida al 20 de noviembre de 2026",
+    "last_verified": "2026-07-20",
+    "verification_status": "A la fecha de corte, solo los parágrafos 1 y 2 del artículo 5 rigen desde la promulgación; el resto entra en vigencia general el 20 de noviembre de 2026. No anticipar obligaciones futuras como vigentes."
+  },
+  {
+    "id": "CD1-S14",
+    "title": "Decreto 159 de 2026 — SMLMV transitorio 2026 y umbral del 15 %",
+    "authority": "Gobierno nacional / SUIN-Juriscol",
+    "type": "economic_parameter",
+    "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30056106",
+    "status": "vigente transitoriamente hasta la sentencia que ponga fin al proceso de nulidad",
+    "last_verified": "2026-07-20",
+    "verification_status": "Fija transitoriamente el SMLMV 2026 en COP 1.750.905 desde el 19 de febrero de 2026; el valor y su vigencia deben revalidarse al momento de uso por el trámite judicial en curso."
+  }
+]

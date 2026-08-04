@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "migration_id": "M24.1-M23.2-PREINTEGRATION-20260801",
+  "product_code": "CO-LA-001",
+  "revision_id": "M23.2-0946257d2885",
+  "source_revision_label": "M23.2",
+  "status": "candidate_blocked_pending_legal_and_qa_approval",
+  "immutable": true,
+  "asset_hashes": {
+    "CO-LA-001_Modelo_Maestro_Reclamacion_Liquidacion_Laboral_M23.docx": "0946257d288500303babda0f4b7dfea30c72824a5e28b26a63ad5d248f264a28",
+    "CO-LA-001_Modelo_Maestro_Reclamacion_Liquidacion_Laboral_M23.pdf": "de3e6fccbb9505cf751d459ba33be311ef25cdc44b9f3cf98e1c2db54e61baba",
+    "CO-LA-001_M23_Bloques_Reglas_y_Fuentes.json": "be3012476b50787a3f3042ef97fb552d288d77b88680ef8fa3b77603d972dda3",
+    "CO-LA-001_Ejemplo_Final_Reclamacion_Liquidacion_M23.docx": "801257ffbc380f2106586c6f2d59469238dd6f458831a7b5b8ca1ddf92f807f0",
+    "CO-LA-001_Ejemplo_Final_Reclamacion_Liquidacion_M23.pdf": "aedd63a608e46fcb43c9b6ea3c73b11c1461e7a86491639e1b61ce5c249bb5fd"
+  },
+  "approvals": {
+    "legal": {
+      "required": true,
+      "approved": false,
+      "actor": null
+    },
+    "qa": {
+      "required": true,
+      "approved": false,
+      "actor": null
+    },
+    "must_be_distinct_users": true
+  },
+  "questionnaire_binding": {
+    "status": "pending_runtime_resolution",
+    "expected_legacy_ref": "M22://questionnaires/CO-LA-001",
+    "prohibition": "do_not_create_duplicate_questionnaire_before_runtime_audit"
+  },
+  "ruleset_binding": {
+    "status": "candidate_from_m23_2",
+    "source_file": "CO-LA-001/CO-LA-001_M23_Bloques_Reglas_y_Fuentes.json",
+    "rule_count": 8,
+    "rule_ids": [
+      "M23-LA1-001",
+      "M23-LA1-002",
+      "M23-LA1-003",
+      "M23-LA1-004",
+      "M23-LA1-005",
+      "M23-LA1-006",
+      "M23-LA1-007",
+      "M23-LA1-008"
+    ]
+  },
+  "created_at": "2026-08-01T05:58:46.976126+00:00",
+  "publication_change": "none"
+}

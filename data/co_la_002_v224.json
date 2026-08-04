@@ -1,0 +1,43 @@
+{
+  "version": "2.24",
+  "product_code": "CO-LA-002",
+  "title": "Maduración integral del contrato de trabajo personalizado",
+  "scope": "Contrato laboral privado colombiano con selección de modalidad, controles legales y anexos condicionales.",
+  "documents": [
+    {
+      "kind": "employment_contract",
+      "title": "Contrato individual de trabajo completo"
+    },
+    {
+      "kind": "employment_functions_annex",
+      "title": "Anexo de perfil del cargo y funciones"
+    },
+    {
+      "kind": "employment_compensation_annex",
+      "title": "Anexo de compensación variable y beneficios"
+    },
+    {
+      "kind": "employment_confidentiality_annex",
+      "title": "Anexo de confidencialidad, datos y propiedad intelectual"
+    },
+    {
+      "kind": "employment_equipment_annex",
+      "title": "Acta de equipos, activos y credenciales"
+    },
+    {
+      "kind": "employment_remote_annex",
+      "title": "Anexo de modalidad no presencial"
+    },
+    {
+      "kind": "employment_onboarding_checklist",
+      "title": "Lista de alistamiento, afiliaciones y cumplimiento"
+    }
+  ],
+  "legal_changes": [
+    "Ley 2466 de 2025: término fijo máximo acumulado de cuatro años y obra/labor precisa.",
+    "Jornada máxima de 42 horas y trabajo nocturno desde las 7:00 p. m.",
+    "Validación de salario mínimo ordinario e integral.",
+    "La protección especial activa inclusión y ajustes; no bloquea por sí sola la contratación."
+  ],
+  "release_status": "candidato interno madurado"
+}

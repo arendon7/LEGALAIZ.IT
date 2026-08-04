@@ -1,0 +1,57 @@
+{
+  "version": "2.50",
+  "product_id": "CO-AR-001",
+  "scenarios": [
+    {
+      "id": "AR-C01",
+      "focus": [
+        "contrato base",
+        "identificación",
+        "canon",
+        "firmas"
+      ]
+    },
+    {
+      "id": "AR-C02",
+      "focus": [
+        "propiedad horizontal",
+        "servicios",
+        "administración",
+        "tablas"
+      ]
+    },
+    {
+      "id": "AR-C03",
+      "focus": [
+        "amoblado",
+        "inventario",
+        "mascota"
+      ]
+    },
+    {
+      "id": "AR-C04",
+      "focus": [
+        "habitación",
+        "zonas compartidas",
+        "ocupación"
+      ]
+    },
+    {
+      "id": "AR-C07",
+      "focus": [
+        "codeudor",
+        "garantía",
+        "firmas"
+      ]
+    },
+    {
+      "id": "AR-C12",
+      "focus": [
+        "paquete integral",
+        "trece documentos",
+        "tablas extensas",
+        "terminación y datos"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "version": "2.58",
+  "base_case": {
+    "authority": {"name": "Medellín"},
+    "infraction": {"date": "2025-01-10", "comparendo_number": "SAST-258-001"},
+    "device": {"location": "Calle 10 con Carrera 20", "id": "CAM-001"},
+    "payment": {"status": "unpaid"},
+    "procedure": {"stage": "none", "imminent_deadline": false},
+    "security": {"possible_fraud": false},
+    "consents": {"preliminary": true, "data_processing": false}
+  },
+  "scenarios": [
+    {
+      "id": "V258-CAN-01",
+      "name": "Coincidencia preliminar simple",
+      "mode": "precheck",
+      "expected": {"blocked": false, "status": "ready_with_review", "match_count": 1, "documents": ["sast_preliminary_report", "sast_source_trace", "sast_professional_review_request"]}
+    },
+    {
+      "id": "V258-CAN-02",
+      "name": "Sin coincidencia",
+      "mode": "precheck",
+      "overrides": {"infraction.date": "2023-01-01"},
+      "expected": {"blocked": false, "status": "ready", "match_count": 0, "documents": ["sast_preliminary_report", "sast_source_trace"]}
+    },
+    {
+      "id": "V258-CAN-03",
+      "name": "Coincidencia doble preservada",
+      "mode": "precheck",
+      "overrides": {"authority.name": "Valle del Cauca", "infraction.date": "2026-02-11", "device.location": "Punto por verificar"},
+      "expected": {"blocked": false, "status": "ready_with_review", "match_count": 2, "required_findings": ["TR1-002"], "documents": ["sast_professional_review_request"]}
+    },
+    {
+      "id": "V258-CAN-04",
+      "name": "Inscripción verificada",
+      "mode": "registration",
+      "overrides": {
+        "identity.full_name": "Ana Prueba",
+        "identity.email": "ana@example.com",
+        "identity.document_type": "C.C.",
+        "identity.document_number": "1000000001",
+        "identity.city": "Medellín",
+        "consents.data_processing": true
+      },
+      "expected": {"blocked": false, "status": "ready_with_review", "match_count": 1, "documents": ["sast_verified_case_file"]}
+    },
+    {
+      "id": "V258-CAN-05",
+      "name": "Pago previo con revisión",
+      "mode": "precheck",
+      "overrides": {"payment.status": "paid"},
+      "expected": {"blocked": false, "status": "ready_with_review", "required_findings": ["TR1-007"], "documents": ["sast_professional_review_request"]}
+    }
+  ]
+}

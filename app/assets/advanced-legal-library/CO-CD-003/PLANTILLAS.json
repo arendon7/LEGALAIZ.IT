@@ -1,0 +1,4518 @@
+[
+  {
+    "template_id": "TPL-CO-CD-003-CONSUMER-MECHANISM-DIAGNOSIS",
+    "product_code": "CO-CD-003",
+    "kind": "consumer_mechanism_diagnosis",
+    "title": "Diagnóstico jurídico del mecanismo de consumo",
+    "subtitle": "Modelo madurado v2.33 · protección al consumidor trazable",
+    "filename_suffix": "diagnostico_mecanismo_consumo",
+    "version_label": "2.33-factory",
+    "canonical_status": "Maduración integral interna; aprobación jurídica y QA pendientes",
+    "source_package": "LegalAIZit_Paquete_08_Garantia_Retracto_Reversion_Consolidado_v233",
+    "variables": [
+      {
+        "id": "consumer_name",
+        "label": "Nombre completo del consumidor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "consumer_id",
+        "label": "Identificación del consumidor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representative_name",
+        "label": "Nombre del representante o autorizado",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de representación o legitimación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "consumer_relationship",
+        "label": "¿Existe una relación de consumo en Colombia?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "provider_name",
+        "label": "Productor, proveedor o expendedor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "provider_country",
+        "label": "Domicilio principal conocido del proveedor",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "product_type",
+        "label": "Tipo de objeto adquirido",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "product_description",
+        "label": "Descripción precisa del bien o servicio",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "order_or_contract",
+        "label": "Número de pedido, factura o contrato",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "purchase_value",
+        "label": "Valor total pagado o controvertido",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "purchase_date",
+        "label": "Fecha de compra o celebración del contrato",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "purchase_channel",
+        "label": "Canal de compra",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "delivery_date",
+        "label": "Fecha de entrega, inicio del servicio o fecha esperada",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "request_mode",
+        "label": "Mecanismo principal que desea ejercer",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "problem_type",
+        "label": "Problema principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_goal",
+        "label": "Resultado principal solicitado",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "facts_detail",
+        "label": "Relato de hechos confirmados",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "defect_detail",
+        "label": "Defecto, incumplimiento o diferencia concreta",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "repeated_failure",
+        "label": "¿La falla se repitió después de una reparación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "warranty_announced",
+        "label": "Término de garantía anunciado",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "withdrawal_exception",
+        "label": "¿El bien o servicio encaja en una excepción legal al retracto?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "service_started_with_consent",
+        "label": "En servicios, ¿la ejecución comenzó con acuerdo del consumidor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "electronic_payment",
+        "label": "¿El pago se realizó con instrumento electrónico?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "payment_instrument",
+        "label": "Instrumento de pago",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "instrument_holder_same",
+        "label": "¿El consumidor es titular del instrumento de pago?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "transaction_reference",
+        "label": "Referencia parcial de la transacción",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "transaction_date",
+        "label": "Fecha de la transacción",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "reversal_cause",
+        "label": "Causal alegada para reversión",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "reversal_event_date",
+        "label": "Fecha en que conoció la causal o ocurrió el incumplimiento",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "reversal_amount",
+        "label": "Valor cuya reversión solicita",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "partial_reversal",
+        "label": "¿La reversión solicitada es parcial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim",
+        "label": "¿Presentó reclamación directa al proveedor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim_date",
+        "label": "Fecha de reclamación directa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_claim_radicado",
+        "label": "Número o constancia de radicación",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "provider_complaint_for_reversal",
+        "label": "¿La queja de reversión fue presentada al proveedor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issuer_notification",
+        "label": "¿Se notificó al emisor del instrumento de pago?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issuer_notification_date",
+        "label": "Fecha de notificación al emisor",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "withdrawal_exercised_date",
+        "label": "Fecha en que ejerció el retracto",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "return_status",
+        "label": "Estado de devolución o puesta a disposición del bien",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta del proveedor",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de respuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "recurring_debit_revoked_date",
+        "label": "Fecha de revocación del débito periódico",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "latest_periodic_charge_date",
+        "label": "Fecha del último cargo periódico controvertido",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "evidence_status",
+        "label": "Estado de factura, comprobante, comunicaciones y evidencia",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "advertising_support",
+        "label": "¿Conserva publicidad, oferta o descripción del producto?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "injury_or_safety",
+        "label": "¿Hubo lesión, afectación a la salud o riesgo de seguridad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "regulated_sector",
+        "label": "¿Existe régimen sectorial especial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "complex_fraud",
+        "label": "¿Existe fraude complejo, múltiples transacciones o suplantación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "active_process",
+        "label": "¿Existe demanda, investigación o trámite activo por los mismos hechos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "high_value_or_damage",
+        "label": "¿La cuantía o el daño exige estrategia individual?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos están minimizados y sin credenciales o números completos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Los datos y fechas esenciales están confirmados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "CD3-S1",
+      "CD3-S2",
+      "CD3-S3",
+      "CD3-S4",
+      "CD3-S5",
+      "CD3-S6",
+      "CD3-S7",
+      "CD3-S8",
+      "CD3-S9",
+      "CD3-S10",
+      "CD3-S11",
+      "CD3-S12",
+      "CD3-S13",
+      "CD3-S14"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-MECHANISM-DIAGNOSIS-B01",
+        "type": "section",
+        "heading": "Identificación y operación",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-MECHANISM-DIAGNOSIS-B02",
+        "type": "section",
+        "heading": "Clasificación del mecanismo",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-MECHANISM-DIAGNOSIS-B03",
+        "type": "section",
+        "heading": "Elegibilidad preliminar",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-MECHANISM-DIAGNOSIS-B04",
+        "type": "section",
+        "heading": "Cronología y términos",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-MECHANISM-DIAGNOSIS-B05",
+        "type": "section",
+        "heading": "Pretensiones compatibles",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-MECHANISM-DIAGNOSIS-B06",
+        "type": "section",
+        "heading": "Riesgos y exclusiones",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-MECHANISM-DIAGNOSIS-B07",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-CD-003-WARRANTY-CLAIM",
+    "product_code": "CO-CD-003",
+    "kind": "warranty_claim",
+    "title": "Reclamación directa de garantía legal",
+    "subtitle": "Modelo madurado v2.33 · protección al consumidor trazable",
+    "filename_suffix": "reclamacion_garantia_legal",
+    "version_label": "2.33-factory",
+    "canonical_status": "Maduración integral interna; aprobación jurídica y QA pendientes",
+    "source_package": "LegalAIZit_Paquete_08_Garantia_Retracto_Reversion_Consolidado_v233",
+    "variables": [
+      {
+        "id": "consumer_name",
+        "label": "Nombre completo del consumidor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "consumer_id",
+        "label": "Identificación del consumidor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representative_name",
+        "label": "Nombre del representante o autorizado",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de representación o legitimación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "consumer_relationship",
+        "label": "¿Existe una relación de consumo en Colombia?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "provider_name",
+        "label": "Productor, proveedor o expendedor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "provider_country",
+        "label": "Domicilio principal conocido del proveedor",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "product_type",
+        "label": "Tipo de objeto adquirido",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "product_description",
+        "label": "Descripción precisa del bien o servicio",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "order_or_contract",
+        "label": "Número de pedido, factura o contrato",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "purchase_value",
+        "label": "Valor total pagado o controvertido",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "purchase_date",
+        "label": "Fecha de compra o celebración del contrato",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "purchase_channel",
+        "label": "Canal de compra",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "delivery_date",
+        "label": "Fecha de entrega, inicio del servicio o fecha esperada",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "request_mode",
+        "label": "Mecanismo principal que desea ejercer",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "problem_type",
+        "label": "Problema principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_goal",
+        "label": "Resultado principal solicitado",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "facts_detail",
+        "label": "Relato de hechos confirmados",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "defect_detail",
+        "label": "Defecto, incumplimiento o diferencia concreta",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "repeated_failure",
+        "label": "¿La falla se repitió después de una reparación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "warranty_announced",
+        "label": "Término de garantía anunciado",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "withdrawal_exception",
+        "label": "¿El bien o servicio encaja en una excepción legal al retracto?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "service_started_with_consent",
+        "label": "En servicios, ¿la ejecución comenzó con acuerdo del consumidor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "electronic_payment",
+        "label": "¿El pago se realizó con instrumento electrónico?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "payment_instrument",
+        "label": "Instrumento de pago",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "instrument_holder_same",
+        "label": "¿El consumidor es titular del instrumento de pago?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "transaction_reference",
+        "label": "Referencia parcial de la transacción",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "transaction_date",
+        "label": "Fecha de la transacción",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "reversal_cause",
+        "label": "Causal alegada para reversión",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "reversal_event_date",
+        "label": "Fecha en que conoció la causal o ocurrió el incumplimiento",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "reversal_amount",
+        "label": "Valor cuya reversión solicita",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "partial_reversal",
+        "label": "¿La reversión solicitada es parcial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim",
+        "label": "¿Presentó reclamación directa al proveedor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim_date",
+        "label": "Fecha de reclamación directa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_claim_radicado",
+        "label": "Número o constancia de radicación",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "provider_complaint_for_reversal",
+        "label": "¿La queja de reversión fue presentada al proveedor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issuer_notification",
+        "label": "¿Se notificó al emisor del instrumento de pago?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issuer_notification_date",
+        "label": "Fecha de notificación al emisor",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "withdrawal_exercised_date",
+        "label": "Fecha en que ejerció el retracto",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "return_status",
+        "label": "Estado de devolución o puesta a disposición del bien",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta del proveedor",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de respuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "recurring_debit_revoked_date",
+        "label": "Fecha de revocación del débito periódico",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "latest_periodic_charge_date",
+        "label": "Fecha del último cargo periódico controvertido",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "evidence_status",
+        "label": "Estado de factura, comprobante, comunicaciones y evidencia",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "advertising_support",
+        "label": "¿Conserva publicidad, oferta o descripción del producto?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "injury_or_safety",
+        "label": "¿Hubo lesión, afectación a la salud o riesgo de seguridad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "regulated_sector",
+        "label": "¿Existe régimen sectorial especial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "complex_fraud",
+        "label": "¿Existe fraude complejo, múltiples transacciones o suplantación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "active_process",
+        "label": "¿Existe demanda, investigación o trámite activo por los mismos hechos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "high_value_or_damage",
+        "label": "¿La cuantía o el daño exige estrategia individual?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos están minimizados y sin credenciales o números completos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Los datos y fechas esenciales están confirmados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "CD3-S1",
+      "CD3-S2",
+      "CD3-S3",
+      "CD3-S4",
+      "CD3-S5",
+      "CD3-S6",
+      "CD3-S7",
+      "CD3-S8",
+      "CD3-S9",
+      "CD3-S10",
+      "CD3-S11",
+      "CD3-S12",
+      "CD3-S13",
+      "CD3-S14"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-CD-003-WARRANTY-CLAIM-B01",
+        "type": "section",
+        "heading": "Destinatario y consumidor",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-WARRANTY-CLAIM-B02",
+        "type": "section",
+        "heading": "Identificación del bien o servicio",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-WARRANTY-CLAIM-B03",
+        "type": "section",
+        "heading": "Hechos y defecto",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-WARRANTY-CLAIM-B04",
+        "type": "section",
+        "heading": "Fundamentos de garantía",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-WARRANTY-CLAIM-B05",
+        "type": "section",
+        "heading": "Pretensiones",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-WARRANTY-CLAIM-B06",
+        "type": "section",
+        "heading": "Entrega y costos",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-WARRANTY-CLAIM-B07",
+        "type": "section",
+        "heading": "Pruebas y notificaciones",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-WARRANTY-CLAIM-B08",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-CD-003-WITHDRAWAL-NOTICE",
+    "product_code": "CO-CD-003",
+    "kind": "withdrawal_notice",
+    "title": "Comunicación de ejercicio del derecho de retracto",
+    "subtitle": "Modelo madurado v2.33 · protección al consumidor trazable",
+    "filename_suffix": "ejercicio_retracto",
+    "version_label": "2.33-factory",
+    "canonical_status": "Maduración integral interna; aprobación jurídica y QA pendientes",
+    "source_package": "LegalAIZit_Paquete_08_Garantia_Retracto_Reversion_Consolidado_v233",
+    "variables": [
+      {
+        "id": "consumer_name",
+        "label": "Nombre completo del consumidor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "consumer_id",
+        "label": "Identificación del consumidor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representative_name",
+        "label": "Nombre del representante o autorizado",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de representación o legitimación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "consumer_relationship",
+        "label": "¿Existe una relación de consumo en Colombia?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "provider_name",
+        "label": "Productor, proveedor o expendedor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "provider_country",
+        "label": "Domicilio principal conocido del proveedor",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "product_type",
+        "label": "Tipo de objeto adquirido",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "product_description",
+        "label": "Descripción precisa del bien o servicio",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "order_or_contract",
+        "label": "Número de pedido, factura o contrato",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "purchase_value",
+        "label": "Valor total pagado o controvertido",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "purchase_date",
+        "label": "Fecha de compra o celebración del contrato",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "purchase_channel",
+        "label": "Canal de compra",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "delivery_date",
+        "label": "Fecha de entrega, inicio del servicio o fecha esperada",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "request_mode",
+        "label": "Mecanismo principal que desea ejercer",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "problem_type",
+        "label": "Problema principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_goal",
+        "label": "Resultado principal solicitado",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "facts_detail",
+        "label": "Relato de hechos confirmados",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "defect_detail",
+        "label": "Defecto, incumplimiento o diferencia concreta",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "repeated_failure",
+        "label": "¿La falla se repitió después de una reparación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "warranty_announced",
+        "label": "Término de garantía anunciado",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "withdrawal_exception",
+        "label": "¿El bien o servicio encaja en una excepción legal al retracto?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "service_started_with_consent",
+        "label": "En servicios, ¿la ejecución comenzó con acuerdo del consumidor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "electronic_payment",
+        "label": "¿El pago se realizó con instrumento electrónico?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "payment_instrument",
+        "label": "Instrumento de pago",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "instrument_holder_same",
+        "label": "¿El consumidor es titular del instrumento de pago?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "transaction_reference",
+        "label": "Referencia parcial de la transacción",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "transaction_date",
+        "label": "Fecha de la transacción",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "reversal_cause",
+        "label": "Causal alegada para reversión",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "reversal_event_date",
+        "label": "Fecha en que conoció la causal o ocurrió el incumplimiento",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "reversal_amount",
+        "label": "Valor cuya reversión solicita",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "partial_reversal",
+        "label": "¿La reversión solicitada es parcial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim",
+        "label": "¿Presentó reclamación directa al proveedor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim_date",
+        "label": "Fecha de reclamación directa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_claim_radicado",
+        "label": "Número o constancia de radicación",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "provider_complaint_for_reversal",
+        "label": "¿La queja de reversión fue presentada al proveedor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issuer_notification",
+        "label": "¿Se notificó al emisor del instrumento de pago?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issuer_notification_date",
+        "label": "Fecha de notificación al emisor",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "withdrawal_exercised_date",
+        "label": "Fecha en que ejerció el retracto",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "return_status",
+        "label": "Estado de devolución o puesta a disposición del bien",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta del proveedor",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de respuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "recurring_debit_revoked_date",
+        "label": "Fecha de revocación del débito periódico",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "latest_periodic_charge_date",
+        "label": "Fecha del último cargo periódico controvertido",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "evidence_status",
+        "label": "Estado de factura, comprobante, comunicaciones y evidencia",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "advertising_support",
+        "label": "¿Conserva publicidad, oferta o descripción del producto?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "injury_or_safety",
+        "label": "¿Hubo lesión, afectación a la salud o riesgo de seguridad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "regulated_sector",
+        "label": "¿Existe régimen sectorial especial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "complex_fraud",
+        "label": "¿Existe fraude complejo, múltiples transacciones o suplantación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "active_process",
+        "label": "¿Existe demanda, investigación o trámite activo por los mismos hechos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "high_value_or_damage",
+        "label": "¿La cuantía o el daño exige estrategia individual?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos están minimizados y sin credenciales o números completos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Los datos y fechas esenciales están confirmados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "CD3-S1",
+      "CD3-S2",
+      "CD3-S3",
+      "CD3-S4",
+      "CD3-S5",
+      "CD3-S6",
+      "CD3-S7",
+      "CD3-S8",
+      "CD3-S9",
+      "CD3-S10",
+      "CD3-S11",
+      "CD3-S12",
+      "CD3-S13",
+      "CD3-S14"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-CD-003-WITHDRAWAL-NOTICE-B01",
+        "type": "section",
+        "heading": "Destinatario y contrato",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-WITHDRAWAL-NOTICE-B02",
+        "type": "section",
+        "heading": "Declaración de retracto",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-WITHDRAWAL-NOTICE-B03",
+        "type": "section",
+        "heading": "Canal y término",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-WITHDRAWAL-NOTICE-B04",
+        "type": "section",
+        "heading": "Devolución del bien",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-WITHDRAWAL-NOTICE-B05",
+        "type": "section",
+        "heading": "Reembolso",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-WITHDRAWAL-NOTICE-B06",
+        "type": "section",
+        "heading": "Anexos y notificaciones",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-WITHDRAWAL-NOTICE-B07",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-CD-003-PAYMENT-REVERSAL-REQUEST",
+    "product_code": "CO-CD-003",
+    "kind": "payment_reversal_request",
+    "title": "Solicitud coordinada de reversión del pago",
+    "subtitle": "Modelo madurado v2.33 · protección al consumidor trazable",
+    "filename_suffix": "solicitud_reversion_pago",
+    "version_label": "2.33-factory",
+    "canonical_status": "Maduración integral interna; aprobación jurídica y QA pendientes",
+    "source_package": "LegalAIZit_Paquete_08_Garantia_Retracto_Reversion_Consolidado_v233",
+    "variables": [
+      {
+        "id": "consumer_name",
+        "label": "Nombre completo del consumidor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "consumer_id",
+        "label": "Identificación del consumidor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representative_name",
+        "label": "Nombre del representante o autorizado",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de representación o legitimación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "consumer_relationship",
+        "label": "¿Existe una relación de consumo en Colombia?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "provider_name",
+        "label": "Productor, proveedor o expendedor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "provider_country",
+        "label": "Domicilio principal conocido del proveedor",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "product_type",
+        "label": "Tipo de objeto adquirido",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "product_description",
+        "label": "Descripción precisa del bien o servicio",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "order_or_contract",
+        "label": "Número de pedido, factura o contrato",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "purchase_value",
+        "label": "Valor total pagado o controvertido",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "purchase_date",
+        "label": "Fecha de compra o celebración del contrato",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "purchase_channel",
+        "label": "Canal de compra",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "delivery_date",
+        "label": "Fecha de entrega, inicio del servicio o fecha esperada",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "request_mode",
+        "label": "Mecanismo principal que desea ejercer",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "problem_type",
+        "label": "Problema principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_goal",
+        "label": "Resultado principal solicitado",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "facts_detail",
+        "label": "Relato de hechos confirmados",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "defect_detail",
+        "label": "Defecto, incumplimiento o diferencia concreta",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "repeated_failure",
+        "label": "¿La falla se repitió después de una reparación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "warranty_announced",
+        "label": "Término de garantía anunciado",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "withdrawal_exception",
+        "label": "¿El bien o servicio encaja en una excepción legal al retracto?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "service_started_with_consent",
+        "label": "En servicios, ¿la ejecución comenzó con acuerdo del consumidor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "electronic_payment",
+        "label": "¿El pago se realizó con instrumento electrónico?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "payment_instrument",
+        "label": "Instrumento de pago",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "instrument_holder_same",
+        "label": "¿El consumidor es titular del instrumento de pago?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "transaction_reference",
+        "label": "Referencia parcial de la transacción",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "transaction_date",
+        "label": "Fecha de la transacción",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "reversal_cause",
+        "label": "Causal alegada para reversión",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "reversal_event_date",
+        "label": "Fecha en que conoció la causal o ocurrió el incumplimiento",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "reversal_amount",
+        "label": "Valor cuya reversión solicita",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "partial_reversal",
+        "label": "¿La reversión solicitada es parcial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim",
+        "label": "¿Presentó reclamación directa al proveedor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim_date",
+        "label": "Fecha de reclamación directa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_claim_radicado",
+        "label": "Número o constancia de radicación",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "provider_complaint_for_reversal",
+        "label": "¿La queja de reversión fue presentada al proveedor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issuer_notification",
+        "label": "¿Se notificó al emisor del instrumento de pago?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issuer_notification_date",
+        "label": "Fecha de notificación al emisor",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "withdrawal_exercised_date",
+        "label": "Fecha en que ejerció el retracto",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "return_status",
+        "label": "Estado de devolución o puesta a disposición del bien",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta del proveedor",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de respuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "recurring_debit_revoked_date",
+        "label": "Fecha de revocación del débito periódico",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "latest_periodic_charge_date",
+        "label": "Fecha del último cargo periódico controvertido",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "evidence_status",
+        "label": "Estado de factura, comprobante, comunicaciones y evidencia",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "advertising_support",
+        "label": "¿Conserva publicidad, oferta o descripción del producto?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "injury_or_safety",
+        "label": "¿Hubo lesión, afectación a la salud o riesgo de seguridad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "regulated_sector",
+        "label": "¿Existe régimen sectorial especial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "complex_fraud",
+        "label": "¿Existe fraude complejo, múltiples transacciones o suplantación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "active_process",
+        "label": "¿Existe demanda, investigación o trámite activo por los mismos hechos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "high_value_or_damage",
+        "label": "¿La cuantía o el daño exige estrategia individual?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos están minimizados y sin credenciales o números completos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Los datos y fechas esenciales están confirmados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "CD3-S1",
+      "CD3-S2",
+      "CD3-S3",
+      "CD3-S4",
+      "CD3-S5",
+      "CD3-S6",
+      "CD3-S7",
+      "CD3-S8",
+      "CD3-S9",
+      "CD3-S10",
+      "CD3-S11",
+      "CD3-S12",
+      "CD3-S13",
+      "CD3-S14"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-CD-003-PAYMENT-REVERSAL-REQUEST-B01",
+        "type": "section",
+        "heading": "Proveedor y emisor",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-PAYMENT-REVERSAL-REQUEST-B02",
+        "type": "section",
+        "heading": "Compra y transacción",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-PAYMENT-REVERSAL-REQUEST-B03",
+        "type": "section",
+        "heading": "Causal legal",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-PAYMENT-REVERSAL-REQUEST-B04",
+        "type": "section",
+        "heading": "Queja y notificación",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-PAYMENT-REVERSAL-REQUEST-B05",
+        "type": "section",
+        "heading": "Valor y reversión parcial",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-PAYMENT-REVERSAL-REQUEST-B06",
+        "type": "section",
+        "heading": "Devolución o puesta a disposición",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-PAYMENT-REVERSAL-REQUEST-B07",
+        "type": "section",
+        "heading": "Anexos y reserva",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-PAYMENT-REVERSAL-REQUEST-B08",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-CD-003-RECURRING-DEBIT-REVOCATION",
+    "product_code": "CO-CD-003",
+    "kind": "recurring_debit_revocation",
+    "title": "Revocación de débito periódico y control de cargos",
+    "subtitle": "Modelo madurado v2.33 · protección al consumidor trazable",
+    "filename_suffix": "revocacion_debito_periodico",
+    "version_label": "2.33-factory",
+    "canonical_status": "Maduración integral interna; aprobación jurídica y QA pendientes",
+    "source_package": "LegalAIZit_Paquete_08_Garantia_Retracto_Reversion_Consolidado_v233",
+    "variables": [
+      {
+        "id": "consumer_name",
+        "label": "Nombre completo del consumidor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "consumer_id",
+        "label": "Identificación del consumidor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representative_name",
+        "label": "Nombre del representante o autorizado",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de representación o legitimación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "consumer_relationship",
+        "label": "¿Existe una relación de consumo en Colombia?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "provider_name",
+        "label": "Productor, proveedor o expendedor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "provider_country",
+        "label": "Domicilio principal conocido del proveedor",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "product_type",
+        "label": "Tipo de objeto adquirido",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "product_description",
+        "label": "Descripción precisa del bien o servicio",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "order_or_contract",
+        "label": "Número de pedido, factura o contrato",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "purchase_value",
+        "label": "Valor total pagado o controvertido",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "purchase_date",
+        "label": "Fecha de compra o celebración del contrato",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "purchase_channel",
+        "label": "Canal de compra",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "delivery_date",
+        "label": "Fecha de entrega, inicio del servicio o fecha esperada",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "request_mode",
+        "label": "Mecanismo principal que desea ejercer",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "problem_type",
+        "label": "Problema principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_goal",
+        "label": "Resultado principal solicitado",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "facts_detail",
+        "label": "Relato de hechos confirmados",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "defect_detail",
+        "label": "Defecto, incumplimiento o diferencia concreta",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "repeated_failure",
+        "label": "¿La falla se repitió después de una reparación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "warranty_announced",
+        "label": "Término de garantía anunciado",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "withdrawal_exception",
+        "label": "¿El bien o servicio encaja en una excepción legal al retracto?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "service_started_with_consent",
+        "label": "En servicios, ¿la ejecución comenzó con acuerdo del consumidor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "electronic_payment",
+        "label": "¿El pago se realizó con instrumento electrónico?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "payment_instrument",
+        "label": "Instrumento de pago",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "instrument_holder_same",
+        "label": "¿El consumidor es titular del instrumento de pago?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "transaction_reference",
+        "label": "Referencia parcial de la transacción",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "transaction_date",
+        "label": "Fecha de la transacción",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "reversal_cause",
+        "label": "Causal alegada para reversión",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "reversal_event_date",
+        "label": "Fecha en que conoció la causal o ocurrió el incumplimiento",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "reversal_amount",
+        "label": "Valor cuya reversión solicita",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "partial_reversal",
+        "label": "¿La reversión solicitada es parcial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim",
+        "label": "¿Presentó reclamación directa al proveedor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim_date",
+        "label": "Fecha de reclamación directa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_claim_radicado",
+        "label": "Número o constancia de radicación",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "provider_complaint_for_reversal",
+        "label": "¿La queja de reversión fue presentada al proveedor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issuer_notification",
+        "label": "¿Se notificó al emisor del instrumento de pago?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issuer_notification_date",
+        "label": "Fecha de notificación al emisor",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "withdrawal_exercised_date",
+        "label": "Fecha en que ejerció el retracto",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "return_status",
+        "label": "Estado de devolución o puesta a disposición del bien",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta del proveedor",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de respuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "recurring_debit_revoked_date",
+        "label": "Fecha de revocación del débito periódico",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "latest_periodic_charge_date",
+        "label": "Fecha del último cargo periódico controvertido",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "evidence_status",
+        "label": "Estado de factura, comprobante, comunicaciones y evidencia",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "advertising_support",
+        "label": "¿Conserva publicidad, oferta o descripción del producto?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "injury_or_safety",
+        "label": "¿Hubo lesión, afectación a la salud o riesgo de seguridad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "regulated_sector",
+        "label": "¿Existe régimen sectorial especial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "complex_fraud",
+        "label": "¿Existe fraude complejo, múltiples transacciones o suplantación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "active_process",
+        "label": "¿Existe demanda, investigación o trámite activo por los mismos hechos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "high_value_or_damage",
+        "label": "¿La cuantía o el daño exige estrategia individual?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos están minimizados y sin credenciales o números completos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Los datos y fechas esenciales están confirmados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "CD3-S1",
+      "CD3-S2",
+      "CD3-S3",
+      "CD3-S4",
+      "CD3-S5",
+      "CD3-S6",
+      "CD3-S7",
+      "CD3-S8",
+      "CD3-S9",
+      "CD3-S10",
+      "CD3-S11",
+      "CD3-S12",
+      "CD3-S13",
+      "CD3-S14"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-CD-003-RECURRING-DEBIT-REVOCATION-B01",
+        "type": "section",
+        "heading": "Autorización y destinatarios",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-RECURRING-DEBIT-REVOCATION-B02",
+        "type": "section",
+        "heading": "Revocación expresa",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-RECURRING-DEBIT-REVOCATION-B03",
+        "type": "section",
+        "heading": "Cargos posteriores",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-RECURRING-DEBIT-REVOCATION-B04",
+        "type": "section",
+        "heading": "Reversión aplicable",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-RECURRING-DEBIT-REVOCATION-B05",
+        "type": "section",
+        "heading": "Constancias y seguridad",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-RECURRING-DEBIT-REVOCATION-B06",
+        "type": "section",
+        "heading": "Seguimiento",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-RECURRING-DEBIT-REVOCATION-B07",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-CD-003-ECOMMERCE-NON-DELIVERY-TERMINATION",
+    "product_code": "CO-CD-003",
+    "kind": "ecommerce_non_delivery_termination",
+    "title": "Terminación por falta de entrega y devolución",
+    "subtitle": "Modelo madurado v2.33 · protección al consumidor trazable",
+    "filename_suffix": "terminacion_falta_entrega",
+    "version_label": "2.33-factory",
+    "canonical_status": "Maduración integral interna; aprobación jurídica y QA pendientes",
+    "source_package": "LegalAIZit_Paquete_08_Garantia_Retracto_Reversion_Consolidado_v233",
+    "variables": [
+      {
+        "id": "consumer_name",
+        "label": "Nombre completo del consumidor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "consumer_id",
+        "label": "Identificación del consumidor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representative_name",
+        "label": "Nombre del representante o autorizado",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de representación o legitimación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "consumer_relationship",
+        "label": "¿Existe una relación de consumo en Colombia?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "provider_name",
+        "label": "Productor, proveedor o expendedor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "provider_country",
+        "label": "Domicilio principal conocido del proveedor",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "product_type",
+        "label": "Tipo de objeto adquirido",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "product_description",
+        "label": "Descripción precisa del bien o servicio",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "order_or_contract",
+        "label": "Número de pedido, factura o contrato",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "purchase_value",
+        "label": "Valor total pagado o controvertido",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "purchase_date",
+        "label": "Fecha de compra o celebración del contrato",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "purchase_channel",
+        "label": "Canal de compra",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "delivery_date",
+        "label": "Fecha de entrega, inicio del servicio o fecha esperada",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "request_mode",
+        "label": "Mecanismo principal que desea ejercer",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "problem_type",
+        "label": "Problema principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_goal",
+        "label": "Resultado principal solicitado",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "facts_detail",
+        "label": "Relato de hechos confirmados",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "defect_detail",
+        "label": "Defecto, incumplimiento o diferencia concreta",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "repeated_failure",
+        "label": "¿La falla se repitió después de una reparación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "warranty_announced",
+        "label": "Término de garantía anunciado",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "withdrawal_exception",
+        "label": "¿El bien o servicio encaja en una excepción legal al retracto?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "service_started_with_consent",
+        "label": "En servicios, ¿la ejecución comenzó con acuerdo del consumidor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "electronic_payment",
+        "label": "¿El pago se realizó con instrumento electrónico?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "payment_instrument",
+        "label": "Instrumento de pago",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "instrument_holder_same",
+        "label": "¿El consumidor es titular del instrumento de pago?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "transaction_reference",
+        "label": "Referencia parcial de la transacción",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "transaction_date",
+        "label": "Fecha de la transacción",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "reversal_cause",
+        "label": "Causal alegada para reversión",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "reversal_event_date",
+        "label": "Fecha en que conoció la causal o ocurrió el incumplimiento",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "reversal_amount",
+        "label": "Valor cuya reversión solicita",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "partial_reversal",
+        "label": "¿La reversión solicitada es parcial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim",
+        "label": "¿Presentó reclamación directa al proveedor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim_date",
+        "label": "Fecha de reclamación directa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_claim_radicado",
+        "label": "Número o constancia de radicación",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "provider_complaint_for_reversal",
+        "label": "¿La queja de reversión fue presentada al proveedor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issuer_notification",
+        "label": "¿Se notificó al emisor del instrumento de pago?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issuer_notification_date",
+        "label": "Fecha de notificación al emisor",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "withdrawal_exercised_date",
+        "label": "Fecha en que ejerció el retracto",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "return_status",
+        "label": "Estado de devolución o puesta a disposición del bien",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta del proveedor",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de respuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "recurring_debit_revoked_date",
+        "label": "Fecha de revocación del débito periódico",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "latest_periodic_charge_date",
+        "label": "Fecha del último cargo periódico controvertido",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "evidence_status",
+        "label": "Estado de factura, comprobante, comunicaciones y evidencia",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "advertising_support",
+        "label": "¿Conserva publicidad, oferta o descripción del producto?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "injury_or_safety",
+        "label": "¿Hubo lesión, afectación a la salud o riesgo de seguridad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "regulated_sector",
+        "label": "¿Existe régimen sectorial especial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "complex_fraud",
+        "label": "¿Existe fraude complejo, múltiples transacciones o suplantación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "active_process",
+        "label": "¿Existe demanda, investigación o trámite activo por los mismos hechos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "high_value_or_damage",
+        "label": "¿La cuantía o el daño exige estrategia individual?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos están minimizados y sin credenciales o números completos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Los datos y fechas esenciales están confirmados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "CD3-S1",
+      "CD3-S2",
+      "CD3-S3",
+      "CD3-S4",
+      "CD3-S5",
+      "CD3-S6",
+      "CD3-S7",
+      "CD3-S8",
+      "CD3-S9",
+      "CD3-S10",
+      "CD3-S11",
+      "CD3-S12",
+      "CD3-S13",
+      "CD3-S14"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-CD-003-ECOMMERCE-NON-DELIVERY-TERMINATION-B01",
+        "type": "section",
+        "heading": "Operación electrónica",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-ECOMMERCE-NON-DELIVERY-TERMINATION-B02",
+        "type": "section",
+        "heading": "Plazo de entrega",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-ECOMMERCE-NON-DELIVERY-TERMINATION-B03",
+        "type": "section",
+        "heading": "Incumplimiento",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-ECOMMERCE-NON-DELIVERY-TERMINATION-B04",
+        "type": "section",
+        "heading": "Terminación unilateral",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-ECOMMERCE-NON-DELIVERY-TERMINATION-B05",
+        "type": "section",
+        "heading": "Devolución del dinero",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-ECOMMERCE-NON-DELIVERY-TERMINATION-B06",
+        "type": "section",
+        "heading": "Pruebas y seguimiento",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-ECOMMERCE-NON-DELIVERY-TERMINATION-B07",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-CD-003-CONSUMER-EVIDENCE-MATRIX",
+    "product_code": "CO-CD-003",
+    "kind": "consumer_evidence_matrix",
+    "title": "Matriz de evidencia, pretensiones y destinatarios",
+    "subtitle": "Modelo madurado v2.33 · protección al consumidor trazable",
+    "filename_suffix": "matriz_evidencia_consumidor",
+    "version_label": "2.33-factory",
+    "canonical_status": "Maduración integral interna; aprobación jurídica y QA pendientes",
+    "source_package": "LegalAIZit_Paquete_08_Garantia_Retracto_Reversion_Consolidado_v233",
+    "variables": [
+      {
+        "id": "consumer_name",
+        "label": "Nombre completo del consumidor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "consumer_id",
+        "label": "Identificación del consumidor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representative_name",
+        "label": "Nombre del representante o autorizado",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de representación o legitimación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "consumer_relationship",
+        "label": "¿Existe una relación de consumo en Colombia?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "provider_name",
+        "label": "Productor, proveedor o expendedor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "provider_country",
+        "label": "Domicilio principal conocido del proveedor",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "product_type",
+        "label": "Tipo de objeto adquirido",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "product_description",
+        "label": "Descripción precisa del bien o servicio",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "order_or_contract",
+        "label": "Número de pedido, factura o contrato",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "purchase_value",
+        "label": "Valor total pagado o controvertido",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "purchase_date",
+        "label": "Fecha de compra o celebración del contrato",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "purchase_channel",
+        "label": "Canal de compra",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "delivery_date",
+        "label": "Fecha de entrega, inicio del servicio o fecha esperada",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "request_mode",
+        "label": "Mecanismo principal que desea ejercer",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "problem_type",
+        "label": "Problema principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_goal",
+        "label": "Resultado principal solicitado",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "facts_detail",
+        "label": "Relato de hechos confirmados",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "defect_detail",
+        "label": "Defecto, incumplimiento o diferencia concreta",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "repeated_failure",
+        "label": "¿La falla se repitió después de una reparación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "warranty_announced",
+        "label": "Término de garantía anunciado",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "withdrawal_exception",
+        "label": "¿El bien o servicio encaja en una excepción legal al retracto?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "service_started_with_consent",
+        "label": "En servicios, ¿la ejecución comenzó con acuerdo del consumidor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "electronic_payment",
+        "label": "¿El pago se realizó con instrumento electrónico?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "payment_instrument",
+        "label": "Instrumento de pago",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "instrument_holder_same",
+        "label": "¿El consumidor es titular del instrumento de pago?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "transaction_reference",
+        "label": "Referencia parcial de la transacción",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "transaction_date",
+        "label": "Fecha de la transacción",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "reversal_cause",
+        "label": "Causal alegada para reversión",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "reversal_event_date",
+        "label": "Fecha en que conoció la causal o ocurrió el incumplimiento",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "reversal_amount",
+        "label": "Valor cuya reversión solicita",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "partial_reversal",
+        "label": "¿La reversión solicitada es parcial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim",
+        "label": "¿Presentó reclamación directa al proveedor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim_date",
+        "label": "Fecha de reclamación directa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_claim_radicado",
+        "label": "Número o constancia de radicación",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "provider_complaint_for_reversal",
+        "label": "¿La queja de reversión fue presentada al proveedor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issuer_notification",
+        "label": "¿Se notificó al emisor del instrumento de pago?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issuer_notification_date",
+        "label": "Fecha de notificación al emisor",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "withdrawal_exercised_date",
+        "label": "Fecha en que ejerció el retracto",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "return_status",
+        "label": "Estado de devolución o puesta a disposición del bien",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta del proveedor",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de respuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "recurring_debit_revoked_date",
+        "label": "Fecha de revocación del débito periódico",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "latest_periodic_charge_date",
+        "label": "Fecha del último cargo periódico controvertido",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "evidence_status",
+        "label": "Estado de factura, comprobante, comunicaciones y evidencia",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "advertising_support",
+        "label": "¿Conserva publicidad, oferta o descripción del producto?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "injury_or_safety",
+        "label": "¿Hubo lesión, afectación a la salud o riesgo de seguridad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "regulated_sector",
+        "label": "¿Existe régimen sectorial especial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "complex_fraud",
+        "label": "¿Existe fraude complejo, múltiples transacciones o suplantación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "active_process",
+        "label": "¿Existe demanda, investigación o trámite activo por los mismos hechos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "high_value_or_damage",
+        "label": "¿La cuantía o el daño exige estrategia individual?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos están minimizados y sin credenciales o números completos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Los datos y fechas esenciales están confirmados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "CD3-S1",
+      "CD3-S2",
+      "CD3-S3",
+      "CD3-S4",
+      "CD3-S5",
+      "CD3-S6",
+      "CD3-S7",
+      "CD3-S8",
+      "CD3-S9",
+      "CD3-S10",
+      "CD3-S11",
+      "CD3-S12",
+      "CD3-S13",
+      "CD3-S14"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-EVIDENCE-MATRIX-B01",
+        "type": "section",
+        "heading": "Partes y operación",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-EVIDENCE-MATRIX-B02",
+        "type": "section",
+        "heading": "Mecanismo y pretensión",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-EVIDENCE-MATRIX-B03",
+        "type": "section",
+        "heading": "Índice probatorio",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-EVIDENCE-MATRIX-B04",
+        "type": "section",
+        "heading": "Cronología",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-EVIDENCE-MATRIX-B05",
+        "type": "section",
+        "heading": "Destinatarios y radicados",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-EVIDENCE-MATRIX-B06",
+        "type": "section",
+        "heading": "Privacidad e integridad",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-EVIDENCE-MATRIX-B07",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-CD-003-CONSUMER-DEADLINE-CALENDAR",
+    "product_code": "CO-CD-003",
+    "kind": "consumer_deadline_calendar",
+    "title": "Calendario de términos y actuaciones de consumo",
+    "subtitle": "Modelo madurado v2.33 · protección al consumidor trazable",
+    "filename_suffix": "calendario_terminos_consumo",
+    "version_label": "2.33-factory",
+    "canonical_status": "Maduración integral interna; aprobación jurídica y QA pendientes",
+    "source_package": "LegalAIZit_Paquete_08_Garantia_Retracto_Reversion_Consolidado_v233",
+    "variables": [
+      {
+        "id": "consumer_name",
+        "label": "Nombre completo del consumidor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "consumer_id",
+        "label": "Identificación del consumidor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representative_name",
+        "label": "Nombre del representante o autorizado",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de representación o legitimación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "consumer_relationship",
+        "label": "¿Existe una relación de consumo en Colombia?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "provider_name",
+        "label": "Productor, proveedor o expendedor",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "provider_country",
+        "label": "Domicilio principal conocido del proveedor",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "product_type",
+        "label": "Tipo de objeto adquirido",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "product_description",
+        "label": "Descripción precisa del bien o servicio",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "order_or_contract",
+        "label": "Número de pedido, factura o contrato",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "purchase_value",
+        "label": "Valor total pagado o controvertido",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "purchase_date",
+        "label": "Fecha de compra o celebración del contrato",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "purchase_channel",
+        "label": "Canal de compra",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "delivery_date",
+        "label": "Fecha de entrega, inicio del servicio o fecha esperada",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "request_mode",
+        "label": "Mecanismo principal que desea ejercer",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "problem_type",
+        "label": "Problema principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_goal",
+        "label": "Resultado principal solicitado",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "facts_detail",
+        "label": "Relato de hechos confirmados",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "defect_detail",
+        "label": "Defecto, incumplimiento o diferencia concreta",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "repeated_failure",
+        "label": "¿La falla se repitió después de una reparación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "warranty_announced",
+        "label": "Término de garantía anunciado",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "withdrawal_exception",
+        "label": "¿El bien o servicio encaja en una excepción legal al retracto?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "service_started_with_consent",
+        "label": "En servicios, ¿la ejecución comenzó con acuerdo del consumidor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "electronic_payment",
+        "label": "¿El pago se realizó con instrumento electrónico?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "payment_instrument",
+        "label": "Instrumento de pago",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "instrument_holder_same",
+        "label": "¿El consumidor es titular del instrumento de pago?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "transaction_reference",
+        "label": "Referencia parcial de la transacción",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "transaction_date",
+        "label": "Fecha de la transacción",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "reversal_cause",
+        "label": "Causal alegada para reversión",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "reversal_event_date",
+        "label": "Fecha en que conoció la causal o ocurrió el incumplimiento",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "reversal_amount",
+        "label": "Valor cuya reversión solicita",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "partial_reversal",
+        "label": "¿La reversión solicitada es parcial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim",
+        "label": "¿Presentó reclamación directa al proveedor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim_date",
+        "label": "Fecha de reclamación directa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_claim_radicado",
+        "label": "Número o constancia de radicación",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "provider_complaint_for_reversal",
+        "label": "¿La queja de reversión fue presentada al proveedor?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issuer_notification",
+        "label": "¿Se notificó al emisor del instrumento de pago?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issuer_notification_date",
+        "label": "Fecha de notificación al emisor",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "withdrawal_exercised_date",
+        "label": "Fecha en que ejerció el retracto",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "return_status",
+        "label": "Estado de devolución o puesta a disposición del bien",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta del proveedor",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de respuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "recurring_debit_revoked_date",
+        "label": "Fecha de revocación del débito periódico",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "latest_periodic_charge_date",
+        "label": "Fecha del último cargo periódico controvertido",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "evidence_status",
+        "label": "Estado de factura, comprobante, comunicaciones y evidencia",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "advertising_support",
+        "label": "¿Conserva publicidad, oferta o descripción del producto?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "injury_or_safety",
+        "label": "¿Hubo lesión, afectación a la salud o riesgo de seguridad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "regulated_sector",
+        "label": "¿Existe régimen sectorial especial?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "complex_fraud",
+        "label": "¿Existe fraude complejo, múltiples transacciones o suplantación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "active_process",
+        "label": "¿Existe demanda, investigación o trámite activo por los mismos hechos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "high_value_or_damage",
+        "label": "¿La cuantía o el daño exige estrategia individual?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos están minimizados y sin credenciales o números completos?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Los datos y fechas esenciales están confirmados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "CD3-S1",
+      "CD3-S2",
+      "CD3-S3",
+      "CD3-S4",
+      "CD3-S5",
+      "CD3-S6",
+      "CD3-S7",
+      "CD3-S8",
+      "CD3-S9",
+      "CD3-S10",
+      "CD3-S11",
+      "CD3-S12",
+      "CD3-S13",
+      "CD3-S14"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-DEADLINE-CALENDAR-B01",
+        "type": "section",
+        "heading": "Reclamación directa",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-DEADLINE-CALENDAR-B02",
+        "type": "section",
+        "heading": "Garantía",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-DEADLINE-CALENDAR-B03",
+        "type": "section",
+        "heading": "Retracto",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-DEADLINE-CALENDAR-B04",
+        "type": "section",
+        "heading": "Reversión",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-DEADLINE-CALENDAR-B05",
+        "type": "section",
+        "heading": "Débito periódico",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-DEADLINE-CALENDAR-B06",
+        "type": "section",
+        "heading": "Falta de entrega",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-DEADLINE-CALENDAR-B07",
+        "type": "section",
+        "heading": "Supuestos y seguimiento",
+        "text": "Documento generado con variables verificadas y control jurídico v2.33.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD3-S1",
+          "CD3-S2",
+          "CD3-S3",
+          "CD3-S4",
+          "CD3-S5",
+          "CD3-S6",
+          "CD3-S7",
+          "CD3-S8",
+          "CD3-S9",
+          "CD3-S10",
+          "CD3-S11",
+          "CD3-S12",
+          "CD3-S13",
+          "CD3-S14"
+        ],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-003-CONSUMER-DEADLINE-CALENDAR-B08",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque v2.33 sujeto a aprobación jurídica final."
+      }
+    ]
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "id": "CD3-S1",
+    "title": "Constitución Política de Colombia — artículo 78",
+    "authority": "Asamblea Nacional Constituyente / Estado colombiano",
+    "type": "constitution",
+    "status": "Vigente",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificada en fuente oficial; volver a cotejar antes de publicación",
+    "url": "https://www.secretariasenado.gov.co/constitucion-politica"
+  },
+  {
+    "id": "CD3-S2",
+    "title": "Ley 1480 de 2011 — garantía legal, responsables y efectividad",
+    "authority": "Congreso de la República",
+    "type": "statute",
+    "status": "Vigente con modificaciones",
+    "last_verified": "2026-07-20",
+    "verification_status": "Texto actualizado consultado en fuente oficial",
+    "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1480_2011.html"
+  },
+  {
+    "id": "CD3-S3",
+    "title": "Ley 1480 de 2011 — artículo 47, derecho de retracto",
+    "authority": "Congreso de la República",
+    "type": "statute",
+    "status": "Vigente con modificación de Ley 2439 de 2024",
+    "last_verified": "2026-07-20",
+    "verification_status": "Texto actualizado consultado en fuente oficial",
+    "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1480_2011_pr001.html"
+  },
+  {
+    "id": "CD3-S4",
+    "title": "Ley 2439 de 2024 — protección del consumidor de comercio electrónico",
+    "authority": "Congreso de la República",
+    "type": "statute",
+    "status": "Vigente",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificada en Secretaría del Senado y SUIN",
+    "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2439_2024.html"
+  },
+  {
+    "id": "CD3-S5",
+    "title": "Ley 1480 de 2011 — comercio electrónico y reversión del pago, artículos 50 y 51",
+    "authority": "Congreso de la República",
+    "type": "statute",
+    "status": "Vigente con modificaciones",
+    "last_verified": "2026-07-20",
+    "verification_status": "Texto actualizado consultado en fuente oficial",
+    "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1681955"
+  },
+  {
+    "id": "CD3-S6",
+    "title": "Decreto 735 de 2013 — efectividad de la garantía legal",
+    "authority": "Presidencia de la República / MinCIT",
+    "type": "regulation",
+    "status": "Vigente según SUIN",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificado en SUIN-Juriscol",
+    "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Decretos%2F1156200"
+  },
+  {
+    "id": "CD3-S7",
+    "title": "Decreto 1074 de 2015 — Decreto Único del sector Comercio, Industria y Turismo",
+    "authority": "Presidencia de la República / MinCIT",
+    "type": "regulation",
+    "status": "Vigente",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificado en SUIN-Juriscol; revisar modificaciones al día de uso",
+    "url": "https://www.suin-juriscol.gov.co/clp/contenidos.dll/Decretos/30019935"
+  },
+  {
+    "id": "CD3-S8",
+    "title": "Decreto 587 de 2016 — procedimiento de reversión del pago",
+    "authority": "Presidencia de la República / MinCIT",
+    "type": "regulation",
+    "status": "Vigente; incorporado al Decreto 1074 de 2015",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificado en SUIN-Juriscol y Función Pública",
+    "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Decretos%2F30020299"
+  },
+  {
+    "id": "CD3-S9",
+    "title": "SIC — modelo y requisitos de reclamación directa",
+    "authority": "Superintendencia de Industria y Comercio",
+    "type": "official_guidance",
+    "status": "Página oficial vigente",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificada en sede electrónica SIC",
+    "url": "https://sedeelectronica.sic.gov.co/temas/asuntos-jurisdiccionales/proteccion-del-consumidor"
+  },
+  {
+    "id": "CD3-S10",
+    "title": "SIC — fallas en productos, garantía y término de respuesta",
+    "authority": "Superintendencia de Industria y Comercio",
+    "type": "official_guidance",
+    "status": "Página oficial vigente",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificada en sede electrónica SIC",
+    "url": "https://sedeelectronica.sic.gov.co/index.php/temas/proteccion-al-consumidor/derechos-y-deberes/fallas-en-un-producto"
+  },
+  {
+    "id": "CD3-S11",
+    "title": "SIC — definición oficial de reversión del pago",
+    "authority": "Superintendencia de Industria y Comercio",
+    "type": "official_guidance",
+    "status": "Actualizada en 2026",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificada en sede electrónica SIC",
+    "url": "https://sedeelectronica.sic.gov.co/atencion-y-servicios-a-la-ciudadania/glosario/reversion-del-pago"
+  },
+  {
+    "id": "CD3-S12",
+    "title": "Sentencia C-439 de 2019 — reversión del pago y protección del consumidor",
+    "authority": "Corte Constitucional",
+    "type": "jurisprudence",
+    "status": "Vigente; revisar alcance exacto",
+    "last_verified": "2026-07-20",
+    "verification_status": "Relatoría oficial consultada",
+    "url": "https://www.corteconstitucional.gov.co/relatoria/2019/c-439-19.htm"
+  },
+  {
+    "id": "CD3-S13",
+    "title": "Ley 1480 de 2011 — acción de protección al consumidor y reclamación directa, artículo 58",
+    "authority": "Congreso de la República",
+    "type": "statute",
+    "status": "Vigente con modificaciones",
+    "last_verified": "2026-07-20",
+    "verification_status": "Texto actualizado consultado en fuente oficial",
+    "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1480_2011_pr001.html"
+  },
+  {
+    "id": "CD3-S14",
+    "title": "SIC — diferencias entre denuncia y demanda de protección al consumidor",
+    "authority": "Superintendencia de Industria y Comercio",
+    "type": "official_guidance",
+    "status": "Página oficial vigente",
+    "last_verified": "2026-07-20",
+    "verification_status": "Verificada en sede electrónica SIC",
+    "url": "https://sedeelectronica.sic.gov.co/temas/proteccion-al-consumidor/derechos-y-deberes/denuncias-y-demandas"
+  }
+]

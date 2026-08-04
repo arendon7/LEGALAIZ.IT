@@ -1,0 +1,240 @@
+{
+  "version": "2.56",
+  "base_case": {
+    "identity": {
+      "full_name": "Ana Prueba",
+      "document_type": "C.C.",
+      "document_number": "1000000001",
+      "email": "ana@example.com",
+      "address": "Calle 1",
+      "city": "Medellín"
+    },
+    "authority": {
+      "name": "Secretaría de Movilidad de Ejemplo",
+      "city": "Medellín",
+      "email": "radicacion@example.gov.co"
+    },
+    "infraction": {
+      "comparendo_number": "CMP-001",
+      "plate": "ABC123",
+      "date": "2026-05-01",
+      "validation_date": "2026-05-04",
+      "sent_date": "2026-05-06",
+      "notice_status": "No recibida",
+      "address_used": "Dirección anterior"
+    },
+    "notice": {
+      "delivery_proof_received": false
+    },
+    "procedure": {
+      "stage": "pre_sanction",
+      "judicial_active": false,
+      "embargo_active": false,
+      "collection_stage": "none",
+      "imminent_judicial_deadline": false,
+      "possible_fraud": false
+    },
+    "payment": {
+      "paid": false,
+      "agreement": false
+    },
+    "requests": {
+      "hearing": true
+    },
+    "registry": {
+      "simit_incorrect": false,
+      "runt_incorrect": false
+    },
+    "prior_filing": {
+      "no_response": false,
+      "number": "RAD-001"
+    },
+    "evidence": {
+      "items": [
+        "Consulta SIMIT",
+        "Consulta RUNT"
+      ]
+    },
+    "case": {
+      "narrative": "La persona conoció el registro mediante consulta posterior."
+    },
+    "filing": {
+      "city": "Medellín",
+      "date": "2026-07-26"
+    }
+  },
+  "scenarios": [
+    {
+      "id": "V256-NEG-01",
+      "name": "Falta documento",
+      "remove": [
+        "identity.document_number"
+      ],
+      "expected": {
+        "blocked": false,
+        "status": "incomplete",
+        "missing": "identity.document_number",
+        "release_blocked": true
+      }
+    },
+    {
+      "id": "V256-NEG-02",
+      "name": "Proceso judicial",
+      "overrides": {
+        "procedure.judicial_active": true
+      },
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "required_findings": [
+          "COTR2-RED-JUDICIAL"
+        ],
+        "documents": [
+          "traffic_escalation_guide"
+        ]
+      }
+    },
+    {
+      "id": "V256-NEG-03",
+      "name": "Embargo",
+      "overrides": {
+        "procedure.embargo_active": true
+      },
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "required_findings": [
+          "COTR2-RED-EMBARGO"
+        ]
+      }
+    },
+    {
+      "id": "V256-NEG-04",
+      "name": "Cobro avanzado",
+      "overrides": {
+        "procedure.collection_stage": "mandamiento_pago"
+      },
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "required_findings": [
+          "COTR2-RED-COBRO"
+        ]
+      }
+    },
+    {
+      "id": "V256-NEG-05",
+      "name": "Término judicial inminente",
+      "overrides": {
+        "procedure.imminent_judicial_deadline": true
+      },
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "required_findings": [
+          "COTR2-RED-TERM"
+        ]
+      }
+    },
+    {
+      "id": "V256-NEG-06",
+      "name": "Pago efectuado",
+      "overrides": {
+        "payment.paid": true,
+        "procedure.stage": "paid"
+      },
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "required_findings": [
+          "COTR2-RED-PAID"
+        ],
+        "forbidden_documents": [
+          "traffic_notice_claim",
+          "traffic_hearing_request",
+          "traffic_revocation_request"
+        ]
+      }
+    },
+    {
+      "id": "V256-NEG-07",
+      "name": "Acuerdo de pago",
+      "overrides": {
+        "payment.agreement": true
+      },
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "required_findings": [
+          "COTR2-RED-AGREEMENT"
+        ]
+      }
+    },
+    {
+      "id": "V256-NEG-08",
+      "name": "Posible fraude",
+      "overrides": {
+        "procedure.possible_fraud": true
+      },
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "required_findings": [
+          "COTR2-RED-FRAUD"
+        ]
+      }
+    },
+    {
+      "id": "V256-NEG-09",
+      "name": "Fecha de validación contradictoria",
+      "overrides": {
+        "infraction.validation_date": "2026-04-30"
+      },
+      "expected": {
+        "blocked": false,
+        "status": "ready_with_review",
+        "required_findings": [
+          "COTR2-YEL-DATE-CONTRADICTION"
+        ]
+      }
+    },
+    {
+      "id": "V256-NEG-10",
+      "name": "Fecha de envío contradictoria",
+      "overrides": {
+        "infraction.sent_date": "2026-05-01"
+      },
+      "expected": {
+        "blocked": false,
+        "status": "ready_with_review",
+        "required_findings": [
+          "COTR2-YEL-DATE-CONTRADICTION"
+        ]
+      }
+    },
+    {
+      "id": "V256-NEG-11",
+      "name": "Falta autoridad",
+      "remove": [
+        "authority.name"
+      ],
+      "expected": {
+        "blocked": false,
+        "status": "incomplete",
+        "missing": "authority.name"
+      }
+    },
+    {
+      "id": "V256-NEG-12",
+      "name": "Falta comparendo",
+      "remove": [
+        "infraction.comparendo_number"
+      ],
+      "expected": {
+        "blocked": false,
+        "status": "incomplete",
+        "missing": "infraction.comparendo_number"
+      }
+    }
+  ]
+}

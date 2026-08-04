@@ -1,0 +1,242 @@
+{
+  "phase": "M6",
+  "version": "RC1",
+  "build_id": "M6-RELEASE-CANDIDATE-2026-07-29",
+  "generated_at": "2026-07-29T19:11:08.168869+00:00",
+  "status": "content_ready_for_controlled_pilot",
+  "release_candidate_ready": true,
+  "content": {
+    "passed": 18,
+    "total": 18,
+    "score": 100,
+    "checks": [
+      {
+        "key": "catalog_scope",
+        "label": "Los 11 productos tienen biblioteca profunda",
+        "passed": true,
+        "detail_text": "11 de 11",
+        "critical": true
+      },
+      {
+        "key": "controlled_approval",
+        "label": "Los 11 productos están aprobados para uso controlado",
+        "passed": true,
+        "detail_text": "11 productos",
+        "critical": true
+      },
+      {
+        "key": "contractual_approval",
+        "label": "Biblioteca contractual aprobada",
+        "passed": true,
+        "detail_text": "28 documentos aprobados",
+        "critical": true
+      },
+      {
+        "key": "playbook_approval",
+        "label": "Biblioteca de playbooks aprobada",
+        "passed": true,
+        "detail_text": "50 documentos aprobados",
+        "critical": true
+      },
+      {
+        "key": "official_sources",
+        "label": "Todos los productos tienen fuentes jurídicas registradas",
+        "passed": true,
+        "detail_text": "111 fuentes registradas",
+        "critical": true
+      },
+      {
+        "key": "document_presence",
+        "label": "Todos los documentos profundos están presentes",
+        "passed": true,
+        "detail_text": "78 DOCX y 78 PDF",
+        "critical": true
+      },
+      {
+        "key": "document_integrity",
+        "label": "Los hashes documentales coinciden",
+        "passed": true,
+        "detail_text": "0 divergencias",
+        "critical": true
+      },
+      {
+        "key": "resolved_variables",
+        "label": "No hay variables o centinelas sin resolver",
+        "passed": true,
+        "detail_text": "0 hallazgos",
+        "critical": true
+      },
+      {
+        "key": "frontend_consolidated",
+        "label": "Frontend activo consolidado sin capas históricas",
+        "passed": true,
+        "detail_text": "main.js + app.css",
+        "critical": true
+      },
+      {
+        "key": "frontend_entry",
+        "label": "Entrada final disponible",
+        "passed": true,
+        "detail_text": "index.html, main.js, app.css",
+        "critical": true
+      },
+      {
+        "key": "frontend_no_inline",
+        "label": "Frontend sin manejadores o estilos inline",
+        "passed": true,
+        "detail_text": "delegación de eventos y clases CSS",
+        "critical": true
+      },
+      {
+        "key": "strict_csp",
+        "label": "CSP estricta sin unsafe-inline",
+        "passed": true,
+        "detail_text": "scripts y estilos self",
+        "critical": true
+      },
+      {
+        "key": "safe_errors",
+        "label": "Errores internos no exponen excepciones",
+        "passed": true,
+        "detail_text": "respuesta genérica y log interno",
+        "critical": true
+      },
+      {
+        "key": "public_contract",
+        "label": "Contrato público M6 sin flags históricos",
+        "passed": true,
+        "detail_text": "API 2026-07-m6",
+        "critical": true
+      },
+      {
+        "key": "launchers",
+        "label": "Iniciadores multiplataforma presentes",
+        "passed": true,
+        "detail_text": "macOS, Windows y Linux",
+        "critical": true
+      },
+      {
+        "key": "deployment_guides",
+        "label": "Guías de piloto y producción disponibles",
+        "passed": true,
+        "detail_text": "checklists y ejemplo de entorno",
+        "critical": true
+      },
+      {
+        "key": "active_tests",
+        "label": "Suite activa M6, regresión aislada y smoke test disponibles",
+        "passed": true,
+        "detail_text": "pruebas unitarias e integración HTTP",
+        "critical": true
+      },
+      {
+        "key": "historical_archive",
+        "label": "Evidencia histórica retirada del runtime activo",
+        "passed": true,
+        "detail_text": "archivo de auditoría separado",
+        "critical": true
+      }
+    ],
+    "deep_products": 11,
+    "docx": 78,
+    "pdf": 78,
+    "pages": 394,
+    "words": 56900,
+    "missing": [],
+    "hash_errors": [],
+    "marker_hits": []
+  },
+  "products": [
+    {
+      "product_code": "CO-AR-001",
+      "title": "Arrendamiento de vivienda urbana",
+      "library": "contractual_m4",
+      "documents": 6,
+      "sources": 3,
+      "status": "approved_controlled_use"
+    },
+    {
+      "product_code": "CO-CD-001",
+      "title": "Hábeas data financiero y suplantación",
+      "library": "playbook_m5",
+      "documents": 7,
+      "sources": 17,
+      "status": "approved_controlled_use"
+    },
+    {
+      "product_code": "CO-CD-003",
+      "title": "Garantía, retracto y reversión del pago",
+      "library": "playbook_m5",
+      "documents": 7,
+      "sources": 17,
+      "status": "approved_controlled_use"
+    },
+    {
+      "product_code": "CO-CD-004",
+      "title": "Cobro, acuerdo de pago y pagaré",
+      "library": "playbook_m5",
+      "documents": 7,
+      "sources": 19,
+      "status": "approved_controlled_use"
+    },
+    {
+      "product_code": "CO-EM-003",
+      "title": "Contrato de prestación de servicios independientes",
+      "library": "contractual_m4",
+      "documents": 7,
+      "sources": 3,
+      "status": "approved_controlled_use"
+    },
+    {
+      "product_code": "CO-EM-004",
+      "title": "Confidencialidad, secretos empresariales y propiedad intelectual",
+      "library": "contractual_m4",
+      "documents": 8,
+      "sources": 3,
+      "status": "approved_controlled_use"
+    },
+    {
+      "product_code": "CO-LA-001",
+      "title": "Liquidación laboral, reclamación y cierre",
+      "library": "playbook_m5",
+      "documents": 7,
+      "sources": 12,
+      "status": "approved_controlled_use"
+    },
+    {
+      "product_code": "CO-LA-002",
+      "title": "Contrato de trabajo personalizado",
+      "library": "contractual_m4",
+      "documents": 7,
+      "sources": 4,
+      "status": "approved_controlled_use"
+    },
+    {
+      "product_code": "CO-SA-001",
+      "title": "Acceso a salud, petición y escalamiento",
+      "library": "playbook_m5",
+      "documents": 7,
+      "sources": 16,
+      "status": "approved_controlled_use"
+    },
+    {
+      "product_code": "CO-TR-001",
+      "title": "Chequeo SAST e inscripción verificada",
+      "library": "playbook_m5",
+      "documents": 7,
+      "sources": 3,
+      "status": "approved_controlled_use"
+    },
+    {
+      "product_code": "CO-TR-002",
+      "title": "Fotodetección, notificación y defensa",
+      "library": "playbook_m5",
+      "documents": 8,
+      "sources": 14,
+      "status": "approved_controlled_use"
+    }
+  ],
+  "approval_model": "multi_stage_single_responsible",
+  "independent_reviewers": false,
+  "notice": "El contenido y la experiencia están preparados para piloto profesional controlado. La autorización de un despliegue público en producción depende adicionalmente del perfil, PostgreSQL, respaldos verificados, MFA, HTTPS, secretos administrados y escaneo antimalware."
+}

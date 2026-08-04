@@ -1,0 +1,28 @@
+{
+  "schema": "legalaizit-m31-7-test-report-v1",
+  "milestone": "M31.7",
+  "version": "5.0.6",
+  "status": "passed",
+  "ok": true,
+  "test_modules": 65,
+  "tests_passed": 488,
+  "subtests_passed": 938,
+  "failures": 0,
+  "timeouts": 0,
+  "skipped": 0,
+  "production_authorized": false,
+  "execution": {
+    "strategy": "módulos aislados con runtime SQLite independiente para evitar colisiones y consolidación por archivo",
+    "full_regression": "65 módulos; 488 pruebas y 938 subpruebas aprobadas",
+    "post_marker_hardening": "tests/test_m31_7_demo_reality.py: 10/10 aprobadas",
+    "focused_m31_2_to_m31_7": "57 pruebas aprobadas antes del endurecimiento final; el módulo afectado M31.7 fue reejecutado"
+  },
+  "additional_gates": {
+    "http_smoke": "5/5",
+    "authenticated_demo_document_smoke": "6/6",
+    "document_integrity": "110/110",
+    "generated_docx": "76/76",
+    "unresolved_files": 0
+  },
+  "note": "La producción pública permanece bloqueada. La certificación PostgreSQL externa no forma parte de esta aprobación local."
+}

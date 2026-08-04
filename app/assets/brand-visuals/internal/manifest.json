@@ -1,0 +1,393 @@
+{
+  "version": "M29.5",
+  "count": 59,
+  "assets": [
+    {
+      "file": "case-active.svg",
+      "title": "Expediente en progreso",
+      "purpose": "Un expediente activo avanza por distintas etapas"
+    },
+    {
+      "file": "case-closed.svg",
+      "title": "Expediente finalizado",
+      "purpose": "El expediente conserva documentos e historial después del cierre"
+    },
+    {
+      "file": "case-ready.svg",
+      "title": "Documento listo",
+      "purpose": "Un documento aprobado está listo para revisión final o descarga"
+    },
+    {
+      "file": "case-review.svg",
+      "title": "Expediente en revisión",
+      "purpose": "Un especialista revisa un expediente con controles visibles"
+    },
+    {
+      "file": "document-workspace.svg",
+      "title": "Centro documental",
+      "purpose": "Documentos organizados por expediente, versión y estado"
+    },
+    {
+      "file": "empty-documents-app.svg",
+      "title": "Sin documentos",
+      "purpose": "Un espacio documental vacío listo para recibir el primer borrador"
+    },
+    {
+      "file": "empty-evidence.svg",
+      "title": "Sin soportes",
+      "purpose": "Una carpeta preparada para recibir archivos del expediente"
+    },
+    {
+      "file": "empty-search.svg",
+      "title": "Sin resultados",
+      "purpose": "Una lupa muestra que no hay coincidencias y propone otra búsqueda"
+    },
+    {
+      "file": "evidence-upload.svg",
+      "title": "Preparar soportes",
+      "purpose": "Archivos y documentos se organizan dentro del expediente"
+    },
+    {
+      "file": "form-guidance.svg",
+      "title": "Formulario guiado",
+      "purpose": "Una entrevista jurídica dividida en pasos claros"
+    },
+    {
+      "file": "help-case.svg",
+      "title": "Ayuda para expedientes",
+      "purpose": "Guía para completar un expediente",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "help-center-m293.svg",
+      "title": "Centro de ayuda",
+      "purpose": "Centro de orientación contextual de LegalAIZ.it",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "help-decision.svg",
+      "title": "Ayuda para decisiones",
+      "purpose": "Registro de decisiones trazables",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "help-document.svg",
+      "title": "Ayuda para documentos",
+      "purpose": "Uso responsable de documentos generados",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "help-human.svg",
+      "title": "Acompañamiento humano",
+      "purpose": "Revisión profesional cuando el caso lo requiere",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "help-network.svg",
+      "title": "Ayuda para red profesional",
+      "purpose": "Gestión de especialistas y asignaciones",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "help-operation.svg",
+      "title": "Ayuda de operación",
+      "purpose": "Supervisión de la operación jurídica",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "help-pilot.svg",
+      "title": "Ayuda para piloto",
+      "purpose": "Preparación de piloto controlado",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "help-quality.svg",
+      "title": "Ayuda de calidad",
+      "purpose": "Controles de gobierno y liberación",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "help-review.svg",
+      "title": "Ayuda para revisión",
+      "purpose": "Explicación de estados de revisión",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "help-security.svg",
+      "title": "Ayuda de seguridad",
+      "purpose": "MFA, permisos y mínimo privilegio",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "help-solution.svg",
+      "title": "Ayuda para soluciones",
+      "purpose": "Orientación para escoger una solución",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "help-sources.svg",
+      "title": "Ayuda sobre fuentes",
+      "purpose": "Consulta y verificación de fuentes jurídicas",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "next-step.svg",
+      "title": "Siguiente paso",
+      "purpose": "Una ruta destaca claramente la acción que sigue"
+    },
+    {
+      "file": "notification-action.svg",
+      "title": "Siguiente acción",
+      "purpose": "Acción pendiente dentro de un expediente",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "notification-empty.svg",
+      "title": "Sin notificaciones",
+      "purpose": "Estado sin novedades pendientes",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "notification-info.svg",
+      "title": "Información relevante",
+      "purpose": "Actualización general de la plataforma",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "notification-ready.svg",
+      "title": "Resultado disponible",
+      "purpose": "Documento o resultado listo para consultar",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "notification-review.svg",
+      "title": "Notificación de revisión",
+      "purpose": "Alerta de expediente en revisión",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "notification-security.svg",
+      "title": "Control importante",
+      "purpose": "Alerta de seguridad o gobierno",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "onboarding-case.svg",
+      "title": "Expediente jurídico",
+      "purpose": "Expediente con etapas, información y trazabilidad",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "onboarding-decision.svg",
+      "title": "Decisión trazable",
+      "purpose": "Registro de decisiones y observaciones",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "onboarding-document.svg",
+      "title": "Documento revisable",
+      "purpose": "Documento jurídico listo para revisión",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "onboarding-evidence.svg",
+      "title": "Soportes del caso",
+      "purpose": "Organización de evidencia y documentos",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "onboarding-network.svg",
+      "title": "Red profesional",
+      "purpose": "Asignación y capacidad de especialistas",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "onboarding-operation.svg",
+      "title": "Operación jurídica",
+      "purpose": "Supervisión integral de expedientes",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "onboarding-pilot.svg",
+      "title": "Piloto controlado",
+      "purpose": "Preparación y seguimiento del piloto",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "onboarding-quality.svg",
+      "title": "Gobierno y calidad",
+      "purpose": "Controles de calidad, QA y aprobación",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "onboarding-review.svg",
+      "title": "Bandeja priorizada",
+      "purpose": "Revisión profesional organizada por riesgo",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "onboarding-solution.svg",
+      "title": "Encontrar una solución",
+      "purpose": "Selección guiada de la solución jurídica",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "onboarding-sources.svg",
+      "title": "Fuentes jurídicas",
+      "purpose": "Verificación de normas y criterios",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "onboarding-welcome.svg",
+      "title": "Bienvenida guiada",
+      "purpose": "Recorrido inicial para conocer LegalAIZ.it",
+      "format": "svg",
+      "iteration": "M29.3"
+    },
+    {
+      "file": "review-workflow.svg",
+      "title": "Revisión y aprobación",
+      "purpose": "Dos controles sucesivos validan la misma revisión documental"
+    },
+    {
+      "file": "support-center.svg",
+      "title": "Centro de ayuda",
+      "purpose": "Orientación contextual acompaña al usuario durante la plataforma"
+    },
+    {
+      "file": "journey-co-la-001.svg",
+      "title": "Liquidación laboral",
+      "purpose": "Recorrido para revisar relación, valores, riesgos y reclamación",
+      "format": "svg",
+      "iteration": "M29.4"
+    },
+    {
+      "file": "journey-co-la-002.svg",
+      "title": "Contrato de trabajo",
+      "purpose": "Recorrido para definir modalidad, condiciones, riesgos y formalización",
+      "format": "svg",
+      "iteration": "M29.4"
+    },
+    {
+      "file": "journey-co-em-003.svg",
+      "title": "Prestación de servicios",
+      "purpose": "Recorrido para delimitar servicio, pagos, riesgos y entregables",
+      "format": "svg",
+      "iteration": "M29.4"
+    },
+    {
+      "file": "journey-co-em-004.svg",
+      "title": "Confidencialidad y propiedad intelectual",
+      "purpose": "Recorrido para clasificar información, usos, titularidades y controles",
+      "format": "svg",
+      "iteration": "M29.4"
+    },
+    {
+      "file": "journey-co-ar-001.svg",
+      "title": "Arrendamiento de vivienda",
+      "purpose": "Recorrido para identificar inmueble, condiciones, entrega y cierre",
+      "format": "svg",
+      "iteration": "M29.4"
+    },
+    {
+      "file": "journey-co-sa-001.svg",
+      "title": "Petición en salud",
+      "purpose": "Recorrido para identificar necesidad, antecedentes, solicitud y seguimiento",
+      "format": "svg",
+      "iteration": "M29.4"
+    },
+    {
+      "file": "journey-co-cd-001.svg",
+      "title": "Hábeas data financiero",
+      "purpose": "Recorrido para identificar dato, soportes, corrección y seguimiento",
+      "format": "svg",
+      "iteration": "M29.4"
+    },
+    {
+      "file": "journey-co-cd-003.svg",
+      "title": "Protección al consumidor",
+      "purpose": "Recorrido para documentar compra, incumplimiento, pretensión y reclamación",
+      "format": "svg",
+      "iteration": "M29.4"
+    },
+    {
+      "file": "journey-co-cd-004.svg",
+      "title": "Acuerdo de pago",
+      "purpose": "Recorrido para conciliar obligación, condiciones, garantías y cierre",
+      "format": "svg",
+      "iteration": "M29.4"
+    },
+    {
+      "file": "journey-co-tr-001.svg",
+      "title": "Verificación de fotodetección",
+      "purpose": "Recorrido para identificar sistema, consultar fuentes, evaluar y documentar",
+      "format": "svg",
+      "iteration": "M29.4"
+    },
+    {
+      "file": "journey-co-tr-002.svg",
+      "title": "Fotomulta no notificada",
+      "purpose": "Recorrido para obtener expediente, reconstruir términos, evaluar y reclamar",
+      "format": "svg",
+      "iteration": "M29.4"
+    },
+    {
+      "file": "contextual-help.svg",
+      "title": "Ayuda contextual",
+      "purpose": "Orientación específica según la pantalla y el momento del proceso",
+      "format": "svg",
+      "iteration": "M29.4"
+    },
+    {
+      "file": "search-premium.svg",
+      "title": "Búsqueda inteligente",
+      "purpose": "Búsqueda por necesidades reales, expedientes y documentos",
+      "format": "svg",
+      "iteration": "M29.4"
+    },
+    {
+      "file": "accessibility-controls.svg",
+      "title": "Controles de accesibilidad",
+      "purpose": "Preferencias locales de texto, contraste y movimiento",
+      "format": "svg",
+      "iteration": "M29.4"
+    },
+    {
+      "file": "admin-insights.svg",
+      "title": "Panel de experiencia y conversión",
+      "purpose": "Métricas agregadas y solicitudes comerciales con control de privacidad",
+      "format": "svg",
+      "iteration": "M29.5"
+    }
+  ]
+}

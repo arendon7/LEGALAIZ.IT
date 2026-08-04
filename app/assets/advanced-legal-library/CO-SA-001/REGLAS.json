@@ -1,0 +1,623 @@
+[
+  {
+    "id": "SA-R1",
+    "risk": "red",
+    "message": "Posible urgencia vital o necesidad asistencial inmediata.",
+    "action": "No depender de la petición: activar urgencias o atención asistencial y revisión profesional.",
+    "conditions": {
+      "all": [
+        {
+          "field": "urgent",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "SA-S1",
+      "SA-S4",
+      "SA-S9"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "SA-R2",
+    "risk": "red",
+    "message": "Deterioro grave sin atención inmediata acreditada.",
+    "action": "Activar atención asistencial y no usar el documento como sustituto clínico.",
+    "conditions": {
+      "all": [
+        {
+          "field": "deterioration",
+          "op": "equals",
+          "value": "Grave"
+        },
+        {
+          "field": "immediate_attention_sought",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "SA-S4",
+      "SA-S9"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "SA-R3",
+    "risk": "yellow",
+    "message": "No hay certeza sobre la urgencia médica.",
+    "action": "Solicitar valoración asistencial inmediata cuando existan signos de alarma.",
+    "conditions": {
+      "all": [
+        {
+          "field": "urgent",
+          "op": "equals",
+          "value": "No sé"
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "SA-S4",
+      "SA-S9"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "SA-R4",
+    "risk": "red",
+    "message": "Existe tutela o proceso judicial activo sobre los mismos hechos.",
+    "action": "Coordinar el documento con la estrategia judicial y evitar actuaciones contradictorias.",
+    "conditions": {
+      "all": [
+        {
+          "field": "tutela_active",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "SA-S1",
+      "SA-S11"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "SA-R5",
+    "risk": "red",
+    "message": "Existe actuación activa ante Supersalud sobre los mismos hechos.",
+    "action": "Revisar expediente, radicados y alcance antes de una nueva presentación.",
+    "conditions": {
+      "all": [
+        {
+          "field": "supersalud_case_active",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "SA-S11",
+      "SA-S13"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "SA-R6",
+    "risk": "red",
+    "message": "Un tercero pretende acceder a historia clínica sin autorización suficiente.",
+    "action": "Acreditar autorización, representación o base constitucional antes de solicitar datos reservados.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_type",
+          "op": "equals",
+          "value": "Historia clínica"
+        },
+        {
+          "field": "acting_capacity",
+          "op": "in",
+          "value": [
+            "Apoderado o autorizado",
+            "Tercero con interés acreditado"
+          ]
+        },
+        {
+          "field": "third_party_authorization",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "privacy",
+    "source_ids": [
+      "SA-S4",
+      "SA-S5",
+      "SA-S7",
+      "SA-S12"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "SA-R7",
+    "risk": "red",
+    "message": "Paciente fallecido sin soporte suficiente de legitimación.",
+    "action": "Aportar parentesco, identidad, finalidad legítima y soportes exigibles antes de solicitar historia clínica.",
+    "conditions": {
+      "all": [
+        {
+          "field": "patient_status",
+          "op": "equals",
+          "value": "Fallecido"
+        },
+        {
+          "field": "representation_support",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "privacy",
+    "source_ids": [
+      "SA-S5",
+      "SA-S7",
+      "SA-S12"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "SA-R8",
+    "risk": "red",
+    "message": "Menor o persona con capacidad limitada sin soporte de representación.",
+    "action": "Acreditar representación y preservar el interés superior y la autonomía aplicable.",
+    "conditions": {
+      "all": [
+        {
+          "field": "patient_status",
+          "op": "in",
+          "value": [
+            "Menor de edad",
+            "Persona con capacidad limitada"
+          ]
+        },
+        {
+          "field": "representation_support",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "legitimacy",
+    "source_ids": [
+      "SA-S1",
+      "SA-S4"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "SA-R9",
+    "risk": "red",
+    "message": "Tercero con interés acreditado sin autorización o soporte suficiente.",
+    "action": "No divulgar ni pedir datos sensibles hasta acreditar legitimación.",
+    "conditions": {
+      "all": [
+        {
+          "field": "acting_capacity",
+          "op": "equals",
+          "value": "Tercero con interés acreditado"
+        },
+        {
+          "field": "third_party_authorization",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "privacy",
+    "source_ids": [
+      "SA-S7",
+      "SA-S12"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "SA-R10",
+    "risk": "yellow",
+    "message": "La entrega de historia clínica no está configurada por un canal seguro.",
+    "action": "Solicitar entrega reservada, autenticación y trazabilidad del acceso.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_type",
+          "op": "equals",
+          "value": "Historia clínica"
+        },
+        {
+          "field": "secure_delivery",
+          "op": "in",
+          "value": [
+            "No",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "privacy",
+    "source_ids": [
+      "SA-S5",
+      "SA-S6",
+      "SA-S7",
+      "SA-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "SA-R11",
+    "risk": "yellow",
+    "message": "Los anexos pueden incluir datos personales o clínicos innecesarios.",
+    "action": "Minimizar, proteger y enviar únicamente información pertinente.",
+    "conditions": {
+      "all": [
+        {
+          "field": "data_minimized",
+          "op": "in",
+          "value": [
+            "No",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "privacy",
+    "source_ids": [
+      "SA-S7",
+      "SA-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "SA-R12",
+    "risk": "yellow",
+    "message": "Falta soporte médico completo para la solicitud asistencial.",
+    "action": "Adjuntar orden, fórmula o soporte disponible y evitar afirmaciones no documentadas.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_type",
+          "op": "in",
+          "value": [
+            "Autorización o servicio",
+            "Medicamento o insumo",
+            "Cita o procedimiento"
+          ]
+        },
+        {
+          "field": "medical_support",
+          "op": "in",
+          "value": [
+            "Parcial",
+            "No"
+          ]
+        }
+      ]
+    },
+    "category": "evidence",
+    "source_ids": [
+      "SA-S4",
+      "SA-S9"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "SA-R13",
+    "risk": "yellow",
+    "message": "Existe condición de especial protección o priorización.",
+    "action": "Visibilizarla con hechos y soportes, sin formular diagnósticos no acreditados.",
+    "conditions": {
+      "all": [
+        {
+          "field": "priority_condition",
+          "op": "not_equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "priority",
+    "source_ids": [
+      "SA-S1",
+      "SA-S4",
+      "SA-S9"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "SA-R14",
+    "risk": "yellow",
+    "message": "Hay riesgo de interrupción de tratamiento o continuidad.",
+    "action": "Solicitar coordinación concreta, fechas, proveedor y medidas de continuidad.",
+    "conditions": {
+      "all": [
+        {
+          "field": "continuity_risk",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "continuity",
+    "source_ids": [
+      "SA-S4",
+      "SA-S9",
+      "SA-S11"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "SA-R15",
+    "risk": "green",
+    "message": "Existe petición previa.",
+    "action": "Activar reiteración, cronología y control del término preliminar.",
+    "conditions": {
+      "all": [
+        {
+          "field": "prior_request",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "SA-S2",
+      "SA-S11"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "SA-R16",
+    "risk": "yellow",
+    "message": "La petición previa no tiene respuesta completa acreditada.",
+    "action": "Anexar radicado y exigir respuesta de fondo, clara, congruente y notificada.",
+    "conditions": {
+      "all": [
+        {
+          "field": "prior_request",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "response_received",
+          "op": "in",
+          "value": [
+            "No",
+            "Parcial"
+          ]
+        }
+      ]
+    },
+    "category": "follow_up",
+    "source_ids": [
+      "SA-S2",
+      "SA-S11"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "SA-R17",
+    "risk": "yellow",
+    "message": "La respuesta previa es parcial, evasiva o incongruente.",
+    "action": "Individualizar cada punto no resuelto y pedir respuesta de fondo.",
+    "conditions": {
+      "all": [
+        {
+          "field": "response_quality",
+          "op": "in",
+          "value": [
+            "Parcial",
+            "Evasiva o incongruente"
+          ]
+        }
+      ]
+    },
+    "category": "follow_up",
+    "source_ids": [
+      "SA-S2",
+      "SA-S11"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "SA-R18",
+    "risk": "green",
+    "message": "La solicitud incluye historia clínica.",
+    "action": "Activar documento especializado de acceso, reserva y entrega segura.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_type",
+          "op": "equals",
+          "value": "Historia clínica"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "SA-S4",
+      "SA-S5",
+      "SA-S6",
+      "SA-S7",
+      "SA-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "SA-R19",
+    "risk": "green",
+    "message": "La petición corresponde a información o documentos.",
+    "action": "Aplicar término preliminar especial y control de entrega documental.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_type",
+          "op": "in",
+          "value": [
+            "Historia clínica",
+            "Información o documentos"
+          ]
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "SA-S2"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "SA-R20",
+    "risk": "green",
+    "message": "La petición solicita autorización, medicamento, cita o procedimiento.",
+    "action": "Activar peticiones de coordinación, agenda, proveedor y continuidad.",
+    "conditions": {
+      "all": [
+        {
+          "field": "request_type",
+          "op": "in",
+          "value": [
+            "Autorización o servicio",
+            "Medicamento o insumo",
+            "Cita o procedimiento"
+          ]
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "SA-S4",
+      "SA-S9"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "SA-R21",
+    "risk": "red",
+    "message": "Los datos del caso no fueron confirmados.",
+    "action": "Detener generación definitiva y revisar hechos, fechas, nombres y anexos.",
+    "conditions": {
+      "all": [
+        {
+          "field": "data_confirmed",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "data_quality",
+    "source_ids": [
+      "SA-S7"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "SA-R22",
+    "risk": "yellow",
+    "message": "La entidad destinataria no está tipificada.",
+    "action": "Verificar competencia, razón social, canal y traslado por falta de competencia.",
+    "conditions": {
+      "all": [
+        {
+          "field": "entity_type",
+          "op": "equals",
+          "value": "Otra"
+        }
+      ]
+    },
+    "category": "competence",
+    "source_ids": [
+      "SA-S2",
+      "SA-S3"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "SA-R23",
+    "risk": "yellow",
+    "message": "El canal de radicación puede no dejar trazabilidad suficiente.",
+    "action": "Usar canal oficial que genere radicado, fecha y copia íntegra de lo enviado.",
+    "conditions": {
+      "all": [
+        {
+          "field": "filing_channel",
+          "op": "in",
+          "value": [
+            "Canal verbal sin constancia",
+            "Red social o mensajería",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "filing",
+    "source_ids": [
+      "SA-S2",
+      "SA-S13"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "SA-R24",
+    "risk": "yellow",
+    "message": "El soporte de representación o legitimación está incompleto.",
+    "action": "Completar identidad, parentesco, autorización, poder o documento aplicable.",
+    "conditions": {
+      "all": [
+        {
+          "field": "representation_support",
+          "op": "equals",
+          "value": "Parcial"
+        }
+      ]
+    },
+    "category": "legitimacy",
+    "source_ids": [
+      "SA-S1",
+      "SA-S5",
+      "SA-S7",
+      "SA-S12"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "SA-R25",
+    "risk": "yellow",
+    "message": "La autorización del tercero está incompleta.",
+    "action": "Completar autorización y delimitar alcance, finalidad y canal de entrega.",
+    "conditions": {
+      "all": [
+        {
+          "field": "third_party_authorization",
+          "op": "equals",
+          "value": "Parcial"
+        }
+      ]
+    },
+    "category": "privacy",
+    "source_ids": [
+      "SA-S5",
+      "SA-S7",
+      "SA-S12"
+    ],
+    "blocking": false
+  }
+]

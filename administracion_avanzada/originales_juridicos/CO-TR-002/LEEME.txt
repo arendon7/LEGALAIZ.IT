@@ -1,0 +1,8 @@
+CO-TR-002 · Fotomulta no notificada
+
+Entregables esperados:
+- [OBLIGATORIO] Paquete jurídico consolidado · .docx, .pdf · pistas: fotomulta, no_notificada, paquete_10
+- [OBLIGATORIO] Entrevista, reglas y etapa procesal · .docx, .xlsx, .pdf · pistas: formulario, reglas, etapa
+- [OPCIONAL] Fuentes y actuaciones administrativas · .xlsx, .pdf, .docx · pistas: actuaciones, fuentes, sast
+
+No cambie el contenido para ajustarlo al sistema. Debe conservarse el binario recibido.

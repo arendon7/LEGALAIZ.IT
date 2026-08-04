@@ -1,0 +1,102 @@
+{
+  "schema": "legalaizit-m24-4-smoke-v1",
+  "ok": true,
+  "checks": [
+    {
+      "name": "public_config",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "admin_login",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "specialist_login",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "client_login",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "full_contract",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "full_summary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "publication_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "client_denied",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "remaining_product_detail",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "evidence_integrity_download",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "activation_blocked_before_approvals",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "qa_blocked_before_legal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "legal_approval_role",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "qa_after_legal_distinct",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "wrong_confirmation_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "controlled_internal_activation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "activation_does_not_publish",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "controlled_deactivation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "frontend_full_module",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "failed": []
+}

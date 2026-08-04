@@ -1,0 +1,102 @@
+{
+  "version": "M16.1",
+  "product_code": "CO-LA-001",
+  "title": "Liquidación laboral, reclamación, indemnizaciones y cierre",
+  "objective": "Liquidar por concepto, periodo, base y soporte; separar prestaciones, vacaciones, indemnizaciones, sanciones y pagos.",
+  "formula_model": "Bases diferenciadas; prestaciones 30/360; vacaciones 15 días hábiles/año; indemnización según modalidad; pagos por línea.",
+  "documents": [
+    {
+      "kind": "diagnostic",
+      "title": "Informe técnico de diagnóstico y liquidación",
+      "conditional": false
+    },
+    {
+      "kind": "calculation",
+      "title": "Anexo de cálculo por concepto",
+      "conditional": false
+    },
+    {
+      "kind": "termination",
+      "title": "Matriz de terminación e indemnizaciones",
+      "conditional": true
+    },
+    {
+      "kind": "claim",
+      "title": "Reclamación laboral directa",
+      "conditional": false
+    },
+    {
+      "kind": "evidence",
+      "title": "Matriz probatoria, pagos y vacíos",
+      "conditional": false
+    },
+    {
+      "kind": "settlement",
+      "title": "Propuesta condicional de acuerdo",
+      "conditional": true
+    },
+    {
+      "kind": "followup",
+      "title": "Guía de radicación y escalamiento",
+      "conditional": false
+    }
+  ],
+  "red_controls": [
+    "LA1-R1",
+    "LA1-R2",
+    "LA1-R3",
+    "LA1-R4",
+    "LA1-R5",
+    "LA1-R6",
+    "LA1-R7",
+    "LA1-R8",
+    "LA1-R9",
+    "LA1-R10",
+    "LA1-R17",
+    "LA1-R18"
+  ],
+  "yellow_controls": [
+    "LA1-R11",
+    "LA1-R12",
+    "LA1-R13",
+    "LA1-R14",
+    "LA1-R15",
+    "LA1-R16",
+    "LA1-R19"
+  ],
+  "official_source_ids": [
+    "LA1-S1",
+    "LA1-S2",
+    "LA1-S3",
+    "LA1-S4",
+    "LA1-S5",
+    "LA1-S6",
+    "LA1-S7",
+    "LA1-S8",
+    "LA1-S9",
+    "LA1-S10"
+  ],
+  "counts": {
+    "documents": 4,
+    "questions": 38,
+    "rules": 20,
+    "sources": 10,
+    "tests": 12,
+    "templates": 4,
+    "blocks": 36
+  },
+  "verified_at": "2026-07-31",
+  "status": "Revalidado M16 para uso profesional controlado",
+  "controls": [
+    "bases separadas",
+    "cesantías anualizadas",
+    "intereses 12 %",
+    "prima semestral",
+    "vacaciones",
+    "terminación e indemnización",
+    "descuentos",
+    "prescripción e interrupción",
+    "pagos por concepto",
+    "no sanciones automáticas"
+  ]
+}

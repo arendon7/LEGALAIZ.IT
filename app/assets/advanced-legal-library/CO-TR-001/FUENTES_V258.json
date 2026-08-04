@@ -1,0 +1,64 @@
+{
+  "version": "2.58",
+  "product_id": "CO-TR-001",
+  "verified_at": "2026-07-26",
+  "policy": "official_sources_snapshot_and_pre_release_revalidation",
+  "sources": [
+    {
+      "id": "ST-2026-37-WEB",
+      "authority": "Superintendencia de Transporte",
+      "title": "Investigación a 37 organismos de tránsito por presuntas irregularidades SAST",
+      "date": "2026-05-19",
+      "url": "https://www.supertransporte.gov.co/index.php/comunicaciones-2026/gobierno-nacional-investiga-a-37-organismos-de-transito-mas-de-75-millones-de-fotomultas-estan-bajo-la-lupa-y-58-millones-quedaran-sin-validez/",
+      "use": "Contexto oficial de la investigación y límites entre actuación publicada y consecuencia individual."
+    },
+    {
+      "id": "ST-2026-37-PDF",
+      "authority": "Superintendencia de Transporte",
+      "title": "Sanciones SAST - matriz de 37 organismos y periodos",
+      "date": "2026-05-19",
+      "url": "https://www.supertransporte.gov.co/documentos/2026/Mayo/Comunicaciones_26/Sanciones_SAST1.pdf",
+      "use": "Rangos determinísticos del Grupo A."
+    },
+    {
+      "id": "ST-2026-12-WEB",
+      "authority": "Superintendencia de Transporte",
+      "title": "Investigación a otros 12 organismos por presuntas irregularidades SAST",
+      "date": "2026-05-29",
+      "url": "https://www.supertransporte.gov.co/index.php/comunicaciones-2026/la-supertransporte-abrio-investigacion-a-otros-12-organismos-de-transito-por-presuntas-irregularidades-en-sistemas-de-fotodeteccion/page/2/",
+      "use": "Rangos determinísticos del Grupo B y control de discrepancias publicadas."
+    },
+    {
+      "id": "LEY-2251-2022-ART18",
+      "authority": "Congreso de Colombia / Función Pública",
+      "title": "Ley 2251 de 2022, artículo 18 - artículo 158A del Código Nacional de Tránsito",
+      "date": "2022-07-14",
+      "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=189806",
+      "use": "Control de firmeza de la decisión de Supertransporte antes de atribuir revocación oficiosa."
+    },
+    {
+      "id": "LEY-1843-2017",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "title": "Ley 1843 de 2017",
+      "date": "2017-07-14",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30032605",
+      "use": "Marco de instalación, operación, notificación y procedimiento SAST."
+    },
+    {
+      "id": "LEY-1581-2012",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "title": "Ley 1581 de 2012 - protección de datos personales",
+      "date": "2012-10-17",
+      "url": "https://www.suin-juriscol.gov.co/clp/contenidos.dll/Leyes/1684507",
+      "use": "Finalidad, libertad, veracidad, acceso restringido y autorización consultable para el expediente verificado."
+    }
+  ],
+  "legal_control": {
+    "preliminary_only": true,
+    "firm_decision_required": true,
+    "individual_applicability_required": true,
+    "no_automatic_refund_or_revocation": true,
+    "monthly_update": true,
+    "extraordinary_update_on_official_decision": true
+  }
+}

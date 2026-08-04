@@ -1,0 +1,76 @@
+{
+  "version": "2.31",
+  "product_code": "CO-SA-001",
+  "title": "Maduración integral del derecho de petición ante EPS o IPS",
+  "verified_at": "2026-07-20",
+  "status": "Candidato interno para cierre jurídico del abogado responsable",
+  "legal_positioning": [
+    "Una petición no sustituye atención médica urgente ni garantiza la autorización o prestación solicitada.",
+    "La respuesta debe ser oportuna, de fondo, clara, precisa, congruente y efectivamente comunicada.",
+    "Los términos de 10 o 15 días hábiles se calculan de forma preliminar y deben verificarse frente a festivos, traslados, extensiones y normas especiales.",
+    "La continuidad, la especial protección y el riesgo de perjuicio irremediable exigen priorización y soporte, sin inventar diagnósticos.",
+    "La historia clínica es reservada y los datos de salud son sensibles; el acceso exige identidad, legitimación, finalidad, minimización y entrega segura.",
+    "El acceso de familiares a la historia de un paciente fallecido requiere evaluación individual y no es automático.",
+    "La reiteración conserva la cronología del incumplimiento y no debe duplicar actuaciones judiciales o administrativas activas.",
+    "La ruta ante Supersalud es administrativa, no reemplaza tutela, representación judicial ni atención asistencial."
+  ],
+  "documents": [
+    {
+      "kind": "health_petition",
+      "title": "Derecho de petición integral ante EPS o IPS",
+      "filename_suffix": "derecho_peticion_integral_salud"
+    },
+    {
+      "kind": "medical_record_request",
+      "title": "Solicitud de historia clínica y entrega segura",
+      "filename_suffix": "solicitud_historia_clinica_segura"
+    },
+    {
+      "kind": "health_reiteration",
+      "title": "Reiteración por falta o insuficiencia de respuesta",
+      "filename_suffix": "reiteracion_peticion_salud"
+    },
+    {
+      "kind": "supersalud_escalation",
+      "title": "Ruta y borrador de PQRD ante Supersalud",
+      "filename_suffix": "ruta_pqrd_supersalud"
+    },
+    {
+      "kind": "health_evidence_index",
+      "title": "Matriz de soportes, legitimación y privacidad",
+      "filename_suffix": "matriz_soportes_legitimacion"
+    },
+    {
+      "kind": "health_deadline_calendar",
+      "title": "Calendario preliminar de términos y seguimiento",
+      "filename_suffix": "calendario_terminos_salud"
+    },
+    {
+      "kind": "health_filing_guide",
+      "title": "Guía de radicación, privacidad y seguimiento",
+      "filename_suffix": "guia_radicacion_salud"
+    }
+  ],
+  "controls": [
+    "urgencia y deterioro",
+    "continuidad y priorización",
+    "identidad y legitimación",
+    "historia clínica reservada",
+    "datos sensibles y minimización",
+    "petición previa y respuesta",
+    "término preliminar",
+    "canal de radicación",
+    "tutela o PQRD activa",
+    "calidad y confirmación de datos",
+    "aprobación jurídica y QA"
+  ],
+  "approval_documents": [
+    "CO-SA-001_INFORME_MADURACION_JURIDICA_V231.docx",
+    "CO-SA-001_INFORME_MADURACION_JURIDICA_V231.pdf",
+    "CO-SA-001_MATRIZ_TRAZABILIDAD_V231.docx",
+    "CO-SA-001_MATRIZ_TRAZABILIDAD_V231.pdf",
+    "LegalAIZit_Paquete_Documental_CO-SA-001_V231.docx",
+    "LegalAIZit_Paquete_Documental_CO-SA-001_V231.pdf"
+  ],
+  "next_release": "v2.32 — maduración integral de CO-CD-001"
+}

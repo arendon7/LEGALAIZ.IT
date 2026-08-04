@@ -1,0 +1,2659 @@
+[
+  {
+    "template_id": "TPL-CO-AR-001-DELIVERY-ACT",
+    "product_code": "CO-AR-001",
+    "kind": "delivery_act",
+    "title": "Acta de entrega del inmueble",
+    "subtitle": "Posesión material, llaves, medidores, documentos, defectos y compromisos",
+    "filename_suffix": "acta_entrega",
+    "version_label": "3.5.0-m27.2",
+    "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión.",
+    "source_package": "LegalAIZit_Paquete_02_Arrendamiento_Vivienda_Urbana_v1",
+    "variables": [
+      {
+        "id": "landlord",
+        "label": "Nombre o razón social del arrendador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "landlord_id",
+        "label": "Identificación del arrendador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "landlord_email",
+        "label": "Correo del arrendador",
+        "type": "email",
+        "required": true
+      },
+      {
+        "id": "tenant",
+        "label": "Nombre del arrendatario principal",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "tenant_id",
+        "label": "Identificación del arrendatario",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "tenant_email",
+        "label": "Correo del arrendatario",
+        "type": "email",
+        "required": true
+      },
+      {
+        "id": "urban_home",
+        "label": "¿El inmueble es vivienda urbana ordinaria?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "lease_type",
+        "label": "Modalidad del arrendamiento",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Individual",
+          "Mancomunado",
+          "Compartido",
+          "Pensión"
+        ]
+      },
+      {
+        "id": "authority",
+        "label": "¿El arrendador acredita propiedad o autorización vigente?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "Pendiente"
+        ]
+      },
+      {
+        "id": "active_dispute",
+        "label": "¿Existe litigio, restitución o controversia de tenencia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "cash_deposit",
+        "label": "¿Se pretende exigir depósito en dinero o caución real a favor del arrendador?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "ph",
+        "label": "¿El inmueble está sometido a propiedad horizontal?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "ph_rules_delivered",
+        "label": "¿Se entregará la parte normativa del reglamento de propiedad horizontal?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "No aplica"
+        ]
+      },
+      {
+        "id": "furnished_high_value",
+        "label": "¿El inmueble es amoblado o contiene bienes de valor relevante?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "unsafe",
+        "label": "¿Hay defectos graves de sanidad, seguridad o servicios esenciales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "tourism_sublease",
+        "label": "¿Se usará para turismo, plataforma, hospedaje por días o subarriendo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "property",
+        "label": "Dirección e identificación completa del inmueble",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "property_registration",
+        "label": "Matrícula inmobiliaria o identificación registral",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "occupants",
+        "label": "Ocupantes autorizados",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "pets",
+        "label": "¿Habrá mascotas?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "rent",
+        "label": "Canon mensual (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "commercial_value_known",
+        "label": "¿Se conoce el valor comercial o soporte equivalente?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "commercial_value",
+        "label": "Valor comercial soportado (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "cadastral_value",
+        "label": "Avalúo catastral vigente (COP, si se conoce)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "administration_charge",
+        "label": "Administración ordinaria mensual (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "utilities_responsible",
+        "label": "Responsable principal de servicios públicos",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Arrendatario",
+          "Arrendador",
+          "Distribución especial"
+        ]
+      },
+      {
+        "id": "duration_months",
+        "label": "Duración inicial en meses",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha de inicio",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "payment_day",
+        "label": "Día límite mensual de pago",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "co_debtor",
+        "label": "Garantía personal o póliza",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Codeudor solidario",
+          "Fiador",
+          "Póliza"
+        ]
+      },
+      {
+        "id": "special_termination",
+        "label": "¿Se propone terminación atípica, venta próxima o cláusula especial?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que los datos y soportes fueron revisados?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "AR-S1",
+      "AR-S2",
+      "AR-S3",
+      "AR-S4",
+      "AR-S7",
+      "AR-S8"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-AR-001-DELIVERY-ACT-B01",
+        "type": "section",
+        "heading": "1. Fecha, partes e inmueble",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Campo",
+            "Información"
+          ],
+          [
+            "Arrendador",
+            "{{landlord}} — {{landlord_id}}"
+          ],
+          [
+            "Arrendatario",
+            "{{tenant}} — {{tenant_id}}"
+          ],
+          [
+            "Inmueble",
+            "{{property}}"
+          ],
+          [
+            "Fecha de inicio",
+            "{{start_date}}"
+          ],
+          [
+            "Ocupantes autorizados",
+            "{{occupants}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S3"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-DELIVERY-ACT-B02",
+        "type": "section",
+        "heading": "2. Entrega material y accesos",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Elemento",
+            "Cantidad / identificación / estado"
+          ],
+          [
+            "Llaves",
+            "Registrar todas las copias"
+          ],
+          [
+            "Controles y tarjetas",
+            "Registrar seriales o números"
+          ],
+          [
+            "Códigos y accesos digitales",
+            "Registrar alcance y cambio inicial"
+          ],
+          [
+            "Parqueadero o depósito",
+            "Registrar elementos entregados"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S2",
+          "AR-S3"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-DELIVERY-ACT-B03",
+        "type": "section",
+        "heading": "3. Medidores, servicios y administración",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Concepto",
+            "Lectura / periodo / responsable / soporte"
+          ],
+          [
+            "Energía",
+            "Registrar lectura inicial"
+          ],
+          [
+            "Agua",
+            "Registrar lectura inicial"
+          ],
+          [
+            "Gas",
+            "Registrar lectura inicial"
+          ],
+          [
+            "Servicios",
+            "Responsable: {{utilities_responsible}}"
+          ],
+          [
+            "Administración",
+            "Valor declarado: COP ${{administration_charge}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S2",
+          "AR-S3"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-DELIVERY-ACT-B04",
+        "type": "section",
+        "heading": "4. Documentos entregados",
+        "text": "",
+        "bullets": [
+          "Contrato y anexos en la misma versión.",
+          "Inventario y evidencia fotográfica.",
+          "Reglamento de propiedad horizontal: {{ph_rules_delivered}}.",
+          "Manuales, pólizas, contactos y canales de reporte.",
+          "Soportes de pagos o estados de cuenta aplicables."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S2",
+          "AR-S7",
+          "AR-S8"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-DELIVERY-ACT-B05",
+        "type": "section",
+        "heading": "5. Novedades y compromisos",
+        "text": "Defectos o riesgos declarados: {{unsafe}}. Ninguna novedad debe quedar descrita de forma genérica o sin responsable.",
+        "bullets": [],
+        "table": [
+          [
+            "Novedad",
+            "Responsable / medida temporal / fecha / evidencia"
+          ],
+          [
+            "Defectos visibles",
+            "Registrar por espacio"
+          ],
+          [
+            "Reparaciones acordadas",
+            "Definir alcance y fecha"
+          ],
+          [
+            "Pruebas no realizadas",
+            "Programar verificación"
+          ],
+          [
+            "Servicios o seguridad",
+            "Definir acción prioritaria"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S3"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-DELIVERY-ACT-B06",
+        "type": "section",
+        "heading": "6. Inicio de obligaciones y reservas",
+        "text": "El canon mensual declarado es COP ${{rent}} y el día de pago {{payment_day}}. Debe precisarse desde cuándo se causan canon, servicios y administración según la entrega real. La firma no implica renuncia a defectos ocultos, habitabilidad, reparaciones legales ni derechos irrenunciables.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S3"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-DELIVERY-ACT-B07",
+        "type": "section",
+        "heading": "7. Copia, evidencia y cierre de entrega",
+        "text": "",
+        "bullets": [
+          "Entregar copia del acta y anexos a ambas partes.",
+          "Relacionar fotografías, videos y archivos por nombre y fecha.",
+          "Confirmar canales de contacto y reporte.",
+          "Registrar pendientes hasta su cierre verificable."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S7",
+          "AR-S8"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-DELIVERY-ACT-CONTROL",
+        "type": "control",
+        "heading": "Control de uso, revisión y liberación",
+        "text": "Documento generado por LegalAIZ.it dentro de un flujo jurídico controlado. Antes de firmar, radicar, enviar, publicar o entregar, deben verificarse los hechos, soportes, vigencia normativa, términos, variables económicas, anexos y coherencia con el expediente; la misma revisión requiere aprobación jurídica y QA técnico. La plataforma no sustituye representación judicial ni garantiza resultados.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de gobierno; no puede eliminarse desde el editor."
+      }
+    ],
+    "canonical_evidence": [
+      "04_BIBLIOTECA_CONTRACTUAL_PROFUNDA/CO-AR-001",
+      "app/assets/advanced-legal-library/CO-AR-001"
+    ],
+    "release_gates": [
+      "legal_approval_same_revision",
+      "qa_approval_same_revision",
+      "case_data_validation",
+      "normative_currency_check"
+    ],
+    "professional_review_required": true,
+    "external_release_authorized": false
+  },
+  {
+    "template_id": "TPL-CO-AR-001-LEASE-CONTRACT",
+    "product_code": "CO-AR-001",
+    "kind": "lease_contract",
+    "title": "Contrato de arrendamiento de vivienda urbana",
+    "subtitle": "Borrador residencial para revisión y firma",
+    "filename_suffix": "contrato_arrendamiento",
+    "version_label": "3.5.0-m27.2",
+    "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión.",
+    "source_package": "LegalAIZit_Paquete_02_Arrendamiento_Vivienda_Urbana_v1",
+    "variables": [
+      {
+        "id": "landlord",
+        "label": "Nombre o razón social del arrendador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "landlord_id",
+        "label": "Identificación del arrendador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "landlord_email",
+        "label": "Correo del arrendador",
+        "type": "email",
+        "required": true
+      },
+      {
+        "id": "tenant",
+        "label": "Nombre del arrendatario principal",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "tenant_id",
+        "label": "Identificación del arrendatario",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "tenant_email",
+        "label": "Correo del arrendatario",
+        "type": "email",
+        "required": true
+      },
+      {
+        "id": "urban_home",
+        "label": "¿El inmueble es vivienda urbana ordinaria?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "lease_type",
+        "label": "Modalidad del arrendamiento",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Individual",
+          "Mancomunado",
+          "Compartido",
+          "Pensión"
+        ]
+      },
+      {
+        "id": "authority",
+        "label": "¿El arrendador acredita propiedad o autorización vigente?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "Pendiente"
+        ]
+      },
+      {
+        "id": "active_dispute",
+        "label": "¿Existe litigio, restitución o controversia de tenencia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "cash_deposit",
+        "label": "¿Se pretende exigir depósito en dinero o caución real a favor del arrendador?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "ph",
+        "label": "¿El inmueble está sometido a propiedad horizontal?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "ph_rules_delivered",
+        "label": "¿Se entregará la parte normativa del reglamento de propiedad horizontal?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "No aplica"
+        ]
+      },
+      {
+        "id": "furnished_high_value",
+        "label": "¿El inmueble es amoblado o contiene bienes de valor relevante?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "unsafe",
+        "label": "¿Hay defectos graves de sanidad, seguridad o servicios esenciales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "tourism_sublease",
+        "label": "¿Se usará para turismo, plataforma, hospedaje por días o subarriendo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "property",
+        "label": "Dirección e identificación completa del inmueble",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "property_registration",
+        "label": "Matrícula inmobiliaria o identificación registral",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "occupants",
+        "label": "Ocupantes autorizados",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "pets",
+        "label": "¿Habrá mascotas?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "rent",
+        "label": "Canon mensual (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "commercial_value_known",
+        "label": "¿Se conoce el valor comercial o soporte equivalente?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "commercial_value",
+        "label": "Valor comercial soportado (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "cadastral_value",
+        "label": "Avalúo catastral vigente (COP, si se conoce)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "administration_charge",
+        "label": "Administración ordinaria mensual (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "utilities_responsible",
+        "label": "Responsable principal de servicios públicos",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Arrendatario",
+          "Arrendador",
+          "Distribución especial"
+        ]
+      },
+      {
+        "id": "duration_months",
+        "label": "Duración inicial en meses",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha de inicio",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "payment_day",
+        "label": "Día límite mensual de pago",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "co_debtor",
+        "label": "Garantía personal o póliza",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Codeudor solidario",
+          "Fiador",
+          "Póliza"
+        ]
+      },
+      {
+        "id": "special_termination",
+        "label": "¿Se propone terminación atípica, venta próxima o cláusula especial?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que los datos y soportes fueron revisados?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "AR-S1",
+      "AR-S2",
+      "AR-S3",
+      "AR-S4",
+      "AR-S7",
+      "AR-S8"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-AR-001-LEASE-CONTRACT-B01",
+        "type": "section",
+        "heading": "1. Partes e inmueble",
+        "text": "Entre {{landlord}} y {{tenant}} se estructura un contrato de arrendamiento de vivienda urbana sobre: {{property}}",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S2",
+          "AR-S3"
+        ],
+        "notes": "Estructura derivada del generador jurídico del prototipo. Comparar contra el paquete canónico antes de aprobación."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-CONTRACT-B02",
+        "type": "section",
+        "heading": "2. Destinación y entrega",
+        "text": "",
+        "bullets": [
+          "Destinación exclusiva a vivienda urbana ordinaria de los ocupantes autorizados.",
+          "La entrega se documentará mediante inventario, fotografías, lecturas de medidores, llaves y defectos preexistentes.",
+          "El reglamento de propiedad horizontal se entrega y acepta cuando corresponda."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S2",
+          "AR-S3"
+        ],
+        "notes": "Estructura derivada del generador jurídico del prototipo. Comparar contra el paquete canónico antes de aprobación."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-CONTRACT-B03",
+        "type": "section",
+        "heading": "3. Canon, administración y servicios",
+        "text": "",
+        "bullets": [
+          "Separar canon, administración ordinaria, cuotas extraordinarias, servicios, parqueadero y conceptos adicionales.",
+          "El canon y sus reajustes deben respetar límites legales y conservar soporte del valor utilizado.",
+          "No se exige depósito en dinero ni caución real a favor del arrendador para garantizar obligaciones residenciales."
+        ],
+        "table": [
+          [
+            "Concepto",
+            "Condición"
+          ],
+          [
+            "Canon mensual",
+            "COP ${{rent}}"
+          ],
+          [
+            "Propiedad horizontal",
+            "{{ph}}"
+          ],
+          [
+            "Garantía",
+            "{{co_debtor}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S2",
+          "AR-S3"
+        ],
+        "notes": "Estructura derivada del generador jurídico del prototipo. Comparar contra el paquete canónico antes de aprobación."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-CONTRACT-B04",
+        "type": "section",
+        "heading": "4. Obligaciones y reparaciones",
+        "text": "",
+        "bullets": [
+          "El arrendador entrega y mantiene el inmueble en condiciones de servicio, seguridad y goce convenido.",
+          "El arrendatario paga, cuida, informa daños y asume reparaciones locativas atribuibles al uso ordinario o culpa probada.",
+          "Las reparaciones indispensables y locativas deben diferenciarse y gestionarse por escrito.",
+          "El desgaste normal no se cobra como daño."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S2",
+          "AR-S3"
+        ],
+        "notes": "Estructura derivada del generador jurídico del prototipo. Comparar contra el paquete canónico antes de aprobación."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-CONTRACT-B05",
+        "type": "section",
+        "heading": "5. Uso, visitas y convivencia",
+        "text": "",
+        "bullets": [
+          "No se permite turismo, plataforma, cambio de destinación o subarriendo sin acuerdo y producto jurídico apropiado.",
+          "Las visitas de inspección deben coordinarse razonablemente; no existe ingreso libre del arrendador.",
+          "Los ocupantes deben observar normas de convivencia y propiedad horizontal entregadas."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S2",
+          "AR-S3"
+        ],
+        "notes": "Estructura derivada del generador jurídico del prototipo. Comparar contra el paquete canónico antes de aprobación."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-CONTRACT-B06",
+        "type": "section",
+        "heading": "6. Terminación y restitución",
+        "text": "",
+        "bullets": [
+          "La terminación requiere causal, preaviso, canal y efectos compatibles con el régimen aplicable.",
+          "La restitución se documentará con acta, inventario comparado, llaves, medidores y facturas pendientes.",
+          "Las reservas por facturas no emitidas o daños no detectables se documentarán sin convertirlas en depósito prohibido."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S2",
+          "AR-S3"
+        ],
+        "notes": "Estructura derivada del generador jurídico del prototipo. Comparar contra el paquete canónico antes de aprobación."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-CONTRACT-B07",
+        "type": "section",
+        "heading": "7. Control previo",
+        "text": "",
+        "bullets": [
+          "Verificar titularidad o autorización reciente del arrendador.",
+          "Confirmar que no hay controversia de tenencia, restitución o litigio activo.",
+          "Revisar condiciones de sanidad, seguridad, servicios y defectos antes de entregar.",
+          "Anexar inventario, acta de entrega, reglamento y soportes de pago."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S2",
+          "AR-S3"
+        ],
+        "notes": "Estructura derivada del generador jurídico del prototipo. Comparar contra el paquete canónico antes de aprobación."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-CONTRACT-MOD-PH",
+        "type": "clause",
+        "heading": "Módulo de propiedad horizontal",
+        "text": "",
+        "bullets": [
+          "Entregar el reglamento y reglas de convivencia aplicables.",
+          "Separar administración ordinaria, cuotas extraordinarias y obligaciones de cada parte."
+        ],
+        "table": [],
+        "condition": {
+          "field": "ph",
+          "op": "equals",
+          "value": "Sí"
+        },
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S2",
+          "AR-S3"
+        ],
+        "notes": "Módulo condicional estructural derivado del paquete piloto; requiere validación del especialista."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-CONTRACT-MOD-CO-DEBTOR",
+        "type": "clause",
+        "heading": "Módulo de codeudor o garantía personal",
+        "text": "",
+        "bullets": [
+          "Identificar plenamente al garante y el alcance de su obligación.",
+          "Evitar renuncias genéricas, garantías desproporcionadas o espacios en blanco."
+        ],
+        "table": [],
+        "condition": {
+          "field": "co_debtor",
+          "op": "not_in",
+          "value": [
+            "No"
+          ]
+        },
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S2",
+          "AR-S3"
+        ],
+        "notes": "Módulo condicional estructural derivado del paquete piloto; requiere validación del especialista."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-CONTRACT-MOD-FURNISHED",
+        "type": "clause",
+        "heading": "Módulo de inmueble amoblado",
+        "text": "",
+        "bullets": [
+          "Anexar inventario fotográfico y estado funcional de los bienes.",
+          "Separar desgaste normal, daños atribuibles y reglas de reposición."
+        ],
+        "table": [],
+        "condition": {
+          "field": "furnished_high_value",
+          "op": "equals",
+          "value": "Sí"
+        },
+        "required": false,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S2",
+          "AR-S3"
+        ],
+        "notes": "Módulo condicional estructural derivado del paquete piloto; requiere validación del especialista."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-CONTRACT-CONTROL",
+        "type": "control",
+        "heading": "Control de uso, revisión y liberación",
+        "text": "Documento generado por LegalAIZ.it dentro de un flujo jurídico controlado. Antes de firmar, radicar, enviar, publicar o entregar, deben verificarse los hechos, soportes, vigencia normativa, términos, variables económicas, anexos y coherencia con el expediente; la misma revisión requiere aprobación jurídica y QA técnico. La plataforma no sustituye representación judicial ni garantiza resultados.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de gobierno; no puede eliminarse desde el editor."
+      }
+    ],
+    "canonical_evidence": [
+      "04_BIBLIOTECA_CONTRACTUAL_PROFUNDA/CO-AR-001",
+      "app/assets/advanced-legal-library/CO-AR-001"
+    ],
+    "release_gates": [
+      "legal_approval_same_revision",
+      "qa_approval_same_revision",
+      "case_data_validation",
+      "normative_currency_check"
+    ],
+    "professional_review_required": true,
+    "external_release_authorized": false
+  },
+  {
+    "template_id": "TPL-CO-AR-001-LEASE-GUIDE",
+    "product_code": "CO-AR-001",
+    "kind": "lease_guide",
+    "title": "Guía operativa de firma, ejecución y cierre",
+    "subtitle": "Controles prácticos para el ciclo completo del arrendamiento",
+    "filename_suffix": "guia_operativa_arrendamiento",
+    "version_label": "3.5.0-m27.2",
+    "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión.",
+    "source_package": "LegalAIZit_Paquete_02_Arrendamiento_Vivienda_Urbana_v1",
+    "variables": [
+      {
+        "id": "landlord",
+        "label": "Nombre o razón social del arrendador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "landlord_id",
+        "label": "Identificación del arrendador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "landlord_email",
+        "label": "Correo del arrendador",
+        "type": "email",
+        "required": true
+      },
+      {
+        "id": "tenant",
+        "label": "Nombre del arrendatario principal",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "tenant_id",
+        "label": "Identificación del arrendatario",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "tenant_email",
+        "label": "Correo del arrendatario",
+        "type": "email",
+        "required": true
+      },
+      {
+        "id": "urban_home",
+        "label": "¿El inmueble es vivienda urbana ordinaria?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "lease_type",
+        "label": "Modalidad del arrendamiento",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Individual",
+          "Mancomunado",
+          "Compartido",
+          "Pensión"
+        ]
+      },
+      {
+        "id": "authority",
+        "label": "¿El arrendador acredita propiedad o autorización vigente?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "Pendiente"
+        ]
+      },
+      {
+        "id": "active_dispute",
+        "label": "¿Existe litigio, restitución o controversia de tenencia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "cash_deposit",
+        "label": "¿Se pretende exigir depósito en dinero o caución real a favor del arrendador?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "ph",
+        "label": "¿El inmueble está sometido a propiedad horizontal?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "ph_rules_delivered",
+        "label": "¿Se entregará la parte normativa del reglamento de propiedad horizontal?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "No aplica"
+        ]
+      },
+      {
+        "id": "furnished_high_value",
+        "label": "¿El inmueble es amoblado o contiene bienes de valor relevante?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "unsafe",
+        "label": "¿Hay defectos graves de sanidad, seguridad o servicios esenciales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "tourism_sublease",
+        "label": "¿Se usará para turismo, plataforma, hospedaje por días o subarriendo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "property",
+        "label": "Dirección e identificación completa del inmueble",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "property_registration",
+        "label": "Matrícula inmobiliaria o identificación registral",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "occupants",
+        "label": "Ocupantes autorizados",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "pets",
+        "label": "¿Habrá mascotas?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "rent",
+        "label": "Canon mensual (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "commercial_value_known",
+        "label": "¿Se conoce el valor comercial o soporte equivalente?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "commercial_value",
+        "label": "Valor comercial soportado (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "cadastral_value",
+        "label": "Avalúo catastral vigente (COP, si se conoce)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "administration_charge",
+        "label": "Administración ordinaria mensual (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "utilities_responsible",
+        "label": "Responsable principal de servicios públicos",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Arrendatario",
+          "Arrendador",
+          "Distribución especial"
+        ]
+      },
+      {
+        "id": "duration_months",
+        "label": "Duración inicial en meses",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha de inicio",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "payment_day",
+        "label": "Día límite mensual de pago",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "co_debtor",
+        "label": "Garantía personal o póliza",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Codeudor solidario",
+          "Fiador",
+          "Póliza"
+        ]
+      },
+      {
+        "id": "special_termination",
+        "label": "¿Se propone terminación atípica, venta próxima o cláusula especial?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que los datos y soportes fueron revisados?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "AR-S1",
+      "AR-S2",
+      "AR-S3",
+      "AR-S4",
+      "AR-S7",
+      "AR-S8"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-AR-001-LEASE-GUIDE-B01",
+        "type": "section",
+        "heading": "1. Antes de firmar",
+        "text": "",
+        "bullets": [
+          "Verificar identidad, propiedad o autorización del arrendador: {{authority}}.",
+          "Confirmar que el inmueble es vivienda urbana y la modalidad real: {{urban_home}} / {{lease_type}}.",
+          "Identificar litigios, restituciones o controversias: {{active_dispute}}.",
+          "Revisar canon, valor comercial, administración, servicios, duración y garantías permitidas.",
+          "Completar inventario, fotografías, reglamento de propiedad horizontal y estado de cuentas."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S2",
+          "AR-S3"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-GUIDE-B02",
+        "type": "section",
+        "heading": "2. Entrega e inicio",
+        "text": "",
+        "bullets": [
+          "Firmar contrato, inventario y acta de entrega en la misma revisión.",
+          "Registrar llaves, accesos, medidores, defectos y reparaciones.",
+          "Entregar reglamento de propiedad horizontal cuando aplique: {{ph}} / {{ph_rules_delivered}}.",
+          "Definir fecha de inicio, día de pago, administración y responsables de servicios."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S2",
+          "AR-S8"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-GUIDE-B03",
+        "type": "section",
+        "heading": "3. Ejecución del contrato",
+        "text": "",
+        "bullets": [
+          "Conservar comprobantes de pago y comunicaciones.",
+          "Reportar reparaciones por canal trazable y permitir inspecciones razonables coordinadas.",
+          "Respetar destinación, ocupantes, mascotas y reglas de convivencia.",
+          "No ingresar al inmueble, cortar servicios ni imponer sanciones por vías de hecho.",
+          "Actualizar datos de contacto y documentar acuerdos o modificaciones."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S2",
+          "AR-S3"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-GUIDE-B04",
+        "type": "section",
+        "heading": "4. Situaciones especiales",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Situación",
+            "Control"
+          ],
+          [
+            "Inmueble amoblado de alto valor",
+            "{{furnished_high_value}} — inventario reforzado y evidencia"
+          ],
+          [
+            "Turismo o subarriendo",
+            "{{tourism_sublease}} — validar autorización, reglamento y régimen aplicable"
+          ],
+          [
+            "Defectos o riesgos",
+            "{{unsafe}} — priorizar habitabilidad, seguridad y evidencia"
+          ],
+          [
+            "Depósito en dinero",
+            "{{cash_deposit}} — revisar prohibiciones y alternativas permitidas"
+          ],
+          [
+            "Terminación atípica",
+            "{{special_termination}} — validar causal, preaviso, indemnización y soporte"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S2",
+          "AR-S3"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-GUIDE-B05",
+        "type": "section",
+        "heading": "5. Terminación y restitución",
+        "text": "",
+        "bullets": [
+          "Verificar causal, parte que termina, preaviso, fecha y consecuencias económicas.",
+          "Evitar comunicaciones ambiguas o renuncias generales.",
+          "Coordinar inspección, lecturas, entrega de llaves y comparación de inventarios.",
+          "Documentar negativa de recepción o controversia y escalar antes de adoptar medidas de hecho.",
+          "Distinguir desgaste normal, reparaciones y daños soportados."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S3",
+          "AR-S4"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-GUIDE-B06",
+        "type": "section",
+        "heading": "6. Alertas que exigen revisión profesional",
+        "text": "",
+        "bullets": [
+          "Desalojo, ingreso o corte de servicios sin procedimiento.",
+          "Embargo, demanda, restitución o disputa de titularidad.",
+          "Inmueble inhabitable, riesgo estructural o servicios esenciales suspendidos.",
+          "Discriminación, violencia, acoso o ingreso no autorizado.",
+          "Cobros sin soporte, depósito prohibido o cláusulas contrarias a normas imperativas.",
+          "Subarriendo turístico o uso diferente al acordado."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S2",
+          "AR-S3",
+          "AR-S4"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-GUIDE-B07",
+        "type": "section",
+        "heading": "7. Archivo y trazabilidad",
+        "text": "Conservar contrato, anexos, inventarios, actas, pagos, comunicaciones, fotografías y decisiones por expediente y versión. La guía orienta controles; no reemplaza la revisión del contrato ni la estrategia frente a un conflicto.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S7",
+          "AR-S8"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-GUIDE-CONTROL",
+        "type": "control",
+        "heading": "Control de uso, revisión y liberación",
+        "text": "Documento generado por LegalAIZ.it dentro de un flujo jurídico controlado. Antes de firmar, radicar, enviar, publicar o entregar, deben verificarse los hechos, soportes, vigencia normativa, términos, variables económicas, anexos y coherencia con el expediente; la misma revisión requiere aprobación jurídica y QA técnico. La plataforma no sustituye representación judicial ni garantiza resultados.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de gobierno; no puede eliminarse desde el editor."
+      }
+    ],
+    "canonical_evidence": [
+      "04_BIBLIOTECA_CONTRACTUAL_PROFUNDA/CO-AR-001",
+      "app/assets/advanced-legal-library/CO-AR-001"
+    ],
+    "release_gates": [
+      "legal_approval_same_revision",
+      "qa_approval_same_revision",
+      "case_data_validation",
+      "normative_currency_check"
+    ],
+    "professional_review_required": true,
+    "external_release_authorized": false
+  },
+  {
+    "template_id": "TPL-CO-AR-001-LEASE-INVENTORY",
+    "product_code": "CO-AR-001",
+    "kind": "lease_inventory",
+    "title": "Inventario del inmueble y evidencia de estado",
+    "subtitle": "Estado inicial, medidores, bienes, defectos y evidencia fotográfica",
+    "filename_suffix": "inventario_inmueble",
+    "version_label": "3.5.0-m27.2",
+    "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión.",
+    "source_package": "LegalAIZit_Paquete_02_Arrendamiento_Vivienda_Urbana_v1",
+    "variables": [
+      {
+        "id": "landlord",
+        "label": "Nombre o razón social del arrendador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "landlord_id",
+        "label": "Identificación del arrendador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "landlord_email",
+        "label": "Correo del arrendador",
+        "type": "email",
+        "required": true
+      },
+      {
+        "id": "tenant",
+        "label": "Nombre del arrendatario principal",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "tenant_id",
+        "label": "Identificación del arrendatario",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "tenant_email",
+        "label": "Correo del arrendatario",
+        "type": "email",
+        "required": true
+      },
+      {
+        "id": "urban_home",
+        "label": "¿El inmueble es vivienda urbana ordinaria?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "lease_type",
+        "label": "Modalidad del arrendamiento",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Individual",
+          "Mancomunado",
+          "Compartido",
+          "Pensión"
+        ]
+      },
+      {
+        "id": "authority",
+        "label": "¿El arrendador acredita propiedad o autorización vigente?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "Pendiente"
+        ]
+      },
+      {
+        "id": "active_dispute",
+        "label": "¿Existe litigio, restitución o controversia de tenencia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "cash_deposit",
+        "label": "¿Se pretende exigir depósito en dinero o caución real a favor del arrendador?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "ph",
+        "label": "¿El inmueble está sometido a propiedad horizontal?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "ph_rules_delivered",
+        "label": "¿Se entregará la parte normativa del reglamento de propiedad horizontal?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "No aplica"
+        ]
+      },
+      {
+        "id": "furnished_high_value",
+        "label": "¿El inmueble es amoblado o contiene bienes de valor relevante?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "unsafe",
+        "label": "¿Hay defectos graves de sanidad, seguridad o servicios esenciales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "tourism_sublease",
+        "label": "¿Se usará para turismo, plataforma, hospedaje por días o subarriendo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "property",
+        "label": "Dirección e identificación completa del inmueble",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "property_registration",
+        "label": "Matrícula inmobiliaria o identificación registral",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "occupants",
+        "label": "Ocupantes autorizados",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "pets",
+        "label": "¿Habrá mascotas?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "rent",
+        "label": "Canon mensual (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "commercial_value_known",
+        "label": "¿Se conoce el valor comercial o soporte equivalente?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "commercial_value",
+        "label": "Valor comercial soportado (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "cadastral_value",
+        "label": "Avalúo catastral vigente (COP, si se conoce)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "administration_charge",
+        "label": "Administración ordinaria mensual (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "utilities_responsible",
+        "label": "Responsable principal de servicios públicos",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Arrendatario",
+          "Arrendador",
+          "Distribución especial"
+        ]
+      },
+      {
+        "id": "duration_months",
+        "label": "Duración inicial en meses",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha de inicio",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "payment_day",
+        "label": "Día límite mensual de pago",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "co_debtor",
+        "label": "Garantía personal o póliza",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Codeudor solidario",
+          "Fiador",
+          "Póliza"
+        ]
+      },
+      {
+        "id": "special_termination",
+        "label": "¿Se propone terminación atípica, venta próxima o cláusula especial?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que los datos y soportes fueron revisados?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "AR-S1",
+      "AR-S2",
+      "AR-S3",
+      "AR-S4",
+      "AR-S7",
+      "AR-S8"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-AR-001-LEASE-INVENTORY-B01",
+        "type": "section",
+        "heading": "1. Identificación del inmueble y las partes",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Campo",
+            "Información"
+          ],
+          [
+            "Inmueble",
+            "{{property}}"
+          ],
+          [
+            "Matrícula o identificación",
+            "{{property_registration}}"
+          ],
+          [
+            "Arrendador",
+            "{{landlord}} — {{landlord_id}}"
+          ],
+          [
+            "Arrendatario",
+            "{{tenant}} — {{tenant_id}}"
+          ],
+          [
+            "Fecha de inicio",
+            "{{start_date}}"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S3"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-INVENTORY-B02",
+        "type": "section",
+        "heading": "2. Medidores, servicios y accesos",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Elemento",
+            "Número / lectura / cantidad / estado / evidencia"
+          ],
+          [
+            "Energía",
+            "Registrar medidor y lectura"
+          ],
+          [
+            "Agua",
+            "Registrar medidor y lectura"
+          ],
+          [
+            "Gas",
+            "Registrar medidor y lectura"
+          ],
+          [
+            "Llaves, controles y tarjetas",
+            "Registrar cantidad e identificación"
+          ],
+          [
+            "Servicios y administración",
+            "Registrar estado de cuenta"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S2",
+          "AR-S3"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-INVENTORY-B03",
+        "type": "section",
+        "heading": "3. Estado por espacios",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Espacio o elemento",
+            "Pisos / muros / techos / puertas / ventanas / iluminación / observaciones"
+          ],
+          [
+            "Acceso y sala-comedor",
+            "Registrar estado verificable"
+          ],
+          [
+            "Cocina",
+            "Registrar redes, muebles y equipos"
+          ],
+          [
+            "Habitaciones",
+            "Registrar estado individual"
+          ],
+          [
+            "Baños",
+            "Registrar aparatos, fugas y ventilación"
+          ],
+          [
+            "Zonas adicionales",
+            "Registrar balcones, patios, parqueaderos o depósitos"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S3"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-INVENTORY-B04",
+        "type": "section",
+        "heading": "4. Muebles, equipos y accesorios",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Bien",
+            "Marca / modelo / serial / cantidad / estado / fotografía"
+          ],
+          [
+            "Muebles",
+            "Relacionar individualmente"
+          ],
+          [
+            "Electrodomésticos",
+            "Probar funcionamiento"
+          ],
+          [
+            "Accesorios",
+            "Relacionar cortinas, luminarias y otros"
+          ],
+          [
+            "Elementos de seguridad",
+            "Registrar detectores, extintores o cerraduras"
+          ]
+        ],
+        "condition": {
+          "field": "furnished_high_value",
+          "op": "equals",
+          "value": "Sí"
+        },
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S3",
+          "AR-S8"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-INVENTORY-B05",
+        "type": "section",
+        "heading": "5. Defectos, riesgos y pendientes",
+        "text": "Defectos o riesgos declarados: {{unsafe}}. Cada novedad debe indicar ubicación, descripción, evidencia, responsable, medida temporal y fecha de atención. La firma no implica renuncia a defectos ocultos ni traslada al arrendatario reparaciones a cargo del arrendador.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S3"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-INVENTORY-B06",
+        "type": "section",
+        "heading": "6. Evidencia y clasificación del estado",
+        "text": "",
+        "bullets": [
+          "Adjuntar fotografías y videos fechados, legibles y asociados a cada espacio.",
+          "Usar categorías objetivas: nuevo, bueno funcional, desgaste previo, reparación pendiente o no probado.",
+          "Registrar seriales, cantidades y pruebas de funcionamiento.",
+          "Entregar copia íntegra del inventario a las partes."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S3",
+          "AR-S7",
+          "AR-S8"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-INVENTORY-B07",
+        "type": "section",
+        "heading": "7. Aceptación y reservas",
+        "text": "La aceptación confirma la inspección y observaciones registradas. Las reservas, pruebas no realizadas y defectos reportados después de la entrega deben documentarse por canal trazable dentro del plazo acordado, sin afectar garantías legales.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S3"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-LEASE-INVENTORY-CONTROL",
+        "type": "control",
+        "heading": "Control de uso, revisión y liberación",
+        "text": "Documento generado por LegalAIZ.it dentro de un flujo jurídico controlado. Antes de firmar, radicar, enviar, publicar o entregar, deben verificarse los hechos, soportes, vigencia normativa, términos, variables económicas, anexos y coherencia con el expediente; la misma revisión requiere aprobación jurídica y QA técnico. La plataforma no sustituye representación judicial ni garantiza resultados.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de gobierno; no puede eliminarse desde el editor."
+      }
+    ],
+    "canonical_evidence": [
+      "04_BIBLIOTECA_CONTRACTUAL_PROFUNDA/CO-AR-001",
+      "app/assets/advanced-legal-library/CO-AR-001"
+    ],
+    "release_gates": [
+      "legal_approval_same_revision",
+      "qa_approval_same_revision",
+      "case_data_validation",
+      "normative_currency_check"
+    ],
+    "professional_review_required": true,
+    "external_release_authorized": false
+  },
+  {
+    "template_id": "TPL-CO-AR-001-RESTITUTION-ACT",
+    "product_code": "CO-AR-001",
+    "kind": "lease_restitution_act",
+    "title": "Acta de restitución del inmueble",
+    "subtitle": "Estado final, llaves, medidores, saldos, daños y reservas",
+    "filename_suffix": "acta_restitucion_inmueble",
+    "version_label": "3.5.0-m27.2",
+    "canonical_status": "Paquete especializado integrado en M27.2; pendiente de aprobación jurídica y QA dual de la misma revisión.",
+    "source_package": "LegalAIZit_Paquete_02_Arrendamiento_Vivienda_Urbana_v1",
+    "variables": [
+      {
+        "id": "landlord",
+        "label": "Nombre o razón social del arrendador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "landlord_id",
+        "label": "Identificación del arrendador",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "landlord_email",
+        "label": "Correo del arrendador",
+        "type": "email",
+        "required": true
+      },
+      {
+        "id": "tenant",
+        "label": "Nombre del arrendatario principal",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "tenant_id",
+        "label": "Identificación del arrendatario",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "tenant_email",
+        "label": "Correo del arrendatario",
+        "type": "email",
+        "required": true
+      },
+      {
+        "id": "urban_home",
+        "label": "¿El inmueble es vivienda urbana ordinaria?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "lease_type",
+        "label": "Modalidad del arrendamiento",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Individual",
+          "Mancomunado",
+          "Compartido",
+          "Pensión"
+        ]
+      },
+      {
+        "id": "authority",
+        "label": "¿El arrendador acredita propiedad o autorización vigente?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "Pendiente"
+        ]
+      },
+      {
+        "id": "active_dispute",
+        "label": "¿Existe litigio, restitución o controversia de tenencia?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "cash_deposit",
+        "label": "¿Se pretende exigir depósito en dinero o caución real a favor del arrendador?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "ph",
+        "label": "¿El inmueble está sometido a propiedad horizontal?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "ph_rules_delivered",
+        "label": "¿Se entregará la parte normativa del reglamento de propiedad horizontal?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No",
+          "No aplica"
+        ]
+      },
+      {
+        "id": "furnished_high_value",
+        "label": "¿El inmueble es amoblado o contiene bienes de valor relevante?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "unsafe",
+        "label": "¿Hay defectos graves de sanidad, seguridad o servicios esenciales?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "tourism_sublease",
+        "label": "¿Se usará para turismo, plataforma, hospedaje por días o subarriendo?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "property",
+        "label": "Dirección e identificación completa del inmueble",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "property_registration",
+        "label": "Matrícula inmobiliaria o identificación registral",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "occupants",
+        "label": "Ocupantes autorizados",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "pets",
+        "label": "¿Habrá mascotas?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "rent",
+        "label": "Canon mensual (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "commercial_value_known",
+        "label": "¿Se conoce el valor comercial o soporte equivalente?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      },
+      {
+        "id": "commercial_value",
+        "label": "Valor comercial soportado (COP)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "cadastral_value",
+        "label": "Avalúo catastral vigente (COP, si se conoce)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "administration_charge",
+        "label": "Administración ordinaria mensual (COP)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "utilities_responsible",
+        "label": "Responsable principal de servicios públicos",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Arrendatario",
+          "Arrendador",
+          "Distribución especial"
+        ]
+      },
+      {
+        "id": "duration_months",
+        "label": "Duración inicial en meses",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha de inicio",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "payment_day",
+        "label": "Día límite mensual de pago",
+        "type": "number",
+        "required": true
+      },
+      {
+        "id": "co_debtor",
+        "label": "Garantía personal o póliza",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Codeudor solidario",
+          "Fiador",
+          "Póliza"
+        ]
+      },
+      {
+        "id": "special_termination",
+        "label": "¿Se propone terminación atípica, venta próxima o cláusula especial?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "No",
+          "Sí"
+        ]
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que los datos y soportes fueron revisados?",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Sí",
+          "No"
+        ]
+      }
+    ],
+    "available_source_ids": [
+      "AR-S1",
+      "AR-S2",
+      "AR-S3",
+      "AR-S4",
+      "AR-S7",
+      "AR-S8"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-AR-001-RESTITUTION-ACT-B01",
+        "type": "section",
+        "heading": "1. Partes, inmueble y fecha de cierre",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Campo",
+            "Información"
+          ],
+          [
+            "Arrendador",
+            "{{landlord}} — {{landlord_id}}"
+          ],
+          [
+            "Arrendatario",
+            "{{tenant}} — {{tenant_id}}"
+          ],
+          [
+            "Inmueble",
+            "{{property}}"
+          ],
+          [
+            "Inicio contractual",
+            "{{start_date}}"
+          ],
+          [
+            "Duración",
+            "{{duration_months}} meses"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S3"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-RESTITUTION-ACT-B02",
+        "type": "section",
+        "heading": "2. Entrega material y accesos",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Elemento",
+            "Cantidad/estado/observaciones"
+          ],
+          [
+            "Llaves",
+            "Registrar todas las copias"
+          ],
+          [
+            "Controles y tarjetas",
+            "Registrar serial o identificación"
+          ],
+          [
+            "Códigos y accesos digitales",
+            "Revocar o cambiar de forma trazable"
+          ],
+          [
+            "Bienes dejados",
+            "Identificar custodia y plazo"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S3",
+          "AR-S8"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-RESTITUTION-ACT-B03",
+        "type": "section",
+        "heading": "3. Comparación del estado",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Espacio o bien",
+            "Estado inicial / estado final / desgaste normal / daño / evidencia"
+          ],
+          [
+            "Estructura y acabados",
+            "Cotejar inventario y fotografías"
+          ],
+          [
+            "Redes y servicios",
+            "Probar y documentar"
+          ],
+          [
+            "Muebles y electrodomésticos",
+            "Cotejar seriales y funcionamiento"
+          ],
+          [
+            "Zonas comunes",
+            "Registrar novedades atribuibles"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S3",
+          "AR-S8"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-RESTITUTION-ACT-B04",
+        "type": "section",
+        "heading": "4. Medidores, servicios y administración",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Concepto",
+            "Lectura/periodo/soporte/responsable"
+          ],
+          [
+            "Energía",
+            "Lectura final y última factura"
+          ],
+          [
+            "Agua",
+            "Lectura final y última factura"
+          ],
+          [
+            "Gas",
+            "Lectura final y última factura"
+          ],
+          [
+            "Administración",
+            "Paz y salvo o saldo conciliado"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S2",
+          "AR-S3"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-RESTITUTION-ACT-B05",
+        "type": "section",
+        "heading": "5. Reparaciones y controversias",
+        "text": "Las partes deben distinguir desgaste normal, reparaciones a cargo del arrendador, daños imputables y asuntos controvertidos. Ningún cobro estimado se tendrá por aceptado sin evidencia, cuantificación y oportunidad de observación.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S3"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-RESTITUTION-ACT-B06",
+        "type": "section",
+        "heading": "6. Saldos y garantías",
+        "text": "",
+        "bullets": [],
+        "table": [
+          [
+            "Concepto",
+            "Estado"
+          ],
+          [
+            "Canon mensual",
+            "COP ${{rent}}"
+          ],
+          [
+            "Administración",
+            "COP ${{administration_charge}}"
+          ],
+          [
+            "Servicios",
+            "Responsable declarado: {{utilities_responsible}}"
+          ],
+          [
+            "Garantía personal o póliza",
+            "{{co_debtor}}"
+          ],
+          [
+            "Saldos finales",
+            "Conciliar con soportes; no dejar espacios indeterminados"
+          ]
+        ],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S3"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-RESTITUTION-ACT-B07",
+        "type": "section",
+        "heading": "7. Reservas y efectos",
+        "text": "La recepción de llaves acredita la restitución material en la fecha registrada, pero no implica renuncia general, paz y salvo automático ni aceptación de cobros sin soporte. Deben individualizarse reservas, acciones, responsables y fechas.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S3",
+          "AR-S4"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-RESTITUTION-ACT-B08",
+        "type": "section",
+        "heading": "8. Cierre y constancias",
+        "text": "",
+        "bullets": [
+          "Entregar copia del acta y anexos a las partes.",
+          "Relacionar fotografías, videos, facturas y comunicaciones.",
+          "Cerrar accesos y actualizar datos de contacto.",
+          "Definir plazo de conciliación de facturas posteriores.",
+          "Emitir constancia final cuando se verifiquen obligaciones y reservas."
+        ],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "AR-S1",
+          "AR-S3",
+          "AR-S8"
+        ],
+        "notes": "Bloque M27.2 cotejado contra la biblioteca profunda y sujeto a aprobación jurídica y QA de la misma revisión."
+      },
+      {
+        "id": "TPL-CO-AR-001-RESTITUTION-ACT-CONTROL",
+        "type": "control",
+        "heading": "Control de uso, revisión y liberación",
+        "text": "Documento generado por LegalAIZ.it dentro de un flujo jurídico controlado. Antes de firmar, radicar, enviar, publicar o entregar, deben verificarse los hechos, soportes, vigencia normativa, términos, variables económicas, anexos y coherencia con el expediente; la misma revisión requiere aprobación jurídica y QA técnico. La plataforma no sustituye representación judicial ni garantiza resultados.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque obligatorio de gobierno; no puede eliminarse desde el editor."
+      }
+    ],
+    "canonical_evidence": [
+      "04_BIBLIOTECA_CONTRACTUAL_PROFUNDA/CO-AR-001",
+      "app/assets/advanced-legal-library/CO-AR-001"
+    ],
+    "release_gates": [
+      "legal_approval_same_revision",
+      "qa_approval_same_revision",
+      "case_data_validation",
+      "normative_currency_check"
+    ],
+    "professional_review_required": true,
+    "external_release_authorized": false
+  }
+]

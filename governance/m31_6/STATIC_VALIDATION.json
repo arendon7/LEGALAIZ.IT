@@ -1,0 +1,15 @@
+{
+  "schema": "legalaizit-static-validation-v1",
+  "generated_at": "2026-08-04T16:10:32.845296+00:00",
+  "milestone": "M31.6",
+  "version": "5.0.5",
+  "counts": {
+    "python": 256,
+    "javascript": 19,
+    "json": 713,
+    "svg": 113
+  },
+  "errors": [],
+  "ok": true,
+  "production_authorized": false
+}

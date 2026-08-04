@@ -1,0 +1,563 @@
+[
+  {
+    "id": "TR1-R01",
+    "risk": "red",
+    "message": "Existe cobro coactivo, embargo o proceso judicial.",
+    "action": "Escalar al abogado responsable y controlar términos antes de radicar.",
+    "conditions": {
+      "all": [
+        {
+          "field": "enforcement",
+          "op": "in",
+          "value": [
+            "Cobro coactivo",
+            "Embargo",
+            "Proceso judicial"
+          ]
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "TR1-S2"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "TR1-R02",
+    "risk": "red",
+    "message": "Existe un término próximo o no fue posible descartarlo.",
+    "action": "No continuar como autoservicio definitivo; revisar de inmediato.",
+    "conditions": {
+      "all": [
+        {
+          "field": "deadline_urgent",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "TR1-S2"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "TR1-R03",
+    "risk": "red",
+    "message": "Se reporta suplantación, clonación, hurto o fraude.",
+    "action": "Preservar evidencia y activar ruta especializada; el chequeo SAST no resuelve identidad.",
+    "conditions": {
+      "all": [
+        {
+          "field": "identity_fraud",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [
+      "TR1-S2"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "TR1-R04",
+    "risk": "red",
+    "message": "Los datos no fueron confirmados.",
+    "action": "Bloquear la salida definitiva hasta conciliar la información.",
+    "conditions": {
+      "all": [
+        {
+          "field": "data_confirmed",
+          "op": "not_equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "validation",
+    "source_ids": [
+      "TR1-S13"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "TR1-R05",
+    "risk": "red",
+    "message": "El volumen supera diez comparendos relacionados.",
+    "action": "Tramitar por lote con revisión profesional y conciliación de expedientes.",
+    "conditions": {
+      "all": [
+        {
+          "field": "case_count",
+          "op": "gt",
+          "value": 10
+        }
+      ]
+    },
+    "category": "complexity",
+    "source_ids": [
+      "TR1-S2"
+    ],
+    "blocking": true
+  },
+  {
+    "id": "TR1-R06",
+    "risk": "yellow",
+    "message": "El dispositivo exacto no está individualizado.",
+    "action": "Solicitar código, serial, ubicación, metadatos y acto de autorización.",
+    "conditions": {
+      "all": [
+        {
+          "field": "device_known",
+          "op": "in",
+          "value": [
+            "No",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "TR1-S1",
+      "TR1-S5",
+      "TR1-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "TR1-R07",
+    "risk": "yellow",
+    "message": "No se confirmó que el punto consultado coincida con el lugar del comparendo.",
+    "action": "Verificar coordenadas y alcance territorial del acto.",
+    "conditions": {
+      "all": [
+        {
+          "field": "exact_point_match",
+          "op": "not_equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "TR1-S5",
+      "TR1-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "TR1-R08",
+    "risk": "yellow",
+    "message": "No existe soporte confirmado de autorización ANSV o de una excepción legal.",
+    "action": "Consultar el mapa oficial y obtener el acto aplicable al punto y fecha.",
+    "conditions": {
+      "all": [
+        {
+          "field": "ansv_authorization",
+          "op": "in",
+          "value": [
+            "No",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "TR1-S1",
+      "TR1-S3",
+      "TR1-S4",
+      "TR1-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "TR1-R09",
+    "risk": "yellow",
+    "message": "La calibración o trazabilidad metrológica no está acreditada.",
+    "action": "Solicitar certificado, laboratorio, alcance y correspondencia con el equipo.",
+    "conditions": {
+      "all": [
+        {
+          "field": "calibration_traceability",
+          "op": "in",
+          "value": [
+            "No",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "TR1-S1",
+      "TR1-S5",
+      "TR1-S7"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "TR1-R10",
+    "risk": "yellow",
+    "message": "La señalización preventiva no fue acreditada.",
+    "action": "Solicitar evidencia temporal del punto y revisar la exigencia aplicable.",
+    "conditions": {
+      "all": [
+        {
+          "field": "signage_verified",
+          "op": "in",
+          "value": [
+            "No",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "TR1-S1",
+      "TR1-S4",
+      "TR1-S5"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "TR1-R11",
+    "risk": "yellow",
+    "message": "Existe coincidencia declarada con actuaciones oficiales de 2026.",
+    "action": "Individualizar organismo, período, acto y estado; no inferir efecto automático.",
+    "conditions": {
+      "all": [
+        {
+          "field": "official_2026_match",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "TR1-S11",
+      "TR1-S12"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "TR1-R12",
+    "risk": "yellow",
+    "message": "La actuación oficial no está cerrada mediante una decisión individual firme.",
+    "action": "Diferenciar apertura, investigación, cargos y decisión ejecutoriada.",
+    "conditions": {
+      "all": [
+        {
+          "field": "official_act_status",
+          "op": "in",
+          "value": [
+            "Apertura o formulación de cargos",
+            "Investigación en curso",
+            "Estado no confirmado"
+          ]
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "TR1-S11",
+      "TR1-S12"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "TR1-R13",
+    "risk": "yellow",
+    "message": "La multa fue pagada o el pago no está claro.",
+    "action": "No prometer devolución; identificar acto, causal, legitimación y procedimiento.",
+    "conditions": {
+      "all": [
+        {
+          "field": "paid",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "TR1-S2",
+      "TR1-S11"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "TR1-R14",
+    "risk": "yellow",
+    "message": "El conocimiento provino de consulta, cobro, embargo u otro canal distinto de una notificación recibida.",
+    "action": "Reconstruir dirección, envío, entrega y afectación material del derecho de defensa.",
+    "conditions": {
+      "all": [
+        {
+          "field": "notice_status",
+          "op": "not_equals",
+          "value": "Notificación recibida"
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "TR1-S1",
+      "TR1-S2"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "TR1-R15",
+    "risk": "yellow",
+    "message": "Los soportes son incompletos o inexistentes.",
+    "action": "Generar solicitud de expediente y preservar las consultas disponibles.",
+    "conditions": {
+      "all": [
+        {
+          "field": "evidence_available",
+          "op": "in",
+          "value": [
+            "Solo consulta o captura",
+            "Sin soportes verificables"
+          ]
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "TR1-S1",
+      "TR1-S2"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "TR1-R16",
+    "risk": "yellow",
+    "message": "Hay más de un comparendo relacionado.",
+    "action": "Separar hechos, dispositivos, fechas, actos y estado de cada expediente.",
+    "conditions": {
+      "all": [
+        {
+          "field": "case_count",
+          "op": "gt",
+          "value": 1
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "TR1-S2",
+      "TR1-S13"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "TR1-R17",
+    "risk": "yellow",
+    "message": "No se identificó número o fuente oficial de la actuación SAST declarada.",
+    "action": "Completar el acto, radicado y enlace oficial antes de sostener una coincidencia individual.",
+    "conditions": {
+      "all": [
+        {
+          "field": "official_2026_match",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "official_act_number",
+          "op": "missing"
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "TR1-S11",
+      "TR1-S12"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "TR1-R18",
+    "risk": "yellow",
+    "message": "La autorización no tiene fecha de expedición y vigencia comprobables.",
+    "action": "Obtener el acto íntegro y su período de vigencia.",
+    "conditions": {
+      "all": [
+        {
+          "field": "ansv_authorization",
+          "op": "equals",
+          "value": "Sí"
+        },
+        {
+          "field": "authorization_issue_date",
+          "op": "missing"
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "TR1-S1",
+      "TR1-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "TR1-R19",
+    "risk": "yellow",
+    "message": "El concepto de desempeño está ausente o no confirmado.",
+    "action": "Aplicar el control solo al período histórico pertinente y cotejar la tecnología exacta.",
+    "conditions": {
+      "all": [
+        {
+          "field": "performance_concept",
+          "op": "in",
+          "value": [
+            "No existe soporte",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [
+      "TR1-S5",
+      "TR1-S7",
+      "TR1-S11"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "TR1-R20",
+    "risk": "green",
+    "message": "El dispositivo exacto fue identificado.",
+    "action": "Conservar código, serial, ubicación y evidencia asociada.",
+    "conditions": {
+      "all": [
+        {
+          "field": "device_known",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "TR1-S5",
+      "TR1-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "TR1-R21",
+    "risk": "green",
+    "message": "Existe soporte declarado de autorización o excepción legal.",
+    "action": "Incorporar el acto y verificar punto, fecha y vigencia.",
+    "conditions": {
+      "all": [
+        {
+          "field": "ansv_authorization",
+          "op": "in",
+          "value": [
+            "Sí",
+            "Excepción legal identificada"
+          ]
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "TR1-S1",
+      "TR1-S4",
+      "TR1-S8"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "TR1-R22",
+    "risk": "green",
+    "message": "La trazabilidad técnica fue declarada disponible.",
+    "action": "Incorporar certificado y correspondencia con el equipo.",
+    "conditions": {
+      "all": [
+        {
+          "field": "calibration_traceability",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No aplica a la conducta"
+          ]
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "TR1-S5",
+      "TR1-S7"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "TR1-R23",
+    "risk": "green",
+    "message": "La señalización fue declarada verificada o no aplicable.",
+    "action": "Conservar la evidencia temporal y la razón de no aplicación.",
+    "conditions": {
+      "all": [
+        {
+          "field": "signage_verified",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No aplica"
+          ]
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "TR1-S1",
+      "TR1-S4"
+    ],
+    "blocking": false
+  },
+  {
+    "id": "TR1-R24",
+    "risk": "green",
+    "message": "El interesado autorizó seguimiento.",
+    "action": "Activar registro de alertas sin suspender términos ni sustituir vigilancia del expediente.",
+    "conditions": {
+      "all": [
+        {
+          "field": "consent_alerts",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "module",
+    "source_ids": [
+      "TR1-S11",
+      "TR1-S12"
+    ],
+    "blocking": false
+  }
+]

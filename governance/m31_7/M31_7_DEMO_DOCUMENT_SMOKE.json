@@ -1,0 +1,74 @@
+{
+  "schema": "legalaizit-m31-7-demo-document-smoke-v1",
+  "milestone": "M31.7",
+  "version": "5.0.6",
+  "build_id": "M31-7-DEMO-DOCUMENTAL-REALISTA-2026-08-04",
+  "checks": [
+    {
+      "key": "startup",
+      "passed": true,
+      "detail": {
+        "ok": true,
+        "build_id": "M31-7-DEMO-DOCUMENTAL-REALISTA-2026-08-04"
+      }
+    },
+    {
+      "key": "admin_login",
+      "passed": true,
+      "detail": {
+        "status": 200,
+        "role": "admin"
+      }
+    },
+    {
+      "key": "generate",
+      "passed": true,
+      "detail": {
+        "status": 201,
+        "metrics": {
+          "products": 11,
+          "generated_docx": 76,
+          "validated_reference_docx": 11,
+          "validated_reference_pdf": 11,
+          "unresolved_files": 0
+        }
+      }
+    },
+    {
+      "key": "verify",
+      "passed": true,
+      "detail": {
+        "ok": true,
+        "status": "ready",
+        "checked": 110,
+        "failures": [],
+        "unresolved_files": 0
+      }
+    },
+    {
+      "key": "global_download",
+      "passed": true,
+      "detail": {
+        "status": 200,
+        "name": "LegalAIZit_M31_7_PORTAFOLIO_DOCUMENTAL_FINAL_DEMO_v5.0.6.zip",
+        "size_bytes": 23874592,
+        "sha256_match": true
+      }
+    },
+    {
+      "key": "client_access_denied",
+      "passed": true,
+      "detail": {
+        "status": 403,
+        "response": {
+          "error": "Esta función está reservada para especialistas y administración."
+        }
+      }
+    }
+  ],
+  "passed": 6,
+  "total": 6,
+  "ok": true,
+  "production_authorized": false,
+  "server_output_tail": "LegalAIZ.it v5.0.6 · M31.7 — Demo documental realista y generación integral · M31-7-DEMO-DOCUMENTAL-REALISTA-2026-08-04 disponible en http://127.0.0.1:36171\nExpedientes · documentos · revisión controlada · trazabilidad · seguridad por rol\nAcceso demo local: ana@demo.legalaiz.it · clave: M31.7-Demo-Temporal-2026!\nEstas credenciales funcionan únicamente en el entorno demostrativo local.\n\nServidor detenido.\n"
+}

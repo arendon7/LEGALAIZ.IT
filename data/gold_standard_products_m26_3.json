@@ -1,0 +1,869 @@
+{
+  "schema": "legalaizit-gold-standard-delta-v1",
+  "version": "M26.3",
+  "status_label": "Gold Standard",
+  "extends": "gold_standard_products.json",
+  "products": {
+    "CO-TR-001": {
+      "slug": "verificacion-sistema-fotodeteccion",
+      "headline": "Verifica el soporte oficial de un sistema de fotodetección y organiza una ruta trazable para tu caso.",
+      "why_gold": "Conecta identificación del comparendo, consulta de fuentes oficiales, coincidencia territorial y temporal, etapa del trámite, evidencia y seguimiento sin presentar una coincidencia como anulación automática.",
+      "use_cases": [
+        "Verificación preliminar de un sistema automático o semiautomático",
+        "Organización de soportes antes de reclamar o pedir expediente",
+        "Seguimiento de una actuación SAST identificada en fuentes oficiales"
+      ],
+      "included": [
+        "Informe preliminar de coincidencia SAST",
+        "Ficha de trazabilidad de fuentes y fechas",
+        "Lista de documentos y soportes faltantes",
+        "Alertas por etapa, pago, cobro o embargo",
+        "Ruta de seguimiento o escalamiento profesional"
+      ],
+      "not_included": [
+        "Declaración automática de invalidez de una multa",
+        "Representación ante autoridades o jueces",
+        "Conclusiones definitivas sin expediente individual y soportes verificables"
+      ],
+      "legal_basis": [
+        {
+          "title": "Ley 1843 de 2017",
+          "focus": "Sistemas automáticos y semiautomáticos, requisitos y notificación"
+        },
+        {
+          "title": "Resolución 20203040011245 de 2020",
+          "focus": "Criterios técnicos y autorización de sistemas de fotodetección"
+        },
+        {
+          "title": "Sentencias C-038 de 2020 y C-321 de 2022",
+          "focus": "Responsabilidad, debido proceso e identificación del infractor"
+        }
+      ],
+      "pillars": [
+        "Identificación del acto y autoridad",
+        "Cruce con fuentes oficiales",
+        "Validación de etapa y urgencia",
+        "Expediente probatorio",
+        "Seguimiento profesional"
+      ],
+      "precheck": {
+        "intro": "Este filtro verifica si existe información mínima para iniciar el cruce. No guarda respuestas ni concluye que una multa sea inválida.",
+        "questions": [
+          {
+            "id": "identification",
+            "label": "¿Puedes identificar autoridad, municipio y comparendo?",
+            "options": [
+              "Sí",
+              "Parcialmente",
+              "No"
+            ]
+          },
+          {
+            "id": "official_source",
+            "label": "¿Cuentas con consulta o soporte de una fuente oficial?",
+            "options": [
+              "Sí",
+              "No",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "stage",
+            "label": "¿En qué etapa está el asunto?",
+            "options": [
+              "Comparendo o consulta inicial",
+              "Resolución",
+              "Cobro coactivo o embargo",
+              "Ya pagué",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "urgent_term",
+            "label": "¿Existe una actuación o término próximo?",
+            "options": [
+              "No",
+              "Sí",
+              "No estoy seguro"
+            ]
+          }
+        ],
+        "rules": [
+          {
+            "field": "stage",
+            "in": [
+              "Cobro coactivo o embargo",
+              "Ya pagué"
+            ],
+            "level": "red",
+            "message": "La etapa exige revisar el expediente y la estrategia aplicable antes de asumir efectos jurídicos de una coincidencia."
+          },
+          {
+            "field": "urgent_term",
+            "in": [
+              "Sí",
+              "No estoy seguro"
+            ],
+            "level": "red",
+            "message": "Puede existir un término o actuación que requiera verificación inmediata por un profesional."
+          },
+          {
+            "field": "official_source",
+            "in": [
+              "No",
+              "No estoy seguro"
+            ],
+            "level": "yellow",
+            "message": "El cruce debe apoyarse en una fuente oficial identificable y vigente."
+          },
+          {
+            "field": "identification",
+            "in": [
+              "Parcialmente",
+              "No"
+            ],
+            "level": "yellow",
+            "message": "Faltan datos mínimos para asociar con seguridad la actuación general al expediente individual."
+          }
+        ]
+      }
+    },
+    "CO-TR-002": {
+      "slug": "reclamo-fotomulta-no-notificada",
+      "headline": "Reconstruye la notificación, identifica la etapa y prepara la actuación compatible con el expediente de tránsito.",
+      "why_gold": "Diferencia consulta, comparendo, resolución, cobro y proceso judicial; organiza evidencia y términos y evita generar reclamaciones genéricas incompatibles con la etapa real.",
+      "use_cases": [
+        "Fotomulta conocida tardíamente",
+        "Solicitud de expediente y soportes de notificación",
+        "Reclamación preliminar por posibles fallas de debido proceso"
+      ],
+      "included": [
+        "Diagnóstico de etapa y notificación",
+        "Solicitud de expediente o reclamación compatible",
+        "Índice y cronología de evidencias",
+        "Calendario preliminar de términos",
+        "Ruta de audiencia, recurso o escalamiento según el caso"
+      ],
+      "not_included": [
+        "Garantía de anulación o archivo",
+        "Defensa judicial o en cobro coactivo",
+        "Afirmaciones sobre notificación sin revisar soportes oficiales"
+      ],
+      "legal_basis": [
+        {
+          "title": "Constitución Política, artículos 23 y 29",
+          "focus": "Derecho de petición y debido proceso"
+        },
+        {
+          "title": "Ley 1843 de 2017 y Ley 769 de 2002",
+          "focus": "Fotodetección, tránsito, actuación y notificación"
+        },
+        {
+          "title": "Ley 1437 de 2011",
+          "focus": "Actuaciones administrativas, recursos y control del expediente"
+        }
+      ],
+      "pillars": [
+        "Identificación del acto",
+        "Auditoría de notificación",
+        "Clasificación de etapa",
+        "Documento compatible",
+        "Control de términos y seguimiento"
+      ],
+      "precheck": {
+        "intro": "Responde con la información disponible. El resultado no determina la validez del comparendo ni reemplaza la revisión del expediente.",
+        "questions": [
+          {
+            "id": "act_known",
+            "label": "¿Conoces el número del comparendo o resolución?",
+            "options": [
+              "Sí",
+              "Parcialmente",
+              "No"
+            ]
+          },
+          {
+            "id": "notification",
+            "label": "¿Existe soporte verificable de notificación?",
+            "options": [
+              "No lo he visto",
+              "Sí",
+              "Parece incompleto",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "stage",
+            "label": "¿Cuál es la etapa actual?",
+            "options": [
+              "Comparendo",
+              "Resolución",
+              "Cobro coactivo o embargo",
+              "Proceso judicial",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "deadline",
+            "label": "¿Hay audiencia, recurso o término próximo?",
+            "options": [
+              "No",
+              "Sí",
+              "No estoy seguro"
+            ]
+          }
+        ],
+        "rules": [
+          {
+            "field": "stage",
+            "in": [
+              "Cobro coactivo o embargo",
+              "Proceso judicial"
+            ],
+            "level": "red",
+            "message": "La etapa avanzada requiere revisión profesional y puede exigir una actuación distinta a una reclamación inicial."
+          },
+          {
+            "field": "deadline",
+            "in": [
+              "Sí",
+              "No estoy seguro"
+            ],
+            "level": "red",
+            "message": "Debe verificarse inmediatamente el expediente y el cómputo del término aplicable."
+          },
+          {
+            "field": "act_known",
+            "in": [
+              "Parcialmente",
+              "No"
+            ],
+            "level": "yellow",
+            "message": "La identificación exacta del acto es necesaria antes de formular una solicitud concluyente."
+          },
+          {
+            "field": "notification",
+            "in": [
+              "Parece incompleto",
+              "No estoy seguro"
+            ],
+            "level": "yellow",
+            "message": "La notificación debe evaluarse con el soporte, la dirección, las fechas y la etapa completa."
+          }
+        ]
+      }
+    },
+    "CO-LA-001": {
+      "slug": "liquidacion-laboral-reclamacion",
+      "headline": "Estima acreencias laborales con parámetros trazables y prepara una reclamación separando cálculo, prueba y valoración jurídica.",
+      "why_gold": "Integra fechas, salario, pagos, prestaciones, vacaciones, indemnizaciones y escenarios especiales sin presentar como definitivos conceptos que dependen de prueba o interpretación.",
+      "use_cases": [
+        "Terminación de una relación laboral privada",
+        "Revisión de liquidación o pagos finales",
+        "Preparación de reclamación directa al empleador"
+      ],
+      "included": [
+        "Informe estimativo de liquidación",
+        "Desglose de bases, períodos y partidas",
+        "Carta de reclamación preliminar",
+        "Matriz de pagos y soportes",
+        "Alertas sobre conceptos que requieren análisis profesional"
+      ],
+      "not_included": [
+        "Cálculo definitivo cuando faltan datos o existe controversia probatoria",
+        "Representación en conciliación o proceso judicial",
+        "Reconocimiento automático de sanciones, fueros o indemnizaciones discutidas"
+      ],
+      "legal_basis": [
+        {
+          "title": "Código Sustantivo del Trabajo",
+          "focus": "Salarios, prestaciones, vacaciones, terminación e indemnizaciones"
+        },
+        {
+          "title": "Ley 50 de 1990 y Ley 52 de 1975",
+          "focus": "Cesantías e intereses a las cesantías"
+        },
+        {
+          "title": "Ley 2466 de 2025",
+          "focus": "Modificaciones laborales vigentes y parámetros aplicables"
+        }
+      ],
+      "pillars": [
+        "Validación de la relación",
+        "Bases y períodos de cálculo",
+        "Fórmulas versionadas",
+        "Bloqueos por riesgo especial",
+        "Informe, reclamación y seguimiento"
+      ],
+      "precheck": {
+        "intro": "Este filtro identifica si el cálculo estándar es suficiente o si el caso exige revisión previa.",
+        "questions": [
+          {
+            "id": "relationship",
+            "label": "¿Qué relación describe mejor tu caso?",
+            "options": [
+              "Contrato laboral privado",
+              "Prestación de servicios con posible subordinación",
+              "Empleo público",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "status",
+            "label": "¿La relación ya terminó?",
+            "options": [
+              "Sí",
+              "No",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "pay_data",
+            "label": "¿Tienes fechas, salario y pagos previos verificables?",
+            "options": [
+              "Sí",
+              "Parcialmente",
+              "No"
+            ]
+          },
+          {
+            "id": "special_risk",
+            "label": "¿Existe protección reforzada, fuero, embarazo, incapacidad o proceso activo?",
+            "options": [
+              "No",
+              "Sí",
+              "No estoy seguro"
+            ]
+          }
+        ],
+        "rules": [
+          {
+            "field": "relationship",
+            "in": [
+              "Prestación de servicios con posible subordinación",
+              "Empleo público"
+            ],
+            "level": "red",
+            "message": "La naturaleza de la relación y el régimen aplicable deben definirse antes de usar una liquidación laboral privada estándar."
+          },
+          {
+            "field": "special_risk",
+            "in": [
+              "Sí",
+              "No estoy seguro"
+            ],
+            "level": "red",
+            "message": "Puede existir estabilidad reforzada, fuero o una controversia que requiere valoración profesional específica."
+          },
+          {
+            "field": "pay_data",
+            "in": [
+              "Parcialmente",
+              "No"
+            ],
+            "level": "yellow",
+            "message": "El resultado será preliminar hasta confirmar salario, períodos y pagos efectivamente realizados."
+          },
+          {
+            "field": "status",
+            "in": [
+              "No",
+              "No estoy seguro"
+            ],
+            "level": "yellow",
+            "message": "Una relación activa exige diferenciar acreencias causadas, exigibles y todavía no liquidadas."
+          }
+        ]
+      }
+    },
+    "CO-EM-004": {
+      "slug": "confidencialidad-propiedad-intelectual",
+      "headline": "Protege información, datos y desarrollos con obligaciones proporcionadas y reglas claras de titularidad y uso.",
+      "why_gold": "Distingue confidencialidad, secreto empresarial, datos personales y propiedad intelectual; adapta duración, finalidad, acceso, devolución, incidentes, antecedentes y resultados al tipo de relación.",
+      "use_cases": [
+        "Acuerdo unilateral o mutuo de confidencialidad",
+        "Relación con empleados, proveedores o aliados",
+        "Proyecto con software, contenidos, diseños o desarrollos"
+      ],
+      "included": [
+        "Acuerdo de confidencialidad modular",
+        "Módulo de propiedad intelectual y licencias",
+        "Reglas de datos personales y seguridad cuando correspondan",
+        "Protocolo de devolución, destrucción e incidentes",
+        "Ficha de obligaciones, excepciones y vigencia"
+      ],
+      "not_included": [
+        "Cesiones genéricas sin identificar derechos y resultados",
+        "Protección de información ilícita o de terceros sin autorización",
+        "Litigios por infracción, competencia desleal o secretos empresariales"
+      ],
+      "legal_basis": [
+        {
+          "title": "Decisión Andina 486 de 2000",
+          "focus": "Secretos empresariales y propiedad industrial"
+        },
+        {
+          "title": "Decisión Andina 351 de 1993 y Ley 23 de 1982",
+          "focus": "Derecho de autor, titularidad y licencias"
+        },
+        {
+          "title": "Ley 1581 de 2012",
+          "focus": "Tratamiento de datos personales y medidas de responsabilidad"
+        }
+      ],
+      "pillars": [
+        "Relación y finalidad",
+        "Información y excepciones",
+        "Propiedad intelectual",
+        "Seguridad, datos e incidentes",
+        "Cierre y revisión de proporcionalidad"
+      ],
+      "precheck": {
+        "intro": "El filtro ayuda a activar los módulos correctos. No guarda la descripción de la información ni los nombres de las partes.",
+        "questions": [
+          {
+            "id": "relationship",
+            "label": "¿En qué contexto se compartirá la información?",
+            "options": [
+              "Negociación o alianza",
+              "Empleado",
+              "Proveedor o contratista",
+              "Proyecto de desarrollo",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "already_shared",
+            "label": "¿La información ya fue compartida sin acuerdo?",
+            "options": [
+              "No",
+              "Sí",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "personal_data",
+            "label": "¿Incluye datos personales o sensibles?",
+            "options": [
+              "No",
+              "Sí",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "developments",
+            "label": "¿Se crearán software, contenidos, diseños o invenciones?",
+            "options": [
+              "No",
+              "Sí",
+              "No estoy seguro"
+            ]
+          }
+        ],
+        "rules": [
+          {
+            "field": "already_shared",
+            "in": [
+              "Sí",
+              "No estoy seguro"
+            ],
+            "level": "yellow",
+            "message": "Debe reconstruirse qué se entregó, cuándo, bajo qué condiciones y qué medidas todavía son posibles."
+          },
+          {
+            "field": "personal_data",
+            "in": [
+              "Sí",
+              "No estoy seguro"
+            ],
+            "level": "yellow",
+            "message": "Se requiere delimitar roles, finalidad, autorizaciones, seguridad y atención de incidentes."
+          },
+          {
+            "field": "developments",
+            "in": [
+              "Sí",
+              "No estoy seguro"
+            ],
+            "level": "yellow",
+            "message": "Deben separarse antecedentes, resultados, derechos morales, cesión y licencias."
+          },
+          {
+            "field": "relationship",
+            "equals": "No estoy seguro",
+            "level": "yellow",
+            "message": "El tipo de relación define obligaciones, duración, remedios y módulos aplicables."
+          }
+        ]
+      }
+    },
+    "CO-SA-001": {
+      "slug": "derecho-peticion-eps-ips",
+      "headline": "Estructura una petición de salud con hechos, legitimación, privacidad, urgencia, soportes y seguimiento trazable.",
+      "why_gold": "Diferencia petición ordinaria, historia clínica, continuidad, autorización, reiteración y escalamiento; bloquea situaciones que requieren atención inmediata o actuación judicial específica.",
+      "use_cases": [
+        "Solicitud de autorización, programación o entrega",
+        "Petición de continuidad o respuesta de EPS o IPS",
+        "Solicitud de historia clínica con legitimación suficiente"
+      ],
+      "included": [
+        "Derecho de petición integral",
+        "Solicitud de historia clínica y entrega segura",
+        "Reiteración por falta o insuficiencia de respuesta",
+        "Matriz de soportes, legitimación y privacidad",
+        "Calendario preliminar y ruta ante Supersalud"
+      ],
+      "not_included": [
+        "Atención de urgencias o emergencias médicas",
+        "Acción de tutela automática",
+        "Acceso a historia clínica de terceros sin legitimación ni soporte"
+      ],
+      "legal_basis": [
+        {
+          "title": "Ley Estatutaria 1755 de 2015",
+          "focus": "Derecho fundamental de petición y términos generales"
+        },
+        {
+          "title": "Ley Estatutaria 1751 de 2015",
+          "focus": "Derecho fundamental a la salud, continuidad y acceso"
+        },
+        {
+          "title": "Resolución 1995 de 1999 y Ley 1581 de 2012",
+          "focus": "Reserva de historia clínica y datos sensibles"
+        }
+      ],
+      "pillars": [
+        "Legitimación y destinatario",
+        "Hechos y solicitud concreta",
+        "Urgencia y continuidad",
+        "Privacidad y soportes",
+        "Términos, documentos y seguimiento"
+      ],
+      "precheck": {
+        "intro": "Este filtro no reemplaza atención médica. Si existe una emergencia, acude de inmediato a los canales asistenciales.",
+        "questions": [
+          {
+            "id": "urgency",
+            "label": "¿Existe riesgo vital, dolor intenso o deterioro grave actual?",
+            "options": [
+              "No",
+              "Sí",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "requester",
+            "label": "¿Quién presenta la solicitud?",
+            "options": [
+              "El propio paciente",
+              "Representante o autorizado con soporte",
+              "Otra persona sin autorización",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "active_action",
+            "label": "¿Ya existe tutela, incidente de desacato o proceso activo?",
+            "options": [
+              "No",
+              "Sí",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "need",
+            "label": "¿Cuál es la necesidad principal?",
+            "options": [
+              "Autorización o programación",
+              "Continuidad o entrega",
+              "Historia clínica",
+              "Respuesta a petición previa",
+              "No estoy seguro"
+            ]
+          }
+        ],
+        "rules": [
+          {
+            "field": "urgency",
+            "in": [
+              "Sí",
+              "No estoy seguro"
+            ],
+            "level": "red",
+            "message": "Una petición ordinaria puede ser insuficiente. Debe priorizarse atención asistencial y revisión inmediata de la ruta jurídica."
+          },
+          {
+            "field": "requester",
+            "in": [
+              "Otra persona sin autorización",
+              "No estoy seguro"
+            ],
+            "level": "red",
+            "message": "Debe verificarse la legitimación y el soporte antes de solicitar datos de salud o historia clínica."
+          },
+          {
+            "field": "active_action",
+            "in": [
+              "Sí",
+              "No estoy seguro"
+            ],
+            "level": "red",
+            "message": "Una actuación judicial activa exige coordinación con el expediente y no debe duplicarse mediante un documento automático."
+          },
+          {
+            "field": "need",
+            "equals": "No estoy seguro",
+            "level": "yellow",
+            "message": "La solicitud debe concretar el resultado esperado para evitar respuestas evasivas o incompatibles."
+          }
+        ]
+      }
+    },
+    "CO-CD-001": {
+      "slug": "reclamo-centrales-riesgo-habeas-data",
+      "headline": "Organiza un reclamo de hábeas data financiero con identificación del reporte, evidencia, solicitudes y seguimiento.",
+      "why_gold": "Separa existencia de la obligación, actualización, permanencia, comunicación previa, suplantación y falta de soporte; dirige la reclamación al actor correcto y conserva la cronología.",
+      "use_cases": [
+        "Pago no actualizado o reporte desactualizado",
+        "Obligación desconocida o posible suplantación",
+        "Falta de soporte o comunicación previa"
+      ],
+      "included": [
+        "Reclamación de hábeas data",
+        "Índice probatorio y cronología",
+        "Solicitudes diferenciadas a fuente u operador",
+        "Reiteración y ruta de escalamiento",
+        "Alertas de identidad, términos y reporte en discusión"
+      ],
+      "not_included": [
+        "Eliminación automática de reportes",
+        "Declaración de inexistencia de una obligación sin prueba",
+        "Representación ante la SIC o en proceso judicial"
+      ],
+      "legal_basis": [
+        {
+          "title": "Ley Estatutaria 1266 de 2008",
+          "focus": "Hábeas data financiero, calidad, circulación y reclamaciones"
+        },
+        {
+          "title": "Ley Estatutaria 2157 de 2021",
+          "focus": "Actualización del régimen de permanencia, comunicación y obligaciones"
+        },
+        {
+          "title": "Ley 1581 de 2012",
+          "focus": "Protección general de datos y derechos del titular"
+        }
+      ],
+      "pillars": [
+        "Identificación del reporte",
+        "Clasificación de inconsistencia",
+        "Evidencia y comunicación previa",
+        "Reclamación al destinatario correcto",
+        "Seguimiento y escalamiento"
+      ],
+      "precheck": {
+        "intro": "El prediagnóstico no elimina ni modifica reportes. Solo identifica la ruta preliminar y los soportes que faltan.",
+        "questions": [
+          {
+            "id": "report_known",
+            "label": "¿Puedes identificar fuente, central y obligación reportada?",
+            "options": [
+              "Sí",
+              "Parcialmente",
+              "No"
+            ]
+          },
+          {
+            "id": "issue",
+            "label": "¿Cuál describe mejor la inconsistencia?",
+            "options": [
+              "Pago no actualizado",
+              "Obligación desconocida",
+              "Falta de soporte o comunicación",
+              "Permanencia del reporte",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "previous_claim",
+            "label": "¿Ya presentaste una reclamación y tienes respuesta o radicado?",
+            "options": [
+              "No",
+              "Sí, con respuesta",
+              "Sí, sin respuesta",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "identity_risk",
+            "label": "¿Hay indicios de suplantación, fraude o uso no autorizado de identidad?",
+            "options": [
+              "No",
+              "Sí",
+              "No estoy seguro"
+            ]
+          }
+        ],
+        "rules": [
+          {
+            "field": "identity_risk",
+            "in": [
+              "Sí",
+              "No estoy seguro"
+            ],
+            "level": "red",
+            "message": "La posible suplantación exige preservar evidencia, activar protocolos de identidad y revisar actuaciones adicionales."
+          },
+          {
+            "field": "report_known",
+            "in": [
+              "Parcialmente",
+              "No"
+            ],
+            "level": "yellow",
+            "message": "Conviene obtener una consulta reciente para identificar el dato, la fuente y el estado exacto."
+          },
+          {
+            "field": "issue",
+            "equals": "No estoy seguro",
+            "level": "yellow",
+            "message": "Debe precisarse si se discute existencia, actualización, comunicación, soporte o permanencia."
+          },
+          {
+            "field": "previous_claim",
+            "in": [
+              "Sí, sin respuesta",
+              "No estoy seguro"
+            ],
+            "level": "yellow",
+            "message": "Se deben verificar radicado, fecha, destinatario y término antes de reiterar o escalar."
+          }
+        ]
+      }
+    },
+    "CO-CD-004": {
+      "slug": "acuerdo-pago-pagare-cobro",
+      "headline": "Concilia una obligación y estructura cobro, acuerdo, pagaré y cierre con saldos y condiciones coherentes.",
+      "why_gold": "Controla origen, exigibilidad, capital, abonos, intereses, plan de pago, cobranza, garantías y documentos de cierre sin convertir un dato controvertido en reconocimiento automático.",
+      "use_cases": [
+        "Requerimiento prejurídico de pago",
+        "Negociación y acuerdo de cuotas",
+        "Pagaré y carta de instrucciones bajo controles"
+      ],
+      "included": [
+        "Conciliación preliminar del saldo",
+        "Requerimiento de pago",
+        "Acuerdo y cronograma de cuotas",
+        "Pagaré y carta de instrucciones cuando procedan",
+        "Recibos, constancia de pago y cierre"
+      ],
+      "not_included": [
+        "Proceso ejecutivo o representación judicial",
+        "Cobro de intereses sin soporte o por encima de límites aplicables",
+        "Reconocimiento automático de una deuda discutida o prescrita"
+      ],
+      "legal_basis": [
+        {
+          "title": "Código Civil y Código de Comercio",
+          "focus": "Obligaciones, pago, títulos valores, pagaré e intereses"
+        },
+        {
+          "title": "Código General del Proceso, artículo 422",
+          "focus": "Requisitos generales del título ejecutivo"
+        },
+        {
+          "title": "Ley 2300 de 2023",
+          "focus": "Canales, horarios y periodicidad de cobranza"
+        }
+      ],
+      "pillars": [
+        "Origen y exigibilidad",
+        "Conciliación de saldo",
+        "Ruta de cobro o negociación",
+        "Acuerdo, garantías y pagaré",
+        "Pagos, cierre y trazabilidad"
+      ],
+      "precheck": {
+        "intro": "El filtro no constituye reconocimiento de deuda. Detecta controversias y etapas que impiden una salida documental simple.",
+        "questions": [
+          {
+            "id": "debt_status",
+            "label": "¿La obligación y el saldo están reconocidos por las partes?",
+            "options": [
+              "Sí",
+              "No, existe controversia",
+              "Parcialmente",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "judicial_stage",
+            "label": "¿Existe demanda, mandamiento de pago, embargo o insolvencia?",
+            "options": [
+              "No",
+              "Sí",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "interest_support",
+            "label": "¿Los intereses y cargos tienen pacto y soporte verificable?",
+            "options": [
+              "Sí",
+              "No se cobrarán",
+              "No",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "collection",
+            "label": "¿Se realizarán contactos de cobranza a una persona natural?",
+            "options": [
+              "No",
+              "Sí",
+              "No estoy seguro"
+            ]
+          }
+        ],
+        "rules": [
+          {
+            "field": "debt_status",
+            "in": [
+              "No, existe controversia",
+              "No estoy seguro"
+            ],
+            "level": "red",
+            "message": "No debe generarse un reconocimiento o pagaré sin definir la controversia, el soporte y la exigibilidad."
+          },
+          {
+            "field": "judicial_stage",
+            "in": [
+              "Sí",
+              "No estoy seguro"
+            ],
+            "level": "red",
+            "message": "La existencia de proceso, embargo o insolvencia requiere revisión profesional del expediente."
+          },
+          {
+            "field": "interest_support",
+            "in": [
+              "No",
+              "No estoy seguro"
+            ],
+            "level": "red",
+            "message": "Los intereses y cargos deben tener fundamento, pacto y validación de límites antes de incluirse."
+          },
+          {
+            "field": "collection",
+            "in": [
+              "Sí",
+              "No estoy seguro"
+            ],
+            "level": "yellow",
+            "message": "La gestión de cobranza debe respetar canales, horarios, periodicidad, privacidad y trato digno."
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,341 @@
+{
+  "version": "2.23",
+  "intro": "El flujo valida alcance, autorización, habitabilidad, canon, garantías, propiedad horizontal, entrega y terminación antes de generar el paquete completo.",
+  "sections": [
+    "Partes",
+    "Alcance",
+    "Riesgo",
+    "Garantías",
+    "Inmueble",
+    "Entrega",
+    "Uso",
+    "Canon",
+    "Servicios",
+    "Plazo",
+    "Terminación",
+    "Confirmación"
+  ],
+  "questions": [
+    {
+      "id": "landlord",
+      "label": "Nombre o razón social del arrendador",
+      "type": "text",
+      "required": true,
+      "section": "Partes",
+      "min_length": 3
+    },
+    {
+      "id": "landlord_id",
+      "label": "Identificación del arrendador",
+      "type": "text",
+      "required": true,
+      "section": "Partes",
+      "min_length": 5
+    },
+    {
+      "id": "landlord_email",
+      "label": "Correo del arrendador",
+      "type": "email",
+      "format": "email",
+      "required": true,
+      "section": "Partes"
+    },
+    {
+      "id": "tenant",
+      "label": "Nombre del arrendatario principal",
+      "type": "text",
+      "required": true,
+      "section": "Partes",
+      "min_length": 3
+    },
+    {
+      "id": "tenant_id",
+      "label": "Identificación del arrendatario",
+      "type": "text",
+      "required": true,
+      "section": "Partes",
+      "min_length": 5
+    },
+    {
+      "id": "tenant_email",
+      "label": "Correo del arrendatario",
+      "type": "email",
+      "format": "email",
+      "required": true,
+      "section": "Partes"
+    },
+    {
+      "id": "urban_home",
+      "label": "¿El inmueble es vivienda urbana ordinaria?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No"
+      ],
+      "required": true,
+      "section": "Alcance"
+    },
+    {
+      "id": "lease_type",
+      "label": "Modalidad del arrendamiento",
+      "type": "select",
+      "options": [
+        "Individual",
+        "Mancomunado",
+        "Compartido",
+        "Pensión"
+      ],
+      "required": true,
+      "section": "Alcance"
+    },
+    {
+      "id": "authority",
+      "label": "¿El arrendador acredita propiedad o autorización vigente?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "Pendiente"
+      ],
+      "required": true,
+      "section": "Partes"
+    },
+    {
+      "id": "active_dispute",
+      "label": "¿Existe litigio, restitución o controversia de tenencia?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Riesgo"
+    },
+    {
+      "id": "cash_deposit",
+      "label": "¿Se pretende exigir depósito en dinero o caución real a favor del arrendador?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Garantías"
+    },
+    {
+      "id": "ph",
+      "label": "¿El inmueble está sometido a propiedad horizontal?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Inmueble"
+    },
+    {
+      "id": "ph_rules_delivered",
+      "label": "¿Se entregará la parte normativa del reglamento de propiedad horizontal?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Inmueble",
+      "show_if": {
+        "field": "ph",
+        "equals": "Sí"
+      }
+    },
+    {
+      "id": "furnished_high_value",
+      "label": "¿El inmueble es amoblado o contiene bienes de valor relevante?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Inmueble"
+    },
+    {
+      "id": "unsafe",
+      "label": "¿Hay defectos graves de sanidad, seguridad o servicios esenciales?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Entrega"
+    },
+    {
+      "id": "tourism_sublease",
+      "label": "¿Se usará para turismo, plataforma, hospedaje por días o subarriendo?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Uso"
+    },
+    {
+      "id": "property",
+      "label": "Dirección e identificación completa del inmueble",
+      "type": "textarea",
+      "required": true,
+      "section": "Inmueble",
+      "min_length": 12
+    },
+    {
+      "id": "property_registration",
+      "label": "Matrícula inmobiliaria o identificación registral",
+      "type": "text",
+      "required": true,
+      "section": "Inmueble",
+      "min_length": 4
+    },
+    {
+      "id": "occupants",
+      "label": "Ocupantes autorizados",
+      "type": "textarea",
+      "required": true,
+      "section": "Uso",
+      "min_length": 3
+    },
+    {
+      "id": "pets",
+      "label": "¿Habrá mascotas?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Uso"
+    },
+    {
+      "id": "rent",
+      "label": "Canon mensual (COP)",
+      "type": "number",
+      "required": true,
+      "section": "Canon",
+      "min": 1
+    },
+    {
+      "id": "commercial_value_known",
+      "label": "¿Se conoce el valor comercial o soporte equivalente?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No"
+      ],
+      "required": true,
+      "section": "Canon"
+    },
+    {
+      "id": "commercial_value",
+      "label": "Valor comercial soportado (COP)",
+      "type": "number",
+      "required": true,
+      "section": "Canon",
+      "min": 1,
+      "show_if": {
+        "field": "commercial_value_known",
+        "equals": "Sí"
+      }
+    },
+    {
+      "id": "cadastral_value",
+      "label": "Avalúo catastral vigente (COP, si se conoce)",
+      "type": "number",
+      "required": false,
+      "section": "Canon",
+      "min": 0
+    },
+    {
+      "id": "administration_charge",
+      "label": "Administración ordinaria mensual (COP)",
+      "type": "number",
+      "required": false,
+      "section": "Canon",
+      "min": 0
+    },
+    {
+      "id": "utilities_responsible",
+      "label": "Responsable principal de servicios públicos",
+      "type": "select",
+      "options": [
+        "Arrendatario",
+        "Arrendador",
+        "Distribución especial"
+      ],
+      "required": true,
+      "section": "Servicios"
+    },
+    {
+      "id": "duration_months",
+      "label": "Duración inicial en meses",
+      "type": "number",
+      "required": true,
+      "section": "Plazo",
+      "min": 1,
+      "max": 120
+    },
+    {
+      "id": "start_date",
+      "label": "Fecha de inicio",
+      "type": "date",
+      "required": true,
+      "section": "Plazo"
+    },
+    {
+      "id": "payment_day",
+      "label": "Día límite mensual de pago",
+      "type": "number",
+      "required": true,
+      "section": "Canon",
+      "min": 1,
+      "max": 28
+    },
+    {
+      "id": "co_debtor",
+      "label": "Garantía personal o póliza",
+      "type": "select",
+      "options": [
+        "No",
+        "Codeudor solidario",
+        "Fiador",
+        "Póliza"
+      ],
+      "required": true,
+      "section": "Garantías"
+    },
+    {
+      "id": "special_termination",
+      "label": "¿Se propone terminación atípica, venta próxima o cláusula especial?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Terminación"
+    },
+    {
+      "id": "data_confirmed",
+      "label": "¿Confirma que los datos y soportes fueron revisados?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No"
+      ],
+      "required": true,
+      "section": "Confirmación"
+    }
+  ],
+  "confirmation_required": true
+}

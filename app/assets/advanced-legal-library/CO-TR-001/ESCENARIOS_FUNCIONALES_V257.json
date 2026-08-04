@@ -1,0 +1,271 @@
+{
+  "product_id": "CO-TR-001",
+  "version": "2.57",
+  "scenarios": [
+    {
+      "id": "S01",
+      "authority": "Medellín",
+      "date": "2019-06-01",
+      "expected_matches": [
+        "A-001"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S02",
+      "authority": "Medellín",
+      "date": "2025-01-10",
+      "expected_matches": [
+        "B-008"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S03",
+      "authority": "Medellín",
+      "date": "2023-01-01",
+      "expected_matches": [],
+      "expected_risk": "green"
+    },
+    {
+      "id": "S04",
+      "authority": "Bogotá D.C.",
+      "date": "2019-01-01",
+      "expected_matches": [
+        "A-005"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S05",
+      "authority": "Bogotá",
+      "date": "2025-01-01",
+      "expected_matches": [
+        "B-004"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S06",
+      "authority": "Valle del Cauca",
+      "date": "2026-02-11",
+      "expected_matches": [
+        "A-036",
+        "B-010"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S07",
+      "authority": "Bello",
+      "date": "2026-01-01",
+      "expected_matches": [
+        "B-003"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S08",
+      "authority": "Bello",
+      "date": "2020-02-16",
+      "expected_matches": [
+        "A-012"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S09",
+      "authority": "Sabaneta",
+      "date": "2024-11-21",
+      "expected_matches": [
+        "A-010"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S10",
+      "authority": "Sabaneta",
+      "date": "2024-11-22",
+      "expected_matches": [],
+      "expected_risk": "green"
+    },
+    {
+      "id": "S11",
+      "authority": "Valledupar",
+      "date": "2025-08-13",
+      "expected_matches": [
+        "B-012"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S12",
+      "authority": "Valledupar",
+      "date": "2025-08-14",
+      "expected_matches": [],
+      "expected_risk": "green"
+    },
+    {
+      "id": "S13",
+      "authority": "Secretaría de Movilidad de Itagüí",
+      "date": "2020-01-01",
+      "expected_matches": [
+        "A-009"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S14",
+      "authority": "Cúcuta",
+      "date": "2022-05-01",
+      "expected_matches": [
+        "A-019"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S15",
+      "authority": "Montería",
+      "date": "2024-12-12",
+      "expected_matches": [
+        "A-032"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S16",
+      "authority": "Planeta Rica",
+      "date": "2025-01-14",
+      "expected_matches": [],
+      "expected_risk": "green"
+    },
+    {
+      "id": "S17",
+      "authority": "Palmira",
+      "date": "2025-05-21",
+      "expected_matches": [
+        "A-034"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S18",
+      "authority": "Zipaquirá",
+      "date": "2025-12-15",
+      "expected_matches": [
+        "A-037"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S19",
+      "authority": "Instituto Departamental de Tránsito del Cesar",
+      "date": "2026-01-01",
+      "expected_matches": [
+        "B-009"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S20",
+      "authority": "Santa Marta",
+      "date": "2024-11-21",
+      "expected_matches": [
+        "A-029",
+        "B-011"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S21",
+      "authority": "Fundación",
+      "date": "2024-11-21",
+      "expected_matches": [
+        "A-022",
+        "B-007"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S22",
+      "authority": "Cartago",
+      "date": "2024-11-21",
+      "expected_matches": [
+        "A-024",
+        "B-005"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S23",
+      "authority": "Barrancabermeja",
+      "date": "2024-11-21",
+      "expected_matches": [
+        "A-028",
+        "B-002"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S24",
+      "authority": "Aguachica",
+      "date": "2024-11-28",
+      "expected_matches": [
+        "B-001"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S25",
+      "authority": "Yotoco",
+      "date": "2022-01-01",
+      "expected_matches": [
+        "A-026"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S26",
+      "authority": "Puerto Colombia",
+      "date": "2019-05-01",
+      "expected_matches": [
+        "A-015"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S27",
+      "authority": "Los Patios",
+      "date": "2020-01-01",
+      "expected_matches": [
+        "A-023"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S28",
+      "authority": "Popayán",
+      "date": "2020-01-01",
+      "expected_matches": [
+        "A-030"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S29",
+      "authority": "Ciénaga",
+      "date": "2021-05-26",
+      "expected_matches": [
+        "A-027"
+      ],
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "S30",
+      "authority": "Entidad inexistente",
+      "date": "2025-01-01",
+      "expected_status": "incomplete",
+      "expected_risk": "yellow"
+    }
+  ]
+}

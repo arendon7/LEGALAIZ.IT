@@ -1,0 +1,35 @@
+[
+  {
+    "file": "test_engine.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 15,
+    "subtests": 154,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 3.1,
+    "summary": "...............                                                [100%] 15 passed, 154 subtests passed in 1.46s"
+  },
+  {
+    "file": "test_infrastructure.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 8,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 11.24,
+    "summary": "........                                                                 [100%] 8 passed in 9.17s"
+  },
+  {
+    "file": "test_m10_domain_routes_and_product_quality.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 9,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 1.87,
+    "summary": ".........                                                                [100%] 9 passed in 0.27s"
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "path": "#/",
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 3420,
+    "brokenImages": [],
+    "h1": [
+      "Gestiona la operación jurídica sin perder trazabilidad."
+    ],
+    "view": "admin_home",
+    "viewport": "mobile",
+    "screenshot": "governance/m31_2/visual/admin_home_mobile.png",
+    "errors": []
+  },
+  {
+    "path": "#/preproduccion",
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 5345,
+    "brokenImages": [],
+    "h1": [
+      "Centro de Preproducción"
+    ],
+    "view": "admin_preproduction",
+    "viewport": "mobile",
+    "screenshot": "governance/m31_2/visual/admin_preproduction_mobile.png",
+    "errors": []
+  }
+]

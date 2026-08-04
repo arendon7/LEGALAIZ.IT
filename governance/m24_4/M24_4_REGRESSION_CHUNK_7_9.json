@@ -1,0 +1,35 @@
+[
+  {
+    "file": "test_m11_documental_and_lease_quality.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 7,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 1.87,
+    "summary": ".......                                                                  [100%] 7 passed in 0.27s"
+  },
+  {
+    "file": "test_m12_service_contract_quality.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 7,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 1.77,
+    "summary": ".......                                                                  [100%] 7 passed in 0.26s"
+  },
+  {
+    "file": "test_m13_confidentiality_ip_data_ai_quality.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 8,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 1.82,
+    "summary": "........                                                                 [100%] 8 passed in 0.27s"
+  }
+]

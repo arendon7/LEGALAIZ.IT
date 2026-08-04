@@ -1,0 +1,102 @@
+[
+  {
+    "id": "V-TR2-001",
+    "severity": "blocker",
+    "message": "El producto solo cubre actuaciones administrativas de tránsito en Colombia."
+  },
+  {
+    "id": "V-TR2-002",
+    "severity": "blocker",
+    "message": "La identidad, calidad y autoridad destinataria deben estar suficientemente determinadas."
+  },
+  {
+    "id": "V-TR2-003",
+    "severity": "blocker",
+    "message": "La fecha de la presunta infracción no puede ser futura y la cronología debe ser coherente."
+  },
+  {
+    "id": "V-TR2-004",
+    "severity": "review",
+    "message": "La dirección RUNT y la dirección utilizada deben compararse con soporte histórico."
+  },
+  {
+    "id": "V-TR2-005",
+    "severity": "review",
+    "message": "La notificación debe analizarse por medio, fecha, entrega, devolución y conocimiento efectivo."
+  },
+  {
+    "id": "V-TR2-006",
+    "severity": "review",
+    "message": "La autorización, señalización y operación del SAST deben verificarse para la fecha y ubicación."
+  },
+  {
+    "id": "V-TR2-007",
+    "severity": "review",
+    "message": "Las mediciones de velocidad requieren revisar trazabilidad metrológica y soporte técnico."
+  },
+  {
+    "id": "V-TR2-008",
+    "severity": "review",
+    "message": "La validación por agente o autoridad competente debe estar documentada."
+  },
+  {
+    "id": "V-TR2-009",
+    "severity": "review",
+    "message": "La responsabilidad del propietario no surge automáticamente del comparendo; exige imputación y debido proceso."
+  },
+  {
+    "id": "V-TR2-010",
+    "severity": "review",
+    "message": "Las obligaciones legales del propietario deben analizarse según el comportamiento específico y la culpabilidad."
+  },
+  {
+    "id": "V-TR2-011",
+    "severity": "review",
+    "message": "Venta, entrega, hurto o falta de control material requieren soportes y análisis temporal."
+  },
+  {
+    "id": "V-TR2-012",
+    "severity": "review",
+    "message": "Una resolución sancionatoria exige verificar notificación, ejecutoria, recursos y acceso al expediente."
+  },
+  {
+    "id": "V-TR2-013",
+    "severity": "blocker",
+    "message": "Cobro coactivo o embargo limita la automatización y exige revisión especializada de excepciones y medidas."
+  },
+  {
+    "id": "V-TR2-014",
+    "severity": "blocker",
+    "message": "Un proceso judicial activo exige coordinación procesal y no debe ser contradicho por documentos automáticos."
+  },
+  {
+    "id": "V-TR2-015",
+    "severity": "review",
+    "message": "El pago no implica devolución automática ni sanea por sí solo defectos; debe revisarse su efecto concreto."
+  },
+  {
+    "id": "V-TR2-016",
+    "severity": "review",
+    "message": "La revocatoria directa no reemplaza recursos ni revive términos judiciales vencidos."
+  },
+  {
+    "id": "V-TR2-017",
+    "severity": "review",
+    "message": "Los términos próximos exigen priorización y verificación inmediata del expediente."
+  },
+  {
+    "id": "V-TR2-018",
+    "severity": "blocker",
+    "message": "No se generarán documentos cuando exista indicio de falsedad, alteración o suplantación."
+  },
+  {
+    "id": "V-TR2-019",
+    "severity": "review",
+    "message": "Varios comparendos deben separarse por acto, fecha, dispositivo, notificación y etapa."
+  },
+  {
+    "id": "V-TR2-020",
+    "severity": "blocker",
+    "message": "La generación exige confirmación expresa de integridad y veracidad de la información."
+  }
+]

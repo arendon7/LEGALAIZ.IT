@@ -1,0 +1,534 @@
+{
+  "version": "M13.1",
+  "build_id": "M13-CONFIDENTIALITY-IP-DATA-AI-REVALIDATION-2026-07-31",
+  "title": "Biblioteca contractual profunda versionada M13",
+  "notice": "CO-EM-004 fue revalidado y regenerado en M13. CO-LA-002 y CO-AR-001 conservan M11; CO-EM-003 conserva M12. Cada documento exige revisión del caso concreto.",
+  "generated_at": "2026-07-31T05:53:52.616251+00:00",
+  "products": [
+    {
+      "code": "CO-EM-003",
+      "title": "Contrato de prestación de servicios independientes",
+      "status": "revalidated_m12",
+      "latest_document_version": "M12.1",
+      "documents": [
+        {
+          "kind": "main_contract",
+          "title": "Contrato de prestación de servicios independientes",
+          "subtitle": "Modelo maestro profundo M12 · autonomía real, seguridad social, ARL, datos, PI y cierre",
+          "docx": "CO-EM-003/CO-EM-003_MODELO_MAESTRO_PROFUNDO_M12.docx",
+          "pdf": "CO-EM-003/CO-EM-003_MODELO_MAESTRO_PROFUNDO_M12.pdf",
+          "words": 3172,
+          "clauses": 53,
+          "pages": 9,
+          "docx_sha256": "0638bbc8c8b4c65e5ce180287de5e1069efcb90a1d607bbd4a011cd77a183ac8",
+          "pdf_sha256": "7f96f86e0385d3da2e2bac0130ed4b6bc52569cd5f48835175907922e239d980"
+        },
+        {
+          "kind": "annex_1",
+          "title": "Anexo de alcance, entregables y cronograma",
+          "subtitle": "Anexo operativo profundo M12",
+          "docx": "CO-EM-003/CO-EM-003_ANEXO_01_ANEXO_DE_ALCANCE_ENTREGABLES_Y_CRONOGRAMA_M12.docx",
+          "pdf": "CO-EM-003/CO-EM-003_ANEXO_01_ANEXO_DE_ALCANCE_ENTREGABLES_Y_CRONOGRAMA_M12.pdf",
+          "words": 524,
+          "clauses": 0,
+          "pages": 3,
+          "docx_sha256": "15cb618dd222a57935b631bcfb2db7fac356d0be82c6a98454a8528a4d5c8a44",
+          "pdf_sha256": "5e80bb2382bab05676e07c59ee490edcb518c023b9cafe01ad706803316b9ab5"
+        },
+        {
+          "kind": "annex_2",
+          "title": "Acuerdo de confidencialidad",
+          "subtitle": "Anexo operativo profundo M12",
+          "docx": "CO-EM-003/CO-EM-003_ANEXO_02_ACUERDO_DE_CONFIDENCIALIDAD_M12.docx",
+          "pdf": "CO-EM-003/CO-EM-003_ANEXO_02_ACUERDO_DE_CONFIDENCIALIDAD_M12.pdf",
+          "words": 1644,
+          "clauses": 35,
+          "pages": 5,
+          "docx_sha256": "86d393c0fe2aadd505125f3cd73a6cfee5ba7198624530b8820322c214f4df8f",
+          "pdf_sha256": "375f7497957b1cdcfb54a60a7d10ea488f3efb3fd6826b3367fdbe9047faa2d7"
+        },
+        {
+          "kind": "annex_3",
+          "title": "Anexo de propiedad intelectual, software e IA",
+          "subtitle": "Anexo operativo profundo M12",
+          "docx": "CO-EM-003/CO-EM-003_ANEXO_03_ANEXO_DE_PROPIEDAD_INTELECTUAL_SOFTWARE_E_IA_M12.docx",
+          "pdf": "CO-EM-003/CO-EM-003_ANEXO_03_ANEXO_DE_PROPIEDAD_INTELECTUAL_SOFTWARE_E_IA_M12.pdf",
+          "words": 376,
+          "clauses": 0,
+          "pages": 3,
+          "docx_sha256": "5380a23d46e82cef64cc69e1545dd370ff616df0db44eaf99d0e7a558d91609a",
+          "pdf_sha256": "7a4507c959f7eb61760c1c2e66c5430805b7fd3d657fdc086cf2e6c131d38001"
+        },
+        {
+          "kind": "annex_4",
+          "title": "Anexo de tratamiento y seguridad de datos",
+          "subtitle": "Anexo operativo profundo M12",
+          "docx": "CO-EM-003/CO-EM-003_ANEXO_04_ANEXO_DE_TRATAMIENTO_Y_SEGURIDAD_DE_DATOS_M12.docx",
+          "pdf": "CO-EM-003/CO-EM-003_ANEXO_04_ANEXO_DE_TRATAMIENTO_Y_SEGURIDAD_DE_DATOS_M12.pdf",
+          "words": 331,
+          "clauses": 0,
+          "pages": 3,
+          "docx_sha256": "90c24aa5c32f3b3eaeb4f3bc6dccd00eb223d89fe7a00f1c82b0eddc89eb548d",
+          "pdf_sha256": "cc9726d084114ef4d0f7cc90988c5a252d0ba779bdd156ce8f31d3f687212fce"
+        },
+        {
+          "kind": "annex_5",
+          "title": "Acta de terminación, entrega y cierre",
+          "subtitle": "Anexo operativo profundo M12",
+          "docx": "CO-EM-003/CO-EM-003_ANEXO_05_ACTA_DE_TERMINACI_N_ENTREGA_Y_CIERRE_M12.docx",
+          "pdf": "CO-EM-003/CO-EM-003_ANEXO_05_ACTA_DE_TERMINACI_N_ENTREGA_Y_CIERRE_M12.pdf",
+          "words": 261,
+          "clauses": 0,
+          "pages": 2,
+          "docx_sha256": "0663071c039549143e2ac81d6432db6717dbf29671fa8940fce7145aabc9bc80",
+          "pdf_sha256": "f886d89e643bf3043b11d852a7c5d1877452c4473e26ca2f8ded47de48c92456"
+        },
+        {
+          "kind": "consolidated_package",
+          "title": "Paquete contractual profundo CO-EM-003",
+          "subtitle": "6 partes integradas · M12",
+          "docx": "CO-EM-003/CO-EM-003_PAQUETE_CONTRACTUAL_PROFUNDO_M12.docx",
+          "pdf": "CO-EM-003/CO-EM-003_PAQUETE_CONTRACTUAL_PROFUNDO_M12.pdf",
+          "words": 6275,
+          "clauses": 88,
+          "pages": 27,
+          "docx_sha256": "8a44bc9081a5e5e978e7187be1e6d2d97b7f05414ee8a541e107041412d33340",
+          "pdf_sha256": "8f95d65bf75ac5e2013d40049e150277912ed746162c1db90257f9d1920fc35a"
+        }
+      ],
+      "metrics": {
+        "documents": 7,
+        "words": 12583,
+        "pages": 52,
+        "clauses": 176,
+        "package_words": 6275,
+        "package_pages": 27
+      }
+    },
+    {
+      "code": "CO-LA-002",
+      "title": "Contrato de trabajo personalizado",
+      "documents": [
+        {
+          "kind": "main_contract",
+          "title": "Contrato de trabajo personalizado",
+          "subtitle": "Modelo maestro profundo M11 · reglas vigentes, variables, riesgos, anexos y fuentes",
+          "docx": "CO-LA-002/CO-LA-002_MODELO_MAESTRO_PROFUNDO_M11.docx",
+          "pdf": "CO-LA-002/CO-LA-002_MODELO_MAESTRO_PROFUNDO_M11.pdf",
+          "words": 2494,
+          "clauses": 45,
+          "pages": 7,
+          "docx_sha256": "35b62a098e9f4d24abc09fe00d347ea13fbbc0383e4f6f3f4adc4c3da0b66974",
+          "pdf_sha256": "e36a07284278366af087bfea43d13e92f447d13eaa388ac657b8a9a3d7035bea",
+          "approval_status": "revalidated_controlled_use_m11",
+          "professional_use": true,
+          "independent_review": false,
+          "verified_at": "2026-07-30"
+        },
+        {
+          "kind": "annex_1",
+          "title": "Anexo de funciones y resultados",
+          "subtitle": "Anexo operativo profundo M11",
+          "docx": "CO-LA-002/CO-LA-002_ANEXO_01_ANEXO_DE_FUNCIONES_Y_RESULTADOS_M11.docx",
+          "pdf": "CO-LA-002/CO-LA-002_ANEXO_01_ANEXO_DE_FUNCIONES_Y_RESULTADOS_M11.pdf",
+          "words": 346,
+          "clauses": 0,
+          "pages": 3,
+          "docx_sha256": "251df844a0d21a0872dd1d35dc95dc6ac488b135626985c80460b832b2b72e39",
+          "pdf_sha256": "4eb8e751ed0cae79f26084dc2062be33e523280bbd59ca05ebe99ca0443a24ca",
+          "approval_status": "revalidated_controlled_use_m11",
+          "professional_use": true,
+          "independent_review": false,
+          "verified_at": "2026-07-30"
+        },
+        {
+          "kind": "annex_2",
+          "title": "Anexo de compensación y beneficios",
+          "subtitle": "Anexo operativo profundo M11",
+          "docx": "CO-LA-002/CO-LA-002_ANEXO_02_ANEXO_DE_COMPENSACI_N_Y_BENEFICIOS_M11.docx",
+          "pdf": "CO-LA-002/CO-LA-002_ANEXO_02_ANEXO_DE_COMPENSACI_N_Y_BENEFICIOS_M11.pdf",
+          "words": 289,
+          "clauses": 0,
+          "pages": 2,
+          "docx_sha256": "fef14aac431b5308157e0cb191586cdea3d31e2ad562eed5b28c3cb35ac36acf",
+          "pdf_sha256": "99eed4ffed16e37673dcdcb63c7de59f50fa1243ff39296dfa65144ce311ab74",
+          "approval_status": "revalidated_controlled_use_m11",
+          "professional_use": true,
+          "independent_review": false,
+          "verified_at": "2026-07-30"
+        },
+        {
+          "kind": "annex_3",
+          "title": "Anexo de confidencialidad, PI y datos",
+          "subtitle": "Anexo operativo profundo M11",
+          "docx": "CO-LA-002/CO-LA-002_ANEXO_03_ANEXO_DE_CONFIDENCIALIDAD_PI_Y_DATOS_M11.docx",
+          "pdf": "CO-LA-002/CO-LA-002_ANEXO_03_ANEXO_DE_CONFIDENCIALIDAD_PI_Y_DATOS_M11.pdf",
+          "words": 339,
+          "clauses": 0,
+          "pages": 2,
+          "docx_sha256": "276e3f82777e709d868f40b1edb0e60eee9b0e68b688f8a697e5b11ccf82e918",
+          "pdf_sha256": "27c2450bac8bc88d3799f2de7ecadb025fffbd577a19fd70569571310de9bb78",
+          "approval_status": "revalidated_controlled_use_m11",
+          "professional_use": true,
+          "independent_review": false,
+          "verified_at": "2026-07-30"
+        },
+        {
+          "kind": "annex_4",
+          "title": "Anexo de equipos y accesos",
+          "subtitle": "Anexo operativo profundo M11",
+          "docx": "CO-LA-002/CO-LA-002_ANEXO_04_ANEXO_DE_EQUIPOS_Y_ACCESOS_M11.docx",
+          "pdf": "CO-LA-002/CO-LA-002_ANEXO_04_ANEXO_DE_EQUIPOS_Y_ACCESOS_M11.pdf",
+          "words": 264,
+          "clauses": 0,
+          "pages": 2,
+          "docx_sha256": "2941483a9b10407100ddb169bbf9d6d2496aac046a7caa552e0bd1140562a776",
+          "pdf_sha256": "a7bbb4182c37c5ef56b7aff068bdb0bb0ccef6c0f56568693e02435b611ae621",
+          "approval_status": "revalidated_controlled_use_m11",
+          "professional_use": true,
+          "independent_review": false,
+          "verified_at": "2026-07-30"
+        },
+        {
+          "kind": "annex_5",
+          "title": "Anexo de trabajo a distancia",
+          "subtitle": "Anexo operativo profundo M11",
+          "docx": "CO-LA-002/CO-LA-002_ANEXO_05_ANEXO_DE_TRABAJO_A_DISTANCIA_M11.docx",
+          "pdf": "CO-LA-002/CO-LA-002_ANEXO_05_ANEXO_DE_TRABAJO_A_DISTANCIA_M11.pdf",
+          "words": 314,
+          "clauses": 0,
+          "pages": 2,
+          "docx_sha256": "fadecc11e1b51386bc5298de0270d27b004a0d19484d8b0144e8713a6a4594d9",
+          "pdf_sha256": "8ed9fd7b9700b56b424f6cd9042c938313e18ce55fe8ff2d7ed1c1c4d70077e9",
+          "approval_status": "revalidated_controlled_use_m11",
+          "professional_use": true,
+          "independent_review": false,
+          "verified_at": "2026-07-30"
+        },
+        {
+          "kind": "consolidated_package",
+          "title": "Paquete contractual profundo CO-LA-002",
+          "subtitle": "6 partes integradas · M11",
+          "docx": "CO-LA-002/CO-LA-002_PAQUETE_CONTRACTUAL_PROFUNDO_M11.docx",
+          "pdf": "CO-LA-002/CO-LA-002_PAQUETE_CONTRACTUAL_PROFUNDO_M11.pdf",
+          "words": 4004,
+          "clauses": 45,
+          "pages": 20,
+          "docx_sha256": "6273b1eeea8dfd93025d505e39a97fc4bf3b48f79b46d4372c9209cac9965b64",
+          "pdf_sha256": "50eb4640e2fe5a80a40760126b390b93c7edc70d2f6f57262411740df46feda4",
+          "approval_status": "revalidated_controlled_use_m11",
+          "professional_use": true,
+          "independent_review": false,
+          "verified_at": "2026-07-30"
+        }
+      ],
+      "metrics": {
+        "documents": 7,
+        "words": 8050,
+        "pages": 38,
+        "clauses": 90,
+        "package_words": 4004,
+        "package_pages": 20
+      },
+      "sources": [
+        {
+          "id": "LA2-S1",
+          "authority": "Secretaría Jurídica del Senado",
+          "reference": "Código Sustantivo del Trabajo consolidado",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "id": "LA2-S2",
+          "authority": "Congreso de Colombia",
+          "reference": "Ley 2466 de 2025",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2466_2025.html",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "id": "LA2-S3",
+          "authority": "Congreso de Colombia",
+          "reference": "Ley 2101 de 2021",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2101_2021.html",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "id": "LA2-S4",
+          "authority": "Congreso de Colombia",
+          "reference": "Ley 2191 de 2022 - desconexión laboral",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2191_2022.html",
+          "verified_at": "2026-07-30"
+        }
+      ],
+      "latest_document_version": "M11.1"
+    },
+    {
+      "code": "CO-EM-004",
+      "title": "Confidencialidad, secretos empresariales y propiedad intelectual",
+      "status": "revalidated_m13",
+      "latest_document_version": "M13.1",
+      "documents": [
+        {
+          "kind": "main_contract",
+          "title": "Confidencialidad, secretos empresariales y propiedad intelectual",
+          "subtitle": "Modelo maestro profundo M13 · secretos, PI, software, datos, incidentes e IA",
+          "docx": "CO-EM-004/CO-EM-004_MODELO_MAESTRO_PROFUNDO_M13.docx",
+          "pdf": "CO-EM-004/CO-EM-004_MODELO_MAESTRO_PROFUNDO_M13.pdf",
+          "words": 2152,
+          "clauses": 39,
+          "pages": 7,
+          "docx_sha256": "ea67b718c68d181fcf99b6806b56c0997534e7eda08dc9670ca0a4e15dc52783",
+          "pdf_sha256": "e7c21617151bd9eaaaebbd52ebda0993fb7866117955a253299494ee20103a4c"
+        },
+        {
+          "kind": "annex_1",
+          "title": "Inventario y clasificación de información",
+          "subtitle": "Anexo operativo profundo M13",
+          "docx": "CO-EM-004/CO-EM-004_ANEXO_01_INVENTARIO_Y_CLASIFICACI_N_DE_INFORMACI_N_M13.docx",
+          "pdf": "CO-EM-004/CO-EM-004_ANEXO_01_INVENTARIO_Y_CLASIFICACI_N_DE_INFORMACI_N_M13.pdf",
+          "words": 356,
+          "clauses": 0,
+          "pages": 3,
+          "docx_sha256": "797cf6782c9c47ab79ed92aea6b166d0a4434b143b1dcc6f47249c2ab1ea7748",
+          "pdf_sha256": "13c0fe5d1dd8b84f0e7cfe6c1bfcc6391e4e3465874f538f4b9bae9e5dc1ee75"
+        },
+        {
+          "kind": "annex_2",
+          "title": "Anexo de contexto y accesos",
+          "subtitle": "Anexo operativo profundo M13",
+          "docx": "CO-EM-004/CO-EM-004_ANEXO_02_ANEXO_DE_CONTEXTO_Y_ACCESOS_M13.docx",
+          "pdf": "CO-EM-004/CO-EM-004_ANEXO_02_ANEXO_DE_CONTEXTO_Y_ACCESOS_M13.pdf",
+          "words": 301,
+          "clauses": 0,
+          "pages": 2,
+          "docx_sha256": "3459f2715d60608a5936e7c1604170e1d760cd01abedb7df61de770f9ade28bb",
+          "pdf_sha256": "f9bcad4ca9c93ccda3dbbf08eab5317343e482d4b9d5c5ec8263d76052b6d77c"
+        },
+        {
+          "kind": "annex_3",
+          "title": "Anexo de propiedad intelectual, software e IA",
+          "subtitle": "Anexo operativo profundo M13",
+          "docx": "CO-EM-004/CO-EM-004_ANEXO_03_ANEXO_DE_PROPIEDAD_INTELECTUAL_SOFTWARE_E_IA_M13.docx",
+          "pdf": "CO-EM-004/CO-EM-004_ANEXO_03_ANEXO_DE_PROPIEDAD_INTELECTUAL_SOFTWARE_E_IA_M13.pdf",
+          "words": 601,
+          "clauses": 0,
+          "pages": 3,
+          "docx_sha256": "d117f785fef293e2626197dd5d10d9831e2860c627899b80a95137c4a632736f",
+          "pdf_sha256": "7a2377ba708affd7fd6aaef795d9242324bf94f52f21e7318da67c3f68e3c8d9"
+        },
+        {
+          "kind": "annex_4",
+          "title": "Anexo de tratamiento y seguridad de datos",
+          "subtitle": "Anexo operativo profundo M13",
+          "docx": "CO-EM-004/CO-EM-004_ANEXO_04_ANEXO_DE_TRATAMIENTO_Y_SEGURIDAD_DE_DATOS_M13.docx",
+          "pdf": "CO-EM-004/CO-EM-004_ANEXO_04_ANEXO_DE_TRATAMIENTO_Y_SEGURIDAD_DE_DATOS_M13.pdf",
+          "words": 578,
+          "clauses": 0,
+          "pages": 3,
+          "docx_sha256": "7567807fa124d2fb2b76962aee50722676990d5b6817aa1e3705d365b32ec078",
+          "pdf_sha256": "66f4a7261f5896ae336b51a01330520735bf43869fd7ced73b8d8e4e02415f83"
+        },
+        {
+          "kind": "annex_5",
+          "title": "Protocolo de incidentes",
+          "subtitle": "Anexo operativo profundo M13",
+          "docx": "CO-EM-004/CO-EM-004_ANEXO_05_PROTOCOLO_DE_INCIDENTES_M13.docx",
+          "pdf": "CO-EM-004/CO-EM-004_ANEXO_05_PROTOCOLO_DE_INCIDENTES_M13.pdf",
+          "words": 448,
+          "clauses": 0,
+          "pages": 3,
+          "docx_sha256": "321a8264c547f2f0b6a78f9a5395bbeadfc511c83a8921f4e6c6c3f30bbd98a4",
+          "pdf_sha256": "7c583188a4ff8fb35286ca7e672a87991f1d5994c546a1f9f6923c39314e79e4"
+        },
+        {
+          "kind": "annex_6",
+          "title": "Acta de cierre",
+          "subtitle": "Anexo operativo profundo M13",
+          "docx": "CO-EM-004/CO-EM-004_ANEXO_06_ACTA_DE_CIERRE_M13.docx",
+          "pdf": "CO-EM-004/CO-EM-004_ANEXO_06_ACTA_DE_CIERRE_M13.pdf",
+          "words": 364,
+          "clauses": 0,
+          "pages": 3,
+          "docx_sha256": "f5f723e3818032bc0ecfffb4f07ed32056dfffd3420429588a304fc0b99fc7e2",
+          "pdf_sha256": "28bea3138dc442bbf54d8028578e9b3d919e92c83b7c6e475a181ff5e6f1b5f8"
+        },
+        {
+          "kind": "consolidated_package",
+          "title": "Paquete contractual profundo CO-EM-004",
+          "subtitle": "7 partes integradas · M13",
+          "docx": "CO-EM-004/CO-EM-004_PAQUETE_CONTRACTUAL_PROFUNDO_M13.docx",
+          "pdf": "CO-EM-004/CO-EM-004_PAQUETE_CONTRACTUAL_PROFUNDO_M13.pdf",
+          "words": 4746,
+          "clauses": 39,
+          "pages": 26,
+          "docx_sha256": "a9d50ffd14af4c359430f6fedf1b4e7f7273541000246cad7e790fea351eeaf8",
+          "pdf_sha256": "4f669fd32dd1efcd074fa7b67bbc95ac833e3e69e66eb7bbe1a0d9ce1eedcff6"
+        }
+      ],
+      "metrics": {
+        "documents": 8,
+        "words": 9546,
+        "pages": 50,
+        "clauses": 78,
+        "package_words": 4746,
+        "package_pages": 26
+      }
+    },
+    {
+      "code": "CO-AR-001",
+      "title": "Arrendamiento de vivienda urbana",
+      "documents": [
+        {
+          "kind": "main_contract",
+          "title": "Arrendamiento de vivienda urbana",
+          "subtitle": "Modelo maestro profundo M11 · reglas vigentes, variables, riesgos, anexos y fuentes",
+          "docx": "CO-AR-001/CO-AR-001_MODELO_MAESTRO_PROFUNDO_M11.docx",
+          "pdf": "CO-AR-001/CO-AR-001_MODELO_MAESTRO_PROFUNDO_M11.pdf",
+          "words": 2086,
+          "clauses": 40,
+          "pages": 6,
+          "docx_sha256": "6e41f409678bea7414a3eb45cabe253d2611d963cb9ac11ddefb42e8c856aef2",
+          "pdf_sha256": "03ded06010390f2accd331fb672635831bdf508b208f3e9121bf582a74c23234",
+          "approval_status": "revalidated_controlled_use_m11",
+          "professional_use": true,
+          "independent_review": false,
+          "verified_at": "2026-07-30"
+        },
+        {
+          "kind": "annex_1",
+          "title": "Inventario y estado del inmueble",
+          "subtitle": "Anexo operativo profundo M11",
+          "docx": "CO-AR-001/CO-AR-001_ANEXO_01_INVENTARIO_Y_ESTADO_DEL_INMUEBLE_M11.docx",
+          "pdf": "CO-AR-001/CO-AR-001_ANEXO_01_INVENTARIO_Y_ESTADO_DEL_INMUEBLE_M11.pdf",
+          "words": 323,
+          "clauses": 0,
+          "pages": 3,
+          "docx_sha256": "d1fb0663867ae4366d1ea434091baeb18044351d68badd725297aa9bacac741c",
+          "pdf_sha256": "512f7dab0253a59d1fa7ac5035742cbe046c61bc7585d3076bdf55803f59dacb",
+          "approval_status": "revalidated_controlled_use_m11",
+          "professional_use": true,
+          "independent_review": false,
+          "verified_at": "2026-07-30"
+        },
+        {
+          "kind": "annex_2",
+          "title": "Acta de entrega",
+          "subtitle": "Anexo operativo profundo M11",
+          "docx": "CO-AR-001/CO-AR-001_ANEXO_02_ACTA_DE_ENTREGA_M11.docx",
+          "pdf": "CO-AR-001/CO-AR-001_ANEXO_02_ACTA_DE_ENTREGA_M11.pdf",
+          "words": 234,
+          "clauses": 0,
+          "pages": 2,
+          "docx_sha256": "c7f06b2f8436840540b7ee73a519dcb4335aaa10778fb8cbefc33a18913aae3d",
+          "pdf_sha256": "4ef5606b25e8043099af5d0e55dd07ba1fe796b999a34129c8cb2e34e19f1c3a",
+          "approval_status": "revalidated_controlled_use_m11",
+          "professional_use": true,
+          "independent_review": false,
+          "verified_at": "2026-07-30"
+        },
+        {
+          "kind": "annex_3",
+          "title": "Acta de restitución y cierre",
+          "subtitle": "Anexo operativo profundo M11",
+          "docx": "CO-AR-001/CO-AR-001_ANEXO_03_ACTA_DE_RESTITUCI_N_Y_CIERRE_M11.docx",
+          "pdf": "CO-AR-001/CO-AR-001_ANEXO_03_ACTA_DE_RESTITUCI_N_Y_CIERRE_M11.pdf",
+          "words": 253,
+          "clauses": 0,
+          "pages": 2,
+          "docx_sha256": "dc0223b9e0764cec2fa772b99c6b74064405e829ca8da1912f088817e4006493",
+          "pdf_sha256": "fdfe21e071d32f2423aef3e53f57d70ee6c5ba6b4042577bf7b6099cd3f59229",
+          "approval_status": "revalidated_controlled_use_m11",
+          "professional_use": true,
+          "independent_review": false,
+          "verified_at": "2026-07-30"
+        },
+        {
+          "kind": "annex_4",
+          "title": "Guía operativa",
+          "subtitle": "Anexo operativo profundo M11",
+          "docx": "CO-AR-001/CO-AR-001_ANEXO_04_GU_A_OPERATIVA_M11.docx",
+          "pdf": "CO-AR-001/CO-AR-001_ANEXO_04_GU_A_OPERATIVA_M11.pdf",
+          "words": 279,
+          "clauses": 0,
+          "pages": 3,
+          "docx_sha256": "3bda866c2fefacc4a90b470d40b25b232ec6b1303d1454daca2f3d55afc36df3",
+          "pdf_sha256": "50162a46a800fb98b15f22a2c8d85588f59c8a979adaa6ab991324f6afdcf39d",
+          "approval_status": "revalidated_controlled_use_m11",
+          "professional_use": true,
+          "independent_review": false,
+          "verified_at": "2026-07-30"
+        },
+        {
+          "kind": "consolidated_package",
+          "title": "Paquete contractual profundo CO-AR-001",
+          "subtitle": "5 partes integradas · M11",
+          "docx": "CO-AR-001/CO-AR-001_PAQUETE_CONTRACTUAL_PROFUNDO_M11.docx",
+          "pdf": "CO-AR-001/CO-AR-001_PAQUETE_CONTRACTUAL_PROFUNDO_M11.pdf",
+          "words": 3142,
+          "clauses": 40,
+          "pages": 18,
+          "docx_sha256": "7502c90de8b3447bf3a53f6035eb23e8bd9e4748ff7dfd49e3eeea946dc9b8a0",
+          "pdf_sha256": "243afd84dc819dd1859409cabd8e8bb4f20099795cc4339076daacf7ab191b1a",
+          "approval_status": "revalidated_controlled_use_m11",
+          "professional_use": true,
+          "independent_review": false,
+          "verified_at": "2026-07-30"
+        }
+      ],
+      "metrics": {
+        "documents": 6,
+        "words": 6317,
+        "pages": 34,
+        "clauses": 80,
+        "package_words": 3142,
+        "package_pages": 18
+      },
+      "sources": [
+        {
+          "id": "AR-S1",
+          "authority": "Secretaría Jurídica del Senado",
+          "reference": "Ley 820 de 2003 - arrendamiento de vivienda urbana",
+          "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0820_2003.html",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "id": "AR-S2",
+          "authority": "Función Pública",
+          "reference": "Decreto 3130 de 2003 - garantías para servicios públicos",
+          "official_url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=10482",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "id": "AR-S3",
+          "authority": "DANE",
+          "reference": "IPC anual 2025: 5,10 %",
+          "official_url": "https://www.dane.gov.co/index.php/estadisticas-por-tema/precios-y-costos/indice-de-precios-al-consumidor-ipc",
+          "verified_at": "2026-07-30"
+        },
+        {
+          "id": "AR-S4",
+          "authority": "Función Pública",
+          "reference": "Ley 1581 de 2012 - protección de datos",
+          "official_url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=49981",
+          "verified_at": "2026-07-30"
+        }
+      ],
+      "latest_document_version": "M11.1"
+    }
+  ],
+  "metrics": {
+    "products": 4,
+    "documents": 28,
+    "words": 36496,
+    "pages": 174,
+    "clauses": 424,
+    "revalidated_products_total": 4
+  },
+  "quality_gates": {
+    "unresolved_variables": 0,
+    "sentinels": 0,
+    "docx_integrity_required": true,
+    "pdf_render_required": true,
+    "case_specific_review_required": true
+  }
+}

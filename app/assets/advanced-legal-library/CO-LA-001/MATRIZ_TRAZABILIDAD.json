@@ -1,0 +1,626 @@
+[
+  {
+    "question_id": "Q-LA1-001",
+    "variable_path": "scope.private_relation",
+    "validation_ids": [
+      "V-LA1-001"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-002",
+    "variable_path": "worker.identity",
+    "validation_ids": [
+      "V-LA1-002"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-003",
+    "variable_path": "employer.identity",
+    "validation_ids": [
+      "V-LA1-003"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-004",
+    "variable_path": "employer.signatory",
+    "validation_ids": [
+      "V-LA1-004"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-005",
+    "variable_path": "claim.cutoff_date",
+    "validation_ids": [
+      "V-LA1-005"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-006",
+    "variable_path": "claimant.role",
+    "validation_ids": [
+      "V-LA1-006"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-007",
+    "variable_path": "relationship.start_date",
+    "validation_ids": [
+      "V-LA1-007"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-008",
+    "variable_path": "relationship.end_date",
+    "validation_ids": [
+      "V-LA1-008"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-009",
+    "variable_path": "relationship.contract_type",
+    "validation_ids": [
+      "V-LA1-009"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-010",
+    "variable_path": "relationship.termination_type",
+    "validation_ids": [
+      "V-LA1-010"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-011",
+    "variable_path": "relationship.special_term",
+    "validation_ids": [
+      "V-LA1-011"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-012",
+    "variable_path": "relationship.service_status",
+    "validation_ids": [
+      "V-LA1-012"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-013",
+    "variable_path": "compensation.base_salary",
+    "validation_ids": [
+      "V-LA1-013"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-014",
+    "variable_path": "compensation.salary_type",
+    "validation_ids": [
+      "V-LA1-014"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-015",
+    "variable_path": "compensation.variable.exists",
+    "validation_ids": [
+      "V-LA1-015"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-016",
+    "variable_path": "compensation.variable",
+    "validation_ids": [
+      "V-LA1-016"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-017",
+    "variable_path": "compensation.transport_aid",
+    "validation_ids": [
+      "V-LA1-017"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-018",
+    "variable_path": "compensation.other_salary",
+    "validation_ids": [
+      "V-LA1-018"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-019",
+    "variable_path": "periods.salary_due_days",
+    "validation_ids": [
+      "V-LA1-019"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-020",
+    "variable_path": "periods.cesantias_start_date",
+    "validation_ids": [
+      "V-LA1-020"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-021",
+    "variable_path": "periods.prima_start_date",
+    "validation_ids": [
+      "V-LA1-021"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-022",
+    "variable_path": "periods.vacation_pending_days",
+    "validation_ids": [
+      "V-LA1-022"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-023",
+    "variable_path": "periods.vacation_basis",
+    "validation_ids": [
+      "V-LA1-001"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-024",
+    "variable_path": "periods.confirmation",
+    "validation_ids": [
+      "V-LA1-002"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-025",
+    "variable_path": "payments.prior",
+    "validation_ids": [
+      "V-LA1-003"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-026",
+    "variable_path": "payments.deductions.exists",
+    "validation_ids": [
+      "V-LA1-004"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-027",
+    "variable_path": "payments.deductions",
+    "validation_ids": [
+      "V-LA1-005"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-028",
+    "variable_path": "evidence.support_level",
+    "validation_ids": [
+      "V-LA1-006"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-029",
+    "variable_path": "evidence.items",
+    "validation_ids": [
+      "V-LA1-007"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-030",
+    "variable_path": "evidence.employer_calculation",
+    "validation_ids": [
+      "V-LA1-008"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-031",
+    "variable_path": "termination.without_cause_claim",
+    "validation_ids": [
+      "V-LA1-009"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-032",
+    "variable_path": "termination.cause_support",
+    "validation_ids": [
+      "V-LA1-010"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-033",
+    "variable_path": "termination.indemnity_already_paid",
+    "validation_ids": [
+      "V-LA1-011"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-034",
+    "variable_path": "termination.moratory_claim",
+    "validation_ids": [
+      "V-LA1-012"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-035",
+    "variable_path": "termination.delay_days",
+    "validation_ids": [
+      "V-LA1-013"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-036",
+    "variable_path": "termination.good_faith_facts",
+    "validation_ids": [
+      "V-LA1-014"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-037",
+    "variable_path": "risk.special_protection",
+    "validation_ids": [
+      "V-LA1-015"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-038",
+    "variable_path": "risk.protection_details",
+    "validation_ids": [
+      "V-LA1-016"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-039",
+    "variable_path": "risk.public_sector",
+    "validation_ids": [
+      "V-LA1-017"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-040",
+    "variable_path": "risk.contract_reality",
+    "validation_ids": [
+      "V-LA1-018"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-041",
+    "variable_path": "risk.collective_regime",
+    "validation_ids": [
+      "V-LA1-019"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-042",
+    "variable_path": "risk.active_proceeding",
+    "validation_ids": [
+      "V-LA1-020"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-043",
+    "variable_path": "prescription.last_written_claim",
+    "validation_ids": [
+      "V-LA1-021"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-044",
+    "variable_path": "prescription.rights_dates",
+    "validation_ids": [
+      "V-LA1-022"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-045",
+    "variable_path": "settlement.generate",
+    "validation_ids": [
+      "V-LA1-001"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-046",
+    "variable_path": "settlement.payment_terms",
+    "validation_ids": [
+      "V-LA1-002"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-047",
+    "variable_path": "data.confirmed",
+    "validation_ids": [
+      "V-LA1-003"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  },
+  {
+    "question_id": "Q-LA1-048",
+    "variable_path": "documents.selection",
+    "validation_ids": [
+      "V-LA1-004"
+    ],
+    "document_ids": [
+      "DOC-LA1-CALCULATION-001"
+    ],
+    "source_ids": [
+      "LA1-S1"
+    ]
+  }
+]

@@ -1,0 +1,106 @@
+[
+  {
+    "id": "DOC-LA-CONTRACT-001",
+    "name": "Contrato individual de trabajo a término indefinido",
+    "kind": "main_contract",
+    "trigger": "always",
+    "version": "2.36",
+    "default_selected": null
+  },
+  {
+    "id": "ANX-LA-FUN-001",
+    "name": "Anexo de perfil y funciones",
+    "kind": "annex",
+    "trigger": "functions_outside_contract",
+    "version": "2.36",
+    "default_selected": null
+  },
+  {
+    "id": "ANX-LA-MOD-001",
+    "name": "Anexo de modalidad no presencial",
+    "kind": "annex",
+    "trigger": "permanent_non_onsite",
+    "version": "2.36",
+    "default_selected": null
+  },
+  {
+    "id": "ANX-LA-VAR-001",
+    "name": "Anexo de remuneración variable",
+    "kind": "annex",
+    "trigger": "complex_variable_pay",
+    "version": "2.36",
+    "default_selected": null
+  },
+  {
+    "id": "ACT-LA-EQP-001",
+    "name": "Acta de entrega de equipos y herramientas",
+    "kind": "record",
+    "trigger": "assets_delivered",
+    "version": "2.36",
+    "default_selected": null
+  },
+  {
+    "id": "ANX-LA-DIS-001",
+    "name": "Anexo de disponibilidad",
+    "kind": "annex",
+    "trigger": "availability_required",
+    "version": "2.36",
+    "default_selected": null
+  },
+  {
+    "id": "ANX-LA-RIE-001",
+    "name": "Anexo de riesgos especiales",
+    "kind": "annex",
+    "trigger": "critical_risk",
+    "version": "2.36",
+    "default_selected": null
+  },
+  {
+    "id": "AUT-LA-IMG-001",
+    "name": "Autorización de imagen y voz",
+    "kind": "authorization",
+    "trigger": "optional_image",
+    "version": "2.36",
+    "default_selected": false
+  },
+  {
+    "id": "AUT-LA-BIO-001",
+    "name": "Autorización de datos biométricos",
+    "kind": "authorization",
+    "trigger": "biometric_processing",
+    "version": "2.36",
+    "default_selected": false
+  },
+  {
+    "id": "AUT-LA-GEO-001",
+    "name": "Autorización de geolocalización",
+    "kind": "authorization",
+    "trigger": "geolocation",
+    "version": "2.36",
+    "default_selected": false
+  },
+  {
+    "id": "ACT-LA-ENT-001",
+    "name": "Acta de entrega del cargo",
+    "kind": "record",
+    "trigger": "termination_or_transition",
+    "version": "2.36",
+    "default_selected": null
+  },
+  {
+    "id": "ANX-LA-VPR-001",
+    "name": "Acuerdo de uso de vehículo propio",
+    "kind": "annex",
+    "trigger": "worker_vehicle",
+    "version": "2.36",
+    "default_selected": null
+  },
+  {
+    "id": "COM-LA-TCH-001",
+    "name": "Comunicación de trabajo en casa",
+    "kind": "communication",
+    "trigger": "temporary_work_from_home",
+    "version": "2.36",
+    "default_selected": null
+  }
+]

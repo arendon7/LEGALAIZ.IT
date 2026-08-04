@@ -1,0 +1,86 @@
+{
+  "product_code": "CO-CD-004",
+  "version": "M23",
+  "integration_mode": "additive_immutable_revision",
+  "document_family": [
+    "payment_agreement",
+    "debt_reconciliation",
+    "promissory_note",
+    "payment_schedule",
+    "collection_protocol",
+    "closure_certificate"
+  ],
+  "critical_rules": [
+    {
+      "id": "M23-CD4-001",
+      "when": "balance_not_itemized_or_unsupported",
+      "risk": "red",
+      "action": "block_release_and_require_causal_evidence"
+    },
+    {
+      "id": "M23-CD4-002",
+      "when": "interest_rate",
+      "risk": "red",
+      "action": "verify_current_sfc_limit_by_modality_and_period"
+    },
+    {
+      "id": "M23-CD4-003",
+      "when": "blank_promissory_note",
+      "risk": "red",
+      "action": "require_separate_precise_letter_of_instructions_and_human_review"
+    },
+    {
+      "id": "M23-CD4-004",
+      "when": "partial_payment",
+      "risk": "green",
+      "action": "reduce_causal_and_instrument_balance_and_issue_receipt"
+    },
+    {
+      "id": "M23-CD4-005",
+      "when": "acceleration",
+      "risk": "yellow",
+      "action": "written_itemized_notice_and_cure_period_before_action"
+    },
+    {
+      "id": "M23-CD4-006",
+      "when": "collection_contact",
+      "risk": "yellow",
+      "action": "apply_law_2300_channels_hours_frequency_and_third_party_ban"
+    },
+    {
+      "id": "M23-CD4-007",
+      "when": "insolvency_or_protected_negotiation",
+      "risk": "red",
+      "action": "mandatory_lawyer_review_and_respect_stay"
+    },
+    {
+      "id": "M23-CD4-008",
+      "when": "consumer_financial_real_security_or_judicial_collection",
+      "risk": "red",
+      "action": "apply_special_regime_and_professional_review"
+    },
+    {
+      "id": "M23-CD4-009",
+      "when": "payment_complete",
+      "risk": "green",
+      "action": "cancel_return_note_release_guarantees_update_reports_and_issue_clearance"
+    },
+    {
+      "id": "M23-CD4-010",
+      "when": "schedule_body_note_mismatch",
+      "risk": "red",
+      "action": "block_document_release"
+    }
+  ],
+  "official_sources": [
+    "Código Civil",
+    "Código de Comercio — Decreto 410 de 1971",
+    "Ley 1564 de 2012",
+    "Ley 2300 de 2023",
+    "Ley 1581 de 2012",
+    "Ley 527 de 1999",
+    "Ley 1116 de 2006",
+    "Superintendencia Financiera de Colombia"
+  ],
+  "legal_status_date": "2026-07-31"
+}

@@ -1,0 +1,486 @@
+{
+  "version": "2.31",
+  "intro": "Responde únicamente con información confirmada. El flujo distingue urgencia asistencial, legitimación, privacidad, términos preliminares y rutas de seguimiento.",
+  "sections": [
+    "Peticionario",
+    "Paciente y legitimación",
+    "Entidad y canal",
+    "Solicitud",
+    "Urgencia y continuidad",
+    "Historia clínica y privacidad",
+    "Antecedentes",
+    "Procesos y control",
+    "Términos y seguimiento",
+    "Privacidad y confirmación"
+  ],
+  "questions": [
+    {
+      "id": "petitioner_name",
+      "label": "Nombre completo de quien presenta la petición",
+      "type": "text",
+      "required": true,
+      "section": "Peticionario",
+      "min_length": 3
+    },
+    {
+      "id": "petitioner_id",
+      "label": "Identificación de quien presenta la petición",
+      "type": "text",
+      "required": true,
+      "section": "Peticionario",
+      "min_length": 4
+    },
+    {
+      "id": "acting_capacity",
+      "label": "Calidad en la que actúa",
+      "type": "select",
+      "options": [
+        "Paciente",
+        "Madre, padre o representante legal",
+        "Apoderado o autorizado",
+        "Familiar de paciente fallecido",
+        "Tercero con interés acreditado"
+      ],
+      "required": true,
+      "section": "Peticionario"
+    },
+    {
+      "id": "email",
+      "label": "Correo electrónico para notificaciones",
+      "type": "text",
+      "format": "email",
+      "required": true,
+      "section": "Peticionario"
+    },
+    {
+      "id": "phone",
+      "label": "Teléfono de contacto",
+      "type": "text",
+      "required": true,
+      "section": "Peticionario",
+      "min_length": 7
+    },
+    {
+      "id": "address",
+      "label": "Dirección de contacto",
+      "type": "text",
+      "required": true,
+      "section": "Peticionario",
+      "min_length": 5
+    },
+    {
+      "id": "city",
+      "label": "Ciudad o municipio del peticionario",
+      "type": "text",
+      "required": true,
+      "section": "Peticionario"
+    },
+    {
+      "id": "notification_channel",
+      "label": "Canal preferido de respuesta",
+      "type": "select",
+      "options": [
+        "Correo electrónico",
+        "Dirección física",
+        "Ambos"
+      ],
+      "required": true,
+      "section": "Peticionario"
+    },
+    {
+      "id": "patient_name",
+      "label": "Nombre completo del paciente",
+      "type": "text",
+      "required": true,
+      "section": "Paciente y legitimación",
+      "min_length": 3
+    },
+    {
+      "id": "patient_id",
+      "label": "Identificación del paciente",
+      "type": "text",
+      "required": true,
+      "section": "Paciente y legitimación",
+      "min_length": 4
+    },
+    {
+      "id": "patient_status",
+      "label": "Situación jurídica del paciente",
+      "type": "select",
+      "options": [
+        "Adulto con capacidad",
+        "Menor de edad",
+        "Persona con capacidad limitada",
+        "Fallecido"
+      ],
+      "required": true,
+      "section": "Paciente y legitimación"
+    },
+    {
+      "id": "relationship_to_patient",
+      "label": "Relación de quien presenta con el paciente",
+      "type": "select",
+      "options": [
+        "El mismo paciente",
+        "Madre o padre",
+        "Representante legal",
+        "Cónyuge o compañero permanente",
+        "Hijo o hija",
+        "Otro familiar",
+        "Apoderado o autorizado",
+        "Otro tercero"
+      ],
+      "required": true,
+      "section": "Paciente y legitimación"
+    },
+    {
+      "id": "representation_support",
+      "label": "Soporte de representación o legitimación disponible",
+      "type": "select",
+      "options": [
+        "Completo",
+        "Parcial",
+        "No",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Paciente y legitimación"
+    },
+    {
+      "id": "entity_type",
+      "label": "Tipo de entidad destinataria",
+      "type": "select",
+      "options": [
+        "EPS",
+        "IPS",
+        "Gestor farmacéutico",
+        "Medicina prepagada",
+        "Entidad territorial",
+        "Otra"
+      ],
+      "required": true,
+      "section": "Entidad y canal"
+    },
+    {
+      "id": "entity",
+      "label": "Nombre de la entidad destinataria",
+      "type": "text",
+      "required": true,
+      "section": "Entidad y canal",
+      "min_length": 3
+    },
+    {
+      "id": "entity_city",
+      "label": "Ciudad o municipio de la entidad",
+      "type": "text",
+      "required": true,
+      "section": "Entidad y canal"
+    },
+    {
+      "id": "filing_channel",
+      "label": "Canal previsto para radicar",
+      "type": "select",
+      "options": [
+        "Formulario web institucional",
+        "Correo electrónico oficial",
+        "Ventanilla física",
+        "Línea telefónica con radicado",
+        "Canal verbal sin constancia",
+        "Red social o mensajería",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Entidad y canal"
+    },
+    {
+      "id": "request_type",
+      "label": "Necesidad principal",
+      "type": "select",
+      "options": [
+        "Autorización o servicio",
+        "Medicamento o insumo",
+        "Cita o procedimiento",
+        "Historia clínica",
+        "Información o documentos",
+        "Respuesta o reiteración"
+      ],
+      "required": true,
+      "section": "Solicitud"
+    },
+    {
+      "id": "request_detail",
+      "label": "Hechos y solicitud concreta",
+      "type": "textarea",
+      "required": true,
+      "section": "Solicitud",
+      "min_length": 40,
+      "max_length": 5000
+    },
+    {
+      "id": "medical_support",
+      "label": "Orden, fórmula, historia o soporte médico disponible",
+      "type": "select",
+      "options": [
+        "Sí",
+        "Parcial",
+        "No",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Solicitud"
+    },
+    {
+      "id": "prescription_date",
+      "label": "Fecha de la orden o fórmula médica",
+      "type": "date",
+      "required": false,
+      "section": "Solicitud"
+    },
+    {
+      "id": "requested_outcome",
+      "label": "Resultado concreto que solicita a la entidad",
+      "type": "textarea",
+      "required": true,
+      "section": "Solicitud",
+      "min_length": 20,
+      "max_length": 2000
+    },
+    {
+      "id": "urgent",
+      "label": "¿Existe riesgo vital o urgencia médica inmediata?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Urgencia y continuidad"
+    },
+    {
+      "id": "deterioration",
+      "label": "Nivel de deterioro o afectación actual",
+      "type": "select",
+      "options": [
+        "No",
+        "Leve",
+        "Relevante",
+        "Grave",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Urgencia y continuidad"
+    },
+    {
+      "id": "priority_condition",
+      "label": "Condición de especial protección o priorización",
+      "type": "select",
+      "options": [
+        "No",
+        "Niño/niña/adolescente",
+        "Embarazo",
+        "Persona mayor",
+        "Discapacidad",
+        "Enfermedad grave o huérfana",
+        "Otra"
+      ],
+      "required": true,
+      "section": "Urgencia y continuidad"
+    },
+    {
+      "id": "continuity_risk",
+      "label": "¿Hay riesgo de interrupción de tratamiento o continuidad?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Urgencia y continuidad"
+    },
+    {
+      "id": "immediate_attention_sought",
+      "label": "¿Ya buscó atención asistencial inmediata cuando era necesaria?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Urgencia y continuidad"
+    },
+    {
+      "id": "medical_record_scope",
+      "label": "Alcance exacto de la historia clínica solicitada",
+      "type": "textarea",
+      "required": true,
+      "section": "Historia clínica y privacidad",
+      "min_length": 15,
+      "show_if": {
+        "field": "request_type",
+        "equals": "Historia clínica"
+      }
+    },
+    {
+      "id": "secure_delivery",
+      "label": "¿Se solicitó entrega por canal seguro y reservado?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No sé",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Historia clínica y privacidad"
+    },
+    {
+      "id": "third_party_authorization",
+      "label": "Autorización o base de acceso del tercero",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "Parcial",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Historia clínica y privacidad"
+    },
+    {
+      "id": "deceased_access_purpose",
+      "label": "Finalidad concreta y legítima del acceso a la historia del paciente fallecido",
+      "type": "textarea",
+      "required": true,
+      "section": "Historia clínica y privacidad",
+      "min_length": 20,
+      "show_if": {
+        "field": "patient_status",
+        "equals": "Fallecido"
+      }
+    },
+    {
+      "id": "prior_request",
+      "label": "¿Existe petición o radicado previo?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Antecedentes"
+    },
+    {
+      "id": "prior_request_date",
+      "label": "Fecha de la petición previa",
+      "type": "date",
+      "required": true,
+      "section": "Antecedentes",
+      "show_if": {
+        "field": "prior_request",
+        "equals": "Sí"
+      }
+    },
+    {
+      "id": "prior_radicado",
+      "label": "Número o constancia del radicado previo",
+      "type": "text",
+      "required": true,
+      "section": "Antecedentes",
+      "min_length": 3,
+      "show_if": {
+        "field": "prior_request",
+        "equals": "Sí"
+      }
+    },
+    {
+      "id": "response_received",
+      "label": "Respuesta recibida frente a la petición previa",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "Parcial",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Antecedentes"
+    },
+    {
+      "id": "response_date",
+      "label": "Fecha de la respuesta recibida",
+      "type": "date",
+      "required": false,
+      "section": "Antecedentes"
+    },
+    {
+      "id": "response_quality",
+      "label": "Calidad de la respuesta recibida",
+      "type": "select",
+      "options": [
+        "De fondo y completa",
+        "Parcial",
+        "Evasiva o incongruente",
+        "Negativa motivada",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Antecedentes"
+    },
+    {
+      "id": "tutela_active",
+      "label": "¿Existe tutela o proceso judicial activo sobre los mismos hechos?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Procesos y control"
+    },
+    {
+      "id": "supersalud_case_active",
+      "label": "¿Existe PQRD o actuación activa ante Supersalud?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Procesos y control"
+    },
+    {
+      "id": "filing_date",
+      "label": "Fecha prevista de radicación de esta petición",
+      "type": "date",
+      "required": true,
+      "section": "Términos y seguimiento"
+    },
+    {
+      "id": "data_minimized",
+      "label": "¿Los anexos contienen solo datos personales y clínicos necesarios?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Privacidad y confirmación"
+    },
+    {
+      "id": "data_confirmed",
+      "label": "¿Confirma que los hechos, nombres, fechas y soportes fueron revisados?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No"
+      ],
+      "required": true,
+      "section": "Privacidad y confirmación"
+    }
+  ],
+  "confirmation_required": true
+}

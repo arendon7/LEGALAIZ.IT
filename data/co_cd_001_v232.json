@@ -1,0 +1,81 @@
+{
+  "version": "2.32",
+  "product_code": "CO-CD-001",
+  "title": "Maduración integral de centrales de riesgo y hábeas data financiero",
+  "verified_at": "2026-07-20",
+  "status": "Candidato interno para cierre jurídico del abogado responsable",
+  "legal_positioning": [
+    "El hábeas data corrige, actualiza, consulta o retira información cuando proceda; no extingue por sí mismo una deuda válida.",
+    "Fuente, operador y usuario tienen roles distintos; las pretensiones y soportes deben dirigirse al responsable adecuado.",
+    "La consulta y el reclamo tienen términos y efectos diferentes, calculados preliminarmente sin festivos.",
+    "La falta de comunicación previa genera consecuencias diferentes según la obligación esté extinguida o continúe vigente.",
+    "El dato negativo pagado permanece por el doble de la mora con máximo de cuatro años; el insoluto caduca a los ocho años desde la mora.",
+    "La fuente debe reportar información negativa máximo dentro de los dieciocho meses siguientes a la constitución en mora.",
+    "Las obligaciones bajo el 15 % del SMLMV exigen dos comunicaciones en días distintos y veinte días desde la última; el valor del SMLMV debe revalidarse.",
+    "El reclamo completo debe producir leyenda en trámite y respuesta dentro del término; el silencio legal se muestra solo como conclusión preliminar verificable.",
+    "La suplantación, los procesos activos, el daño relevante y la multiplicidad compleja requieren escalamiento profesional.",
+    "La Ley 2573 de 2026 fue promulgada el 20 de mayo de 2026: su vigencia general inicia el 20 de noviembre de 2026, salvo los parágrafos 1 y 2 del artículo 5 vigentes desde la promulgación.",
+    "La publicación profesional continúa bloqueada hasta aprobación jurídica de la versión exacta y QA dual."
+  ],
+  "documents": [
+    {
+      "kind": "habeas_consultation",
+      "title": "Consulta integral del dato, fuente, usuarios y soportes",
+      "filename_suffix": "consulta_integral_habeas_data"
+    },
+    {
+      "kind": "habeas_claim",
+      "title": "Reclamo integral de hábeas data financiero",
+      "filename_suffix": "reclamo_integral_habeas_data"
+    },
+    {
+      "kind": "habeas_reiteration",
+      "title": "Reiteración, leyenda y control de silencio",
+      "filename_suffix": "reiteracion_control_silencio"
+    },
+    {
+      "kind": "habeas_authority_escalation",
+      "title": "Ruta y borrador de escalamiento ante autoridad",
+      "filename_suffix": "escalamiento_autoridad"
+    },
+    {
+      "kind": "habeas_evidence_matrix",
+      "title": "Matriz de evidencia, responsables y trazabilidad",
+      "filename_suffix": "matriz_evidencia_responsables"
+    },
+    {
+      "kind": "habeas_deadline_calendar",
+      "title": "Calendario de términos, permanencia y caducidad",
+      "filename_suffix": "calendario_terminos_permanencia"
+    },
+    {
+      "kind": "identity_theft_protocol",
+      "title": "Protocolo de suplantación, alertas y preservación",
+      "filename_suffix": "protocolo_suplantacion"
+    }
+  ],
+  "controls": [
+    "titularidad y legitimación",
+    "fuente, operador y usuario",
+    "soporte de la obligación",
+    "comunicación previa",
+    "umbral del 15 % del SMLMV",
+    "primer reporte y límite de 18 meses",
+    "pago, mora, permanencia y caducidad",
+    "consulta, reclamo, prórroga y silencio",
+    "leyenda de reclamo en trámite",
+    "suplantación, preservación y control temporal de la Ley 2573 de 2026",
+    "procesos activos y daño relevante",
+    "minimización y seguridad",
+    "aprobación jurídica y QA"
+  ],
+  "approval_documents": [
+    "CO-CD-001_INFORME_MADURACION_JURIDICA_V232.docx",
+    "CO-CD-001_INFORME_MADURACION_JURIDICA_V232.pdf",
+    "CO-CD-001_MATRIZ_TRAZABILIDAD_V232.docx",
+    "CO-CD-001_MATRIZ_TRAZABILIDAD_V232.pdf",
+    "LegalAIZit_Paquete_Documental_CO-CD-001_V232.docx",
+    "LegalAIZit_Paquete_Documental_CO-CD-001_V232.pdf"
+  ],
+  "next_release": "v2.33 — maduración integral de CO-CD-003"
+}

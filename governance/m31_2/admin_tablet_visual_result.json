@@ -1,0 +1,16 @@
+[
+  {
+    "path": "#/",
+    "scrollWidth": 834,
+    "clientWidth": 834,
+    "scrollHeight": 2374,
+    "brokenImages": [],
+    "h1": [
+      "Gestiona la operación jurídica sin perder trazabilidad."
+    ],
+    "view": "admin_home",
+    "viewport": "tablet",
+    "screenshot": "governance/m31_2/visual/admin_home_tablet.png",
+    "errors": []
+  }
+]

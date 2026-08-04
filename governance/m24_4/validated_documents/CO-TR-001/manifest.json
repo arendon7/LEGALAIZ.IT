@@ -1,0 +1,8 @@
+{
+  "schema": "legalai_m24_4_validation_evidence_manifest_v1",
+  "product_code": "CO-TR-001",
+  "files": {
+    "M24-CO-TR-001-10-SUCCESS_Documento_Final.docx": "fc48b9731463711dfcd649e9a3a0ebce52ddaf6c8ff2e8d0966003440a6eb4d6",
+    "M24-CO-TR-001-10-SUCCESS_Documento_Final.pdf": "d15d58ac8e553df90b760d2fd04c50ff3e55f6f1a273993b0f6dc752e74be457"
+  }
+}

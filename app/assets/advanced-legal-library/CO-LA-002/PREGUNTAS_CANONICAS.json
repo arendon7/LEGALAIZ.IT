@@ -1,0 +1,282 @@
+{
+  "version": "2.38",
+  "steps": [
+    {
+      "id": "STEP-LA-01",
+      "name": "Empleador"
+    },
+    {
+      "id": "STEP-LA-02",
+      "name": "Trabajador"
+    },
+    {
+      "id": "STEP-LA-03",
+      "name": "Cargo y funciones"
+    },
+    {
+      "id": "STEP-LA-04",
+      "name": "Inicio y modalidad"
+    },
+    {
+      "id": "STEP-LA-05",
+      "name": "Jornada"
+    },
+    {
+      "id": "STEP-LA-06",
+      "name": "Remuneración"
+    },
+    {
+      "id": "STEP-LA-07",
+      "name": "Condiciones especiales"
+    },
+    {
+      "id": "STEP-LA-08",
+      "name": "Documentos y confirmación"
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q-LA-001",
+      "label": "Tipo de empleador",
+      "variable_path": "employer.type",
+      "type": "select",
+      "required": true,
+      "step_id": "STEP-LA-01",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-002",
+      "label": "Datos del empleador",
+      "variable_path": "employer",
+      "type": "group",
+      "required": true,
+      "step_id": "STEP-LA-01",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-003",
+      "label": "Firmante del empleador",
+      "variable_path": "employerSignatory",
+      "type": "group",
+      "required": true,
+      "step_id": "STEP-LA-01",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-004",
+      "label": "Datos del trabajador",
+      "variable_path": "worker",
+      "type": "group",
+      "required": true,
+      "step_id": "STEP-LA-02",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-005",
+      "label": "Mayoría de edad",
+      "variable_path": "worker.isAdult",
+      "type": "boolean",
+      "required": true,
+      "step_id": "STEP-LA-02",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-006",
+      "label": "Relación previa",
+      "variable_path": "priorRelationship",
+      "type": "group",
+      "required": true,
+      "step_id": "STEP-LA-02",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-007",
+      "label": "Cargo",
+      "variable_path": "role.jobTitle",
+      "type": "text",
+      "required": true,
+      "step_id": "STEP-LA-03",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-008",
+      "label": "Tipo funcional y perfil",
+      "variable_path": "role.profileId",
+      "type": "profile",
+      "required": true,
+      "step_id": "STEP-LA-03",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-009",
+      "label": "Personal a cargo",
+      "variable_path": "role.managesPeople",
+      "type": "boolean",
+      "required": true,
+      "step_id": "STEP-LA-03",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-010",
+      "label": "Facultades especiales",
+      "variable_path": "authorities",
+      "type": "group",
+      "required": true,
+      "step_id": "STEP-LA-03",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-011",
+      "label": "Fuente de funciones",
+      "variable_path": "role.profileSource",
+      "type": "select",
+      "required": true,
+      "step_id": "STEP-LA-03",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-012",
+      "label": "Ubicación de funciones",
+      "variable_path": "role.functionsPlacement",
+      "type": "select",
+      "required": true,
+      "step_id": "STEP-LA-03",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-013",
+      "label": "Fecha real de inicio",
+      "variable_path": "work.actualStartDate",
+      "type": "date",
+      "required": true,
+      "step_id": "STEP-LA-04",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-014",
+      "label": "Período de prueba",
+      "variable_path": "work.probation",
+      "type": "group",
+      "required": true,
+      "step_id": "STEP-LA-04",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-015",
+      "label": "Lugar de trabajo",
+      "variable_path": "work.workplace",
+      "type": "group",
+      "required": true,
+      "step_id": "STEP-LA-04",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-016",
+      "label": "Modalidad",
+      "variable_path": "work.modality",
+      "type": "select",
+      "required": true,
+      "step_id": "STEP-LA-04",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-017",
+      "label": "Desplazamientos y vehículos",
+      "variable_path": "mobility",
+      "type": "group",
+      "required": true,
+      "step_id": "STEP-LA-04",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-018",
+      "label": "Tipo de jornada",
+      "variable_path": "schedule.type",
+      "type": "select",
+      "required": true,
+      "step_id": "STEP-LA-05",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-019",
+      "label": "Días y horarios",
+      "variable_path": "schedule",
+      "type": "schedule",
+      "required": true,
+      "step_id": "STEP-LA-05",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-020",
+      "label": "Horarios especiales",
+      "variable_path": "schedule.specialWork",
+      "type": "group",
+      "required": true,
+      "step_id": "STEP-LA-05",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-021",
+      "label": "Disponibilidad",
+      "variable_path": "availability",
+      "type": "group",
+      "required": true,
+      "step_id": "STEP-LA-05",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-022",
+      "label": "Salario",
+      "variable_path": "compensation",
+      "type": "group",
+      "required": true,
+      "step_id": "STEP-LA-06",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-023",
+      "label": "Pagos variables",
+      "variable_path": "variableCompensation",
+      "type": "group",
+      "required": true,
+      "step_id": "STEP-LA-06",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-024",
+      "label": "Beneficios",
+      "variable_path": "benefits",
+      "type": "group",
+      "required": true,
+      "step_id": "STEP-LA-06",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-025",
+      "label": "Condiciones especiales",
+      "variable_path": "specialConditions",
+      "type": "group",
+      "required": true,
+      "step_id": "STEP-LA-07",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-026",
+      "label": "Equipos y activos",
+      "variable_path": "assets",
+      "type": "group",
+      "required": true,
+      "step_id": "STEP-LA-07",
+      "version": "2.36"
+    },
+    {
+      "id": "Q-LA-027",
+      "label": "Documentos complementarios",
+      "variable_path": "documents",
+      "type": "document-selector",
+      "required": true,
+      "step_id": "STEP-LA-08",
+      "version": "2.36"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "product_id": "CO-TR-001",
+  "version": "2.57",
+  "rules": [
+    {
+      "id": "TR1-001",
+      "when": "authority and infraction_date match one official range",
+      "risk": "yellow",
+      "action": "Return preliminary match with source and range."
+    },
+    {
+      "id": "TR1-002",
+      "when": "authority and date match multiple ranges",
+      "risk": "yellow",
+      "action": "Return every match; never collapse distinct causes."
+    },
+    {
+      "id": "TR1-003",
+      "when": "no range matches",
+      "risk": "green",
+      "action": "State no matrix match; do not infer legality or absence of other defenses."
+    },
+    {
+      "id": "TR1-004",
+      "when": "authority cannot be normalized",
+      "risk": "yellow",
+      "action": "Mark incomplete and suggest candidates."
+    },
+    {
+      "id": "TR1-005",
+      "when": "date invalid or missing",
+      "risk": "yellow",
+      "action": "Block result until corrected."
+    },
+    {
+      "id": "TR1-006",
+      "when": "preliminary consent absent",
+      "risk": "yellow",
+      "action": "Do not run the check."
+    },
+    {
+      "id": "TR1-007",
+      "when": "paid or payment agreement",
+      "risk": "yellow",
+      "action": "Require individualized review; do not promise reimbursement."
+    },
+    {
+      "id": "TR1-008",
+      "when": "collection, payment order, embargo or judicial proceeding",
+      "risk": "red",
+      "action": "Block automatic action and route to professional review."
+    },
+    {
+      "id": "TR1-009",
+      "when": "imminent deadline",
+      "risk": "red",
+      "action": "Prioritize professional review; the checker does not suspend terms."
+    },
+    {
+      "id": "TR1-010",
+      "when": "possible fraud",
+      "risk": "red",
+      "action": "Block persistence of unverified data and provide security warning."
+    },
+    {
+      "id": "TR1-011",
+      "when": "registration requested",
+      "risk": "yellow",
+      "action": "Require identity, email and separate data-processing consent."
+    },
+    {
+      "id": "TR1-012",
+      "when": "official matrix changes",
+      "risk": "yellow",
+      "action": "Create new version; preserve historical results and source snapshot."
+    },
+    {
+      "id": "TR1-013",
+      "when": "match exists but device is unknown",
+      "risk": "yellow",
+      "action": "Request location/device and clarify that authority-date match is insufficient for final relief."
+    },
+    {
+      "id": "TR1-014",
+      "when": "article 158A invoked",
+      "risk": "yellow",
+      "action": "Require proof of a firm Supertransporte decision and individual applicability."
+    }
+  ]
+}

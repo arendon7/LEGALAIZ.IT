@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "project": "LegalAIZ.it",
+  "target_release": "M24.0",
+  "risk_levels": {
+    "green": {
+      "automation": "allowed_with_standard_qa",
+      "human_review": "according_to_product_policy"
+    },
+    "yellow": {
+      "automation": "allowed_with_warning_and_rule_specific_controls",
+      "human_review": "recommended_or_required_by_rule"
+    },
+    "red": {
+      "automation": "no_final_release_without_human_legal_review",
+      "human_review": "mandatory"
+    },
+    "critical": {
+      "automation": "orientation_only_until_immediate_triage",
+      "human_review": "mandatory_and_priority"
+    }
+  },
+  "global_escalation_triggers": [
+    "active_judicial_or_administrative_deadline",
+    "litigation_conciliation_transaction_or_insolvency_active",
+    "criminal_tax_sanctioning_or_high_regulatory_exposure",
+    "pregnancy_disability_health_union_or_other_enhanced_protection",
+    "risk_to_life_health_or_integrity",
+    "identity_theft_or_fraud",
+    "high_value_or_complex_damage",
+    "contradictory_material_facts_not_resolved",
+    "essential_evidence_missing",
+    "request_outside_product_scope_or_jurisdiction",
+    "source_or_rule_not_currently_verified",
+    "attempt_to_use_unapproved_ai_with_confidential_or_personal_data"
+  ],
+  "required_escalation_output": [
+    "reason",
+    "missing_information",
+    "deadline_warning",
+    "recommended_professional_route",
+    "audit_event"
+  ],
+  "prohibitions": [
+    "do_not_guarantee_legal_outcome",
+    "do_not_replace_judicial_representation",
+    "do_not_release_final_document_when_red_rule_is_unresolved",
+    "do_not_show_internal_risk_engine_or_qa_notes_to_client"
+  ]
+}

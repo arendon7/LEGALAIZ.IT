@@ -1,0 +1,442 @@
+[
+  {
+    "question_id": "Q-AR-001",
+    "variable_path": "lease.configuration",
+    "step_id": "parties",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-001"
+  },
+  {
+    "question_id": "Q-AR-002",
+    "variable_path": "landlord.identification",
+    "step_id": "parties",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-002"
+  },
+  {
+    "question_id": "Q-AR-003",
+    "variable_path": "landlord.signatory",
+    "step_id": "parties",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-003"
+  },
+  {
+    "question_id": "Q-AR-004",
+    "variable_path": "landlord.authority_evidence",
+    "step_id": "parties",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-004"
+  },
+  {
+    "question_id": "Q-AR-005",
+    "variable_path": "tenant.identification",
+    "step_id": "parties",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-005"
+  },
+  {
+    "question_id": "Q-AR-006",
+    "variable_path": "tenant.additional",
+    "step_id": "parties",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-006"
+  },
+  {
+    "question_id": "Q-AR-007",
+    "variable_path": "notifications.channels",
+    "step_id": "parties",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-007"
+  },
+  {
+    "question_id": "Q-AR-008",
+    "variable_path": "scope.urban_home",
+    "step_id": "property",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-008"
+  },
+  {
+    "question_id": "Q-AR-009",
+    "variable_path": "property.identification",
+    "step_id": "property",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-009"
+  },
+  {
+    "question_id": "Q-AR-010",
+    "variable_path": "property.type",
+    "step_id": "property",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-010"
+  },
+  {
+    "question_id": "Q-AR-011",
+    "variable_path": "property.included_units",
+    "step_id": "property",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-011"
+  },
+  {
+    "question_id": "Q-AR-012",
+    "variable_path": "property.horizontal",
+    "step_id": "property",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-012"
+  },
+  {
+    "question_id": "Q-AR-013",
+    "variable_path": "property.ph_details",
+    "step_id": "property",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-013"
+  },
+  {
+    "question_id": "Q-AR-014",
+    "variable_path": "property.dispute_status",
+    "step_id": "property",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-014"
+  },
+  {
+    "question_id": "Q-AR-015",
+    "variable_path": "use.destination",
+    "step_id": "use",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-015"
+  },
+  {
+    "question_id": "Q-AR-016",
+    "variable_path": "occupants.authorized",
+    "step_id": "use",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-016"
+  },
+  {
+    "question_id": "Q-AR-017",
+    "variable_path": "occupants.multiple",
+    "step_id": "use",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-017"
+  },
+  {
+    "question_id": "Q-AR-018",
+    "variable_path": "pets.exists",
+    "step_id": "use",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-018"
+  },
+  {
+    "question_id": "Q-AR-019",
+    "variable_path": "pets.conditions",
+    "step_id": "use",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-019"
+  },
+  {
+    "question_id": "Q-AR-020",
+    "variable_path": "use.sublease_tourism",
+    "step_id": "use",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-020"
+  },
+  {
+    "question_id": "Q-AR-021",
+    "variable_path": "use.shared_areas",
+    "step_id": "use",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-021"
+  },
+  {
+    "question_id": "Q-AR-022",
+    "variable_path": "condition.habitability",
+    "step_id": "condition",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-022"
+  },
+  {
+    "question_id": "Q-AR-023",
+    "variable_path": "condition.defects",
+    "step_id": "condition",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-023"
+  },
+  {
+    "question_id": "Q-AR-024",
+    "variable_path": "condition.repairs_pending",
+    "step_id": "condition",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-024"
+  },
+  {
+    "question_id": "Q-AR-025",
+    "variable_path": "property.furnished",
+    "step_id": "condition",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-025"
+  },
+  {
+    "question_id": "Q-AR-026",
+    "variable_path": "property.high_value_assets",
+    "step_id": "condition",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-026"
+  },
+  {
+    "question_id": "Q-AR-027",
+    "variable_path": "delivery.inventory_method",
+    "step_id": "condition",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-027"
+  },
+  {
+    "question_id": "Q-AR-028",
+    "variable_path": "delivery.date",
+    "step_id": "condition",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-028"
+  },
+  {
+    "question_id": "Q-AR-029",
+    "variable_path": "maintenance.rules",
+    "step_id": "condition",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-029"
+  },
+  {
+    "question_id": "Q-AR-030",
+    "variable_path": "rent.amount",
+    "step_id": "economics",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-030"
+  },
+  {
+    "question_id": "Q-AR-031",
+    "variable_path": "rent.values",
+    "step_id": "economics",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-031"
+  },
+  {
+    "question_id": "Q-AR-032",
+    "variable_path": "rent.payment",
+    "step_id": "economics",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-032"
+  },
+  {
+    "question_id": "Q-AR-033",
+    "variable_path": "rent.adjustment",
+    "step_id": "economics",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-033"
+  },
+  {
+    "question_id": "Q-AR-034",
+    "variable_path": "charges.additional_services",
+    "step_id": "economics",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-034"
+  },
+  {
+    "question_id": "Q-AR-035",
+    "variable_path": "charges.administration",
+    "step_id": "charges",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-035"
+  },
+  {
+    "question_id": "Q-AR-036",
+    "variable_path": "charges.utilities",
+    "step_id": "charges",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-036"
+  },
+  {
+    "question_id": "Q-AR-037",
+    "variable_path": "utilities.denunciation",
+    "step_id": "charges",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-037"
+  },
+  {
+    "question_id": "Q-AR-038",
+    "variable_path": "guarantee.type",
+    "step_id": "charges",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-038"
+  },
+  {
+    "question_id": "Q-AR-039",
+    "variable_path": "guarantee.details",
+    "step_id": "charges",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-039"
+  },
+  {
+    "question_id": "Q-AR-040",
+    "variable_path": "guarantee.cash_deposit",
+    "step_id": "charges",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-040"
+  },
+  {
+    "question_id": "Q-AR-041",
+    "variable_path": "term.duration_months",
+    "step_id": "term",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-041"
+  },
+  {
+    "question_id": "Q-AR-042",
+    "variable_path": "term.rules",
+    "step_id": "term",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-042"
+  },
+  {
+    "question_id": "Q-AR-043",
+    "variable_path": "data.screening",
+    "step_id": "documents",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-043"
+  },
+  {
+    "question_id": "Q-AR-044",
+    "variable_path": "confirmation.reviewed",
+    "step_id": "documents",
+    "validation_ids": [],
+    "document_ids": [
+      "DOC-AR-CONTRACT-001"
+    ],
+    "test_id": "TEST-V248-Q-AR-044"
+  }
+]

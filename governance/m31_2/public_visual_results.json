@@ -1,0 +1,44 @@
+[
+  {
+    "path": "#/",
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "scrollHeight": 7716,
+    "brokenImages": [],
+    "h1": [
+      "Tu problema legal merece algo más que una respuesta."
+    ],
+    "view": "public_landing",
+    "viewport": "desktop",
+    "screenshot": "governance/m31_2/visual/public_landing_desktop.png",
+    "errors": []
+  },
+  {
+    "path": "#/",
+    "scrollWidth": 834,
+    "clientWidth": 834,
+    "scrollHeight": 8308,
+    "brokenImages": [],
+    "h1": [
+      "Tu problema legal merece algo más que una respuesta."
+    ],
+    "view": "public_landing",
+    "viewport": "tablet",
+    "screenshot": "governance/m31_2/visual/public_landing_tablet.png",
+    "errors": []
+  },
+  {
+    "path": "#/",
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 11719,
+    "brokenImages": [],
+    "h1": [
+      "Tu problema legal merece algo más que una respuesta."
+    ],
+    "view": "public_landing",
+    "viewport": "mobile",
+    "screenshot": "governance/m31_2/visual/public_landing_mobile.png",
+    "errors": []
+  }
+]

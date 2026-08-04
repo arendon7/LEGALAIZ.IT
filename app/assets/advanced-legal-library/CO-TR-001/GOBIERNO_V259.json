@@ -1,0 +1,37 @@
+{
+  "version": "2.59",
+  "product_id": "CO-TR-001",
+  "controls": {
+    "immutable_revisions": true,
+    "audit_chain": "SHA-256",
+    "dual_approval": true,
+    "same_actor_dual_approval": false,
+    "approval_comment_required": true,
+    "release_gate_required": true,
+    "source_revalidation_required": true,
+    "approved_package_integrity": true,
+    "safe_api_errors": true,
+    "local_path_exposure": false,
+    "red_case_release": false,
+    "current_revision_only": true
+  },
+  "roles": {
+    "legal": [
+      "specialist_legal",
+      "specialist",
+      "admin"
+    ],
+    "qa": [
+      "qa",
+      "admin"
+    ]
+  },
+  "release_sequence": [
+    "generation",
+    "legal_approval_current_revision",
+    "pre_release_gate",
+    "independent_qa",
+    "approved_package",
+    "post_release_gate"
+  ]
+}

@@ -1,0 +1,408 @@
+{
+  "version": "2.26",
+  "intro": "Este flujo cruza datos del comparendo con una muestra curada y exige verificación individual en fuentes oficiales. Una coincidencia no equivale a nulidad, revocatoria o devolución.",
+  "sections": [
+    "Interesado",
+    "Comparendo",
+    "Dispositivo",
+    "Actuación oficial",
+    "Control técnico",
+    "Etapa",
+    "Complejidad",
+    "Evidencia",
+    "Riesgo",
+    "Consentimientos"
+  ],
+  "questions": [
+    {
+      "id": "requester_name",
+      "label": "Nombre completo del interesado",
+      "type": "text",
+      "required": true,
+      "section": "Interesado",
+      "min_length": 3
+    },
+    {
+      "id": "requester_id",
+      "label": "Número de identificación",
+      "type": "text",
+      "required": true,
+      "section": "Interesado",
+      "min_length": 5
+    },
+    {
+      "id": "email",
+      "label": "Correo para el expediente y las alertas",
+      "type": "text",
+      "required": true,
+      "section": "Interesado",
+      "format": "email"
+    },
+    {
+      "id": "phone",
+      "label": "Teléfono de contacto",
+      "type": "text",
+      "required": false,
+      "section": "Interesado"
+    },
+    {
+      "id": "address",
+      "label": "Dirección para notificaciones",
+      "type": "text",
+      "required": false,
+      "section": "Interesado"
+    },
+    {
+      "id": "acting_capacity",
+      "label": "Calidad en la que actúa",
+      "type": "select",
+      "required": true,
+      "section": "Interesado",
+      "options": [
+        "Propietario",
+        "Conductor",
+        "Apoderado",
+        "Otro interesado legítimo"
+      ]
+    },
+    {
+      "id": "plate",
+      "label": "Placa del vehículo",
+      "type": "text",
+      "required": true,
+      "section": "Comparendo",
+      "min_length": 5,
+      "max_length": 8
+    },
+    {
+      "id": "comparendo_number",
+      "label": "Número del comparendo o actuación",
+      "type": "text",
+      "required": false,
+      "section": "Comparendo"
+    },
+    {
+      "id": "authority",
+      "label": "Organismo o autoridad de tránsito",
+      "type": "text",
+      "required": true,
+      "section": "Comparendo",
+      "min_length": 3
+    },
+    {
+      "id": "territory",
+      "label": "Municipio o distrito",
+      "type": "text",
+      "required": true,
+      "section": "Comparendo",
+      "min_length": 2
+    },
+    {
+      "id": "department",
+      "label": "Departamento",
+      "type": "text",
+      "required": true,
+      "section": "Comparendo",
+      "min_length": 2
+    },
+    {
+      "id": "event_date",
+      "label": "Fecha de la presunta infracción",
+      "type": "date",
+      "required": true,
+      "section": "Comparendo"
+    },
+    {
+      "id": "event_time",
+      "label": "Hora aproximada",
+      "type": "text",
+      "required": false,
+      "section": "Comparendo"
+    },
+    {
+      "id": "event_location",
+      "label": "Ubicación o dirección del punto",
+      "type": "text",
+      "required": false,
+      "section": "Comparendo"
+    },
+    {
+      "id": "conduct_code",
+      "label": "Código o descripción de la conducta",
+      "type": "text",
+      "required": false,
+      "section": "Comparendo"
+    },
+    {
+      "id": "device_known",
+      "label": "¿Identifica el dispositivo o cámara exactos?",
+      "type": "select",
+      "required": true,
+      "section": "Dispositivo",
+      "options": [
+        "Sí",
+        "No",
+        "No sé"
+      ]
+    },
+    {
+      "id": "device_id",
+      "label": "Código, serial o identificación del dispositivo",
+      "type": "text",
+      "required": false,
+      "section": "Dispositivo"
+    },
+    {
+      "id": "exact_point_match",
+      "label": "¿La ubicación del comparendo coincide con el punto autorizado consultado?",
+      "type": "select",
+      "required": true,
+      "section": "Dispositivo",
+      "options": [
+        "Sí",
+        "No",
+        "No sé",
+        "No fue posible consultar"
+      ]
+    },
+    {
+      "id": "official_2026_match",
+      "label": "¿Existe coincidencia con una actuación oficial SAST de 2026?",
+      "type": "select",
+      "required": true,
+      "section": "Actuación oficial",
+      "options": [
+        "Sí",
+        "No",
+        "No sé"
+      ]
+    },
+    {
+      "id": "official_act_number",
+      "label": "Número del acto o radicado oficial identificado",
+      "type": "text",
+      "required": false,
+      "section": "Actuación oficial"
+    },
+    {
+      "id": "official_act_status",
+      "label": "Estado del acto o actuación oficial",
+      "type": "select",
+      "required": true,
+      "section": "Actuación oficial",
+      "options": [
+        "Sin actuación identificada",
+        "Apertura o formulación de cargos",
+        "Investigación en curso",
+        "Decisión firme favorable individual",
+        "Decisión firme desfavorable individual",
+        "Estado no confirmado"
+      ]
+    },
+    {
+      "id": "official_act_source",
+      "label": "Fuente oficial o enlace de consulta",
+      "type": "text",
+      "required": false,
+      "section": "Actuación oficial"
+    },
+    {
+      "id": "ansv_authorization",
+      "label": "¿Existe soporte de autorización ANSV para el punto?",
+      "type": "select",
+      "required": true,
+      "section": "Control técnico",
+      "options": [
+        "Sí",
+        "No",
+        "No sé",
+        "Excepción legal identificada"
+      ]
+    },
+    {
+      "id": "authorization_number",
+      "label": "Número de autorización",
+      "type": "text",
+      "required": false,
+      "section": "Control técnico"
+    },
+    {
+      "id": "authorization_issue_date",
+      "label": "Fecha de expedición de la autorización",
+      "type": "date",
+      "required": false,
+      "section": "Control técnico"
+    },
+    {
+      "id": "authorization_expiry_date",
+      "label": "Fecha de vencimiento o fin de vigencia",
+      "type": "date",
+      "required": false,
+      "section": "Control técnico"
+    },
+    {
+      "id": "calibration_traceability",
+      "label": "¿Existe calibración y trazabilidad metrológica aplicable?",
+      "type": "select",
+      "required": true,
+      "section": "Control técnico",
+      "options": [
+        "Sí",
+        "No",
+        "No sé",
+        "No aplica a la conducta"
+      ]
+    },
+    {
+      "id": "calibration_date",
+      "label": "Fecha del certificado o verificación técnica",
+      "type": "date",
+      "required": false,
+      "section": "Control técnico"
+    },
+    {
+      "id": "signage_verified",
+      "label": "¿La señalización preventiva fue verificada para el punto y la fecha?",
+      "type": "select",
+      "required": true,
+      "section": "Control técnico",
+      "options": [
+        "Sí",
+        "No",
+        "No sé",
+        "No aplica"
+      ]
+    },
+    {
+      "id": "performance_concept",
+      "label": "Soporte del concepto de desempeño para el período histórico aplicable",
+      "type": "select",
+      "required": true,
+      "section": "Control técnico",
+      "options": [
+        "Existe soporte propio y previo",
+        "No existe soporte",
+        "No sé",
+        "No aplica por fecha"
+      ]
+    },
+    {
+      "id": "notice_status",
+      "label": "¿Cómo conoció el comparendo o la actuación?",
+      "type": "select",
+      "required": true,
+      "section": "Etapa",
+      "options": [
+        "Notificación recibida",
+        "Consulta SIMIT/RUNT",
+        "Cobro persuasivo",
+        "Cobro coactivo",
+        "Embargo",
+        "Otro"
+      ]
+    },
+    {
+      "id": "first_knowledge_date",
+      "label": "Fecha de conocimiento efectivo",
+      "type": "date",
+      "required": false,
+      "section": "Etapa"
+    },
+    {
+      "id": "enforcement",
+      "label": "Estado procesal actual conocido",
+      "type": "select",
+      "required": true,
+      "section": "Etapa",
+      "options": [
+        "Sin proceso conocido",
+        "Comparendo sin decisión conocida",
+        "Resolución sancionatoria",
+        "Cobro coactivo",
+        "Embargo",
+        "Proceso judicial"
+      ]
+    },
+    {
+      "id": "paid",
+      "label": "¿La obligación fue pagada total o parcialmente?",
+      "type": "select",
+      "required": true,
+      "section": "Etapa",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ]
+    },
+    {
+      "id": "case_count",
+      "label": "Número de comparendos relacionados",
+      "type": "number",
+      "required": true,
+      "section": "Complejidad",
+      "min": 1,
+      "max": 1000
+    },
+    {
+      "id": "evidence_available",
+      "label": "Nivel de soportes disponibles",
+      "type": "select",
+      "required": true,
+      "section": "Evidencia",
+      "options": [
+        "Expediente técnico completo",
+        "Comparendo y consultas oficiales",
+        "Solo consulta o captura",
+        "Sin soportes verificables"
+      ]
+    },
+    {
+      "id": "deadline_urgent",
+      "label": "¿Existe término, audiencia o actuación en menos de 10 días?",
+      "type": "select",
+      "required": true,
+      "section": "Riesgo",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ]
+    },
+    {
+      "id": "identity_fraud",
+      "label": "¿Hay suplantación, clonación, hurto o fraude de identidad/placa?",
+      "type": "select",
+      "required": true,
+      "section": "Riesgo",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ]
+    },
+    {
+      "id": "consent_alerts",
+      "label": "¿Autoriza seguimiento y alertas del expediente?",
+      "type": "select",
+      "required": true,
+      "section": "Consentimientos",
+      "options": [
+        "Sí",
+        "No"
+      ]
+    },
+    {
+      "id": "data_confirmed",
+      "label": "¿Confirma que los datos fueron verificados antes de generar el informe?",
+      "type": "select",
+      "required": true,
+      "section": "Consentimientos",
+      "options": [
+        "Sí",
+        "No"
+      ]
+    }
+  ],
+  "confirmation_required": true
+}

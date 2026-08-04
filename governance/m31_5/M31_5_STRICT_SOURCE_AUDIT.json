@@ -1,0 +1,199 @@
+{
+  "schema": "legalaizit-release-audit-v1",
+  "milestone": "M31.5",
+  "version": "5.0.4",
+  "build_id": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-2026-08-04",
+  "root": "/mnt/data/m315_work/LegalAIZit_M31_5_CERTIFICACION_POSTGRES_Y_RECUPERACION_v5.0.4_2026-08-04",
+  "strict_distribution": true,
+  "checks": [
+    {
+      "key": "manifest_identity",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "version": "5.0.4",
+          "build_id": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-2026-08-04",
+          "release_id": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-5.0.4-2026-08-04",
+          "release_name": "M31.5 — Certificación PostgreSQL y recuperación operativa",
+          "production_authorized": false
+        },
+        "actual": {
+          "version": "5.0.4",
+          "build_id": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-2026-08-04",
+          "release_id": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-5.0.4-2026-08-04",
+          "release_name": "M31.5 — Certificación PostgreSQL y recuperación operativa",
+          "production_authorized": false
+        }
+      }
+    },
+    {
+      "key": "runtime_manifest_identity",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "runtime_version": "5.0.4",
+          "build": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-2026-08-04",
+          "release_iteration": "M31.5",
+          "production_authorized": false
+        },
+        "actual": {
+          "runtime_version": "5.0.4",
+          "build": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-2026-08-04",
+          "release_iteration": "M31.5",
+          "production_authorized": false
+        }
+      }
+    },
+    {
+      "key": "release_policy_identity",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "phase": "M31.5",
+          "version": "5.0.4",
+          "release_id": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-5.0.4-2026-08-04",
+          "production_authorized": false
+        },
+        "actual": {
+          "phase": "M31.5",
+          "version": "5.0.4",
+          "release_id": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-5.0.4-2026-08-04",
+          "production_authorized": false
+        }
+      }
+    },
+    {
+      "key": "active_documentation",
+      "passed": true,
+      "detail": {
+        "files": 8
+      }
+    },
+    {
+      "key": "required_release_artifacts",
+      "passed": true,
+      "detail": {
+        "files": 24
+      }
+    },
+    {
+      "key": "deployment_security_contract",
+      "passed": true,
+      "detail": {
+        "status": "hardened"
+      }
+    },
+    {
+      "key": "postgres_certification_foundation",
+      "passed": true,
+      "detail": {
+        "code_ready_for_external_certification": true,
+        "external_certified": false,
+        "migration_certified": false,
+        "backup_restore_certified": false,
+        "gate_closed": true,
+        "schema_tables": 102
+      }
+    },
+    {
+      "key": "security_report_current",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "version": "5.0.4",
+          "milestone": "M31.5",
+          "critical_findings": 0,
+          "high_findings": 0,
+          "production_blocked": true
+        },
+        "actual": {
+          "version": "5.0.4",
+          "milestone": "M31.5",
+          "critical_findings": 0,
+          "high_findings": 0,
+          "production_blocked": true
+        }
+      }
+    },
+    {
+      "key": "sanitized_distribution",
+      "passed": false,
+      "detail": [
+        "legalai_platform/__pycache__/",
+        "runtime/legalaizit.db",
+        "runtime/backups/LegalAIZit_BKP-C8D5C41FA618444E_2026-08-04.lzbackup",
+        "runtime/backups/LegalAIZit_BKP-452293B4B3CB424F_2026-08-04.lzbackup",
+        "runtime/backups/LegalAIZit_BKP-F7AB16563E4F405D_2026-08-04.lzbackup",
+        "runtime/backups/LegalAIZit_BKP-9C0E751AC3B44ACF_2026-08-04.lzbackup",
+        "runtime/generated/CO-LA-001_LZ-E2B34A06_evidencia_generacion_v216_PRF-F5C85DC91B.json",
+        "runtime/generated/CO-EM-003_LZ-E9B08211_anexo_tratamiento_datos_2.13.docx",
+        "runtime/generated/CO-EM-003_LZ-E9B08211_anexo_alcance_2.13.docx",
+        "runtime/generated/CO-EM-003_LZ-E9B08211_anexo_propiedad_intelectual_2.13.docx",
+        "runtime/generated/CO-EM-003_LZ-E9B08211_contrato_servicios_2.13_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-EM-003_LZ-E9B08211_anexo_alcance_2.13_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-TR-001_LZ-200BEA4F_paquete_juridico_consolidado_2.26.docx",
+        "runtime/generated/CO-EM-003_LZ-E9B08211_evidencia_generacion_v216_PRF-5781B6C26A.json",
+        "runtime/generated/CO-LA-001_LZ-E2B34A06_propuesta_acuerdo_3.0.docx",
+        "runtime/generated/CO-EM-003_LZ-E9B08211_paquete_juridico_consolidado_2.13.docx",
+        "runtime/generated/CO-TR-001_LZ-200BEA4F_solicitud_estado_supertransporte_2.26.docx",
+        "runtime/generated/CO-EM-003_LZ-E9B08211_paquete_juridico_consolidado_2.13_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-LA-001_LZ-E2B34A06_ficha_trazabilidad_3.0_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-LA-001_LZ-E2B34A06_matriz_soportes_3.0_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-EM-003_LZ-E9B08211_acta_cierre_2.13_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-TR-001_LZ-200BEA4F_matriz_verificacion_sast_2.26.docx",
+        "runtime/generated/CO-EM-003_LZ-E9B08211_anexo_tratamiento_datos_2.13_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-EM-003_LZ-E9B08211_ficha_trazabilidad_2.13.docx",
+        "runtime/generated/CO-EM-003_LZ-E9B08211_acuerdo_confidencialidad_2.13.docx",
+        "runtime/generated/CO-TR-001_LZ-200BEA4F_informe_coincidencia_sast_2.26.docx",
+        "runtime/generated/CO-TR-001_LZ-200BEA4F_solicitud_revision_condicionada_2.26_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-EM-003_LZ-E9B08211_acta_cierre_2.13.docx",
+        "runtime/generated/CO-LA-001_LZ-E2B34A06_reclamacion_laboral_3.0_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-LA-001_LZ-E2B34A06_paquete_juridico_consolidado_3.0.docx",
+        "runtime/generated/CO-TR-001_LZ-200BEA4F_paquete_juridico_consolidado_2.26_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-TR-001_LZ-200BEA4F_registro_alertas_2.26_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-EM-003_LZ-E9B08211_ficha_trazabilidad_2.13_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-TR-001_LZ-200BEA4F_auditoria.json",
+        "runtime/generated/CO-LA-001_LZ-E2B34A06_reclamacion_laboral_3.0.docx",
+        "runtime/generated/CO-TR-001_LZ-200BEA4F_registro_alertas_2.26.docx",
+        "runtime/generated/CO-EM-003_LZ-E9B08211_auditoria.json",
+        "runtime/generated/CO-LA-001_LZ-E2B34A06_informe_liquidacion_3.0.docx",
+        "runtime/generated/CO-LA-001_LZ-E2B34A06_ficha_trazabilidad_3.0.docx",
+        "runtime/generated/CO-TR-001_LZ-200BEA4F_evidencia_generacion_v216_PRF-C7B51A2048.json",
+        "runtime/generated/CO-TR-001_LZ-200BEA4F_solicitud_estado_supertransporte_2.26_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-LA-001_LZ-E2B34A06_propuesta_acuerdo_3.0_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-EM-003_LZ-E9B08211_acuerdo_confidencialidad_2.13_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-LA-001_LZ-E2B34A06_auditoria.json",
+        "runtime/generated/CO-EM-003_LZ-E9B08211_contrato_servicios_2.13.docx",
+        "runtime/generated/CO-LA-001_LZ-E2B34A06_matriz_soportes_3.0.docx",
+        "runtime/generated/CO-EM-003_LZ-E9B08211_anexo_propiedad_intelectual_2.13_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-TR-001_LZ-200BEA4F_guia_ruta_sast_2.26.docx",
+        "runtime/generated/v26_docx_contract_test.docx",
+        "runtime/generated/CO-TR-001_LZ-200BEA4F_guia_ruta_sast_2.26_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-TR-001_LZ-200BEA4F_solicitud_expediente_autorizacion_2.26.docx",
+        "runtime/generated/CO-TR-001_LZ-200BEA4F_solicitud_revision_condicionada_2.26.docx",
+        "runtime/generated/CO-LA-001_LZ-E2B34A06_informe_liquidacion_3.0_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-LA-001_LZ-E2B34A06_paquete_juridico_consolidado_3.0_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-TR-001_LZ-200BEA4F_informe_coincidencia_sast_2.26_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-TR-001_LZ-200BEA4F_matriz_verificacion_sast_2.26_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-TR-001_LZ-200BEA4F_ficha_trazabilidad_2.26_version_anterior_demo_v23.docx",
+        "runtime/generated/CO-TR-001_LZ-200BEA4F_ficha_trazabilidad_2.26.docx",
+        "runtime/generated/CO-TR-001_LZ-200BEA4F_solicitud_expediente_autorizacion_2.26_version_anterior_demo_v23.docx",
+        "runtime/secrets/master.key",
+        "runtime/object_store/tests/OBJ-51265AD01A87439087EC.lzenc",
+        "runtime/object_store/tests/OBJ-9247956E199E4C48BFDD.lzenc",
+        "runtime/object_store/canonical/quarantine/CO-EM-003/OBJ-4951566394F14BD6B68A.lzenc",
+        "runtime/object_store/canonical/quarantine/CO-EM-003/OBJ-7003D2C2DE604A37A689.lzenc",
+        "legalai_platform/__pycache__/release_integrity.cpython-313.pyc",
+        "legalai_platform/__pycache__/__init__.cpython-313.pyc",
+        "legalai_platform/__pycache__/postgres_evidence.cpython-313.pyc",
+        "legalai_platform/__pycache__/release_metadata.cpython-313.pyc"
+      ]
+    }
+  ],
+  "passed": 8,
+  "total": 9,
+  "ok": false,
+  "failures": [
+    "sanitized_distribution"
+  ]
+}

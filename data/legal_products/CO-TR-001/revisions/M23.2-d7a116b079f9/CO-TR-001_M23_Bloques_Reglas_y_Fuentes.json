@@ -1,0 +1,88 @@
+{
+  "product_code": "CO-TR-001",
+  "version": "M23",
+  "integration_mode": "additive_immutable_revision",
+  "document_family": [
+    "sast_verification_report",
+    "official_source_matrix",
+    "evidence_index",
+    "followup_enrollment",
+    "record_request_route"
+  ],
+  "critical_rules": [
+    {
+      "id": "M23-TR1-001",
+      "when": "organism_or_date_matches_public_list",
+      "risk": "yellow",
+      "action": "classify_as_preliminary_not_automatic_individual_effect"
+    },
+    {
+      "id": "M23-TR1-002",
+      "when": "device_point_or_record_missing",
+      "risk": "yellow",
+      "action": "request_certified_complete_record_before_conclusion"
+    },
+    {
+      "id": "M23-TR1-003",
+      "when": "public_communication_only",
+      "risk": "yellow",
+      "action": "distinguish_investigation_charges_decision_finality_and_execution"
+    },
+    {
+      "id": "M23-TR1-004",
+      "when": "resolution_718_period",
+      "risk": "yellow",
+      "action": "apply_only_with_historical_validity_and_inm_scope_clarification"
+    },
+    {
+      "id": "M23-TR1-005",
+      "when": "active_deadline_hearing_appeal_or_collection",
+      "risk": "red",
+      "action": "do_not_wait_for_alert_mandatory_deadline_review"
+    },
+    {
+      "id": "M23-TR1-006",
+      "when": "paid_fine",
+      "risk": "red",
+      "action": "verify_payment_and_individual_basis_before_refund_request"
+    },
+    {
+      "id": "M23-TR1-007",
+      "when": "enrollment",
+      "risk": "green",
+      "action": "identify_as_internal_followup_not_government_registry"
+    },
+    {
+      "id": "M23-TR1-008",
+      "when": "alert_channel",
+      "risk": "green",
+      "action": "specific_consent_expiry_revocation_and_audit_log"
+    },
+    {
+      "id": "M23-TR1-009",
+      "when": "coactive_collection_embargo_final_act_or_high_impact",
+      "risk": "red",
+      "action": "mandatory_lawyer_review"
+    },
+    {
+      "id": "M23-TR1-010",
+      "when": "official_source_changed",
+      "risk": "yellow",
+      "action": "revalidate_and_version_before_release"
+    }
+  ],
+  "official_sources": [
+    "Ley 1843 de 2017",
+    "Ley 2251 de 2022",
+    "Ley 769 de 2002",
+    "Ley 1437 de 2011",
+    "Ley 1755 de 2015",
+    "Resolución 20203040011245 de 2020",
+    "Resolución 20223040045295 de 2022",
+    "Ministerio de Transporte",
+    "Superintendencia de Transporte",
+    "Instituto Nacional de Metrología",
+    "Corte Constitucional"
+  ],
+  "legal_status_date": "2026-07-31"
+}

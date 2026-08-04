@@ -1,0 +1,58 @@
+{
+  "schema": "legalaiz_m31_3_release_reproducibility_policy_v1",
+  "phase": "M31.3",
+  "version": "5.0.2",
+  "base_release": "M31.2 v5.0.1",
+  "release_id": "M31-3-PREPRODUCCION-REPRODUCIBLE-5.0.2-2026-08-03",
+  "objective": "Hacer reproducible y verificable la preparación de preproducción, eliminar artefactos runtime y evitar deriva entre código, documentación, manifiestos y paquete distribuido.",
+  "production_authorized": false,
+  "public_production_ready": false,
+  "release_controls": {
+    "single_source_release_metadata": true,
+    "strict_distribution_audit": true,
+    "automated_http_smoke": true,
+    "forbidden_runtime_state_in_zip": true,
+    "external_secrets_only": true,
+    "historical_evidence_separated": true
+  },
+  "forbidden_distribution_artifacts": [
+    "*.db",
+    "*.db-journal",
+    "*.sqlite",
+    "*.sqlite3",
+    "*.lzbackup",
+    "*.pyc",
+    "*.pyo",
+    "__pycache__",
+    ".env",
+    "runtime/secrets/*",
+    "runtime/generated/*",
+    "runtime/backups/*",
+    "runtime/object_store/*"
+  ],
+  "required_artifacts": [
+    "legalai_platform/release_metadata.py",
+    "legalai_platform/release_integrity.py",
+    "tools/release_audit.py",
+    "tools/http_smoke.py",
+    "tools/build_release.py",
+    "deploy/PREPRODUCTION_RUNBOOK_M31_3.md",
+    "M31_3_RELEASE_NOTES.md",
+    "M31_3_QA_REPORT.md",
+    "M31_3_TEST_REPORT.json",
+    "M31_3_RELEASE_MANIFEST.json"
+  ],
+  "distribution_outputs": [
+    "complete_source",
+    "runtime_slim",
+    "historical_evidence"
+  ],
+  "validation": {
+    "python_compilation": true,
+    "automated_regression": true,
+    "release_audit": true,
+    "http_smoke": true,
+    "integrity_manifest": true,
+    "production_gate_locked": true
+  }
+}

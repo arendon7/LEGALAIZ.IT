@@ -1,0 +1,35 @@
+[
+  {
+    "file": "test_m14_sast_verified_screening_quality.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 8,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 1.82,
+    "summary": "........                                                                 [100%] 8 passed in 0.28s"
+  },
+  {
+    "file": "test_m15_traffic_notice_quality.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 10,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 1.83,
+    "summary": "..........                                                               [100%] 10 passed in 0.28s"
+  },
+  {
+    "file": "test_m16_labor_settlement_quality.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 9,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 1.82,
+    "summary": ".........                                                                [100%] 9 passed in 0.28s"
+  }
+]

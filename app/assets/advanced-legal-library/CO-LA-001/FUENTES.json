@@ -1,0 +1,102 @@
+[
+  {
+    "id": "LA1-S1",
+    "title": "Código Sustantivo del Trabajo consolidado — artículos 64, 65, 186, 249, 253 y 306",
+    "authority": "SUIN-Juriscol",
+    "type": "code",
+    "status": "vigente; consultar texto consolidado",
+    "last_verified": "2026-07-17",
+    "verification_status": "Fuente oficial revisada para v2.22.",
+    "official_reference": "https://www.suin-juriscol.gov.co/viewdocument.asp?ruta=codigo%2F30019323"
+  },
+  {
+    "id": "LA1-S2",
+    "title": "Ley 50 de 1990 — régimen anualizado de cesantías, artículo 99",
+    "authority": "SUIN-Juriscol",
+    "type": "statute",
+    "status": "vigente con modificaciones",
+    "last_verified": "2026-07-17",
+    "verification_status": "Fuente oficial revisada para v2.22.",
+    "official_reference": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1604809"
+  },
+  {
+    "id": "LA1-S3",
+    "title": "Ley 52 de 1975 — intereses anuales a las cesantías",
+    "authority": "SUIN-Juriscol",
+    "type": "statute",
+    "status": "vigente según ficha oficial",
+    "last_verified": "2026-07-17",
+    "verification_status": "Fuente oficial revisada para v2.22.",
+    "official_reference": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1606193"
+  },
+  {
+    "id": "LA1-S4",
+    "title": "Ley 789 de 2002 — indemnización por terminación y mora, artículos 28 y 29",
+    "authority": "SUIN-Juriscol",
+    "type": "statute",
+    "status": "vigente con integración al CST",
+    "last_verified": "2026-07-17",
+    "verification_status": "Fuente oficial revisada para v2.22.",
+    "official_reference": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1668469"
+  },
+  {
+    "id": "LA1-S5",
+    "title": "Ley 2466 de 2025 — reforma laboral y modificaciones al Código Sustantivo del Trabajo",
+    "authority": "SUIN-Juriscol",
+    "type": "statute",
+    "status": "vigente; verificar transición y reglamentación",
+    "last_verified": "2026-07-17",
+    "verification_status": "Fuente oficial revisada para v2.22.",
+    "official_reference": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F30055086"
+  },
+  {
+    "id": "LA1-S6",
+    "title": "Decreto 159 de 2026 — salario mínimo mensual legal transitorio de 2026",
+    "authority": "SUIN-Juriscol",
+    "type": "decree",
+    "status": "vigente con carácter transitorio según su artículo 2",
+    "last_verified": "2026-07-17",
+    "verification_status": "Parámetro oficial verificado para la fecha de corte.",
+    "official_reference": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30056106"
+  },
+  {
+    "id": "LA1-S7",
+    "title": "Decreto 1470 de 2025 — auxilio de transporte para 2026",
+    "authority": "SUIN-Juriscol",
+    "type": "decree",
+    "status": "vigente desde 1 de enero de 2026",
+    "last_verified": "2026-07-17",
+    "verification_status": "Parámetro oficial verificado para la fecha de corte.",
+    "official_reference": "https://www.suin-juriscol.gov.co/clp/contenidos.dll/Decretos/30055941"
+  },
+  {
+    "id": "LA1-S8",
+    "title": "Constitución Política de Colombia — artículo 53 y principios mínimos del trabajo",
+    "authority": "SUIN-Juriscol",
+    "type": "constitution",
+    "status": "vigente",
+    "last_verified": "2026-07-17",
+    "verification_status": "Fuente oficial revisada para v2.22.",
+    "official_reference": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1687988"
+  },
+  {
+    "id": "LA1-S9",
+    "title": "Corte Suprema de Justicia, Sala Laboral — interpretación del artículo 65 del CST (SL2338-2023)",
+    "authority": "Corte Suprema de Justicia",
+    "type": "case_law",
+    "status": "jurisprudencia oficial; verificar pertinencia fáctica",
+    "last_verified": "2026-07-17",
+    "verification_status": "Usada para excluir el cálculo automático de sanción moratoria.",
+    "official_reference": "https://cortesuprema.gov.co/rl_dl_sl2338-2023/"
+  },
+  {
+    "id": "LA1-S10",
+    "title": "Parámetros laborales LegalAIZ.it 2026.3 — trazabilidad de salario mínimo, auxilio, divisores y redondeo",
+    "authority": "LegalAIZ.it",
+    "type": "parameter-set",
+    "status": "versionado y conectado a fuentes oficiales",
+    "last_verified": "2026-07-17",
+    "verification_status": "Conjunto técnico interno; cada valor remite a LA1-S1 a LA1-S7.",
+    "official_reference": "data/parameters.json#CO-LA-001"
+  }
+]

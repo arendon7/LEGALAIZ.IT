@@ -1,0 +1,16 @@
+{
+  "root": "/mnt/data/_m6_work/LegalAIZit_M6_RC1",
+  "removed_count": 9,
+  "removed": [
+    ".pytest_cache",
+    "__pycache__",
+    "governance/archive/tests_legacy/historical_suite/__pycache__",
+    "governance/archive/tests_legacy/m6_development_tests/__pycache__",
+    "governance/archive/tools_legacy/__pycache__",
+    "legacy_runtime/__pycache__",
+    "legalai_platform/__pycache__",
+    "tests/__pycache__",
+    "tools/__pycache__"
+  ],
+  "runtime_files_remaining": []
+}

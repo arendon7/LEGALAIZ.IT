@@ -1,0 +1,140 @@
+[
+  {
+    "id": "TR2-S01",
+    "title": "Constitución Política — petición y debido proceso",
+    "authority": "Constitución Política de Colombia",
+    "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Constitucion/1687988",
+    "verified_on": "2026-07-25",
+    "applies_to": [
+      "TR2-B001",
+      "TR2-B052"
+    ]
+  },
+  {
+    "id": "TR2-S02",
+    "title": "Código Nacional de Tránsito Terrestre — Ley 769 de 2002",
+    "authority": "Congreso de Colombia",
+    "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1826223",
+    "verified_on": "2026-07-25",
+    "applies_to": [
+      "TR2-B007",
+      "TR2-B018",
+      "TR2-B024",
+      "TR2-B026",
+      "TR2-B027"
+    ]
+  },
+  {
+    "id": "TR2-S03",
+    "title": "Ley 1843 de 2017 — sistemas automáticos y procedimiento",
+    "authority": "Congreso de Colombia",
+    "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30032605",
+    "verified_on": "2026-07-25",
+    "applies_to": [
+      "TR2-B011",
+      "TR2-B013",
+      "TR2-B014",
+      "TR2-B018",
+      "TR2-B043"
+    ]
+  },
+  {
+    "id": "TR2-S04",
+    "title": "Ley 2161 de 2021 — obligaciones del propietario",
+    "authority": "Congreso de Colombia",
+    "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes/30043511",
+    "verified_on": "2026-07-25",
+    "applies_to": [
+      "TR2-B035",
+      "TR2-B036"
+    ]
+  },
+  {
+    "id": "TR2-S05",
+    "title": "Ley 1755 de 2015 — derecho de petición y documentos",
+    "authority": "Congreso de Colombia",
+    "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30043679",
+    "verified_on": "2026-07-25",
+    "applies_to": [
+      "TR2-B041",
+      "TR2-B049",
+      "TR2-B050"
+    ]
+  },
+  {
+    "id": "TR2-S06",
+    "title": "CPACA — actuación, notificación y revocatoria directa",
+    "authority": "Congreso de Colombia",
+    "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes/1680117",
+    "verified_on": "2026-07-25",
+    "applies_to": [
+      "TR2-B024",
+      "TR2-B044",
+      "TR2-B051"
+    ]
+  },
+  {
+    "id": "TR2-S07",
+    "title": "Sentencia C-038 de 2020 — responsabilidad solidaria objetiva",
+    "authority": "Corte Constitucional",
+    "url": "https://www.corteconstitucional.gov.co/relatoria/2020/C-038-20.htm",
+    "verified_on": "2026-07-25",
+    "applies_to": [
+      "TR2-B034",
+      "TR2-B035"
+    ]
+  },
+  {
+    "id": "TR2-S08",
+    "title": "Sentencia C-321 de 2022 — deberes del propietario y culpabilidad",
+    "authority": "Corte Constitucional",
+    "url": "https://www.corteconstitucional.gov.co/Relatoria/2022/C-321-22.htm",
+    "verified_on": "2026-07-25",
+    "applies_to": [
+      "TR2-B036"
+    ]
+  },
+  {
+    "id": "TR2-S09",
+    "title": "Resolución 20203040011245 de 2020 — criterios técnicos SAST",
+    "authority": "Ministerio de Transporte y ANSV",
+    "url": "https://mintransporte.gov.co/publicaciones/9590/normatividad-racionalizacion/",
+    "verified_on": "2026-07-25",
+    "applies_to": [
+      "TR2-B013",
+      "TR2-B014",
+      "TR2-B017"
+    ]
+  },
+  {
+    "id": "TR2-S10",
+    "title": "Resolución ANSV 181 de 2020 — metodología de evaluación",
+    "authority": "Agencia Nacional de Seguridad Vial",
+    "url": "https://mintransporte.gov.co/loader.php?fileItem=28150&lFuncion=visorpdf&lServicio=Tools2&lTipo=descargas&pdf=1",
+    "verified_on": "2026-07-25",
+    "applies_to": [
+      "TR2-B013"
+    ]
+  },
+  {
+    "id": "TR2-S11",
+    "title": "Resolución 352 de 2020 — trazabilidad metrológica",
+    "authority": "Ministerio de Comercio e Instituto Nacional de Metrología",
+    "url": "https://mintransporte.gov.co/loader.php?fileItem=28150&lFuncion=visorpdf&lServicio=Tools2&lTipo=descargas&pdf=1",
+    "verified_on": "2026-07-25",
+    "applies_to": [
+      "TR2-B015"
+    ]
+  },
+  {
+    "id": "TR2-S12",
+    "title": "Ley 2294 de 2023, artículo 181 — sistemas en transporte público",
+    "authority": "Congreso de Colombia",
+    "url": "https://www.suin-juriscol.gov.co/clp/contenidos.dll/Leyes/30046580",
+    "verified_on": "2026-07-25",
+    "applies_to": [
+      "TR2-B011",
+      "TR2-B013"
+    ]
+  }
+]

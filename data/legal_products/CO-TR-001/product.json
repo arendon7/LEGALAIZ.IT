@@ -1,0 +1,138 @@
+{
+  "schema": "legalai_product_revision_registry_v1",
+  "product_code": "CO-TR-001",
+  "public_name": "Verificar un sistema de fotodetección y su soporte oficial",
+  "internal_name": "Verificación jurídico-técnica SAST",
+  "category": "Tránsito",
+  "jurisdiction": "Colombia",
+  "legacy_runtime_binding": {
+    "products_file": "data/products.json",
+    "interviews_file": "data/interviews.json",
+    "rules_file": "data/rules.json",
+    "document_templates_file": "data/document_templates.json",
+    "deep_library_path": "app/assets/advanced-legal-library/CO-TR-001",
+    "current_product_version": "2.26",
+    "current_publication_status": "Aprobado para uso profesional controlado"
+  },
+  "active_revision": "legacy-m21.1-current",
+  "published_revision": "legacy-m21.1-current",
+  "candidate_revision": "M23.2-d7a116b079f9",
+  "revisions": [
+    "legacy-m21.1-current",
+    "M23.2-d7a116b079f9"
+  ],
+  "candidate_revisions": [
+    "M23.2-d7a116b079f9"
+  ],
+  "revision_metadata": {
+    "legacy-m21.1-current": {
+      "status": "published_controlled_legacy_binding",
+      "immutable": true,
+      "source_milestone": "M20.1/M21.1",
+      "quality_status": "reviewed",
+      "verified_at": "2026-07-31",
+      "binding_mode": "legacy_runtime_files"
+    }
+  },
+  "candidate_policy": {
+    "status": "candidate_blocked_pending_legal_and_qa_approval",
+    "active_revision_change_allowed": false,
+    "published_revision_change_allowed": false,
+    "legal_approval_required": true,
+    "qa_approval_required": true,
+    "must_be_distinct_users": true,
+    "scenario_qa_required": true
+  },
+  "registry_snapshot": {
+    "product_code": "CO-TR-001",
+    "internal_name": "Verificación jurídico-técnica SAST",
+    "public_name": "Verificar un sistema de fotodetección y su soporte oficial",
+    "category": "Tránsito",
+    "problem_solved": "La persona necesita verificar fuentes oficiales, coincidencias y estado de un sistema automático o semiautomático de detección.",
+    "service_levels": [
+      "orientacion",
+      "solucion_revisada"
+    ],
+    "risk_level": "high",
+    "scope": [
+      "informe de verificación",
+      "matriz de fuentes",
+      "índice probatorio",
+      "seguimiento y solicitud de expediente"
+    ],
+    "exclusions": [
+      "concluir invalidez individual por una comunicación general",
+      "esperar alertas cuando existe término activo",
+      "prometer devolución sin acto favorable"
+    ],
+    "required_evidence": [
+      "organismo",
+      "ubicación y dispositivo",
+      "fecha",
+      "acto o comunicación",
+      "comparendo o sanción",
+      "estado de cobro"
+    ],
+    "pilot": false,
+    "jurisdiction": "CO",
+    "language": "es-CO",
+    "questionnaire_binding": {
+      "status": "pending_runtime_resolution",
+      "expected_legacy_ref": "M22://questionnaires/CO-TR-001",
+      "prohibition": "do_not_create_duplicate_questionnaire_before_runtime_audit"
+    },
+    "ruleset_binding": {
+      "status": "candidate_from_m23_2",
+      "source_file": "CO-TR-001/CO-TR-001_M23_Bloques_Reglas_y_Fuentes.json",
+      "rule_count": 10,
+      "rule_ids": [
+        "M23-TR1-001",
+        "M23-TR1-002",
+        "M23-TR1-003",
+        "M23-TR1-004",
+        "M23-TR1-005",
+        "M23-TR1-006",
+        "M23-TR1-007",
+        "M23-TR1-008",
+        "M23-TR1-009",
+        "M23-TR1-010"
+      ]
+    },
+    "template_candidate": {
+      "revision_label": "M23.2",
+      "master_docx": "CO-TR-001_Modelo_Maestro_Informe_Verificacion_SAST_M23.docx",
+      "master_pdf": "CO-TR-001_Modelo_Maestro_Informe_Verificacion_SAST_M23.pdf",
+      "worked_example_docx": "CO-TR-001_Ejemplo_Final_Chequeo_Inscripcion_SAST_M23.docx",
+      "worked_example_pdf": "CO-TR-001_Ejemplo_Final_Chequeo_Inscripcion_SAST_M23.pdf",
+      "integration_mode": "new_immutable_revision_no_overwrite"
+    },
+    "conditional_modules": [
+      "sast_verification_report",
+      "official_source_matrix",
+      "evidence_index",
+      "followup_enrollment",
+      "record_request_route"
+    ],
+    "legal_sources": [
+      "Ley 1843 de 2017",
+      "Ley 2251 de 2022",
+      "Ley 769 de 2002",
+      "Ley 1437 de 2011",
+      "Ley 1755 de 2015",
+      "Resolución 20203040011245 de 2020",
+      "Resolución 20223040045295 de 2022",
+      "Ministerio de Transporte",
+      "Superintendencia de Transporte",
+      "Instituto Nacional de Metrología",
+      "Corte Constitucional"
+    ],
+    "approvals": {
+      "legal_owner": "pending_assignment",
+      "qa_owner": "pending_assignment_distinct_from_legal_owner",
+      "legal_approval_required": true,
+      "qa_approval_required": true
+    },
+    "publication_status": "blocked_pending_runtime_integration_scenario_qa_and_dual_approval"
+  },
+  "last_migration_id": "M24.1-M23.2-PREINTEGRATION-20260801"
+}

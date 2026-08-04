@@ -1,0 +1,38 @@
+{
+  "id": "CO-TR-001",
+  "version": "2.59",
+  "name": "Chequeo SAST + inscripción verificada",
+  "jurisdiction": "Colombia",
+  "macro_phase": "C",
+  "status": "validation_closed",
+  "risk_base": "yellow",
+  "purpose": "Cruzar organismo y fecha contra una instantánea oficial SAST, explicar el resultado con límites jurídicos y permitir un expediente verificable bajo gobierno documental.",
+  "not_promised": [
+    "anulación automática",
+    "revocación automática",
+    "devolución automática",
+    "suspensión de términos",
+    "representación judicial",
+    "declaración de firmeza de decisiones administrativas"
+  ],
+  "outputs": [
+    "sast_preliminary_report",
+    "sast_source_trace",
+    "sast_verified_case_file",
+    "sast_professional_review_request"
+  ],
+  "matrix": {
+    "records": 49,
+    "group_a": 37,
+    "group_b": 12,
+    "snapshot_date": "2026-07-26"
+  },
+  "closure": {
+    "canonical_scenarios": 12,
+    "negative_scenarios": 13,
+    "visual_scenarios": 4,
+    "release_gate": true,
+    "source_revalidation": true
+  },
+  "next_macro_phase": null
+}

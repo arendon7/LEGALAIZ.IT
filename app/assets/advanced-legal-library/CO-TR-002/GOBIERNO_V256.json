@@ -1,0 +1,46 @@
+{
+  "version": "2.56",
+  "workflow": [
+    "draft",
+    "pending_legal_review",
+    "pending_qa_review",
+    "approved",
+    "released"
+  ],
+  "roles": {
+    "user": [
+      "create_draft",
+      "request_revision"
+    ],
+    "specialist_legal": [
+      "legal_approve",
+      "legal_reject"
+    ],
+    "qa": [
+      "qa_approve",
+      "qa_reject"
+    ],
+    "admin": [
+      "inspect",
+      "legal_approve",
+      "qa_approve",
+      "release"
+    ]
+  },
+  "controls": {
+    "immutable_revisions": true,
+    "hash_algorithm": "SHA-256",
+    "audit_chain": true,
+    "all_revision_chain_validation": true,
+    "dual_approval": true,
+    "same_actor_dual_approval": false,
+    "qa_requires_current_legal_approval": true,
+    "approval_comment_required": true,
+    "release_gate_required": true,
+    "release_with_red_risk": false,
+    "release_with_missing_variables": false,
+    "release_without_v254_base": false,
+    "release_with_stale_sources": false,
+    "safe_api_errors": true
+  }
+}

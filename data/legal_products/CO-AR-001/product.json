@@ -1,0 +1,151 @@
+{
+  "schema": "legalai_product_revision_registry_v1",
+  "product_code": "CO-AR-001",
+  "public_name": "Arrendar una vivienda con un contrato completo",
+  "internal_name": "Arrendamiento de vivienda urbana",
+  "category": "Arrendamiento",
+  "jurisdiction": "Colombia",
+  "legacy_runtime_binding": {
+    "products_file": "data/products.json",
+    "interviews_file": "data/interviews.json",
+    "rules_file": "data/rules.json",
+    "document_templates_file": "data/document_templates.json",
+    "deep_library_path": "app/assets/advanced-legal-library/CO-AR-001",
+    "current_product_version": "2.23",
+    "current_publication_status": "Aprobado para uso profesional controlado"
+  },
+  "active_revision": "legacy-m21.1-current",
+  "published_revision": "legacy-m21.1-current",
+  "candidate_revision": "M23.2-0b9f4cd32a48",
+  "revisions": [
+    "legacy-m21.1-current",
+    "M23.2-0b9f4cd32a48"
+  ],
+  "candidate_revisions": [
+    "M23.2-0b9f4cd32a48"
+  ],
+  "revision_metadata": {
+    "legacy-m21.1-current": {
+      "status": "published_controlled_legacy_binding",
+      "immutable": true,
+      "source_milestone": "M20.1/M21.1",
+      "quality_status": "reviewed",
+      "verified_at": "2026-07-30",
+      "binding_mode": "legacy_runtime_files"
+    }
+  },
+  "candidate_policy": {
+    "status": "candidate_blocked_pending_legal_and_qa_approval",
+    "active_revision_change_allowed": false,
+    "published_revision_change_allowed": false,
+    "legal_approval_required": true,
+    "qa_approval_required": true,
+    "must_be_distinct_users": true,
+    "scenario_qa_required": true
+  },
+  "registry_snapshot": {
+    "product_code": "CO-AR-001",
+    "internal_name": "Arrendamiento de vivienda urbana",
+    "public_name": "Arrendar una vivienda con un contrato completo",
+    "category": "Arrendamiento",
+    "problem_solved": "Arrendador y arrendatario necesitan regular vivienda urbana, canon, servicios, administración, inventario, garantías, terminación y restitución.",
+    "service_levels": [
+      "documento_personalizado",
+      "solucion_revisada"
+    ],
+    "risk_level": "high",
+    "scope": [
+      "contrato de vivienda",
+      "inventario",
+      "servicios",
+      "propiedad horizontal",
+      "terminación y restitución"
+    ],
+    "exclusions": [
+      "uso comercial o mixto",
+      "canon superior al límite legal",
+      "depósitos o garantías reales prohibidas"
+    ],
+    "required_evidence": [
+      "identificación",
+      "inmueble",
+      "canon",
+      "servicios",
+      "administración",
+      "inventario",
+      "duración",
+      "garantías permitidas"
+    ],
+    "pilot": true,
+    "jurisdiction": "CO",
+    "language": "es-CO",
+    "questionnaire_binding": {
+      "status": "pending_runtime_resolution",
+      "expected_legacy_ref": "M22://questionnaires/CO-AR-001",
+      "prohibition": "do_not_create_duplicate_questionnaire_before_runtime_audit"
+    },
+    "ruleset_binding": {
+      "status": "candidate_from_m23_2",
+      "source_file": "CO-AR-001/CO-AR-001_M23_Bloques_Reglas_y_Fuentes.json",
+      "rule_count": 7,
+      "rule_ids": [
+        "LEASE-M23-001",
+        "LEASE-M23-002",
+        "LEASE-M23-003",
+        "LEASE-M23-004",
+        "LEASE-M23-005",
+        "LEASE-M23-006",
+        "LEASE-M23-007"
+      ]
+    },
+    "template_candidate": {
+      "revision_label": "M23.2",
+      "master_docx": "CO-AR-001_Modelo_Maestro_Arrendamiento_Vivienda_M23.docx",
+      "master_pdf": "CO-AR-001_Modelo_Maestro_Arrendamiento_Vivienda_M23.pdf",
+      "worked_example_docx": "CO-AR-001_Ejemplo_Final_Arrendamiento_Apartamento_M23.docx",
+      "worked_example_pdf": "CO-AR-001_Ejemplo_Final_Arrendamiento_Apartamento_M23.pdf",
+      "integration_mode": "new_immutable_revision_no_overwrite"
+    },
+    "conditional_modules": [],
+    "legal_sources": [
+      {
+        "name": "Ley 820 de 2003",
+        "topic": "arrendamiento de vivienda urbana",
+        "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1669010"
+      },
+      {
+        "name": "Decreto 3130 de 2003",
+        "topic": "servicios públicos en vivienda arrendada",
+        "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Decretos%2F1877380"
+      },
+      {
+        "name": "Decreto 51 de 2004, compilado",
+        "topic": "reglamentación de la Ley 820",
+        "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1840085"
+      },
+      {
+        "name": "Ley 675 de 2001",
+        "topic": "propiedad horizontal",
+        "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1665811"
+      },
+      {
+        "name": "Ley 1581 de 2012",
+        "topic": "protección de datos personales",
+        "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1684507"
+      },
+      {
+        "name": "Ley 527 de 1999",
+        "topic": "mensajes de datos y firmas",
+        "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1662013"
+      }
+    ],
+    "approvals": {
+      "legal_owner": "pending_assignment",
+      "qa_owner": "pending_assignment_distinct_from_legal_owner",
+      "legal_approval_required": true,
+      "qa_approval_required": true
+    },
+    "publication_status": "blocked_pending_runtime_integration_scenario_qa_and_dual_approval"
+  },
+  "last_migration_id": "M24.1-M23.2-PREINTEGRATION-20260801"
+}

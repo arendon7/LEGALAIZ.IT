@@ -1,0 +1,65 @@
+{
+  "routes": [
+    {
+      "route": "/",
+      "h1": "Dirige la operación jurídica desde una vista unificada.",
+      "height": 1167
+    },
+    {
+      "route": "/soluciones",
+      "h1": "Soluciones para problemas concretos",
+      "height": 1918
+    },
+    {
+      "route": "/nuevo",
+      "h1": "¿Qué necesitas resolver?",
+      "height": 1135
+    },
+    {
+      "route": "/casos",
+      "h1": "Operación de casos",
+      "height": 1000
+    },
+    {
+      "route": "/documentos",
+      "h1": "Revisión documental",
+      "height": 2514
+    },
+    {
+      "route": "/operacion",
+      "h1": "Operación",
+      "height": 1000
+    },
+    {
+      "route": "/catalogo",
+      "h1": "Soluciones y bibliotecas",
+      "height": 1336
+    },
+    {
+      "route": "/fuentes",
+      "h1": "Fuentes y criterios",
+      "height": 1422
+    },
+    {
+      "route": "/calidad",
+      "h1": "Preparación de la Release Candidate",
+      "height": 2096
+    },
+    {
+      "route": "/configuracion",
+      "h1": "Configuración y seguridad",
+      "height": 1469
+    },
+    {
+      "route": "/biblioteca-contractual",
+      "h1": "Modelos aprobados · biblioteca contractual profunda",
+      "height": 2429
+    },
+    {
+      "route": "/biblioteca-playbooks",
+      "h1": "Playbooks aprobados · rutas jurídicas profundas",
+      "height": 3857
+    }
+  ],
+  "errors": []
+}

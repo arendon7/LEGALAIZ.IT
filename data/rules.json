@@ -1,0 +1,6426 @@
+{
+  "CO-TR-001": [
+    {
+      "id": "TR1-R01",
+      "risk": "red",
+      "message": "Existe cobro coactivo, embargo o proceso judicial.",
+      "action": "Escalar al abogado responsable y controlar términos antes de radicar.",
+      "conditions": {
+        "all": [
+          {
+            "field": "enforcement",
+            "op": "in",
+            "value": [
+              "Cobro coactivo",
+              "Embargo",
+              "Proceso judicial"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "TR1-S2"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "TR1-R02",
+      "risk": "red",
+      "message": "Existe un término próximo o no fue posible descartarlo.",
+      "action": "No continuar como autoservicio definitivo; revisar de inmediato.",
+      "conditions": {
+        "all": [
+          {
+            "field": "deadline_urgent",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "TR1-S2"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "TR1-R03",
+      "risk": "red",
+      "message": "Se reporta suplantación, clonación, hurto o fraude.",
+      "action": "Preservar evidencia y activar ruta especializada; el chequeo SAST no resuelve identidad.",
+      "conditions": {
+        "all": [
+          {
+            "field": "identity_fraud",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "TR1-S2"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "TR1-R04",
+      "risk": "red",
+      "message": "Los datos no fueron confirmados.",
+      "action": "Bloquear la salida definitiva hasta conciliar la información.",
+      "conditions": {
+        "all": [
+          {
+            "field": "data_confirmed",
+            "op": "not_equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "validation",
+      "source_ids": [
+        "TR1-S13"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "TR1-R05",
+      "risk": "red",
+      "message": "El volumen supera diez comparendos relacionados.",
+      "action": "Tramitar por lote con revisión profesional y conciliación de expedientes.",
+      "conditions": {
+        "all": [
+          {
+            "field": "case_count",
+            "op": "gt",
+            "value": 10
+          }
+        ]
+      },
+      "category": "complexity",
+      "source_ids": [
+        "TR1-S2"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "TR1-R06",
+      "risk": "yellow",
+      "message": "El dispositivo exacto no está individualizado.",
+      "action": "Solicitar código, serial, ubicación, metadatos y acto de autorización.",
+      "conditions": {
+        "all": [
+          {
+            "field": "device_known",
+            "op": "in",
+            "value": [
+              "No",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "TR1-S1",
+        "TR1-S5",
+        "TR1-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "TR1-R07",
+      "risk": "yellow",
+      "message": "No se confirmó que el punto consultado coincida con el lugar del comparendo.",
+      "action": "Verificar coordenadas y alcance territorial del acto.",
+      "conditions": {
+        "all": [
+          {
+            "field": "exact_point_match",
+            "op": "not_equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "TR1-S5",
+        "TR1-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "TR1-R08",
+      "risk": "yellow",
+      "message": "No existe soporte confirmado de autorización ANSV o de una excepción legal.",
+      "action": "Consultar el mapa oficial y obtener el acto aplicable al punto y fecha.",
+      "conditions": {
+        "all": [
+          {
+            "field": "ansv_authorization",
+            "op": "in",
+            "value": [
+              "No",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "TR1-S1",
+        "TR1-S3",
+        "TR1-S4",
+        "TR1-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "TR1-R09",
+      "risk": "yellow",
+      "message": "La calibración o trazabilidad metrológica no está acreditada.",
+      "action": "Solicitar certificado, laboratorio, alcance y correspondencia con el equipo.",
+      "conditions": {
+        "all": [
+          {
+            "field": "calibration_traceability",
+            "op": "in",
+            "value": [
+              "No",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "TR1-S1",
+        "TR1-S5",
+        "TR1-S7"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "TR1-R10",
+      "risk": "yellow",
+      "message": "La señalización preventiva no fue acreditada.",
+      "action": "Solicitar evidencia temporal del punto y revisar la exigencia aplicable.",
+      "conditions": {
+        "all": [
+          {
+            "field": "signage_verified",
+            "op": "in",
+            "value": [
+              "No",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "TR1-S1",
+        "TR1-S4",
+        "TR1-S5"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "TR1-R11",
+      "risk": "yellow",
+      "message": "Existe coincidencia declarada con actuaciones oficiales de 2026.",
+      "action": "Individualizar organismo, período, acto y estado; no inferir efecto automático.",
+      "conditions": {
+        "all": [
+          {
+            "field": "official_2026_match",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "TR1-S11",
+        "TR1-S12"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "TR1-R12",
+      "risk": "yellow",
+      "message": "La actuación oficial no está cerrada mediante una decisión individual firme.",
+      "action": "Diferenciar apertura, investigación, cargos y decisión ejecutoriada.",
+      "conditions": {
+        "all": [
+          {
+            "field": "official_act_status",
+            "op": "in",
+            "value": [
+              "Apertura o formulación de cargos",
+              "Investigación en curso",
+              "Estado no confirmado"
+            ]
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "TR1-S11",
+        "TR1-S12"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "TR1-R13",
+      "risk": "yellow",
+      "message": "La multa fue pagada o el pago no está claro.",
+      "action": "No prometer devolución; identificar acto, causal, legitimación y procedimiento.",
+      "conditions": {
+        "all": [
+          {
+            "field": "paid",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "TR1-S2",
+        "TR1-S11"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "TR1-R14",
+      "risk": "yellow",
+      "message": "El conocimiento provino de consulta, cobro, embargo u otro canal distinto de una notificación recibida.",
+      "action": "Reconstruir dirección, envío, entrega y afectación material del derecho de defensa.",
+      "conditions": {
+        "all": [
+          {
+            "field": "notice_status",
+            "op": "not_equals",
+            "value": "Notificación recibida"
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "TR1-S1",
+        "TR1-S2"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "TR1-R15",
+      "risk": "yellow",
+      "message": "Los soportes son incompletos o inexistentes.",
+      "action": "Generar solicitud de expediente y preservar las consultas disponibles.",
+      "conditions": {
+        "all": [
+          {
+            "field": "evidence_available",
+            "op": "in",
+            "value": [
+              "Solo consulta o captura",
+              "Sin soportes verificables"
+            ]
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "TR1-S1",
+        "TR1-S2"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "TR1-R16",
+      "risk": "yellow",
+      "message": "Hay más de un comparendo relacionado.",
+      "action": "Separar hechos, dispositivos, fechas, actos y estado de cada expediente.",
+      "conditions": {
+        "all": [
+          {
+            "field": "case_count",
+            "op": "gt",
+            "value": 1
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "TR1-S2",
+        "TR1-S13"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "TR1-R17",
+      "risk": "yellow",
+      "message": "No se identificó número o fuente oficial de la actuación SAST declarada.",
+      "action": "Completar el acto, radicado y enlace oficial antes de sostener una coincidencia individual.",
+      "conditions": {
+        "all": [
+          {
+            "field": "official_2026_match",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "official_act_number",
+            "op": "missing"
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "TR1-S11",
+        "TR1-S12"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "TR1-R18",
+      "risk": "yellow",
+      "message": "La autorización no tiene fecha de expedición y vigencia comprobables.",
+      "action": "Obtener el acto íntegro y su período de vigencia.",
+      "conditions": {
+        "all": [
+          {
+            "field": "ansv_authorization",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "authorization_issue_date",
+            "op": "missing"
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "TR1-S1",
+        "TR1-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "TR1-R19",
+      "risk": "yellow",
+      "message": "El concepto de desempeño está ausente o no confirmado.",
+      "action": "Aplicar el control solo al período histórico pertinente y cotejar la tecnología exacta.",
+      "conditions": {
+        "all": [
+          {
+            "field": "performance_concept",
+            "op": "in",
+            "value": [
+              "No existe soporte",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "TR1-S5",
+        "TR1-S7",
+        "TR1-S11"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "TR1-R20",
+      "risk": "green",
+      "message": "El dispositivo exacto fue identificado.",
+      "action": "Conservar código, serial, ubicación y evidencia asociada.",
+      "conditions": {
+        "all": [
+          {
+            "field": "device_known",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "TR1-S5",
+        "TR1-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "TR1-R21",
+      "risk": "green",
+      "message": "Existe soporte declarado de autorización o excepción legal.",
+      "action": "Incorporar el acto y verificar punto, fecha y vigencia.",
+      "conditions": {
+        "all": [
+          {
+            "field": "ansv_authorization",
+            "op": "in",
+            "value": [
+              "Sí",
+              "Excepción legal identificada"
+            ]
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "TR1-S1",
+        "TR1-S4",
+        "TR1-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "TR1-R22",
+      "risk": "green",
+      "message": "La trazabilidad técnica fue declarada disponible.",
+      "action": "Incorporar certificado y correspondencia con el equipo.",
+      "conditions": {
+        "all": [
+          {
+            "field": "calibration_traceability",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No aplica a la conducta"
+            ]
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "TR1-S5",
+        "TR1-S7"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "TR1-R23",
+      "risk": "green",
+      "message": "La señalización fue declarada verificada o no aplicable.",
+      "action": "Conservar la evidencia temporal y la razón de no aplicación.",
+      "conditions": {
+        "all": [
+          {
+            "field": "signage_verified",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No aplica"
+            ]
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "TR1-S1",
+        "TR1-S4"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "TR1-R24",
+      "risk": "green",
+      "message": "El interesado autorizó seguimiento.",
+      "action": "Activar registro de alertas sin suspender términos ni sustituir vigilancia del expediente.",
+      "conditions": {
+        "all": [
+          {
+            "field": "consent_alerts",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "TR1-S11",
+        "TR1-S12"
+      ],
+      "blocking": false
+    }
+  ],
+  "CO-TR-002": [
+    {
+      "id": "TR2-R01",
+      "risk": "red",
+      "category": "exclusion",
+      "blocking": true,
+      "conditions": {
+        "all": [
+          {
+            "field": "electronic",
+            "op": "not_equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "message": "El producto solo aplica a detecciones automáticas, semiautomáticas u otros medios tecnológicos.",
+      "action": "Cambiar de producto o asignar revisión individual.",
+      "source_ids": [
+        "TR2-S3"
+      ]
+    },
+    {
+      "id": "TR2-R02",
+      "risk": "red",
+      "category": "exclusion",
+      "blocking": true,
+      "conditions": {
+        "all": [
+          {
+            "field": "coercive",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "message": "Existe cobro coactivo, mandamiento de pago o embargo.",
+      "action": "Detener la salida automática y revisar excepciones, términos y medidas.",
+      "source_ids": [
+        "TR2-S9"
+      ]
+    },
+    {
+      "id": "TR2-R03",
+      "risk": "red",
+      "category": "exclusion",
+      "blocking": true,
+      "conditions": {
+        "all": [
+          {
+            "field": "court",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "message": "Existe un proceso judicial activo.",
+      "action": "Asignar al abogado responsable y evitar actuaciones incompatibles.",
+      "source_ids": [
+        "TR2-S1",
+        "TR2-S9"
+      ]
+    },
+    {
+      "id": "TR2-R04",
+      "risk": "red",
+      "category": "exclusion",
+      "blocking": true,
+      "conditions": {
+        "all": [
+          {
+            "field": "paid",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "message": "La obligación ya fue pagada o el estado no está confirmado.",
+      "action": "No solicitar devolución ni anulación automática; verificar efectos del pago y actos vigentes.",
+      "source_ids": [
+        "TR2-S3",
+        "TR2-S9"
+      ]
+    },
+    {
+      "id": "TR2-R05",
+      "risk": "red",
+      "category": "exclusion",
+      "blocking": true,
+      "conditions": {
+        "all": [
+          {
+            "field": "deadline_urgent",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "message": "Existe un término próximo o su estado es incierto.",
+      "action": "Revisión inmediata por abogado responsable.",
+      "source_ids": [
+        "TR2-S3",
+        "TR2-S9"
+      ]
+    },
+    {
+      "id": "TR2-R06",
+      "risk": "red",
+      "category": "validation",
+      "blocking": true,
+      "conditions": {
+        "all": [
+          {
+            "field": "data_confirmed",
+            "op": "not_equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "message": "La información no fue confirmada.",
+      "action": "Completar y cotejar soportes antes de generar documentos de fondo.",
+      "source_ids": [
+        "TR2-S1"
+      ]
+    },
+    {
+      "id": "TR2-R07",
+      "risk": "red",
+      "category": "evidence",
+      "blocking": true,
+      "conditions": {
+        "all": [
+          {
+            "field": "document_integrity_issue",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "message": "Existen dudas de integridad o autenticidad documental.",
+      "action": "Preservar originales y escalar para validación probatoria.",
+      "source_ids": [
+        "TR2-S1",
+        "TR2-S10"
+      ]
+    },
+    {
+      "id": "TR2-R08",
+      "risk": "red",
+      "category": "exclusion",
+      "blocking": true,
+      "conditions": {
+        "all": [
+          {
+            "field": "special_vehicle_event",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "message": "Venta previa, hurto, suplantación, clonación o uso no autorizado exige una estrategia probatoria individual.",
+      "action": "Bloquear la reclamación automática y organizar prueba de titularidad y uso.",
+      "source_ids": [
+        "TR2-S1",
+        "TR2-S3"
+      ]
+    },
+    {
+      "id": "TR2-R09",
+      "risk": "yellow",
+      "category": "stage",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "resolution",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "message": "Existe o puede existir resolución sancionatoria; deben verificarse notificación, ejecutoria y recursos.",
+      "action": "Solicitar expediente y constancias completas antes de definir la actuación.",
+      "source_ids": [
+        "TR2-S3",
+        "TR2-S9"
+      ]
+    },
+    {
+      "id": "TR2-R10",
+      "risk": "yellow",
+      "category": "notice",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "notice_received",
+            "op": "in",
+            "value": [
+              "No",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "message": "No se acredita una notificación verificable.",
+      "action": "Reconstruir envíos, entrega, devolución, aviso y fecha de conocimiento efectivo.",
+      "source_ids": [
+        "TR2-S2",
+        "TR2-S3"
+      ]
+    },
+    {
+      "id": "TR2-R11",
+      "risk": "yellow",
+      "category": "notice",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "notice_address_match",
+            "op": "in",
+            "value": [
+              "No",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "message": "La dirección empleada no coincide o no está confirmada.",
+      "action": "Comparar histórico RUNT y dirección usada por la autoridad.",
+      "source_ids": [
+        "TR2-S2",
+        "TR2-S8"
+      ]
+    },
+    {
+      "id": "TR2-R12",
+      "risk": "yellow",
+      "category": "notice",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "notice_support",
+            "op": "in",
+            "value": [
+              "No",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "message": "No existe soporte suficiente de entrega, devolución o aviso.",
+      "action": "Solicitar guía, trazabilidad postal y constancias de notificación.",
+      "source_ids": [
+        "TR2-S2",
+        "TR2-S7"
+      ]
+    },
+    {
+      "id": "TR2-R13",
+      "risk": "yellow",
+      "category": "notice",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "owner_updated_runt",
+            "op": "in",
+            "value": [
+              "No",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "message": "Los datos RUNT no estaban actualizados o no se conoce su estado.",
+      "action": "Valorar deber de actualización sin sustituir la prueba de notificación.",
+      "source_ids": [
+        "TR2-S8"
+      ]
+    },
+    {
+      "id": "TR2-R14",
+      "risk": "yellow",
+      "category": "imputation",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "owner_was_driver",
+            "op": "in",
+            "value": [
+              "No",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "message": "El propietario no era el conductor o no se conoce quién conducía.",
+      "action": "Separar imputación personal del conductor y deberes propios del propietario.",
+      "source_ids": [
+        "TR2-S4",
+        "TR2-S5",
+        "TR2-S6"
+      ]
+    },
+    {
+      "id": "TR2-R15",
+      "risk": "yellow",
+      "category": "technical",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "sast_authorization",
+            "op": "in",
+            "value": [
+              "No",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "message": "No está acreditada la autorización del punto SAST para la fecha y ubicación.",
+      "action": "Solicitar acto de autorización, código, ubicación y vigencia exactos.",
+      "source_ids": [
+        "TR2-S3",
+        "TR2-S11"
+      ]
+    },
+    {
+      "id": "TR2-R16",
+      "risk": "yellow",
+      "category": "technical",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "calibration_traceability",
+            "op": "in",
+            "value": [
+              "No",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "message": "La calibración o trazabilidad metrológica no está acreditada.",
+      "action": "Solicitar certificados, laboratorio, vigencia y correspondencia con el equipo.",
+      "source_ids": [
+        "TR2-S3",
+        "TR2-S11",
+        "TR2-S12"
+      ]
+    },
+    {
+      "id": "TR2-R17",
+      "risk": "yellow",
+      "category": "technical",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "signage_verified",
+            "op": "in",
+            "value": [
+              "No",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "message": "La señalización preventiva no está acreditada.",
+      "action": "Solicitar inventario, ubicación y evidencia temporal de la señalización.",
+      "source_ids": [
+        "TR2-S3",
+        "TR2-S11"
+      ]
+    },
+    {
+      "id": "TR2-R18",
+      "risk": "yellow",
+      "category": "technical",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "performance_concept",
+            "op": "in",
+            "value": [
+              "No existe soporte",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "message": "La ausencia del concepto de desempeño solo puede analizarse para hechos entre el 22/03/2018 y el 19/08/2020.",
+      "action": "Verificar fecha, equipo y trámite; no alegar invalidez automática fuera de ese período.",
+      "source_ids": [
+        "TR2-S11",
+        "TR2-S12"
+      ]
+    },
+    {
+      "id": "TR2-R19",
+      "risk": "yellow",
+      "category": "official_review",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "official_2026_match",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "message": "Existe coincidencia posible con actuaciones o anuncios oficiales de 2026.",
+      "action": "Verificar autoridad, dispositivo, período y decisión administrativa individual; no asumir revocatoria masiva.",
+      "source_ids": [
+        "TR2-S12",
+        "TR2-S13"
+      ]
+    },
+    {
+      "id": "TR2-R20",
+      "risk": "yellow",
+      "category": "stage",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "hearing_held",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "message": "Hubo audiencia o no se conoce su realización.",
+      "action": "Solicitar audio, acta, citación, pruebas y decisión.",
+      "source_ids": [
+        "TR2-S1",
+        "TR2-S3"
+      ]
+    },
+    {
+      "id": "TR2-R21",
+      "risk": "yellow",
+      "category": "stage",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "prior_request",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "message": "Ya existe una petición, recurso o reclamación previa.",
+      "action": "Incorporar radicado, respuesta y efecto sobre términos antes de reiterar.",
+      "source_ids": [
+        "TR2-S7",
+        "TR2-S9"
+      ]
+    },
+    {
+      "id": "TR2-R22",
+      "risk": "green",
+      "category": "module",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "electronic",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "message": "Debe conformarse el expediente integral y preservarse la evidencia técnica.",
+      "action": "Generar solicitud integral de expediente.",
+      "source_ids": [
+        "TR2-S2",
+        "TR2-S3"
+      ]
+    },
+    {
+      "id": "TR2-R23",
+      "risk": "green",
+      "category": "module",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "notice_received",
+            "op": "in",
+            "value": [
+              "No",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "message": "La falta o incertidumbre de notificación activa la reclamación de debido proceso.",
+      "action": "Generar reclamación por notificación.",
+      "source_ids": [
+        "TR2-S1",
+        "TR2-S2"
+      ]
+    },
+    {
+      "id": "TR2-R24",
+      "risk": "green",
+      "category": "module",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "coercive",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "message": "La etapa sin cobro coactivo permite solicitar audiencia y contradicción condicionada.",
+      "action": "Generar solicitud de audiencia y pruebas.",
+      "source_ids": [
+        "TR2-S1",
+        "TR2-S3"
+      ]
+    },
+    {
+      "id": "TR2-R25",
+      "risk": "green",
+      "category": "module",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "requested_outcome",
+            "op": "equals",
+            "value": "Corrección SIMIT/RUNT"
+          }
+        ]
+      },
+      "message": "La inconsistencia registral puede requerir corrección en sistemas.",
+      "action": "Generar solicitud condicionada de actualización SIMIT/RUNT.",
+      "source_ids": [
+        "TR2-S7",
+        "TR2-S8"
+      ]
+    },
+    {
+      "id": "TR2-R26",
+      "risk": "green",
+      "category": "module",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "electronic",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "message": "La revisión técnica requiere una matriz de autorización, equipo, calibración y señalización.",
+      "action": "Generar matriz técnica SAST.",
+      "source_ids": [
+        "TR2-S3",
+        "TR2-S11",
+        "TR2-S12"
+      ]
+    }
+  ],
+  "CO-LA-001": [
+    {
+      "id": "LA1-R1",
+      "risk": "red",
+      "message": "El motor madurado solo cubre relaciones laborales privadas regidas por el derecho colombiano.",
+      "action": "Clasificar jurisdicción y régimen antes de calcular.",
+      "conditions": {
+        "all": [
+          {
+            "field": "private_relation",
+            "op": "not_equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA1-S1",
+        "LA1-S5"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA1-R2",
+      "risk": "red",
+      "message": "Existe o podría existir estabilidad laboral reforzada o fuero.",
+      "action": "Asignar revisión laboral antes de liquidar terminación o indemnización.",
+      "conditions": {
+        "all": [
+          {
+            "field": "special_protection",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA1-S1",
+        "LA1-S5"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA1-R3",
+      "risk": "red",
+      "message": "El vínculo puede pertenecer al sector público.",
+      "action": "Aplicar régimen de empleo público o trabajadores oficiales; no usar este cálculo privado.",
+      "conditions": {
+        "all": [
+          {
+            "field": "public_sector",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA1-S1"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA1-R4",
+      "risk": "red",
+      "message": "Existe litigio, conciliación o transacción activa.",
+      "action": "Evitar duplicar pretensiones y revisar expediente, prescripción y alcance de acuerdos.",
+      "conditions": {
+        "all": [
+          {
+            "field": "active_litigation",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA1-S1",
+        "LA1-S9"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA1-R5",
+      "risk": "red",
+      "message": "El caso puede exigir declarar un contrato realidad.",
+      "action": "Separar la controversia sobre existencia del vínculo del cálculo aritmético.",
+      "conditions": {
+        "all": [
+          {
+            "field": "contract_reality",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA1-S1",
+        "LA1-S5"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA1-R6",
+      "risk": "red",
+      "message": "Puede existir régimen colectivo o extralegal aplicable.",
+      "action": "Incorporar convención, pacto, laudo o beneficios extralegales antes de calcular.",
+      "conditions": {
+        "all": [
+          {
+            "field": "collective_regime",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA1-S1"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA1-R7",
+      "risk": "red",
+      "message": "El salario integral requiere un tratamiento prestacional diferente.",
+      "action": "Revisar pacto, cuantía mínima, factor prestacional y conceptos excluidos.",
+      "conditions": {
+        "all": [
+          {
+            "field": "integral_salary",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA1-S1",
+        "LA1-S5"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA1-R8",
+      "risk": "red",
+      "message": "El salario variable no tiene soportes suficientes para fijar el promedio.",
+      "action": "Reconstruir nómina, comisiones, recargos y bases antes de emitir un total.",
+      "conditions": {
+        "all": [
+          {
+            "field": "variable_salary",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "variable_salary_supports",
+            "op": "not_equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA1-S1"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA1-R9",
+      "risk": "red",
+      "message": "Los períodos pendientes no fueron confirmados.",
+      "action": "Contrastar pagos, consignaciones y cortes por concepto.",
+      "conditions": {
+        "all": [
+          {
+            "field": "periods_confirmed",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "validation",
+      "source_ids": [
+        "LA1-S1",
+        "LA1-S2",
+        "LA1-S3"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA1-R10",
+      "risk": "red",
+      "message": "Los datos no fueron confirmados contra hechos o soportes.",
+      "action": "Bloquear la salida final hasta confirmación.",
+      "conditions": {
+        "all": [
+          {
+            "field": "data_confirmed",
+            "op": "not_equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "validation",
+      "source_ids": [
+        "LA1-S1"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA1-R11",
+      "risk": "yellow",
+      "message": "Los soportes salariales o contractuales están incompletos.",
+      "action": "Generar resultado provisional, identificar supuestos y solicitar faltantes.",
+      "conditions": {
+        "all": [
+          {
+            "field": "salary_supports",
+            "op": "in",
+            "value": [
+              "Parcial",
+              "No"
+            ]
+          }
+        ]
+      },
+      "category": "evidence",
+      "source_ids": [
+        "LA1-S1"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA1-R12",
+      "risk": "yellow",
+      "message": "Los períodos solo fueron confirmados parcialmente.",
+      "action": "Mostrar cada fecha de corte y evitar afirmar que el total es definitivo.",
+      "conditions": {
+        "all": [
+          {
+            "field": "periods_confirmed",
+            "op": "equals",
+            "value": "Parcial"
+          }
+        ]
+      },
+      "category": "evidence",
+      "source_ids": [
+        "LA1-S1",
+        "LA1-S2",
+        "LA1-S3"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA1-R13",
+      "risk": "yellow",
+      "message": "No está confirmado el derecho al auxilio de transporte.",
+      "action": "No aplicarlo automáticamente y solicitar nómina o prueba del desplazamiento.",
+      "conditions": {
+        "all": [
+          {
+            "field": "transport_aid",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "category": "parameter",
+      "source_ids": [
+        "LA1-S7"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA1-R14",
+      "risk": "yellow",
+      "message": "Existen descuentos discutidos o no documentados.",
+      "action": "No descontarlos del total y exigir autorización o fundamento legal.",
+      "conditions": {
+        "all": [
+          {
+            "field": "disputed_deductions",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "deduction",
+      "source_ids": [
+        "LA1-S1"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA1-R15",
+      "risk": "yellow",
+      "message": "La terminación sin justa causa activa una indemnización estimativa.",
+      "action": "Verificar modalidad, fecha, salario base y comunicación de terminación.",
+      "conditions": {
+        "all": [
+          {
+            "field": "termination",
+            "op": "equals",
+            "value": "Sin justa causa"
+          }
+        ]
+      },
+      "category": "indemnity",
+      "source_ids": [
+        "LA1-S1",
+        "LA1-S4"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA1-R16",
+      "risk": "yellow",
+      "message": "El salario variable exige reconstrucción de promedio y período.",
+      "action": "Conservar soportes y metodología del promedio utilizado.",
+      "conditions": {
+        "all": [
+          {
+            "field": "variable_salary",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "variable_salary_supports",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "calculation",
+      "source_ids": [
+        "LA1-S1"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA1-R17",
+      "risk": "red",
+      "message": "Falta la fecha final pactada para estimar la indemnización del contrato a término fijo.",
+      "action": "Completar el contrato o bloquear la indemnización automática.",
+      "conditions": {
+        "all": [
+          {
+            "field": "termination",
+            "op": "equals",
+            "value": "Sin justa causa"
+          },
+          {
+            "field": "contract_type",
+            "op": "equals",
+            "value": "Término fijo"
+          },
+          {
+            "field": "fixed_term_end",
+            "op": "missing",
+            "value": null
+          }
+        ]
+      },
+      "category": "validation",
+      "source_ids": [
+        "LA1-S1",
+        "LA1-S4"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA1-R18",
+      "risk": "red",
+      "message": "Falta estimar la duración restante de la obra o labor.",
+      "action": "Acreditar el hito o tiempo restante antes de calcular indemnización.",
+      "conditions": {
+        "all": [
+          {
+            "field": "termination",
+            "op": "equals",
+            "value": "Sin justa causa"
+          },
+          {
+            "field": "contract_type",
+            "op": "equals",
+            "value": "Obra o labor"
+          },
+          {
+            "field": "work_remaining_days",
+            "op": "missing",
+            "value": null
+          }
+        ]
+      },
+      "category": "validation",
+      "source_ids": [
+        "LA1-S1",
+        "LA1-S4"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA1-R19",
+      "risk": "yellow",
+      "message": "La modalidad contractual no está suficientemente determinada.",
+      "action": "Revisar contrato, necesidad real y ejecución antes de calcular indemnización.",
+      "conditions": {
+        "all": [
+          {
+            "field": "contract_type",
+            "op": "equals",
+            "value": "Verbal / no sé"
+          }
+        ]
+      },
+      "category": "classification",
+      "source_ids": [
+        "LA1-S1",
+        "LA1-S5"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA1-R20",
+      "risk": "green",
+      "message": "Se solicitó propuesta de acuerdo de pago y cierre.",
+      "action": "Activar documento condicional sin incorporar renuncias generales.",
+      "conditions": {
+        "all": [
+          {
+            "field": "generate_settlement",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "LA1-S1",
+        "LA1-S8"
+      ],
+      "blocking": false
+    }
+  ],
+  "CO-LA-002": [
+    {
+      "id": "LA2-R01",
+      "risk": "red",
+      "message": "El producto estándar no cubre servidores públicos, trabajadores oficiales, expatriación ni ejecución principal fuera de Colombia.",
+      "action": "Escalar a análisis especializado.",
+      "conditions": {
+        "all": [
+          {
+            "field": "public_or_crossborder",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA2-S1"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA2-R02",
+      "risk": "red",
+      "message": "La contratación de menores de edad requiere autorización y límites especiales.",
+      "action": "No generar contrato estándar.",
+      "conditions": {
+        "all": [
+          {
+            "field": "worker_age_status",
+            "op": "in",
+            "value": [
+              "Menor de edad",
+              "No confirmado"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA2-S2"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA2-R03",
+      "risk": "yellow",
+      "message": "Existe convención, pacto, laudo o régimen colectivo que puede modificar condiciones mínimas.",
+      "action": "Cotejar el texto colectivo antes de cerrar el contrato.",
+      "conditions": {
+        "all": [
+          {
+            "field": "collective_regime",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "LA2-S1"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R04",
+      "risk": "red",
+      "message": "Las funciones no están suficientemente definidas.",
+      "action": "Completar el anexo de cargo y responsabilidades.",
+      "conditions": {
+        "all": [
+          {
+            "field": "role_clear",
+            "op": "in",
+            "value": [
+              "No",
+              "En construcción"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA2-S1"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA2-R05",
+      "risk": "yellow",
+      "message": "La obra o labor exige descripción precisa y un hito verificable de finalización.",
+      "action": "Activar control reforzado de objeto y terminación.",
+      "conditions": {
+        "all": [
+          {
+            "field": "need_type",
+            "op": "equals",
+            "value": "Obra o labor específica"
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "LA2-S2"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R06",
+      "risk": "yellow",
+      "message": "El contrato a término fijo debe constar por escrito y respetar el máximo acumulado de cuatro años.",
+      "action": "Verificar fechas, prórrogas y preaviso.",
+      "conditions": {
+        "all": [
+          {
+            "field": "need_type",
+            "op": "equals",
+            "value": "Temporal con fecha cierta"
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "LA2-S2"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R07",
+      "risk": "yellow",
+      "message": "La forma no presencial activa obligaciones específicas de ARL, SG-SST, equipos, desconexión y privacidad.",
+      "action": "Generar anexo de modalidad no presencial.",
+      "conditions": {
+        "all": [
+          {
+            "field": "remote",
+            "op": "not_equals",
+            "value": "Presencial"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "LA2-S6",
+        "LA2-S7",
+        "LA2-S8",
+        "LA2-S9"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R08",
+      "risk": "red",
+      "message": "La jornada ordinaria supera 42 horas semanales.",
+      "action": "Ajustar la jornada o documentar un régimen legal especial fuera del producto.",
+      "conditions": {
+        "all": [
+          {
+            "field": "weekly_hours",
+            "op": "gt",
+            "value": 42
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA2-S2",
+        "LA2-S3"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA2-R09",
+      "risk": "red",
+      "message": "La jornada ordinaria diaria propuesta supera nueve horas.",
+      "action": "Reprogramar la distribución diaria.",
+      "conditions": {
+        "all": [
+          {
+            "field": "max_daily_hours",
+            "op": "gt",
+            "value": 9
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA2-S2"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA2-R10",
+      "risk": "red",
+      "message": "Las horas extra previstas exceden dos horas diarias.",
+      "action": "Ajustar la planeación de trabajo suplementario.",
+      "conditions": {
+        "all": [
+          {
+            "field": "planned_overtime_daily",
+            "op": "gt",
+            "value": 2
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA2-S2"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA2-R11",
+      "risk": "red",
+      "message": "Las horas extra previstas exceden doce horas semanales.",
+      "action": "Ajustar la planeación de trabajo suplementario.",
+      "conditions": {
+        "all": [
+          {
+            "field": "planned_overtime_weekly",
+            "op": "gt",
+            "value": 12
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA2-S2"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA2-R12",
+      "risk": "yellow",
+      "message": "El horario incluye jornada nocturna desde las 7:00 p. m.",
+      "action": "Aplicar recargo nocturno y reflejarlo en programación y nómina.",
+      "conditions": {
+        "all": [
+          {
+            "field": "night_work",
+            "op": "in",
+            "value": [
+              "Sí",
+              "Ocasional"
+            ]
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "LA2-S2"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R13",
+      "risk": "yellow",
+      "message": "Se pactará período de prueba y debe respetar límites generales y proporcionales.",
+      "action": "Validar duración antes de generar.",
+      "conditions": {
+        "all": [
+          {
+            "field": "probation",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "LA2-S1"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R14",
+      "risk": "yellow",
+      "message": "Los pagos variables requieren fórmula, causación, período de medición y reglas de pago.",
+      "action": "Generar anexo de compensación variable.",
+      "conditions": {
+        "all": [
+          {
+            "field": "variable_payments",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "LA2-S1"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R15",
+      "risk": "red",
+      "message": "No se admiten autorizaciones generales o automáticas de descuentos por daños, pérdidas o faltantes.",
+      "action": "Eliminar la autorización general y usar debido proceso y soporte individual.",
+      "conditions": {
+        "all": [
+          {
+            "field": "automatic_deductions",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA2-S1"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA2-R16",
+      "risk": "red",
+      "message": "No está asegurado el proceso de afiliación y aportes al sistema de seguridad social.",
+      "action": "Definir y confirmar afiliaciones antes del inicio.",
+      "conditions": {
+        "all": [
+          {
+            "field": "social_security_plan_confirmed",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA2-S1"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA2-R17",
+      "risk": "yellow",
+      "message": "La afiliación y aportes aún están en proceso.",
+      "action": "Mantener tarea obligatoria previa al inicio.",
+      "conditions": {
+        "all": [
+          {
+            "field": "social_security_plan_confirmed",
+            "op": "equals",
+            "value": "En proceso"
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "LA2-S1"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R18",
+      "risk": "yellow",
+      "message": "La evaluación médica ocupacional de ingreso no está confirmada.",
+      "action": "Programar y documentar el examen ocupacional.",
+      "conditions": {
+        "all": [
+          {
+            "field": "occupational_exam_ready",
+            "op": "in",
+            "value": [
+              "No",
+              "En proceso"
+            ]
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "LA2-S6"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R19",
+      "risk": "yellow",
+      "message": "La protección especial no impide contratar; exige no discriminación y ajustes razonables.",
+      "action": "Documentar evaluación y medidas de inclusión.",
+      "conditions": {
+        "all": [
+          {
+            "field": "special_protection",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "LA2-S1",
+        "LA2-S2"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R20",
+      "risk": "red",
+      "message": "La decisión contractual no puede basarse negativamente en embarazo, discapacidad, salud, fuero u otra condición protegida.",
+      "action": "Detener el flujo y escalar a revisión jurídica.",
+      "conditions": {
+        "all": [
+          {
+            "field": "protected_status_decision",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA2-S1",
+        "LA2-S2"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA2-R21",
+      "risk": "yellow",
+      "message": "La entrega de equipos y credenciales requiere inventario, seguridad y restitución.",
+      "action": "Generar acta de equipos y accesos.",
+      "conditions": {
+        "all": [
+          {
+            "field": "work_equipment",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "LA2-S6"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R22",
+      "risk": "yellow",
+      "message": "El tratamiento de datos sensibles, biométricos o monitoreo exige finalidad, necesidad y controles separados.",
+      "action": "Generar anexo de datos y privacidad laboral.",
+      "conditions": {
+        "all": [
+          {
+            "field": "personal_data",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "LA2-S10"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R23",
+      "risk": "yellow",
+      "message": "La creación de activos intelectuales requiere entregables determinables, materiales previos y reglas de derechos.",
+      "action": "Generar anexo de propiedad intelectual.",
+      "conditions": {
+        "all": [
+          {
+            "field": "ip_relevant",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "LA2-S11"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R24",
+      "risk": "yellow",
+      "message": "El acceso a secretos empresariales requiere clasificación, acceso mínimo y protocolo de devolución.",
+      "action": "Generar anexo de confidencialidad.",
+      "conditions": {
+        "all": [
+          {
+            "field": "confidential_information",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "LA2-S10",
+        "LA2-S11"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R25",
+      "risk": "yellow",
+      "message": "La exclusividad debe ser necesaria, proporcional y compatible con la libertad de trabajo.",
+      "action": "Revisar alcance y eliminar restricciones generales.",
+      "conditions": {
+        "all": [
+          {
+            "field": "exclusivity_clause",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "LA2-S1"
+      ],
+      "blocking": false
+    }
+  ],
+  "CO-EM-003": [
+    {
+      "id": "EM3-R1",
+      "risk": "red",
+      "category": "scope",
+      "blocking": true,
+      "conditions": {
+        "all": [
+          {
+            "field": "state_entity",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "message": "El contrato involucra una entidad estatal.",
+      "action": "Detener el formato privado estándar y remitir a contratación estatal.",
+      "source_ids": [
+        "EM3-S1"
+      ]
+    },
+    {
+      "id": "EM3-R2",
+      "risk": "red",
+      "category": "scope",
+      "blocking": true,
+      "conditions": {
+        "all": [
+          {
+            "field": "regulated_service",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "message": "El servicio está sujeto a un régimen sectorial o profesional especial.",
+      "action": "Usar un producto especializado y validar licencias, responsabilidades y cláusulas obligatorias.",
+      "source_ids": [
+        "EM3-S1"
+      ]
+    },
+    {
+      "id": "EM3-R3",
+      "risk": "yellow",
+      "category": "quality",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "object_clear",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "message": "El alcance todavía no es suficientemente verificable.",
+      "action": "Generar con advertencia y completar objeto, entregables y criterios de aceptación antes de firma.",
+      "source_ids": [
+        "EM3-S1"
+      ]
+    },
+    {
+      "id": "EM3-R4",
+      "risk": "red",
+      "category": "labor_risk",
+      "blocking": true,
+      "conditions": {
+        "all": [
+          {
+            "field": "fixed_schedule",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "message": "Se informó horario fijo con control de asistencia.",
+      "action": "Bloquear la versión definitiva y revisar la posible naturaleza laboral del vínculo.",
+      "source_ids": [
+        "EM3-S2"
+      ]
+    },
+    {
+      "id": "EM3-R5",
+      "risk": "red",
+      "category": "labor_risk",
+      "blocking": true,
+      "conditions": {
+        "all": [
+          {
+            "field": "permanent_orders",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "message": "Se informaron órdenes permanentes sobre la forma diaria de trabajar.",
+      "action": "Bloquear la versión definitiva y revisar subordinación material.",
+      "source_ids": [
+        "EM3-S2"
+      ]
+    },
+    {
+      "id": "EM3-R6",
+      "risk": "red",
+      "category": "labor_risk",
+      "blocking": true,
+      "conditions": {
+        "all": [
+          {
+            "field": "disciplinary_control",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "message": "Se informó control disciplinario o sanciones internas.",
+      "action": "Bloquear el contrato de servicios y revisar el instrumento laboral aplicable.",
+      "source_ids": [
+        "EM3-S2"
+      ]
+    },
+    {
+      "id": "EM3-R7",
+      "risk": "yellow",
+      "category": "labor_risk",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "continuous_availability",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "message": "La disponibilidad continua puede reducir la autonomía.",
+      "action": "Delimitar ventanas de atención, niveles de servicio y tiempos de respuesta; revisión profesional opcional.",
+      "source_ids": [
+        "EM3-S2"
+      ]
+    },
+    {
+      "id": "EM3-R8",
+      "risk": "yellow",
+      "category": "labor_risk",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "exclusive",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "message": "La exclusividad total requiere delimitación y justificación.",
+      "action": "Definir alcance, plazo, actividades exceptuadas y contraprestación; revisión profesional recomendada.",
+      "source_ids": [
+        "EM3-S2"
+      ]
+    },
+    {
+      "id": "EM3-R9",
+      "risk": "green",
+      "category": "module",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "personal_data",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "message": "Se activará el anexo de tratamiento de datos personales.",
+      "action": "Incluir instrucciones, seguridad, incidentes, confidencialidad, devolución y eliminación.",
+      "source_ids": [
+        "EM3-S3"
+      ]
+    },
+    {
+      "id": "EM3-R10",
+      "risk": "green",
+      "category": "module",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "ip_relevant",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "message": "Se activará el anexo de propiedad intelectual.",
+      "action": "Distinguir materiales preexistentes, resultados, cesión o licencia y usos autorizados.",
+      "source_ids": [
+        "EM3-S5"
+      ]
+    },
+    {
+      "id": "EM3-R11",
+      "risk": "yellow",
+      "category": "third_parties",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "subcontractors",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "message": "El servicio podrá involucrar subcontratistas.",
+      "action": "Exigir autorización, responsabilidad del contratista y obligaciones equivalentes de confidencialidad, datos y propiedad intelectual.",
+      "source_ids": [
+        "EM3-S1",
+        "EM3-S3"
+      ]
+    },
+    {
+      "id": "EM3-R12",
+      "risk": "green",
+      "category": "module",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "early_termination",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "message": "Se activará el módulo de terminación anticipada y cierre.",
+      "action": "Regular pago proporcional, entregables parciales, devolución de activos y obligaciones sobrevivientes.",
+      "source_ids": [
+        "EM3-S1"
+      ]
+    },
+    {
+      "id": "EM3-R13",
+      "risk": "yellow",
+      "category": "value",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "fees",
+            "op": "gte",
+            "value": 100000000
+          }
+        ]
+      },
+      "message": "La cuantía elevada aumenta la exposición contractual.",
+      "action": "Generar el paquete con advertencia y recomendar revisión de responsabilidad, garantías, seguros y solución de controversias.",
+      "source_ids": [
+        "EM3-S1"
+      ]
+    },
+    {
+      "id": "EM3-R14",
+      "risk": "green",
+      "category": "module",
+      "blocking": false,
+      "conditions": {
+        "all": [
+          {
+            "field": "confidentiality",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "message": "Se activará el acuerdo específico de confidencialidad.",
+      "action": "Definir información protegida, usos permitidos, exclusiones, seguridad, devolución y duración.",
+      "source_ids": [
+        "EM3-S1"
+      ]
+    }
+  ],
+  "CO-EM-004": [
+    {
+      "id": "EM4-R1",
+      "risk": "yellow",
+      "message": "La información protegida no está delimitada por categorías verificables.",
+      "action": "Completar inventario, exclusiones, custodios y soportes.",
+      "conditions": {
+        "all": [
+          {
+            "field": "info_defined",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "EM4-S1",
+        "EM4-S6",
+        "EM4-S7"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "EM4-R2",
+      "risk": "yellow",
+      "message": "La transferencia internacional o nube externa requiere análisis de roles, países y garantías.",
+      "action": "Activar anexo de datos y revisión profesional recomendada.",
+      "conditions": {
+        "all": [
+          {
+            "field": "crossborder",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "EM4-S2",
+        "EM4-S7"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "EM4-R3",
+      "risk": "red",
+      "message": "No debe imponerse una prohibición general de trabajar después de terminar.",
+      "action": "Eliminar o rediseñar la restricción con alcance legítimo y proporcional.",
+      "conditions": {
+        "all": [
+          {
+            "field": "noncompete",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "EM4-S6",
+        "EM4-S7"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "EM4-R4",
+      "risk": "red",
+      "message": "Los derechos morales no se transfieren ni renuncian por cláusula general.",
+      "action": "Corregir la cláusula y separar derechos morales de derechos patrimoniales.",
+      "conditions": {
+        "all": [
+          {
+            "field": "moral_rights",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "EM4-S3",
+        "EM4-S4",
+        "EM4-S5"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "EM4-R5",
+      "risk": "yellow",
+      "message": "El tratamiento de datos personales requiere finalidades, roles, medidas y ciclo de vida propios.",
+      "action": "Activar anexo de protección de datos.",
+      "conditions": {
+        "all": [
+          {
+            "field": "personal_data",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "EM4-S2",
+        "EM4-S7"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "EM4-R6",
+      "risk": "yellow",
+      "message": "La duración propuesta supera cinco años.",
+      "action": "Justificar proporcionalidad y diferenciar información ordinaria de secreto empresarial.",
+      "conditions": {
+        "all": [
+          {
+            "field": "duration_years",
+            "op": "gt",
+            "value": 5
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "EM4-S1",
+        "EM4-S6",
+        "EM4-S7"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "EM4-R7",
+      "risk": "green",
+      "message": "Se confirmó la necesidad de protocolo de incidentes y cierre.",
+      "action": "Incorporar protocolo operativo, responsables, evidencia y acta de cierre.",
+      "conditions": {
+        "all": [
+          {
+            "field": "incident_protocol",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "EM4-S2",
+        "EM4-S7"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "EM4-R8",
+      "risk": "red",
+      "message": "Los datos sensibles, biométricos o de salud requieren evaluación especializada previa.",
+      "action": "Bloquear autoservicio y validar base jurídica, necesidad, seguridad y autorizaciones.",
+      "conditions": {
+        "all": [
+          {
+            "field": "sensitive_data",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "EM4-S2"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "EM4-R9",
+      "risk": "red",
+      "message": "No debe cargarse información confidencial en herramientas públicas o no autorizadas de IA.",
+      "action": "Bloquear la generación y definir herramientas aprobadas, anonimización y controles.",
+      "conditions": {
+        "all": [
+          {
+            "field": "ai_tools",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "EM4-S1",
+        "EM4-S2",
+        "EM4-S6",
+        "EM4-S7"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "EM4-R10",
+      "risk": "green",
+      "message": "Se confirmaron secretos empresariales o know-how crítico.",
+      "action": "Activar inventario, clasificación, acceso restringido y medidas razonables de reserva.",
+      "conditions": {
+        "all": [
+          {
+            "field": "trade_secrets",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "EM4-S1",
+        "EM4-S6"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "EM4-R11",
+      "risk": "yellow",
+      "message": "No está confirmado si la información reúne condiciones de secreto empresarial.",
+      "action": "Realizar clasificación y evidencia de medidas razonables de protección.",
+      "conditions": {
+        "all": [
+          {
+            "field": "trade_secrets",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "EM4-S1",
+        "EM4-S6"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "EM4-R12",
+      "risk": "green",
+      "message": "Existen materiales o activos preexistentes.",
+      "action": "Activar inventario de antecedentes, titularidad y licencias de uso.",
+      "conditions": {
+        "all": [
+          {
+            "field": "preexisting_materials",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "EM4-S3",
+        "EM4-S4",
+        "EM4-S5",
+        "EM4-S7"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "EM4-R13",
+      "risk": "yellow",
+      "message": "No se ha determinado si existen materiales preexistentes.",
+      "action": "Completar inventario antes de pactar licencias o cesiones.",
+      "conditions": {
+        "all": [
+          {
+            "field": "preexisting_materials",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "EM4-S3",
+        "EM4-S4",
+        "EM4-S5"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "EM4-R14",
+      "risk": "yellow",
+      "message": "El uso de software abierto o componentes de terceros exige inventario y compatibilidad de licencias.",
+      "action": "Activar anexo de OSS y registrar componentes, licencias y obligaciones.",
+      "conditions": {
+        "all": [
+          {
+            "field": "oss_components",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "EM4-S3",
+        "EM4-S4",
+        "EM4-S5",
+        "EM4-S7"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "EM4-R15",
+      "risk": "red",
+      "message": "No procede una cesión general de obras o resultados futuros aún indeterminados.",
+      "action": "Bloquear autoservicio y delimitar resultados, modalidades, territorio, plazo y contraprestación.",
+      "conditions": {
+        "all": [
+          {
+            "field": "future_ip_assignment",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "EM4-S3",
+        "EM4-S4",
+        "EM4-S5"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "EM4-R16",
+      "risk": "green",
+      "message": "La relación requiere un anexo especializado.",
+      "action": "Seleccionar el anexo comercial, laboral, software o contenidos correspondiente.",
+      "conditions": {
+        "all": [
+          {
+            "field": "relationship_context",
+            "op": "in",
+            "value": [
+              "Comercial/proveedor",
+              "Laboral/colaborador",
+              "Software/tecnología",
+              "Contenidos/creativo"
+            ]
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "EM4-S7"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "EM4-R17",
+      "risk": "green",
+      "message": "Existen destinatarios autorizados identificados.",
+      "action": "Incorporar matriz de acceso, necesidad de conocer y responsabilidad por terceros.",
+      "conditions": {
+        "all": [
+          {
+            "field": "authorized_recipients",
+            "op": "not_missing",
+            "value": null
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "EM4-S1",
+        "EM4-S2",
+        "EM4-S7"
+      ],
+      "blocking": false
+    }
+  ],
+  "CO-AR-001": [
+    {
+      "id": "AR-R01",
+      "risk": "red",
+      "message": "El producto solo cubre vivienda urbana ordinaria.",
+      "action": "Seleccionar un producto especial para uso comercial, rural, turístico o de otra naturaleza.",
+      "conditions": {
+        "all": [
+          {
+            "field": "urban_home",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "AR-S1"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "AR-R02",
+      "risk": "red",
+      "message": "No está acreditada la facultad para entregar el inmueble en arrendamiento.",
+      "action": "Verificar propiedad, mandato, administración o autorización antes de generar.",
+      "conditions": {
+        "all": [
+          {
+            "field": "authority",
+            "op": "in",
+            "value": [
+              "No",
+              "Pendiente"
+            ]
+          }
+        ]
+      },
+      "category": "authority",
+      "source_ids": [
+        "AR-S1",
+        "AR-S3"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "AR-R03",
+      "risk": "red",
+      "message": "Existe controversia de tenencia o proceso activo.",
+      "action": "Escalar el expediente; no generar contrato ordinario como solución del conflicto.",
+      "conditions": {
+        "all": [
+          {
+            "field": "active_dispute",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "litigation",
+      "source_ids": [
+        "AR-S4"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "AR-R04",
+      "risk": "red",
+      "message": "El depósito en dinero o caución real a favor del arrendador está prohibido para garantizar obligaciones residenciales.",
+      "action": "Eliminar la exigencia y utilizar garantías personales, póliza o el régimen específico de servicios cuando proceda.",
+      "conditions": {
+        "all": [
+          {
+            "field": "cash_deposit",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "guarantee",
+      "source_ids": [
+        "AR-S1"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "AR-R05",
+      "risk": "red",
+      "message": "El inmueble presenta una condición grave de seguridad, sanidad o servicios esenciales.",
+      "action": "Bloquear la entrega hasta documentar y cerrar un plan de corrección seguro.",
+      "conditions": {
+        "all": [
+          {
+            "field": "unsafe",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "habitability",
+      "source_ids": [
+        "AR-S1",
+        "AR-S3"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "AR-R06",
+      "risk": "red",
+      "message": "La destinación turística, por plataforma o el subarriendo excede el producto estándar.",
+      "action": "Utilizar producto especial y verificar propiedad horizontal, uso del suelo y autorizaciones.",
+      "conditions": {
+        "all": [
+          {
+            "field": "tourism_sublease",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "use",
+      "source_ids": [
+        "AR-S1",
+        "AR-S2"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "AR-R07",
+      "risk": "red",
+      "message": "Los datos y soportes no fueron confirmados.",
+      "action": "Completar la revisión de identidad, inmueble, canon y anexos.",
+      "conditions": {
+        "all": [
+          {
+            "field": "data_confirmed",
+            "op": "not_equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "confirmation",
+      "source_ids": [
+        "AR-S8"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "AR-R08",
+      "risk": "yellow",
+      "message": "No se conoce el valor comercial necesario para validar el límite legal del canon.",
+      "action": "Incorporar avalúo o soporte comercial antes de firma.",
+      "conditions": {
+        "all": [
+          {
+            "field": "commercial_value_known",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "rent",
+      "source_ids": [
+        "AR-S1"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "AR-R09",
+      "risk": "yellow",
+      "message": "Propiedad horizontal detectada.",
+      "action": "Entregar la parte normativa del reglamento y definir expensas, multas y bienes comunes.",
+      "conditions": {
+        "all": [
+          {
+            "field": "ph",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "AR-S1",
+        "AR-S2"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "AR-R10",
+      "risk": "red",
+      "message": "No se prevé entregar la parte normativa del reglamento de propiedad horizontal.",
+      "action": "Adjuntar el reglamento aplicable antes de la entrega.",
+      "conditions": {
+        "all": [
+          {
+            "field": "ph",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "ph_rules_delivered",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "property_horizontal",
+      "source_ids": [
+        "AR-S1",
+        "AR-S2"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "AR-R11",
+      "risk": "yellow",
+      "message": "El inmueble amoblado o con bienes relevantes requiere inventario ampliado.",
+      "action": "Activar seriales, fotografías, estado funcional y valores de referencia.",
+      "conditions": {
+        "all": [
+          {
+            "field": "furnished_high_value",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "inventory",
+      "source_ids": [
+        "AR-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "AR-R12",
+      "risk": "green",
+      "message": "Garantía personal o póliza seleccionada.",
+      "action": "Activar módulo de garantía, notificaciones y tratamiento de datos del garante.",
+      "conditions": {
+        "all": [
+          {
+            "field": "co_debtor",
+            "op": "not_equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "AR-S1",
+        "AR-S7"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "AR-R13",
+      "risk": "yellow",
+      "message": "Se propone una terminación atípica o vinculada a venta próxima.",
+      "action": "Revisar causal, preaviso, indemnización y mecanismo de entrega.",
+      "conditions": {
+        "all": [
+          {
+            "field": "special_termination",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "termination",
+      "source_ids": [
+        "AR-S1",
+        "AR-S3"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "AR-R14",
+      "risk": "green",
+      "message": "La presencia de mascotas debe regularse de manera razonable y compatible con propiedad horizontal.",
+      "action": "Activar inventario, convivencia y responsabilidad por daños probados.",
+      "conditions": {
+        "all": [
+          {
+            "field": "pets",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "AR-S2"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "AR-R15",
+      "risk": "yellow",
+      "message": "La distribución especial de servicios públicos requiere detalle verificable.",
+      "action": "Describir medidores, fórmulas, responsables, facturación y soportes.",
+      "conditions": {
+        "all": [
+          {
+            "field": "utilities_responsible",
+            "op": "equals",
+            "value": "Distribución especial"
+          }
+        ]
+      },
+      "category": "services",
+      "source_ids": [
+        "AR-S1"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "AR-R16",
+      "risk": "yellow",
+      "message": "La modalidad compartida o de pensión exige controles adicionales.",
+      "action": "Individualizar áreas, servicios comunes, ocupantes y reglas de sanidad y convivencia.",
+      "conditions": {
+        "all": [
+          {
+            "field": "lease_type",
+            "op": "in",
+            "value": [
+              "Compartido",
+              "Pensión"
+            ]
+          }
+        ]
+      },
+      "category": "classification",
+      "source_ids": [
+        "AR-S1"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "AR-R17",
+      "risk": "green",
+      "message": "Se activa control anual de reajuste del canon.",
+      "action": "Aplicar solo después de doce meses bajo el mismo precio, hasta el IPC del año anterior y mediante comunicación verificable.",
+      "conditions": {
+        "all": [
+          {
+            "field": "duration_months",
+            "op": "gte",
+            "value": 12
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "AR-S1",
+        "AR-S6"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "AR-R18",
+      "risk": "yellow",
+      "message": "La administración ordinaria debe quedar separada del canon y de expensas extraordinarias.",
+      "action": "Identificar concepto, responsable, variación y soporte de cobro.",
+      "conditions": {
+        "all": [
+          {
+            "field": "administration_charge",
+            "op": "gt",
+            "value": 0
+          }
+        ]
+      },
+      "category": "economics",
+      "source_ids": [
+        "AR-S1",
+        "AR-S2"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "AR-R19",
+      "risk": "green",
+      "message": "Se activa expediente de entrega y restitución comparada.",
+      "action": "Generar inventario, acta de entrega, lecturas, llaves, evidencia y acta de cierre.",
+      "conditions": {
+        "all": [
+          {
+            "field": "data_confirmed",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "AR-S1",
+        "AR-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "AR-R20",
+      "risk": "green",
+      "message": "Se activa tratamiento de datos contractuales y de contacto.",
+      "action": "Limitar datos a celebración, ejecución, cobro y cierre; proteger información de ocupantes y garantes.",
+      "conditions": {
+        "all": [
+          {
+            "field": "data_confirmed",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "AR-S7"
+      ],
+      "blocking": false
+    }
+  ],
+  "CO-SA-001": [
+    {
+      "id": "SA-R1",
+      "risk": "red",
+      "message": "Posible urgencia vital o necesidad asistencial inmediata.",
+      "action": "No depender de la petición: activar urgencias o atención asistencial y revisión profesional.",
+      "conditions": {
+        "all": [
+          {
+            "field": "urgent",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "SA-S1",
+        "SA-S4",
+        "SA-S9"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "SA-R2",
+      "risk": "red",
+      "message": "Deterioro grave sin atención inmediata acreditada.",
+      "action": "Activar atención asistencial y no usar el documento como sustituto clínico.",
+      "conditions": {
+        "all": [
+          {
+            "field": "deterioration",
+            "op": "equals",
+            "value": "Grave"
+          },
+          {
+            "field": "immediate_attention_sought",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "SA-S4",
+        "SA-S9"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "SA-R3",
+      "risk": "yellow",
+      "message": "No hay certeza sobre la urgencia médica.",
+      "action": "Solicitar valoración asistencial inmediata cuando existan signos de alarma.",
+      "conditions": {
+        "all": [
+          {
+            "field": "urgent",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "SA-S4",
+        "SA-S9"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "SA-R4",
+      "risk": "red",
+      "message": "Existe tutela o proceso judicial activo sobre los mismos hechos.",
+      "action": "Coordinar el documento con la estrategia judicial y evitar actuaciones contradictorias.",
+      "conditions": {
+        "all": [
+          {
+            "field": "tutela_active",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "SA-S1",
+        "SA-S11"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "SA-R5",
+      "risk": "red",
+      "message": "Existe actuación activa ante Supersalud sobre los mismos hechos.",
+      "action": "Revisar expediente, radicados y alcance antes de una nueva presentación.",
+      "conditions": {
+        "all": [
+          {
+            "field": "supersalud_case_active",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "SA-S11",
+        "SA-S13"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "SA-R6",
+      "risk": "red",
+      "message": "Un tercero pretende acceder a historia clínica sin autorización suficiente.",
+      "action": "Acreditar autorización, representación o base constitucional antes de solicitar datos reservados.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_type",
+            "op": "equals",
+            "value": "Historia clínica"
+          },
+          {
+            "field": "acting_capacity",
+            "op": "in",
+            "value": [
+              "Apoderado o autorizado",
+              "Tercero con interés acreditado"
+            ]
+          },
+          {
+            "field": "third_party_authorization",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "privacy",
+      "source_ids": [
+        "SA-S4",
+        "SA-S5",
+        "SA-S7",
+        "SA-S12"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "SA-R7",
+      "risk": "red",
+      "message": "Paciente fallecido sin soporte suficiente de legitimación.",
+      "action": "Aportar parentesco, identidad, finalidad legítima y soportes exigibles antes de solicitar historia clínica.",
+      "conditions": {
+        "all": [
+          {
+            "field": "patient_status",
+            "op": "equals",
+            "value": "Fallecido"
+          },
+          {
+            "field": "representation_support",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "privacy",
+      "source_ids": [
+        "SA-S5",
+        "SA-S7",
+        "SA-S12"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "SA-R8",
+      "risk": "red",
+      "message": "Menor o persona con capacidad limitada sin soporte de representación.",
+      "action": "Acreditar representación y preservar el interés superior y la autonomía aplicable.",
+      "conditions": {
+        "all": [
+          {
+            "field": "patient_status",
+            "op": "in",
+            "value": [
+              "Menor de edad",
+              "Persona con capacidad limitada"
+            ]
+          },
+          {
+            "field": "representation_support",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "legitimacy",
+      "source_ids": [
+        "SA-S1",
+        "SA-S4"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "SA-R9",
+      "risk": "red",
+      "message": "Tercero con interés acreditado sin autorización o soporte suficiente.",
+      "action": "No divulgar ni pedir datos sensibles hasta acreditar legitimación.",
+      "conditions": {
+        "all": [
+          {
+            "field": "acting_capacity",
+            "op": "equals",
+            "value": "Tercero con interés acreditado"
+          },
+          {
+            "field": "third_party_authorization",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "privacy",
+      "source_ids": [
+        "SA-S7",
+        "SA-S12"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "SA-R10",
+      "risk": "yellow",
+      "message": "La entrega de historia clínica no está configurada por un canal seguro.",
+      "action": "Solicitar entrega reservada, autenticación y trazabilidad del acceso.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_type",
+            "op": "equals",
+            "value": "Historia clínica"
+          },
+          {
+            "field": "secure_delivery",
+            "op": "in",
+            "value": [
+              "No",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "privacy",
+      "source_ids": [
+        "SA-S5",
+        "SA-S6",
+        "SA-S7",
+        "SA-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "SA-R11",
+      "risk": "yellow",
+      "message": "Los anexos pueden incluir datos personales o clínicos innecesarios.",
+      "action": "Minimizar, proteger y enviar únicamente información pertinente.",
+      "conditions": {
+        "all": [
+          {
+            "field": "data_minimized",
+            "op": "in",
+            "value": [
+              "No",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "privacy",
+      "source_ids": [
+        "SA-S7",
+        "SA-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "SA-R12",
+      "risk": "yellow",
+      "message": "Falta soporte médico completo para la solicitud asistencial.",
+      "action": "Adjuntar orden, fórmula o soporte disponible y evitar afirmaciones no documentadas.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_type",
+            "op": "in",
+            "value": [
+              "Autorización o servicio",
+              "Medicamento o insumo",
+              "Cita o procedimiento"
+            ]
+          },
+          {
+            "field": "medical_support",
+            "op": "in",
+            "value": [
+              "Parcial",
+              "No"
+            ]
+          }
+        ]
+      },
+      "category": "evidence",
+      "source_ids": [
+        "SA-S4",
+        "SA-S9"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "SA-R13",
+      "risk": "yellow",
+      "message": "Existe condición de especial protección o priorización.",
+      "action": "Visibilizarla con hechos y soportes, sin formular diagnósticos no acreditados.",
+      "conditions": {
+        "all": [
+          {
+            "field": "priority_condition",
+            "op": "not_equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "priority",
+      "source_ids": [
+        "SA-S1",
+        "SA-S4",
+        "SA-S9"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "SA-R14",
+      "risk": "yellow",
+      "message": "Hay riesgo de interrupción de tratamiento o continuidad.",
+      "action": "Solicitar coordinación concreta, fechas, proveedor y medidas de continuidad.",
+      "conditions": {
+        "all": [
+          {
+            "field": "continuity_risk",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "continuity",
+      "source_ids": [
+        "SA-S4",
+        "SA-S9",
+        "SA-S11"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "SA-R15",
+      "risk": "green",
+      "message": "Existe petición previa.",
+      "action": "Activar reiteración, cronología y control del término preliminar.",
+      "conditions": {
+        "all": [
+          {
+            "field": "prior_request",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "SA-S2",
+        "SA-S11"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "SA-R16",
+      "risk": "yellow",
+      "message": "La petición previa no tiene respuesta completa acreditada.",
+      "action": "Anexar radicado y exigir respuesta de fondo, clara, congruente y notificada.",
+      "conditions": {
+        "all": [
+          {
+            "field": "prior_request",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "response_received",
+            "op": "in",
+            "value": [
+              "No",
+              "Parcial"
+            ]
+          }
+        ]
+      },
+      "category": "follow_up",
+      "source_ids": [
+        "SA-S2",
+        "SA-S11"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "SA-R17",
+      "risk": "yellow",
+      "message": "La respuesta previa es parcial, evasiva o incongruente.",
+      "action": "Individualizar cada punto no resuelto y pedir respuesta de fondo.",
+      "conditions": {
+        "all": [
+          {
+            "field": "response_quality",
+            "op": "in",
+            "value": [
+              "Parcial",
+              "Evasiva o incongruente"
+            ]
+          }
+        ]
+      },
+      "category": "follow_up",
+      "source_ids": [
+        "SA-S2",
+        "SA-S11"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "SA-R18",
+      "risk": "green",
+      "message": "La solicitud incluye historia clínica.",
+      "action": "Activar documento especializado de acceso, reserva y entrega segura.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_type",
+            "op": "equals",
+            "value": "Historia clínica"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "SA-S4",
+        "SA-S5",
+        "SA-S6",
+        "SA-S7",
+        "SA-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "SA-R19",
+      "risk": "green",
+      "message": "La petición corresponde a información o documentos.",
+      "action": "Aplicar término preliminar especial y control de entrega documental.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_type",
+            "op": "in",
+            "value": [
+              "Historia clínica",
+              "Información o documentos"
+            ]
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "SA-S2"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "SA-R20",
+      "risk": "green",
+      "message": "La petición solicita autorización, medicamento, cita o procedimiento.",
+      "action": "Activar peticiones de coordinación, agenda, proveedor y continuidad.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_type",
+            "op": "in",
+            "value": [
+              "Autorización o servicio",
+              "Medicamento o insumo",
+              "Cita o procedimiento"
+            ]
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "SA-S4",
+        "SA-S9"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "SA-R21",
+      "risk": "red",
+      "message": "Los datos del caso no fueron confirmados.",
+      "action": "Detener generación definitiva y revisar hechos, fechas, nombres y anexos.",
+      "conditions": {
+        "all": [
+          {
+            "field": "data_confirmed",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "data_quality",
+      "source_ids": [
+        "SA-S7"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "SA-R22",
+      "risk": "yellow",
+      "message": "La entidad destinataria no está tipificada.",
+      "action": "Verificar competencia, razón social, canal y traslado por falta de competencia.",
+      "conditions": {
+        "all": [
+          {
+            "field": "entity_type",
+            "op": "equals",
+            "value": "Otra"
+          }
+        ]
+      },
+      "category": "competence",
+      "source_ids": [
+        "SA-S2",
+        "SA-S3"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "SA-R23",
+      "risk": "yellow",
+      "message": "El canal de radicación puede no dejar trazabilidad suficiente.",
+      "action": "Usar canal oficial que genere radicado, fecha y copia íntegra de lo enviado.",
+      "conditions": {
+        "all": [
+          {
+            "field": "filing_channel",
+            "op": "in",
+            "value": [
+              "Canal verbal sin constancia",
+              "Red social o mensajería",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "filing",
+      "source_ids": [
+        "SA-S2",
+        "SA-S13"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "SA-R24",
+      "risk": "yellow",
+      "message": "El soporte de representación o legitimación está incompleto.",
+      "action": "Completar identidad, parentesco, autorización, poder o documento aplicable.",
+      "conditions": {
+        "all": [
+          {
+            "field": "representation_support",
+            "op": "equals",
+            "value": "Parcial"
+          }
+        ]
+      },
+      "category": "legitimacy",
+      "source_ids": [
+        "SA-S1",
+        "SA-S5",
+        "SA-S7",
+        "SA-S12"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "SA-R25",
+      "risk": "yellow",
+      "message": "La autorización del tercero está incompleta.",
+      "action": "Completar autorización y delimitar alcance, finalidad y canal de entrega.",
+      "conditions": {
+        "all": [
+          {
+            "field": "third_party_authorization",
+            "op": "equals",
+            "value": "Parcial"
+          }
+        ]
+      },
+      "category": "privacy",
+      "source_ids": [
+        "SA-S5",
+        "SA-S7",
+        "SA-S12"
+      ],
+      "blocking": false
+    }
+  ],
+  "CO-CD-001": [
+    {
+      "id": "CD1-R01",
+      "risk": "red",
+      "category": "legitimacy",
+      "blocking": true,
+      "message": "Quien presenta no es el titular y no acredita legitimación suficiente.",
+      "action": "Completar autorización, poder, representación o calidad antes de generar una salida definitiva.",
+      "conditions": {
+        "all": [
+          {
+            "field": "acting_capacity",
+            "op": "not_equals",
+            "value": "Titular"
+          },
+          {
+            "field": "representation_support",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S1",
+        "CD1-S2",
+        "CD1-S7"
+      ]
+    },
+    {
+      "id": "CD1-R02",
+      "risk": "red",
+      "category": "exclusion",
+      "blocking": true,
+      "message": "Existe proceso judicial, insolvencia, cobro ejecutivo o embargo relacionado.",
+      "action": "Coordinar el reclamo con la estrategia procesal y revisar efectos de cosa juzgada, prescripción, pago y medidas cautelares.",
+      "conditions": {
+        "all": [
+          {
+            "field": "judicial_or_insolvency",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S1",
+        "CD1-S2",
+        "CD1-S5"
+      ]
+    },
+    {
+      "id": "CD1-R03",
+      "risk": "red",
+      "category": "identity_theft",
+      "blocking": true,
+      "message": "La suplantación es compleja o involucra múltiples productos, falsedad o investigación.",
+      "action": "Activar preservación de evidencia, reclamos separados y revisión profesional; aplicar el régimen vigente y controlar la entrada general en vigor de la Ley 2573 de 2026 el 20 de noviembre de 2026.",
+      "conditions": {
+        "all": [
+          {
+            "field": "identity_theft_complex",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S1",
+        "CD1-S2",
+        "CD1-S12",
+        "CD1-S13"
+      ]
+    },
+    {
+      "id": "CD1-R04",
+      "risk": "red",
+      "category": "impact",
+      "blocking": true,
+      "message": "Existe daño relevante, decisión crediticia crítica o término urgente.",
+      "action": "Revisión profesional prioritaria y coordinación con mecanismos administrativos o judiciales aplicables.",
+      "conditions": {
+        "all": [
+          {
+            "field": "high_damage_or_urgent_credit",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S1",
+        "CD1-S2",
+        "CD1-S5"
+      ]
+    },
+    {
+      "id": "CD1-R05",
+      "risk": "red",
+      "category": "data_quality",
+      "blocking": true,
+      "message": "Los datos esenciales no fueron confirmados.",
+      "action": "Verificar nombres, fechas, valores, reporte, soportes y pretensión.",
+      "conditions": {
+        "all": [
+          {
+            "field": "data_confirmed",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S1",
+        "CD1-S2"
+      ]
+    },
+    {
+      "id": "CD1-R06",
+      "risk": "yellow",
+      "category": "data_quality",
+      "blocking": false,
+      "message": "La confirmación de datos es parcial.",
+      "action": "Marcar supuestos y no afirmar hechos no acreditados.",
+      "conditions": {
+        "all": [
+          {
+            "field": "data_confirmed",
+            "op": "equals",
+            "value": "Parcial"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S1",
+        "CD1-S2"
+      ]
+    },
+    {
+      "id": "CD1-R07",
+      "risk": "yellow",
+      "category": "recipient",
+      "blocking": false,
+      "message": "La fuente reportante no está plenamente identificada.",
+      "action": "Solicitar consulta integral al operador y origen del dato antes de dirigir una pretensión de retiro.",
+      "conditions": {
+        "any": [
+          {
+            "field": "source_known",
+            "op": "equals",
+            "value": "No"
+          },
+          {
+            "field": "source_known",
+            "op": "equals",
+            "value": "Parcial"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S2"
+      ]
+    },
+    {
+      "id": "CD1-R08",
+      "risk": "yellow",
+      "category": "recipient",
+      "blocking": false,
+      "message": "El operador o central no está plenamente identificado.",
+      "action": "Obtener el reporte integral y separar destinatarios, responsabilidades y pretensiones.",
+      "conditions": {
+        "any": [
+          {
+            "field": "operator_known",
+            "op": "equals",
+            "value": "No"
+          },
+          {
+            "field": "operator_known",
+            "op": "equals",
+            "value": "Parcial"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S2"
+      ]
+    },
+    {
+      "id": "CD1-R09",
+      "risk": "yellow",
+      "category": "multiple_parties",
+      "blocking": false,
+      "message": "Existen múltiples fuentes, operadores o reportes.",
+      "action": "Construir expediente consolidado y reclamos individualizados por responsable y dato.",
+      "conditions": {
+        "all": [
+          {
+            "field": "multiple_sources",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S2",
+        "CD1-S7"
+      ]
+    },
+    {
+      "id": "CD1-R10",
+      "risk": "yellow",
+      "category": "debt",
+      "blocking": false,
+      "message": "El retiro o actualización del dato no extingue una obligación válida.",
+      "action": "Separar la discusión de la deuda del cumplimiento de los deberes de información.",
+      "conditions": {
+        "any": [
+          {
+            "field": "issue_type",
+            "op": "equals",
+            "value": "Obligación vigente discutida"
+          },
+          {
+            "field": "obligation_status",
+            "op": "equals",
+            "value": "Discutida"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S2",
+        "CD1-S5"
+      ]
+    },
+    {
+      "id": "CD1-R11",
+      "risk": "yellow",
+      "category": "evidence",
+      "blocking": false,
+      "message": "No existe soporte legible del reporte.",
+      "action": "Obtener consulta integral actual y preservar fecha, central, fuente, estado, monto y leyendas.",
+      "conditions": {
+        "all": [
+          {
+            "field": "report_support_available",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S2",
+        "CD1-S9"
+      ]
+    },
+    {
+      "id": "CD1-R12",
+      "risk": "yellow",
+      "category": "evidence",
+      "blocking": false,
+      "message": "No se ha solicitado o aportado soporte de la obligación.",
+      "action": "Exigir origen, contrato, título, estado de cuenta y trazabilidad del dato.",
+      "conditions": {
+        "any": [
+          {
+            "field": "source_obligation_support",
+            "op": "equals",
+            "value": "No"
+          },
+          {
+            "field": "source_obligation_support",
+            "op": "equals",
+            "value": "No solicitado"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S2",
+        "CD1-S9"
+      ]
+    },
+    {
+      "id": "CD1-R13",
+      "risk": "yellow",
+      "category": "communication",
+      "blocking": false,
+      "message": "No está acreditada la comunicación previa al reporte.",
+      "action": "Solicitar prueba individualizable, fecha, canal y contenido; aplicar la consecuencia según la obligación esté o no extinguida.",
+      "conditions": {
+        "any": [
+          {
+            "field": "prior_communication_received",
+            "op": "equals",
+            "value": "No"
+          },
+          {
+            "field": "prior_communication_received",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S2",
+        "CD1-S3",
+        "CD1-S6",
+        "CD1-S10",
+        "CD1-S11"
+      ]
+    },
+    {
+      "id": "CD1-R14",
+      "risk": "yellow",
+      "category": "communication",
+      "blocking": false,
+      "message": "La prueba de comunicación previa es incompleta o no ha sido solicitada.",
+      "action": "No concluir cumplimiento con afirmaciones genéricas; exigir soporte verificable.",
+      "conditions": {
+        "any": [
+          {
+            "field": "prior_communication_evidence",
+            "op": "equals",
+            "value": "Parcial"
+          },
+          {
+            "field": "prior_communication_evidence",
+            "op": "equals",
+            "value": "No"
+          },
+          {
+            "field": "prior_communication_evidence",
+            "op": "equals",
+            "value": "No solicitada"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S2",
+        "CD1-S6",
+        "CD1-S9"
+      ]
+    },
+    {
+      "id": "CD1-R15",
+      "risk": "yellow",
+      "category": "small_debt",
+      "blocking": false,
+      "message": "La obligación puede estar bajo el umbral del 15 % del SMLMV y no están acreditadas dos comunicaciones.",
+      "action": "Verificar el SMLMV aplicable, cuantía, dos comunicaciones en días distintos y veinte días desde la última.",
+      "conditions": {
+        "any": [
+          {
+            "field": "small_obligation_two_notices",
+            "op": "equals",
+            "value": "No"
+          },
+          {
+            "field": "small_obligation_two_notices",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S3",
+        "CD1-S5",
+        "CD1-S14"
+      ]
+    },
+    {
+      "id": "CD1-R16",
+      "risk": "green",
+      "category": "update",
+      "blocking": false,
+      "message": "Se solicita actualizar pago o extinción no reflejados.",
+      "action": "Adjuntar soporte y exigir actualización a fuente y operador.",
+      "conditions": {
+        "all": [
+          {
+            "field": "issue_type",
+            "op": "equals",
+            "value": "Pago o extinción no actualizados"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S2",
+        "CD1-S3"
+      ]
+    },
+    {
+      "id": "CD1-R17",
+      "risk": "green",
+      "category": "permanence",
+      "blocking": false,
+      "message": "Se invoca permanencia vencida después del pago o extinción.",
+      "action": "Calcular doble de la mora con máximo de cuatro años desde el pago o extinción y verificar fecha exacta.",
+      "conditions": {
+        "all": [
+          {
+            "field": "issue_type",
+            "op": "equals",
+            "value": "Permanencia vencida después del pago"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S3",
+        "CD1-S5"
+      ]
+    },
+    {
+      "id": "CD1-R18",
+      "risk": "green",
+      "category": "caducity",
+      "blocking": false,
+      "message": "Se invoca caducidad del dato negativo de una obligación insoluta.",
+      "action": "Verificar ocho años desde el inicio de mora y separar caducidad del dato de extinción de la deuda.",
+      "conditions": {
+        "all": [
+          {
+            "field": "issue_type",
+            "op": "equals",
+            "value": "Caducidad de obligación insoluta"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S3",
+        "CD1-S5"
+      ]
+    },
+    {
+      "id": "CD1-R19",
+      "risk": "yellow",
+      "category": "late_report",
+      "blocking": false,
+      "message": "Se alega que la fuente reportó después del plazo máximo de dieciocho meses desde la mora.",
+      "action": "Contrastar fechas y solicitar soporte de primer reporte.",
+      "conditions": {
+        "all": [
+          {
+            "field": "issue_type",
+            "op": "equals",
+            "value": "Reporte realizado tardíamente"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S2",
+        "CD1-S3",
+        "CD1-S9"
+      ]
+    },
+    {
+      "id": "CD1-R20",
+      "risk": "yellow",
+      "category": "prior_claim",
+      "blocking": false,
+      "message": "Existe actuación previa y debe preservarse su cronología.",
+      "action": "Preparar reiteración o escalamiento sin reiniciar ni ocultar fechas anteriores.",
+      "conditions": {
+        "all": [
+          {
+            "field": "prior_claim",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S2",
+        "CD1-S3",
+        "CD1-S11"
+      ]
+    },
+    {
+      "id": "CD1-R21",
+      "risk": "yellow",
+      "category": "claim_completeness",
+      "blocking": false,
+      "message": "El reclamo previo puede estar incompleto.",
+      "action": "Revisar identificación, hechos, dirección, pretensión y soportes; documentar cualquier requerimiento de subsanación.",
+      "conditions": {
+        "any": [
+          {
+            "field": "prior_claim_complete",
+            "op": "equals",
+            "value": "Parcial"
+          },
+          {
+            "field": "prior_claim_complete",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S2",
+        "CD1-S7",
+        "CD1-S11"
+      ]
+    },
+    {
+      "id": "CD1-R22",
+      "risk": "yellow",
+      "category": "response",
+      "blocking": false,
+      "message": "No existe respuesta completa o de fondo.",
+      "action": "Comparar la respuesta con cada solicitud y controlar término, prórroga, traslado y silencio legal.",
+      "conditions": {
+        "any": [
+          {
+            "field": "response_received",
+            "op": "equals",
+            "value": "No"
+          },
+          {
+            "field": "response_received",
+            "op": "equals",
+            "value": "Parcial"
+          },
+          {
+            "field": "response_quality",
+            "op": "not_equals",
+            "value": "De fondo y completa"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S2",
+        "CD1-S3",
+        "CD1-S11"
+      ]
+    },
+    {
+      "id": "CD1-R23",
+      "risk": "yellow",
+      "category": "legend",
+      "blocking": false,
+      "message": "No está confirmada la leyenda “reclamo en trámite”.",
+      "action": "Solicitar su inclusión y conservar evidencia del reporte durante la controversia.",
+      "conditions": {
+        "all": [
+          {
+            "field": "prior_claim",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "claim_legend_present",
+            "op": "not_equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S2",
+        "CD1-S3",
+        "CD1-S11"
+      ]
+    },
+    {
+      "id": "CD1-R24",
+      "risk": "yellow",
+      "category": "authority",
+      "blocking": false,
+      "message": "Existe una actuación activa ante autoridad.",
+      "action": "Evitar duplicidad y aportar el expediente completo a la estrategia existente.",
+      "conditions": {
+        "all": [
+          {
+            "field": "authority_case_active",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S2",
+        "CD1-S7",
+        "CD1-S11"
+      ]
+    },
+    {
+      "id": "CD1-R25",
+      "risk": "yellow",
+      "category": "filing",
+      "blocking": false,
+      "message": "El canal previsto no garantiza constancia suficiente.",
+      "action": "Usar portal, correo oficial o ventanilla que genere radicado y conservar copia íntegra.",
+      "conditions": {
+        "any": [
+          {
+            "field": "filing_channel",
+            "op": "equals",
+            "value": "Canal sin constancia"
+          },
+          {
+            "field": "filing_channel",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S2",
+        "CD1-S8"
+      ]
+    },
+    {
+      "id": "CD1-R26",
+      "risk": "red",
+      "category": "privacy",
+      "blocking": true,
+      "message": "Los anexos contienen datos excesivos o no protegidos.",
+      "action": "Ocultar claves, números completos, datos de terceros y anexos no necesarios.",
+      "conditions": {
+        "all": [
+          {
+            "field": "data_minimized",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S1",
+        "CD1-S2",
+        "CD1-S7"
+      ]
+    },
+    {
+      "id": "CD1-R27",
+      "risk": "yellow",
+      "category": "privacy",
+      "blocking": false,
+      "message": "La minimización de datos es parcial.",
+      "action": "Revisar cada anexo y ocultar información no necesaria antes de radicar.",
+      "conditions": {
+        "all": [
+          {
+            "field": "data_minimized",
+            "op": "equals",
+            "value": "Parcial"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S1",
+        "CD1-S2",
+        "CD1-S7"
+      ]
+    },
+    {
+      "id": "CD1-R28",
+      "risk": "yellow",
+      "category": "identity_theft",
+      "blocking": false,
+      "message": "Existe alegación de suplantación no clasificada como compleja.",
+      "action": "Preservar evidencia, alertar a fuente y operadores y solicitar bloqueo, corrección y trazabilidad sin afirmar fraude no probado. A la fecha de corte, distinguir el régimen vigente de la Ley 2573 de 2026, cuya vigencia general inicia el 20 de noviembre de 2026.",
+      "conditions": {
+        "all": [
+          {
+            "field": "identity_theft",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "identity_theft_complex",
+            "op": "not_equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "source_ids": [
+        "CD1-S1",
+        "CD1-S2",
+        "CD1-S12",
+        "CD1-S13"
+      ]
+    }
+  ],
+  "CO-CD-003": [
+    {
+      "id": "CD3-R01",
+      "risk": "red",
+      "message": "No se acredita una relación de consumo en Colombia.",
+      "action": "Reclasificar como asunto civil, comercial o sectorial.",
+      "conditions": {
+        "all": [
+          {
+            "field": "consumer_relationship",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "scope",
+      "source_ids": [
+        "CD3-S1",
+        "CD3-S2"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD3-R02",
+      "risk": "yellow",
+      "message": "La relación de consumo no está confirmada.",
+      "action": "Verificar consumidor, productor/proveedor, destinación final y régimen especial.",
+      "conditions": {
+        "all": [
+          {
+            "field": "consumer_relationship",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "category": "scope",
+      "source_ids": [
+        "CD3-S2"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R03",
+      "risk": "red",
+      "message": "Existe lesión, afectación a la salud o riesgo de seguridad.",
+      "action": "Preservar evidencia, atender el riesgo y obtener revisión profesional inmediata.",
+      "conditions": {
+        "any": [
+          {
+            "field": "injury_or_safety",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "injury_or_safety",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "category": "safety",
+      "source_ids": [
+        "CD3-S1",
+        "CD3-S2"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD3-R04",
+      "risk": "red",
+      "message": "El caso puede estar sometido a regulación sectorial especial.",
+      "action": "Definir competencia y norma especial antes de generar una salida definitiva.",
+      "conditions": {
+        "all": [
+          {
+            "field": "regulated_sector",
+            "op": "not_in",
+            "value": [
+              "No"
+            ]
+          }
+        ]
+      },
+      "category": "special_regime",
+      "source_ids": [
+        "CD3-S2",
+        "CD3-S7"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD3-R05",
+      "risk": "red",
+      "message": "Existe un proceso o actuación activa por los mismos hechos.",
+      "action": "Coordinar estrategia, pretensiones y expediente para evitar duplicidad o contradicción.",
+      "conditions": {
+        "any": [
+          {
+            "field": "active_process",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "active_process",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "category": "active_process",
+      "source_ids": [
+        "CD3-S13",
+        "CD3-S14"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD3-R06",
+      "risk": "red",
+      "message": "El fraude o la suplantación presentan complejidad incompatible con autoservicio.",
+      "action": "Preservar evidencia y escalar a revisión jurídica y financiera especializada.",
+      "conditions": {
+        "any": [
+          {
+            "field": "complex_fraud",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "complex_fraud",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "category": "fraud",
+      "source_ids": [
+        "CD3-S5",
+        "CD3-S8",
+        "CD3-S12"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD3-R07",
+      "risk": "red",
+      "message": "No se acredita legitimación o representación.",
+      "action": "Aportar autorización, poder, representación o soporte aplicable.",
+      "conditions": {
+        "all": [
+          {
+            "field": "representation_support",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "legitimacy",
+      "source_ids": [
+        "CD3-S13"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD3-R08",
+      "risk": "yellow",
+      "message": "La representación o legitimación está incompleta.",
+      "action": "Completar soportes antes de firma, radicación o entrega de información.",
+      "conditions": {
+        "all": [
+          {
+            "field": "representation_support",
+            "op": "equals",
+            "value": "Parcial"
+          }
+        ]
+      },
+      "category": "legitimacy",
+      "source_ids": [
+        "CD3-S13"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R09",
+      "risk": "yellow",
+      "message": "La evidencia disponible es insuficiente o parcial.",
+      "action": "Completar factura, pedido, pago, comunicaciones, fotografías y constancias.",
+      "conditions": {
+        "any": [
+          {
+            "field": "evidence_status",
+            "op": "equals",
+            "value": "Parcial"
+          },
+          {
+            "field": "evidence_status",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "evidence",
+      "source_ids": [
+        "CD3-S9",
+        "CD3-S10",
+        "CD3-S13"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R10",
+      "risk": "green",
+      "message": "Se activa la ruta de garantía legal.",
+      "action": "Generar reclamación de garantía con pretensión compatible.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_mode",
+            "op": "equals",
+            "value": "Garantía legal"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "CD3-S2",
+        "CD3-S6"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R11",
+      "risk": "yellow",
+      "message": "La garantía o el defecto no están suficientemente delimitados.",
+      "action": "Precisar defecto, término, entrega, reparación previa y pretensión.",
+      "conditions": {
+        "any": [
+          {
+            "field": "warranty_announced",
+            "op": "in",
+            "value": [
+              "Vencido",
+              "No fue informado",
+              "No sé"
+            ]
+          },
+          {
+            "field": "defect_detail",
+            "op": "missing"
+          }
+        ]
+      },
+      "category": "warranty",
+      "source_ids": [
+        "CD3-S2",
+        "CD3-S6"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R12",
+      "risk": "green",
+      "message": "Se activa la ruta de derecho de retracto.",
+      "action": "Verificar canal, término, excepción, devolución y reembolso.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_mode",
+            "op": "equals",
+            "value": "Derecho de retracto"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "CD3-S3",
+        "CD3-S4"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R13",
+      "risk": "red",
+      "message": "Se informa una excepción legal al derecho de retracto.",
+      "action": "No presentar retracto como procedente; evaluar garantía, incumplimiento u otra ruta.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_mode",
+            "op": "equals",
+            "value": "Derecho de retracto"
+          },
+          {
+            "field": "withdrawal_exception",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "withdrawal",
+      "source_ids": [
+        "CD3-S3",
+        "CD3-S4"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD3-R14",
+      "risk": "red",
+      "message": "El servicio comenzó con acuerdo del consumidor, lo que puede excluir el retracto.",
+      "action": "Verificar consentimiento, inicio y alcance de la ejecución antes de invocar retracto.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_mode",
+            "op": "equals",
+            "value": "Derecho de retracto"
+          },
+          {
+            "field": "product_type",
+            "op": "equals",
+            "value": "Servicio"
+          },
+          {
+            "field": "service_started_with_consent",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "withdrawal",
+      "source_ids": [
+        "CD3-S3"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD3-R15",
+      "risk": "yellow",
+      "message": "El canal o modalidad no acredita claramente un supuesto de retracto.",
+      "action": "Verificar venta a distancia, método no tradicional o financiación directa.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_mode",
+            "op": "equals",
+            "value": "Derecho de retracto"
+          },
+          {
+            "field": "purchase_channel",
+            "op": "equals",
+            "value": "Presencial"
+          }
+        ]
+      },
+      "category": "withdrawal",
+      "source_ids": [
+        "CD3-S3"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R16",
+      "risk": "green",
+      "message": "Se activa la ruta de reversión del pago.",
+      "action": "Coordinar queja al proveedor y notificación al emisor dentro del término.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_mode",
+            "op": "equals",
+            "value": "Reversión del pago"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "CD3-S5",
+        "CD3-S8",
+        "CD3-S11"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R17",
+      "risk": "yellow",
+      "message": "La compra o el pago no cumplen preliminarmente los presupuestos de reversión electrónica.",
+      "action": "Reclasificar hacia garantía, retracto, incumplimiento o reclamación directa.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_mode",
+            "op": "equals",
+            "value": "Reversión del pago"
+          },
+          {
+            "any": [
+              {
+                "field": "electronic_payment",
+                "op": "not_equals",
+                "value": "Sí"
+              },
+              {
+                "field": "purchase_channel",
+                "op": "equals",
+                "value": "Presencial"
+              }
+            ]
+          }
+        ]
+      },
+      "category": "reversal",
+      "source_ids": [
+        "CD3-S5",
+        "CD3-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R18",
+      "risk": "yellow",
+      "message": "La causal informada no coincide claramente con una causal legal de reversión.",
+      "action": "Seleccionar únicamente fraude, operación no solicitada, no entrega, producto distinto o defectuoso.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_mode",
+            "op": "equals",
+            "value": "Reversión del pago"
+          },
+          {
+            "field": "reversal_cause",
+            "op": "in",
+            "value": [
+              "No aplica",
+              "Otra"
+            ]
+          }
+        ]
+      },
+      "category": "reversal",
+      "source_ids": [
+        "CD3-S5",
+        "CD3-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R19",
+      "risk": "green",
+      "message": "Se activa la ruta de revocación de débito periódico.",
+      "action": "Comunicar la revocación y controlar nuevos cargos o reversión del pago periódico.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_mode",
+            "op": "equals",
+            "value": "Revocación de débito periódico"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "CD3-S5",
+        "CD3-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R20",
+      "risk": "green",
+      "message": "Se activa la ruta de terminación por falta de entrega.",
+      "action": "Controlar plazo pactado, máximo legal supletorio y devolución del dinero.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_mode",
+            "op": "equals",
+            "value": "Terminación por falta de entrega"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "CD3-S5",
+        "CD3-S7"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R21",
+      "risk": "yellow",
+      "message": "No se acredita la queja al proveedor exigida para la reversión.",
+      "action": "Presentar queja al proveedor y conservar constancia dentro del término aplicable.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_mode",
+            "op": "equals",
+            "value": "Reversión del pago"
+          },
+          {
+            "field": "provider_complaint_for_reversal",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "reversal",
+      "source_ids": [
+        "CD3-S5",
+        "CD3-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R22",
+      "risk": "yellow",
+      "message": "No se acredita notificación al emisor del instrumento de pago.",
+      "action": "Notificar al emisor con causal, valor, transacción e identificación parcial del instrumento.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_mode",
+            "op": "equals",
+            "value": "Reversión del pago"
+          },
+          {
+            "field": "issuer_notification",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "reversal",
+      "source_ids": [
+        "CD3-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R23",
+      "risk": "yellow",
+      "message": "La reversión puede quedar fuera del ámbito territorial reglamentario.",
+      "action": "Verificar domicilio del proveedor y del emisor, contrato y reglas transfronterizas.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_mode",
+            "op": "equals",
+            "value": "Reversión del pago"
+          },
+          {
+            "field": "provider_country",
+            "op": "not_equals",
+            "value": "Colombia"
+          }
+        ]
+      },
+      "category": "territoriality",
+      "source_ids": [
+        "CD3-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R24",
+      "risk": "yellow",
+      "message": "La reversión parcial exige individualizar productos y valor exacto.",
+      "action": "Precisar bienes afectados y monto correspondiente.",
+      "conditions": {
+        "all": [
+          {
+            "field": "partial_reversal",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "reversal_amount",
+            "op": "missing"
+          }
+        ]
+      },
+      "category": "reversal",
+      "source_ids": [
+        "CD3-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R25",
+      "risk": "yellow",
+      "message": "No se acredita devolución o puesta a disposición del bien cuando puede ser exigible.",
+      "action": "Documentar la devolución, recogida o imposibilidad fundada por seguridad.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_mode",
+            "op": "in",
+            "value": [
+              "Derecho de retracto",
+              "Reversión del pago"
+            ]
+          },
+          {
+            "field": "return_status",
+            "op": "equals",
+            "value": "Pendiente"
+          }
+        ]
+      },
+      "category": "return",
+      "source_ids": [
+        "CD3-S3",
+        "CD3-S4",
+        "CD3-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R26",
+      "risk": "yellow",
+      "message": "No existe reclamación directa previa para una ruta de escalamiento.",
+      "action": "Agotar o justificar el requisito previo antes de demandar o escalar.",
+      "conditions": {
+        "all": [
+          {
+            "field": "request_mode",
+            "op": "equals",
+            "value": "Escalamiento ante autoridad"
+          },
+          {
+            "field": "prior_claim",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "procedure",
+      "source_ids": [
+        "CD3-S9",
+        "CD3-S13",
+        "CD3-S14"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R27",
+      "risk": "yellow",
+      "message": "La respuesta recibida es parcial o carece de soporte.",
+      "action": "Comparar cada pretensión, prueba y fundamento antes de reiterar o escalar.",
+      "conditions": {
+        "any": [
+          {
+            "field": "response_received",
+            "op": "equals",
+            "value": "Sí parcial"
+          },
+          {
+            "field": "response_received",
+            "op": "equals",
+            "value": "Negativa sin soporte"
+          }
+        ]
+      },
+      "category": "procedure",
+      "source_ids": [
+        "CD3-S6",
+        "CD3-S9",
+        "CD3-S10"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R28",
+      "risk": "yellow",
+      "message": "La cuantía o el daño aconsejan estrategia jurídica individual.",
+      "action": "Evaluar competencia, abogado, medidas y prueba de perjuicios.",
+      "conditions": {
+        "any": [
+          {
+            "field": "high_value_or_damage",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "high_value_or_damage",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "category": "complexity",
+      "source_ids": [
+        "CD3-S13",
+        "CD3-S14"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R29",
+      "risk": "red",
+      "message": "Los datos o fechas esenciales no están confirmados.",
+      "action": "Conciliar cronología, valor, canal, causal, destinatarios y evidencia.",
+      "conditions": {
+        "all": [
+          {
+            "field": "data_confirmed",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "data_quality",
+      "source_ids": [],
+      "blocking": true
+    },
+    {
+      "id": "CD3-R30",
+      "risk": "yellow",
+      "message": "Parte de la información esencial continúa pendiente de confirmación.",
+      "action": "Generar solo borrador con advertencias y completar datos antes de radicar.",
+      "conditions": {
+        "all": [
+          {
+            "field": "data_confirmed",
+            "op": "equals",
+            "value": "Parcial"
+          }
+        ]
+      },
+      "category": "data_quality",
+      "source_ids": [],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R31",
+      "risk": "yellow",
+      "message": "Los anexos pueden exponer datos financieros o credenciales innecesarias.",
+      "action": "Ocultar números completos, códigos, claves y datos de terceros.",
+      "conditions": {
+        "any": [
+          {
+            "field": "data_minimized",
+            "op": "equals",
+            "value": "No"
+          },
+          {
+            "field": "data_minimized",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "category": "privacy",
+      "source_ids": [
+        "CD3-S5",
+        "CD3-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD3-R32",
+      "risk": "green",
+      "message": "La reclamación directa cuenta con identificación, hechos, pretensión y evidencia básica.",
+      "action": "Generar reclamación y conservar constancia íntegra de radicación.",
+      "conditions": {
+        "all": [
+          {
+            "field": "consumer_relationship",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "evidence_status",
+            "op": "equals",
+            "value": "Completa"
+          },
+          {
+            "field": "data_confirmed",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "readiness",
+      "source_ids": [
+        "CD3-S9",
+        "CD3-S13"
+      ],
+      "blocking": false
+    }
+  ],
+  "CO-CD-004": [
+    {
+      "id": "CD4-R01",
+      "risk": "red",
+      "message": "La obligación pertenece a un régimen laboral, familiar/alimentario o tributario/público incompatible con esta ruta general.",
+      "action": "Reclasificar al producto o especialidad competente.",
+      "conditions": {
+        "all": [
+          {
+            "field": "obligation_type",
+            "op": "in",
+            "value": [
+              "Laboral",
+              "Familiar o alimentos",
+              "Tributaria o pública"
+            ]
+          }
+        ]
+      },
+      "category": "scope",
+      "source_ids": [
+        "CD4-S2",
+        "CD4-S7"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD4-R02",
+      "risk": "yellow",
+      "message": "La naturaleza de la obligación no está definida.",
+      "action": "Precisar negocio causal, jurisdicción y régimen aplicable.",
+      "conditions": {
+        "all": [
+          {
+            "field": "obligation_type",
+            "op": "equals",
+            "value": "Otra"
+          }
+        ]
+      },
+      "category": "scope",
+      "source_ids": [
+        "CD4-S2",
+        "CD4-S3"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R03",
+      "risk": "red",
+      "message": "No se acredita facultad del acreedor o representante para cobrar.",
+      "action": "Aportar certificado, poder, mandato, endoso o soporte de legitimación.",
+      "conditions": {
+        "all": [
+          {
+            "field": "creditor_authority",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "legitimacy",
+      "source_ids": [
+        "CD4-S3",
+        "CD4-S7"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD4-R04",
+      "risk": "yellow",
+      "message": "La legitimación o representación está incompleta.",
+      "action": "Completar soportes antes de firma o radicación.",
+      "conditions": {
+        "all": [
+          {
+            "field": "creditor_authority",
+            "op": "equals",
+            "value": "Parcial"
+          }
+        ]
+      },
+      "category": "legitimacy",
+      "source_ids": [
+        "CD4-S3",
+        "CD4-S7"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R05",
+      "risk": "red",
+      "message": "Existe fraude, suplantación o atribución controvertida.",
+      "action": "Preservar evidencia y escalar a revisión jurídica especializada.",
+      "conditions": {
+        "any": [
+          {
+            "field": "fraud_impersonation",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "fraud_impersonation",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "category": "fraud",
+      "source_ids": [
+        "CD4-S13"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD4-R06",
+      "risk": "red",
+      "message": "Fallecimiento, capacidad o representación del deudor requieren análisis individual.",
+      "action": "Definir sucesión, apoyos, representación y legitimados antes de continuar.",
+      "conditions": {
+        "any": [
+          {
+            "field": "debtor_capacity_issue",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "debtor_capacity_issue",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "category": "capacity",
+      "source_ids": [
+        "CD4-S2",
+        "CD4-S7"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD4-R07",
+      "risk": "red",
+      "message": "Existe un proceso judicial o arbitral activo.",
+      "action": "Coordinar la actuación con el expediente y evitar cobro paralelo contradictorio.",
+      "conditions": {
+        "any": [
+          {
+            "field": "judicial_process_active",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "judicial_process_active",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "category": "active_process",
+      "source_ids": [
+        "CD4-S7"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD4-R08",
+      "risk": "red",
+      "message": "Existe o puede existir un trámite de insolvencia o negociación formal de deudas.",
+      "action": "Suspender la ruta ordinaria y verificar efectos concursales y competencia.",
+      "conditions": {
+        "any": [
+          {
+            "field": "insolvency_active",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "insolvency_active",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "category": "insolvency",
+      "source_ids": [
+        "CD4-S14"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD4-R09",
+      "risk": "red",
+      "message": "Existe embargo, medida cautelar o limitación relevante.",
+      "action": "Revisar orden, prelación, expediente y efectos antes de disponer del crédito.",
+      "conditions": {
+        "any": [
+          {
+            "field": "embargo_or_measure",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "embargo_or_measure",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "category": "measure",
+      "source_ids": [
+        "CD4-S7",
+        "CD4-S12"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD4-R10",
+      "risk": "red",
+      "message": "La constitución de garantía real requiere instrumentación especializada.",
+      "action": "No perfeccionar hipoteca, prenda u otra garantía real mediante autoservicio.",
+      "conditions": {
+        "any": [
+          {
+            "field": "real_collateral",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "real_collateral",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "category": "real_security",
+      "source_ids": [
+        "CD4-S2",
+        "CD4-S7"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD4-R11",
+      "risk": "red",
+      "message": "La obligación no está vencida o no se acredita exigibilidad.",
+      "action": "No presentar cobro vencido; verificar plazo, condición y exigibilidad.",
+      "conditions": {
+        "any": [
+          {
+            "field": "obligation_status",
+            "op": "equals",
+            "value": "No vencida"
+          },
+          {
+            "field": "express_clear_enforceable",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "enforceability",
+      "source_ids": [
+        "CD4-S7"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD4-R12",
+      "risk": "yellow",
+      "message": "La claridad o exigibilidad del título no está confirmada.",
+      "action": "Cotejar documento, vencimiento, condición y obligación antes de exigir.",
+      "conditions": {
+        "any": [
+          {
+            "field": "obligation_status",
+            "op": "equals",
+            "value": "No sé"
+          },
+          {
+            "field": "express_clear_enforceable",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "category": "enforceability",
+      "source_ids": [
+        "CD4-S7"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R13",
+      "risk": "yellow",
+      "message": "El soporte principal es inexistente o atípico.",
+      "action": "Reconstruir prueba del negocio, aceptación, prestación y saldo.",
+      "conditions": {
+        "all": [
+          {
+            "field": "source_document_type",
+            "op": "in",
+            "value": [
+              "Sin documento",
+              "Otro"
+            ]
+          }
+        ]
+      },
+      "category": "evidence",
+      "source_ids": [
+        "CD4-S7",
+        "CD4-S13"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R14",
+      "risk": "yellow",
+      "message": "La firma, aceptación o atribución al deudor no está plenamente acreditada.",
+      "action": "Completar firma, aceptación, trazabilidad o prueba del mensaje de datos.",
+      "conditions": {
+        "all": [
+          {
+            "field": "debtor_signature_status",
+            "op": "in",
+            "value": [
+              "Parcial",
+              "No acreditada"
+            ]
+          }
+        ]
+      },
+      "category": "signature",
+      "source_ids": [
+        "CD4-S3",
+        "CD4-S13"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R15",
+      "risk": "yellow",
+      "message": "La integridad u originalidad del soporte es insuficiente.",
+      "action": "Conservar original, metadatos, trazabilidad y copia verificable.",
+      "conditions": {
+        "all": [
+          {
+            "field": "original_integrity_status",
+            "op": "in",
+            "value": [
+              "Parcial",
+              "No acreditada"
+            ]
+          }
+        ]
+      },
+      "category": "integrity",
+      "source_ids": [
+        "CD4-S3",
+        "CD4-S13"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R16",
+      "risk": "yellow",
+      "message": "La factura no acredita aceptación como título valor.",
+      "action": "Verificar recepción, aceptación, reclamos y negocio causal.",
+      "conditions": {
+        "all": [
+          {
+            "field": "source_document_type",
+            "op": "in",
+            "value": [
+              "Factura electrónica",
+              "Factura física"
+            ]
+          },
+          {
+            "field": "invoice_acceptance_status",
+            "op": "in",
+            "value": [
+              "Rechazada",
+              "No acreditada"
+            ]
+          }
+        ]
+      },
+      "category": "invoice",
+      "source_ids": [
+        "CD4-S12",
+        "CD4-S17"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R17",
+      "risk": "yellow",
+      "message": "La factura electrónica cedida o negociada no tiene trazabilidad RADIAN suficiente.",
+      "action": "Verificar eventos, tenedor legítimo, pagos, endosos y limitaciones en RADIAN.",
+      "conditions": {
+        "all": [
+          {
+            "field": "source_document_type",
+            "op": "equals",
+            "value": "Factura electrónica"
+          },
+          {
+            "field": "assignment_factoring",
+            "op": "not_equals",
+            "value": "No"
+          },
+          {
+            "field": "radian_status",
+            "op": "not_equals",
+            "value": "Registrada y trazable"
+          }
+        ]
+      },
+      "category": "radian",
+      "source_ids": [
+        "CD4-S12"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R18",
+      "risk": "yellow",
+      "message": "La cesión, endoso o negociación no tiene trazabilidad completa.",
+      "action": "Acreditar cadena de titularidad y notificaciones antes de cobrar.",
+      "conditions": {
+        "all": [
+          {
+            "field": "assignment_factoring",
+            "op": "in",
+            "value": [
+              "Sí con trazabilidad parcial",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "assignment",
+      "source_ids": [
+        "CD4-S3",
+        "CD4-S12"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R19",
+      "risk": "yellow",
+      "message": "El saldo no está conciliado.",
+      "action": "Reconstruir capital, abonos, notas crédito, intereses y cargos.",
+      "conditions": {
+        "all": [
+          {
+            "field": "balance_reconciled",
+            "op": "not_equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "balance",
+      "source_ids": [
+        "CD4-S2",
+        "CD4-S17"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R20",
+      "risk": "yellow",
+      "message": "Existen abonos, notas crédito o compensaciones que deben imputarse.",
+      "action": "Conciliar fecha, concepto, valor e imputación de cada movimiento.",
+      "conditions": {
+        "all": [
+          {
+            "field": "partial_payments",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          },
+          {
+            "field": "balance_reconciled",
+            "op": "not_equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "balance",
+      "source_ids": [
+        "CD4-S2",
+        "CD4-S17"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R21",
+      "risk": "yellow",
+      "message": "Los intereses no tienen pacto o periodicidad suficientemente definida.",
+      "action": "No liquidar una tasa definitiva sin identificar clase, modalidad, periodo y límite vigente.",
+      "conditions": {
+        "all": [
+          {
+            "field": "interest_agreed",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          },
+          {
+            "field": "interest_period",
+            "op": "in",
+            "value": [
+              "No sé",
+              "No aplica"
+            ]
+          }
+        ]
+      },
+      "category": "interest",
+      "source_ids": [
+        "CD4-S5",
+        "CD4-S15"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R22",
+      "risk": "yellow",
+      "message": "Existen gastos u honorarios sin soporte integral.",
+      "action": "Excluir o acreditar pacto, procedencia, razonabilidad y soporte.",
+      "conditions": {
+        "all": [
+          {
+            "field": "other_charges",
+            "op": "gt",
+            "value": 0
+          },
+          {
+            "field": "other_charges_supported",
+            "op": "not_equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "charges",
+      "source_ids": [
+        "CD4-S2",
+        "CD4-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R23",
+      "risk": "yellow",
+      "message": "La obligación o el saldo están controvertidos.",
+      "action": "Separar hechos aceptados, valores discutidos, soportes y propuesta de arreglo.",
+      "conditions": {
+        "any": [
+          {
+            "field": "disputed",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "disputed",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "category": "dispute",
+      "source_ids": [
+        "CD4-S7"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R24",
+      "risk": "yellow",
+      "message": "Se alega compensación, cruce de cuentas o excepción.",
+      "action": "Depurar obligaciones recíprocas y no reconocer saldo definitivo automáticamente.",
+      "conditions": {
+        "any": [
+          {
+            "field": "setoff_claimed",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "setoff_claimed",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "category": "setoff",
+      "source_ids": [
+        "CD4-S2"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R25",
+      "risk": "red",
+      "message": "Existe duda de prescripción o caducidad incompatible con cobro automático.",
+      "action": "Calcular término, interrupciones, suspensiones y acción aplicable con revisión profesional.",
+      "conditions": {
+        "any": [
+          {
+            "field": "prescription_concern",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "prescription_concern",
+            "op": "equals",
+            "value": "No sé"
+          }
+        ]
+      },
+      "category": "prescription",
+      "source_ids": [
+        "CD4-S2",
+        "CD4-S3",
+        "CD4-S7"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD4-R26",
+      "risk": "yellow",
+      "message": "No se acreditan canales autorizados para la cobranza al consumidor.",
+      "action": "Actualizar preferencias y usar únicamente canales autorizados.",
+      "conditions": {
+        "all": [
+          {
+            "field": "consumer_debt",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "authorized_channels",
+            "op": "not_equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "collection_contact",
+      "source_ids": [
+        "CD4-S8",
+        "CD4-S9"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R27",
+      "risk": "yellow",
+      "message": "Ya hubo contacto directo hoy.",
+      "action": "No realizar un nuevo contacto de cobranza durante el mismo día.",
+      "conditions": {
+        "all": [
+          {
+            "field": "consumer_debt",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "direct_contact_today",
+            "op": "not_equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "collection_contact",
+      "source_ids": [
+        "CD4-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R28",
+      "risk": "yellow",
+      "message": "Se usaron o podrían usarse varios canales en una misma semana después del contacto directo.",
+      "action": "Respetar periodicidad y registrar cada interacción.",
+      "conditions": {
+        "all": [
+          {
+            "field": "consumer_debt",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "channels_same_week",
+            "op": "not_equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "collection_contact",
+      "source_ids": [
+        "CD4-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R29",
+      "risk": "red",
+      "message": "El contacto previsto no respeta el horario legal o una autorización posterior válida.",
+      "action": "No efectuar el contacto y reprogramar dentro del horario permitido.",
+      "conditions": {
+        "all": [
+          {
+            "field": "consumer_debt",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "contact_time_compliant",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "collection_contact",
+      "source_ids": [
+        "CD4-S8",
+        "CD4-S9"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD4-R30",
+      "risk": "red",
+      "message": "No pueden contactarse referencias, familiares o terceros no obligados para cobrar.",
+      "action": "Limitar la gestión al deudor, avalista, codeudor o solidario bajo las mismas reglas.",
+      "conditions": {
+        "all": [
+          {
+            "field": "third_party_contact",
+            "op": "not_equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "privacy",
+      "source_ids": [
+        "CD4-S8",
+        "CD4-S10"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD4-R31",
+      "risk": "red",
+      "message": "Se pretende reporte negativo sin comunicación previa suficiente.",
+      "action": "No reportar; cumplir comunicación previa y término legal.",
+      "conditions": {
+        "all": [
+          {
+            "field": "negative_report_planned",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "prior_report_notice_status",
+            "op": "in",
+            "value": [
+              "No enviada",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "credit_reporting",
+      "source_ids": [
+        "CD4-S10",
+        "CD4-S11"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD4-R32",
+      "risk": "yellow",
+      "message": "El reporte negativo requiere control reforzado de comunicación previa.",
+      "action": "Verificar valor, número de comunicaciones, fechas y espera de veinte días calendario.",
+      "conditions": {
+        "all": [
+          {
+            "field": "negative_report_planned",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "prior_report_notice_status",
+            "op": "equals",
+            "value": "Una comunicación"
+          }
+        ]
+      },
+      "category": "credit_reporting",
+      "source_ids": [
+        "CD4-S10",
+        "CD4-S11",
+        "CD4-S16"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R33",
+      "risk": "red",
+      "message": "Un pagaré con espacios en blanco carece de carta de instrucciones firmada.",
+      "action": "No emitir ni utilizar el pagaré hasta documentar instrucciones estrictas y suficientes.",
+      "conditions": {
+        "all": [
+          {
+            "field": "promissory_note_requested",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "blanks_present",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "instructions_signed",
+            "op": "not_equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "promissory_note",
+      "source_ids": [
+        "CD4-S3",
+        "CD4-S4"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD4-R34",
+      "risk": "yellow",
+      "message": "El pagaré o su forma de vencimiento requieren definición adicional.",
+      "action": "Precisar suma, beneficiario, orden, vencimiento, firma y lugar de pago.",
+      "conditions": {
+        "all": [
+          {
+            "field": "promissory_note_requested",
+            "op": "equals",
+            "value": "Sí"
+          },
+          {
+            "field": "maturity_form",
+            "op": "in",
+            "value": [
+              "Otra",
+              "No aplica"
+            ]
+          }
+        ]
+      },
+      "category": "promissory_note",
+      "source_ids": [
+        "CD4-S3",
+        "CD4-S4"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R35",
+      "risk": "yellow",
+      "message": "La vinculación de avalista, codeudor o solidario exige consentimiento y alcance claros.",
+      "action": "Identificar calidad, firma, obligaciones, canales y límites antes de vincularlo.",
+      "conditions": {
+        "all": [
+          {
+            "field": "guarantor_or_aval",
+            "op": "not_equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "guarantee",
+      "source_ids": [
+        "CD4-S3",
+        "CD4-S4",
+        "CD4-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R36",
+      "risk": "yellow",
+      "message": "La evidencia es parcial o insuficiente.",
+      "action": "Completar documentos, comunicaciones, movimientos, firmas y trazabilidad.",
+      "conditions": {
+        "all": [
+          {
+            "field": "evidence_status",
+            "op": "not_equals",
+            "value": "Completo"
+          }
+        ]
+      },
+      "category": "evidence",
+      "source_ids": [
+        "CD4-S7",
+        "CD4-S13"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R37",
+      "risk": "yellow",
+      "message": "Los datos o anexos no están minimizados.",
+      "action": "Eliminar claves, credenciales, números completos y datos ajenos al objeto.",
+      "conditions": {
+        "all": [
+          {
+            "field": "data_minimized",
+            "op": "not_equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "privacy",
+      "source_ids": [
+        "CD4-S10",
+        "CD4-S13"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R38",
+      "risk": "red",
+      "message": "Los datos esenciales no están confirmados.",
+      "action": "Confirmar identidad, fechas, capital, saldo, destinatarios y soportes.",
+      "conditions": {
+        "all": [
+          {
+            "field": "data_confirmed",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "data_quality",
+      "source_ids": [
+        "CD4-S7",
+        "CD4-S13"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "CD4-R39",
+      "risk": "green",
+      "message": "Se activa la ruta de cobro inicial y estado de cuenta.",
+      "action": "Generar diagnóstico, estado de cuenta, requerimiento y matriz de evidencia.",
+      "conditions": {
+        "all": [
+          {
+            "field": "package_stage",
+            "op": "equals",
+            "value": "Cobro inicial"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "CD4-S7",
+        "CD4-S8"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R40",
+      "risk": "green",
+      "message": "Se activa la ruta de negociación y acuerdo.",
+      "action": "Generar acuerdo de pago y cronograma conciliable.",
+      "conditions": {
+        "all": [
+          {
+            "field": "package_stage",
+            "op": "in",
+            "value": [
+              "Negociación",
+              "Formalización"
+            ]
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "CD4-S2",
+        "CD4-S13"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R41",
+      "risk": "green",
+      "message": "Se activa la ruta de pagaré y carta de instrucciones.",
+      "action": "Generar instrumentos únicamente con datos completos y controles de título valor.",
+      "conditions": {
+        "all": [
+          {
+            "field": "package_stage",
+            "op": "equals",
+            "value": "Formalización"
+          },
+          {
+            "field": "promissory_note_requested",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "CD4-S3",
+        "CD4-S4"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CD4-R42",
+      "risk": "green",
+      "message": "Se activa la ruta de recibo o cierre.",
+      "action": "Generar constancia compatible con el pago efectivamente acreditado.",
+      "conditions": {
+        "all": [
+          {
+            "field": "package_stage",
+            "op": "in",
+            "value": [
+              "Seguimiento de pagos",
+              "Cierre"
+            ]
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "CD4-S2",
+        "CD4-S17"
+      ],
+      "blocking": false
+    }
+  ]
+}

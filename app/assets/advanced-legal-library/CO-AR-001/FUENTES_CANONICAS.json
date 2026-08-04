@@ -1,0 +1,72 @@
+[
+  {
+    "id": "SRC-AR-001",
+    "title": "Ley 820 de 2003 — Arrendamiento de vivienda urbana",
+    "authority": "Congreso de Colombia",
+    "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1669010",
+    "verified_at": "2026-07-24"
+  },
+  {
+    "id": "SRC-AR-002",
+    "title": "Ley 675 de 2001 — Propiedad horizontal",
+    "authority": "Congreso de Colombia",
+    "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1665811",
+    "verified_at": "2026-07-24"
+  },
+  {
+    "id": "SRC-AR-003",
+    "title": "Código Civil — Arrendamiento, reparaciones y restitución",
+    "authority": "Congreso de Colombia",
+    "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1827111",
+    "verified_at": "2026-07-24"
+  },
+  {
+    "id": "SRC-AR-004",
+    "title": "Ley 1564 de 2012 — Proceso de restitución de inmueble arrendado",
+    "authority": "Congreso de Colombia",
+    "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1564_2012_pr013.html",
+    "verified_at": "2026-07-24"
+  },
+  {
+    "id": "SRC-AR-005",
+    "title": "Decreto 3130 de 2003 — Servicios públicos en arrendamiento",
+    "authority": "Presidencia de la República",
+    "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Decretos%2F1877380",
+    "verified_at": "2026-07-24"
+  },
+  {
+    "id": "SRC-AR-006",
+    "title": "Decreto 1077 de 2015 — Sector vivienda, ciudad y territorio",
+    "authority": "Presidencia de la República",
+    "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30020036",
+    "verified_at": "2026-07-24"
+  },
+  {
+    "id": "SRC-AR-007",
+    "title": "Ley 1581 de 2012 — Protección de datos personales",
+    "authority": "Congreso de Colombia",
+    "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1684507",
+    "verified_at": "2026-07-24"
+  },
+  {
+    "id": "SRC-AR-008",
+    "title": "Decreto 1074 de 2015 — Reglamentación de protección de datos",
+    "authority": "Presidencia de la República",
+    "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30019935",
+    "verified_at": "2026-07-24"
+  },
+  {
+    "id": "SRC-AR-009",
+    "title": "Ley 1801 de 2016 — Convivencia y comportamientos en inmuebles",
+    "authority": "Congreso de Colombia",
+    "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30021736",
+    "verified_at": "2026-07-24"
+  },
+  {
+    "id": "SRC-AR-010",
+    "title": "IPC total nacional 2025 — variación anual 5,10 %",
+    "authority": "DANE",
+    "official_url": "https://www.dane.gov.co/files/operaciones/IPC/dic2025/graf-IPC-dic2025.html",
+    "verified_at": "2026-07-24"
+  }
+]

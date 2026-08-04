@@ -1,0 +1,106 @@
+{
+  "version": "2.59",
+  "product_id": "CO-TR-001",
+  "blocks": [
+    {
+      "id": "B259-CONTROL-PREVIO",
+      "type": "mandatory",
+      "purpose": "Impedir que el chequeo se presente como decisión o alivio jurídico automático."
+    },
+    {
+      "id": "B259-ENTRADAS-CHEQUEO",
+      "type": "mandatory",
+      "purpose": "Identificar autoridad, fecha y datos mínimos del comparendo."
+    },
+    {
+      "id": "B259-RESULTADO-PRELIMINAR",
+      "type": "mandatory",
+      "purpose": "Explicar el resultado de forma clara, reproducible y limitada."
+    },
+    {
+      "id": "B259-COINCIDENCIAS",
+      "type": "conditional",
+      "purpose": "Conservar todas las coincidencias de autoridad y fecha sin colapsarlas."
+    },
+    {
+      "id": "B259-NO-COINCIDENCIA",
+      "type": "conditional",
+      "purpose": "Aclarar que la ausencia de coincidencia no prueba legalidad ni excluye otras defensas."
+    },
+    {
+      "id": "B259-VERIFICACION-INDIVIDUAL",
+      "type": "conditional_review",
+      "purpose": "Exigir contraste de dispositivo, expediente, decisión firme y comparendo individual."
+    },
+    {
+      "id": "B259-TRAZABILIDAD-FUENTES",
+      "type": "mandatory",
+      "purpose": "Registrar instantánea, fuente oficial, rango y causa publicada."
+    },
+    {
+      "id": "B259-LIMITES-JURIDICOS",
+      "type": "mandatory",
+      "purpose": "Diferenciar investigación publicada, decisión firme y consecuencia individual."
+    },
+    {
+      "id": "B259-EXPEDIENTE-VERIFICADO",
+      "type": "registration_only",
+      "purpose": "Crear expediente identificable únicamente con consentimiento separado."
+    },
+    {
+      "id": "B259-CONSENTIMIENTOS-DATOS",
+      "type": "registration_only",
+      "purpose": "Conservar evidencia consultable de los consentimientos y finalidades."
+    },
+    {
+      "id": "B259-REVISION-PROFESIONAL",
+      "type": "mandatory_on_yellow_red",
+      "purpose": "Escalar coincidencias, pagos, acuerdos, riesgos o etapas complejas."
+    },
+    {
+      "id": "B259-ALERTA-FRAUDE",
+      "type": "red",
+      "purpose": "Bloquear persistencia o uso de canales no verificados ante posible fraude."
+    },
+    {
+      "id": "B259-HASH-INTEGRIDAD",
+      "type": "governance",
+      "purpose": "Verificar documentos, revisiones y paquetes mediante SHA-256."
+    },
+    {
+      "id": "B259-AUDITORIA",
+      "type": "governance",
+      "purpose": "Registrar eventos encadenados e identificables."
+    },
+    {
+      "id": "B259-REVISION-INMUTABLE",
+      "type": "governance",
+      "purpose": "Preservar cada revisión sin sobrescritura."
+    },
+    {
+      "id": "B259-APROBACION-JURIDICA",
+      "type": "governance",
+      "purpose": "Exigir aprobación jurídica sobre la revisión vigente."
+    },
+    {
+      "id": "B259-APROBACION-QA",
+      "type": "governance",
+      "purpose": "Exigir QA posterior por actor distinto."
+    },
+    {
+      "id": "B259-CIERRE-VALIDACION",
+      "type": "closure",
+      "purpose": "Acreditar que matrices canónicas, negativas, documentales y de gobierno están cerradas sin divergencias."
+    },
+    {
+      "id": "B259-CONTROL-FUENTES",
+      "type": "closure",
+      "purpose": "Controlar oficialidad, vigencia, estado procesal y necesidad de revalidación de las fuentes."
+    },
+    {
+      "id": "B259-COMPUERTA-LIBERACION",
+      "type": "closure",
+      "purpose": "Impedir liberación sin base v2.58, integridad, aprobación jurídica vigente, QA independiente y control de fuentes."
+    }
+  ]
+}

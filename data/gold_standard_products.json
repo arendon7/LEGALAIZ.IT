@@ -1,0 +1,477 @@
+{
+  "version": "M26.2",
+  "status_label": "Gold Standard",
+  "products": {
+    "CO-LA-002": {
+      "headline": "Formaliza una relación laboral con condiciones claras, módulos pertinentes y controles de riesgo.",
+      "why_gold": "Integra modalidad, funciones, jornada, remuneración, protección reforzada, anexos y revisión jurídica en un solo recorrido.",
+      "use_cases": [
+        "Nueva contratación laboral",
+        "Regularización documental de una relación ya iniciada",
+        "Actualización de funciones, modalidad o anexos"
+      ],
+      "included": [
+        "Contrato según modalidad",
+        "Anexo de funciones y responsabilidades",
+        "Módulos de confidencialidad, datos y propiedad intelectual cuando correspondan",
+        "Checklist de firma, entrega y afiliaciones",
+        "Seguimiento dentro del expediente"
+      ],
+      "not_included": [
+        "Representación judicial o administrativa",
+        "Decisiones automáticas sobre estabilidad laboral reforzada",
+        "Definición unilateral de una modalidad incompatible con la realidad"
+      ],
+      "legal_basis": [
+        {
+          "title": "Código Sustantivo del Trabajo",
+          "focus": "Elementos, modalidades, período de prueba, jornada, remuneración y terminación"
+        },
+        {
+          "title": "Ley 2466 de 2025",
+          "focus": "Actualizaciones laborales aplicables, incluidas jornada y trabajo nocturno"
+        },
+        {
+          "title": "Ley 1581 de 2012",
+          "focus": "Tratamiento de datos personales"
+        }
+      ],
+      "pillars": [
+        "Diagnóstico de modalidad",
+        "Formulario progresivo",
+        "Contrato y anexos completos",
+        "Revisión profesional",
+        "Seguimiento de firma y ejecución"
+      ],
+      "precheck": {
+        "intro": "Responde cuatro preguntas generales. No se guardan datos personales ni se genera todavía un concepto jurídico.",
+        "questions": [
+          {
+            "id": "relationship_stage",
+            "label": "¿En qué etapa está la relación?",
+            "options": [
+              "Nueva contratación",
+              "La persona ya empezó a trabajar",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "modality",
+            "label": "¿Qué modalidad estás considerando?",
+            "options": [
+              "Indefinido",
+              "Término fijo",
+              "Obra o labor",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "work_model",
+            "label": "¿Cómo se prestará el servicio?",
+            "options": [
+              "Con jornada, instrucciones y subordinación",
+              "Con autonomía y por resultados",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "protected_status",
+            "label": "¿Conoces alguna situación de protección reforzada?",
+            "options": [
+              "No",
+              "Sí",
+              "No sé"
+            ]
+          }
+        ],
+        "rules": [
+          {
+            "field": "protected_status",
+            "in": [
+              "Sí",
+              "No sé"
+            ],
+            "level": "red",
+            "message": "La situación puede requerir revisión específica de estabilidad laboral reforzada antes de firmar o terminar la relación."
+          },
+          {
+            "field": "work_model",
+            "equals": "Con autonomía y por resultados",
+            "level": "yellow",
+            "message": "La realidad descrita puede corresponder a un contrato de servicios y debe verificarse antes de escoger el instrumento."
+          },
+          {
+            "field": "relationship_stage",
+            "equals": "La persona ya empezó a trabajar",
+            "level": "yellow",
+            "message": "Conviene revisar hechos ya ejecutados, afiliaciones y fecha real de inicio antes de documentar."
+          },
+          {
+            "field": "modality",
+            "equals": "No estoy seguro",
+            "level": "yellow",
+            "message": "La modalidad debe definirse según la necesidad real, no únicamente por preferencia."
+          }
+        ]
+      }
+    },
+    "CO-EM-003": {
+      "headline": "Contrata servicios independientes con alcance verificable, autonomía real y anexos coherentes.",
+      "why_gold": "Conecta objeto, entregables, aceptación, pagos, cambios, responsabilidad, datos, propiedad intelectual y cierre sin confundir coordinación con subordinación.",
+      "use_cases": [
+        "Servicios profesionales o técnicos privados",
+        "Proyectos tecnológicos, creativos o consultivos",
+        "Contratación recurrente con entregables y niveles de servicio"
+      ],
+      "included": [
+        "Contrato de prestación de servicios",
+        "Anexo de alcance, entregables y cronograma",
+        "Módulos condicionales de confidencialidad, datos y propiedad intelectual",
+        "Procedimiento de aceptación y control de cambios",
+        "Acta de terminación y cierre"
+      ],
+      "not_included": [
+        "Contratación estatal",
+        "Relaciones que en la práctica sean laborales",
+        "Regímenes sectoriales que exijan instrumento especial"
+      ],
+      "legal_basis": [
+        {
+          "title": "Código Civil",
+          "focus": "Fuerza obligatoria, buena fe y responsabilidad contractual"
+        },
+        {
+          "title": "Código de Comercio",
+          "focus": "Obligaciones mercantiles y formación contractual"
+        },
+        {
+          "title": "Ley 1581 de 2012",
+          "focus": "Tratamiento de datos personales"
+        },
+        {
+          "title": "Ley 23 de 1982",
+          "focus": "Derechos de autor y obras creadas por encargo"
+        }
+      ],
+      "pillars": [
+        "Validación de autonomía",
+        "Alcance y entregables",
+        "Paquete modular de anexos",
+        "Gestión de cambios y cierre",
+        "Revisión según riesgo"
+      ],
+      "precheck": {
+        "intro": "Este filtro identifica incompatibilidades frecuentes antes de iniciar el formulario completo.",
+        "questions": [
+          {
+            "id": "control",
+            "label": "¿Cómo se coordinará al prestador?",
+            "options": [
+              "Por resultados y entregables",
+              "Con horario, órdenes permanentes y sanciones",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "public_entity",
+            "label": "¿Una de las partes es una entidad pública?",
+            "options": [
+              "No",
+              "Sí",
+              "No sé"
+            ]
+          },
+          {
+            "id": "personal_data",
+            "label": "¿El servicio implica tratamiento de datos personales?",
+            "options": [
+              "No",
+              "Sí",
+              "No sé"
+            ]
+          },
+          {
+            "id": "ip",
+            "label": "¿Se crearán software, contenidos, diseños u otros desarrollos?",
+            "options": [
+              "No",
+              "Sí",
+              "No sé"
+            ]
+          }
+        ],
+        "rules": [
+          {
+            "field": "control",
+            "equals": "Con horario, órdenes permanentes y sanciones",
+            "level": "red",
+            "message": "Los elementos descritos pueden indicar subordinación laboral. No conviene generar un contrato de servicios sin revisión."
+          },
+          {
+            "field": "public_entity",
+            "in": [
+              "Sí",
+              "No sé"
+            ],
+            "level": "red",
+            "message": "La contratación estatal o con recursos públicos requiere un régimen y controles diferentes."
+          },
+          {
+            "field": "personal_data",
+            "in": [
+              "Sí",
+              "No sé"
+            ],
+            "level": "yellow",
+            "message": "Debe activarse y revisar el módulo de tratamiento de datos, roles y medidas de seguridad."
+          },
+          {
+            "field": "ip",
+            "in": [
+              "Sí",
+              "No sé"
+            ],
+            "level": "yellow",
+            "message": "Conviene definir antecedentes, titularidad, licencias, entregables y derechos patrimoniales por escrito."
+          }
+        ]
+      }
+    },
+    "CO-AR-001": {
+      "headline": "Documenta un arrendamiento de vivienda con contrato, inventario, entrega y restitución coherentes.",
+      "why_gold": "Evita que el contrato se limite al canon y plazo: integra servicios, administración, garantías permitidas, inventario, comunicaciones y cierre.",
+      "use_cases": [
+        "Arrendamiento de vivienda urbana",
+        "Vivienda amoblada con inventario",
+        "Renovación o sustitución de un contrato existente"
+      ],
+      "included": [
+        "Contrato de arrendamiento",
+        "Inventario detallado",
+        "Acta de entrega",
+        "Guía de pagos, comunicaciones y restitución",
+        "Acta de restitución"
+      ],
+      "not_included": [
+        "Locales comerciales o usos mixtos",
+        "Procesos judiciales de restitución",
+        "Garantías o depósitos prohibidos por la ley"
+      ],
+      "legal_basis": [
+        {
+          "title": "Ley 820 de 2003",
+          "focus": "Arrendamiento de vivienda urbana, obligaciones, terminación, reajuste y garantías"
+        },
+        {
+          "title": "Código Civil",
+          "focus": "Reglas generales del arrendamiento y obligaciones"
+        },
+        {
+          "title": "Ley 1581 de 2012",
+          "focus": "Datos de partes, codeudores y ocupantes"
+        }
+      ],
+      "pillars": [
+        "Uso y partes validados",
+        "Condiciones económicas",
+        "Inventario y evidencia",
+        "Garantías compatibles",
+        "Entrega, seguimiento y restitución"
+      ],
+      "precheck": {
+        "intro": "Verifica que el producto corresponda realmente a vivienda urbana y detecta prácticas sensibles.",
+        "questions": [
+          {
+            "id": "use",
+            "label": "¿Cuál será el uso principal del inmueble?",
+            "options": [
+              "Vivienda urbana",
+              "Comercial",
+              "Mixto",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "cash_deposit",
+            "label": "¿Se pretende exigir un depósito en dinero para garantizar el contrato?",
+            "options": [
+              "No",
+              "Sí",
+              "No sé"
+            ]
+          },
+          {
+            "id": "inventory",
+            "label": "¿Existe inventario o registro del estado del inmueble?",
+            "options": [
+              "Sí",
+              "No",
+              "En preparación"
+            ]
+          },
+          {
+            "id": "dispute",
+            "label": "¿Ya existe mora, ocupación o disputa activa?",
+            "options": [
+              "No",
+              "Sí",
+              "No sé"
+            ]
+          }
+        ],
+        "rules": [
+          {
+            "field": "use",
+            "in": [
+              "Comercial",
+              "Mixto"
+            ],
+            "level": "red",
+            "message": "Este producto está diseñado para vivienda urbana; un uso comercial o mixto requiere otro instrumento."
+          },
+          {
+            "field": "cash_deposit",
+            "in": [
+              "Sí",
+              "No sé"
+            ],
+            "level": "red",
+            "message": "La Ley 820 de 2003 prohíbe depósitos en dinero y cauciones reales para garantizar obligaciones del arrendatario de vivienda urbana."
+          },
+          {
+            "field": "inventory",
+            "in": [
+              "No",
+              "En preparación"
+            ],
+            "level": "yellow",
+            "message": "El contrato puede prepararse, pero la entrega debería acompañarse de inventario, fotografías, medidores y llaves."
+          },
+          {
+            "field": "dispute",
+            "in": [
+              "Sí",
+              "No sé"
+            ],
+            "level": "red",
+            "message": "Una disputa activa puede requerir estrategia de cobro, restitución o negociación distinta a la generación de un contrato nuevo."
+          }
+        ]
+      }
+    },
+    "CO-CD-003": {
+      "headline": "Clasifica correctamente garantía, retracto, reversión, entrega o cobro y reclama con evidencia.",
+      "why_gold": "Separa mecanismos que suelen confundirse, controla fechas y destinatarios y produce una reclamación con índice probatorio y calendario.",
+      "use_cases": [
+        "Producto defectuoso o servicio incumplido",
+        "Compra a distancia con posible retracto",
+        "Pago electrónico por fraude, no entrega o producto diferente"
+      ],
+      "included": [
+        "Clasificación jurídica preliminar",
+        "Reclamación directa al proveedor",
+        "Solicitud adicional al emisor del pago cuando corresponda",
+        "Índice de evidencias",
+        "Calendario y ruta de escalamiento"
+      ],
+      "not_included": [
+        "Promesa de devolución o sanción",
+        "Demanda judicial automática",
+        "Reclamaciones sin identificación mínima del proveedor y de la operación"
+      ],
+      "legal_basis": [
+        {
+          "title": "Ley 1480 de 2011",
+          "focus": "Garantía legal, retracto, comercio electrónico y reversión del pago"
+        },
+        {
+          "title": "Ley 2439 de 2024",
+          "focus": "Actualización del término de devolución por retracto en comercio electrónico"
+        },
+        {
+          "title": "Decreto 587 de 2016",
+          "focus": "Procedimiento reglamentario de reversión del pago"
+        }
+      ],
+      "pillars": [
+        "Clasificación del mecanismo",
+        "Control de fechas",
+        "Evidencia y pretensión",
+        "Destinatarios correctos",
+        "Seguimiento y escalamiento"
+      ],
+      "precheck": {
+        "intro": "El filtro no decide el caso, pero evita mezclar garantía, retracto y reversión del pago.",
+        "questions": [
+          {
+            "id": "channel",
+            "label": "¿Cómo se realizó la compra?",
+            "options": [
+              "Presencial",
+              "Internet, teléfono o venta a distancia",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "issue",
+            "label": "¿Cuál describe mejor el problema?",
+            "options": [
+              "Producto o servicio defectuoso",
+              "Quiero retractarme",
+              "No recibí o recibí algo diferente",
+              "Cobro no autorizado o fraude",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "timing",
+            "label": "¿El hecho o la solicitud ocurrió recientemente y puedes confirmar las fechas?",
+            "options": [
+              "Sí",
+              "No",
+              "No estoy seguro"
+            ]
+          },
+          {
+            "id": "electronic_payment",
+            "label": "¿Se pagó con tarjeta, PSE u otro medio electrónico?",
+            "options": [
+              "Sí",
+              "No",
+              "No estoy seguro"
+            ]
+          }
+        ],
+        "rules": [
+          {
+            "field": "timing",
+            "in": [
+              "No",
+              "No estoy seguro"
+            ],
+            "level": "yellow",
+            "message": "Los términos pueden ser determinantes. Antes de elegir el mecanismo deben confirmarse compra, entrega, conocimiento del hecho y reclamaciones previas."
+          },
+          {
+            "field": "channel",
+            "equals": "Presencial",
+            "level": "yellow",
+            "message": "El retracto y la reversión no operan igual que en compras a distancia; puede corresponder garantía u otra reclamación."
+          },
+          {
+            "field": "electronic_payment",
+            "equals": "No",
+            "level": "yellow",
+            "message": "La reversión del pago electrónico puede no ser aplicable; el flujo debe evaluar garantía, incumplimiento o devolución."
+          },
+          {
+            "field": "issue",
+            "equals": "No estoy seguro",
+            "level": "yellow",
+            "message": "Se requiere precisar el hecho principal para no formular solicitudes incompatibles."
+          }
+        ]
+      }
+    }
+  }
+}

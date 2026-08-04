@@ -1,0 +1,334 @@
+{
+  "version": "2.30",
+  "release": "Decisión jurídica interna asistida de la segunda ola",
+  "date": "2026-07-20",
+  "base": "v2.29",
+  "status": "decisión jurídica interna asistida completada; ratificación del abogado titular y aprobación dual pendientes",
+  "decision_authority": "LegalAIZ.it, conforme autorización del usuario para adoptar decisiones internas preliminares sujetas a revisión posterior",
+  "internal_legal_approval_completed": true,
+  "human_legal_ratification_completed": false,
+  "dual_approval_completed": false,
+  "publication_authorized": false,
+  "controlled_generation_authorized": true,
+  "next_release": "v2.31 — maduración integral CO-SA-001",
+  "scope": [
+    "CO-LA-001",
+    "CO-TR-002",
+    "CO-TR-001"
+  ],
+  "decision_standard": [
+    "La aprobación se limita al alcance definido, variables trazadas y reglas de bloqueo existentes.",
+    "Aprobación interna no equivale a concepto jurídico individual, firma, representación ni garantía de resultado.",
+    "Ningún comunicado, alerta o ausencia de soporte se convierte automáticamente en nulidad, revocación, devolución o sanción.",
+    "Las decisiones quedan ligadas a los hashes exactos de los candidatos v2.29 y de las actas v2.30.",
+    "La publicación profesional permanece bloqueada hasta ratificación humana y aprobación dual especialista jurídico + QA."
+  ],
+  "normative_verification": [
+    {
+      "id": "V230-F1",
+      "title": "Decreto 1469 de 2025 — SMLMV 2026",
+      "authority": "SUIN-Juriscol",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30055940",
+      "verified_at": "2026-07-20",
+      "finding": "Fija SMLMV 2026 en $1.750.905; el Consejo de Estado informó el 17/07/2026 que permanecerá vigente mientras se decide de fondo."
+    },
+    {
+      "id": "V230-F2",
+      "title": "Decreto 1470 de 2025 — auxilio de transporte 2026",
+      "authority": "SUIN-Juriscol",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30055941",
+      "verified_at": "2026-07-20",
+      "finding": "Fija el auxilio de transporte en $249.095 para quienes devengan hasta dos SMLMV y cumplan las condiciones legales."
+    },
+    {
+      "id": "V230-F3",
+      "title": "Consejo de Estado — vigencia cautelar del Decreto 1469",
+      "authority": "Consejo de Estado",
+      "url": "https://consejodeestado.gov.co/noticias/",
+      "verified_at": "2026-07-20",
+      "finding": "La Sección Segunda revocó la suspensión provisional y mantuvo vigente el decreto hasta decisión de fondo."
+    },
+    {
+      "id": "V230-F4",
+      "title": "Ley 1843 de 2017 — artículos 7 y 8",
+      "authority": "Secretaría del Senado",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1843_2017.html",
+      "verified_at": "2026-07-20",
+      "finding": "Regula reinicio de términos de descuento por ausencia o indebida notificación y envío dentro de tres días hábiles posteriores a validación."
+    },
+    {
+      "id": "V230-F5",
+      "title": "Sentencia C-038 de 2020",
+      "authority": "Corte Constitucional",
+      "url": "https://www.corteconstitucional.gov.co/relatoria/2020/C-038-20.htm",
+      "verified_at": "2026-07-20",
+      "finding": "Elimina la solidaridad sancionatoria automática del propietario y reafirma imputación personal y culpabilidad."
+    },
+    {
+      "id": "V230-F6",
+      "title": "Sentencia C-321 de 2022",
+      "authority": "Corte Constitucional",
+      "url": "https://www.corteconstitucional.gov.co/relatoria/2022/C-321-22.htm",
+      "verified_at": "2026-07-20",
+      "finding": "Admite sanción por deber propio del propietario únicamente con proceso, prueba e incumplimiento culpable."
+    },
+    {
+      "id": "V230-F7",
+      "title": "Resolución 20203040011245 de 2020 y portal SAST",
+      "authority": "Ministerio de Transporte / ANSV",
+      "url": "https://mintransporte.gov.co/publicaciones/9590/normatividad-racionalizacion/",
+      "verified_at": "2026-07-20",
+      "finding": "Marco técnico vigente identificado para instalación y operación SAST; la verificación debe ser individual y temporal."
+    },
+    {
+      "id": "V230-F8",
+      "title": "Aclaración sobre concepto de desempeño",
+      "authority": "Instituto Nacional de Metrología",
+      "url": "https://inm.gov.co/informacion-fotomultas-concepto-de-desempeno/",
+      "verified_at": "2026-07-20",
+      "finding": "El concepto fue exigible entre 22/03/2018 y 19/08/2020, no era autorización y dejó de exigirse con la Resolución 20203040011245 de 2020."
+    },
+    {
+      "id": "V230-F9",
+      "title": "Comunicado investigaciones SAST 2026",
+      "authority": "Ministerio de Transporte / Superintendencia de Transporte",
+      "url": "https://mintransporte.gov.co/publicaciones/12348/gobierno-nacional-investiga-a-37-organismos-de-transito-mas-de-75-millones-de-fotomultas-estan-bajo-la-lupa-y-58-millones-quedaran-sin-validez/",
+      "verified_at": "2026-07-20",
+      "finding": "Comunica investigaciones y efectos potenciales; su formulación sobre Resolución 718 y concepto de desempeño entra en tensión con la aclaración posterior del INM y requiere cotejo del acto individual."
+    }
+  ],
+  "source_conflicts": [
+    {
+      "id": "SC-TR-2026-01",
+      "subject": "Concepto de desempeño SAST",
+      "position_a": "Comunicaciones de MinTransporte/SuperTransporte de mayo de 2026 atribuyen irregularidades a ausencia del concepto bajo la Resolución 718.",
+      "position_b": "El INM aclara que la exigencia solo estuvo vigente del 22/03/2018 al 19/08/2020 y que la Resolución 718 fue derogada por la Resolución 20203040011245 de 2020.",
+      "adopted_rule": "Aplicar control temporal histórico; mostrar divergencia; bloquear efectos automáticos; exigir acto individual y soporte técnico.",
+      "status": "resuelto para automatización conservadora, sin zanjar controversia administrativa o judicial"
+    }
+  ],
+  "products": [
+    {
+      "code": "CO-LA-001",
+      "name": "Liquidación laboral y reclamación",
+      "decision": "APROBADO INTERNAMENTE CON CONDICIONES",
+      "approval_scope": "Construcción, pruebas y generación controlada con revisión humana obligatoria antes de entrega al usuario final.",
+      "candidate_document": "docs/v229/CO-LA-001_EXPEDIENTE_APROBACION_JURIDICA_V229.docx",
+      "candidate_pdf": "docs/v229/CO-LA-001_EXPEDIENTE_APROBACION_JURIDICA_V229.pdf",
+      "candidate_sha256_docx": "fc7bf87ee009bd30519f1b1145233b8b5121eb98755221b7fbd2409be56eca96",
+      "candidate_sha256_pdf": "acd57e4883a19f33cb0c7fe1074bc6306a3fccd7a3137e2e7fd111ebb443066f",
+      "approved_positions": [
+        "Cobertura limitada a relaciones laborales privadas en Colombia; sector público, contrato realidad, regímenes colectivos, litigio activo y estabilidad reforzada se bloquean.",
+        "Cálculo prestacional por concepto con convención 30/360, fechas de corte independientes y descuento únicamente de pagos previos confirmados en la línea correspondiente.",
+        "Cesantías y prima pueden incorporar auxilio de transporte solo cuando la elegibilidad y el período estén confirmados; vacaciones e indemnización usan la base jurídica aplicable sin adicionar automáticamente el auxilio.",
+        "Salario variable solo se integra con soportes suficientes y promedio atribuible al período; si no existe evidencia, el motor no estima ni inventa valores.",
+        "Indemnización del artículo 64 del CST es una estimación condicionada a modalidad y causa; sanción moratoria del artículo 65, perjuicios e indexación requieren análisis jurídico y no se liquidan automáticamente.",
+        "Descuentos discutidos no reducen el resultado automático. El acuerdo de pago es opcional, no contiene renuncia general a derechos ciertos e indiscutibles y exige revisión humana."
+      ],
+      "mandatory_conditions": [
+        "Aplicar el SMLMV 2026 de $1.750.905 y el auxilio de transporte de $249.095 únicamente para períodos en los que corresponda, manteniendo trazabilidad temporal de la fuente.",
+        "No calcular automáticamente sanción moratoria, indexación, perjuicios, indemnizaciones discutidas ni derechos derivados de estabilidad reforzada.",
+        "Bloquear salario variable sin soportes, salario integral, contrato realidad, sector público, régimen colectivo y litigio o conciliación activa.",
+        "Separar por concepto, período, base, días, pagos previos y saldo; los descuentos discutidos no disminuyen el resultado automático.",
+        "El acuerdo de pago no puede contener renuncia general a derechos ciertos e indiscutibles ni operar como paz y salvo automático."
+      ],
+      "residual_risks": [
+        "buena o mala fe para artículo 65 CST",
+        "prescripción y exigibilidad",
+        "estabilidad reforzada y fueros",
+        "calificación salarial de pagos",
+        "prueba de períodos y pagos"
+      ],
+      "ratification_required": true
+    },
+    {
+      "code": "CO-TR-002",
+      "name": "Fotomulta no notificada",
+      "decision": "APROBADO INTERNAMENTE CON CONDICIONES",
+      "approval_scope": "Diagnóstico, solicitud de expediente y actuaciones administrativas compatibles; no habilita promesas de nulidad, revocación o devolución.",
+      "candidate_document": "docs/v229/CO-TR-002_EXPEDIENTE_APROBACION_JURIDICA_V229.docx",
+      "candidate_pdf": "docs/v229/CO-TR-002_EXPEDIENTE_APROBACION_JURIDICA_V229.pdf",
+      "candidate_sha256_docx": "11762998d7760742a7ee4f36575de3718789e3a26f181f373e8692485d5aa6ce",
+      "candidate_sha256_pdf": "27b579bb69d75a46a466a1ddbb1057230de2f31adffa9f1bf18371d0f2d432c7",
+      "approved_positions": [
+        "La falta, tardanza o defecto de notificación no genera por sí solo nulidad automática: se identifica la etapa, el soporte, la afectación de defensa y el remedio procedente.",
+        "El artículo 8 de la Ley 1843 de 2017 exige envío dentro de tres días hábiles posteriores a la validación; el artículo 7 reinicia los términos de descuento desde la notificación cuando se demuestre ausencia o indebida notificación.",
+        "No existe responsabilidad automática por ser propietario. Deben diferenciarse la imputación personal de la conducta y los deberes propios del propietario, con culpabilidad y debido proceso conforme a C-038 de 2020 y C-321 de 2022.",
+        "Cada salida depende de la etapa: expediente, reclamación de notificación, audiencia y pruebas, revocatoria directa condicionada o corrección registral. La revocatoria directa no sustituye recursos ni revive términos judiciales.",
+        "La revisión técnica individualiza punto, fecha, autorización, calibración, trazabilidad y señalización. El concepto de desempeño solo se controla para hechos entre 22/03/2018 y 19/08/2020 y nunca equivale a autorización.",
+        "Los anuncios e investigaciones oficiales de 2026 son alertas de contraste. No se trasladan masivamente a un comparendo sin individualizar autoridad, dispositivo, período, acto y estado."
+      ],
+      "mandatory_conditions": [
+        "Identificar por separado comparendo, validación, envío, entrega, aviso, audiencia, resolución, ejecutoria, cobro y registro antes de seleccionar una salida.",
+        "La ausencia o defecto de notificación activa reconstrucción probatoria y análisis de defensa; no se formula como nulidad automática.",
+        "Diferenciar responsabilidad personal del conductor y deberes propios del propietario; la sanción al propietario exige procedimiento, prueba e imputación culpable.",
+        "Bloquear cobro coactivo, proceso judicial, término urgente, pago no aclarado, fraude de identidad y documentos de autenticidad dudosa.",
+        "Las comunicaciones oficiales generales de 2026 solo operan como alerta de cotejo; se requiere acto individual, dispositivo, autoridad, período y estado."
+      ],
+      "residual_risks": [
+        "caducidad, prescripción y términos",
+        "notificación efectiva y dirección RUNT",
+        "efectos del pago o aceptación",
+        "idoneidad de revocatoria directa",
+        "individualización técnica del SAST"
+      ],
+      "ratification_required": true
+    },
+    {
+      "code": "CO-TR-001",
+      "name": "Chequeo SAST e inscripción verificada",
+      "decision": "APROBADO INTERNAMENTE CON MODIFICACIÓN OBLIGATORIA",
+      "approval_scope": "Chequeo técnico-jurídico preliminar y expediente de verificación; cualquier pretensión de invalidez, revocación o devolución exige revisión profesional.",
+      "candidate_document": "docs/v229/CO-TR-001_EXPEDIENTE_APROBACION_JURIDICA_V229.docx",
+      "candidate_pdf": "docs/v229/CO-TR-001_EXPEDIENTE_APROBACION_JURIDICA_V229.pdf",
+      "candidate_sha256_docx": "c04bf878f1e421168660316253bed28bd820dd1066bc83c30d9ed0500a6213aa",
+      "candidate_sha256_pdf": "3166791ffe20d4c49ab8ad2dd7c173158a1c41a716bf013fc34d23f689b29a64",
+      "approved_positions": [
+        "El dataset local y la coincidencia por autoridad, territorio o fecha son herramientas de priorización, no fuentes oficiales ni declaraciones de invalidez.",
+        "Toda conclusión exige individualizar dispositivo, punto exacto, fecha, autorización ANSV o excepción legal, vigencia, calibración, trazabilidad, señalización y expediente.",
+        "La autorización y el mapa oficial se consultan en el sistema ANSV. La ausencia de coincidencia local no acredita regularidad; la coincidencia tampoco acredita irregularidad individual.",
+        "Una apertura de investigación, formulación de cargos o comunicado de 2026 no equivale a decisión individual firme. Deben registrarse acto, radicado, autoridad, estado y fuente.",
+        "El concepto de desempeño se controla exclusivamente para el período 22/03/2018-19/08/2020; no era autorización y la trazabilidad metrológica continúa bajo el régimen vigente.",
+        "Pago, cobro coactivo, embargo, proceso judicial, fraude, urgencia o lotes superiores a diez actuaciones se escalan y no reciben conclusión automática."
+      ],
+      "mandatory_conditions": [
+        "La muestra local SAST se mantiene exclusivamente como índice de búsqueda y nunca como fuente concluyente de autorización, vigencia o estado.",
+        "El concepto de desempeño se controla solo para el período 22/03/2018 a 19/08/2020; fuera de ese rango no puede exigirse como requisito vigente.",
+        "Ante la divergencia entre comunicaciones oficiales de 2026 y la aclaración técnica del INM, el sistema debe mostrar conflicto de fuente y bloquear conclusiones automáticas.",
+        "La consulta debe individualizar código o serial, punto, coordenadas, fecha, autoridad, autorización, calibración, trazabilidad, señalización y acto administrativo.",
+        "Una investigación, formulación de cargos o anuncio institucional no equivale a decisión firme ni produce por sí solo revocatoria, nulidad o devolución."
+      ],
+      "residual_risks": [
+        "conflicto entre comunicaciones institucionales",
+        "vigencia y alcance temporal de autorizaciones",
+        "correspondencia equipo-certificado",
+        "estado de investigaciones administrativas",
+        "efectos individuales de actos firmes"
+      ],
+      "ratification_required": true
+    }
+  ],
+  "quality_gates": [
+    {
+      "id": "G230-LEGAL-AI",
+      "name": "Decisión jurídica interna asistida",
+      "status": "closed",
+      "owner": "LegalAIZ.it"
+    },
+    {
+      "id": "G230-SOURCES",
+      "name": "Verificación de fuentes y protocolo de conflicto",
+      "status": "closed",
+      "owner": "jurídico + actualización normativa"
+    },
+    {
+      "id": "G230-HASH",
+      "name": "Vinculación a candidatos v2.29 por SHA-256",
+      "status": "closed",
+      "owner": "gobernanza documental"
+    },
+    {
+      "id": "G230-TRACE",
+      "name": "Conservación de trazabilidad decisión-pregunta-regla-fuente",
+      "status": "closed",
+      "owner": "fábrica documental"
+    },
+    {
+      "id": "G230-DOCQA",
+      "name": "QA DOCX/PDF v2.30",
+      "status": "closed",
+      "owner": "QA documental"
+    },
+    {
+      "id": "G230-TECHQA",
+      "name": "Regresión, sintaxis, arranque y QA web",
+      "status": "closed",
+      "owner": "QA técnico"
+    },
+    {
+      "id": "G230-RATIFY",
+      "name": "Ratificación del abogado titular",
+      "status": "pending",
+      "owner": "usuario abogado"
+    },
+    {
+      "id": "G230-DUAL",
+      "name": "Aprobación dual especialista jurídico + QA",
+      "status": "blocked",
+      "owner": "gobernanza"
+    },
+    {
+      "id": "G230-PUBLISH",
+      "name": "Publicación profesional",
+      "status": "blocked",
+      "owner": "gobernanza"
+    }
+  ],
+  "approval_documents": [
+    "docs/v230/CO-LA-001_ACTA_DECISION_JURIDICA_INTERNA_V230.docx",
+    "docs/v230/CO-TR-001_ACTA_DECISION_JURIDICA_INTERNA_V230.docx",
+    "docs/v230/CO-TR-002_ACTA_DECISION_JURIDICA_INTERNA_V230.docx",
+    "docs/v230/LegalAIZit_Resolucion_Interna_Segunda_Ola_V230.docx",
+    "docs/v230/CO-LA-001_ACTA_DECISION_JURIDICA_INTERNA_V230.pdf",
+    "docs/v230/CO-TR-001_ACTA_DECISION_JURIDICA_INTERNA_V230.pdf",
+    "docs/v230/CO-TR-002_ACTA_DECISION_JURIDICA_INTERNA_V230.pdf",
+    "docs/v230/LegalAIZit_Resolucion_Interna_Segunda_Ola_V230.pdf"
+  ],
+  "artifact_registry": [
+    {
+      "path": "docs/v230/CO-LA-001_ACTA_DECISION_JURIDICA_INTERNA_V230.docx",
+      "format": "DOCX",
+      "sha256": "c527f5da953fe5065597b854442844f5ca92d4e4cffe954a1d921eb39e3eb82d",
+      "bytes": 105790
+    },
+    {
+      "path": "docs/v230/CO-TR-001_ACTA_DECISION_JURIDICA_INTERNA_V230.docx",
+      "format": "DOCX",
+      "sha256": "7503ae8e8edd5a8bb91329e0255c3e40e97f7efd31c3929b2017d257302ad977",
+      "bytes": 105828
+    },
+    {
+      "path": "docs/v230/CO-TR-002_ACTA_DECISION_JURIDICA_INTERNA_V230.docx",
+      "format": "DOCX",
+      "sha256": "1e34b4655770bb81db08fdd6945fb4d48e40abfb9ea7f7686d5918e894b8fbb1",
+      "bytes": 105866
+    },
+    {
+      "path": "docs/v230/LegalAIZit_Resolucion_Interna_Segunda_Ola_V230.docx",
+      "format": "DOCX",
+      "sha256": "f91ec37ba7340a901c11fc454e3072d1c04277cb540ecfa12668e7ee18b91485",
+      "bytes": 105906
+    },
+    {
+      "path": "docs/v230/CO-LA-001_ACTA_DECISION_JURIDICA_INTERNA_V230.pdf",
+      "format": "PDF",
+      "sha256": "64dbe2bdf04b7903ec5c52162baa9724c2bdce9055d2c4f24fc9940b233705c5",
+      "bytes": 125832
+    },
+    {
+      "path": "docs/v230/CO-TR-001_ACTA_DECISION_JURIDICA_INTERNA_V230.pdf",
+      "format": "PDF",
+      "sha256": "2df9a682e860270bc037657ec008fe43ead583ac9f74f0d3034e38bacb116a35",
+      "bytes": 126592
+    },
+    {
+      "path": "docs/v230/CO-TR-002_ACTA_DECISION_JURIDICA_INTERNA_V230.pdf",
+      "format": "PDF",
+      "sha256": "40ffd71b5df53956fb9ccd011dd2150932a5c87ea3d7f66ec4c439cd09ca961b",
+      "bytes": 126200
+    },
+    {
+      "path": "docs/v230/LegalAIZit_Resolucion_Interna_Segunda_Ola_V230.pdf",
+      "format": "PDF",
+      "sha256": "5165dd85d7e1a42cd0cc1ad1cd3e6694bdd397ca6446b57a11ed4de60bdc8319",
+      "bytes": 129423
+    }
+  ],
+  "qa_status": {
+    "document_qa": "closed",
+    "technical_qa": "closed",
+    "human_legal_ratification": "pending",
+    "dual_approval": "blocked",
+    "professional_publication": "blocked"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "legalaizit-postgres-schema-export-v1",
+  "generated_at": "2026-08-04T04:16:41.158437+00:00",
+  "milestone": "M31.4",
+  "version": "5.0.3",
+  "objects": 171,
+  "tables": 102,
+  "indexes": 69,
+  "sha256": "ffe8980d007042db1463e02766d41fd5c94d507af39e9797c05baea217ef3a7e",
+  "ready_for_external_certification": true,
+  "external_certified": false,
+  "production_authorized": false
+}

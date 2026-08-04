@@ -1,0 +1,62 @@
+[
+  {
+    "id": "DOC-EM4-NDA-001",
+    "name": "Acuerdo de confidencialidad y uso restringido",
+    "trigger": "always",
+    "required": true
+  },
+  {
+    "id": "ANX-EM4-INFO-001",
+    "name": "Inventario de información y matriz de acceso",
+    "trigger": "always",
+    "required": true
+  },
+  {
+    "id": "ANX-EM4-REL-001",
+    "name": "Anexo especializado según la relación",
+    "trigger": "relationship.context != other",
+    "required": false
+  },
+  {
+    "id": "ANX-EM4-IP-001",
+    "name": "Anexo de propiedad intelectual y materiales preexistentes",
+    "trigger": "ip relevant",
+    "required": false
+  },
+  {
+    "id": "ANX-EM4-DATA-001",
+    "name": "Anexo de datos personales y transferencias",
+    "trigger": "data.personal == true",
+    "required": false
+  },
+  {
+    "id": "ANX-EM4-AI-001",
+    "name": "Anexo de uso de inteligencia artificial",
+    "trigger": "ai.used == true",
+    "required": false
+  },
+  {
+    "id": "ANX-EM4-OSS-001",
+    "name": "Inventario de OSS y componentes de terceros",
+    "trigger": "ip.oss_third_party provided",
+    "required": false
+  },
+  {
+    "id": "PRO-EM4-INC-001",
+    "name": "Protocolo de incidentes y preservación de evidencia",
+    "trigger": "trade secrets or critical security",
+    "required": false
+  },
+  {
+    "id": "ACT-EM4-DISC-001",
+    "name": "Acta de entrega y recepción de información",
+    "trigger": "always",
+    "required": true
+  },
+  {
+    "id": "ACT-EM4-CLOSE-001",
+    "name": "Acta de devolución, eliminación y cierre",
+    "trigger": "always_at_closure",
+    "required": true
+  }
+]

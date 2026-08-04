@@ -1,0 +1,143 @@
+{
+  "schema": "legalaizit-release-audit-v1",
+  "milestone": "M31.6",
+  "version": "5.0.5",
+  "build_id": "M31-6-PIPELINE-CERTIFICACION-EXTERNA-2026-08-04",
+  "root": "/mnt/data/LegalAIZit_M31_6_PIPELINE_CERTIFICACION_EXTERNA_v5.0.5_2026-08-04",
+  "strict_distribution": true,
+  "checks": [
+    {
+      "key": "manifest_identity",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "version": "5.0.5",
+          "build_id": "M31-6-PIPELINE-CERTIFICACION-EXTERNA-2026-08-04",
+          "release_id": "M31-6-PIPELINE-CERTIFICACION-EXTERNA-5.0.5-2026-08-04",
+          "release_name": "M31.6 — Pipeline de certificación externa PostgreSQL",
+          "production_authorized": false
+        },
+        "actual": {
+          "version": "5.0.5",
+          "build_id": "M31-6-PIPELINE-CERTIFICACION-EXTERNA-2026-08-04",
+          "release_id": "M31-6-PIPELINE-CERTIFICACION-EXTERNA-5.0.5-2026-08-04",
+          "release_name": "M31.6 — Pipeline de certificación externa PostgreSQL",
+          "production_authorized": false
+        }
+      }
+    },
+    {
+      "key": "runtime_manifest_identity",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "runtime_version": "5.0.5",
+          "build": "M31-6-PIPELINE-CERTIFICACION-EXTERNA-2026-08-04",
+          "release_iteration": "M31.6",
+          "production_authorized": false
+        },
+        "actual": {
+          "runtime_version": "5.0.5",
+          "build": "M31-6-PIPELINE-CERTIFICACION-EXTERNA-2026-08-04",
+          "release_iteration": "M31.6",
+          "production_authorized": false
+        }
+      }
+    },
+    {
+      "key": "release_policy_identity",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "phase": "M31.6",
+          "version": "5.0.5",
+          "release_id": "M31-6-PIPELINE-CERTIFICACION-EXTERNA-5.0.5-2026-08-04",
+          "production_authorized": false
+        },
+        "actual": {
+          "phase": "M31.6",
+          "version": "5.0.5",
+          "release_id": "M31-6-PIPELINE-CERTIFICACION-EXTERNA-5.0.5-2026-08-04",
+          "production_authorized": false
+        }
+      }
+    },
+    {
+      "key": "active_documentation",
+      "passed": true,
+      "detail": {
+        "files": 8
+      }
+    },
+    {
+      "key": "required_release_artifacts",
+      "passed": true,
+      "detail": {
+        "files": 33
+      }
+    },
+    {
+      "key": "deployment_security_contract",
+      "passed": true,
+      "detail": {
+        "status": "hardened"
+      }
+    },
+    {
+      "key": "postgres_certification_foundation",
+      "passed": true,
+      "detail": {
+        "code_ready_for_external_certification": true,
+        "external_certified": false,
+        "migration_certified": false,
+        "backup_restore_certified": false,
+        "gate_closed": true,
+        "schema_tables": 102,
+        "schema_indexes": 69,
+        "lightweight_schema_bootstrap": true
+      }
+    },
+    {
+      "key": "external_certification_pipeline",
+      "passed": true,
+      "detail": {
+        "single_pipeline": true,
+        "environment_attestation": true,
+        "evidence_hashes": true,
+        "tamper_verification": true,
+        "production_authorized": false
+      }
+    },
+    {
+      "key": "security_report_current",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "version": "5.0.5",
+          "milestone": "M31.6",
+          "critical_findings": 0,
+          "high_findings": 0,
+          "production_blocked": true
+        },
+        "actual": {
+          "version": "5.0.5",
+          "milestone": "M31.6",
+          "critical_findings": 0,
+          "high_findings": 0,
+          "production_blocked": true
+        }
+      }
+    },
+    {
+      "key": "sanitized_distribution",
+      "passed": true,
+      "detail": {
+        "status": "clean"
+      }
+    }
+  ],
+  "passed": 10,
+  "total": 10,
+  "ok": true,
+  "failures": []
+}

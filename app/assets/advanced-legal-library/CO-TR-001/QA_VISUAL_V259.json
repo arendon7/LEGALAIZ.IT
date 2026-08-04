@@ -1,0 +1,61 @@
+{
+  "version": "2.59",
+  "product_id": "CO-TR-001",
+  "scenarios": [
+    {
+      "id": "V259-CAN-01",
+      "mode": "precheck",
+      "documents": [
+        "00_PAQUETE_DOCUMENTAL_CO-TR-001_V259.docx"
+      ],
+      "checks": [
+        "single_match_visible",
+        "legal_limits",
+        "source_traceability",
+        "no_clipping",
+        "headers_footers",
+        "no_unresolved_markers"
+      ]
+    },
+    {
+      "id": "V259-CAN-03",
+      "mode": "precheck",
+      "documents": [
+        "00_PAQUETE_DOCUMENTAL_CO-TR-001_V259.docx"
+      ],
+      "checks": [
+        "all_matches_visible",
+        "tables_readable",
+        "decision_firmness_warning",
+        "no_clipping",
+        "no_unresolved_markers"
+      ]
+    },
+    {
+      "id": "V259-CAN-04",
+      "mode": "registration",
+      "documents": [
+        "00_PAQUETE_DOCUMENTAL_CO-TR-001_V259.docx"
+      ],
+      "checks": [
+        "registration_consent_visible",
+        "identity_minimized",
+        "professional_review_notice",
+        "no_unresolved_markers"
+      ]
+    },
+    {
+      "id": "V259-CAN-12",
+      "mode": "registration",
+      "documents": [
+        "00_PAQUETE_DOCUMENTAL_CO-TR-001_V259.docx"
+      ],
+      "checks": [
+        "no_match_limit_visible",
+        "registration_consent_visible",
+        "no_false_relief",
+        "no_unresolved_markers"
+      ]
+    }
+  ]
+}

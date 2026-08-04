@@ -1,0 +1,397 @@
+{
+  "schema_version": "1.0.0",
+  "project": "LegalAIZ.it",
+  "target_release": "M24.0",
+  "states": [
+    "INICIADO",
+    "DIAGNOSTICADO",
+    "INFORMACION_INCOMPLETA",
+    "LISTO_PARA_PAGO",
+    "PAGADO",
+    "LISTO_PARA_GENERAR",
+    "GENERADO",
+    "EN_REVISION_JURIDICA",
+    "OBSERVADO",
+    "CORREGIDO",
+    "APROBADO_JURIDICAMENTE",
+    "EN_QA",
+    "APROBADO_QA",
+    "ENTREGADO",
+    "EN_SEGUIMIENTO",
+    "CERRADO",
+    "ESCALADO",
+    "CANCELADO"
+  ],
+  "initial_state": "INICIADO",
+  "terminal_states": [
+    "CERRADO",
+    "ESCALADO",
+    "CANCELADO"
+  ],
+  "transitions": [
+    {
+      "from": "INICIADO",
+      "to": "DIAGNOSTICADO",
+      "event": "complete_initial_diagnosis",
+      "allowed_roles": [
+        "user",
+        "system"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "DIAGNOSTICADO",
+      "to": "INFORMACION_INCOMPLETA",
+      "event": "detect_missing_or_conflicting_information",
+      "allowed_roles": [
+        "system",
+        "legal_reviewer"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "INFORMACION_INCOMPLETA",
+      "to": "DIAGNOSTICADO",
+      "event": "complete_or_correct_information",
+      "allowed_roles": [
+        "user",
+        "legal_reviewer"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "DIAGNOSTICADO",
+      "to": "LISTO_PARA_PAGO",
+      "event": "accept_scope_risks_and_price",
+      "allowed_roles": [
+        "user"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "LISTO_PARA_PAGO",
+      "to": "PAGADO",
+      "event": "confirm_payment",
+      "allowed_roles": [
+        "payment_service",
+        "admin"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "PAGADO",
+      "to": "LISTO_PARA_GENERAR",
+      "event": "validate_generation_preconditions",
+      "allowed_roles": [
+        "system"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "LISTO_PARA_GENERAR",
+      "to": "GENERADO",
+      "event": "generate_document_revision",
+      "allowed_roles": [
+        "system"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "GENERADO",
+      "to": "EN_REVISION_JURIDICA",
+      "event": "assign_legal_review",
+      "allowed_roles": [
+        "system",
+        "admin"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "EN_REVISION_JURIDICA",
+      "to": "OBSERVADO",
+      "event": "record_legal_observations",
+      "allowed_roles": [
+        "legal_reviewer"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "OBSERVADO",
+      "to": "CORREGIDO",
+      "event": "apply_authorized_corrections",
+      "allowed_roles": [
+        "legal_reviewer",
+        "document_editor"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "CORREGIDO",
+      "to": "EN_REVISION_JURIDICA",
+      "event": "resubmit_for_legal_review",
+      "allowed_roles": [
+        "document_editor",
+        "system"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "EN_REVISION_JURIDICA",
+      "to": "APROBADO_JURIDICAMENTE",
+      "event": "approve_legal_content",
+      "allowed_roles": [
+        "legal_reviewer"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "APROBADO_JURIDICAMENTE",
+      "to": "EN_QA",
+      "event": "assign_distinct_qa_reviewer",
+      "allowed_roles": [
+        "system",
+        "admin"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "EN_QA",
+      "to": "OBSERVADO",
+      "event": "record_qa_observations",
+      "allowed_roles": [
+        "qa_reviewer"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "EN_QA",
+      "to": "APROBADO_QA",
+      "event": "approve_technical_and_editorial_quality",
+      "allowed_roles": [
+        "qa_reviewer"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "APROBADO_QA",
+      "to": "ENTREGADO",
+      "event": "release_final_files",
+      "allowed_roles": [
+        "system"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "ENTREGADO",
+      "to": "EN_SEGUIMIENTO",
+      "event": "activate_action_plan_and_deadlines",
+      "allowed_roles": [
+        "system",
+        "user"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "EN_SEGUIMIENTO",
+      "to": "CERRADO",
+      "event": "record_outcome_and_close",
+      "allowed_roles": [
+        "user",
+        "legal_reviewer",
+        "admin"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "INICIADO",
+      "to": "ESCALADO",
+      "event": "trigger_high_risk_or_out_of_scope_route",
+      "allowed_roles": [
+        "system",
+        "legal_reviewer",
+        "admin"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "DIAGNOSTICADO",
+      "to": "ESCALADO",
+      "event": "trigger_high_risk_or_out_of_scope_route",
+      "allowed_roles": [
+        "system",
+        "legal_reviewer",
+        "admin"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "INFORMACION_INCOMPLETA",
+      "to": "ESCALADO",
+      "event": "trigger_high_risk_or_out_of_scope_route",
+      "allowed_roles": [
+        "system",
+        "legal_reviewer",
+        "admin"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "LISTO_PARA_PAGO",
+      "to": "ESCALADO",
+      "event": "trigger_high_risk_or_out_of_scope_route",
+      "allowed_roles": [
+        "system",
+        "legal_reviewer",
+        "admin"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "PAGADO",
+      "to": "ESCALADO",
+      "event": "trigger_high_risk_or_out_of_scope_route",
+      "allowed_roles": [
+        "system",
+        "legal_reviewer",
+        "admin"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "LISTO_PARA_GENERAR",
+      "to": "ESCALADO",
+      "event": "trigger_high_risk_or_out_of_scope_route",
+      "allowed_roles": [
+        "system",
+        "legal_reviewer",
+        "admin"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "GENERADO",
+      "to": "ESCALADO",
+      "event": "trigger_high_risk_or_out_of_scope_route",
+      "allowed_roles": [
+        "system",
+        "legal_reviewer",
+        "admin"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "EN_REVISION_JURIDICA",
+      "to": "ESCALADO",
+      "event": "trigger_high_risk_or_out_of_scope_route",
+      "allowed_roles": [
+        "system",
+        "legal_reviewer",
+        "admin"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "OBSERVADO",
+      "to": "ESCALADO",
+      "event": "trigger_high_risk_or_out_of_scope_route",
+      "allowed_roles": [
+        "system",
+        "legal_reviewer",
+        "admin"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "CORREGIDO",
+      "to": "ESCALADO",
+      "event": "trigger_high_risk_or_out_of_scope_route",
+      "allowed_roles": [
+        "system",
+        "legal_reviewer",
+        "admin"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "EN_QA",
+      "to": "ESCALADO",
+      "event": "trigger_high_risk_or_out_of_scope_route",
+      "allowed_roles": [
+        "system",
+        "legal_reviewer",
+        "admin"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "ENTREGADO",
+      "to": "ESCALADO",
+      "event": "trigger_high_risk_or_out_of_scope_route",
+      "allowed_roles": [
+        "system",
+        "legal_reviewer",
+        "admin"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "EN_SEGUIMIENTO",
+      "to": "ESCALADO",
+      "event": "trigger_high_risk_or_out_of_scope_route",
+      "allowed_roles": [
+        "system",
+        "legal_reviewer",
+        "admin"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "INICIADO",
+      "to": "CANCELADO",
+      "event": "cancel_before_generation",
+      "allowed_roles": [
+        "user",
+        "admin"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "DIAGNOSTICADO",
+      "to": "CANCELADO",
+      "event": "cancel_before_generation",
+      "allowed_roles": [
+        "user",
+        "admin"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "INFORMACION_INCOMPLETA",
+      "to": "CANCELADO",
+      "event": "cancel_before_generation",
+      "allowed_roles": [
+        "user",
+        "admin"
+      ],
+      "audit_required": true
+    },
+    {
+      "from": "LISTO_PARA_PAGO",
+      "to": "CANCELADO",
+      "event": "cancel_before_generation",
+      "allowed_roles": [
+        "user",
+        "admin"
+      ],
+      "audit_required": true
+    }
+  ],
+  "invariants": [
+    "no_client_delivery_before_APROBADO_QA",
+    "legal_reviewer_and_qa_reviewer_must_be_distinct_users",
+    "every_document_change_creates_an_immutable_revision",
+    "every_state_transition_records_actor_timestamp_reason_and_tenant",
+    "ESCALADO_blocks_automatic_final_legal_conclusions",
+    "tenant_and_case_scope_are_enforced_on_every_read_and_write"
+  ]
+}

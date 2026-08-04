@@ -1,0 +1,2027 @@
+{
+  "product": {
+    "code": "CO-LA-002",
+    "slug": "contrato-trabajo",
+    "title": "Contrato de trabajo personalizado",
+    "vertical": "Laboral",
+    "icon": "▤",
+    "price_auto": 39900,
+    "price_review": 129900,
+    "version": "2.24",
+    "base_risk": "green",
+    "maturity": "producto jurídico madurado e integrado v2.24",
+    "summary": "Selecciona la modalidad laboral real y valida término, obra, jornada, prueba, salario, trabajo no presencial, protecciones y anexos antes de generar el paquete completo.",
+    "outcomes": [
+      "Contrato laboral completo",
+      "Anexos condicionales",
+      "Lista de alistamiento y cumplimiento",
+      "Ficha de trazabilidad",
+      "Paquete consolidado"
+    ],
+    "exclusions": [
+      "Servidor público o trabajador oficial",
+      "Expatriación o ejecución principal fuera de Colombia",
+      "Menor de edad",
+      "Régimen especial no parametrizado",
+      "Decisión discriminatoria"
+    ],
+    "package": "LegalAIZit_Paquete_03_Contrato_Trabajo_Consolidado_v2",
+    "package_status": "modelo completo integrado, parametrizado y probado v2.24",
+    "owner": "Laboral",
+    "workflow": [
+      "Necesidad",
+      "Modalidad",
+      "Condiciones",
+      "Anexos",
+      "Contrato"
+    ],
+    "primary_document": "Contrato de trabajo",
+    "jurisdiction": "Colombia",
+    "publication_status": "Aprobado para uso profesional controlado",
+    "human_validation_required": false,
+    "design_system": "LegalAIZ.it canonical 2026.07",
+    "capabilities": [
+      "Entrevista dinámica",
+      "Motor de reglas",
+      "Semáforo de riesgo",
+      "Expediente",
+      "Documento preliminar",
+      "Revisión profesional",
+      "Paquete documental específico",
+      "Edición versionada en Studio Jurídico",
+      "Exportación de contenido jurídico"
+    ],
+    "pilot_level": "Piloto integral",
+    "implementation_status": "producto madurado de extremo a extremo v2.24"
+  },
+  "interview": {
+    "version": "2.24",
+    "intro": "Responde con datos confirmados. El sistema selecciona la modalidad real, verifica límites legales y activa únicamente los anexos necesarios.",
+    "sections": [
+      "Partes",
+      "Alcance",
+      "Modalidad",
+      "Cargo",
+      "Lugar",
+      "Jornada",
+      "Prueba",
+      "Compensación",
+      "Cumplimiento",
+      "Protecciones",
+      "Anexos"
+    ],
+    "questions": [
+      {
+        "id": "employer_name",
+        "label": "Nombre o razón social del empleador",
+        "type": "text",
+        "required": true,
+        "section": "Partes",
+        "min_length": 3,
+        "help": {
+          "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+          "how_to_answer": "Responde con el dato confirmado para “Nombre o razón social del empleador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "employer_id",
+        "label": "NIT o identificación del empleador",
+        "type": "text",
+        "required": true,
+        "section": "Partes",
+        "min_length": 5,
+        "help": {
+          "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+          "how_to_answer": "Responde con el dato confirmado para “NIT o identificación del empleador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "employer_address",
+        "label": "Domicilio y dirección del empleador",
+        "type": "text",
+        "required": true,
+        "section": "Partes",
+        "min_length": 5,
+        "help": {
+          "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+          "how_to_answer": "Responde con el dato confirmado para “Domicilio y dirección del empleador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "employer_representative",
+        "label": "Representante o persona que firma por el empleador",
+        "type": "text",
+        "required": true,
+        "section": "Partes",
+        "min_length": 3,
+        "help": {
+          "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+          "how_to_answer": "Responde con el dato confirmado para “Representante o persona que firma por el empleador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "worker_name",
+        "label": "Nombre completo del trabajador",
+        "type": "text",
+        "required": true,
+        "section": "Partes",
+        "min_length": 3,
+        "help": {
+          "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+          "how_to_answer": "Responde con el dato confirmado para “Nombre completo del trabajador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "worker_id",
+        "label": "Documento de identidad del trabajador",
+        "type": "text",
+        "required": true,
+        "section": "Partes",
+        "min_length": 5,
+        "help": {
+          "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+          "how_to_answer": "Responde con el dato confirmado para “Documento de identidad del trabajador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "worker_address",
+        "label": "Domicilio y dirección del trabajador",
+        "type": "text",
+        "required": true,
+        "section": "Partes",
+        "min_length": 5,
+        "help": {
+          "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+          "how_to_answer": "Responde con el dato confirmado para “Domicilio y dirección del trabajador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "worker_email",
+        "label": "Correo del trabajador",
+        "type": "text",
+        "required": true,
+        "section": "Partes",
+        "format": "email",
+        "help": {
+          "why_asked": "Identifica correctamente a las partes y permite que el contrato sea trazable y firmable.",
+          "how_to_answer": "Responde con el dato confirmado para “Correo del trabajador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "worker_age_status",
+        "label": "Condición de edad del trabajador",
+        "type": "select",
+        "required": true,
+        "section": "Alcance",
+        "options": [
+          "Mayor de edad",
+          "Menor de edad",
+          "No confirmado"
+        ],
+        "help": {
+          "why_asked": "Determina si el caso está dentro del producto estándar o requiere un tratamiento especial.",
+          "how_to_answer": "Responde con el dato confirmado para “Condición de edad del trabajador”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "public_or_crossborder",
+        "label": "¿Es servidor público, trabajador oficial, expatriado o laborará principalmente fuera de Colombia?",
+        "type": "select",
+        "required": true,
+        "section": "Alcance",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "help": {
+          "why_asked": "Determina si el caso está dentro del producto estándar o requiere un tratamiento especial.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Es servidor público, trabajador oficial, expatriado o laborará principalmente fuera de Colombia?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "collective_regime",
+        "label": "¿La relación está cubierta por convención colectiva, pacto, laudo o régimen especial?",
+        "type": "select",
+        "required": true,
+        "section": "Alcance",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "help": {
+          "why_asked": "Determina si el caso está dentro del producto estándar o requiere un tratamiento especial.",
+          "how_to_answer": "Responde con el dato confirmado para “¿La relación está cubierta por convención colectiva, pacto, laudo o régimen especial?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "need_type",
+        "label": "Naturaleza real de la necesidad",
+        "type": "select",
+        "required": true,
+        "section": "Modalidad",
+        "options": [
+          "Permanente",
+          "Temporal con fecha cierta",
+          "Obra o labor específica"
+        ],
+        "help": {
+          "why_asked": "Permite seleccionar la modalidad contractual según la necesidad real y controlar su duración.",
+          "how_to_answer": "Responde con el dato confirmado para “Naturaleza real de la necesidad”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "start_date",
+        "label": "Fecha real de inicio",
+        "type": "date",
+        "required": true,
+        "section": "Modalidad",
+        "help": {
+          "why_asked": "Permite seleccionar la modalidad contractual según la necesidad real y controlar su duración.",
+          "how_to_answer": "Responde con el dato confirmado para “Fecha real de inicio”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "end_date",
+        "label": "Fecha de terminación propuesta",
+        "type": "date",
+        "required": false,
+        "section": "Modalidad",
+        "show_if": {
+          "field": "need_type",
+          "equals": "Temporal con fecha cierta"
+        },
+        "after_field": "start_date",
+        "help": {
+          "why_asked": "Permite seleccionar la modalidad contractual según la necesidad real y controlar su duración.",
+          "how_to_answer": "Responde con el dato confirmado para “Fecha de terminación propuesta”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "prior_fixed_term_months",
+        "label": "Meses acumulados de contratos fijos desde la vigencia de la Ley 2466 de 2025",
+        "type": "number",
+        "required": false,
+        "section": "Modalidad",
+        "show_if": {
+          "field": "need_type",
+          "equals": "Temporal con fecha cierta"
+        },
+        "min": 0,
+        "max": 48,
+        "help": {
+          "why_asked": "Permite seleccionar la modalidad contractual según la necesidad real y controlar su duración.",
+          "how_to_answer": "Responde con el dato confirmado para “Meses acumulados de contratos fijos desde la vigencia de la Ley 2466 de 2025”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "work_description",
+        "label": "Descripción precisa de la obra o labor",
+        "type": "textarea",
+        "required": false,
+        "section": "Modalidad",
+        "show_if": {
+          "field": "need_type",
+          "equals": "Obra o labor específica"
+        },
+        "help": {
+          "why_asked": "Permite seleccionar la modalidad contractual según la necesidad real y controlar su duración.",
+          "how_to_answer": "Responde con el dato confirmado para “Descripción precisa de la obra o labor”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "completion_milestone",
+        "label": "Hito objetivo y verificable de terminación",
+        "type": "textarea",
+        "required": false,
+        "section": "Modalidad",
+        "show_if": {
+          "field": "need_type",
+          "equals": "Obra o labor específica"
+        },
+        "help": {
+          "why_asked": "Permite seleccionar la modalidad contractual según la necesidad real y controlar su duración.",
+          "how_to_answer": "Responde con el dato confirmado para “Hito objetivo y verificable de terminación”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "job_title",
+        "label": "Denominación del cargo",
+        "type": "text",
+        "required": true,
+        "section": "Cargo",
+        "min_length": 3,
+        "help": {
+          "why_asked": "Define el servicio personal, las funciones y los límites razonables del cargo.",
+          "how_to_answer": "Responde con el dato confirmado para “Denominación del cargo”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "role_clear",
+        "label": "¿Las funciones y responsabilidades están detalladas en un anexo?",
+        "type": "select",
+        "required": true,
+        "section": "Cargo",
+        "options": [
+          "Sí",
+          "No",
+          "En construcción"
+        ],
+        "help": {
+          "why_asked": "Define el servicio personal, las funciones y los límites razonables del cargo.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Las funciones y responsabilidades están detalladas en un anexo?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "workplace",
+        "label": "Lugar principal de trabajo",
+        "type": "text",
+        "required": true,
+        "section": "Lugar",
+        "min_length": 3,
+        "help": {
+          "why_asked": "Determina el lugar y la figura aplicable al trabajo presencial o no presencial.",
+          "how_to_answer": "Responde con el dato confirmado para “Lugar principal de trabajo”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "remote",
+        "label": "Forma de ejecución del trabajo",
+        "type": "select",
+        "required": true,
+        "section": "Lugar",
+        "options": [
+          "Presencial",
+          "Teletrabajo suplementario",
+          "Teletrabajo autónomo",
+          "Trabajo remoto integral",
+          "Trabajo en casa temporal",
+          "Híbrido por acuerdo"
+        ],
+        "help": {
+          "why_asked": "Determina el lugar y la figura aplicable al trabajo presencial o no presencial.",
+          "how_to_answer": "Responde con el dato confirmado para “Forma de ejecución del trabajo”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "remote_compliance_ready",
+        "label": "¿Se documentaron ARL, SG-SST, equipos, desconexión y lugar autorizado?",
+        "type": "select",
+        "required": false,
+        "section": "Lugar",
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ],
+        "show_if": {
+          "field": "remote",
+          "equals": "Trabajo remoto integral"
+        },
+        "help": {
+          "why_asked": "Determina el lugar y la figura aplicable al trabajo presencial o no presencial.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Se documentaron ARL, SG-SST, equipos, desconexión y lugar autorizado?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "weekly_hours",
+        "label": "Horas ordinarias semanales",
+        "type": "number",
+        "required": true,
+        "section": "Jornada",
+        "min": 1,
+        "max": 60,
+        "help": {
+          "why_asked": "Permite verificar la jornada ordinaria, descansos, nocturnidad y trabajo suplementario.",
+          "how_to_answer": "Responde con el dato confirmado para “Horas ordinarias semanales”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "max_daily_hours",
+        "label": "Máximo de horas ordinarias en un día",
+        "type": "number",
+        "required": true,
+        "section": "Jornada",
+        "min": 1,
+        "max": 16,
+        "help": {
+          "why_asked": "Permite verificar la jornada ordinaria, descansos, nocturnidad y trabajo suplementario.",
+          "how_to_answer": "Responde con el dato confirmado para “Máximo de horas ordinarias en un día”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "night_work",
+        "label": "¿El horario incluye trabajo desde las 7:00 p. m. hasta las 6:00 a. m.?",
+        "type": "select",
+        "required": true,
+        "section": "Jornada",
+        "options": [
+          "No",
+          "Sí",
+          "Ocasional"
+        ],
+        "help": {
+          "why_asked": "Permite verificar la jornada ordinaria, descansos, nocturnidad y trabajo suplementario.",
+          "how_to_answer": "Responde con el dato confirmado para “¿El horario incluye trabajo desde las 7:00 p. m. hasta las 6:00 a. m.?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "planned_overtime_daily",
+        "label": "Horas extra máximas previstas por día",
+        "type": "number",
+        "required": true,
+        "section": "Jornada",
+        "min": 0,
+        "max": 8,
+        "help": {
+          "why_asked": "Permite verificar la jornada ordinaria, descansos, nocturnidad y trabajo suplementario.",
+          "how_to_answer": "Responde con el dato confirmado para “Horas extra máximas previstas por día”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "planned_overtime_weekly",
+        "label": "Horas extra máximas previstas por semana",
+        "type": "number",
+        "required": true,
+        "section": "Jornada",
+        "min": 0,
+        "max": 30,
+        "help": {
+          "why_asked": "Permite verificar la jornada ordinaria, descansos, nocturnidad y trabajo suplementario.",
+          "how_to_answer": "Responde con el dato confirmado para “Horas extra máximas previstas por semana”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "probation",
+        "label": "¿Se pactará período de prueba escrito?",
+        "type": "select",
+        "required": true,
+        "section": "Prueba",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "help": {
+          "why_asked": "Controla que el período de prueba sea escrito y respete los límites aplicables.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Se pactará período de prueba escrito?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "probation_months",
+        "label": "Duración del período de prueba en meses",
+        "type": "number",
+        "required": false,
+        "section": "Prueba",
+        "show_if": {
+          "field": "probation",
+          "equals": "Sí"
+        },
+        "min": 0.1,
+        "max": 3,
+        "help": {
+          "why_asked": "Controla que el período de prueba sea escrito y respete los límites aplicables.",
+          "how_to_answer": "Responde con el dato confirmado para “Duración del período de prueba en meses”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "monthly_salary",
+        "label": "Salario básico mensual acordado (COP)",
+        "type": "number",
+        "required": true,
+        "section": "Compensación",
+        "min": 1,
+        "help": {
+          "why_asked": "Permite validar salario, pagos variables, beneficios y descuentos.",
+          "how_to_answer": "Responde con el dato confirmado para “Salario básico mensual acordado (COP)”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "salary_type",
+        "label": "Tipo de salario",
+        "type": "select",
+        "required": true,
+        "section": "Compensación",
+        "options": [
+          "Ordinario",
+          "Integral"
+        ],
+        "help": {
+          "why_asked": "Permite validar salario, pagos variables, beneficios y descuentos.",
+          "how_to_answer": "Responde con el dato confirmado para “Tipo de salario”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "variable_payments",
+        "label": "¿Habrá comisiones, bonos o pagos variables?",
+        "type": "select",
+        "required": true,
+        "section": "Compensación",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "help": {
+          "why_asked": "Permite validar salario, pagos variables, beneficios y descuentos.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Habrá comisiones, bonos o pagos variables?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "variable_formula_clear",
+        "label": "¿La fórmula, causación, período y pago están definidos?",
+        "type": "select",
+        "required": false,
+        "section": "Compensación",
+        "options": [
+          "Sí",
+          "No",
+          "En construcción"
+        ],
+        "show_if": {
+          "field": "variable_payments",
+          "equals": "Sí"
+        },
+        "help": {
+          "why_asked": "Permite validar salario, pagos variables, beneficios y descuentos.",
+          "how_to_answer": "Responde con el dato confirmado para “¿La fórmula, causación, período y pago están definidos?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "automatic_deductions",
+        "label": "¿Se pretende autorizar descuentos generales o automáticos por daños, pérdidas o faltantes?",
+        "type": "select",
+        "required": true,
+        "section": "Compensación",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "help": {
+          "why_asked": "Permite validar salario, pagos variables, beneficios y descuentos.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Se pretende autorizar descuentos generales o automáticos por daños, pérdidas o faltantes?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "social_security_plan_confirmed",
+        "label": "¿Está definido el proceso de afiliación y aportes a seguridad social y parafiscales?",
+        "type": "select",
+        "required": true,
+        "section": "Cumplimiento",
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ],
+        "help": {
+          "why_asked": "Verifica afiliaciones, examen ocupacional y controles previos al inicio.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Está definido el proceso de afiliación y aportes a seguridad social y parafiscales?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "occupational_exam_ready",
+        "label": "¿Está programada la evaluación médica ocupacional de ingreso?",
+        "type": "select",
+        "required": true,
+        "section": "Cumplimiento",
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ],
+        "help": {
+          "why_asked": "Verifica afiliaciones, examen ocupacional y controles previos al inicio.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Está programada la evaluación médica ocupacional de ingreso?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "special_protection",
+        "label": "¿Existe embarazo, discapacidad, condición de salud, fuero, calidad de cuidador u otra protección conocida?",
+        "type": "select",
+        "required": true,
+        "section": "Protecciones",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "help": {
+          "why_asked": "Evita decisiones discriminatorias y activa ajustes o análisis reforzado cuando corresponde.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Existe embarazo, discapacidad, condición de salud, fuero, calidad de cuidador u otra protección conocida?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "protected_status_decision",
+        "label": "¿La decisión de contratar o las condiciones dependen negativamente de esa protección?",
+        "type": "select",
+        "required": false,
+        "section": "Protecciones",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "show_if": {
+          "field": "special_protection",
+          "equals": "Sí"
+        },
+        "help": {
+          "why_asked": "Evita decisiones discriminatorias y activa ajustes o análisis reforzado cuando corresponde.",
+          "how_to_answer": "Responde con el dato confirmado para “¿La decisión de contratar o las condiciones dependen negativamente de esa protección?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "reasonable_adjustments",
+        "label": "¿Se evaluaron ajustes razonables y medidas de no discriminación?",
+        "type": "select",
+        "required": false,
+        "section": "Protecciones",
+        "options": [
+          "Sí",
+          "No",
+          "En proceso"
+        ],
+        "show_if": {
+          "field": "special_protection",
+          "equals": "Sí"
+        },
+        "help": {
+          "why_asked": "Evita decisiones discriminatorias y activa ajustes o análisis reforzado cuando corresponde.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Se evaluaron ajustes razonables y medidas de no discriminación?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "work_equipment",
+        "label": "¿El empleador entregará equipos, herramientas, accesos o credenciales?",
+        "type": "select",
+        "required": true,
+        "section": "Anexos",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "help": {
+          "why_asked": "Activa únicamente los anexos documentales necesarios para el cargo y sus riesgos.",
+          "how_to_answer": "Responde con el dato confirmado para “¿El empleador entregará equipos, herramientas, accesos o credenciales?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "personal_data",
+        "label": "¿Se tratarán datos sensibles, biométricos o de monitoreo intensivo?",
+        "type": "select",
+        "required": true,
+        "section": "Anexos",
+        "options": [
+          "No",
+          "Sí",
+          "No sé"
+        ],
+        "help": {
+          "why_asked": "Activa únicamente los anexos documentales necesarios para el cargo y sus riesgos.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Se tratarán datos sensibles, biométricos o de monitoreo intensivo?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "ip_relevant",
+        "label": "¿El cargo creará software, diseños, contenidos, invenciones u otros activos de PI?",
+        "type": "select",
+        "required": true,
+        "section": "Anexos",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "help": {
+          "why_asked": "Activa únicamente los anexos documentales necesarios para el cargo y sus riesgos.",
+          "how_to_answer": "Responde con el dato confirmado para “¿El cargo creará software, diseños, contenidos, invenciones u otros activos de PI?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "confidential_information",
+        "label": "¿El cargo tendrá acceso a secretos empresariales o información confidencial relevante?",
+        "type": "select",
+        "required": true,
+        "section": "Anexos",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "help": {
+          "why_asked": "Activa únicamente los anexos documentales necesarios para el cargo y sus riesgos.",
+          "how_to_answer": "Responde con el dato confirmado para “¿El cargo tendrá acceso a secretos empresariales o información confidencial relevante?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      },
+      {
+        "id": "exclusivity_clause",
+        "label": "¿Se pretende pactar exclusividad o restricción de actividades externas?",
+        "type": "select",
+        "required": true,
+        "section": "Anexos",
+        "options": [
+          "No",
+          "Sí"
+        ],
+        "help": {
+          "why_asked": "Activa únicamente los anexos documentales necesarios para el cargo y sus riesgos.",
+          "how_to_answer": "Responde con el dato confirmado para “¿Se pretende pactar exclusividad o restricción de actividades externas?”. Si no está definido, selecciona la opción de no confirmación cuando exista."
+        }
+      }
+    ],
+    "confirmation_required": true
+  },
+  "rules": [
+    {
+      "id": "LA2-R01",
+      "risk": "red",
+      "message": "El producto estándar no cubre servidores públicos, trabajadores oficiales, expatriación ni ejecución principal fuera de Colombia.",
+      "action": "Escalar a análisis especializado.",
+      "conditions": {
+        "all": [
+          {
+            "field": "public_or_crossborder",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA2-S1"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA2-R02",
+      "risk": "red",
+      "message": "La contratación de menores de edad requiere autorización y límites especiales.",
+      "action": "No generar contrato estándar.",
+      "conditions": {
+        "all": [
+          {
+            "field": "worker_age_status",
+            "op": "in",
+            "value": [
+              "Menor de edad",
+              "No confirmado"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA2-S2"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA2-R03",
+      "risk": "yellow",
+      "message": "Existe convención, pacto, laudo o régimen colectivo que puede modificar condiciones mínimas.",
+      "action": "Cotejar el texto colectivo antes de cerrar el contrato.",
+      "conditions": {
+        "all": [
+          {
+            "field": "collective_regime",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "LA2-S1"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R04",
+      "risk": "red",
+      "message": "Las funciones no están suficientemente definidas.",
+      "action": "Completar el anexo de cargo y responsabilidades.",
+      "conditions": {
+        "all": [
+          {
+            "field": "role_clear",
+            "op": "in",
+            "value": [
+              "No",
+              "En construcción"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA2-S1"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA2-R05",
+      "risk": "yellow",
+      "message": "La obra o labor exige descripción precisa y un hito verificable de finalización.",
+      "action": "Activar control reforzado de objeto y terminación.",
+      "conditions": {
+        "all": [
+          {
+            "field": "need_type",
+            "op": "equals",
+            "value": "Obra o labor específica"
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "LA2-S2"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R06",
+      "risk": "yellow",
+      "message": "El contrato a término fijo debe constar por escrito y respetar el máximo acumulado de cuatro años.",
+      "action": "Verificar fechas, prórrogas y preaviso.",
+      "conditions": {
+        "all": [
+          {
+            "field": "need_type",
+            "op": "equals",
+            "value": "Temporal con fecha cierta"
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "LA2-S2"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R07",
+      "risk": "yellow",
+      "message": "La forma no presencial activa obligaciones específicas de ARL, SG-SST, equipos, desconexión y privacidad.",
+      "action": "Generar anexo de modalidad no presencial.",
+      "conditions": {
+        "all": [
+          {
+            "field": "remote",
+            "op": "not_equals",
+            "value": "Presencial"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "LA2-S6",
+        "LA2-S7",
+        "LA2-S8",
+        "LA2-S9"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R08",
+      "risk": "red",
+      "message": "La jornada ordinaria supera 42 horas semanales.",
+      "action": "Ajustar la jornada o documentar un régimen legal especial fuera del producto.",
+      "conditions": {
+        "all": [
+          {
+            "field": "weekly_hours",
+            "op": "gt",
+            "value": 42
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA2-S2",
+        "LA2-S3"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA2-R09",
+      "risk": "red",
+      "message": "La jornada ordinaria diaria propuesta supera nueve horas.",
+      "action": "Reprogramar la distribución diaria.",
+      "conditions": {
+        "all": [
+          {
+            "field": "max_daily_hours",
+            "op": "gt",
+            "value": 9
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA2-S2"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA2-R10",
+      "risk": "red",
+      "message": "Las horas extra previstas exceden dos horas diarias.",
+      "action": "Ajustar la planeación de trabajo suplementario.",
+      "conditions": {
+        "all": [
+          {
+            "field": "planned_overtime_daily",
+            "op": "gt",
+            "value": 2
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA2-S2"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA2-R11",
+      "risk": "red",
+      "message": "Las horas extra previstas exceden doce horas semanales.",
+      "action": "Ajustar la planeación de trabajo suplementario.",
+      "conditions": {
+        "all": [
+          {
+            "field": "planned_overtime_weekly",
+            "op": "gt",
+            "value": 12
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA2-S2"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA2-R12",
+      "risk": "yellow",
+      "message": "El horario incluye jornada nocturna desde las 7:00 p. m.",
+      "action": "Aplicar recargo nocturno y reflejarlo en programación y nómina.",
+      "conditions": {
+        "all": [
+          {
+            "field": "night_work",
+            "op": "in",
+            "value": [
+              "Sí",
+              "Ocasional"
+            ]
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "LA2-S2"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R13",
+      "risk": "yellow",
+      "message": "Se pactará período de prueba y debe respetar límites generales y proporcionales.",
+      "action": "Validar duración antes de generar.",
+      "conditions": {
+        "all": [
+          {
+            "field": "probation",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "LA2-S1"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R14",
+      "risk": "yellow",
+      "message": "Los pagos variables requieren fórmula, causación, período de medición y reglas de pago.",
+      "action": "Generar anexo de compensación variable.",
+      "conditions": {
+        "all": [
+          {
+            "field": "variable_payments",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "LA2-S1"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R15",
+      "risk": "red",
+      "message": "No se admiten autorizaciones generales o automáticas de descuentos por daños, pérdidas o faltantes.",
+      "action": "Eliminar la autorización general y usar debido proceso y soporte individual.",
+      "conditions": {
+        "all": [
+          {
+            "field": "automatic_deductions",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA2-S1"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA2-R16",
+      "risk": "red",
+      "message": "No está asegurado el proceso de afiliación y aportes al sistema de seguridad social.",
+      "action": "Definir y confirmar afiliaciones antes del inicio.",
+      "conditions": {
+        "all": [
+          {
+            "field": "social_security_plan_confirmed",
+            "op": "equals",
+            "value": "No"
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA2-S1"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA2-R17",
+      "risk": "yellow",
+      "message": "La afiliación y aportes aún están en proceso.",
+      "action": "Mantener tarea obligatoria previa al inicio.",
+      "conditions": {
+        "all": [
+          {
+            "field": "social_security_plan_confirmed",
+            "op": "equals",
+            "value": "En proceso"
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "LA2-S1"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R18",
+      "risk": "yellow",
+      "message": "La evaluación médica ocupacional de ingreso no está confirmada.",
+      "action": "Programar y documentar el examen ocupacional.",
+      "conditions": {
+        "all": [
+          {
+            "field": "occupational_exam_ready",
+            "op": "in",
+            "value": [
+              "No",
+              "En proceso"
+            ]
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "LA2-S6"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R19",
+      "risk": "yellow",
+      "message": "La protección especial no impide contratar; exige no discriminación y ajustes razonables.",
+      "action": "Documentar evaluación y medidas de inclusión.",
+      "conditions": {
+        "all": [
+          {
+            "field": "special_protection",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "LA2-S1",
+        "LA2-S2"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R20",
+      "risk": "red",
+      "message": "La decisión contractual no puede basarse negativamente en embarazo, discapacidad, salud, fuero u otra condición protegida.",
+      "action": "Detener el flujo y escalar a revisión jurídica.",
+      "conditions": {
+        "all": [
+          {
+            "field": "protected_status_decision",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "exclusion",
+      "source_ids": [
+        "LA2-S1",
+        "LA2-S2"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "LA2-R21",
+      "risk": "yellow",
+      "message": "La entrega de equipos y credenciales requiere inventario, seguridad y restitución.",
+      "action": "Generar acta de equipos y accesos.",
+      "conditions": {
+        "all": [
+          {
+            "field": "work_equipment",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "LA2-S6"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R22",
+      "risk": "yellow",
+      "message": "El tratamiento de datos sensibles, biométricos o monitoreo exige finalidad, necesidad y controles separados.",
+      "action": "Generar anexo de datos y privacidad laboral.",
+      "conditions": {
+        "all": [
+          {
+            "field": "personal_data",
+            "op": "in",
+            "value": [
+              "Sí",
+              "No sé"
+            ]
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "LA2-S10"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R23",
+      "risk": "yellow",
+      "message": "La creación de activos intelectuales requiere entregables determinables, materiales previos y reglas de derechos.",
+      "action": "Generar anexo de propiedad intelectual.",
+      "conditions": {
+        "all": [
+          {
+            "field": "ip_relevant",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "LA2-S11"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R24",
+      "risk": "yellow",
+      "message": "El acceso a secretos empresariales requiere clasificación, acceso mínimo y protocolo de devolución.",
+      "action": "Generar anexo de confidencialidad.",
+      "conditions": {
+        "all": [
+          {
+            "field": "confidential_information",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "module",
+      "source_ids": [
+        "LA2-S10",
+        "LA2-S11"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "LA2-R25",
+      "risk": "yellow",
+      "message": "La exclusividad debe ser necesaria, proporcional y compatible con la libertad de trabajo.",
+      "action": "Revisar alcance y eliminar restricciones generales.",
+      "conditions": {
+        "all": [
+          {
+            "field": "exclusivity_clause",
+            "op": "equals",
+            "value": "Sí"
+          }
+        ]
+      },
+      "category": "review",
+      "source_ids": [
+        "LA2-S1"
+      ],
+      "blocking": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "LA2-S1",
+      "title": "Código Sustantivo del Trabajo consolidado",
+      "authority": "SUIN-Juriscol",
+      "type": "code",
+      "status": "vigente sujeto a concordancias",
+      "url": "https://www.suin-juriscol.gov.co/viewdocument.asp?ruta=codigo%2F30019323",
+      "last_verified": "2026-07-18",
+      "verification_status": "Verificada para estructura contractual, período de prueba, salario, descuentos y obligaciones."
+    },
+    {
+      "id": "LA2-S2",
+      "title": "Ley 2466 de 2025 — reforma laboral",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "type": "statute",
+      "status": "vigente",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F30055086",
+      "last_verified": "2026-07-18",
+      "verification_status": "Verificada para modalidad indefinida, término fijo, obra/labor, jornada, nocturnidad y horas extra."
+    },
+    {
+      "id": "LA2-S3",
+      "title": "Ley 2101 de 2021 — reducción de jornada",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "type": "statute",
+      "status": "vigente",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F30042017",
+      "last_verified": "2026-07-18",
+      "verification_status": "Verificada para jornada semanal de 42 horas en 2026."
+    },
+    {
+      "id": "LA2-S4",
+      "title": "Decreto 159 de 2026 — salario mínimo transitorio",
+      "authority": "Gobierno nacional / SUIN-Juriscol",
+      "type": "decree",
+      "status": "vigente transitorio",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30056106",
+      "last_verified": "2026-07-18",
+      "verification_status": "Valor utilizado: $1.750.905."
+    },
+    {
+      "id": "LA2-S5",
+      "title": "Decreto 1470 de 2025 — auxilio de transporte 2026",
+      "authority": "Gobierno nacional / SUIN-Juriscol",
+      "type": "decree",
+      "status": "vigente 2026",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30055941",
+      "last_verified": "2026-07-18",
+      "verification_status": "Valor utilizado: $249.095 para quienes cumplen condiciones."
+    },
+    {
+      "id": "LA2-S6",
+      "title": "Ley 1221 de 2008 y Decreto 1072 de 2015 — teletrabajo y SG-SST",
+      "authority": "Congreso y Gobierno nacional / SUIN-Juriscol",
+      "type": "regulation",
+      "status": "vigente",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Decretos%2F30019522",
+      "last_verified": "2026-07-18",
+      "verification_status": "Verificada para teletrabajo, ARL, equipos, privacidad y SG-SST."
+    },
+    {
+      "id": "LA2-S7",
+      "title": "Ley 2121 de 2021 — trabajo remoto",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "type": "statute",
+      "status": "vigente",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30042108",
+      "last_verified": "2026-07-18",
+      "verification_status": "Verificada para ejecución íntegramente remota y firma electrónica/digital."
+    },
+    {
+      "id": "LA2-S8",
+      "title": "Ley 2088 de 2021 — trabajo en casa",
+      "authority": "Congreso de Colombia",
+      "type": "statute",
+      "status": "vigente",
+      "last_verified": "2026-07-18",
+      "verification_status": "Verificada como habilitación temporal, distinta del teletrabajo y trabajo remoto."
+    },
+    {
+      "id": "LA2-S9",
+      "title": "Ley 2191 de 2022 — desconexión laboral",
+      "authority": "Congreso de Colombia",
+      "type": "statute",
+      "status": "vigente",
+      "last_verified": "2026-07-18",
+      "verification_status": "Verificada para política y límites de comunicaciones fuera de jornada."
+    },
+    {
+      "id": "LA2-S10",
+      "title": "Ley 1581 de 2012 y reglamentación — datos personales",
+      "authority": "Congreso y Gobierno nacional",
+      "type": "data_protection",
+      "status": "vigente",
+      "last_verified": "2026-07-18",
+      "verification_status": "Aplicada a datos laborales, sensibles, biometría y monitoreo."
+    },
+    {
+      "id": "LA2-S11",
+      "title": "Decisión Andina 351 de 1993 y Ley 23 de 1982 — propiedad intelectual",
+      "authority": "Comunidad Andina y República de Colombia",
+      "type": "ip",
+      "status": "vigente",
+      "last_verified": "2026-07-18",
+      "verification_status": "Aplicada a derechos patrimoniales, morales y entregables laborales."
+    },
+    {
+      "id": "LA2-S12",
+      "title": "Paquete jurídico maestro CO-LA-002",
+      "authority": "LegalAIZ.it",
+      "type": "package",
+      "status": "integrado v2.24",
+      "last_verified": "2026-07-18",
+      "verification_status": "Modelo completo convertido en bloques, anexos y documentos trazables."
+    }
+  ],
+  "tests": [
+    {
+      "id": "LA2-T01",
+      "name": "Indefinido presencial estándar",
+      "answers": {
+        "employer_name": "Greenatics S.A.S.",
+        "employer_id": "900000000-1",
+        "employer_address": "Medellín, Antioquia",
+        "employer_representative": "Representante Legal",
+        "worker_name": "Andrea Martínez",
+        "worker_id": "1010000000",
+        "worker_address": "Medellín, Antioquia",
+        "worker_email": "andrea@example.com",
+        "worker_age_status": "Mayor de edad",
+        "public_or_crossborder": "No",
+        "collective_regime": "No",
+        "need_type": "Permanente",
+        "start_date": "2026-08-01",
+        "job_title": "Coordinadora de Operaciones",
+        "role_clear": "Sí",
+        "workplace": "Medellín",
+        "remote": "Presencial",
+        "weekly_hours": 42,
+        "max_daily_hours": 8,
+        "night_work": "No",
+        "planned_overtime_daily": 0,
+        "planned_overtime_weekly": 0,
+        "probation": "Sí",
+        "probation_months": 2,
+        "monthly_salary": 3500000,
+        "salary_type": "Ordinario",
+        "variable_payments": "No",
+        "automatic_deductions": "No",
+        "social_security_plan_confirmed": "Sí",
+        "occupational_exam_ready": "Sí",
+        "special_protection": "No",
+        "work_equipment": "Sí",
+        "personal_data": "No",
+        "ip_relevant": "No",
+        "confidential_information": "Sí",
+        "exclusivity_clause": "No"
+      },
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "LA2-T02",
+      "name": "Indefinido limpio sin módulos",
+      "answers": {
+        "employer_name": "Greenatics S.A.S.",
+        "employer_id": "900000000-1",
+        "employer_address": "Medellín, Antioquia",
+        "employer_representative": "Representante Legal",
+        "worker_name": "Andrea Martínez",
+        "worker_id": "1010000000",
+        "worker_address": "Medellín, Antioquia",
+        "worker_email": "andrea@example.com",
+        "worker_age_status": "Mayor de edad",
+        "public_or_crossborder": "No",
+        "collective_regime": "No",
+        "need_type": "Permanente",
+        "start_date": "2026-08-01",
+        "job_title": "Coordinadora de Operaciones",
+        "role_clear": "Sí",
+        "workplace": "Medellín",
+        "remote": "Presencial",
+        "weekly_hours": 42,
+        "max_daily_hours": 8,
+        "night_work": "No",
+        "planned_overtime_daily": 0,
+        "planned_overtime_weekly": 0,
+        "probation": "No",
+        "probation_months": 2,
+        "monthly_salary": 3500000,
+        "salary_type": "Ordinario",
+        "variable_payments": "No",
+        "automatic_deductions": "No",
+        "social_security_plan_confirmed": "Sí",
+        "occupational_exam_ready": "Sí",
+        "special_protection": "No",
+        "work_equipment": "No",
+        "personal_data": "No",
+        "ip_relevant": "No",
+        "confidential_information": "No",
+        "exclusivity_clause": "No"
+      },
+      "expected_risk": "green"
+    },
+    {
+      "id": "LA2-T03",
+      "name": "Término fijo válido",
+      "answers": {
+        "employer_name": "Greenatics S.A.S.",
+        "employer_id": "900000000-1",
+        "employer_address": "Medellín, Antioquia",
+        "employer_representative": "Representante Legal",
+        "worker_name": "Andrea Martínez",
+        "worker_id": "1010000000",
+        "worker_address": "Medellín, Antioquia",
+        "worker_email": "andrea@example.com",
+        "worker_age_status": "Mayor de edad",
+        "public_or_crossborder": "No",
+        "collective_regime": "No",
+        "need_type": "Temporal con fecha cierta",
+        "start_date": "2026-08-01",
+        "job_title": "Coordinadora de Operaciones",
+        "role_clear": "Sí",
+        "workplace": "Medellín",
+        "remote": "Presencial",
+        "weekly_hours": 42,
+        "max_daily_hours": 8,
+        "night_work": "No",
+        "planned_overtime_daily": 0,
+        "planned_overtime_weekly": 0,
+        "probation": "Sí",
+        "probation_months": 2,
+        "monthly_salary": 3500000,
+        "salary_type": "Ordinario",
+        "variable_payments": "No",
+        "automatic_deductions": "No",
+        "social_security_plan_confirmed": "Sí",
+        "occupational_exam_ready": "Sí",
+        "special_protection": "No",
+        "work_equipment": "Sí",
+        "personal_data": "No",
+        "ip_relevant": "No",
+        "confidential_information": "Sí",
+        "exclusivity_clause": "No",
+        "end_date": "2027-07-31",
+        "prior_fixed_term_months": 0
+      },
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "LA2-T04",
+      "name": "Término fijo excede cuatro años",
+      "answers": {
+        "employer_name": "Greenatics S.A.S.",
+        "employer_id": "900000000-1",
+        "employer_address": "Medellín, Antioquia",
+        "employer_representative": "Representante Legal",
+        "worker_name": "Andrea Martínez",
+        "worker_id": "1010000000",
+        "worker_address": "Medellín, Antioquia",
+        "worker_email": "andrea@example.com",
+        "worker_age_status": "Mayor de edad",
+        "public_or_crossborder": "No",
+        "collective_regime": "No",
+        "need_type": "Temporal con fecha cierta",
+        "start_date": "2026-08-01",
+        "job_title": "Coordinadora de Operaciones",
+        "role_clear": "Sí",
+        "workplace": "Medellín",
+        "remote": "Presencial",
+        "weekly_hours": 42,
+        "max_daily_hours": 8,
+        "night_work": "No",
+        "planned_overtime_daily": 0,
+        "planned_overtime_weekly": 0,
+        "probation": "Sí",
+        "probation_months": 2,
+        "monthly_salary": 3500000,
+        "salary_type": "Ordinario",
+        "variable_payments": "No",
+        "automatic_deductions": "No",
+        "social_security_plan_confirmed": "Sí",
+        "occupational_exam_ready": "Sí",
+        "special_protection": "No",
+        "work_equipment": "Sí",
+        "personal_data": "No",
+        "ip_relevant": "No",
+        "confidential_information": "Sí",
+        "exclusivity_clause": "No",
+        "end_date": "2030-08-02",
+        "prior_fixed_term_months": 1
+      },
+      "expected_risk": "red"
+    },
+    {
+      "id": "LA2-T05",
+      "name": "Obra o labor precisa",
+      "answers": {
+        "employer_name": "Greenatics S.A.S.",
+        "employer_id": "900000000-1",
+        "employer_address": "Medellín, Antioquia",
+        "employer_representative": "Representante Legal",
+        "worker_name": "Andrea Martínez",
+        "worker_id": "1010000000",
+        "worker_address": "Medellín, Antioquia",
+        "worker_email": "andrea@example.com",
+        "worker_age_status": "Mayor de edad",
+        "public_or_crossborder": "No",
+        "collective_regime": "No",
+        "need_type": "Obra o labor específica",
+        "start_date": "2026-08-01",
+        "job_title": "Coordinadora de Operaciones",
+        "role_clear": "Sí",
+        "workplace": "Medellín",
+        "remote": "Presencial",
+        "weekly_hours": 42,
+        "max_daily_hours": 8,
+        "night_work": "No",
+        "planned_overtime_daily": 0,
+        "planned_overtime_weekly": 0,
+        "probation": "Sí",
+        "probation_months": 2,
+        "monthly_salary": 3500000,
+        "salary_type": "Ordinario",
+        "variable_payments": "No",
+        "automatic_deductions": "No",
+        "social_security_plan_confirmed": "Sí",
+        "occupational_exam_ready": "Sí",
+        "special_protection": "No",
+        "work_equipment": "Sí",
+        "personal_data": "No",
+        "ip_relevant": "No",
+        "confidential_information": "Sí",
+        "exclusivity_clause": "No",
+        "work_description": "Implementación completa y documentada del sistema de gestión ambiental de la planta de tratamiento.",
+        "completion_milestone": "Acta de aceptación definitiva del sistema por el empleador."
+      },
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "LA2-T06",
+      "name": "Obra indeterminada",
+      "answers": {
+        "employer_name": "Greenatics S.A.S.",
+        "employer_id": "900000000-1",
+        "employer_address": "Medellín, Antioquia",
+        "employer_representative": "Representante Legal",
+        "worker_name": "Andrea Martínez",
+        "worker_id": "1010000000",
+        "worker_address": "Medellín, Antioquia",
+        "worker_email": "andrea@example.com",
+        "worker_age_status": "Mayor de edad",
+        "public_or_crossborder": "No",
+        "collective_regime": "No",
+        "need_type": "Obra o labor específica",
+        "start_date": "2026-08-01",
+        "job_title": "Coordinadora de Operaciones",
+        "role_clear": "Sí",
+        "workplace": "Medellín",
+        "remote": "Presencial",
+        "weekly_hours": 42,
+        "max_daily_hours": 8,
+        "night_work": "No",
+        "planned_overtime_daily": 0,
+        "planned_overtime_weekly": 0,
+        "probation": "Sí",
+        "probation_months": 2,
+        "monthly_salary": 3500000,
+        "salary_type": "Ordinario",
+        "variable_payments": "No",
+        "automatic_deductions": "No",
+        "social_security_plan_confirmed": "Sí",
+        "occupational_exam_ready": "Sí",
+        "special_protection": "No",
+        "work_equipment": "Sí",
+        "personal_data": "No",
+        "ip_relevant": "No",
+        "confidential_information": "Sí",
+        "exclusivity_clause": "No",
+        "work_description": "Apoyar lo necesario",
+        "completion_milestone": "Cuando termine"
+      },
+      "expected_risk": "red"
+    },
+    {
+      "id": "LA2-T07",
+      "name": "Jornada superior a 42 horas",
+      "answers": {
+        "employer_name": "Greenatics S.A.S.",
+        "employer_id": "900000000-1",
+        "employer_address": "Medellín, Antioquia",
+        "employer_representative": "Representante Legal",
+        "worker_name": "Andrea Martínez",
+        "worker_id": "1010000000",
+        "worker_address": "Medellín, Antioquia",
+        "worker_email": "andrea@example.com",
+        "worker_age_status": "Mayor de edad",
+        "public_or_crossborder": "No",
+        "collective_regime": "No",
+        "need_type": "Permanente",
+        "start_date": "2026-08-01",
+        "job_title": "Coordinadora de Operaciones",
+        "role_clear": "Sí",
+        "workplace": "Medellín",
+        "remote": "Presencial",
+        "weekly_hours": 46,
+        "max_daily_hours": 8,
+        "night_work": "No",
+        "planned_overtime_daily": 0,
+        "planned_overtime_weekly": 0,
+        "probation": "Sí",
+        "probation_months": 2,
+        "monthly_salary": 3500000,
+        "salary_type": "Ordinario",
+        "variable_payments": "No",
+        "automatic_deductions": "No",
+        "social_security_plan_confirmed": "Sí",
+        "occupational_exam_ready": "Sí",
+        "special_protection": "No",
+        "work_equipment": "Sí",
+        "personal_data": "No",
+        "ip_relevant": "No",
+        "confidential_information": "Sí",
+        "exclusivity_clause": "No"
+      },
+      "expected_risk": "red"
+    },
+    {
+      "id": "LA2-T08",
+      "name": "Horas extra excesivas",
+      "answers": {
+        "employer_name": "Greenatics S.A.S.",
+        "employer_id": "900000000-1",
+        "employer_address": "Medellín, Antioquia",
+        "employer_representative": "Representante Legal",
+        "worker_name": "Andrea Martínez",
+        "worker_id": "1010000000",
+        "worker_address": "Medellín, Antioquia",
+        "worker_email": "andrea@example.com",
+        "worker_age_status": "Mayor de edad",
+        "public_or_crossborder": "No",
+        "collective_regime": "No",
+        "need_type": "Permanente",
+        "start_date": "2026-08-01",
+        "job_title": "Coordinadora de Operaciones",
+        "role_clear": "Sí",
+        "workplace": "Medellín",
+        "remote": "Presencial",
+        "weekly_hours": 42,
+        "max_daily_hours": 8,
+        "night_work": "No",
+        "planned_overtime_daily": 3,
+        "planned_overtime_weekly": 13,
+        "probation": "Sí",
+        "probation_months": 2,
+        "monthly_salary": 3500000,
+        "salary_type": "Ordinario",
+        "variable_payments": "No",
+        "automatic_deductions": "No",
+        "social_security_plan_confirmed": "Sí",
+        "occupational_exam_ready": "Sí",
+        "special_protection": "No",
+        "work_equipment": "Sí",
+        "personal_data": "No",
+        "ip_relevant": "No",
+        "confidential_information": "Sí",
+        "exclusivity_clause": "No"
+      },
+      "expected_risk": "red"
+    },
+    {
+      "id": "LA2-T09",
+      "name": "Teletrabajo con módulos",
+      "answers": {
+        "employer_name": "Greenatics S.A.S.",
+        "employer_id": "900000000-1",
+        "employer_address": "Medellín, Antioquia",
+        "employer_representative": "Representante Legal",
+        "worker_name": "Andrea Martínez",
+        "worker_id": "1010000000",
+        "worker_address": "Medellín, Antioquia",
+        "worker_email": "andrea@example.com",
+        "worker_age_status": "Mayor de edad",
+        "public_or_crossborder": "No",
+        "collective_regime": "No",
+        "need_type": "Permanente",
+        "start_date": "2026-08-01",
+        "job_title": "Coordinadora de Operaciones",
+        "role_clear": "Sí",
+        "workplace": "Medellín",
+        "remote": "Teletrabajo suplementario",
+        "weekly_hours": 42,
+        "max_daily_hours": 8,
+        "night_work": "No",
+        "planned_overtime_daily": 0,
+        "planned_overtime_weekly": 0,
+        "probation": "Sí",
+        "probation_months": 2,
+        "monthly_salary": 3500000,
+        "salary_type": "Ordinario",
+        "variable_payments": "No",
+        "automatic_deductions": "No",
+        "social_security_plan_confirmed": "Sí",
+        "occupational_exam_ready": "Sí",
+        "special_protection": "No",
+        "work_equipment": "Sí",
+        "personal_data": "Sí",
+        "ip_relevant": "Sí",
+        "confidential_information": "Sí",
+        "exclusivity_clause": "No"
+      },
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "LA2-T10",
+      "name": "Salario inferior al mínimo proporcional",
+      "answers": {
+        "employer_name": "Greenatics S.A.S.",
+        "employer_id": "900000000-1",
+        "employer_address": "Medellín, Antioquia",
+        "employer_representative": "Representante Legal",
+        "worker_name": "Andrea Martínez",
+        "worker_id": "1010000000",
+        "worker_address": "Medellín, Antioquia",
+        "worker_email": "andrea@example.com",
+        "worker_age_status": "Mayor de edad",
+        "public_or_crossborder": "No",
+        "collective_regime": "No",
+        "need_type": "Permanente",
+        "start_date": "2026-08-01",
+        "job_title": "Coordinadora de Operaciones",
+        "role_clear": "Sí",
+        "workplace": "Medellín",
+        "remote": "Presencial",
+        "weekly_hours": 42,
+        "max_daily_hours": 8,
+        "night_work": "No",
+        "planned_overtime_daily": 0,
+        "planned_overtime_weekly": 0,
+        "probation": "Sí",
+        "probation_months": 2,
+        "monthly_salary": 1000000,
+        "salary_type": "Ordinario",
+        "variable_payments": "No",
+        "automatic_deductions": "No",
+        "social_security_plan_confirmed": "Sí",
+        "occupational_exam_ready": "Sí",
+        "special_protection": "No",
+        "work_equipment": "Sí",
+        "personal_data": "No",
+        "ip_relevant": "No",
+        "confidential_information": "Sí",
+        "exclusivity_clause": "No"
+      },
+      "expected_risk": "red"
+    },
+    {
+      "id": "LA2-T11",
+      "name": "Salario integral insuficiente",
+      "answers": {
+        "employer_name": "Greenatics S.A.S.",
+        "employer_id": "900000000-1",
+        "employer_address": "Medellín, Antioquia",
+        "employer_representative": "Representante Legal",
+        "worker_name": "Andrea Martínez",
+        "worker_id": "1010000000",
+        "worker_address": "Medellín, Antioquia",
+        "worker_email": "andrea@example.com",
+        "worker_age_status": "Mayor de edad",
+        "public_or_crossborder": "No",
+        "collective_regime": "No",
+        "need_type": "Permanente",
+        "start_date": "2026-08-01",
+        "job_title": "Coordinadora de Operaciones",
+        "role_clear": "Sí",
+        "workplace": "Medellín",
+        "remote": "Presencial",
+        "weekly_hours": 42,
+        "max_daily_hours": 8,
+        "night_work": "No",
+        "planned_overtime_daily": 0,
+        "planned_overtime_weekly": 0,
+        "probation": "Sí",
+        "probation_months": 2,
+        "monthly_salary": 10000000,
+        "salary_type": "Integral",
+        "variable_payments": "No",
+        "automatic_deductions": "No",
+        "social_security_plan_confirmed": "Sí",
+        "occupational_exam_ready": "Sí",
+        "special_protection": "No",
+        "work_equipment": "Sí",
+        "personal_data": "No",
+        "ip_relevant": "No",
+        "confidential_information": "Sí",
+        "exclusivity_clause": "No"
+      },
+      "expected_risk": "red"
+    },
+    {
+      "id": "LA2-T12",
+      "name": "Protección con ajustes",
+      "answers": {
+        "employer_name": "Greenatics S.A.S.",
+        "employer_id": "900000000-1",
+        "employer_address": "Medellín, Antioquia",
+        "employer_representative": "Representante Legal",
+        "worker_name": "Andrea Martínez",
+        "worker_id": "1010000000",
+        "worker_address": "Medellín, Antioquia",
+        "worker_email": "andrea@example.com",
+        "worker_age_status": "Mayor de edad",
+        "public_or_crossborder": "No",
+        "collective_regime": "No",
+        "need_type": "Permanente",
+        "start_date": "2026-08-01",
+        "job_title": "Coordinadora de Operaciones",
+        "role_clear": "Sí",
+        "workplace": "Medellín",
+        "remote": "Presencial",
+        "weekly_hours": 42,
+        "max_daily_hours": 8,
+        "night_work": "No",
+        "planned_overtime_daily": 0,
+        "planned_overtime_weekly": 0,
+        "probation": "Sí",
+        "probation_months": 2,
+        "monthly_salary": 3500000,
+        "salary_type": "Ordinario",
+        "variable_payments": "No",
+        "automatic_deductions": "No",
+        "social_security_plan_confirmed": "Sí",
+        "occupational_exam_ready": "Sí",
+        "special_protection": "Sí",
+        "work_equipment": "Sí",
+        "personal_data": "No",
+        "ip_relevant": "No",
+        "confidential_information": "Sí",
+        "exclusivity_clause": "No",
+        "protected_status_decision": "No",
+        "reasonable_adjustments": "Sí"
+      },
+      "expected_risk": "yellow"
+    },
+    {
+      "id": "LA2-T13",
+      "name": "Discriminación por protección",
+      "answers": {
+        "employer_name": "Greenatics S.A.S.",
+        "employer_id": "900000000-1",
+        "employer_address": "Medellín, Antioquia",
+        "employer_representative": "Representante Legal",
+        "worker_name": "Andrea Martínez",
+        "worker_id": "1010000000",
+        "worker_address": "Medellín, Antioquia",
+        "worker_email": "andrea@example.com",
+        "worker_age_status": "Mayor de edad",
+        "public_or_crossborder": "No",
+        "collective_regime": "No",
+        "need_type": "Permanente",
+        "start_date": "2026-08-01",
+        "job_title": "Coordinadora de Operaciones",
+        "role_clear": "Sí",
+        "workplace": "Medellín",
+        "remote": "Presencial",
+        "weekly_hours": 42,
+        "max_daily_hours": 8,
+        "night_work": "No",
+        "planned_overtime_daily": 0,
+        "planned_overtime_weekly": 0,
+        "probation": "Sí",
+        "probation_months": 2,
+        "monthly_salary": 3500000,
+        "salary_type": "Ordinario",
+        "variable_payments": "No",
+        "automatic_deductions": "No",
+        "social_security_plan_confirmed": "Sí",
+        "occupational_exam_ready": "Sí",
+        "special_protection": "Sí",
+        "work_equipment": "Sí",
+        "personal_data": "No",
+        "ip_relevant": "No",
+        "confidential_information": "Sí",
+        "exclusivity_clause": "No",
+        "protected_status_decision": "Sí",
+        "reasonable_adjustments": "No"
+      },
+      "expected_risk": "red"
+    },
+    {
+      "id": "LA2-T14",
+      "name": "Descuentos generales",
+      "answers": {
+        "employer_name": "Greenatics S.A.S.",
+        "employer_id": "900000000-1",
+        "employer_address": "Medellín, Antioquia",
+        "employer_representative": "Representante Legal",
+        "worker_name": "Andrea Martínez",
+        "worker_id": "1010000000",
+        "worker_address": "Medellín, Antioquia",
+        "worker_email": "andrea@example.com",
+        "worker_age_status": "Mayor de edad",
+        "public_or_crossborder": "No",
+        "collective_regime": "No",
+        "need_type": "Permanente",
+        "start_date": "2026-08-01",
+        "job_title": "Coordinadora de Operaciones",
+        "role_clear": "Sí",
+        "workplace": "Medellín",
+        "remote": "Presencial",
+        "weekly_hours": 42,
+        "max_daily_hours": 8,
+        "night_work": "No",
+        "planned_overtime_daily": 0,
+        "planned_overtime_weekly": 0,
+        "probation": "Sí",
+        "probation_months": 2,
+        "monthly_salary": 3500000,
+        "salary_type": "Ordinario",
+        "variable_payments": "No",
+        "automatic_deductions": "Sí",
+        "social_security_plan_confirmed": "Sí",
+        "occupational_exam_ready": "Sí",
+        "special_protection": "No",
+        "work_equipment": "Sí",
+        "personal_data": "No",
+        "ip_relevant": "No",
+        "confidential_information": "Sí",
+        "exclusivity_clause": "No"
+      },
+      "expected_risk": "red"
+    }
+  ],
+  "container_version": "2.35",
+  "internal_legal_approval": {
+    "code": "CO-LA-002",
+    "name": "Contrato de trabajo personalizado",
+    "owner": "Laboral",
+    "wave": "Primera ola",
+    "maturity_version": "2.24",
+    "decision_version": "2.28",
+    "internal_legal_status": "Aprobación jurídica interna asistida completada",
+    "human_ratification": true,
+    "dual_approval": true,
+    "professional_publication": "Bloqueada",
+    "questions": 44,
+    "rules": 25,
+    "sources": 12,
+    "scenarios": 14,
+    "documents": 8
+  },
+  "professional_use": true,
+  "publication_status": "Aprobado para uso profesional controlado",
+  "approval_model": "multi_stage_single_responsible",
+  "approval_date": "2026-07-28",
+  "approval_disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+}

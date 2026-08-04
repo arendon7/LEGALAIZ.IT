@@ -1,0 +1,61 @@
+[
+  {
+    "id": "EM3-S1",
+    "title": "Código Civil y Código de Comercio — fuerza obligatoria, buena fe y reglas generales del contrato",
+    "authority": "Secretaría Jurídica Distrital / SUIN-Juriscol",
+    "type": "statute",
+    "status": "referencia oficial vigente por verificar en cada publicación",
+    "official_url": "https://www.suin-juriscol.gov.co/",
+    "last_verified": "2026-07-17",
+    "verification_status": "Revisión de vigencia e interpretación requerida antes de publicación profesional."
+  },
+  {
+    "id": "EM3-S2",
+    "title": "Código Sustantivo del Trabajo, artículos 23 y 24, con modificaciones vigentes",
+    "authority": "Departamento Administrativo de la Función Pública",
+    "type": "statute",
+    "status": "fuente oficial consultada",
+    "official_url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=33104",
+    "last_verified": "2026-07-17",
+    "verification_status": "Usada para identificar elementos e indicios de relación laboral; la calificación depende de la realidad probada."
+  },
+  {
+    "id": "EM3-S3",
+    "title": "Ley 1581 de 2012 y reglamentación compilada — protección de datos personales",
+    "authority": "República de Colombia / SUIN-Juriscol",
+    "type": "statute",
+    "status": "fuente oficial consultada",
+    "official_url": "https://www.suin-juriscol.gov.co/",
+    "last_verified": "2026-07-17",
+    "verification_status": "Aplicación concreta sujeta a roles, finalidades, categorías de datos y operación real."
+  },
+  {
+    "id": "EM3-S4",
+    "title": "Ley 527 de 1999 y Decreto 2364 de 2012 — mensajes de datos y firma electrónica",
+    "authority": "República de Colombia / SUIN-Juriscol",
+    "type": "statute",
+    "status": "fuente oficial consultada",
+    "official_url": "https://www.suin-juriscol.gov.co/",
+    "last_verified": "2026-07-17",
+    "verification_status": "La eficacia del mecanismo depende de su confiabilidad, atribución, integridad y evidencia."
+  },
+  {
+    "id": "EM3-S5",
+    "title": "Decisión Andina 351 de 1993 — régimen común sobre derecho de autor y derechos conexos",
+    "authority": "Comunidad Andina / fuentes oficiales colombianas",
+    "type": "supranational",
+    "status": "fuente oficial consultada",
+    "official_url": "https://www.suin-juriscol.gov.co/",
+    "last_verified": "2026-07-17",
+    "verification_status": "Revisar junto con la normativa nacional aplicable y el tipo de resultado protegido."
+  },
+  {
+    "id": "EM3-S6",
+    "title": "Paquete jurídico LegalAIZ.it CO-EM-003 v1 y candidato estructurado v2.13",
+    "authority": "LegalAIZ.it",
+    "type": "internal_package",
+    "status": "base avanzada pendiente de aprobación jurídica final",
+    "last_verified": "2026-07-17",
+    "verification_status": "Disponible para desarrollo y QA; no prueba identidad literal del original ni autoriza uso profesional."
+  }
+]

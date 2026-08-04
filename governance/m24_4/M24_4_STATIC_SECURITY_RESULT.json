@@ -1,0 +1,8 @@
+{
+  "schema": "legalaizit-m24-4-static-security-v1",
+  "milestone": "M24.4",
+  "build_id": "M24.4-FULL-VALIDATION-AND-CONTROLLED-ACTIVATION-ON-M21.1-2026-08-01",
+  "findings": [],
+  "high_or_critical": 0,
+  "passed": true
+}

@@ -1,0 +1,25 @@
+{
+  "version": "M3",
+  "build_id": "M3-CONTROLLED-APPROVAL-2026-07-28",
+  "approval_model": "multi_stage_single_responsible",
+  "independent_reviewers": false,
+  "stages": [
+    "legal_ratification",
+    "specialist_approval",
+    "qa_approval"
+  ],
+  "controlled_use_conditions": [
+    "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+    "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+    "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+    "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+    "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+  ],
+  "high_impact_products": [
+    "CO-CD-004",
+    "CO-LA-001",
+    "CO-LA-002",
+    "CO-SA-001"
+  ],
+  "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+}

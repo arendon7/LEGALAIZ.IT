@@ -1,0 +1,605 @@
+{
+  "version": "2.32",
+  "intro": "Responde únicamente con información confirmada. El sistema distingue consulta, reclamo, responsables, comunicación previa, permanencia, suplantación, términos y escalamiento.",
+  "sections": [
+    "Titular y legitimación",
+    "Clasificación jurídica",
+    "Intervinientes",
+    "Obligación y reporte",
+    "Comunicación previa",
+    "Gestiones previas",
+    "Riesgo y escalamiento",
+    "Términos y control"
+  ],
+  "questions": [
+    {
+      "id": "data_subject_name",
+      "label": "Nombre completo del titular de la información",
+      "type": "text",
+      "required": true,
+      "section": "Titular y legitimación",
+      "min_length": 3
+    },
+    {
+      "id": "data_subject_id",
+      "label": "Identificación del titular",
+      "type": "text",
+      "required": true,
+      "section": "Titular y legitimación",
+      "min_length": 4
+    },
+    {
+      "id": "acting_capacity",
+      "label": "Calidad en la que actúa quien presenta",
+      "type": "select",
+      "options": [
+        "Titular",
+        "Apoderado o autorizado",
+        "Representante legal",
+        "Causahabiente",
+        "Otro tercero con legitimación acreditada"
+      ],
+      "required": true,
+      "section": "Titular y legitimación"
+    },
+    {
+      "id": "representative_name",
+      "label": "Nombre del representante o autorizado",
+      "type": "text",
+      "required": true,
+      "section": "Titular y legitimación",
+      "min_length": 3,
+      "show_if": {
+        "field": "acting_capacity",
+        "equals": "Apoderado o autorizado"
+      }
+    },
+    {
+      "id": "representation_support",
+      "label": "Soporte de legitimación disponible",
+      "type": "select",
+      "options": [
+        "Completo",
+        "Parcial",
+        "No",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Titular y legitimación"
+    },
+    {
+      "id": "email",
+      "label": "Correo electrónico para notificaciones",
+      "type": "text",
+      "format": "email",
+      "required": true,
+      "section": "Titular y legitimación"
+    },
+    {
+      "id": "phone",
+      "label": "Teléfono de contacto",
+      "type": "text",
+      "required": true,
+      "section": "Titular y legitimación",
+      "min_length": 7
+    },
+    {
+      "id": "address",
+      "label": "Dirección de contacto",
+      "type": "text",
+      "required": true,
+      "section": "Titular y legitimación",
+      "min_length": 5
+    },
+    {
+      "id": "city",
+      "label": "Ciudad o municipio",
+      "type": "text",
+      "required": true,
+      "section": "Titular y legitimación"
+    },
+    {
+      "id": "request_mode",
+      "label": "Actuación principal",
+      "type": "select",
+      "options": [
+        "Consulta de información",
+        "Reclamo de corrección, actualización o retiro",
+        "Reiteración de reclamo",
+        "Escalamiento ante autoridad"
+      ],
+      "required": true,
+      "section": "Clasificación jurídica"
+    },
+    {
+      "id": "issue_type",
+      "label": "Problema principal",
+      "type": "select",
+      "options": [
+        "Obligación inexistente",
+        "Saldo, estado o fecha inexactos",
+        "Pago o extinción no actualizados",
+        "Falta de comunicación previa",
+        "Permanencia vencida después del pago",
+        "Caducidad de obligación insoluta",
+        "Reporte realizado tardíamente",
+        "Suplantación de identidad",
+        "Obligación vigente discutida",
+        "Fuente o soporte desconocidos",
+        "Uso o consulta indebida",
+        "Otro"
+      ],
+      "required": true,
+      "section": "Clasificación jurídica"
+    },
+    {
+      "id": "data_category",
+      "label": "Categoría del dato controvertido",
+      "type": "select",
+      "options": [
+        "Financiero o crediticio",
+        "Comercial o de servicios",
+        "Proveniente de terceros países",
+        "Calificación o score",
+        "Consulta realizada por usuario",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Clasificación jurídica"
+    },
+    {
+      "id": "claim_goal",
+      "label": "Pretensión principal",
+      "type": "select",
+      "options": [
+        "Conocer dato, fuente, usuarios y soportes",
+        "Corregir dato inexacto",
+        "Actualizar pago o estado",
+        "Retirar reporte por falta de comunicación",
+        "Retirar por permanencia o caducidad",
+        "Registrar reclamo en trámite",
+        "Responder y trasladar al competente",
+        "Preservar evidencia por suplantación",
+        "Explicar consulta o decisión crediticia",
+        "Otra"
+      ],
+      "required": true,
+      "section": "Clasificación jurídica"
+    },
+    {
+      "id": "facts_detail",
+      "label": "Relato de hechos confirmados y pretensiones",
+      "type": "textarea",
+      "required": true,
+      "section": "Clasificación jurídica",
+      "min_length": 50,
+      "max_length": 6000
+    },
+    {
+      "id": "source_known",
+      "label": "¿Identifica la fuente que reportó la información?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "Parcial"
+      ],
+      "required": true,
+      "section": "Intervinientes"
+    },
+    {
+      "id": "source_name",
+      "label": "Nombre de la fuente reportante",
+      "type": "text",
+      "required": true,
+      "section": "Intervinientes",
+      "min_length": 3,
+      "show_if": {
+        "field": "source_known",
+        "equals": "Sí"
+      }
+    },
+    {
+      "id": "operator_known",
+      "label": "¿Identifica el operador o central de información?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "Parcial"
+      ],
+      "required": true,
+      "section": "Intervinientes"
+    },
+    {
+      "id": "operator_name",
+      "label": "Nombre del operador o central",
+      "type": "text",
+      "required": true,
+      "section": "Intervinientes",
+      "min_length": 3,
+      "show_if": {
+        "field": "operator_known",
+        "equals": "Sí"
+      }
+    },
+    {
+      "id": "user_entity_known",
+      "label": "¿Identifica algún usuario que consultó o utilizó el dato?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Intervinientes"
+    },
+    {
+      "id": "user_entity_name",
+      "label": "Usuario o entidad que consultó/utilizó el dato",
+      "type": "text",
+      "required": true,
+      "section": "Intervinientes",
+      "min_length": 3,
+      "show_if": {
+        "field": "user_entity_known",
+        "equals": "Sí"
+      }
+    },
+    {
+      "id": "obligation_identifier",
+      "label": "Número parcial de obligación, producto o cuenta",
+      "type": "text",
+      "required": true,
+      "section": "Obligación y reporte",
+      "min_length": 3
+    },
+    {
+      "id": "obligation_status",
+      "label": "Estado actual de la obligación",
+      "type": "select",
+      "options": [
+        "Vigente y en mora",
+        "Pagada",
+        "Extinguida por otro modo",
+        "No reconocida por el titular",
+        "Discutida",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Obligación y reporte"
+    },
+    {
+      "id": "obligation_amount",
+      "label": "Valor aproximado de la obligación o cuota reportada",
+      "type": "number",
+      "required": false,
+      "section": "Obligación y reporte",
+      "min": 0
+    },
+    {
+      "id": "mora_start_date",
+      "label": "Fecha de inicio de mora",
+      "type": "date",
+      "required": false,
+      "section": "Obligación y reporte"
+    },
+    {
+      "id": "payment_or_extinction_date",
+      "label": "Fecha de pago o extinción",
+      "type": "date",
+      "required": false,
+      "section": "Obligación y reporte"
+    },
+    {
+      "id": "report_date",
+      "label": "Fecha del reporte negativo",
+      "type": "date",
+      "required": false,
+      "section": "Obligación y reporte"
+    },
+    {
+      "id": "report_discovery_date",
+      "label": "Fecha en que conoció el reporte",
+      "type": "date",
+      "required": false,
+      "section": "Obligación y reporte"
+    },
+    {
+      "id": "report_support_available",
+      "label": "¿Cuenta con consulta o soporte legible del reporte?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "Parcial",
+        "No"
+      ],
+      "required": true,
+      "section": "Obligación y reporte"
+    },
+    {
+      "id": "source_obligation_support",
+      "label": "¿La fuente aportó contrato, título o soporte de la obligación?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "Parcial",
+        "No",
+        "No solicitado"
+      ],
+      "required": true,
+      "section": "Obligación y reporte"
+    },
+    {
+      "id": "prior_communication_received",
+      "label": "¿Recibió comunicación previa al reporte?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Comunicación previa"
+    },
+    {
+      "id": "prior_communication_date",
+      "label": "Fecha de la última comunicación previa",
+      "type": "date",
+      "required": false,
+      "section": "Comunicación previa"
+    },
+    {
+      "id": "prior_communication_evidence",
+      "label": "Prueba de envío o recepción de la comunicación",
+      "type": "select",
+      "options": [
+        "Completa",
+        "Parcial",
+        "No",
+        "No solicitada"
+      ],
+      "required": true,
+      "section": "Comunicación previa"
+    },
+    {
+      "id": "small_obligation_two_notices",
+      "label": "Si la obligación es igual o inferior al 15 % del SMLMV, ¿existen dos comunicaciones en días diferentes?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No sé",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Comunicación previa"
+    },
+    {
+      "id": "prior_claim",
+      "label": "¿Ya presentó consulta o reclamo a la fuente u operador?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Gestiones previas"
+    },
+    {
+      "id": "prior_claim_date",
+      "label": "Fecha de la actuación previa",
+      "type": "date",
+      "required": true,
+      "section": "Gestiones previas",
+      "show_if": {
+        "field": "prior_claim",
+        "equals": "Sí"
+      }
+    },
+    {
+      "id": "prior_claim_radicado",
+      "label": "Número o constancia del radicado previo",
+      "type": "text",
+      "required": true,
+      "section": "Gestiones previas",
+      "min_length": 3,
+      "show_if": {
+        "field": "prior_claim",
+        "equals": "Sí"
+      }
+    },
+    {
+      "id": "prior_claim_complete",
+      "label": "¿La actuación previa contenía identificación, hechos, pretensión, dirección y soportes disponibles?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "Parcial",
+        "No",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Gestiones previas"
+    },
+    {
+      "id": "response_received",
+      "label": "Respuesta recibida",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "Parcial",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Gestiones previas"
+    },
+    {
+      "id": "response_date",
+      "label": "Fecha de respuesta",
+      "type": "date",
+      "required": false,
+      "section": "Gestiones previas"
+    },
+    {
+      "id": "response_quality",
+      "label": "Calidad de la respuesta",
+      "type": "select",
+      "options": [
+        "De fondo y completa",
+        "Incompleta o incongruente",
+        "Solo acuse o traslado",
+        "Negativa sin soportes",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Gestiones previas"
+    },
+    {
+      "id": "claim_legend_present",
+      "label": "¿El reporte muestra la leyenda “reclamo en trámite”?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No sé",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Gestiones previas"
+    },
+    {
+      "id": "extension_notified",
+      "label": "¿Fue notificada una prórroga motivada antes del vencimiento?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No",
+        "No sé",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Gestiones previas"
+    },
+    {
+      "id": "identity_theft",
+      "label": "¿Alega suplantación de identidad?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Riesgo y escalamiento"
+    },
+    {
+      "id": "identity_theft_complex",
+      "label": "¿La suplantación involucra varios productos, documentos falsos, investigación penal o pérdidas relevantes?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No aplica"
+      ],
+      "required": true,
+      "section": "Riesgo y escalamiento"
+    },
+    {
+      "id": "multiple_sources",
+      "label": "¿Existen múltiples fuentes, operadores o reportes?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Riesgo y escalamiento"
+    },
+    {
+      "id": "judicial_or_insolvency",
+      "label": "¿Existe proceso judicial, insolvencia, cobro ejecutivo o embargo relacionado?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Riesgo y escalamiento"
+    },
+    {
+      "id": "high_damage_or_urgent_credit",
+      "label": "¿Existe daño patrimonial relevante, rechazo crítico de crédito o término urgente?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Riesgo y escalamiento"
+    },
+    {
+      "id": "authority_case_active",
+      "label": "¿Existe queja o actuación activa ante SIC, Superfinanciera u otra autoridad?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Riesgo y escalamiento"
+    },
+    {
+      "id": "filing_date",
+      "label": "Fecha prevista de radicación de esta actuación",
+      "type": "date",
+      "required": true,
+      "section": "Términos y control"
+    },
+    {
+      "id": "filing_channel",
+      "label": "Canal previsto de radicación",
+      "type": "select",
+      "options": [
+        "Portal oficial",
+        "Correo electrónico oficial",
+        "Ventanilla física",
+        "Canal telefónico con radicado",
+        "Canal sin constancia",
+        "No sé"
+      ],
+      "required": true,
+      "section": "Términos y control"
+    },
+    {
+      "id": "data_minimized",
+      "label": "¿Los anexos ocultan números completos, claves y datos no necesarios?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "Parcial",
+        "No"
+      ],
+      "required": true,
+      "section": "Términos y control"
+    },
+    {
+      "id": "data_confirmed",
+      "label": "¿Confirma que nombres, fechas, valores, soportes y pretensiones fueron revisados?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "Parcial",
+        "No"
+      ],
+      "required": true,
+      "section": "Términos y control"
+    }
+  ]
+}

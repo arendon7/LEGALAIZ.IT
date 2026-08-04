@@ -1,0 +1,3642 @@
+[
+  {
+    "template_id": "TPL-CO-CD-001-HABEAS-CONSULTATION",
+    "product_code": "CO-CD-001",
+    "kind": "habeas_consultation",
+    "title": "Consulta integral del dato, fuente, usuarios y soportes",
+    "subtitle": "Modelo madurado v2.32 · hábeas data financiero trazable",
+    "filename_suffix": "consulta_integral_habeas_data",
+    "version_label": "2.32-factory",
+    "canonical_status": "Maduración integral interna; aprobación jurídica y QA pendientes",
+    "source_package": "LegalAIZit_Paquete_07_Centrales_Riesgo_Habeas_Data_Consolidado_v232",
+    "variables": [
+      {
+        "id": "data_subject_name",
+        "label": "Nombre completo del titular de la información",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "data_subject_id",
+        "label": "Identificación del titular",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa quien presenta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representative_name",
+        "label": "Nombre del representante o autorizado",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de legitimación disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo electrónico para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "address",
+        "label": "Dirección de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "request_mode",
+        "label": "Actuación principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issue_type",
+        "label": "Problema principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_category",
+        "label": "Categoría del dato controvertido",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_goal",
+        "label": "Pretensión principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "facts_detail",
+        "label": "Relato de hechos confirmados y pretensiones",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "source_known",
+        "label": "¿Identifica la fuente que reportó la información?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "source_name",
+        "label": "Nombre de la fuente reportante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "operator_known",
+        "label": "¿Identifica el operador o central de información?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "operator_name",
+        "label": "Nombre del operador o central",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "user_entity_known",
+        "label": "¿Identifica algún usuario que consultó o utilizó el dato?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "user_entity_name",
+        "label": "Usuario o entidad que consultó/utilizó el dato",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "obligation_identifier",
+        "label": "Número parcial de obligación, producto o cuenta",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "obligation_status",
+        "label": "Estado actual de la obligación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "obligation_amount",
+        "label": "Valor aproximado de la obligación o cuota reportada",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "mora_start_date",
+        "label": "Fecha de inicio de mora",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "payment_or_extinction_date",
+        "label": "Fecha de pago o extinción",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_date",
+        "label": "Fecha del reporte negativo",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_discovery_date",
+        "label": "Fecha en que conoció el reporte",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_support_available",
+        "label": "¿Cuenta con consulta o soporte legible del reporte?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "source_obligation_support",
+        "label": "¿La fuente aportó contrato, título o soporte de la obligación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_communication_received",
+        "label": "¿Recibió comunicación previa al reporte?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_communication_date",
+        "label": "Fecha de la última comunicación previa",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "prior_communication_evidence",
+        "label": "Prueba de envío o recepción de la comunicación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "small_obligation_two_notices",
+        "label": "Si la obligación es igual o inferior al 15 % del SMLMV, ¿existen dos comunicaciones en días diferentes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim",
+        "label": "¿Ya presentó consulta o reclamo a la fuente u operador?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim_date",
+        "label": "Fecha de la actuación previa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_claim_radicado",
+        "label": "Número o constancia del radicado previo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "prior_claim_complete",
+        "label": "¿La actuación previa contenía identificación, hechos, pretensión, dirección y soportes disponibles?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta recibida",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de respuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "response_quality",
+        "label": "Calidad de la respuesta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_legend_present",
+        "label": "¿El reporte muestra la leyenda “reclamo en trámite”?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "extension_notified",
+        "label": "¿Fue notificada una prórroga motivada antes del vencimiento?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "identity_theft",
+        "label": "¿Alega suplantación de identidad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "identity_theft_complex",
+        "label": "¿La suplantación involucra varios productos, documentos falsos, investigación penal o pérdidas relevantes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "multiple_sources",
+        "label": "¿Existen múltiples fuentes, operadores o reportes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "judicial_or_insolvency",
+        "label": "¿Existe proceso judicial, insolvencia, cobro ejecutivo o embargo relacionado?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "high_damage_or_urgent_credit",
+        "label": "¿Existe daño patrimonial relevante, rechazo crítico de crédito o término urgente?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "authority_case_active",
+        "label": "¿Existe queja o actuación activa ante SIC, Superfinanciera u otra autoridad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "filing_date",
+        "label": "Fecha prevista de radicación de esta actuación",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "filing_channel",
+        "label": "Canal previsto de radicación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos ocultan números completos, claves y datos no necesarios?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que nombres, fechas, valores, soportes y pretensiones fueron revisados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "CD1-S1",
+      "CD1-S2",
+      "CD1-S3",
+      "CD1-S4",
+      "CD1-S5",
+      "CD1-S6",
+      "CD1-S7",
+      "CD1-S8",
+      "CD1-S9",
+      "CD1-S10",
+      "CD1-S11",
+      "CD1-S12",
+      "CD1-S13",
+      "CD1-S14"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-CD-001-HABEAS-CONSULTATION-B01",
+        "type": "section",
+        "heading": "Identificación y destinatarios",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-CONSULTATION-B02",
+        "type": "section",
+        "heading": "Información consultada",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-CONSULTATION-B03",
+        "type": "section",
+        "heading": "Solicitudes de origen, usuarios y soportes",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-CONSULTATION-B04",
+        "type": "section",
+        "heading": "Canal y término",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-CONSULTATION-B05",
+        "type": "section",
+        "heading": "Anexos",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-CONSULTATION-B06",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse la información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-CD-001-HABEAS-CLAIM",
+    "product_code": "CO-CD-001",
+    "kind": "habeas_claim",
+    "title": "Reclamo integral de hábeas data financiero",
+    "subtitle": "Modelo madurado v2.32 · hábeas data financiero trazable",
+    "filename_suffix": "reclamo_integral_habeas_data",
+    "version_label": "2.32-factory",
+    "canonical_status": "Maduración integral interna; aprobación jurídica y QA pendientes",
+    "source_package": "LegalAIZit_Paquete_07_Centrales_Riesgo_Habeas_Data_Consolidado_v232",
+    "variables": [
+      {
+        "id": "data_subject_name",
+        "label": "Nombre completo del titular de la información",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "data_subject_id",
+        "label": "Identificación del titular",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa quien presenta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representative_name",
+        "label": "Nombre del representante o autorizado",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de legitimación disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo electrónico para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "address",
+        "label": "Dirección de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "request_mode",
+        "label": "Actuación principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issue_type",
+        "label": "Problema principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_category",
+        "label": "Categoría del dato controvertido",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_goal",
+        "label": "Pretensión principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "facts_detail",
+        "label": "Relato de hechos confirmados y pretensiones",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "source_known",
+        "label": "¿Identifica la fuente que reportó la información?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "source_name",
+        "label": "Nombre de la fuente reportante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "operator_known",
+        "label": "¿Identifica el operador o central de información?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "operator_name",
+        "label": "Nombre del operador o central",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "user_entity_known",
+        "label": "¿Identifica algún usuario que consultó o utilizó el dato?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "user_entity_name",
+        "label": "Usuario o entidad que consultó/utilizó el dato",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "obligation_identifier",
+        "label": "Número parcial de obligación, producto o cuenta",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "obligation_status",
+        "label": "Estado actual de la obligación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "obligation_amount",
+        "label": "Valor aproximado de la obligación o cuota reportada",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "mora_start_date",
+        "label": "Fecha de inicio de mora",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "payment_or_extinction_date",
+        "label": "Fecha de pago o extinción",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_date",
+        "label": "Fecha del reporte negativo",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_discovery_date",
+        "label": "Fecha en que conoció el reporte",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_support_available",
+        "label": "¿Cuenta con consulta o soporte legible del reporte?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "source_obligation_support",
+        "label": "¿La fuente aportó contrato, título o soporte de la obligación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_communication_received",
+        "label": "¿Recibió comunicación previa al reporte?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_communication_date",
+        "label": "Fecha de la última comunicación previa",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "prior_communication_evidence",
+        "label": "Prueba de envío o recepción de la comunicación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "small_obligation_two_notices",
+        "label": "Si la obligación es igual o inferior al 15 % del SMLMV, ¿existen dos comunicaciones en días diferentes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim",
+        "label": "¿Ya presentó consulta o reclamo a la fuente u operador?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim_date",
+        "label": "Fecha de la actuación previa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_claim_radicado",
+        "label": "Número o constancia del radicado previo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "prior_claim_complete",
+        "label": "¿La actuación previa contenía identificación, hechos, pretensión, dirección y soportes disponibles?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta recibida",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de respuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "response_quality",
+        "label": "Calidad de la respuesta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_legend_present",
+        "label": "¿El reporte muestra la leyenda “reclamo en trámite”?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "extension_notified",
+        "label": "¿Fue notificada una prórroga motivada antes del vencimiento?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "identity_theft",
+        "label": "¿Alega suplantación de identidad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "identity_theft_complex",
+        "label": "¿La suplantación involucra varios productos, documentos falsos, investigación penal o pérdidas relevantes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "multiple_sources",
+        "label": "¿Existen múltiples fuentes, operadores o reportes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "judicial_or_insolvency",
+        "label": "¿Existe proceso judicial, insolvencia, cobro ejecutivo o embargo relacionado?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "high_damage_or_urgent_credit",
+        "label": "¿Existe daño patrimonial relevante, rechazo crítico de crédito o término urgente?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "authority_case_active",
+        "label": "¿Existe queja o actuación activa ante SIC, Superfinanciera u otra autoridad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "filing_date",
+        "label": "Fecha prevista de radicación de esta actuación",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "filing_channel",
+        "label": "Canal previsto de radicación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos ocultan números completos, claves y datos no necesarios?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que nombres, fechas, valores, soportes y pretensiones fueron revisados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "CD1-S1",
+      "CD1-S2",
+      "CD1-S3",
+      "CD1-S4",
+      "CD1-S5",
+      "CD1-S6",
+      "CD1-S7",
+      "CD1-S8",
+      "CD1-S9",
+      "CD1-S10",
+      "CD1-S11",
+      "CD1-S12",
+      "CD1-S13",
+      "CD1-S14"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-CD-001-HABEAS-CLAIM-B01",
+        "type": "section",
+        "heading": "Titular, destinatarios y dato",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-CLAIM-B02",
+        "type": "section",
+        "heading": "Hechos confirmados",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-CLAIM-B03",
+        "type": "section",
+        "heading": "Fundamentos y clasificación",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-CLAIM-B04",
+        "type": "section",
+        "heading": "Pretensiones individualizadas",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-CLAIM-B05",
+        "type": "section",
+        "heading": "Comunicación previa y permanencia",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-CLAIM-B06",
+        "type": "section",
+        "heading": "Leyenda, respuesta y notificaciones",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-CLAIM-B07",
+        "type": "section",
+        "heading": "Anexos",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-CLAIM-B08",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse la información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-CD-001-HABEAS-REITERATION",
+    "product_code": "CO-CD-001",
+    "kind": "habeas_reiteration",
+    "title": "Reiteración, leyenda y control de silencio",
+    "subtitle": "Modelo madurado v2.32 · hábeas data financiero trazable",
+    "filename_suffix": "reiteracion_control_silencio",
+    "version_label": "2.32-factory",
+    "canonical_status": "Maduración integral interna; aprobación jurídica y QA pendientes",
+    "source_package": "LegalAIZit_Paquete_07_Centrales_Riesgo_Habeas_Data_Consolidado_v232",
+    "variables": [
+      {
+        "id": "data_subject_name",
+        "label": "Nombre completo del titular de la información",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "data_subject_id",
+        "label": "Identificación del titular",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa quien presenta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representative_name",
+        "label": "Nombre del representante o autorizado",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de legitimación disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo electrónico para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "address",
+        "label": "Dirección de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "request_mode",
+        "label": "Actuación principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issue_type",
+        "label": "Problema principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_category",
+        "label": "Categoría del dato controvertido",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_goal",
+        "label": "Pretensión principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "facts_detail",
+        "label": "Relato de hechos confirmados y pretensiones",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "source_known",
+        "label": "¿Identifica la fuente que reportó la información?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "source_name",
+        "label": "Nombre de la fuente reportante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "operator_known",
+        "label": "¿Identifica el operador o central de información?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "operator_name",
+        "label": "Nombre del operador o central",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "user_entity_known",
+        "label": "¿Identifica algún usuario que consultó o utilizó el dato?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "user_entity_name",
+        "label": "Usuario o entidad que consultó/utilizó el dato",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "obligation_identifier",
+        "label": "Número parcial de obligación, producto o cuenta",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "obligation_status",
+        "label": "Estado actual de la obligación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "obligation_amount",
+        "label": "Valor aproximado de la obligación o cuota reportada",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "mora_start_date",
+        "label": "Fecha de inicio de mora",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "payment_or_extinction_date",
+        "label": "Fecha de pago o extinción",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_date",
+        "label": "Fecha del reporte negativo",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_discovery_date",
+        "label": "Fecha en que conoció el reporte",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_support_available",
+        "label": "¿Cuenta con consulta o soporte legible del reporte?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "source_obligation_support",
+        "label": "¿La fuente aportó contrato, título o soporte de la obligación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_communication_received",
+        "label": "¿Recibió comunicación previa al reporte?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_communication_date",
+        "label": "Fecha de la última comunicación previa",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "prior_communication_evidence",
+        "label": "Prueba de envío o recepción de la comunicación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "small_obligation_two_notices",
+        "label": "Si la obligación es igual o inferior al 15 % del SMLMV, ¿existen dos comunicaciones en días diferentes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim",
+        "label": "¿Ya presentó consulta o reclamo a la fuente u operador?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim_date",
+        "label": "Fecha de la actuación previa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_claim_radicado",
+        "label": "Número o constancia del radicado previo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "prior_claim_complete",
+        "label": "¿La actuación previa contenía identificación, hechos, pretensión, dirección y soportes disponibles?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta recibida",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de respuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "response_quality",
+        "label": "Calidad de la respuesta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_legend_present",
+        "label": "¿El reporte muestra la leyenda “reclamo en trámite”?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "extension_notified",
+        "label": "¿Fue notificada una prórroga motivada antes del vencimiento?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "identity_theft",
+        "label": "¿Alega suplantación de identidad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "identity_theft_complex",
+        "label": "¿La suplantación involucra varios productos, documentos falsos, investigación penal o pérdidas relevantes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "multiple_sources",
+        "label": "¿Existen múltiples fuentes, operadores o reportes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "judicial_or_insolvency",
+        "label": "¿Existe proceso judicial, insolvencia, cobro ejecutivo o embargo relacionado?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "high_damage_or_urgent_credit",
+        "label": "¿Existe daño patrimonial relevante, rechazo crítico de crédito o término urgente?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "authority_case_active",
+        "label": "¿Existe queja o actuación activa ante SIC, Superfinanciera u otra autoridad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "filing_date",
+        "label": "Fecha prevista de radicación de esta actuación",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "filing_channel",
+        "label": "Canal previsto de radicación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos ocultan números completos, claves y datos no necesarios?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que nombres, fechas, valores, soportes y pretensiones fueron revisados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "CD1-S1",
+      "CD1-S2",
+      "CD1-S3",
+      "CD1-S4",
+      "CD1-S5",
+      "CD1-S6",
+      "CD1-S7",
+      "CD1-S8",
+      "CD1-S9",
+      "CD1-S10",
+      "CD1-S11",
+      "CD1-S12",
+      "CD1-S13",
+      "CD1-S14"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-CD-001-HABEAS-REITERATION-B01",
+        "type": "section",
+        "heading": "Actuación previa",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-REITERATION-B02",
+        "type": "section",
+        "heading": "Cronología y término preliminar",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-REITERATION-B03",
+        "type": "section",
+        "heading": "Puntos pendientes",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-REITERATION-B04",
+        "type": "section",
+        "heading": "Leyenda de reclamo",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-REITERATION-B05",
+        "type": "section",
+        "heading": "Reiteración y silencio legal",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-REITERATION-B06",
+        "type": "section",
+        "heading": "Control de duplicidad",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-REITERATION-B07",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse la información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-CD-001-HABEAS-AUTHORITY-ESCALATION",
+    "product_code": "CO-CD-001",
+    "kind": "habeas_authority_escalation",
+    "title": "Ruta y borrador de escalamiento ante autoridad",
+    "subtitle": "Modelo madurado v2.32 · hábeas data financiero trazable",
+    "filename_suffix": "escalamiento_autoridad",
+    "version_label": "2.32-factory",
+    "canonical_status": "Maduración integral interna; aprobación jurídica y QA pendientes",
+    "source_package": "LegalAIZit_Paquete_07_Centrales_Riesgo_Habeas_Data_Consolidado_v232",
+    "variables": [
+      {
+        "id": "data_subject_name",
+        "label": "Nombre completo del titular de la información",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "data_subject_id",
+        "label": "Identificación del titular",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa quien presenta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representative_name",
+        "label": "Nombre del representante o autorizado",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de legitimación disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo electrónico para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "address",
+        "label": "Dirección de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "request_mode",
+        "label": "Actuación principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issue_type",
+        "label": "Problema principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_category",
+        "label": "Categoría del dato controvertido",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_goal",
+        "label": "Pretensión principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "facts_detail",
+        "label": "Relato de hechos confirmados y pretensiones",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "source_known",
+        "label": "¿Identifica la fuente que reportó la información?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "source_name",
+        "label": "Nombre de la fuente reportante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "operator_known",
+        "label": "¿Identifica el operador o central de información?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "operator_name",
+        "label": "Nombre del operador o central",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "user_entity_known",
+        "label": "¿Identifica algún usuario que consultó o utilizó el dato?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "user_entity_name",
+        "label": "Usuario o entidad que consultó/utilizó el dato",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "obligation_identifier",
+        "label": "Número parcial de obligación, producto o cuenta",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "obligation_status",
+        "label": "Estado actual de la obligación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "obligation_amount",
+        "label": "Valor aproximado de la obligación o cuota reportada",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "mora_start_date",
+        "label": "Fecha de inicio de mora",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "payment_or_extinction_date",
+        "label": "Fecha de pago o extinción",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_date",
+        "label": "Fecha del reporte negativo",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_discovery_date",
+        "label": "Fecha en que conoció el reporte",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_support_available",
+        "label": "¿Cuenta con consulta o soporte legible del reporte?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "source_obligation_support",
+        "label": "¿La fuente aportó contrato, título o soporte de la obligación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_communication_received",
+        "label": "¿Recibió comunicación previa al reporte?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_communication_date",
+        "label": "Fecha de la última comunicación previa",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "prior_communication_evidence",
+        "label": "Prueba de envío o recepción de la comunicación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "small_obligation_two_notices",
+        "label": "Si la obligación es igual o inferior al 15 % del SMLMV, ¿existen dos comunicaciones en días diferentes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim",
+        "label": "¿Ya presentó consulta o reclamo a la fuente u operador?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim_date",
+        "label": "Fecha de la actuación previa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_claim_radicado",
+        "label": "Número o constancia del radicado previo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "prior_claim_complete",
+        "label": "¿La actuación previa contenía identificación, hechos, pretensión, dirección y soportes disponibles?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta recibida",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de respuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "response_quality",
+        "label": "Calidad de la respuesta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_legend_present",
+        "label": "¿El reporte muestra la leyenda “reclamo en trámite”?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "extension_notified",
+        "label": "¿Fue notificada una prórroga motivada antes del vencimiento?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "identity_theft",
+        "label": "¿Alega suplantación de identidad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "identity_theft_complex",
+        "label": "¿La suplantación involucra varios productos, documentos falsos, investigación penal o pérdidas relevantes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "multiple_sources",
+        "label": "¿Existen múltiples fuentes, operadores o reportes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "judicial_or_insolvency",
+        "label": "¿Existe proceso judicial, insolvencia, cobro ejecutivo o embargo relacionado?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "high_damage_or_urgent_credit",
+        "label": "¿Existe daño patrimonial relevante, rechazo crítico de crédito o término urgente?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "authority_case_active",
+        "label": "¿Existe queja o actuación activa ante SIC, Superfinanciera u otra autoridad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "filing_date",
+        "label": "Fecha prevista de radicación de esta actuación",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "filing_channel",
+        "label": "Canal previsto de radicación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos ocultan números completos, claves y datos no necesarios?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que nombres, fechas, valores, soportes y pretensiones fueron revisados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "CD1-S1",
+      "CD1-S2",
+      "CD1-S3",
+      "CD1-S4",
+      "CD1-S5",
+      "CD1-S6",
+      "CD1-S7",
+      "CD1-S8",
+      "CD1-S9",
+      "CD1-S10",
+      "CD1-S11",
+      "CD1-S12",
+      "CD1-S13",
+      "CD1-S14"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-CD-001-HABEAS-AUTHORITY-ESCALATION-B01",
+        "type": "section",
+        "heading": "Requisito previo",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-AUTHORITY-ESCALATION-B02",
+        "type": "section",
+        "heading": "Autoridad competente",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-AUTHORITY-ESCALATION-B03",
+        "type": "section",
+        "heading": "Hechos y vulneraciones alegadas",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-AUTHORITY-ESCALATION-B04",
+        "type": "section",
+        "heading": "Peticiones y anexos",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-AUTHORITY-ESCALATION-B05",
+        "type": "section",
+        "heading": "Límites de la ruta",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-AUTHORITY-ESCALATION-B06",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse la información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-CD-001-HABEAS-EVIDENCE-MATRIX",
+    "product_code": "CO-CD-001",
+    "kind": "habeas_evidence_matrix",
+    "title": "Matriz de evidencia, responsables y trazabilidad",
+    "subtitle": "Modelo madurado v2.32 · hábeas data financiero trazable",
+    "filename_suffix": "matriz_evidencia_responsables",
+    "version_label": "2.32-factory",
+    "canonical_status": "Maduración integral interna; aprobación jurídica y QA pendientes",
+    "source_package": "LegalAIZit_Paquete_07_Centrales_Riesgo_Habeas_Data_Consolidado_v232",
+    "variables": [
+      {
+        "id": "data_subject_name",
+        "label": "Nombre completo del titular de la información",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "data_subject_id",
+        "label": "Identificación del titular",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa quien presenta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representative_name",
+        "label": "Nombre del representante o autorizado",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de legitimación disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo electrónico para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "address",
+        "label": "Dirección de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "request_mode",
+        "label": "Actuación principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issue_type",
+        "label": "Problema principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_category",
+        "label": "Categoría del dato controvertido",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_goal",
+        "label": "Pretensión principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "facts_detail",
+        "label": "Relato de hechos confirmados y pretensiones",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "source_known",
+        "label": "¿Identifica la fuente que reportó la información?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "source_name",
+        "label": "Nombre de la fuente reportante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "operator_known",
+        "label": "¿Identifica el operador o central de información?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "operator_name",
+        "label": "Nombre del operador o central",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "user_entity_known",
+        "label": "¿Identifica algún usuario que consultó o utilizó el dato?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "user_entity_name",
+        "label": "Usuario o entidad que consultó/utilizó el dato",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "obligation_identifier",
+        "label": "Número parcial de obligación, producto o cuenta",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "obligation_status",
+        "label": "Estado actual de la obligación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "obligation_amount",
+        "label": "Valor aproximado de la obligación o cuota reportada",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "mora_start_date",
+        "label": "Fecha de inicio de mora",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "payment_or_extinction_date",
+        "label": "Fecha de pago o extinción",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_date",
+        "label": "Fecha del reporte negativo",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_discovery_date",
+        "label": "Fecha en que conoció el reporte",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_support_available",
+        "label": "¿Cuenta con consulta o soporte legible del reporte?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "source_obligation_support",
+        "label": "¿La fuente aportó contrato, título o soporte de la obligación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_communication_received",
+        "label": "¿Recibió comunicación previa al reporte?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_communication_date",
+        "label": "Fecha de la última comunicación previa",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "prior_communication_evidence",
+        "label": "Prueba de envío o recepción de la comunicación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "small_obligation_two_notices",
+        "label": "Si la obligación es igual o inferior al 15 % del SMLMV, ¿existen dos comunicaciones en días diferentes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim",
+        "label": "¿Ya presentó consulta o reclamo a la fuente u operador?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim_date",
+        "label": "Fecha de la actuación previa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_claim_radicado",
+        "label": "Número o constancia del radicado previo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "prior_claim_complete",
+        "label": "¿La actuación previa contenía identificación, hechos, pretensión, dirección y soportes disponibles?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta recibida",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de respuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "response_quality",
+        "label": "Calidad de la respuesta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_legend_present",
+        "label": "¿El reporte muestra la leyenda “reclamo en trámite”?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "extension_notified",
+        "label": "¿Fue notificada una prórroga motivada antes del vencimiento?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "identity_theft",
+        "label": "¿Alega suplantación de identidad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "identity_theft_complex",
+        "label": "¿La suplantación involucra varios productos, documentos falsos, investigación penal o pérdidas relevantes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "multiple_sources",
+        "label": "¿Existen múltiples fuentes, operadores o reportes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "judicial_or_insolvency",
+        "label": "¿Existe proceso judicial, insolvencia, cobro ejecutivo o embargo relacionado?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "high_damage_or_urgent_credit",
+        "label": "¿Existe daño patrimonial relevante, rechazo crítico de crédito o término urgente?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "authority_case_active",
+        "label": "¿Existe queja o actuación activa ante SIC, Superfinanciera u otra autoridad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "filing_date",
+        "label": "Fecha prevista de radicación de esta actuación",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "filing_channel",
+        "label": "Canal previsto de radicación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos ocultan números completos, claves y datos no necesarios?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que nombres, fechas, valores, soportes y pretensiones fueron revisados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "CD1-S1",
+      "CD1-S2",
+      "CD1-S3",
+      "CD1-S4",
+      "CD1-S5",
+      "CD1-S6",
+      "CD1-S7",
+      "CD1-S8",
+      "CD1-S9",
+      "CD1-S10",
+      "CD1-S11",
+      "CD1-S12",
+      "CD1-S13",
+      "CD1-S14"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-CD-001-HABEAS-EVIDENCE-MATRIX-B01",
+        "type": "section",
+        "heading": "Mapa de responsables",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-EVIDENCE-MATRIX-B02",
+        "type": "section",
+        "heading": "Índice probatorio",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-EVIDENCE-MATRIX-B03",
+        "type": "section",
+        "heading": "Comunicación previa",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-EVIDENCE-MATRIX-B04",
+        "type": "section",
+        "heading": "Mora, reporte, pago y permanencia",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-EVIDENCE-MATRIX-B05",
+        "type": "section",
+        "heading": "Radicados y respuestas",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-EVIDENCE-MATRIX-B06",
+        "type": "section",
+        "heading": "Privacidad y hashes",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-EVIDENCE-MATRIX-B07",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse la información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-CD-001-HABEAS-DEADLINE-CALENDAR",
+    "product_code": "CO-CD-001",
+    "kind": "habeas_deadline_calendar",
+    "title": "Calendario de términos, permanencia y caducidad",
+    "subtitle": "Modelo madurado v2.32 · hábeas data financiero trazable",
+    "filename_suffix": "calendario_terminos_permanencia",
+    "version_label": "2.32-factory",
+    "canonical_status": "Maduración integral interna; aprobación jurídica y QA pendientes",
+    "source_package": "LegalAIZit_Paquete_07_Centrales_Riesgo_Habeas_Data_Consolidado_v232",
+    "variables": [
+      {
+        "id": "data_subject_name",
+        "label": "Nombre completo del titular de la información",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "data_subject_id",
+        "label": "Identificación del titular",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa quien presenta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representative_name",
+        "label": "Nombre del representante o autorizado",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de legitimación disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo electrónico para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "address",
+        "label": "Dirección de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "request_mode",
+        "label": "Actuación principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issue_type",
+        "label": "Problema principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_category",
+        "label": "Categoría del dato controvertido",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_goal",
+        "label": "Pretensión principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "facts_detail",
+        "label": "Relato de hechos confirmados y pretensiones",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "source_known",
+        "label": "¿Identifica la fuente que reportó la información?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "source_name",
+        "label": "Nombre de la fuente reportante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "operator_known",
+        "label": "¿Identifica el operador o central de información?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "operator_name",
+        "label": "Nombre del operador o central",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "user_entity_known",
+        "label": "¿Identifica algún usuario que consultó o utilizó el dato?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "user_entity_name",
+        "label": "Usuario o entidad que consultó/utilizó el dato",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "obligation_identifier",
+        "label": "Número parcial de obligación, producto o cuenta",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "obligation_status",
+        "label": "Estado actual de la obligación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "obligation_amount",
+        "label": "Valor aproximado de la obligación o cuota reportada",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "mora_start_date",
+        "label": "Fecha de inicio de mora",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "payment_or_extinction_date",
+        "label": "Fecha de pago o extinción",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_date",
+        "label": "Fecha del reporte negativo",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_discovery_date",
+        "label": "Fecha en que conoció el reporte",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_support_available",
+        "label": "¿Cuenta con consulta o soporte legible del reporte?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "source_obligation_support",
+        "label": "¿La fuente aportó contrato, título o soporte de la obligación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_communication_received",
+        "label": "¿Recibió comunicación previa al reporte?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_communication_date",
+        "label": "Fecha de la última comunicación previa",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "prior_communication_evidence",
+        "label": "Prueba de envío o recepción de la comunicación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "small_obligation_two_notices",
+        "label": "Si la obligación es igual o inferior al 15 % del SMLMV, ¿existen dos comunicaciones en días diferentes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim",
+        "label": "¿Ya presentó consulta o reclamo a la fuente u operador?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim_date",
+        "label": "Fecha de la actuación previa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_claim_radicado",
+        "label": "Número o constancia del radicado previo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "prior_claim_complete",
+        "label": "¿La actuación previa contenía identificación, hechos, pretensión, dirección y soportes disponibles?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta recibida",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de respuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "response_quality",
+        "label": "Calidad de la respuesta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_legend_present",
+        "label": "¿El reporte muestra la leyenda “reclamo en trámite”?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "extension_notified",
+        "label": "¿Fue notificada una prórroga motivada antes del vencimiento?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "identity_theft",
+        "label": "¿Alega suplantación de identidad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "identity_theft_complex",
+        "label": "¿La suplantación involucra varios productos, documentos falsos, investigación penal o pérdidas relevantes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "multiple_sources",
+        "label": "¿Existen múltiples fuentes, operadores o reportes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "judicial_or_insolvency",
+        "label": "¿Existe proceso judicial, insolvencia, cobro ejecutivo o embargo relacionado?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "high_damage_or_urgent_credit",
+        "label": "¿Existe daño patrimonial relevante, rechazo crítico de crédito o término urgente?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "authority_case_active",
+        "label": "¿Existe queja o actuación activa ante SIC, Superfinanciera u otra autoridad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "filing_date",
+        "label": "Fecha prevista de radicación de esta actuación",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "filing_channel",
+        "label": "Canal previsto de radicación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos ocultan números completos, claves y datos no necesarios?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que nombres, fechas, valores, soportes y pretensiones fueron revisados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "CD1-S1",
+      "CD1-S2",
+      "CD1-S3",
+      "CD1-S4",
+      "CD1-S5",
+      "CD1-S6",
+      "CD1-S7",
+      "CD1-S8",
+      "CD1-S9",
+      "CD1-S10",
+      "CD1-S11",
+      "CD1-S12",
+      "CD1-S13",
+      "CD1-S14"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-CD-001-HABEAS-DEADLINE-CALENDAR-B01",
+        "type": "section",
+        "heading": "Consulta o reclamo",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-DEADLINE-CALENDAR-B02",
+        "type": "section",
+        "heading": "Leyenda y traslado",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-DEADLINE-CALENDAR-B03",
+        "type": "section",
+        "heading": "Término inicial y prórroga",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-DEADLINE-CALENDAR-B04",
+        "type": "section",
+        "heading": "Permanencia o caducidad",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-DEADLINE-CALENDAR-B05",
+        "type": "section",
+        "heading": "Límite del primer reporte",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-DEADLINE-CALENDAR-B06",
+        "type": "section",
+        "heading": "Supuestos y advertencias",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-HABEAS-DEADLINE-CALENDAR-B07",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse la información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      }
+    ]
+  },
+  {
+    "template_id": "TPL-CO-CD-001-IDENTITY-THEFT-PROTOCOL",
+    "product_code": "CO-CD-001",
+    "kind": "identity_theft_protocol",
+    "title": "Protocolo de suplantación, alertas y preservación",
+    "subtitle": "Modelo madurado v2.32 · hábeas data financiero trazable",
+    "filename_suffix": "protocolo_suplantacion",
+    "version_label": "2.32-factory",
+    "canonical_status": "Maduración integral interna; aprobación jurídica y QA pendientes",
+    "source_package": "LegalAIZit_Paquete_07_Centrales_Riesgo_Habeas_Data_Consolidado_v232",
+    "variables": [
+      {
+        "id": "data_subject_name",
+        "label": "Nombre completo del titular de la información",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "data_subject_id",
+        "label": "Identificación del titular",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "acting_capacity",
+        "label": "Calidad en la que actúa quien presenta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "representative_name",
+        "label": "Nombre del representante o autorizado",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "representation_support",
+        "label": "Soporte de legitimación disponible",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "email",
+        "label": "Correo electrónico para notificaciones",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "phone",
+        "label": "Teléfono de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "address",
+        "label": "Dirección de contacto",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "city",
+        "label": "Ciudad o municipio",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "request_mode",
+        "label": "Actuación principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "issue_type",
+        "label": "Problema principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_category",
+        "label": "Categoría del dato controvertido",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_goal",
+        "label": "Pretensión principal",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "facts_detail",
+        "label": "Relato de hechos confirmados y pretensiones",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "id": "source_known",
+        "label": "¿Identifica la fuente que reportó la información?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "source_name",
+        "label": "Nombre de la fuente reportante",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "operator_known",
+        "label": "¿Identifica el operador o central de información?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "operator_name",
+        "label": "Nombre del operador o central",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "user_entity_known",
+        "label": "¿Identifica algún usuario que consultó o utilizó el dato?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "user_entity_name",
+        "label": "Usuario o entidad que consultó/utilizó el dato",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "obligation_identifier",
+        "label": "Número parcial de obligación, producto o cuenta",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "obligation_status",
+        "label": "Estado actual de la obligación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "obligation_amount",
+        "label": "Valor aproximado de la obligación o cuota reportada",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "mora_start_date",
+        "label": "Fecha de inicio de mora",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "payment_or_extinction_date",
+        "label": "Fecha de pago o extinción",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_date",
+        "label": "Fecha del reporte negativo",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_discovery_date",
+        "label": "Fecha en que conoció el reporte",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "report_support_available",
+        "label": "¿Cuenta con consulta o soporte legible del reporte?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "source_obligation_support",
+        "label": "¿La fuente aportó contrato, título o soporte de la obligación?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_communication_received",
+        "label": "¿Recibió comunicación previa al reporte?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_communication_date",
+        "label": "Fecha de la última comunicación previa",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "prior_communication_evidence",
+        "label": "Prueba de envío o recepción de la comunicación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "small_obligation_two_notices",
+        "label": "Si la obligación es igual o inferior al 15 % del SMLMV, ¿existen dos comunicaciones en días diferentes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim",
+        "label": "¿Ya presentó consulta o reclamo a la fuente u operador?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "prior_claim_date",
+        "label": "Fecha de la actuación previa",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "prior_claim_radicado",
+        "label": "Número o constancia del radicado previo",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "prior_claim_complete",
+        "label": "¿La actuación previa contenía identificación, hechos, pretensión, dirección y soportes disponibles?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_received",
+        "label": "Respuesta recibida",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "response_date",
+        "label": "Fecha de respuesta",
+        "type": "date",
+        "required": false
+      },
+      {
+        "id": "response_quality",
+        "label": "Calidad de la respuesta",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "claim_legend_present",
+        "label": "¿El reporte muestra la leyenda “reclamo en trámite”?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "extension_notified",
+        "label": "¿Fue notificada una prórroga motivada antes del vencimiento?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "identity_theft",
+        "label": "¿Alega suplantación de identidad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "identity_theft_complex",
+        "label": "¿La suplantación involucra varios productos, documentos falsos, investigación penal o pérdidas relevantes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "multiple_sources",
+        "label": "¿Existen múltiples fuentes, operadores o reportes?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "judicial_or_insolvency",
+        "label": "¿Existe proceso judicial, insolvencia, cobro ejecutivo o embargo relacionado?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "high_damage_or_urgent_credit",
+        "label": "¿Existe daño patrimonial relevante, rechazo crítico de crédito o término urgente?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "authority_case_active",
+        "label": "¿Existe queja o actuación activa ante SIC, Superfinanciera u otra autoridad?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "filing_date",
+        "label": "Fecha prevista de radicación de esta actuación",
+        "type": "date",
+        "required": true
+      },
+      {
+        "id": "filing_channel",
+        "label": "Canal previsto de radicación",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_minimized",
+        "label": "¿Los anexos ocultan números completos, claves y datos no necesarios?",
+        "type": "select",
+        "required": true
+      },
+      {
+        "id": "data_confirmed",
+        "label": "¿Confirma que nombres, fechas, valores, soportes y pretensiones fueron revisados?",
+        "type": "select",
+        "required": true
+      }
+    ],
+    "available_source_ids": [
+      "CD1-S1",
+      "CD1-S2",
+      "CD1-S3",
+      "CD1-S4",
+      "CD1-S5",
+      "CD1-S6",
+      "CD1-S7",
+      "CD1-S8",
+      "CD1-S9",
+      "CD1-S10",
+      "CD1-S11",
+      "CD1-S12",
+      "CD1-S13",
+      "CD1-S14"
+    ],
+    "blocks": [
+      {
+        "id": "TPL-CO-CD-001-IDENTITY-THEFT-PROTOCOL-B01",
+        "type": "section",
+        "heading": "Alcance de la alerta",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-IDENTITY-THEFT-PROTOCOL-B02",
+        "type": "section",
+        "heading": "Preservación inmediata",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-IDENTITY-THEFT-PROTOCOL-B03",
+        "type": "section",
+        "heading": "Reclamos a fuente y operadores",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-IDENTITY-THEFT-PROTOCOL-B04",
+        "type": "section",
+        "heading": "Alertas institucionales",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-IDENTITY-THEFT-PROTOCOL-B05",
+        "type": "section",
+        "heading": "Autoridades y procesos",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-IDENTITY-THEFT-PROTOCOL-B06",
+        "type": "section",
+        "heading": "Seguridad y seguimiento",
+        "text": "Documento generado con variables verificadas y control jurídico v2.32.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": false,
+        "source_ids": [
+          "CD1-S1",
+          "CD1-S2",
+          "CD1-S3",
+          "CD1-S4",
+          "CD1-S5",
+          "CD1-S6",
+          "CD1-S7",
+          "CD1-S8",
+          "CD1-S9",
+          "CD1-S10",
+          "CD1-S11",
+          "CD1-S12",
+          "CD1-S13",
+          "CD1-S14"
+        ],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      },
+      {
+        "id": "TPL-CO-CD-001-IDENTITY-THEFT-PROTOCOL-B07",
+        "type": "control",
+        "heading": "Control de uso",
+        "text": "Documento generado con tecnología jurídica. Debe verificarse la información, vigencia normativa, términos, anexos y estrategia, y obtener aprobación jurídica y QA antes de uso profesional.",
+        "bullets": [],
+        "table": [],
+        "condition": null,
+        "required": true,
+        "locked": true,
+        "source_ids": [],
+        "notes": "Bloque v2.32 sujeto a aprobación jurídica final."
+      }
+    ]
+  }
+]

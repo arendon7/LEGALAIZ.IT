@@ -1,0 +1,490 @@
+{
+  "version": "2.53",
+  "base_case": {
+    "scope": {
+      "private_relation": "yes"
+    },
+    "worker": {
+      "identity": {
+        "name": "María Fernanda López Gómez",
+        "id_number": "1.234.567.890",
+        "email": "maria@example.com",
+        "address": "Medellín, Antioquia"
+      }
+    },
+    "employer": {
+      "identity": {
+        "name": "Servicios Integrales Andinos S.A.S.",
+        "id_number": "900.123.456-7",
+        "email": "nomina@example.com",
+        "address": "Medellín, Antioquia"
+      },
+      "signatory": {
+        "name": "Carlos Pérez",
+        "capacity": "representante legal",
+        "authority_source": "certificado de existencia y representación legal"
+      }
+    },
+    "claim": {
+      "cutoff_date": "2026-07-24"
+    },
+    "claimant": {
+      "role": "advisor"
+    },
+    "relationship": {
+      "start_date": "2022-02-01",
+      "end_date": "2026-06-30",
+      "contract_type": "indefinite",
+      "termination_type": "resignation",
+      "special_term": {
+        "fixed_end_date": "",
+        "work_remaining_days": "",
+        "cause_document": "carta de terminación"
+      },
+      "service_status": "ended"
+    },
+    "compensation": {
+      "base_salary": 3500000,
+      "salary_type": "ordinary",
+      "variable": {
+        "exists": true,
+        "monthly_average": 500000,
+        "supports": "complete",
+        "components": "comisiones mensuales"
+      },
+      "transport_aid": "no",
+      "other_salary": {
+        "overtime": 100000,
+        "surcharges": 80000,
+        "in_kind": 0,
+        "description": "promedios soportados"
+      }
+    },
+    "periods": {
+      "salary_due_days": 15,
+      "cesantias_start_date": "2026-01-01",
+      "prima_start_date": "2026-01-01",
+      "vacation_pending_days": 12,
+      "vacation_basis": "last_salary",
+      "confirmation": "complete"
+    },
+    "payments": {
+      "prior": {
+        "salary": 0,
+        "cesantias": 0,
+        "interests": 0,
+        "prima": 0,
+        "vacation": 0,
+        "indemnity": 0
+      },
+      "deductions": {
+        "exists": false,
+        "amount": 0,
+        "reason": "",
+        "authorization": "",
+        "support": "complete"
+      }
+    },
+    "evidence": {
+      "support_level": "complete",
+      "items": {
+        "contract": "complete",
+        "payroll": "complete",
+        "bank": "complete",
+        "cesantias": "complete",
+        "termination_letter": "complete"
+      },
+      "employer_calculation": "partial"
+    },
+    "termination": {
+      "without_cause_claim": "no",
+      "cause_support": "complete",
+      "indemnity_already_paid": 0,
+      "moratory_claim": "no",
+      "delay_days": 0,
+      "good_faith_facts": "El empleador pagó parcialmente, pero no explicó las diferencias."
+    },
+    "risk": {
+      "special_protection": "no",
+      "protection_details": "",
+      "public_sector": "no",
+      "contract_reality": "no",
+      "collective_regime": "no",
+      "active_proceeding": "none"
+    },
+    "prescription": {
+      "last_written_claim": "2026-07-01",
+      "rights_dates": {
+        "earliest": "2026-01-01",
+        "latest": "2026-06-30"
+      }
+    },
+    "settlement": {
+      "generate": false,
+      "payment_terms": {
+        "installments": 3,
+        "initial_payment": 2000000,
+        "payment_channel": "transferencia bancaria"
+      }
+    },
+    "data": {
+      "confirmed": true
+    },
+    "documents": {
+      "selection": {
+        "claim": false,
+        "support_request": false,
+        "prescription_report": false,
+        "moratory_analysis": false
+      }
+    }
+  },
+  "scenarios": [
+    {
+      "id": "LA1-N01",
+      "name": "Relación fuera del régimen laboral privado",
+      "overrides": {
+        "scope.private_relation": "no"
+      },
+      "remove": [],
+      "notes": "Debe bloquear por alcance.",
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "document_count": 3,
+        "required_findings": [
+          "V-LA1-001"
+        ],
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-N02",
+      "name": "Fecha de inicio posterior a terminación",
+      "overrides": {
+        "relationship.start_date": "2026-07-01",
+        "relationship.end_date": "2026-06-30"
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "document_count": 3,
+        "required_findings": [
+          "V-LA1-003"
+        ],
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-N03",
+      "name": "Terminación posterior al corte",
+      "overrides": {
+        "relationship.end_date": "2026-08-01",
+        "claim.cutoff_date": "2026-07-24"
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "document_count": 3,
+        "required_findings": [
+          "V-LA1-003"
+        ],
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-N04",
+      "name": "Salario no positivo",
+      "overrides": {
+        "compensation.base_salary": 0
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "document_count": 3,
+        "required_findings": [
+          "V-LA1-004"
+        ],
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-N05",
+      "name": "Variable sin promedio cuantificado",
+      "overrides": {
+        "compensation.variable.exists": true,
+        "compensation.variable.monthly_average": "",
+        "compensation.variable.supports": "partial"
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "document_count": 3,
+        "required_findings": [
+          "V-LA1-006"
+        ],
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-N06",
+      "name": "Pago previo negativo",
+      "overrides": {
+        "payments.prior.salary": -100000
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "document_count": 3,
+        "required_findings": [
+          "V-LA1-009"
+        ],
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-N07",
+      "name": "Contrato fijo sin fecha final",
+      "overrides": {
+        "relationship.contract_type": "fixed",
+        "relationship.special_term.fixed_end_date": "",
+        "termination.without_cause_claim": "yes"
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "document_count": 4,
+        "required_findings": [
+          "V-LA1-012"
+        ],
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001",
+          "DOC-LA1-CLAIM-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-N08",
+      "name": "Obra sin período faltante",
+      "overrides": {
+        "relationship.contract_type": "work",
+        "relationship.special_term.work_remaining_days": "",
+        "termination.without_cause_claim": "yes"
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "document_count": 4,
+        "required_findings": [
+          "V-LA1-012"
+        ],
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001",
+          "DOC-LA1-CLAIM-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-N09",
+      "name": "Protección especial sin estrategia",
+      "overrides": {
+        "risk.special_protection": "yes",
+        "risk.protection_details": "embarazo o situación de salud"
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "document_count": 3,
+        "required_findings": [
+          "V-LA1-014"
+        ],
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-N10",
+      "name": "Vínculo del sector público",
+      "overrides": {
+        "risk.public_sector": "yes"
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "document_count": 3,
+        "required_findings": [
+          "V-LA1-015"
+        ],
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-N11",
+      "name": "Contrato realidad como controversia principal",
+      "overrides": {
+        "risk.contract_reality": "yes"
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "document_count": 3,
+        "required_findings": [
+          "V-LA1-016"
+        ],
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-N12",
+      "name": "Datos no confirmados",
+      "overrides": {
+        "data.confirmed": false
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": true,
+        "status": "blocked",
+        "document_count": 3,
+        "required_findings": [
+          "V-LA1-021"
+        ],
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-N13",
+      "name": "Identificación del trabajador incompleta",
+      "overrides": {},
+      "remove": [
+        "worker.identity.name"
+      ],
+      "notes": "",
+      "expected": {
+        "blocked": false,
+        "status": "incomplete",
+        "document_count": 3,
+        "missing": "worker.identity.name",
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-N14",
+      "name": "Derechos cercanos a prescripción",
+      "overrides": {
+        "prescription.rights_dates.earliest": "2023-01-01",
+        "prescription.last_written_claim": "2022-12-15"
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": false,
+        "status": "review_required",
+        "document_count": 4,
+        "required_findings": [
+          "V-LA1-019"
+        ],
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001",
+          "DOC-LA1-PRESCRIPTION-001"
+        ]
+      }
+    },
+    {
+      "id": "LA1-N15",
+      "name": "Acuerdo de pago incompleto",
+      "overrides": {
+        "settlement.generate": true,
+        "settlement.payment_terms.installments": "",
+        "settlement.payment_terms.payment_channel": ""
+      },
+      "remove": [],
+      "notes": "",
+      "expected": {
+        "blocked": false,
+        "status": "review_required",
+        "document_count": 6,
+        "required_findings": [
+          "V-LA1-020"
+        ],
+        "documents": [
+          "DOC-LA1-CALCULATION-001",
+          "ANX-LA1-CONCEPTS-001",
+          "ANX-LA1-EVIDENCE-001",
+          "DOC-LA1-CONCILIATION-001",
+          "AGR-LA1-PAYMENT-001",
+          "ACT-LA1-CLOSE-001"
+        ]
+      }
+    }
+  ]
+}

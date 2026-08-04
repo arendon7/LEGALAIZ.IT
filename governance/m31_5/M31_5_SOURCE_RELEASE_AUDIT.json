@@ -1,0 +1,123 @@
+{
+  "schema": "legalaizit-release-audit-v1",
+  "milestone": "M31.5",
+  "version": "5.0.4",
+  "build_id": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-2026-08-04",
+  "root": "/mnt/data/m315_work/LegalAIZit_M31_5_CERTIFICACION_POSTGRES_Y_RECUPERACION_v5.0.4_2026-08-04",
+  "strict_distribution": false,
+  "checks": [
+    {
+      "key": "manifest_identity",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "version": "5.0.4",
+          "build_id": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-2026-08-04",
+          "release_id": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-5.0.4-2026-08-04",
+          "release_name": "M31.5 — Certificación PostgreSQL y recuperación operativa",
+          "production_authorized": false
+        },
+        "actual": {
+          "version": "5.0.4",
+          "build_id": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-2026-08-04",
+          "release_id": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-5.0.4-2026-08-04",
+          "release_name": "M31.5 — Certificación PostgreSQL y recuperación operativa",
+          "production_authorized": false
+        }
+      }
+    },
+    {
+      "key": "runtime_manifest_identity",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "runtime_version": "5.0.4",
+          "build": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-2026-08-04",
+          "release_iteration": "M31.5",
+          "production_authorized": false
+        },
+        "actual": {
+          "runtime_version": "5.0.4",
+          "build": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-2026-08-04",
+          "release_iteration": "M31.5",
+          "production_authorized": false
+        }
+      }
+    },
+    {
+      "key": "release_policy_identity",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "phase": "M31.5",
+          "version": "5.0.4",
+          "release_id": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-5.0.4-2026-08-04",
+          "production_authorized": false
+        },
+        "actual": {
+          "phase": "M31.5",
+          "version": "5.0.4",
+          "release_id": "M31-5-CERTIFICACION-POSTGRES-RECUPERACION-5.0.4-2026-08-04",
+          "production_authorized": false
+        }
+      }
+    },
+    {
+      "key": "active_documentation",
+      "passed": true,
+      "detail": {
+        "files": 8
+      }
+    },
+    {
+      "key": "required_release_artifacts",
+      "passed": true,
+      "detail": {
+        "files": 24
+      }
+    },
+    {
+      "key": "deployment_security_contract",
+      "passed": true,
+      "detail": {
+        "status": "hardened"
+      }
+    },
+    {
+      "key": "postgres_certification_foundation",
+      "passed": true,
+      "detail": {
+        "code_ready_for_external_certification": true,
+        "external_certified": false,
+        "migration_certified": false,
+        "backup_restore_certified": false,
+        "gate_closed": true,
+        "schema_tables": 102
+      }
+    },
+    {
+      "key": "security_report_current",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "version": "5.0.4",
+          "milestone": "M31.5",
+          "critical_findings": 0,
+          "high_findings": 0,
+          "production_blocked": true
+        },
+        "actual": {
+          "version": "5.0.4",
+          "milestone": "M31.5",
+          "critical_findings": 0,
+          "high_findings": 0,
+          "production_blocked": true
+        }
+      }
+    }
+  ],
+  "passed": 8,
+  "total": 8,
+  "ok": true,
+  "failures": []
+}

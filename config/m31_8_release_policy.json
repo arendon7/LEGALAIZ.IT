@@ -1,0 +1,21 @@
+{
+  "schema": "legalaizit-m31-8-release-policy-v1",
+  "phase": "M31.8",
+  "version": "5.0.7",
+  "release_id": "M31-8-DEMO-EXPEDIENTES-REALES-5.0.7-2026-08-04",
+  "base_release": "M31.7 v5.0.6",
+  "demo_cases_required": 11,
+  "products_required": 11,
+  "active_documents_required": 76,
+  "released_packages_required": 11,
+  "dual_approvals_required_per_case": 2,
+  "distinct_legal_and_qa_people_required": true,
+  "same_revision_hash_required": true,
+  "immutable_revisions_required": true,
+  "new_revision_invalidates_release": true,
+  "synthetic_data_only": true,
+  "unresolved_variables_allowed": 0,
+  "production_authorized": false,
+  "postgres_external_certification_required_for_production": true,
+  "runtime_documents_may_not_be_packaged_in_application_release": true
+}

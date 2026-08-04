@@ -1,0 +1,1772 @@
+{
+  "version": "2.54",
+  "steps": [
+    {
+      "id": "parties",
+      "name": "Peticionario y autoridad"
+    },
+    {
+      "id": "case",
+      "name": "Vehículo y comparendo"
+    },
+    {
+      "id": "sast",
+      "name": "Detección y sistema SAST"
+    },
+    {
+      "id": "notice",
+      "name": "Notificación"
+    },
+    {
+      "id": "stage",
+      "name": "Etapa y actuaciones"
+    },
+    {
+      "id": "responsibility",
+      "name": "Imputación y hechos"
+    },
+    {
+      "id": "evidence",
+      "name": "Pruebas y términos"
+    },
+    {
+      "id": "strategy",
+      "name": "Estrategia y documentos"
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q-TR2-001",
+      "step_id": "parties",
+      "variable_path": "scope.colombian_traffic_case",
+      "label": "¿El asunto corresponde a una actuación administrativa de tránsito en Colombia?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "yes",
+          "Sí"
+        ],
+        [
+          "no",
+          "No"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-002",
+      "step_id": "parties",
+      "variable_path": "petitioner.role",
+      "label": "¿En qué calidad actúa el peticionario?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "owner",
+          "Propietario registrado"
+        ],
+        [
+          "driver",
+          "Conductor"
+        ],
+        [
+          "holder",
+          "Poseedor o tenedor"
+        ],
+        [
+          "buyer",
+          "Comprador con traspaso pendiente"
+        ],
+        [
+          "company",
+          "Empresa propietaria o vinculada"
+        ],
+        [
+          "representative",
+          "Apoderado o autorizado"
+        ],
+        [
+          "other",
+          "Otra calidad"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-003",
+      "step_id": "parties",
+      "variable_path": "petitioner.identity",
+      "label": "Identificación y contacto del peticionario",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Nombre completo o razón social",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "id_type",
+          "label": "Tipo de identificación",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "id_number",
+          "label": "Número de identificación",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "email",
+          "label": "Correo para notificaciones",
+          "type": "email",
+          "required": true
+        },
+        {
+          "key": "address",
+          "label": "Dirección física",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "phone",
+          "label": "Teléfono",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-TR2-004",
+      "step_id": "parties",
+      "variable_path": "petitioner.representation",
+      "label": "Representación o autorización",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "exists",
+          "label": "¿Actúa por otra persona?",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        },
+        {
+          "key": "represented_name",
+          "label": "Nombre de la persona representada",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "authority_source",
+          "label": "Poder, autorización o calidad",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-TR2-005",
+      "step_id": "parties",
+      "variable_path": "authority.identity",
+      "label": "Autoridad de tránsito destinataria",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Nombre de la autoridad",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "municipality",
+          "label": "Municipio o distrito",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "email",
+          "label": "Correo o canal de radicación",
+          "type": "email",
+          "required": false
+        },
+        {
+          "key": "office",
+          "label": "Dependencia conocida",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-TR2-006",
+      "step_id": "parties",
+      "variable_path": "notifications.preferred",
+      "label": "Canal preferido para recibir respuesta",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "email",
+          "Correo electrónico"
+        ],
+        [
+          "physical",
+          "Dirección física"
+        ],
+        [
+          "both",
+          "Correo y dirección física"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-007",
+      "step_id": "case",
+      "variable_path": "vehicle.identity",
+      "label": "Identificación del vehículo",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "plate",
+          "label": "Placa",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "class",
+          "label": "Clase de vehículo",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "service",
+          "label": "Servicio: particular, público u otro",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "owner_at_event",
+          "label": "Propietario registrado en la fecha",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-TR2-008",
+      "step_id": "case",
+      "variable_path": "vehicle.relationship",
+      "label": "Relación del peticionario con el vehículo al momento de los hechos",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "owner_control",
+          "Propietario y tenía control"
+        ],
+        [
+          "owner_no_control",
+          "Propietario, pero no tenía control material"
+        ],
+        [
+          "driver_not_owner",
+          "Conductor no propietario"
+        ],
+        [
+          "sold",
+          "Vehículo vendido o entregado"
+        ],
+        [
+          "stolen",
+          "Vehículo hurtado o sustraído"
+        ],
+        [
+          "leased",
+          "Vehículo arrendado o en leasing"
+        ],
+        [
+          "company_vehicle",
+          "Vehículo de empresa"
+        ],
+        [
+          "unknown",
+          "No está claro"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-009",
+      "step_id": "case",
+      "variable_path": "case.identifiers",
+      "label": "Identificación del comparendo o actuación",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "comparendo_number",
+          "label": "Número de comparendo",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "event_date",
+          "label": "Fecha de la presunta infracción",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "issue_date",
+          "label": "Fecha de expedición o validación",
+          "type": "date",
+          "required": false
+        },
+        {
+          "key": "infraction_code",
+          "label": "Código de infracción",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "location",
+          "label": "Lugar exacto o aproximado",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "amount",
+          "label": "Valor registrado",
+          "type": "number",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-TR2-010",
+      "step_id": "case",
+      "variable_path": "case.discovery",
+      "label": "¿Cómo conoció la existencia de la actuación?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "mail",
+          "Comunicación física"
+        ],
+        [
+          "email",
+          "Correo o mensaje de datos"
+        ],
+        [
+          "simit",
+          "Consulta SIMIT"
+        ],
+        [
+          "runt",
+          "Consulta RUNT"
+        ],
+        [
+          "collection",
+          "Cobro o requerimiento"
+        ],
+        [
+          "bank",
+          "Embargo o afectación bancaria"
+        ],
+        [
+          "other",
+          "Otro medio"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-011",
+      "step_id": "case",
+      "variable_path": "case.multiple",
+      "label": "¿El expediente comprende varias fotodetecciones o comparendos?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "yes",
+          "Sí"
+        ],
+        [
+          "no",
+          "No"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-012",
+      "step_id": "case",
+      "variable_path": "runt.status_at_event",
+      "label": "Estado de los datos de notificación en RUNT para la fecha de los hechos",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "updated",
+          "Actualizados"
+        ],
+        [
+          "outdated",
+          "Desactualizados"
+        ],
+        [
+          "not_registered",
+          "Sin dirección registrada"
+        ],
+        [
+          "unknown",
+          "No se ha verificado"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-013",
+      "step_id": "sast",
+      "variable_path": "sast.detection_type",
+      "label": "Medio de detección informado",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "fixed_camera",
+          "Cámara fija"
+        ],
+        [
+          "mobile_camera",
+          "Equipo móvil"
+        ],
+        [
+          "speed_device",
+          "Medidor de velocidad"
+        ],
+        [
+          "red_light",
+          "Detección de semáforo"
+        ],
+        [
+          "public_transport_system",
+          "Sistema ubicado en infraestructura de transporte público"
+        ],
+        [
+          "other",
+          "Otro medio tecnológico"
+        ],
+        [
+          "unknown",
+          "No se conoce"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-014",
+      "step_id": "sast",
+      "variable_path": "sast.identification",
+      "label": "Identificación del sistema o dispositivo",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "device_id",
+          "label": "Código o identificación",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "address",
+          "label": "Ubicación",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "operator",
+          "label": "Autoridad u operador",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "authorization_number",
+          "label": "Número de autorización conocido",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-TR2-015",
+      "step_id": "sast",
+      "variable_path": "sast.authorization_status",
+      "label": "¿Existe soporte de autorización vigente del sistema para la fecha y lugar?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "verified",
+          "Sí, verificado"
+        ],
+        [
+          "not_found",
+          "No se encontró"
+        ],
+        [
+          "not_required_claimed",
+          "La autoridad afirma que no requiere autorización"
+        ],
+        [
+          "unknown",
+          "No se ha verificado"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-016",
+      "step_id": "sast",
+      "variable_path": "sast.signaling",
+      "label": "¿Existe evidencia sobre la señalización previa de la zona vigilada?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "compliant",
+          "Sí, aparentemente adecuada"
+        ],
+        [
+          "missing",
+          "No había señalización visible"
+        ],
+        [
+          "insufficient",
+          "Era insuficiente o tardía"
+        ],
+        [
+          "unknown",
+          "No se ha verificado"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-017",
+      "step_id": "sast",
+      "variable_path": "sast.speed_measurement",
+      "label": "Cuando se trata de velocidad, ¿hay información de calibración o trazabilidad metrológica?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "not_applicable",
+          "No aplica"
+        ],
+        [
+          "complete",
+          "Soporte completo"
+        ],
+        [
+          "partial",
+          "Soporte parcial"
+        ],
+        [
+          "missing",
+          "No aparece"
+        ],
+        [
+          "unknown",
+          "No se ha solicitado"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-018",
+      "step_id": "sast",
+      "variable_path": "sast.agent_validation",
+      "label": "¿La detección fue validada por una autoridad o agente competente?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "documented",
+          "Sí, está documentado"
+        ],
+        [
+          "not_documented",
+          "No aparece documentado"
+        ],
+        [
+          "unknown",
+          "No se conoce"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-019",
+      "step_id": "sast",
+      "variable_path": "sast.evidence_available",
+      "label": "Elementos técnicos conocidos",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "images",
+          "label": "Fotografías o video",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        },
+        {
+          "key": "metadata",
+          "label": "Metadatos de fecha, hora y ubicación",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        },
+        {
+          "key": "technical_report",
+          "label": "Informe técnico o certificado",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        },
+        {
+          "key": "signage_photos",
+          "label": "Fotografías de señalización",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-TR2-020",
+      "step_id": "notice",
+      "variable_path": "notice.comparendo_received",
+      "label": "¿Recibió una comunicación verificable de la orden de comparendo?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "yes",
+          "Sí"
+        ],
+        [
+          "no",
+          "No"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-021",
+      "step_id": "notice",
+      "variable_path": "notice.method",
+      "label": "Medio utilizado para la comunicación",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "certified_mail",
+          "Correo físico o certificado"
+        ],
+        [
+          "email",
+          "Correo electrónico autorizado"
+        ],
+        [
+          "notice",
+          "Aviso o publicación"
+        ],
+        [
+          "personal",
+          "Entrega personal"
+        ],
+        [
+          "none",
+          "No se conoce comunicación"
+        ],
+        [
+          "other",
+          "Otro"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-022",
+      "step_id": "notice",
+      "variable_path": "notice.timeline",
+      "label": "Cronología de notificación",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "sent_date",
+          "label": "Fecha de envío",
+          "type": "date",
+          "required": false
+        },
+        {
+          "key": "received_date",
+          "label": "Fecha de entrega o conocimiento",
+          "type": "date",
+          "required": false
+        },
+        {
+          "key": "returned_date",
+          "label": "Fecha de devolución",
+          "type": "date",
+          "required": false
+        },
+        {
+          "key": "notice_date",
+          "label": "Fecha de aviso o publicación",
+          "type": "date",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-TR2-023",
+      "step_id": "notice",
+      "variable_path": "notice.address_match",
+      "label": "Relación entre la dirección utilizada y el RUNT",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "same",
+          "Coincide con la registrada"
+        ],
+        [
+          "different",
+          "Es diferente"
+        ],
+        [
+          "incomplete",
+          "Está incompleta"
+        ],
+        [
+          "unknown",
+          "No se ha verificado"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-024",
+      "step_id": "notice",
+      "variable_path": "notice.electronic_consent",
+      "label": "¿Existía autorización o canal válido para notificación electrónica?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "yes",
+          "Sí"
+        ],
+        [
+          "no",
+          "No"
+        ],
+        [
+          "not_applicable",
+          "No aplica"
+        ],
+        [
+          "unknown",
+          "No se conoce"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-025",
+      "step_id": "notice",
+      "variable_path": "notice.actual_knowledge",
+      "label": "Conocimiento efectivo de la actuación",
+      "type": "group",
+      "required": true,
+      "fields": [
+        {
+          "key": "date",
+          "label": "Fecha en que realmente tuvo conocimiento",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "method",
+          "label": "Cómo tuvo conocimiento",
+          "type": "text",
+          "required": true
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-TR2-026",
+      "step_id": "stage",
+      "variable_path": "stage.resolution_exists",
+      "label": "¿Existe resolución sancionatoria?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "yes",
+          "Sí"
+        ],
+        [
+          "no",
+          "No"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-027",
+      "step_id": "stage",
+      "variable_path": "stage.resolution",
+      "label": "Datos de la resolución",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "number",
+          "label": "Número",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "date",
+          "label": "Fecha",
+          "type": "date",
+          "required": false
+        },
+        {
+          "key": "notice_date",
+          "label": "Fecha de notificación conocida",
+          "type": "date",
+          "required": false
+        },
+        {
+          "key": "copy_available",
+          "label": "¿Cuenta con copia?",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-TR2-028",
+      "step_id": "stage",
+      "variable_path": "stage.hearing",
+      "label": "Audiencia o comparecencia",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "requested",
+          "label": "¿Fue solicitada?",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        },
+        {
+          "key": "held",
+          "label": "¿Se realizó?",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        },
+        {
+          "key": "date",
+          "label": "Fecha",
+          "type": "date",
+          "required": false
+        },
+        {
+          "key": "decision",
+          "label": "Resultado conocido",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-TR2-029",
+      "step_id": "stage",
+      "variable_path": "stage.resources",
+      "label": "Recursos administrativos",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "not_applicable",
+          "No aplica o no hay resolución"
+        ],
+        [
+          "available",
+          "Aún podrían estar disponibles"
+        ],
+        [
+          "filed",
+          "Se presentaron"
+        ],
+        [
+          "decided",
+          "Ya fueron decididos"
+        ],
+        [
+          "expired",
+          "Aparentemente vencidos"
+        ],
+        [
+          "unknown",
+          "No se sabe"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-030",
+      "step_id": "stage",
+      "variable_path": "stage.final_status",
+      "label": "Estado de firmeza o ejecutoria",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "not_final",
+          "No está en firme"
+        ],
+        [
+          "final",
+          "Se informa que está ejecutoriada"
+        ],
+        [
+          "unknown",
+          "No se ha verificado"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-031",
+      "step_id": "stage",
+      "variable_path": "stage.payment",
+      "label": "Estado de pago",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "unpaid",
+          "No pagado"
+        ],
+        [
+          "discount_paid",
+          "Pagado con descuento"
+        ],
+        [
+          "full_paid",
+          "Pagado en su totalidad"
+        ],
+        [
+          "payment_agreement",
+          "Acuerdo de pago"
+        ],
+        [
+          "unknown",
+          "No se ha verificado"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-032",
+      "step_id": "stage",
+      "variable_path": "stage.coercive",
+      "label": "Cobro coactivo o medidas",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "none",
+          "No existe"
+        ],
+        [
+          "pre_collection",
+          "Cobro persuasivo"
+        ],
+        [
+          "payment_order",
+          "Mandamiento de pago"
+        ],
+        [
+          "exceptions_pending",
+          "Excepciones pendientes"
+        ],
+        [
+          "embargo",
+          "Embargo o medida cautelar"
+        ],
+        [
+          "unknown",
+          "No se ha verificado"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-033",
+      "step_id": "stage",
+      "variable_path": "stage.active_process",
+      "label": "¿Existe proceso judicial, tutela o actuación contenciosa relacionada?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "none",
+          "No"
+        ],
+        [
+          "tutela",
+          "Tutela"
+        ],
+        [
+          "administrative_lawsuit",
+          "Proceso contencioso administrativo"
+        ],
+        [
+          "other",
+          "Otra actuación"
+        ],
+        [
+          "unknown",
+          "No se sabe"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-034",
+      "step_id": "responsibility",
+      "variable_path": "responsibility.was_driver",
+      "label": "¿El peticionario conducía el vehículo al momento de la presunta infracción?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "yes",
+          "Sí"
+        ],
+        [
+          "no",
+          "No"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-035",
+      "step_id": "responsibility",
+      "variable_path": "responsibility.driver_identification",
+      "label": "Identificación del posible conductor",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "known",
+          "label": "¿Se conoce?",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        },
+        {
+          "key": "name",
+          "label": "Nombre",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "id_number",
+          "label": "Identificación",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "support",
+          "label": "Soporte de la identificación",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-TR2-036",
+      "step_id": "responsibility",
+      "variable_path": "responsibility.owner_duty_category",
+      "label": "¿La conducta se relaciona con una obligación legal atribuible al propietario?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "soat",
+          "SOAT"
+        ],
+        [
+          "technical_review",
+          "Revisión técnico-mecánica"
+        ],
+        [
+          "route_or_schedule",
+          "Lugar u horario permitido"
+        ],
+        [
+          "speed",
+          "Límite de velocidad"
+        ],
+        [
+          "red_light",
+          "Semáforo en rojo"
+        ],
+        [
+          "other_driver_conduct",
+          "Otra conducta del conductor"
+        ],
+        [
+          "unknown",
+          "No está definido"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-037",
+      "step_id": "responsibility",
+      "variable_path": "responsibility.transfer",
+      "label": "Venta, entrega o traspaso del vehículo",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "exists",
+          "label": "¿Existió antes de los hechos?",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        },
+        {
+          "key": "delivery_date",
+          "label": "Fecha de entrega",
+          "type": "date",
+          "required": false
+        },
+        {
+          "key": "transfer_status",
+          "label": "Estado del traspaso",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "support",
+          "label": "Contrato, acta u otro soporte",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-TR2-038",
+      "step_id": "responsibility",
+      "variable_path": "responsibility.theft",
+      "label": "Hurto, pérdida o uso no autorizado",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "exists",
+          "label": "¿Ocurrió?",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        },
+        {
+          "key": "date",
+          "label": "Fecha",
+          "type": "date",
+          "required": false
+        },
+        {
+          "key": "report",
+          "label": "Denuncia o reporte",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-TR2-039",
+      "step_id": "responsibility",
+      "variable_path": "responsibility.facts",
+      "label": "Relato concreto de los hechos y de la razón de inconformidad",
+      "type": "textarea",
+      "required": true
+    },
+    {
+      "id": "Q-TR2-040",
+      "step_id": "evidence",
+      "variable_path": "evidence.inventory",
+      "label": "Soportes disponibles",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "comparendo",
+          "label": "Comparendo",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        },
+        {
+          "key": "images",
+          "label": "Fotos o video",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        },
+        {
+          "key": "mailing",
+          "label": "Guía de envío o devolución",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        },
+        {
+          "key": "resolution",
+          "label": "Resolución",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        },
+        {
+          "key": "runt",
+          "label": "Histórico o consulta RUNT",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        },
+        {
+          "key": "simit",
+          "label": "Consulta SIMIT",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        },
+        {
+          "key": "sale_or_theft",
+          "label": "Venta, traspaso, hurto o entrega",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        },
+        {
+          "key": "prior_filings",
+          "label": "Radicados previos",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-TR2-041",
+      "step_id": "evidence",
+      "variable_path": "evidence.prior_actions",
+      "label": "Peticiones y respuestas previas",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "exists",
+          "label": "¿Se presentó alguna?",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        },
+        {
+          "key": "filing_date",
+          "label": "Fecha de radicación",
+          "type": "date",
+          "required": false
+        },
+        {
+          "key": "filing_number",
+          "label": "Número de radicado",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "answered",
+          "label": "¿Fue respondida?",
+          "type": "select",
+          "required": false,
+          "options": [
+            [
+              "yes",
+              "Sí"
+            ],
+            [
+              "no",
+              "No"
+            ],
+            [
+              "unknown",
+              "No sé"
+            ]
+          ]
+        },
+        {
+          "key": "answer_date",
+          "label": "Fecha de respuesta",
+          "type": "date",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-TR2-042",
+      "step_id": "evidence",
+      "variable_path": "deadlines.urgency",
+      "label": "¿Hay una actuación o término próximo?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "none",
+          "No identificado"
+        ],
+        [
+          "under_3_days",
+          "Menos de 3 días"
+        ],
+        [
+          "under_10_days",
+          "Entre 3 y 10 días"
+        ],
+        [
+          "over_10_days",
+          "Más de 10 días"
+        ],
+        [
+          "unknown",
+          "No se ha verificado"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-043",
+      "step_id": "evidence",
+      "variable_path": "evidence.integrity_concern",
+      "label": "¿Existe riesgo de falsedad, alteración de soportes o suplantación?",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "yes",
+          "Sí"
+        ],
+        [
+          "no",
+          "No"
+        ],
+        [
+          "unknown",
+          "No sé"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-044",
+      "step_id": "strategy",
+      "variable_path": "strategy.objective",
+      "label": "Objetivo principal del expediente",
+      "type": "select",
+      "required": true,
+      "options": [
+        [
+          "obtain_file",
+          "Obtener expediente completo"
+        ],
+        [
+          "restore_defense",
+          "Restablecer oportunidad de defensa"
+        ],
+        [
+          "hearing",
+          "Solicitar audiencia y pruebas"
+        ],
+        [
+          "challenge_resolution",
+          "Revisar resolución sancionatoria"
+        ],
+        [
+          "registry_correction",
+          "Corregir SIMIT/RUNT"
+        ],
+        [
+          "coercive_defense",
+          "Atender cobro coactivo"
+        ],
+        [
+          "technical_review",
+          "Revisar legalidad técnica del SAST"
+        ],
+        [
+          "combined",
+          "Ruta integral"
+        ]
+      ]
+    },
+    {
+      "id": "Q-TR2-045",
+      "step_id": "strategy",
+      "variable_path": "documents.selection",
+      "label": "Documentos adicionales solicitados",
+      "type": "group",
+      "required": false,
+      "fields": [
+        {
+          "key": "notice_claim",
+          "label": "Reclamación por notificación",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "hearing_request",
+          "label": "Solicitud de audiencia",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "revocation",
+          "label": "Revocatoria directa condicionada",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "registry_correction",
+          "label": "Corrección SIMIT/RUNT",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "coercive_file",
+          "label": "Solicitud de expediente coactivo",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "reiteration",
+          "label": "Reiteración o escalamiento",
+          "type": "boolean",
+          "required": false
+        }
+      ],
+      "columns": 2
+    },
+    {
+      "id": "Q-TR2-046",
+      "step_id": "strategy",
+      "variable_path": "data.confirmed",
+      "label": "¿Confirma que los datos corresponden a hechos y soportes verificables?",
+      "type": "boolean",
+      "required": true
+    }
+  ]
+}

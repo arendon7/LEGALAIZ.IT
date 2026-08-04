@@ -1,0 +1,162 @@
+{
+  "schema": "legalaizit-m6-active-regression-v1",
+  "files": 15,
+  "passed": 107,
+  "subtests": 630,
+  "failed": 0,
+  "errors": 0,
+  "duration_seconds": 217.31,
+  "ok": true,
+  "results": [
+    {
+      "file": "test_assisted_review.py",
+      "returncode": 0,
+      "passed": 7,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 18.85,
+      "summary": ".......                                                                  [100%] 7 passed in 14.18s"
+    },
+    {
+      "file": "test_continuity_delivery.py",
+      "returncode": 0,
+      "passed": 5,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 14.97,
+      "summary": ".....                                                                    [100%] 5 passed in 10.16s"
+    },
+    {
+      "file": "test_document_factory.py",
+      "returncode": 0,
+      "passed": 8,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 21.6,
+      "summary": "........                                                                 [100%] 8 passed in 17.29s"
+    },
+    {
+      "file": "test_engine.py",
+      "returncode": 0,
+      "passed": 15,
+      "subtests": 154,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 6.9,
+      "summary": "...............                                                [100%] 15 passed, 154 subtests passed in 2.55s"
+    },
+    {
+      "file": "test_infrastructure.py",
+      "returncode": 0,
+      "passed": 8,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 21.78,
+      "summary": "........                                                                 [100%] 8 passed in 17.77s"
+    },
+    {
+      "file": "test_normative_updates.py",
+      "returncode": 0,
+      "passed": 7,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 15.83,
+      "summary": ".......                                                                  [100%] 7 passed in 11.11s"
+    },
+    {
+      "file": "test_pdf_acceptance.py",
+      "returncode": 0,
+      "passed": 5,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 12.44,
+      "summary": ".....                                                                    [100%] 5 passed in 8.38s"
+    },
+    {
+      "file": "test_public_portal.py",
+      "returncode": 0,
+      "passed": 3,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 6.21,
+      "summary": "...                                                                      [100%] 3 passed in 2.19s"
+    },
+    {
+      "file": "test_release_candidate.py",
+      "returncode": 0,
+      "passed": 11,
+      "subtests": 476,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 4.14,
+      "summary": "...........                  [100%] 11 passed, 476 subtests passed in 0.53s"
+    },
+    {
+      "file": "test_review_batches.py",
+      "returncode": 0,
+      "passed": 6,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 16.08,
+      "summary": "......                                                                   [100%] 6 passed in 11.75s"
+    },
+    {
+      "file": "test_security.py",
+      "returncode": 0,
+      "passed": 7,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 8.41,
+      "summary": ".......                                                                  [100%] 7 passed in 3.87s"
+    },
+    {
+      "file": "test_self_service.py",
+      "returncode": 0,
+      "passed": 4,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 12.4,
+      "summary": "....                                                                     [100%] 4 passed in 8.05s"
+    },
+    {
+      "file": "test_source_intake.py",
+      "returncode": 0,
+      "passed": 8,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 20.97,
+      "summary": "........                                                                 [100%] 8 passed in 16.62s"
+    },
+    {
+      "file": "test_traceability.py",
+      "returncode": 0,
+      "passed": 7,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 19.71,
+      "summary": ".......                                                                  [100%] 7 passed in 15.16s"
+    },
+    {
+      "file": "test_workflows.py",
+      "returncode": 0,
+      "passed": 6,
+      "subtests": 0,
+      "failed": 0,
+      "errors": 0,
+      "duration_seconds": 16.8,
+      "summary": "......                                                                   [100%] 6 passed in 12.25s"
+    }
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "version": "2.14",
+  "intro": "Responde con datos confirmados. La herramienta diferencia confidencialidad, datos personales y propiedad intelectual, y bloquea riesgos incompatibles con autoservicio.",
+  "sections": [
+    "Partes",
+    "Configuración",
+    "Información",
+    "Datos",
+    "Propiedad intelectual",
+    "Riesgo",
+    "Vigencia",
+    "Seguridad"
+  ],
+  "questions": [
+    {
+      "id": "party_a",
+      "label": "Parte reveladora principal",
+      "type": "text",
+      "required": true,
+      "section": "Partes"
+    },
+    {
+      "id": "party_b",
+      "label": "Parte receptora principal",
+      "type": "text",
+      "required": true,
+      "section": "Partes"
+    },
+    {
+      "id": "nda_type",
+      "label": "Tipo de acuerdo",
+      "type": "select",
+      "required": true,
+      "section": "Configuración",
+      "options": [
+        "Unilateral",
+        "Mutuo"
+      ]
+    },
+    {
+      "id": "relationship_context",
+      "label": "Relación principal entre las partes",
+      "type": "select",
+      "required": true,
+      "section": "Configuración",
+      "options": [
+        "Comercial/proveedor",
+        "Laboral/colaborador",
+        "Software/tecnología",
+        "Contenidos/creativo",
+        "Otra"
+      ]
+    },
+    {
+      "id": "info_defined",
+      "label": "¿La información protegida está definida por categorías?",
+      "type": "select",
+      "required": true,
+      "section": "Información",
+      "options": [
+        "Sí",
+        "No"
+      ]
+    },
+    {
+      "id": "info_categories",
+      "label": "Categorías concretas de información protegida",
+      "type": "textarea",
+      "required": true,
+      "section": "Información",
+      "min_length": 15
+    },
+    {
+      "id": "authorized_recipients",
+      "label": "Personas, áreas o terceros autorizados para acceder",
+      "type": "textarea",
+      "required": true,
+      "section": "Información",
+      "min_length": 10
+    },
+    {
+      "id": "trade_secrets",
+      "label": "¿Incluye secretos empresariales o know-how crítico?",
+      "type": "select",
+      "required": true,
+      "section": "Información",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ]
+    },
+    {
+      "id": "personal_data",
+      "label": "¿Incluye datos personales?",
+      "type": "select",
+      "required": true,
+      "section": "Datos",
+      "options": [
+        "No",
+        "Sí"
+      ]
+    },
+    {
+      "id": "sensitive_data",
+      "label": "¿Incluye datos sensibles, biométricos o de salud?",
+      "type": "select",
+      "required": true,
+      "section": "Datos",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ]
+    },
+    {
+      "id": "crossborder",
+      "label": "¿Habrá transferencia internacional o nube fuera de Colombia?",
+      "type": "select",
+      "required": true,
+      "section": "Datos",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ]
+    },
+    {
+      "id": "ai_tools",
+      "label": "¿Se cargará información en herramientas públicas o no autorizadas de IA?",
+      "type": "select",
+      "required": true,
+      "section": "Seguridad",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ]
+    },
+    {
+      "id": "preexisting_materials",
+      "label": "¿Existen materiales, tecnología o contenidos preexistentes de alguna parte?",
+      "type": "select",
+      "required": true,
+      "section": "Propiedad intelectual",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ]
+    },
+    {
+      "id": "oss_components",
+      "label": "¿El proyecto utiliza software de código abierto o componentes de terceros?",
+      "type": "select",
+      "required": true,
+      "section": "Propiedad intelectual",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ]
+    },
+    {
+      "id": "future_ip_assignment",
+      "label": "¿Se pretende ceder de forma general obras o resultados futuros aún indeterminados?",
+      "type": "select",
+      "required": true,
+      "section": "Propiedad intelectual",
+      "options": [
+        "No",
+        "Sí",
+        "No sé"
+      ]
+    },
+    {
+      "id": "noncompete",
+      "label": "¿Se pretende prohibir de forma general trabajar después de terminar?",
+      "type": "select",
+      "required": true,
+      "section": "Riesgo",
+      "options": [
+        "No",
+        "Sí"
+      ]
+    },
+    {
+      "id": "moral_rights",
+      "label": "¿Se pretende renunciar o transferir derechos morales?",
+      "type": "select",
+      "required": true,
+      "section": "Riesgo",
+      "options": [
+        "No",
+        "Sí"
+      ]
+    },
+    {
+      "id": "purpose",
+      "label": "Finalidad autorizada de uso de la información",
+      "type": "textarea",
+      "required": true,
+      "section": "Información",
+      "min_length": 15
+    },
+    {
+      "id": "duration_years",
+      "label": "Duración propuesta de la obligación (años)",
+      "type": "number",
+      "required": true,
+      "section": "Vigencia",
+      "min": 1,
+      "max": 30
+    },
+    {
+      "id": "incident_protocol",
+      "label": "¿Se requiere protocolo de incidentes, devolución y eliminación?",
+      "type": "select",
+      "required": true,
+      "section": "Seguridad",
+      "options": [
+        "No",
+        "Sí"
+      ]
+    }
+  ],
+  "confirmation_required": true
+}

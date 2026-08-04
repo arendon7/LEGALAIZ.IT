@@ -1,0 +1,182 @@
+{
+  "schema_version": "1.0",
+  "project": "LegalAIZ.it",
+  "runtime_version": "2.59",
+  "build_id": "M3-CONTROLLED-APPROVAL-2026-07-28",
+  "phase": "M3 — aprobación integral controlada",
+  "verification_date": "2026-07-28",
+  "status": "passed_with_controlled_use_conditions",
+  "approval": {
+    "catalog_status": "approved_controlled",
+    "professional_publication_authorized": true,
+    "approval_model": "multi_stage_single_responsible",
+    "independent_reviewers": false,
+    "approver_public": {
+      "name": "Agustín Rendón Calle",
+      "professional_card": "330845",
+      "city": "Medellín",
+      "capacity": "Abogado responsable líder del proyecto LegalAIZ.it"
+    },
+    "disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables.",
+    "product_modules_approved": 11,
+    "products_approved": 11,
+    "canonical_documents_approved": 387,
+    "registry_hash": "a20783852217c2d7a4bc0c092e63dc2fea661751de298477c94660b1c394fec0",
+    "event_chain": {
+      "count": 34,
+      "first_hash": "73188f4d3a812ecd28567dbd3a4eaba20fceed0765534e61f3b9c40d36edbd6f",
+      "last_hash": "90cfb29830c46fee16d01e9a0ba03f66b4f6da12c4a050ff244214c3cb93444d"
+    },
+    "controlled_use_conditions": [
+      "La aprobación recae sobre módulos, reglas, plantillas y documentos canónicos identificados por hash.",
+      "Cada documento generado debe resolver todas sus variables y superar las compuertas de consistencia.",
+      "Los casos de riesgo rojo, litigiosos, sancionatorios, laborales, de salud, cobro coactivo, embargo o proceso judicial requieren revisión jurídica específica antes de liberación.",
+      "Las fuentes oficiales deben verificarse nuevamente cuando la vigencia registrada expire o exista alerta normativa.",
+      "La plataforma no representa judicialmente al usuario ni garantiza resultados ante autoridades, jueces o contrapartes."
+    ]
+  },
+  "regression": {
+    "execution_mode": "isolated_batches",
+    "reason": "Evitar contaminación entre pruebas por acumulación de estados generados en runtime; se limpió el estado entre lotes y archivos.",
+    "tests_passed": 837,
+    "subtests_passed": 617,
+    "failures": 0,
+    "batches": [
+      {
+        "name": "batch1",
+        "tests": 109,
+        "subtests": 293
+      },
+      {
+        "name": "batch2",
+        "tests": 80,
+        "subtests": 0
+      },
+      {
+        "name": "batch3",
+        "tests": 71,
+        "subtests": 10
+      },
+      {
+        "name": "batch4",
+        "tests": 75,
+        "subtests": 66
+      },
+      {
+        "name": "batch5",
+        "tests": 73,
+        "subtests": 74
+      },
+      {
+        "name": "batch6",
+        "tests": 46,
+        "subtests": 15
+      },
+      {
+        "name": "batch7",
+        "tests": 45,
+        "subtests": 27
+      },
+      {
+        "name": "batch8",
+        "tests": 37,
+        "subtests": 38
+      },
+      {
+        "name": "batch9",
+        "tests": 45,
+        "subtests": 94
+      },
+      {
+        "name": "batch10",
+        "tests": 256,
+        "subtests": 0
+      }
+    ],
+    "m3_targeted_recheck": {
+      "tests_passed": 6,
+      "failures": 0,
+      "log": "m3_final_targeted_tests.log"
+    }
+  },
+  "static_validation": {
+    "python39_ast_files": 325,
+    "python39_ast_errors": 0,
+    "compileall": "passed",
+    "json_files": 453,
+    "json_errors": 0,
+    "javascript_files": 58,
+    "javascript_errors": 0,
+    "css_files": 57,
+    "css_errors": 0
+  },
+  "document_validation": {
+    "approved_documents": 387,
+    "approved_docx": 198,
+    "approved_pdf": 189,
+    "docx_corrupt": 0,
+    "unresolved_marker_findings": 0,
+    "approved_pdf_opened": 189,
+    "approved_pdf_first_pages_rendered": 189,
+    "approval_documents_rendered": 12,
+    "approval_document_pages_rendered_and_inspected": 14,
+    "approval_document_accessibility_findings": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "visual_observation": "No se observaron recortes, solapamientos ni caracteres rotos en las páginas inspeccionadas. La revisión visual de los PDF canónicos cubrió la primera página de cada archivo; no reemplaza una lectura jurídico-editorial página por página de los 189 PDF."
+  },
+  "http_validation": {
+    "status": "passed",
+    "endpoints": [
+      {
+        "path": "/api/health",
+        "status": 200
+      },
+      {
+        "path": "/api/config",
+        "status": 200
+      },
+      {
+        "path": "/api/approval-status",
+        "status": 200
+      },
+      {
+        "path": "/api/approval-status/CO-LA-002",
+        "status": 200
+      },
+      {
+        "path": "/api/auth/login",
+        "status": 200
+      },
+      {
+        "path": "/api/products",
+        "status": 200
+      }
+    ],
+    "products_returned": 11,
+    "all_products_professional_use": true,
+    "all_products_publication_authorized": true,
+    "personal_identification_exposed_in_public_payload": false
+  },
+  "source_verification": {
+    "scope": "núcleo normativo común de los 11 productos",
+    "evidence": "governance/m3/SOURCE_VERIFICATION_CORE_2026-07-28.json",
+    "limitation": "No sustituye la verificación específica de vigencia, hechos, competencia, términos y jurisprudencia aplicables a cada asunto concreto."
+  },
+  "archival_cleanup": {
+    "unresolved_source_copies_archived": 6,
+    "evidence": "governance/m3/ARCHIVED_SOURCE_ORIGINALS.json",
+    "visible_catalog_reference_removed": true
+  },
+  "limitations": [
+    "La aprobación es controlada y no constituye una validación externa independiente.",
+    "Las tres etapas fueron registradas por el mismo abogado responsable, con separación funcional pero no personal.",
+    "Los documentos generados después de esta entrega deben validarse sobre sus datos resueltos, anexos y revisión vigente.",
+    "Los casos de riesgo rojo o alto impacto conservan compuerta de revisión jurídica específica.",
+    "La verificación visual de los 189 PDF canónicos se concentró en su primera página; los documentos de aprobación sí fueron inspeccionados en todas sus páginas.",
+    "La profundización contractual y el rediseño previstos en el Plan Maestro continúan como mejora del producto."
+  ],
+  "conclusion": "La distribución M3 satisface los controles técnicos, documentales y de gobierno definidos para autorizar los 11 módulos y 387 archivos canónicos para uso profesional controlado, con las condiciones y limitaciones expresas del registro de aprobación."
+}

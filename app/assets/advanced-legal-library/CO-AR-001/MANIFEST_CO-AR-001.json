@@ -1,0 +1,33 @@
+{
+  "id": "CO-AR-001",
+  "name": "Contrato de arrendamiento de vivienda urbana",
+  "version": "2.50",
+  "status": "macro_c_closed",
+  "steps": 8,
+  "questions": 44,
+  "profiles": 12,
+  "documents": 13,
+  "validations": 18,
+  "blocks": 50,
+  "sources": 10,
+  "compatibility": [
+    "v2.23",
+    "v2.47",
+    "v2.48",
+    "v2.49"
+  ],
+  "dual_approval": true,
+  "immutable_revisions": true,
+  "document_factory": true,
+  "source_verification_date": "2026-07-24",
+  "canonical_scope_frozen": true,
+  "governance": true,
+  "canonical_scenarios": 12,
+  "negative_scenarios": 15,
+  "visual_qa_scenarios": 6,
+  "qa_visual_completed": true,
+  "contract_clauses": 38,
+  "approval_model": "multi_stage_single_responsible",
+  "approval_date": "2026-07-28",
+  "approval_disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+}

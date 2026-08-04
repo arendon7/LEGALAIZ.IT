@@ -1,0 +1,54 @@
+{
+  "schema": "legalaizit-m31-1-preproduction-policy-v1",
+  "phase": "M31.1",
+  "version": "5.0.0",
+  "title": "Base de preproducción y despliegue controlado",
+  "target_profile": "pilot",
+  "decision_values": [
+    "ready_for_managed_preproduction",
+    "hold_for_remediation"
+  ],
+  "confirmation_phrase": "REGISTRAR DECISION PREPRODUCCION M31",
+  "required_artifacts": [
+    "Dockerfile",
+    "deploy/docker-compose.preproduction.yml",
+    "deploy/Caddyfile",
+    "config/.env.preproduction.example",
+    "deploy/PREPRODUCTION_RUNBOOK_M31_1.md",
+    "deploy/BACKUP_RESTORE_RUNBOOK_M31_1.md",
+    "deploy/OBSERVABILITY_RUNBOOK_M31_1.md"
+  ],
+  "external_attestations_required_for_production": [
+    "postgres_runtime",
+    "tls_certificate",
+    "monitoring_alerts",
+    "restore_drill_production",
+    "load_test",
+    "pentest",
+    "privacy_approval",
+    "incident_drill",
+    "mac_windows_validation",
+    "rollback_drill"
+  ],
+  "hard_preproduction_checks": [
+    "profile",
+    "public_https",
+    "secure_cookies",
+    "origin_check",
+    "trusted_proxy",
+    "external_master_key",
+    "malware_scanner",
+    "mfa_privileged",
+    "database_adapter",
+    "verified_backup",
+    "observability",
+    "deployment_artifacts",
+    "runtime_writable"
+  ],
+  "production_authorized": false,
+  "notices": [
+    "La aprobación M31.1 habilita únicamente un entorno administrado de preproducción.",
+    "No autoriza producción pública, pagos reales ni entrega documental automática.",
+    "PostgreSQL, pentest, carga, restauración productiva y rollback siguen siendo evidencias externas obligatorias."
+  ]
+}

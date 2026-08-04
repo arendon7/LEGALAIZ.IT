@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="t d">
+<title id="t">Documento en revisión</title><desc id="d">Documento en revisión</desc>
+<defs>
+  <linearGradient id="navyG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0D1324"/><stop offset="1" stop-color="#18375E"/></linearGradient>
+  <linearGradient id="goldG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#E6C98F"/><stop offset="1" stop-color="#B1843C"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#0D1324" flood-opacity=".14"/></filter>
+</defs><rect width="640" height="480" rx="36" fill="#F7F5F1"/><circle cx="526" cy="88" r="96" fill="#C9A96E" opacity=".13"/><g filter="url(#shadow)"><rect x="84" y="68" width="472" height="344" rx="30" fill="#fff"/></g><rect x="195" y="130" width="210" height="240" rx="22" fill="#fff" stroke="#E6E6E1" stroke-width="4"/><path d="M235 185h130M235 225h130M235 265h90" stroke="#0D1324" stroke-width="9" stroke-linecap="round"/><circle cx="435" cy="300" r="62" fill="#0D1324"/><path d="M435 264v42l28 18" fill="none" stroke="#C9A96E" stroke-width="10" stroke-linecap="round"/></svg>

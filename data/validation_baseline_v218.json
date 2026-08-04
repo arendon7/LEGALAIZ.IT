@@ -1,0 +1,34 @@
+{
+  "baseline_version": "2.18",
+  "created_from": "LegalAIZit_Prototipo_v2.18_QA_Visual_Integral_2026-07-17",
+  "components": {
+    "legal_content": {
+      "sha256": "cbed92f83c615975813940373bbef9943c5bd2807f6869af5db5a35b0bdad019",
+      "files": 24
+    },
+    "document_generation": {
+      "sha256": "e4f048a8ed9512ae78aec4fd46cc27479bd8037cd94461fc19d231b4c0f6667b",
+      "files": 5
+    },
+    "approval_release": {
+      "sha256": "562ab2dbb4085c211feec8e982f1719e58d423e70e58e13a6a7dbe192cfb75ac",
+      "files": 1
+    },
+    "security_rbac": {
+      "sha256": "dbf39318c318a7a826886cf9dd99bf5fafda8d539dffd90e5cb9c98e9fc6c57e",
+      "files": 2
+    },
+    "api_shell": {
+      "sha256": "de4c8bafa9dc8cd250d8d6bce399858c1d75f2a6d320320824db99afab27ac32",
+      "files": 1
+    },
+    "web_ui": {
+      "sha256": "6196b5bda1c14f4034f2b9a69fd8c0fed80b0ecada1f1c6db9abc25c196e47eb",
+      "files": 5
+    },
+    "visual_qa": {
+      "sha256": "7e542d0c7ae38faa18e0b863d732e389444fb80c530fca949f9e259da57a0cdc",
+      "files": 2
+    }
+  }
+}

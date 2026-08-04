@@ -1,0 +1,79 @@
+{
+  "product_code": "CO-SA-001",
+  "version": "M23",
+  "integration_mode": "additive_immutable_revision",
+  "document_family": [
+    "health_petition",
+    "health_claim",
+    "evidence_index",
+    "deadline_calendar",
+    "reiteration_and_escalation"
+  ],
+  "critical_rules": [
+    {
+      "id": "M23-SA1-001",
+      "when": "risk_vital_or_extreme_deterioration",
+      "risk": "red",
+      "action": "urgency_and_human_review"
+    },
+    {
+      "id": "M23-SA1-002",
+      "when": "risk_prioritized",
+      "risk": "yellow",
+      "action": "48_continuous_hours_tracking"
+    },
+    {
+      "id": "M23-SA1-003",
+      "when": "risk_simple",
+      "risk": "green",
+      "action": "72_continuous_hours_tracking"
+    },
+    {
+      "id": "M23-SA1-004",
+      "when": "third_party_without_authorization",
+      "risk": "red",
+      "action": "block_medical_record_release"
+    },
+    {
+      "id": "M23-SA1-005",
+      "when": "active_tutela_contempt_or_litigation",
+      "risk": "red",
+      "action": "mandatory_lawyer_review"
+    },
+    {
+      "id": "M23-SA1-006",
+      "when": "treatment_interrupted",
+      "risk": "yellow",
+      "action": "reinforce_continuity_and_case_manager"
+    },
+    {
+      "id": "M23-SA1-007",
+      "when": "response_not_on_merits",
+      "risk": "yellow",
+      "action": "generate_reiteration_and_supersalud_route"
+    },
+    {
+      "id": "M23-SA1-008",
+      "when": "excess_clinical_data",
+      "risk": "yellow",
+      "action": "minimize_and_restrict_access"
+    }
+  ],
+  "deadline_engine": {
+    "health_claim_vital_hours": 24,
+    "health_claim_prioritized_hours": 48,
+    "health_claim_simple_hours": 72,
+    "general_petition_business_days": 15,
+    "documents_information_business_days": 10,
+    "consultation_business_days": 30
+  },
+  "official_sources": [
+    "Constitución Política",
+    "Ley 1751 de 2015",
+    "Ley 1755 de 2015",
+    "Decreto 780 de 2016",
+    "Circular Externa 2023151000000010-5 de 2023",
+    "Resoluciones 1995 de 1999 y 839 de 2017",
+    "Ley 1581 de 2012"
+  ]
+}

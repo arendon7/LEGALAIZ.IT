@@ -1,0 +1,501 @@
+{
+  "version": "2.47",
+  "base_case": {
+    "agreement": {
+      "type": "mutual",
+      "purpose": "Evaluar, desarrollar y ejecutar una plataforma tecnológica y sus integraciones autorizadas.",
+      "reference": "Proyecto Atlas, etapa de evaluación, desarrollo y despliegue controlado.",
+      "reciprocal": true
+    },
+    "party_a": {
+      "identification": {
+        "type": "legal_person",
+        "name": "ALFA TECNOLOGÍA S.A.S.",
+        "id_number": "901.111.222-3",
+        "address": "Medellín, Antioquia",
+        "email": "legal@alfa.example"
+      },
+      "signatory": {
+        "name": "Ana Representante",
+        "id_number": "43.111.222",
+        "capacity": "Representante legal",
+        "authority_source": "certificado de existencia y representación legal vigente"
+      }
+    },
+    "party_b": {
+      "identification": {
+        "type": "legal_person",
+        "name": "BETA SOLUCIONES S.A.S.",
+        "id_number": "901.444.555-6",
+        "address": "Bogotá D.C.",
+        "email": "legal@beta.example"
+      },
+      "signatory": {
+        "name": "Bruno Representante",
+        "id_number": "79.111.222",
+        "capacity": "Representante legal",
+        "authority_source": "certificado de existencia y representación legal vigente"
+      }
+    },
+    "relationship": {
+      "context": "software_technology"
+    },
+    "information": {
+      "categories": "Código fuente; arquitectura; credenciales; modelos de datos; información comercial; documentación técnica; precios y estrategia.",
+      "formats_sources": "Repositorios privados, sala de datos, reuniones, demostraciones, correo corporativo y documentación cifrada.",
+      "oral_visual_rule": "written_confirmation",
+      "exclusions": "Información pública sin incumplimiento, conocida legítimamente, recibida de tercero facultado o desarrollada independientemente.",
+      "trade_secrets": true,
+      "marking_rule": "hybrid"
+    },
+    "access": {
+      "authorized_recipients": "Equipos jurídico, arquitectura, seguridad y dirección del proyecto expresamente autorizados.",
+      "representatives": "Asesores jurídicos, auditores y subcontratistas previamente autorizados y sujetos a deberes equivalentes.",
+      "need_to_know": "Acceso por rol, mínimo privilegio, MFA, revisión trimestral y revocación inmediata al cambiar funciones.",
+      "permitted_use": "Evaluación, diseño, integración, pruebas autorizadas y ejecución del Proyecto Atlas.",
+      "compelled_disclosure": "Aviso previo cuando sea legalmente posible, revisión jurídica y revelación limitada a lo estrictamente exigido."
+    },
+    "security": {
+      "controls": {
+        "level": "critical",
+        "technical": "Cifrado en tránsito y reposo, MFA, registros de acceso, DLP y repositorios privados.",
+        "organizational": "Acuerdos individuales, capacitación, segregación de funciones, inventario y revisión periódica.",
+        "physical": "Áreas de acceso controlado y política de escritorio limpio."
+      },
+      "incident_protocol": "Reporte inicial dentro de las cuatro horas siguientes a la detección, contención inmediata, preservación de evidencia y actualización coordinada."
+    },
+    "data": {
+      "personal": true,
+      "roles": {
+        "party_a_role": "responsible",
+        "party_b_role": "processor",
+        "instructions": "Tratamiento por cuenta de la Parte A para integración, soporte y pruebas con datos minimizados."
+      },
+      "sensitive_or_children": false,
+      "crossborder": "no",
+      "lifecycle": "Conservación durante la finalidad y eliminación o devolución verificada al cierre, salvo obligación legal documentada."
+    },
+    "ip": {
+      "results_allocation": "license",
+      "preexisting_materials": "Framework propio de ALFA; librerías internas de BETA; marcas y documentación previa de cada parte.",
+      "oss_third_party": "Python bajo PSF; componentes bajo MIT; dependencias adicionales sujetas al inventario aprobado.",
+      "source_code_reverse_engineering": "Acceso a código fuente solo en repositorios autorizados; pruebas de seguridad en ambiente aislado; ingeniería inversa prohibida salvo autorización escrita o excepción legal.",
+      "future_assignment_broad": false,
+      "moral_rights_waiver": false
+    },
+    "ai": {
+      "used": true,
+      "public_upload": false,
+      "training_outputs": "Uso exclusivo de cuenta empresarial sin entrenamiento con entradas, retención desactivada y revisión humana obligatoria."
+    },
+    "term_remedies": {
+      "agreement_years": 3,
+      "ordinary_confidentiality_years": 5,
+      "trade_secret_rule": "while_secret",
+      "general_noncompete": false,
+      "penalty_or_liability": "Responsabilidad por daños directos y probados; cláusula penal determinable en el instrumento comercial específico y sin renuncia a medidas cautelares."
+    },
+    "closure_confirmation": {
+      "return_destroy": "Devolución de soportes y eliminación segura de copias de trabajo dentro de los diez días hábiles siguientes al cierre.",
+      "retained_copies": "Una copia legal aislada y copias de respaldo inalterables sujetas al ciclo ordinario, sin uso operativo.",
+      "dispute_mechanism": "negotiation_conciliation",
+      "electronic_signature": true,
+      "confirmed": true
+    }
+  },
+  "scenarios": [
+    {
+      "id": "EM4-C01",
+      "name": "NDA unilateral de negociación preliminar",
+      "overrides": {
+        "agreement.type": "unilateral",
+        "agreement.reciprocal": false,
+        "agreement.purpose": "Evaluar una posible alianza comercial y técnica.",
+        "agreement.reference": "Conversaciones preliminares Proyecto Horizonte.",
+        "relationship.context": "preliminary_negotiation",
+        "information.categories": "Propuesta comercial, estructura de costos, proyecciones, capacidades técnicas y estrategia de negociación.",
+        "information.trade_secrets": false,
+        "security.controls.level": "standard",
+        "security.controls.technical": "Control de acceso, cifrado en tránsito y repositorio corporativo.",
+        "security.controls.organizational": "Acceso limitado al equipo negociador y registro de entregas.",
+        "security.incident_protocol": "Aviso dentro de las veinticuatro horas siguientes a la detección y contención razonable.",
+        "data.personal": false,
+        "data.roles": {},
+        "data.crossborder": "no",
+        "data.lifecycle": "No se tratarán datos personales como parte de la finalidad.",
+        "ip.results_allocation": "none",
+        "ip.preexisting_materials": "",
+        "ip.oss_third_party": "",
+        "ip.source_code_reverse_engineering": "",
+        "ai.used": false,
+        "ai.training_outputs": "",
+        "access.permitted_use": "Evaluar la viabilidad de una alianza comercial y técnica dentro de las conversaciones preliminares del Proyecto Horizonte.",
+        "access.authorized_recipients": "Equipos comercial, técnico y jurídico expresamente designados para la negociación.",
+        "information.formats_sources": "Propuestas, modelos económicos, correos corporativos, reuniones autorizadas y repositorio privado de negociación."
+      },
+      "remove": [],
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 6,
+        "documents": [
+          "DOC-EM4-NDA-001",
+          "ANX-EM4-REL-001"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-C02",
+      "name": "Acuerdo recíproco de software con paquete completo",
+      "overrides": {},
+      "remove": [],
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 10,
+        "documents": [
+          "ANX-EM4-IP-001",
+          "ANX-EM4-DATA-001",
+          "ANX-EM4-AI-001",
+          "ANX-EM4-OSS-001",
+          "PRO-EM4-INC-001"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-C03",
+      "name": "Investigación y desarrollo con secretos empresariales",
+      "overrides": {
+        "relationship.context": "research_development",
+        "agreement.reference": "Proyecto de investigación aplicada BioNova.",
+        "agreement.purpose": "Intercambiar protocolos, resultados experimentales y conocimiento técnico para evaluar y ejecutar la investigación conjunta.",
+        "information.categories": "Protocolos, formulaciones, resultados experimentales, cuadernos de laboratorio, diseños y know-how.",
+        "data.personal": false,
+        "data.roles": {},
+        "data.lifecycle": "No aplica tratamiento de datos personales.",
+        "data.crossborder": "no",
+        "ip.results_allocation": "shared",
+        "ip.preexisting_materials": "Patentes, protocolos y materiales previos identificados por cada parte.",
+        "ip.oss_third_party": "",
+        "ai.used": false,
+        "ai.training_outputs": "",
+        "access.permitted_use": "Intercambiar, revisar y analizar protocolos, resultados experimentales y conocimiento técnico exclusivamente para el Proyecto BioNova.",
+        "access.authorized_recipients": "Equipos científico, jurídico, laboratorio, propiedad intelectual y dirección de investigación expresamente autorizados.",
+        "information.formats_sources": "Cuadernos de laboratorio, repositorios de investigación, muestras, reuniones técnicas, demostraciones y documentación cifrada."
+      },
+      "remove": [],
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 7,
+        "documents": [
+          "ANX-EM4-IP-001",
+          "PRO-EM4-INC-001"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-C04",
+      "name": "Contenido creativo con licencia e IA empresarial",
+      "overrides": {
+        "relationship.context": "creative_content",
+        "agreement.reference": "Campaña institucional Aurora.",
+        "agreement.purpose": "Desarrollar y revisar piezas audiovisuales, gráficas y editoriales para la campaña autorizada.",
+        "information.categories": "Briefs, guiones, conceptos creativos, archivos editables, presupuestos y planes de lanzamiento.",
+        "information.trade_secrets": false,
+        "security.controls.level": "standard",
+        "data.personal": false,
+        "data.roles": {},
+        "data.lifecycle": "No se tratarán bases de datos personales.",
+        "ip.results_allocation": "license",
+        "ip.preexisting_materials": "Portafolios, tipografías licenciadas y recursos creativos preexistentes.",
+        "ip.oss_third_party": "",
+        "ai.used": true,
+        "ai.training_outputs": "Herramientas empresariales autorizadas, sin entrenamiento con entradas, con revisión humana y registro de piezas asistidas.",
+        "access.permitted_use": "Desarrollar, revisar y aprobar las piezas creativas previstas para la Campaña Aurora, sin reutilización para clientes o proyectos distintos.",
+        "access.authorized_recipients": "Equipos creativo, mercadeo, jurídico, producción y proveedores expresamente autorizados para la campaña.",
+        "information.formats_sources": "Briefs, guiones, archivos editables, reuniones creativas, plataformas de revisión y repositorios privados de producción."
+      },
+      "remove": [],
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 8,
+        "documents": [
+          "ANX-EM4-IP-001",
+          "ANX-EM4-AI-001"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-C05",
+      "name": "Debida diligencia con nube internacional",
+      "overrides": {
+        "relationship.context": "investment_due_diligence",
+        "agreement.reference": "Proceso de inversión y debida diligencia Delta.",
+        "agreement.purpose": "Examinar información corporativa, financiera, contractual y tecnológica para valorar una posible inversión.",
+        "information.categories": "Estados financieros, contratos materiales, cap table, litigios, datos de directivos y arquitectura tecnológica.",
+        "information.trade_secrets": false,
+        "security.controls.level": "enhanced",
+        "data.personal": true,
+        "data.roles.party_a_role": "responsible",
+        "data.roles.party_b_role": "independent",
+        "data.roles.instructions": "Cada parte tratará los datos bajo su propia responsabilidad y exclusivamente para la debida diligencia.",
+        "data.crossborder": "unknown",
+        "ip.results_allocation": "none",
+        "ip.preexisting_materials": "",
+        "ip.oss_third_party": "",
+        "ai.used": false,
+        "ai.training_outputs": "",
+        "access.permitted_use": "Examinar información corporativa, financiera, contractual y tecnológica únicamente para valorar la posible inversión del Proceso Delta.",
+        "access.authorized_recipients": "Equipos de inversión, financiero, jurídico, tributario y tecnológico, junto con asesores previamente autorizados.",
+        "information.formats_sources": "Sala de datos, estados financieros, contratos, entrevistas de debida diligencia, reportes técnicos y comunicaciones corporativas seguras."
+      },
+      "remove": [],
+      "expected": {
+        "blocked": false,
+        "readiness": "requires_review",
+        "required_findings": [
+          "V-EM4-007"
+        ],
+        "document_count": 7,
+        "documents": [
+          "ANX-EM4-DATA-001"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-C06",
+      "name": "Encargo de tratamiento de datos",
+      "overrides": {
+        "relationship.context": "data_processing",
+        "agreement.reference": "Servicio de procesamiento y soporte de base de clientes.",
+        "agreement.purpose": "Regular el acceso y tratamiento por cuenta de la Parte A para prestar soporte, alojamiento y continuidad operativa.",
+        "information.categories": "Datos de identificación, contacto, transacciones y registros de soporte de clientes.",
+        "information.trade_secrets": false,
+        "security.controls.level": "enhanced",
+        "data.personal": true,
+        "data.roles.party_a_role": "responsible",
+        "data.roles.party_b_role": "processor",
+        "data.roles.instructions": "Tratar únicamente siguiendo instrucciones documentadas de la Parte A.",
+        "data.crossborder": "no",
+        "ip.results_allocation": "none",
+        "ip.preexisting_materials": "",
+        "ip.oss_third_party": "",
+        "ai.used": false,
+        "ai.training_outputs": "",
+        "access.permitted_use": "Acceder y tratar los datos estrictamente necesarios para prestar soporte, alojamiento y continuidad operativa por cuenta de la Parte A.",
+        "access.authorized_recipients": "Personal de soporte, infraestructura, seguridad de la información y protección de datos expresamente autorizado.",
+        "information.formats_sources": "Bases de datos, sistemas de soporte, registros técnicos, tickets, copias controladas y canales corporativos seguros."
+      },
+      "remove": [],
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 7,
+        "documents": [
+          "ANX-EM4-DATA-001"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-C07",
+      "name": "Confidencialidad laboral o de colaboración",
+      "overrides": {
+        "relationship.context": "employment_collaboration",
+        "agreement.type": "unilateral",
+        "agreement.reciprocal": false,
+        "agreement.reference": "Colaboración interna en proyecto reservado.",
+        "agreement.purpose": "Permitir acceso funcional a información reservada durante la colaboración sin restringir ilegítimamente la actividad profesional posterior.",
+        "information.categories": "Procedimientos internos, listas de clientes, estrategia comercial y documentación operativa.",
+        "information.trade_secrets": false,
+        "security.controls.level": "standard",
+        "data.personal": false,
+        "data.roles": {},
+        "data.lifecycle": "No aplica.",
+        "ip.results_allocation": "none",
+        "ip.preexisting_materials": "",
+        "ip.oss_third_party": "",
+        "ai.used": false,
+        "ai.training_outputs": "",
+        "access.permitted_use": "Utilizar la información reservada únicamente para ejecutar las funciones y actividades legítimamente asignadas durante la colaboración.",
+        "access.authorized_recipients": "La persona colaboradora, su responsable funcional y los equipos jurídico, seguridad y proyecto que requieran acceso.",
+        "information.formats_sources": "Sistemas internos, documentos operativos, reuniones de trabajo, comunicaciones corporativas y repositorios autorizados."
+      },
+      "remove": [],
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 6
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-C08",
+      "name": "Alianza estratégica con PI compartida",
+      "overrides": {
+        "relationship.context": "strategic_alliance",
+        "agreement.reference": "Alianza estratégica Circular 360.",
+        "agreement.purpose": "Explorar y ejecutar una alianza para desarrollar metodologías y activos comerciales conjuntos.",
+        "information.categories": "Modelos de negocio, procesos, propuestas, fórmulas comerciales, pilotos y resultados de la alianza.",
+        "data.personal": false,
+        "data.roles": {},
+        "data.lifecycle": "No aplica.",
+        "ip.results_allocation": "shared",
+        "ip.preexisting_materials": "Marcas, bases metodológicas y modelos previos de cada parte.",
+        "ip.oss_third_party": "",
+        "ai.used": false,
+        "ai.training_outputs": "",
+        "access.permitted_use": "Evaluar y ejecutar la Alianza Circular 360, desarrollar pilotos y documentar activos conjuntos dentro del alcance aprobado.",
+        "access.authorized_recipients": "Equipos estratégico, comercial, técnico, financiero y jurídico expresamente designados por cada parte.",
+        "information.formats_sources": "Propuestas, modelos, pilotos, espacios colaborativos privados, reuniones y documentación técnica o comercial cifrada."
+      },
+      "remove": [],
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 7,
+        "documents": [
+          "ANX-EM4-IP-001",
+          "PRO-EM4-INC-001"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-C09",
+      "name": "Proveedor comercial con información crítica",
+      "overrides": {
+        "relationship.context": "commercial_supplier",
+        "agreement.type": "unilateral",
+        "agreement.reciprocal": false,
+        "agreement.reference": "Evaluación y abastecimiento de componente crítico.",
+        "agreement.purpose": "Permitir evaluación técnica y cotización del componente sin divulgar procesos, precios o especificaciones reservadas.",
+        "information.categories": "Especificaciones, volúmenes, precios, procesos productivos y condiciones de abastecimiento.",
+        "data.personal": false,
+        "data.roles": {},
+        "data.lifecycle": "No aplica.",
+        "ip.results_allocation": "none",
+        "ip.preexisting_materials": "",
+        "ip.oss_third_party": "",
+        "ai.used": false,
+        "ai.training_outputs": "",
+        "access.permitted_use": "Evaluar técnicamente, cotizar y negociar el abastecimiento del componente crítico sin utilizar la información para terceros o fines competitivos.",
+        "access.authorized_recipients": "Equipos de compras, ingeniería, calidad, producción y jurídico expresamente autorizados.",
+        "information.formats_sources": "Especificaciones, cotizaciones, muestras, visitas técnicas, reuniones y repositorios corporativos controlados."
+      },
+      "remove": [],
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 6,
+        "documents": [
+          "PRO-EM4-INC-001"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-C10",
+      "name": "Prestación independiente con datos, PI e IA",
+      "overrides": {
+        "relationship.context": "independent_services",
+        "agreement.reference": "Consultoría de automatización documental.",
+        "agreement.purpose": "Permitir al consultor diseñar entregables, automatizaciones y documentación bajo controles de confidencialidad, datos e IA.",
+        "information.categories": "Procesos internos, documentos de clientes, configuraciones, datos de prueba y especificaciones funcionales.",
+        "information.trade_secrets": false,
+        "security.controls.level": "enhanced",
+        "data.personal": true,
+        "data.roles.party_a_role": "responsible",
+        "data.roles.party_b_role": "processor",
+        "data.roles.instructions": "Tratamiento por cuenta de la Parte A con datos minimizados y ambientes controlados.",
+        "ip.results_allocation": "assignment",
+        "ip.preexisting_materials": "Plantillas y utilidades generales del consultor identificadas previamente.",
+        "ip.oss_third_party": "",
+        "ai.used": true,
+        "ai.training_outputs": "Solo herramientas empresariales autorizadas, sin retención ni entrenamiento, con revisión humana.",
+        "access.permitted_use": "Diseñar y entregar las automatizaciones y documentos de la consultoría, exclusivamente en los ambientes, datos y herramientas autorizados.",
+        "access.authorized_recipients": "El consultor y los equipos jurídico, tecnología, producto, seguridad y protección de datos expresamente autorizados.",
+        "information.formats_sources": "Repositorios privados, documentos de clientes, ambientes de prueba, reuniones técnicas, tickets y comunicaciones cifradas."
+      },
+      "remove": [],
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 9,
+        "documents": [
+          "ANX-EM4-DATA-001",
+          "ANX-EM4-IP-001",
+          "ANX-EM4-AI-001"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-C11",
+      "name": "Acuerdo multilateral sin anexos especializados",
+      "overrides": {
+        "agreement.type": "multilateral",
+        "agreement.reciprocal": true,
+        "relationship.context": "other",
+        "agreement.reference": "Mesa privada de cooperación sectorial.",
+        "agreement.purpose": "Compartir información no pública estrictamente necesaria para evaluar acciones de cooperación.",
+        "information.categories": "Planes de trabajo, presupuestos indicativos y capacidades institucionales.",
+        "information.trade_secrets": false,
+        "security.controls.level": "standard",
+        "data.personal": false,
+        "data.roles": {},
+        "data.lifecycle": "No aplica.",
+        "ip.results_allocation": "none",
+        "ip.preexisting_materials": "",
+        "ip.oss_third_party": "",
+        "ai.used": false,
+        "ai.training_outputs": "",
+        "access.permitted_use": "Analizar la información no pública estrictamente necesaria para evaluar acciones de cooperación sectorial aprobadas por las partes.",
+        "access.authorized_recipients": "Representantes expresamente designados por cada participante, limitados por necesidad de conocer.",
+        "information.formats_sources": "Reuniones privadas, documentos de trabajo, presupuestos indicativos y repositorio compartido con acceso restringido."
+      },
+      "remove": [],
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 5
+      },
+      "notes": ""
+    },
+    {
+      "id": "EM4-C12",
+      "name": "Protección exclusiva por marcado con revisión",
+      "overrides": {
+        "relationship.context": "commercial_supplier",
+        "information.marking_rule": "marked_only",
+        "information.trade_secrets": false,
+        "security.controls.level": "standard",
+        "data.personal": false,
+        "data.roles": {},
+        "data.lifecycle": "No aplica.",
+        "ip.results_allocation": "none",
+        "ip.preexisting_materials": "",
+        "ip.oss_third_party": "",
+        "ai.used": false,
+        "ai.training_outputs": ""
+      },
+      "remove": [],
+      "expected": {
+        "blocked": false,
+        "readiness": "requires_review",
+        "required_findings": [
+          "V-EM4-MARK"
+        ],
+        "document_count": 6
+      },
+      "notes": ""
+    }
+  ]
+}

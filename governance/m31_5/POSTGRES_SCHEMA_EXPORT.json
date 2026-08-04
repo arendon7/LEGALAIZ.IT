@@ -1,0 +1,9 @@
+{
+  "schema": "legalaizit-postgres-schema-export-v1",
+  "milestone": "M31.5",
+  "version": "5.0.4",
+  "objects": 171,
+  "tables": 102,
+  "indexes": 69,
+  "output": "deploy/postgres_schema_candidate.sql"
+}

@@ -1,0 +1,532 @@
+{
+  "version": "2.50",
+  "product_id": "CO-AR-001",
+  "base_case": {
+    "lease": {
+      "configuration": "individual"
+    },
+    "landlord": {
+      "identification": {
+        "type": "natural",
+        "name": "Laura Propietaria",
+        "id_number": "43.100.001",
+        "address": "Medellín, Antioquia",
+        "email": "laura@example.com",
+        "phone": "3001112233"
+      },
+      "signatory": {},
+      "authority_evidence": "owner"
+    },
+    "tenant": {
+      "identification": {
+        "type": "natural",
+        "name": "Andrés Arrendatario",
+        "id_number": "71.200.002",
+        "address": "Medellín, Antioquia",
+        "email": "andres@example.com",
+        "phone": "3102223344"
+      },
+      "additional": {
+        "names": "",
+        "solidarity": "no"
+      }
+    },
+    "notifications": {
+      "channels": {
+        "landlord_channel": "laura@example.com",
+        "tenant_channel": "andres@example.com",
+        "physical_addresses": "Direcciones contractuales informadas por las partes"
+      }
+    },
+    "scope": {
+      "urban_home": "yes"
+    },
+    "property": {
+      "identification": {
+        "address": "Carrera 45 # 10-20",
+        "municipality": "Medellín, Antioquia",
+        "registration": "001-654321",
+        "cadastral_id": "05001-02-0002"
+      },
+      "type": "house",
+      "included_units": {
+        "private_area": "Casa urbana completa",
+        "parking": "",
+        "storage": "",
+        "other": ""
+      },
+      "horizontal": false,
+      "ph_details": {},
+      "dispute_status": "none",
+      "furnished": false,
+      "high_value_assets": false
+    },
+    "use": {
+      "destination": "residential",
+      "sublease_tourism": "none",
+      "shared_areas": ""
+    },
+    "occupants": {
+      "authorized": "Andrés Arrendatario",
+      "multiple": false
+    },
+    "pets": {
+      "exists": false,
+      "conditions": ""
+    },
+    "condition": {
+      "habitability": "fit",
+      "defects": "Sin defectos materiales identificados en la inspección de entrega.",
+      "repairs_pending": {
+        "items": "",
+        "responsible": ""
+      }
+    },
+    "delivery": {
+      "inventory_method": "detailed",
+      "date": "2026-08-01"
+    },
+    "maintenance": {
+      "rules": {
+        "routine": "Reparaciones locativas atribuibles al uso ordinario.",
+        "improvements": "Solo con autorización escrita del arrendador.",
+        "authorization": "Solicitud escrita con descripción, costo y reversibilidad."
+      }
+    },
+    "rent": {
+      "amount": 1800000,
+      "values": {
+        "commercial_value": 250000000,
+        "cadastral_value": 150000000,
+        "source_date": "Avalúo comercial de julio de 2026"
+      },
+      "payment": {
+        "frequency": "monthly",
+        "day": 5,
+        "method": "transferencia",
+        "account": "Cuenta bancaria informada por la arrendadora"
+      },
+      "adjustment": "legal_ipc"
+    },
+    "charges": {
+      "additional_services": {
+        "exists": false,
+        "description": "",
+        "value": 0
+      },
+      "administration": {
+        "ordinary_amount": 0,
+        "ordinary_responsible": "landlord",
+        "extraordinary_responsible": "landlord"
+      },
+      "utilities": {
+        "responsible": "tenant",
+        "distribution": "Facturación directa por medidores",
+        "internet": "A cargo del arrendatario",
+        "gas_or_other": "Según consumo"
+      }
+    },
+    "utilities": {
+      "denunciation": "no"
+    },
+    "guarantee": {
+      "type": "none",
+      "details": {},
+      "cash_deposit": false
+    },
+    "term": {
+      "duration_months": 12,
+      "rules": {
+        "automatic_extension": "yes",
+        "notice_days": 90,
+        "special_termination": ""
+      }
+    },
+    "data": {
+      "screening": {
+        "credit_study": false,
+        "personal_data": "Celebración, ejecución, facturación, comunicaciones, cobranza y cierre del contrato",
+        "sensitive_documents": false
+      }
+    },
+    "confirmation": {
+      "reviewed": true
+    }
+  },
+  "scenarios": [
+    {
+      "id": "AR-C01",
+      "name": "Casa urbana individual no amoblada",
+      "description": "Caso base con arrendador persona natural, vivienda independiente y sin garantías adicionales.",
+      "overrides": {},
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 7,
+        "documents": [
+          "DOC-AR-CONTRACT-001",
+          "ANX-AR-PROPERTY-001",
+          "AUT-AR-DATA-001"
+        ]
+      }
+    },
+    {
+      "id": "AR-C02",
+      "name": "Apartamento en propiedad horizontal",
+      "description": "Apartamento con parqueadero, depósito, administración y reglamento entregado.",
+      "overrides": {
+        "property.type": "apartment",
+        "property.horizontal": true,
+        "property.ph_details": {
+          "name": "Torres del Parque P.H.",
+          "administrator": "Administración Torres S.A.S.",
+          "rules_delivery": "yes",
+          "ordinary_fee": 420000
+        },
+        "property.included_units": {
+          "private_area": "Apartamento 704",
+          "parking": "Parqueadero 42",
+          "storage": "Cuarto útil 12",
+          "other": "Uso de zonas comunes según reglamento"
+        },
+        "charges.administration": {
+          "ordinary_amount": 420000,
+          "ordinary_responsible": "tenant",
+          "extraordinary_responsible": "landlord"
+        }
+      },
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 9,
+        "documents": [
+          "ANX-AR-PH-001",
+          "ANX-AR-SERVICES-001"
+        ],
+        "blocks": [
+          "AR-PH-001",
+          "AR-ADMIN-001"
+        ]
+      }
+    },
+    {
+      "id": "AR-C03",
+      "name": "Apartamento amoblado con mascota",
+      "description": "Bienes de valor, inventario combinado y reglas proporcionadas para mascota.",
+      "overrides": {
+        "property.type": "apartment",
+        "property.furnished": true,
+        "property.high_value_assets": true,
+        "delivery.inventory_method": "combined",
+        "pets.exists": true,
+        "pets.conditions": "Un perro de compañía, sujeto a normas de convivencia y reparación de daños comprobados.",
+        "occupants.authorized": "Andrés Arrendatario y su mascota identificada en el anexo"
+      },
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 9,
+        "documents": [
+          "ANX-AR-FURNISHED-001",
+          "ANX-AR-OCCUPANTS-001"
+        ],
+        "blocks": [
+          "AR-FURN-001",
+          "AR-PET-001"
+        ]
+      }
+    },
+    {
+      "id": "AR-C04",
+      "name": "Habitación con zonas compartidas",
+      "description": "Arrendamiento de habitación y uso delimitado de cocina, sala y lavandería.",
+      "overrides": {
+        "lease.configuration": "shared",
+        "property.type": "room",
+        "property.included_units": {
+          "private_area": "Habitación 2 con baño privado",
+          "parking": "",
+          "storage": "",
+          "other": "Uso compartido de cocina y sala"
+        },
+        "use.shared_areas": "Cocina, sala y lavandería compartidas",
+        "occupants.authorized": "Andrés Arrendatario"
+      },
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 8,
+        "documents": [
+          "ANX-AR-OCCUPANTS-001"
+        ],
+        "blocks": [
+          "AR-SHARED-001"
+        ]
+      }
+    },
+    {
+      "id": "AR-C05",
+      "name": "Pensión con habitación amoblada",
+      "description": "Habitación amoblada dentro de esquema de pensión con espacios comunes.",
+      "overrides": {
+        "lease.configuration": "pension",
+        "property.type": "room",
+        "property.included_units": {
+          "private_area": "Habitación 5 amoblada",
+          "parking": "",
+          "storage": "",
+          "other": "Acceso a baño y comedor compartidos"
+        },
+        "property.furnished": true,
+        "delivery.inventory_method": "detailed",
+        "use.shared_areas": "Baño, comedor y patio compartidos"
+      },
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 9,
+        "documents": [
+          "ANX-AR-OCCUPANTS-001",
+          "ANX-AR-FURNISHED-001"
+        ]
+      }
+    },
+    {
+      "id": "AR-C06",
+      "name": "Arrendamiento mancomunado",
+      "description": "Dos arrendatarios con solidaridad definida y ocupación conjunta.",
+      "overrides": {
+        "lease.configuration": "joint",
+        "occupants.multiple": true,
+        "occupants.authorized": "Andrés Arrendatario y María Coarrendataria",
+        "tenant.additional": {
+          "names": "María Coarrendataria, CC 43.200.003",
+          "solidarity": "yes"
+        }
+      },
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 8,
+        "documents": [
+          "ANX-AR-OCCUPANTS-001"
+        ]
+      }
+    },
+    {
+      "id": "AR-C07",
+      "name": "Contrato con codeudor solidario",
+      "description": "Garantía personal delimitada sin depósito en dinero.",
+      "overrides": {
+        "guarantee.type": "codebtor",
+        "guarantee.details": {
+          "party": "Sofía Codeudora",
+          "id_number": "43.300.004",
+          "scope": "Canon, servicios y daños comprobados dentro de la vigencia",
+          "validity": "Durante el contrato y sus prórrogas"
+        }
+      },
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 8,
+        "documents": [
+          "ANX-AR-GUARANTEE-001"
+        ],
+        "blocks": [
+          "AR-GUAR-001"
+        ]
+      }
+    },
+    {
+      "id": "AR-C08",
+      "name": "Contrato respaldado por póliza",
+      "description": "Póliza de arrendamiento con alcance y vigencia definidos.",
+      "overrides": {
+        "guarantee.type": "policy",
+        "guarantee.details": {
+          "party": "Aseguradora Hogar Seguro S.A.",
+          "id_number": "POL-2026-100",
+          "scope": "Canon, administración, servicios y daños cubiertos",
+          "validity": "Durante el contrato y sus prórrogas"
+        }
+      },
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 8,
+        "documents": [
+          "ANX-AR-GUARANTEE-001"
+        ]
+      }
+    },
+    {
+      "id": "AR-C09",
+      "name": "Arrendador persona jurídica e inmobiliaria",
+      "description": "Inmobiliaria con representante legal y fuente de facultad trazable.",
+      "overrides": {
+        "landlord.identification": {
+          "type": "legal",
+          "name": "Inmobiliaria Centro S.A.S.",
+          "id_number": "901.555.222-1",
+          "address": "Medellín, Antioquia",
+          "email": "contratos@inmobiliariacentro.co",
+          "phone": "6044445566"
+        },
+        "landlord.signatory": {
+          "name": "Lucía Representante",
+          "id_number": "43.400.005",
+          "capacity": "representante legal",
+          "authority_source": "certificado de existencia y representación legal"
+        },
+        "landlord.authority_evidence": "agent"
+      },
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 7
+      }
+    },
+    {
+      "id": "AR-C10",
+      "name": "Vivienda con trabajo remoto",
+      "description": "Uso residencial con trabajo remoto sin atención al público ni transformación del destino.",
+      "overrides": {
+        "use.destination": "residential_remote",
+        "use.shared_areas": "Espacio interno destinado a trabajo remoto sin atención al público"
+      },
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 7,
+        "blocks": [
+          "AR-DEST-001"
+        ]
+      }
+    },
+    {
+      "id": "AR-C11",
+      "name": "Apartamento con parqueadero, depósito y servicio adicional",
+      "description": "Incluye unidades accesorias e internet administrado dentro del límite legal.",
+      "overrides": {
+        "property.type": "apartment",
+        "property.included_units": {
+          "private_area": "Apartamento 305",
+          "parking": "Parqueadero 27",
+          "storage": "Depósito 9",
+          "other": ""
+        },
+        "charges.additional_services": {
+          "exists": true,
+          "description": "Internet administrado y uso exclusivo del depósito",
+          "value": 180000
+        }
+      },
+      "expected": {
+        "blocked": false,
+        "readiness": "ready",
+        "document_count": 8,
+        "documents": [
+          "ANX-AR-SERVICES-001"
+        ],
+        "blocks": [
+          "AR-ADD-001"
+        ]
+      }
+    },
+    {
+      "id": "AR-C12",
+      "name": "Expediente integral con revisión profesional",
+      "description": "Propiedad horizontal amoblada, pluralidad, mascota, servicios, póliza, terminación especial y datos sensibles.",
+      "overrides": {
+        "lease.configuration": "joint",
+        "landlord.identification": {
+          "type": "legal",
+          "name": "Arrendamientos Ejemplo S.A.S.",
+          "id_number": "901.000.001-1",
+          "address": "Medellín, Antioquia",
+          "email": "arrendador@example.com",
+          "phone": "3000000000"
+        },
+        "landlord.signatory": {
+          "name": "Ana Representante",
+          "id_number": "43.000.001",
+          "capacity": "representante legal",
+          "authority_source": "certificado de existencia y representación"
+        },
+        "property.type": "apartment",
+        "property.included_units": {
+          "private_area": "Apartamento 501",
+          "parking": "Parqueadero 18",
+          "storage": "Cuarto útil 7",
+          "other": "Uso de zonas comunes conforme al reglamento"
+        },
+        "property.horizontal": true,
+        "property.ph_details": {
+          "name": "Edificio Ejemplo P.H.",
+          "administrator": "Administración Ejemplo",
+          "rules_delivery": "yes",
+          "ordinary_fee": 350000
+        },
+        "property.furnished": true,
+        "property.high_value_assets": true,
+        "use.destination": "residential_remote",
+        "use.shared_areas": "Gimnasio y salón social conforme al reglamento",
+        "occupants.authorized": "Carlos y María",
+        "occupants.multiple": true,
+        "tenant.additional": {
+          "names": "María Arrendataria, CC 43.000.002",
+          "solidarity": "yes"
+        },
+        "pets.exists": true,
+        "pets.conditions": "Una mascota doméstica, con manejo responsable y reparación de daños comprobados.",
+        "delivery.inventory_method": "combined",
+        "charges.additional_services": {
+          "exists": true,
+          "description": "Internet administrado",
+          "value": 150000
+        },
+        "charges.administration": {
+          "ordinary_amount": 350000,
+          "ordinary_responsible": "tenant",
+          "extraordinary_responsible": "landlord"
+        },
+        "charges.utilities": {
+          "responsible": "special",
+          "distribution": "Según medidores individuales y facturas",
+          "internet": "Incluido como servicio adicional",
+          "gas_or_other": "Gas según factura"
+        },
+        "utilities.denunciation": "yes",
+        "guarantee.type": "policy",
+        "guarantee.details": {
+          "party": "Aseguradora Ejemplo S.A.",
+          "id_number": "PÓL-2026-001",
+          "scope": "Canon, servicios y daños comprobados dentro de la póliza",
+          "validity": "Durante el contrato y sus prórrogas"
+        },
+        "term.rules.special_termination": "Ocupación del propietario, sujeta a requisitos legales",
+        "data.screening.credit_study": true,
+        "data.screening.sensitive_documents": true
+      },
+      "expected": {
+        "blocked": false,
+        "readiness": "review_required",
+        "document_count": 13,
+        "required_findings": [
+          "V-AR-017",
+          "V-AR-018"
+        ],
+        "documents": [
+          "ANX-AR-PH-001",
+          "ANX-AR-OCCUPANTS-001",
+          "ANX-AR-FURNISHED-001",
+          "ANX-AR-SERVICES-001",
+          "ANX-AR-GUARANTEE-001",
+          "NOT-AR-TERMINATION-001",
+          "AUT-AR-DATA-001"
+        ]
+      }
+    }
+  ]
+}

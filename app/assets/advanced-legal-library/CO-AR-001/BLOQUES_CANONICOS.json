@@ -1,0 +1,202 @@
+[
+  {
+    "id": "AR-TIT-001",
+    "name": "Tit"
+  },
+  {
+    "id": "AR-CMP-001",
+    "name": "Cmp"
+  },
+  {
+    "id": "AR-CMP-002",
+    "name": "Cmp 002"
+  },
+  {
+    "id": "AR-CON-001",
+    "name": "Con"
+  },
+  {
+    "id": "AR-OBJ-001",
+    "name": "Obj"
+  },
+  {
+    "id": "AR-ID-001",
+    "name": "Id"
+  },
+  {
+    "id": "AR-INCL-001",
+    "name": "Incl"
+  },
+  {
+    "id": "AR-DEST-001",
+    "name": "Dest"
+  },
+  {
+    "id": "AR-OCC-001",
+    "name": "Occ"
+  },
+  {
+    "id": "AR-PET-001",
+    "name": "Pet"
+  },
+  {
+    "id": "AR-SUB-001",
+    "name": "Sub"
+  },
+  {
+    "id": "AR-PH-001",
+    "name": "Ph"
+  },
+  {
+    "id": "AR-DEL-001",
+    "name": "Del"
+  },
+  {
+    "id": "AR-HAB-001",
+    "name": "Hab"
+  },
+  {
+    "id": "AR-INV-001",
+    "name": "Inv"
+  },
+  {
+    "id": "AR-REP-001",
+    "name": "Rep"
+  },
+  {
+    "id": "AR-MAIN-001",
+    "name": "Main"
+  },
+  {
+    "id": "AR-RENT-001",
+    "name": "Rent"
+  },
+  {
+    "id": "AR-PAY-001",
+    "name": "Pay"
+  },
+  {
+    "id": "AR-ADJ-001",
+    "name": "Adj"
+  },
+  {
+    "id": "AR-ADMIN-001",
+    "name": "Admin"
+  },
+  {
+    "id": "AR-UTIL-001",
+    "name": "Util"
+  },
+  {
+    "id": "AR-ADD-001",
+    "name": "Add"
+  },
+  {
+    "id": "AR-DUR-001",
+    "name": "Dur"
+  },
+  {
+    "id": "AR-EXT-001",
+    "name": "Ext"
+  },
+  {
+    "id": "AR-LAND-OBL-001",
+    "name": "Land Obl"
+  },
+  {
+    "id": "AR-TEN-OBL-001",
+    "name": "Ten Obl"
+  },
+  {
+    "id": "AR-ALTER-001",
+    "name": "Alter"
+  },
+  {
+    "id": "AR-ACCESS-001",
+    "name": "Access"
+  },
+  {
+    "id": "AR-LIAB-001",
+    "name": "Liab"
+  },
+  {
+    "id": "AR-GUAR-001",
+    "name": "Gu001"
+  },
+  {
+    "id": "AR-FURN-001",
+    "name": "Furn"
+  },
+  {
+    "id": "AR-SHARED-001",
+    "name": "Shared"
+  },
+  {
+    "id": "AR-DATA-001",
+    "name": "Data"
+  },
+  {
+    "id": "AR-NOT-001",
+    "name": "Not"
+  },
+  {
+    "id": "AR-TERM-MUT-001",
+    "name": "Term Mut"
+  },
+  {
+    "id": "AR-TERM-TEN-001",
+    "name": "Term Ten"
+  },
+  {
+    "id": "AR-TERM-LAND-001",
+    "name": "Term Land"
+  },
+  {
+    "id": "AR-TERM-SPEC-001",
+    "name": "Term Spec"
+  },
+  {
+    "id": "AR-REST-001",
+    "name": "Rest"
+  },
+  {
+    "id": "AR-CLOSE-001",
+    "name": "Close"
+  },
+  {
+    "id": "AR-EXEC-001",
+    "name": "Exec"
+  },
+  {
+    "id": "AR-ASSIGN-001",
+    "name": "Assign"
+  },
+  {
+    "id": "AR-SERV-GUAR-001",
+    "name": "Serv Gu001"
+  },
+  {
+    "id": "AR-CONV-001",
+    "name": "Conv"
+  },
+  {
+    "id": "AR-INS-001",
+    "name": "Ins"
+  },
+  {
+    "id": "AR-EVID-001",
+    "name": "Evid"
+  },
+  {
+    "id": "AR-INT-001",
+    "name": "Int"
+  },
+  {
+    "id": "AR-SIGN-001",
+    "name": "Sign"
+  },
+  {
+    "id": "AR-SOURCE-001",
+    "name": "Source"
+  }
+]

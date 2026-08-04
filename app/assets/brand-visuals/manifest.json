@@ -1,0 +1,235 @@
+{
+  "version": "M29.5",
+  "count": 32,
+  "assets": [
+    {
+      "file": "about-legaltech.svg",
+      "title": "Tecnología jurídica responsable",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "ai-human-review.svg",
+      "title": "IA y revisión humana",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "business-workflow.svg",
+      "title": "Soluciones para empresas",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "document-ready.svg",
+      "title": "Documento listo",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "empty-cases-premium.svg",
+      "title": "Aún no hay expedientes",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "empty-documents-premium.svg",
+      "title": "Aún no hay documentos",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "hero-guided-solution.svg",
+      "title": "Solución jurídica guiada",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "people-journey.svg",
+      "title": "Soluciones para personas",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "process-01-need.svg",
+      "title": "Paso del proceso jurídico",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "process-02-interview.svg",
+      "title": "Paso del proceso jurídico",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "process-03-analysis.svg",
+      "title": "Paso del proceso jurídico",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "process-04-document.svg",
+      "title": "Paso del proceso jurídico",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "process-05-review.svg",
+      "title": "Paso del proceso jurídico",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "process-06-trace.svg",
+      "title": "Paso del proceso jurídico",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "product-co-ar-001.svg",
+      "title": "Arrendamiento",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "product-co-cd-001.svg",
+      "title": "Hábeas data",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "product-co-cd-003.svg",
+      "title": "Protección al consumidor",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "product-co-cd-004.svg",
+      "title": "Acuerdo de pago",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "product-co-em-003.svg",
+      "title": "Prestación de servicios",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "product-co-em-004.svg",
+      "title": "Confidencialidad",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "product-co-la-001.svg",
+      "title": "Liquidación laboral",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "product-co-la-002.svg",
+      "title": "Contrato de trabajo",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "product-co-sa-001.svg",
+      "title": "Salud",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "product-co-tr-001.svg",
+      "title": "Fotodetección",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "product-co-tr-002.svg",
+      "title": "Reclamo de fotomulta",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "review-pending.svg",
+      "title": "Documento en revisión",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "trust-and-security.svg",
+      "title": "Confianza y seguridad",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true
+    },
+    {
+      "file": "conversion-compass.svg",
+      "title": "Orientador de soluciones",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true,
+      "iteration": "M29.5"
+    },
+    {
+      "file": "conversion-path.svg",
+      "title": "Ruta de conversión clara",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true,
+      "iteration": "M29.5"
+    },
+    {
+      "file": "demo-conversation.svg",
+      "title": "Demostración comercial",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true,
+      "iteration": "M29.5"
+    },
+    {
+      "file": "analytics-privacy.svg",
+      "title": "Analítica con privacidad",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true,
+      "iteration": "M29.5"
+    },
+    {
+      "file": "performance-speed.svg",
+      "title": "Rendimiento frontend",
+      "format": "svg",
+      "background": "transparent/ivory",
+      "brand_palette": true,
+      "iteration": "M29.5"
+    }
+  ]
+}

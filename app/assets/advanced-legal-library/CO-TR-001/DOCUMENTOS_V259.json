@@ -1,0 +1,72 @@
+{
+  "version": "2.59",
+  "product_id": "CO-TR-001",
+  "documents": [
+    {
+      "id": "sast_preliminary_report",
+      "filename": "informe_preliminar_chequeo_sast",
+      "title": "Informe preliminar de chequeo SAST",
+      "kind": "report",
+      "modes": [
+        "precheck",
+        "registration"
+      ],
+      "required": [
+        "authority.name",
+        "infraction.date",
+        "consents.preliminary"
+      ],
+      "subject": "Resultado preliminar y límites del cruce SAST"
+    },
+    {
+      "id": "sast_source_trace",
+      "filename": "ficha_trazabilidad_fuentes_sast",
+      "title": "Ficha de trazabilidad de fuentes y coincidencias SAST",
+      "kind": "traceability",
+      "modes": [
+        "precheck",
+        "registration"
+      ],
+      "required": [
+        "authority.name",
+        "infraction.date",
+        "consents.preliminary"
+      ],
+      "subject": "Trazabilidad de fuentes oficiales, rangos y coincidencias"
+    },
+    {
+      "id": "sast_verified_case_file",
+      "filename": "expediente_verificado_chequeo_sast",
+      "title": "Expediente verificado de chequeo SAST",
+      "kind": "case_file",
+      "modes": [
+        "registration"
+      ],
+      "required": [
+        "authority.name",
+        "infraction.date",
+        "consents.preliminary",
+        "identity.full_name",
+        "identity.email",
+        "consents.data_processing"
+      ],
+      "subject": "Expediente verificable con consentimiento y minimización de datos"
+    },
+    {
+      "id": "sast_professional_review_request",
+      "filename": "solicitud_revision_profesional_sast",
+      "title": "Solicitud de revisión profesional de caso SAST",
+      "kind": "review",
+      "modes": [
+        "precheck",
+        "registration"
+      ],
+      "required": [
+        "authority.name",
+        "infraction.date",
+        "consents.preliminary"
+      ],
+      "subject": "Escalamiento jurídico y probatorio del caso SAST"
+    }
+  ]
+}

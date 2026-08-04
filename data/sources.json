@@ -1,0 +1,1320 @@
+{
+  "CO-TR-001": [
+    {
+      "id": "TR1-S1",
+      "title": "Ley 1843 de 2017",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "type": "norma",
+      "status": "vigente",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30032605",
+      "note": "Instalación, autorización, señalización, procedimiento y control SAST.",
+      "last_verified": "2026-07-20",
+      "verification_status": "Fuente oficial consultada"
+    },
+    {
+      "id": "TR1-S2",
+      "title": "Ley 769 de 2002 - Código Nacional de Tránsito",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "type": "norma",
+      "status": "vigente con modificaciones",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1826223",
+      "note": "Procedimiento contravencional, comparendo, sanción, recursos y caducidad.",
+      "last_verified": "2026-07-19",
+      "verification_status": "Fuente oficial"
+    },
+    {
+      "id": "TR1-S3",
+      "title": "Decreto Ley 2106 de 2019, artículo 109",
+      "authority": "Presidencia de la República / SUIN-Juriscol",
+      "type": "norma",
+      "status": "vigente",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30038582",
+      "note": "Traslado de autorización SAST a la Agencia Nacional de Seguridad Vial.",
+      "last_verified": "2026-07-19",
+      "verification_status": "Fuente oficial"
+    },
+    {
+      "id": "TR1-S4",
+      "title": "Ley 2294 de 2023, artículo 181",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "type": "norma",
+      "status": "vigente",
+      "url": "https://www.suin-juriscol.gov.co/clp/contenidos.dll/Leyes/30046580",
+      "note": "Excepción de autorización para controles en infraestructura de transporte público, con señalización.",
+      "last_verified": "2026-07-19",
+      "verification_status": "Fuente oficial"
+    },
+    {
+      "id": "TR1-S5",
+      "title": "Resolución 20203040011245 de 2020",
+      "authority": "Ministerio de Transporte y ANSV",
+      "type": "resolución",
+      "status": "vigente por verificar frente a modificaciones",
+      "url": "https://mintransporte.gov.co/publicaciones/9590/normatividad-racionalizacion/",
+      "note": "Criterios técnicos para instalación y operación SAST.",
+      "last_verified": "2026-07-20",
+      "verification_status": "Página oficial del Ministerio"
+    },
+    {
+      "id": "TR1-S6",
+      "title": "Resolución ANSV 181 de 2020",
+      "authority": "Agencia Nacional de Seguridad Vial",
+      "type": "resolución",
+      "status": "vigente por verificar",
+      "url": "https://fotodeteccion.ansv.gov.co/",
+      "note": "Metodología de evaluación de criterios técnicos de seguridad vial.",
+      "last_verified": "2026-07-19",
+      "verification_status": "Portal oficial del trámite"
+    },
+    {
+      "id": "TR1-S7",
+      "title": "Resolución 352 de 2020",
+      "authority": "Ministerio de Comercio, Industria y Turismo / INM",
+      "type": "resolución",
+      "status": "vigente por verificar",
+      "url": "https://www.inm.gov.co/",
+      "note": "Alternativas de trazabilidad metrológica para mediciones de velocidad.",
+      "last_verified": "2026-07-19",
+      "verification_status": "Referencia oficial a cotejar por equipo"
+    },
+    {
+      "id": "TR1-S8",
+      "title": "Sistema de Información de Fotodetección",
+      "authority": "Agencia Nacional de Seguridad Vial",
+      "type": "registro oficial",
+      "status": "consulta dinámica",
+      "url": "https://fotodeteccion.ansv.gov.co/",
+      "note": "Mapa y consulta de cámaras autorizadas; debe verificarse el punto exacto y la fecha.",
+      "last_verified": "2026-07-20",
+      "verification_status": "Fuente dinámica oficial"
+    },
+    {
+      "id": "TR1-S9",
+      "title": "Sentencia C-038 de 2020",
+      "authority": "Corte Constitucional",
+      "type": "jurisprudencia",
+      "status": "vigente",
+      "url": "https://www.corteconstitucional.gov.co/relatoria/2020/C-038-20.htm",
+      "note": "Inexequibilidad de responsabilidad solidaria automática del propietario.",
+      "last_verified": "2026-07-20",
+      "verification_status": "Relatoría oficial"
+    },
+    {
+      "id": "TR1-S10",
+      "title": "Sentencia C-321 de 2022",
+      "authority": "Corte Constitucional",
+      "type": "jurisprudencia",
+      "status": "vigente",
+      "url": "https://www.corteconstitucional.gov.co/Relatoria/2022/C-321-22.htm",
+      "note": "Deberes del propietario sujetos a imputación culpable y procedimiento.",
+      "last_verified": "2026-07-20",
+      "verification_status": "Relatoría oficial"
+    },
+    {
+      "id": "TR1-S11",
+      "title": "Investigaciones SAST a 37 organismos de tránsito - 19 mayo 2026",
+      "authority": "Superintendencia de Transporte",
+      "type": "comunicación oficial",
+      "status": "actuaciones administrativas en desarrollo",
+      "url": "https://www.supertransporte.gov.co/index.php/comunicaciones-2026/gobierno-nacional-investiga-a-37-organismos-de-transito-mas-de-75-millones-de-fotomultas-estan-bajo-la-lupa-y-58-millones-quedaran-sin-validez/page/2/",
+      "note": "Anuncio oficial que requiere individualizar autoridad, período, acto y efecto.",
+      "last_verified": "2026-07-20",
+      "verification_status": "Fuente oficial actual"
+    },
+    {
+      "id": "TR1-S12",
+      "title": "Investigaciones SAST a 12 organismos adicionales - 29 mayo 2026",
+      "authority": "Superintendencia de Transporte",
+      "type": "comunicación oficial",
+      "status": "actuaciones administrativas en desarrollo",
+      "url": "https://www.supertransporte.gov.co/index.php/comunicaciones-2026/la-supertransporte-abrio-investigacion-a-otros-12-organismos-de-transito-por-presuntas-irregularidades-en-sistemas-de-fotodeteccion/",
+      "note": "Amplía el universo investigado; no reemplaza actos individuales ni decisiones firmes.",
+      "last_verified": "2026-07-19",
+      "verification_status": "Fuente oficial actual"
+    },
+    {
+      "id": "TR1-S13",
+      "title": "Snapshot curado SAST LegalAIZ.it v2.26",
+      "authority": "LegalAIZ.it",
+      "type": "dataset interno trazable",
+      "status": "muestra de 10 registros",
+      "url": "canonical_sources/candidates/CO-TR-001/LegalAIZit_CO-TR-001_SAST_Muestra_Estructurada_v2.9.csv",
+      "note": "Muestra demostrativa de 10 actuaciones dentro de un universo histórico esperado de 49; nunca sustituye la consulta oficial.",
+      "last_verified": "2026-07-19",
+      "verification_status": "Integridad local verificada; cobertura incompleta"
+    }
+  ],
+  "CO-TR-002": [
+    {
+      "id": "TR2-S1",
+      "title": "Constitución Política, artículos 23 y 29",
+      "authority": "República de Colombia",
+      "type": "constitutional",
+      "status": "vigente",
+      "url": "https://www.secretariasenado.gov.co/constitucion-politica",
+      "last_verified": "2026-07-19",
+      "verification_status": "Verificada para petición y debido proceso"
+    },
+    {
+      "id": "TR2-S2",
+      "title": "Ley 1843 de 2017 — sistemas automáticos y notificación",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "type": "statute",
+      "status": "vigente con control constitucional",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30032605",
+      "last_verified": "2026-07-20",
+      "verification_status": "Artículo 8: envío dentro de tres días hábiles después de validación y comparecencia posterior a entrega"
+    },
+    {
+      "id": "TR2-S3",
+      "title": "Ley 769 de 2002 — Código Nacional de Tránsito",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "type": "statute",
+      "status": "vigente con modificaciones",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1826223",
+      "last_verified": "2026-07-19",
+      "verification_status": "Procedimiento contravencional y naturaleza del comparendo"
+    },
+    {
+      "id": "TR2-S4",
+      "title": "Sentencia C-038 de 2020",
+      "authority": "Corte Constitucional",
+      "type": "jurisprudence",
+      "status": "vigente",
+      "url": "https://www.corteconstitucional.gov.co/relatoria/2020/C-038-20.htm",
+      "last_verified": "2026-07-20",
+      "verification_status": "Responsabilidad sancionatoria exige imputación personal; inexequibilidad de solidaridad propietario-conductor"
+    },
+    {
+      "id": "TR2-S5",
+      "title": "Ley 2161 de 2021, artículo 10",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "type": "statute",
+      "status": "vigente con interpretación condicionada",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30043709",
+      "last_verified": "2026-07-19",
+      "verification_status": "Deberes del propietario sujetos a procedimiento e imputación culpable"
+    },
+    {
+      "id": "TR2-S6",
+      "title": "Sentencia C-321 de 2022",
+      "authority": "Corte Constitucional",
+      "type": "jurisprudence",
+      "status": "vigente",
+      "url": "https://www.corteconstitucional.gov.co/Relatoria/2022/C-321-22.htm",
+      "last_verified": "2026-07-20",
+      "verification_status": "Condiciona sanción del propietario a prueba de incumplimiento culpable"
+    },
+    {
+      "id": "TR2-S7",
+      "title": "Ley 1755 de 2015 — derecho de petición",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "type": "statute",
+      "status": "vigente",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30019822",
+      "last_verified": "2026-07-19",
+      "verification_status": "Peticiones, documentos, información y términos de respuesta"
+    },
+    {
+      "id": "TR2-S8",
+      "title": "Ley 1005 de 2006 y régimen RUNT",
+      "authority": "Congreso de Colombia",
+      "type": "statute",
+      "status": "vigente con modificaciones",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1673074",
+      "last_verified": "2026-07-19",
+      "verification_status": "Registro y datos del propietario"
+    },
+    {
+      "id": "TR2-S9",
+      "title": "Ley 1437 de 2011 — CPACA",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "type": "statute",
+      "status": "vigente con modificaciones",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1680117",
+      "last_verified": "2026-07-19",
+      "verification_status": "Actos, notificaciones, revocatoria directa y control judicial"
+    },
+    {
+      "id": "TR2-S10",
+      "title": "Ley 527 de 1999 — mensajes de datos y evidencia electrónica",
+      "authority": "Congreso de Colombia",
+      "type": "statute",
+      "status": "vigente",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1662013",
+      "last_verified": "2026-07-19",
+      "verification_status": "Integridad, autenticidad y valor probatorio de mensajes de datos"
+    },
+    {
+      "id": "TR2-S11",
+      "title": "Resolución 20203040011245 de 2020 — criterios técnicos SAST",
+      "authority": "Ministerio de Transporte y ANSV",
+      "type": "regulation",
+      "status": "vigente según portal oficial",
+      "url": "https://mintransporte.gov.co/publicaciones/9590/normatividad-racionalizacion/",
+      "last_verified": "2026-07-20",
+      "verification_status": "Autorización, operación, señalización y criterios técnicos"
+    },
+    {
+      "id": "TR2-S12",
+      "title": "Aclaración INM 2026 sobre concepto de desempeño y trazabilidad",
+      "authority": "Instituto Nacional de Metrología",
+      "type": "official_guidance",
+      "status": "vigente",
+      "url": "https://inm.gov.co/informacion-fotomultas-concepto-de-desempeno/",
+      "last_verified": "2026-07-20",
+      "verification_status": "Concepto exigible solo 22/03/2018–19/08/2020; calibración y trazabilidad continúan"
+    },
+    {
+      "id": "TR2-S13",
+      "title": "Comunicado oficial 2026 sobre investigaciones a organismos de tránsito y fotodetecciones",
+      "authority": "Superintendencia de Transporte",
+      "type": "official_communication",
+      "status": "actuaciones administrativas en curso; requiere individualización",
+      "url": "https://www.supertransporte.gov.co/index.php/comunicaciones-2026/gobierno-nacional-investiga-a-37-organismos-de-transito-mas-de-75-millones-de-fotomultas-estan-bajo-la-lupa-y-58-millones-quedaran-sin-validez/page/2/",
+      "last_verified": "2026-07-20",
+      "verification_status": "No autoriza inferir anulación individual automática; cotejar autoridad, equipo, período y acto"
+    }
+  ],
+  "CO-LA-001": [
+    {
+      "id": "LA1-S1",
+      "title": "Código Sustantivo del Trabajo consolidado — artículos 64, 65, 186, 249, 253 y 306",
+      "authority": "SUIN-Juriscol",
+      "type": "code",
+      "status": "vigente; consultar texto consolidado",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias.",
+      "official_reference": "https://www.suin-juriscol.gov.co/viewdocument.asp?ruta=codigo%2F30019323"
+    },
+    {
+      "id": "LA1-S2",
+      "title": "Ley 50 de 1990 — régimen anualizado de cesantías, artículo 99",
+      "authority": "SUIN-Juriscol",
+      "type": "statute",
+      "status": "vigente con modificaciones",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias.",
+      "official_reference": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1604809"
+    },
+    {
+      "id": "LA1-S3",
+      "title": "Ley 52 de 1975 — intereses anuales a las cesantías",
+      "authority": "SUIN-Juriscol",
+      "type": "statute",
+      "status": "vigente según ficha oficial",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias.",
+      "official_reference": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1606193"
+    },
+    {
+      "id": "LA1-S4",
+      "title": "Ley 789 de 2002 — indemnización por terminación y mora, artículos 28 y 29",
+      "authority": "SUIN-Juriscol",
+      "type": "statute",
+      "status": "vigente con integración al CST",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias.",
+      "official_reference": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1668469"
+    },
+    {
+      "id": "LA1-S5",
+      "title": "Ley 2466 de 2025 — reforma laboral y modificaciones al Código Sustantivo del Trabajo",
+      "authority": "SUIN-Juriscol",
+      "type": "statute",
+      "status": "vigente; verificar transición y reglamentación",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias.",
+      "official_reference": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F30055086"
+    },
+    {
+      "id": "LA1-S6",
+      "title": "Decreto 1469 de 2025 — salario mínimo mensual legal de 2026",
+      "authority": "SUIN-Juriscol / Consejo de Estado",
+      "type": "decree",
+      "status": "vigente al 20 de julio de 2026; suspensión provisional revocada; decisión de fondo pendiente",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias.",
+      "official_reference": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30055940"
+    },
+    {
+      "id": "LA1-S7",
+      "title": "Decreto 1470 de 2025 — auxilio de transporte para 2026",
+      "authority": "SUIN-Juriscol",
+      "type": "decree",
+      "status": "vigente desde 1 de enero de 2026",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias.",
+      "official_reference": "https://www.suin-juriscol.gov.co/clp/contenidos.dll/Decretos/30055941"
+    },
+    {
+      "id": "LA1-S8",
+      "title": "Constitución Política de Colombia — artículo 53 y principios mínimos del trabajo",
+      "authority": "SUIN-Juriscol",
+      "type": "constitution",
+      "status": "vigente",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias.",
+      "official_reference": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1687988"
+    },
+    {
+      "id": "LA1-S9",
+      "title": "Corte Suprema de Justicia, Sala Laboral — interpretación del artículo 65 del CST (SL2338-2023)",
+      "authority": "Corte Suprema de Justicia",
+      "type": "case_law",
+      "status": "jurisprudencia oficial; verificar pertinencia fáctica",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias.",
+      "official_reference": "https://cortesuprema.gov.co/rl_dl_sl2338-2023/"
+    },
+    {
+      "id": "LA1-S10",
+      "title": "Parámetros laborales LegalAIZ.it 2026.3 — trazabilidad de salario mínimo, auxilio, divisores y redondeo",
+      "authority": "LegalAIZ.it",
+      "type": "parameter-set",
+      "status": "versionado y conectado a fuentes oficiales",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias.",
+      "official_reference": "data/parameters.json#CO-LA-001"
+    }
+  ],
+  "CO-LA-002": [
+    {
+      "id": "LA2-S1",
+      "title": "Código Sustantivo del Trabajo consolidado",
+      "authority": "Secretaría Jurídica del Senado / SUIN-Juriscol",
+      "type": "code",
+      "status": "vigente sujeto a concordancias",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+      "last_verified": "2026-08-02",
+      "verification_status": "Revalidada para estructura contractual, período de prueba, salario, obligaciones, terminación y concordancias vigentes."
+    },
+    {
+      "id": "LA2-S2",
+      "title": "Ley 2466 de 2025 — reforma laboral",
+      "authority": "Congreso de Colombia / Secretaría Jurídica del Senado",
+      "type": "statute",
+      "status": "vigente",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2466_2025.html",
+      "last_verified": "2026-08-02",
+      "verification_status": "Revalidada frente a la reforma laboral vigente para modalidades contractuales, jornada, nocturnidad, descansos, horas extra y debido proceso disciplinario."
+    },
+    {
+      "id": "LA2-S3",
+      "title": "Ley 2101 de 2021 — reducción de jornada",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "type": "statute",
+      "status": "vigente",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F30042017",
+      "last_verified": "2026-08-02",
+      "verification_status": "Revalidada para la reducción gradual: jornada máxima semanal de 42 horas aplicable desde el 15 de julio de 2026."
+    },
+    {
+      "id": "LA2-S4",
+      "title": "Decreto 159 de 2026 — salario mínimo transitorio",
+      "authority": "Gobierno nacional / SUIN-Juriscol",
+      "type": "decree",
+      "status": "vigente transitorio",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30056106",
+      "last_verified": "2026-07-18",
+      "verification_status": "Valor utilizado: $1.750.905."
+    },
+    {
+      "id": "LA2-S5",
+      "title": "Decreto 1470 de 2025 — auxilio de transporte 2026",
+      "authority": "Gobierno nacional / SUIN-Juriscol",
+      "type": "decree",
+      "status": "vigente 2026",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30055941",
+      "last_verified": "2026-07-18",
+      "verification_status": "Valor utilizado: $249.095 para quienes cumplen condiciones."
+    },
+    {
+      "id": "LA2-S6",
+      "title": "Ley 1221 de 2008 y Decreto 1072 de 2015 — teletrabajo y SG-SST",
+      "authority": "Congreso y Gobierno nacional / SUIN-Juriscol",
+      "type": "regulation",
+      "status": "vigente",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Decretos%2F30019522",
+      "last_verified": "2026-07-30",
+      "verification_status": "Verificada para teletrabajo, ARL, equipos, privacidad y SG-SST."
+    },
+    {
+      "id": "LA2-S7",
+      "title": "Ley 2121 de 2021 — trabajo remoto",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "type": "statute",
+      "status": "vigente",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30042108",
+      "last_verified": "2026-07-18",
+      "verification_status": "Verificada para ejecución íntegramente remota y firma electrónica/digital."
+    },
+    {
+      "id": "LA2-S8",
+      "title": "Ley 2088 de 2021 — trabajo en casa",
+      "authority": "Congreso de Colombia",
+      "type": "statute",
+      "status": "vigente",
+      "last_verified": "2026-07-18",
+      "verification_status": "Verificada como habilitación temporal, distinta del teletrabajo y trabajo remoto."
+    },
+    {
+      "id": "LA2-S9",
+      "title": "Ley 2191 de 2022 — desconexión laboral",
+      "authority": "Congreso de Colombia",
+      "type": "statute",
+      "status": "vigente",
+      "last_verified": "2026-07-18",
+      "verification_status": "Verificada para política y límites de comunicaciones fuera de jornada."
+    },
+    {
+      "id": "LA2-S10",
+      "title": "Ley 1581 de 2012 y reglamentación — datos personales",
+      "authority": "Congreso y Gobierno nacional",
+      "type": "data_protection",
+      "status": "vigente",
+      "last_verified": "2026-07-18",
+      "verification_status": "Aplicada a datos laborales, sensibles, biometría y monitoreo."
+    },
+    {
+      "id": "LA2-S11",
+      "title": "Decisión Andina 351 de 1993 y Ley 23 de 1982 — propiedad intelectual",
+      "authority": "Comunidad Andina y República de Colombia",
+      "type": "ip",
+      "status": "vigente",
+      "last_verified": "2026-07-18",
+      "verification_status": "Aplicada a derechos patrimoniales, morales y entregables laborales."
+    },
+    {
+      "id": "LA2-S12",
+      "title": "Paquete jurídico maestro CO-LA-002",
+      "authority": "LegalAIZ.it",
+      "type": "package",
+      "status": "integrado v2.24",
+      "last_verified": "2026-07-18",
+      "verification_status": "Modelo completo convertido en bloques, anexos y documentos trazables."
+    }
+  ],
+  "CO-EM-003": [
+    {
+      "id": "EM3-S1",
+      "title": "Código Civil y Código de Comercio — fuerza obligatoria, buena fe y reglas generales del contrato",
+      "authority": "Secretaría Jurídica Distrital / SUIN-Juriscol",
+      "type": "statute",
+      "status": "Fuentes oficiales vigentes consultadas; verificar texto aplicable al caso antes de firma.",
+      "official_url": "https://www.suin-juriscol.gov.co/",
+      "last_verified": "2026-08-02",
+      "verification_status": "Revisión de vigencia e interpretación requerida antes de publicación profesional."
+    },
+    {
+      "id": "EM3-S2",
+      "title": "Código Sustantivo del Trabajo, artículos 23 y 24, con modificación de la Ley 2466 de 2025",
+      "authority": "Departamento Administrativo de la Función Pública",
+      "type": "statute",
+      "status": "fuente oficial consultada",
+      "official_url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=199983",
+      "last_verified": "2026-08-02",
+      "verification_status": "Usada para identificar elementos e indicios de relación laboral; la calificación depende de la realidad probada."
+    },
+    {
+      "id": "EM3-S3",
+      "title": "Ley 1581 de 2012 y reglamentación compilada — protección de datos personales",
+      "authority": "República de Colombia / SUIN-Juriscol",
+      "type": "statute",
+      "status": "fuente oficial consultada",
+      "official_url": "https://www.suin-juriscol.gov.co/",
+      "last_verified": "2026-08-02",
+      "verification_status": "Aplicación concreta sujeta a roles, finalidades, categorías de datos y operación real."
+    },
+    {
+      "id": "EM3-S4",
+      "title": "Ley 527 de 1999 y Decreto 2364 de 2012 — mensajes de datos y firma electrónica",
+      "authority": "República de Colombia / SUIN-Juriscol",
+      "type": "statute",
+      "status": "fuente oficial consultada",
+      "official_url": "https://www.suin-juriscol.gov.co/",
+      "last_verified": "2026-08-02",
+      "verification_status": "La eficacia del mecanismo depende de su confiabilidad, atribución, integridad y evidencia."
+    },
+    {
+      "id": "EM3-S5",
+      "title": "Decisión Andina 351 de 1993 — régimen común sobre derecho de autor y derechos conexos",
+      "authority": "Comunidad Andina / fuentes oficiales colombianas",
+      "type": "supranational",
+      "status": "fuente oficial consultada",
+      "official_url": "https://www.suin-juriscol.gov.co/",
+      "last_verified": "2026-08-02",
+      "verification_status": "Revisar junto con la normativa nacional aplicable y el tipo de resultado protegido."
+    },
+    {
+      "id": "EM3-S6",
+      "title": "Paquete jurídico LegalAIZ.it CO-EM-003 v1 y candidato estructurado v2.13",
+      "authority": "LegalAIZ.it",
+      "type": "internal_package",
+      "status": "base avanzada pendiente de aprobación jurídica final",
+      "last_verified": "2026-08-02",
+      "verification_status": "Disponible para desarrollo y QA; no prueba identidad literal del original ni autoriza uso profesional."
+    },
+    {
+      "id": "EM3-S7",
+      "title": "Ley 2466 de 2025 — límites a la subordinación y reforma laboral",
+      "authority": "Congreso de la República / Departamento Administrativo de la Función Pública",
+      "type": "statute",
+      "status": "Fuente oficial consultada; aplicación sujeta a la realidad de la ejecución contractual.",
+      "official_url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=260676",
+      "last_verified": "2026-08-02",
+      "verification_status": "Usada para reforzar la prevención de subordinación material; no convierte por sí sola un contrato civil o comercial en laboral."
+    }
+  ],
+  "CO-EM-004": [
+    {
+      "id": "EM4-S1",
+      "title": "Decisión 486 de 2000 — régimen común sobre propiedad industrial y secretos empresariales",
+      "authority": "Comunidad Andina / SIC",
+      "type": "supranational_decision",
+      "status": "vigente; verificar aplicación concreta",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias.",
+      "official_reference": "https://www.sic.gov.co/sites/default/files/files/Normativa/Decision_486_2000.pdf"
+    },
+    {
+      "id": "EM4-S2",
+      "title": "Ley 1581 de 2012 — régimen general de protección de datos personales",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "type": "statute",
+      "status": "vigente; verificar reglamentación y roles",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias.",
+      "official_reference": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html"
+    },
+    {
+      "id": "EM4-S3",
+      "title": "Decisión Andina 351 de 1993 — derecho de autor y derechos conexos",
+      "authority": "Comunidad Andina / DNDA",
+      "type": "supranational_decision",
+      "status": "vigente; verificar modalidad de explotación",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias.",
+      "official_reference": "https://www.derechodeautor.gov.co/es/normatividad"
+    },
+    {
+      "id": "EM4-S4",
+      "title": "Ley 23 de 1982 — derechos de autor",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "type": "statute",
+      "status": "vigente con modificaciones; verificar texto integrado",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias.",
+      "official_reference": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0023_1982.html"
+    },
+    {
+      "id": "EM4-S5",
+      "title": "Ley 1915 de 2018 — modificación del régimen de derecho de autor",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "type": "statute",
+      "status": "vigente; verificar alcance contractual",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias.",
+      "official_reference": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1915_2018.html"
+    },
+    {
+      "id": "EM4-S6",
+      "title": "Ley 256 de 1996 — competencia desleal y violación de secretos",
+      "authority": "Congreso de Colombia / SIC",
+      "type": "statute",
+      "status": "vigente; verificar supuesto de hecho",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias.",
+      "official_reference": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0256_1996.html"
+    },
+    {
+      "id": "EM4-S7",
+      "title": "Paquete jurídico CO-EM-004 v2 y matriz de maduración v2.14",
+      "authority": "LegalAIZ.it",
+      "type": "internal_package",
+      "status": "pendiente de aprobación jurídica dual",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias.",
+      "official_reference": "Biblioteca Jurídica Avanzada LegalAIZ.it"
+    }
+  ],
+  "CO-AR-001": [
+    {
+      "id": "AR-S1",
+      "title": "Ley 820 de 2003 - régimen de arrendamiento de vivienda urbana",
+      "authority": "Congreso de Colombia",
+      "type": "statute",
+      "status": "vigente/verificada",
+      "last_verified": "2026-08-02",
+      "verification_status": "Revalidada para contenido mínimo, canon, garantías, obligaciones, reajuste, terminación y restitución en vivienda urbana.",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1669010"
+    },
+    {
+      "id": "AR-S2",
+      "title": "Ley 675 de 2001 - régimen de propiedad horizontal",
+      "authority": "Congreso de Colombia",
+      "type": "statute",
+      "status": "vigente/verificada",
+      "last_verified": "2026-07-17",
+      "verification_status": "Verificada para v2.23; revalidación automática ante cambio normativo",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1665811"
+    },
+    {
+      "id": "AR-S3",
+      "title": "Código Civil - contrato de arrendamiento, reparaciones y restitución",
+      "authority": "Congreso de Colombia",
+      "type": "statute",
+      "status": "vigente/verificada",
+      "last_verified": "2026-08-02",
+      "verification_status": "Revalidada como marco civil complementario sobre arrendamiento, conservación, reparaciones, incumplimiento y restitución.",
+      "official_url": "https://suin-juriscol.gov.co/viewDocument.asp?id=1827111"
+    },
+    {
+      "id": "AR-S4",
+      "title": "Ley 1564 de 2012 - artículo 384, restitución de inmueble arrendado",
+      "authority": "Congreso de Colombia",
+      "type": "statute",
+      "status": "vigente/verificada",
+      "last_verified": "2026-07-17",
+      "verification_status": "Verificada para v2.23; revalidación automática ante cambio normativo",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1564_2012_pr013.html"
+    },
+    {
+      "id": "AR-S5",
+      "title": "Decreto 51 de 2004 / Decreto 1077 de 2015 - matrícula de arrendadores",
+      "authority": "Ministerio de Vivienda",
+      "type": "regulation",
+      "status": "vigente/verificada",
+      "last_verified": "2026-07-17",
+      "verification_status": "Verificada para v2.23; revalidación automática ante cambio normativo",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1840085"
+    },
+    {
+      "id": "AR-S6",
+      "title": "IPC total nacional 2025: variación anual 5,10%",
+      "authority": "DANE",
+      "type": "official_statistic",
+      "status": "vigente/verificada",
+      "last_verified": "2026-07-17",
+      "verification_status": "Verificada para v2.23; revalidación automática ante cambio normativo",
+      "official_url": "https://www.dane.gov.co/files/operaciones/IPC/dic2025/graf-IPC-dic2025.html"
+    },
+    {
+      "id": "AR-S7",
+      "title": "Ley 1581 de 2012 - protección de datos personales",
+      "authority": "Congreso de Colombia",
+      "type": "statute",
+      "status": "vigente/verificada",
+      "last_verified": "2026-07-17",
+      "verification_status": "Verificada para v2.23; revalidación automática ante cambio normativo",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1684507"
+    },
+    {
+      "id": "AR-S8",
+      "title": "Paquete jurídico completo CO-AR-001",
+      "authority": "LegalAIZ.it",
+      "type": "canonical_package",
+      "status": "modelo completo integrado",
+      "last_verified": "2026-07-17",
+      "verification_status": "Cotejo funcional v2.23; aprobación del abogado responsable según impacto"
+    }
+  ],
+  "CO-SA-001": [
+    {
+      "id": "SA-S1",
+      "title": "Constitución Política de Colombia — artículos 23, 44, 48 y 49",
+      "authority": "Secretaría Jurídica del Senado",
+      "type": "constitution",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/constitucion_politica_1991.html",
+      "status": "vigente con verificación oficial",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "SA-S2",
+      "title": "Ley Estatutaria 1755 de 2015 — derecho fundamental de petición",
+      "authority": "Secretaría Jurídica del Senado",
+      "type": "statute",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1755_2015.html",
+      "status": "vigente con afectaciones consultables",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "SA-S3",
+      "title": "Ley 1437 de 2011 — CPACA, texto actualizado",
+      "authority": "Secretaría Jurídica del Senado",
+      "type": "code",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1437_2011.html",
+      "status": "vigente con modificaciones",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "SA-S4",
+      "title": "Ley Estatutaria 1751 de 2015 — derecho fundamental a la salud",
+      "authority": "Secretaría Jurídica del Senado",
+      "type": "statute",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1751_2015.html",
+      "status": "vigente",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "SA-S5",
+      "title": "Resolución 1995 de 1999 — manejo de historia clínica",
+      "authority": "Ministerio de Salud y Protección Social",
+      "type": "resolution",
+      "url": "https://www.minsalud.gov.co/ihce/Paginas/Normatividad.aspx",
+      "status": "consultada en normatividad oficial",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "SA-S6",
+      "title": "Resolución 839 de 2017 — custodia, retención y disposición final de historia clínica",
+      "authority": "Ministerio de Salud y Protección Social",
+      "type": "resolution",
+      "url": "https://www.minsalud.gov.co/ihce/Paginas/Normatividad.aspx",
+      "status": "consultada en normatividad oficial",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "SA-S7",
+      "title": "Ley 1581 de 2012 — protección de datos personales y datos sensibles",
+      "authority": "Secretaría Jurídica del Senado",
+      "type": "statute",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html",
+      "status": "vigente con reglamentación",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "SA-S8",
+      "title": "Ley 2015 de 2020 — historia clínica electrónica interoperable",
+      "authority": "Secretaría Jurídica del Senado",
+      "type": "statute",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2015_2020.html",
+      "status": "vigente con reglamentación",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "SA-S9",
+      "title": "Resolución 229 de 2020 — carta de derechos y deberes de afiliados y pacientes",
+      "authority": "Ministerio de Salud y Protección Social / Normograma Supersalud",
+      "type": "resolution",
+      "url": "https://normograma.supersalud.gov.co/compilacion/docs/resolucion_minsaludps_0229_2020.htm",
+      "status": "texto oficial compilado",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "SA-S10",
+      "title": "Decreto 780 de 2016 — Decreto Único Reglamentario del Sector Salud",
+      "authority": "Ministerio de Salud y Protección Social",
+      "type": "decree",
+      "url": "https://www.minsalud.gov.co/Normativa/Paginas/decreto-unico-minsalud-780-de-2016.aspx",
+      "status": "compilación sectorial actualizable",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "SA-S11",
+      "title": "Sentencia T-370 de 2025 — respuesta de EPS y Supersalud al derecho de petición",
+      "authority": "Corte Constitucional",
+      "type": "case_law",
+      "url": "https://www.corteconstitucional.gov.co/relatoria/2025/T-370-25.htm",
+      "status": "providencia oficial",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "SA-S12",
+      "title": "Sentencia T-343 de 2008 — acceso de familiares a historia clínica de paciente fallecido",
+      "authority": "Corte Constitucional",
+      "type": "case_law",
+      "url": "https://www.corteconstitucional.gov.co/relatoria/2008/t-343-08.htm",
+      "status": "providencia oficial",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "SA-S13",
+      "title": "Canales, derechos y PQRD de la Superintendencia Nacional de Salud",
+      "authority": "Superintendencia Nacional de Salud",
+      "type": "official_guidance",
+      "url": "https://www.supersalud.gov.co/es-co/atencion-ciudadano/pqrd",
+      "status": "portal oficial operativo",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    }
+  ],
+  "CO-CD-001": [
+    {
+      "id": "CD1-S1",
+      "title": "Constitución Política de Colombia — artículos 15, 20 y 23",
+      "authority": "Asamblea Nacional Constituyente / Secretaría del Senado",
+      "type": "constitutional",
+      "url": "https://www.secretariasenado.gov.co/constitucion-politica",
+      "status": "vigente",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD1-S2",
+      "title": "Ley Estatutaria 1266 de 2008 — régimen de hábeas data financiero",
+      "authority": "Congreso de la República",
+      "type": "statute",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1266_2008.html",
+      "status": "vigente con modificaciones",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD1-S3",
+      "title": "Ley Estatutaria 2157 de 2021 — modificación de la Ley 1266",
+      "authority": "Congreso de la República",
+      "type": "statute",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2157_2021.html",
+      "status": "vigente",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD1-S4",
+      "title": "Sentencia C-1011 de 2008 — revisión constitucional de la Ley 1266",
+      "authority": "Corte Constitucional",
+      "type": "case_law",
+      "url": "https://www.corteconstitucional.gov.co/relatoria/2008/C-1011-08.htm",
+      "status": "precedente vigente",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD1-S5",
+      "title": "Sentencia C-282 de 2021 — revisión constitucional de la reforma",
+      "authority": "Corte Constitucional",
+      "type": "case_law",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/c-282_2021.html",
+      "status": "precedente vigente",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD1-S6",
+      "title": "Decreto 1074 de 2015 — Decreto Único del sector Comercio, Industria y Turismo",
+      "authority": "Presidencia de la República / Función Pública",
+      "type": "decree",
+      "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=76608",
+      "status": "vigente con modificaciones",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD1-S7",
+      "title": "Ley 1581 de 2012 — régimen general de protección de datos personales",
+      "authority": "Congreso de la República",
+      "type": "statute",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html",
+      "status": "vigente",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD1-S8",
+      "title": "Ley 527 de 1999 — mensajes de datos y comercio electrónico",
+      "authority": "Congreso de la República",
+      "type": "statute",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0527_1999.html",
+      "status": "vigente",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD1-S9",
+      "title": "Concepto SIC 22-228073 — soporte de la obligación, comunicación previa y reporte máximo de 18 meses",
+      "authority": "Superintendencia de Industria y Comercio",
+      "type": "official_concept",
+      "url": "https://sedeelectronica.sic.gov.co/publicaciones/boletin-juridico/concepto/el-reporte-negativo-de-informacion-financiera-debe-ser-sustentando-con-la-obligacion-respectiva",
+      "status": "criterio administrativo",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD1-S10",
+      "title": "Resolución SIC 2828 de 2017 — comunicación previa al reporte negativo",
+      "authority": "Superintendencia de Industria y Comercio",
+      "type": "administrative_decision",
+      "url": "https://www.sic.gov.co/boletin-juridico-abril-2017/violacion-del-deber-de-comunicacion-previa-al-reporte-negativo",
+      "status": "decisión administrativa",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD1-S11",
+      "title": "Decisiones de apelación SIC 2020 — comunicación previa y respuesta de fondo",
+      "authority": "Superintendencia de Industria y Comercio",
+      "type": "administrative_decisions",
+      "url": "https://www.sic.gov.co/decisiones-de-apelaci%C3%B3n-2020",
+      "status": "criterios administrativos",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD1-S12",
+      "title": "Sentencia C-413 de 2025 — control previo del régimen de suplantación de identidad",
+      "authority": "Corte Constitucional",
+      "type": "case_law",
+      "url": "https://www.corteconstitucional.gov.co/relatoria/2025/C-413-25.htm",
+      "status": "precedente de control previo vigente",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD1-S13",
+      "title": "Ley Estatutaria 2573 de 2026 — suplantación, cobros y reportes negativos",
+      "authority": "Congreso de la República / SUIN-Juriscol",
+      "type": "statute",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30056451",
+      "status": "promulgada; vigencia general diferida al 20 de noviembre de 2026",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD1-S14",
+      "title": "Decreto 159 de 2026 — SMLMV transitorio 2026 y umbral del 15 %",
+      "authority": "Gobierno nacional / SUIN-Juriscol",
+      "type": "economic_parameter",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30056106",
+      "status": "vigente transitoriamente hasta la sentencia que ponga fin al proceso de nulidad",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    }
+  ],
+  "CO-CD-003": [
+    {
+      "id": "CD3-S1",
+      "title": "Constitución Política de Colombia — artículo 78",
+      "authority": "Asamblea Nacional Constituyente / Estado colombiano",
+      "type": "constitution",
+      "status": "Vigente",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada en fuente oficial; volver a cotejar antes de publicación",
+      "url": "https://www.secretariasenado.gov.co/constitucion-politica"
+    },
+    {
+      "id": "CD3-S2",
+      "title": "Ley 1480 de 2011 — garantía legal, responsables y efectividad",
+      "authority": "Congreso de la República",
+      "type": "statute",
+      "status": "Vigente con modificaciones",
+      "last_verified": "2026-08-02",
+      "verification_status": "Texto actualizado consultado en fuente oficial",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1480_2011.html"
+    },
+    {
+      "id": "CD3-S3",
+      "title": "Ley 1480 de 2011 — artículo 47, derecho de retracto",
+      "authority": "Congreso de la República",
+      "type": "statute",
+      "status": "Vigente con modificación de Ley 2439 de 2024",
+      "last_verified": "2026-08-02",
+      "verification_status": "Texto actualizado consultado en fuente oficial",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1480_2011_pr001.html"
+    },
+    {
+      "id": "CD3-S4",
+      "title": "Ley 2439 de 2024 — protección del consumidor de comercio electrónico",
+      "authority": "Congreso de la República",
+      "type": "statute",
+      "status": "Vigente",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada en Secretaría del Senado y SUIN",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2439_2024.html"
+    },
+    {
+      "id": "CD3-S5",
+      "title": "Ley 1480 de 2011 — comercio electrónico y reversión del pago, artículos 50 y 51",
+      "authority": "Congreso de la República",
+      "type": "statute",
+      "status": "Vigente con modificaciones",
+      "last_verified": "2026-08-02",
+      "verification_status": "Texto actualizado consultado en fuente oficial",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1681955"
+    },
+    {
+      "id": "CD3-S6",
+      "title": "Decreto 735 de 2013 — efectividad de la garantía legal",
+      "authority": "Presidencia de la República / MinCIT",
+      "type": "regulation",
+      "status": "Vigente según SUIN",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificado en SUIN-Juriscol",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Decretos%2F1156200"
+    },
+    {
+      "id": "CD3-S7",
+      "title": "Decreto 1074 de 2015 — Decreto Único del sector Comercio, Industria y Turismo",
+      "authority": "Presidencia de la República / MinCIT",
+      "type": "regulation",
+      "status": "Vigente",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificado en SUIN-Juriscol; revisar modificaciones al día de uso",
+      "url": "https://www.suin-juriscol.gov.co/clp/contenidos.dll/Decretos/30019935"
+    },
+    {
+      "id": "CD3-S8",
+      "title": "Decreto 587 de 2016 — procedimiento de reversión del pago",
+      "authority": "Presidencia de la República / MinCIT",
+      "type": "regulation",
+      "status": "Vigente; incorporado al Decreto 1074 de 2015",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificado en SUIN-Juriscol y Función Pública",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Decretos%2F30020299"
+    },
+    {
+      "id": "CD3-S9",
+      "title": "SIC — modelo y requisitos de reclamación directa",
+      "authority": "Superintendencia de Industria y Comercio",
+      "type": "official_guidance",
+      "status": "Página oficial vigente",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada en sede electrónica SIC",
+      "url": "https://sedeelectronica.sic.gov.co/temas/asuntos-jurisdiccionales/proteccion-del-consumidor"
+    },
+    {
+      "id": "CD3-S10",
+      "title": "SIC — fallas en productos, garantía y término de respuesta",
+      "authority": "Superintendencia de Industria y Comercio",
+      "type": "official_guidance",
+      "status": "Página oficial vigente",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada en sede electrónica SIC",
+      "url": "https://sedeelectronica.sic.gov.co/index.php/temas/proteccion-al-consumidor/derechos-y-deberes/fallas-en-un-producto"
+    },
+    {
+      "id": "CD3-S11",
+      "title": "SIC — definición oficial de reversión del pago",
+      "authority": "Superintendencia de Industria y Comercio",
+      "type": "official_guidance",
+      "status": "Actualizada en 2026",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada en sede electrónica SIC",
+      "url": "https://sedeelectronica.sic.gov.co/atencion-y-servicios-a-la-ciudadania/glosario/reversion-del-pago"
+    },
+    {
+      "id": "CD3-S12",
+      "title": "Sentencia C-439 de 2019 — reversión del pago y protección del consumidor",
+      "authority": "Corte Constitucional",
+      "type": "jurisprudence",
+      "status": "Vigente; revisar alcance exacto",
+      "last_verified": "2026-08-02",
+      "verification_status": "Relatoría oficial consultada",
+      "url": "https://www.corteconstitucional.gov.co/relatoria/2019/c-439-19.htm"
+    },
+    {
+      "id": "CD3-S13",
+      "title": "Ley 1480 de 2011 — acción de protección al consumidor y reclamación directa, artículo 58",
+      "authority": "Congreso de la República",
+      "type": "statute",
+      "status": "Vigente con modificaciones",
+      "last_verified": "2026-08-02",
+      "verification_status": "Texto actualizado consultado en fuente oficial",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1480_2011_pr001.html"
+    },
+    {
+      "id": "CD3-S14",
+      "title": "SIC — diferencias entre denuncia y demanda de protección al consumidor",
+      "authority": "Superintendencia de Industria y Comercio",
+      "type": "official_guidance",
+      "status": "Página oficial vigente",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada en sede electrónica SIC",
+      "url": "https://sedeelectronica.sic.gov.co/temas/proteccion-al-consumidor/derechos-y-deberes/denuncias-y-demandas"
+    }
+  ],
+  "CO-CD-004": [
+    {
+      "id": "CD4-S1",
+      "title": "Constitución Política — intimidad, hábeas data y debido proceso",
+      "authority": "Secretaría Jurídica / fuentes constitucionales oficiales",
+      "type": "constitution",
+      "status": "vigente",
+      "url": "https://www.secretariasenado.gov.co/constitucion-politica",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD4-S2",
+      "title": "Código Civil — obligaciones, pago, novación, compensación y prescripción",
+      "authority": "Secretaría del Senado",
+      "type": "statute",
+      "status": "vigente con modificaciones",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_civil.html",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD4-S3",
+      "title": "Código de Comercio, artículos 619 a 622 — títulos valores y espacios en blanco",
+      "authority": "Secretaría del Senado",
+      "type": "statute",
+      "status": "vigente",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio_pr019.html",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD4-S4",
+      "title": "Código de Comercio, artículos 709 a 711 — requisitos del pagaré",
+      "authority": "Secretaría del Senado",
+      "type": "statute",
+      "status": "vigente",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio_pr021.html",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD4-S5",
+      "title": "Código de Comercio, artículo 884 — límites de intereses y sanción por exceso",
+      "authority": "Secretaría del Senado",
+      "type": "statute",
+      "status": "vigente",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_comercio_pr027.html",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD4-S6",
+      "title": "Código Penal, artículo 305 — usura",
+      "authority": "Secretaría del Senado",
+      "type": "statute",
+      "status": "vigente",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0599_2000_pr011.html",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD4-S7",
+      "title": "Código General del Proceso, artículo 422 — título ejecutivo",
+      "authority": "Secretaría del Senado",
+      "type": "statute",
+      "status": "vigente",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1564_2012_pr014.html",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD4-S8",
+      "title": "Ley 2300 de 2023 — canales, horarios y periodicidad de cobranza",
+      "authority": "SUIN-Juriscol",
+      "type": "statute",
+      "status": "vigente",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30046853",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD4-S9",
+      "title": "Sentencia C-278 de 2024 — control constitucional de la Ley 2300",
+      "authority": "Corte Constitucional",
+      "type": "case_law",
+      "status": "vigente",
+      "url": "https://www.corteconstitucional.gov.co/relatoria/2024/C-278-24.htm",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD4-S10",
+      "title": "Ley 1266 de 2008 — hábeas data financiero y comunicación previa",
+      "authority": "SUIN-Juriscol",
+      "type": "statute",
+      "status": "vigente con modificaciones",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes/1676616",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD4-S11",
+      "title": "Ley 2157 de 2021 — borrón y cuenta nueva y reporte de obligaciones de baja cuantía",
+      "authority": "Secretaría del Senado",
+      "type": "statute",
+      "status": "vigente",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2157_2021.html",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD4-S12",
+      "title": "Decreto 1154 de 2020 — factura electrónica como título valor y RADIAN",
+      "authority": "SUIN-Juriscol",
+      "type": "regulation",
+      "status": "vigente",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30039720",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD4-S13",
+      "title": "Ley 527 de 1999 — mensajes de datos, firmas e integridad",
+      "authority": "Secretaría del Senado",
+      "type": "statute",
+      "status": "vigente con modificaciones",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_0527_1999.html",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD4-S14",
+      "title": "Ley 2445 de 2025 — insolvencia de persona natural no comerciante y pequeña comerciante",
+      "authority": "Secretaría del Senado",
+      "type": "statute",
+      "status": "vigente con correcciones",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2445_2025.html",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD4-S15",
+      "title": "Resolución 1139 de 2026 — interés bancario corriente agosto de 2026",
+      "authority": "Superintendencia Financiera de Colombia",
+      "type": "dynamic_parameter",
+      "status": "vigente 2026-08-01 a 2026-08-31",
+      "url": "https://www.superfinanciera.gov.co/publicaciones/10116205/superfinanciera-certifica-el-interes-bancario-corriente/",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada para M28.2 en fuente oficial SFC. Tasas dinámicas aplicables únicamente durante agosto de 2026 y sujetas a revalidación en la fecha efectiva de uso."
+    },
+    {
+      "id": "CD4-S16",
+      "title": "Decreto 159 de 2026 — SMLMV transitorio 2026",
+      "authority": "SUIN-Juriscol",
+      "type": "dynamic_parameter",
+      "status": "vigente transitoriamente",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30056106",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD4-S17",
+      "title": "Ley 1231 de 2008 — factura como título valor, aceptación y pagos parciales",
+      "authority": "Secretaría del Senado",
+      "type": "statute",
+      "status": "vigente con modificaciones",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1231_2008.html",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    },
+    {
+      "id": "CD4-S18",
+      "title": "Ley 2024 de 2020 — pago en plazos justos en operaciones mercantiles",
+      "authority": "Secretaría del Senado",
+      "type": "statute",
+      "status": "vigente",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2024_2020.html",
+      "last_verified": "2026-08-02",
+      "verification_status": "Verificada focalmente para M27.4 en fuente oficial o registro institucional. Debe revalidarse al aplicar al caso concreto, especialmente parámetros dinámicos, vigencias diferidas y normas transitorias."
+    }
+  ]
+}

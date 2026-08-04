@@ -1,0 +1,112 @@
+{
+  "product_id": "CO-TR-001",
+  "version": "2.57",
+  "mode_default": "precheck",
+  "questions": [
+    {
+      "id": "Q01",
+      "path": "authority.name",
+      "label": "¿Qué organismo de tránsito aparece en el comparendo?",
+      "required": true,
+      "type": "text"
+    },
+    {
+      "id": "Q02",
+      "path": "infraction.date",
+      "label": "¿Cuál es la fecha de la presunta infracción?",
+      "required": true,
+      "type": "date"
+    },
+    {
+      "id": "Q03",
+      "path": "infraction.comparendo_number",
+      "label": "Número de comparendo, si está disponible",
+      "required": false,
+      "type": "text"
+    },
+    {
+      "id": "Q04",
+      "path": "device.location",
+      "label": "Ubicación o dispositivo SAST, si se conoce",
+      "required": false,
+      "type": "text"
+    },
+    {
+      "id": "Q05",
+      "path": "payment.status",
+      "label": "Estado de pago",
+      "required": false,
+      "type": "choice",
+      "options": [
+        "unpaid",
+        "paid",
+        "agreement",
+        "unknown"
+      ]
+    },
+    {
+      "id": "Q06",
+      "path": "procedure.stage",
+      "label": "Estado procesal o de cobro",
+      "required": false,
+      "type": "choice",
+      "options": [
+        "none",
+        "persuasive",
+        "collection",
+        "payment_order",
+        "embargo",
+        "judicial",
+        "unknown"
+      ]
+    },
+    {
+      "id": "Q07",
+      "path": "procedure.imminent_deadline",
+      "label": "¿Existe un término urgente o audiencia próxima?",
+      "required": false,
+      "type": "boolean"
+    },
+    {
+      "id": "Q08",
+      "path": "security.possible_fraud",
+      "label": "¿Hay indicios de mensaje, enlace o documento fraudulento?",
+      "required": false,
+      "type": "boolean"
+    },
+    {
+      "id": "Q09",
+      "path": "consents.preliminary",
+      "label": "Entiendo que el resultado es preliminar y no decide mi caso",
+      "required": true,
+      "type": "boolean"
+    },
+    {
+      "id": "Q10",
+      "path": "identity.full_name",
+      "label": "Nombre completo para crear expediente verificado",
+      "required_for": [
+        "registration"
+      ],
+      "type": "text"
+    },
+    {
+      "id": "Q11",
+      "path": "identity.email",
+      "label": "Correo para expediente y alertas",
+      "required_for": [
+        "registration"
+      ],
+      "type": "email"
+    },
+    {
+      "id": "Q12",
+      "path": "consents.data_processing",
+      "label": "Autorización de tratamiento de datos para crear expediente",
+      "required_for": [
+        "registration"
+      ],
+      "type": "boolean"
+    }
+  ]
+}

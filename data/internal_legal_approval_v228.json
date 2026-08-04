@@ -1,0 +1,279 @@
+{
+  "version": "2.28",
+  "release": "Aprobación jurídica interna propuesta - primera ola",
+  "date": "2026-07-20",
+  "base": "v2.26 + reconstrucción funcional v2.27",
+  "status": "aprobación jurídica interna propuesta; publicación profesional bloqueada",
+  "final_legal_confirmation": "pendiente del abogado responsable",
+  "qa_status": "QA documental y técnico cerrado; confirmación jurídica final pendiente",
+  "publication_authorized": false,
+  "standard": {
+    "status": "adoptado internamente para construcción y pruebas",
+    "requirements": [
+      "Portada, ficha esencial, partes, representación y consideraciones suficientes.",
+      "Objeto, alcance, obligaciones, régimen económico, plazo, seguimiento, incumplimiento, terminación y cierre.",
+      "Cláusulas generales proporcionales: confidencialidad, datos, seguridad, PI, responsabilidad, fuerza mayor, cesión, notificaciones, controversias, integridad y firma.",
+      "Matriz cláusula-pregunta-regla-fuente y hash del documento sometido a decisión.",
+      "Bloqueo por hechos incompatibles, riesgos rojos, variables pendientes, fuentes vencidas o anexos esenciales ausentes."
+    ]
+  },
+  "labor_parameters": {
+    "as_of": "2026-07-20",
+    "indefinite_default": true,
+    "fixed_term_max_years": 4,
+    "fixed_term_written_required": true,
+    "work_or_labor_precise_written_required": true,
+    "weekly_hours": 42,
+    "weekly_hours_effective_from": "2026-07-15",
+    "night_start": "19:00",
+    "night_end": "06:00",
+    "rest_day_surcharge_percent": 90,
+    "rest_day_surcharge_effective_from": "2026-07-01",
+    "rest_day_surcharge_next_percent": 100,
+    "rest_day_surcharge_next_effective_from": "2027-07-01",
+    "disciplinary_due_process_required": true,
+    "source_ids": [
+      "COL-CST-2026",
+      "COL-L2466-2025",
+      "COL-L2101-2021"
+    ]
+  },
+  "products": [
+    {
+      "code": "CO-EM-003",
+      "name": "Prestación de servicios independientes",
+      "status": "aprobación jurídica interna propuesta",
+      "source_lineage": "v2.13 / v2.15 / expediente v2.27",
+      "document": "docs/v228/CO-EM-003_CANDIDATO_JURIDICO_INTERNO_V228.docx",
+      "pdf": "docs/v228/CO-EM-003_CANDIDATO_JURIDICO_INTERNO_V228.pdf",
+      "decisions": [
+        "Exclusividad desactivada por defecto y solo válida si existe interés legítimo, alcance definido y proporcionalidad.",
+        "No elusión como módulo separado, oportunidades concretas y máximo doce meses.",
+        "Terminación sin causa parametrizable con preaviso de treinta días y cierre de entregables y saldos.",
+        "Propiedad intelectual con inventario de antecedentes, terceros y código abierto; cesión o licencia delimitada.",
+        "Arbitraje no automático: solo mediante selección expresa, cuantía y conveniencia verificadas."
+      ],
+      "blocks": [
+        "subordinación material o contrato realidad",
+        "contratación estatal",
+        "servicios regulados o litigiosos",
+        "objeto genérico o entregables indeterminados"
+      ],
+      "sha256_docx": "ec525598fc6666c1cbc12ae15bd07b988892b0b531516bc3571627c2cf49d39a",
+      "sha256_pdf": "99f29ebf17723758327965b43525ce6561840d4006b200d72f55d2e06d2ed291"
+    },
+    {
+      "code": "CO-EM-004",
+      "name": "Confidencialidad, secretos empresariales y propiedad intelectual",
+      "status": "aprobación jurídica interna propuesta",
+      "source_lineage": "v2.14 / v2.15 / expediente v2.27",
+      "document": "docs/v228/CO-EM-004_CANDIDATO_JURIDICO_INTERNO_V228.docx",
+      "pdf": "docs/v228/CO-EM-004_CANDIDATO_JURIDICO_INTERNO_V228.pdf",
+      "decisions": [
+        "NDA unilateral o bilateral según la dirección real de la revelación.",
+        "IA pública bloqueada; IA empresarial solo con autorización escrita, minimización y controles contractuales y técnicos.",
+        "Secretos empresariales exigen inventario, clasificación, valor y medidas razonables; el NDA no sustituye los controles materiales.",
+        "PI, materiales preexistentes, terceros y OSS se inventarían y licencian separadamente; no se transfieren derechos morales.",
+        "No elusión desactivada por defecto, contactos individualizados y máximo doce meses."
+      ],
+      "blocks": [
+        "datos sensibles, menores o biometría sin revisión",
+        "cesión global de producción futura",
+        "renuncia de derechos morales",
+        "IA pública no autorizada",
+        "operación internacional de alto riesgo"
+      ],
+      "sha256_docx": "b18d747950f779f0598bc9d1164e1a9a345a3313ff2b911e0b368fba227b0933",
+      "sha256_pdf": "5a3269b0f49d4a0d290e501de0cebcfaf053f6c46202b54329394274e39917d4"
+    },
+    {
+      "code": "CO-AR-001",
+      "name": "Arrendamiento de vivienda urbana",
+      "status": "aprobación jurídica interna propuesta",
+      "source_lineage": "v2.23 / v2.15 / expediente v2.27",
+      "document": "docs/v228/CO-AR-001_CANDIDATO_JURIDICO_INTERNO_V228.docx",
+      "pdf": "docs/v228/CO-AR-001_CANDIDATO_JURIDICO_INTERNO_V228.pdf",
+      "decisions": [
+        "Aplicación imperativa de la Ley 820 de 2003 para vivienda urbana ordinaria.",
+        "Prohibición de depósitos en dinero o cauciones reales a favor del arrendador para garantizar obligaciones generales.",
+        "Visitas con aviso escrito mínimo de cuarenta y ocho horas, salvo emergencia real y proporcional.",
+        "Inventario, acta de entrega y acta de restitución como anexos esenciales y comparables.",
+        "Cobros por daños requieren imputación, soporte, comparación con inventario y oportunidad de contradicción."
+      ],
+      "blocks": [
+        "vivienda turística o por días",
+        "local comercial",
+        "leasing habitacional",
+        "inmueble controvertido",
+        "condiciones contrarias a normas imperativas"
+      ],
+      "sha256_docx": "6f44e78bd89ff12b740e9409fe1b332a1a45c4c0e3368082a87ae2543cb752d9",
+      "sha256_pdf": "a51f4198a8c350b5ca68bd5d8e095467d72ca877842dbc8d7cf483f0098e3143"
+    },
+    {
+      "code": "CO-LA-002",
+      "name": "Contrato individual de trabajo y anexos laborales",
+      "status": "aprobación jurídica interna propuesta",
+      "source_lineage": "v2.24 / v2.15 / expediente v2.27",
+      "document": "docs/v228/CO-LA-002_CANDIDATO_JURIDICO_INTERNO_V228.docx",
+      "pdf": "docs/v228/CO-LA-002_CANDIDATO_JURIDICO_INTERNO_V228.pdf",
+      "decisions": [
+        "Término indefinido como regla; fijo escrito máximo cuatro años y obra o labor precisa y escrita.",
+        "Jornada máxima de cuarenta y dos horas; nocturno desde las 19:00 y recargo por descanso obligatorio del 90 % desde julio de 2026.",
+        "Funciones esenciales delimitadas; cambios conexos solo compatibles con cargo, dignidad, capacidad y remuneración.",
+        "Pagos no salariales se califican por su realidad y finalidad, no por la etiqueta contractual.",
+        "Debido proceso disciplinario con apertura, hechos, pruebas, defensa, contradicción y decisión motivada.",
+        "Teletrabajo, trabajo remoto, trabajo en casa e híbrido se gestionan mediante anexos diferenciados."
+      ],
+      "blocks": [
+        "fueros o estabilidad reforzada sin revisión",
+        "menores o expatriados",
+        "salario integral complejo",
+        "terminación o sanción automatizada",
+        "pacto colectivo o régimen especial"
+      ],
+      "sha256_docx": "cb48837dca6ac68903acc902a82eacdaa56d83293a70e3e5a435dea14593da7b",
+      "sha256_pdf": "9816fb7ca6c6e7fc0c908c71533a96582341f5da25bed6fed2332449d7a7e086"
+    }
+  ],
+  "metadata_fixes": [
+    "La versión jurídica queda identificada como 2.28 y las versiones 2.13, 2.14, 2.15, 2.23 y 2.24 se conservan únicamente como linaje de origen.",
+    "Los anexos se contabilizan por secciones y módulos sustantivos; se elimina la leyenda incorrecta 'contiene 0 cláusulas'.",
+    "Cada decisión distingue aprobación interna propuesta, confirmación final del abogado y QA documental.",
+    "Los documentos reconstruidos reciben hashes nuevos; no reutilizan los hashes de candidatos anteriores."
+  ],
+  "sources": [
+    {
+      "id": "COL-CST-2026",
+      "authority": "Secretaría del Senado / SUIN-Juriscol",
+      "title": "Código Sustantivo del Trabajo actualizado",
+      "verified_at": "2026-07-20",
+      "controls": [
+        "contrato indefinido como regla general",
+        "término fijo escrito máximo cuatro años",
+        "obra o labor precisa y escrita",
+        "jornada, recargos y debido proceso"
+      ]
+    },
+    {
+      "id": "COL-L2466-2025",
+      "authority": "Congreso de Colombia",
+      "title": "Ley 2466 de 2025",
+      "verified_at": "2026-07-20",
+      "controls": [
+        "reforma laboral",
+        "debido proceso disciplinario",
+        "recargo por descanso obligatorio",
+        "modalidades contractuales"
+      ]
+    },
+    {
+      "id": "COL-L2101-2021",
+      "authority": "Función Pública",
+      "title": "Ley 2101 de 2021",
+      "verified_at": "2026-07-20",
+      "controls": [
+        "jornada máxima semanal de 42 horas desde el 15 de julio de 2026"
+      ]
+    },
+    {
+      "id": "COL-L820-2003",
+      "authority": "Secretaría del Senado",
+      "title": "Ley 820 de 2003",
+      "verified_at": "2026-07-20",
+      "controls": [
+        "régimen imperativo de vivienda urbana",
+        "prohibición de depósitos y cauciones reales",
+        "canon, reajuste, terminación y servicios"
+      ]
+    },
+    {
+      "id": "CAN-D486-2000",
+      "authority": "Comunidad Andina",
+      "title": "Decisión Andina 486 de 2000",
+      "verified_at": "2026-07-20",
+      "controls": [
+        "secretos empresariales",
+        "propiedad industrial"
+      ]
+    },
+    {
+      "id": "CAN-D351-1993",
+      "authority": "Comunidad Andina",
+      "title": "Decisión Andina 351 de 1993",
+      "verified_at": "2026-07-20",
+      "controls": [
+        "derecho de autor y derechos morales"
+      ]
+    },
+    {
+      "id": "COL-L1581-2012",
+      "authority": "Congreso de Colombia / SUIN-Juriscol",
+      "title": "Ley 1581 de 2012",
+      "verified_at": "2026-07-20",
+      "controls": [
+        "tratamiento de datos personales",
+        "seguridad y confidencialidad"
+      ]
+    },
+    {
+      "id": "COL-L527-1999",
+      "authority": "Congreso de Colombia",
+      "title": "Ley 527 de 1999",
+      "verified_at": "2026-07-20",
+      "controls": [
+        "mensajes de datos y firma electrónica"
+      ]
+    }
+  ],
+  "quality_gates": [
+    {
+      "id": "G-LEGAL",
+      "name": "Confirmación jurídica final",
+      "status": "pending",
+      "owner": "abogado responsable"
+    },
+    {
+      "id": "G-TRACE",
+      "name": "Matriz cláusula-pregunta-regla-fuente",
+      "status": "implemented",
+      "owner": "fábrica documental"
+    },
+    {
+      "id": "G-META",
+      "name": "Versionado y metadatos",
+      "status": "implemented",
+      "owner": "desarrollo"
+    },
+    {
+      "id": "G-DOCX",
+      "name": "Render DOCX/PDF e inspección visual",
+      "status": "implemented",
+      "owner": "QA"
+    },
+    {
+      "id": "G-TEST",
+      "name": "Regresión funcional y sintaxis",
+      "status": "implemented",
+      "owner": "QA técnico"
+    },
+    {
+      "id": "G-PUBLISH",
+      "name": "Publicación profesional",
+      "status": "blocked",
+      "owner": "gobernanza"
+    }
+  ],
+  "governance_documents": [
+    "docs/v228/LegalAIZit_Estandar_Contractual_Canonico_V228.docx",
+    "docs/v228/LegalAIZit_Estandar_Contractual_Canonico_V228.pdf",
+    "docs/v228/LegalAIZit_Informe_Continuidad_v227_a_v228.docx",
+    "docs/v228/LegalAIZit_Informe_Continuidad_v227_a_v228.pdf"
+  ],
+  "governance_document_hashes": {
+    "LegalAIZit_Estandar_Contractual_Canonico_V228.docx": "b31d86f136fab594688a9e9ed03b86024addf80086fd70b922c8f52638f4eaed",
+    "LegalAIZit_Estandar_Contractual_Canonico_V228.pdf": "556db953cadb90bff14195b2069b6f626925df94e83cd68fbea05dfee5d78d54",
+    "LegalAIZit_Informe_Continuidad_v227_a_v228.docx": "16991dde5e098ed137a98d94d3eb92afd28b6d61f9628611d71c081ef44241dc",
+    "LegalAIZit_Informe_Continuidad_v227_a_v228.pdf": "47d46dea59759695037a0087d1fc9ee7efe21b35cdbc4e94560d3b0dd5ec1cc9"
+  }
+}

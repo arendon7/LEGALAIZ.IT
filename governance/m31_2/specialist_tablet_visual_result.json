@@ -1,0 +1,16 @@
+[
+  {
+    "path": "#/",
+    "scrollWidth": 834,
+    "clientWidth": 834,
+    "scrollHeight": 1891,
+    "brokenImages": [],
+    "h1": [
+      "Prioriza revisiones con todo el contexto del expediente."
+    ],
+    "view": "specialist_home",
+    "viewport": "tablet",
+    "screenshot": "governance/m31_2/visual/specialist_home_tablet.png",
+    "errors": []
+  }
+]

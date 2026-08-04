@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="t d">
+<title id="t">Fotodetección</title><desc id="d">Ilustración de la solución Fotodetección</desc>
+<defs>
+  <linearGradient id="navyG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0D1324"/><stop offset="1" stop-color="#18375E"/></linearGradient>
+  <linearGradient id="goldG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#E6C98F"/><stop offset="1" stop-color="#B1843C"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#0D1324" flood-opacity=".14"/></filter>
+</defs><rect width="640" height="480" rx="36" fill="#F7F5F1"/><circle cx="525" cy="82" r="90" fill="#C9A96E" opacity=".14"/><circle cx="100" cy="405" r="70" fill="#2563EB" opacity=".07"/><g filter="url(#shadow)"><rect x="86" y="70" width="468" height="340" rx="30" fill="#fff"/></g><rect x="170" y="172" width="300" height="170" rx="26" fill="#0D1324"/><circle cx="320" cy="257" r="66" fill="#fff"/><circle cx="320" cy="257" r="38" fill="#C9A96E"/><rect x="214" y="132" width="92" height="58" rx="14" fill="#2563EB"/><circle cx="434" cy="210" r="13" fill="#fff"/></svg>

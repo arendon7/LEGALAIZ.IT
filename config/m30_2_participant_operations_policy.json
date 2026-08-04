@@ -1,0 +1,60 @@
+{
+  "schema": "legalaizit-m30-2-participant-operations-policy-v1",
+  "milestone": "M30.2",
+  "version": "4.6.0",
+  "created_at": "2026-08-03T11:55:00-05:00",
+  "scope": "controlled_pilot_participant_onboarding",
+  "consent_version": "2026-08-M30.2-v1",
+  "pilot_products": ["CO-LA-002", "CO-EM-003", "CO-AR-001", "CO-CD-003"],
+  "invitation_expiry_days": 14,
+  "participant_statuses": ["invited", "accepted", "declined", "withdrawn", "expired"],
+  "support_categories": ["access", "navigation", "document_generation", "legal_review", "qa", "privacy", "other"],
+  "support_issue_codes": ["cannot_access", "unclear_step", "validation_block", "document_not_generated", "review_delay", "format_problem", "privacy_question", "other"],
+  "support_summary_max_chars": 180,
+  "consent": {
+    "confirmation": "ACEPTO PARTICIPAR EN EL PILOTO CONTROLADO LEGALAIZ.IT",
+    "withdrawal_confirmation": "RETIRO MI PARTICIPACION DEL PILOTO LEGALAIZ.IT",
+    "notice": "La participación es voluntaria, limitada al piloto controlado y no equivale a representación judicial, garantía de resultado ni autorización de producción pública.",
+    "purposes": [
+      "Habilitar y acompañar el recorrido del producto jurídico seleccionado.",
+      "Medir de forma estructurada claridad, facilidad, tiempos y fallos del piloto.",
+      "Gestionar soporte, revisión jurídica y QA del expediente de prueba.",
+      "Conservar evidencia de consentimiento, seguridad, trazabilidad y decisiones del piloto."
+    ],
+    "rights": [
+      "Conocer, actualizar y rectificar los datos personales tratados.",
+      "Solicitar información sobre el uso autorizado.",
+      "Retirar la participación y revocar la autorización cuando sea procedente.",
+      "Presentar consultas o reclamos por el canal definido por el responsable."
+    ],
+    "required_acknowledgements": [
+      "voluntary_ack",
+      "privacy_notice_ack",
+      "no_representation_ack",
+      "minimized_data_ack",
+      "support_channel_ack"
+    ]
+  },
+  "retention": {
+    "status": "provisional_pending_final_approval",
+    "invitation_contact_days": 30,
+    "operational_days_after_withdrawal_or_closure": 90,
+    "automatic_deletion_enabled": false,
+    "legal_hold_overrides_schedule": true,
+    "aggregated_metrics_exclude_direct_identifiers": true
+  },
+  "safeguards": {
+    "existing_client_account_required": true,
+    "one_active_invitation_per_plan": true,
+    "one_active_slot_per_participant": true,
+    "identity_documents_prohibited": true,
+    "health_details_prohibited": true,
+    "financial_values_prohibited": true,
+    "case_narrative_in_support_prohibited": true,
+    "public_production_blocked": true,
+    "real_payments_blocked": true,
+    "automatic_delivery_blocked": true,
+    "case_specific_legal_review_required": true,
+    "qa_required": true
+  }
+}

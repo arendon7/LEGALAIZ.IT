@@ -1,0 +1,749 @@
+{
+  "version": "2.29",
+  "release": "Segunda ola de aprobación jurídica",
+  "date": "2026-07-20",
+  "base": "v2.28",
+  "status": "expedientes candidatos para aprobación jurídica interna; publicación profesional bloqueada",
+  "publication_authorized": false,
+  "internal_legal_approval_completed": false,
+  "dual_approval_completed": false,
+  "next_release": "v2.30 — decisión jurídica interna de la segunda ola",
+  "scope": [
+    "CO-LA-001",
+    "CO-TR-002",
+    "CO-TR-001"
+  ],
+  "normative_update": {
+    "product": "CO-LA-001",
+    "parameter": "SMLMV 2026",
+    "value": 1750905,
+    "previous_basis": "Decreto 159 de 2026 como fundamento transitorio",
+    "current_basis": "Decreto 1469 de 2025; suspensión provisional revocada por el Consejo de Estado el 17/07/2026; decisión de fondo pendiente",
+    "effect": "El valor no cambia; se corrige la fuente vigente y el linaje temporal.",
+    "verified_at": "2026-07-20"
+  },
+  "cross_product_principles": [
+    "No convertir una alerta, ausencia de soporte o defecto procedimental en nulidad automática.",
+    "Diferenciar hechos, inferencias, norma vigente, jurisprudencia, recomendación y supuesto.",
+    "Bloquear asuntos litigiosos, urgentes, sancionatorios complejos o con hechos incompatibles.",
+    "Generar documentos solo con variables resueltas, trazabilidad y evidencia disponible.",
+    "Mantener publicación bloqueada hasta aprobación dual e identidad exacta del archivo mediante SHA-256."
+  ],
+  "products": [
+    {
+      "code": "CO-LA-001",
+      "name": "Liquidación laboral y reclamación",
+      "owner": "Laboral",
+      "source_lineage": "v2.22",
+      "status": "candidato para aprobación jurídica interna",
+      "document": "docs/v229/CO-LA-001_EXPEDIENTE_APROBACION_JURIDICA_V229.docx",
+      "pdf": "docs/v229/CO-LA-001_EXPEDIENTE_APROBACION_JURIDICA_V229.pdf",
+      "objective": "Validar el cálculo por concepto y período, la reclamación directa, la matriz probatoria y el acuerdo condicionado, sin sustituir valoración profesional en asuntos litigiosos o de estabilidad reforzada.",
+      "decisions": [
+        "Cobertura limitada a relaciones laborales privadas en Colombia; sector público, contrato realidad, regímenes colectivos, litigio activo y estabilidad reforzada se bloquean.",
+        "Cálculo prestacional por concepto con convención 30/360, fechas de corte independientes y descuento únicamente de pagos previos confirmados en la línea correspondiente.",
+        "Cesantías y prima pueden incorporar auxilio de transporte solo cuando la elegibilidad y el período estén confirmados; vacaciones e indemnización usan la base jurídica aplicable sin adicionar automáticamente el auxilio.",
+        "Salario variable solo se integra con soportes suficientes y promedio atribuible al período; si no existe evidencia, el motor no estima ni inventa valores.",
+        "Indemnización del artículo 64 del CST es una estimación condicionada a modalidad y causa; sanción moratoria del artículo 65, perjuicios e indexación requieren análisis jurídico y no se liquidan automáticamente.",
+        "Descuentos discutidos no reducen el resultado automático. El acuerdo de pago es opcional, no contiene renuncia general a derechos ciertos e indiscutibles y exige revisión humana."
+      ],
+      "blocks": [
+        "estabilidad laboral reforzada o fuero",
+        "sector público",
+        "contrato realidad",
+        "régimen colectivo o extralegal",
+        "litigio, conciliación o transacción activa",
+        "salario integral",
+        "variable salarial sin soportes",
+        "períodos no confirmados"
+      ],
+      "documents": [
+        "Informe técnico de liquidación por concepto",
+        "Reclamación directa de acreencias",
+        "Matriz de soportes y conciliación de pagos",
+        "Propuesta de acuerdo de pago y cierre (condicional)"
+      ],
+      "sources": [
+        "LA1-S1",
+        "LA1-S2",
+        "LA1-S3",
+        "LA1-S4",
+        "LA1-S5",
+        "LA1-S6",
+        "LA1-S7",
+        "LA1-S8",
+        "LA1-S9",
+        "LA1-S10"
+      ],
+      "traceability": [
+        {
+          "decision": "Ámbito privado y exclusiones estructurales",
+          "questions": [
+            "private_relation",
+            "public_sector",
+            "special_protection",
+            "active_litigation",
+            "contract_reality",
+            "collective_regime"
+          ],
+          "rules": [
+            "LA1-R1",
+            "LA1-R2",
+            "LA1-R3",
+            "LA1-R4",
+            "LA1-R5",
+            "LA1-R6"
+          ],
+          "sources": [
+            "LA1-S1",
+            "LA1-S5",
+            "LA1-S8"
+          ]
+        },
+        {
+          "decision": "Base salarial fija, variable e integral",
+          "questions": [
+            "monthly_salary",
+            "integral_salary",
+            "variable_salary",
+            "variable_salary_supports",
+            "variable_average"
+          ],
+          "rules": [
+            "LA1-R7",
+            "LA1-R8",
+            "LA1-R16"
+          ],
+          "sources": [
+            "LA1-S1",
+            "LA1-S5"
+          ]
+        },
+        {
+          "decision": "Períodos, pagos previos y soportes",
+          "questions": [
+            "start_date",
+            "end_date",
+            "cesantias_start_date",
+            "prima_start_date",
+            "vacation_pending_days",
+            "periods_confirmed",
+            "salary_supports"
+          ],
+          "rules": [
+            "LA1-R9",
+            "LA1-R10",
+            "LA1-R11",
+            "LA1-R12"
+          ],
+          "sources": [
+            "LA1-S1",
+            "LA1-S2",
+            "LA1-S3"
+          ]
+        },
+        {
+          "decision": "SMLMV y auxilio 2026",
+          "questions": [
+            "monthly_salary",
+            "transport_aid"
+          ],
+          "rules": [
+            "LA1-R13"
+          ],
+          "sources": [
+            "LA1-S6",
+            "LA1-S7",
+            "LA1-S10"
+          ]
+        },
+        {
+          "decision": "Indemnización según modalidad",
+          "questions": [
+            "contract_type",
+            "termination",
+            "fixed_term_end",
+            "work_remaining_days"
+          ],
+          "rules": [
+            "LA1-R15",
+            "LA1-R17",
+            "LA1-R18",
+            "LA1-R19"
+          ],
+          "sources": [
+            "LA1-S1",
+            "LA1-S4",
+            "LA1-S5"
+          ]
+        },
+        {
+          "decision": "Descuentos y acuerdo condicionado",
+          "questions": [
+            "disputed_deductions",
+            "generate_settlement"
+          ],
+          "rules": [
+            "LA1-R14",
+            "LA1-R20"
+          ],
+          "sources": [
+            "LA1-S1",
+            "LA1-S8",
+            "LA1-S9"
+          ]
+        }
+      ],
+      "tests": [
+        "bloqueo por fuero o sector público",
+        "rechazo de variable sin soportes",
+        "cálculo con cortes parciales y pagos previos",
+        "indemnización fija sin fecha final",
+        "obra o labor sin días restantes",
+        "auxilio no confirmado",
+        "acuerdo activado únicamente por selección expresa"
+      ]
+    },
+    {
+      "code": "CO-TR-002",
+      "name": "Fotomulta no notificada",
+      "owner": "Tránsito y administrativo",
+      "source_lineage": "v2.25",
+      "status": "candidato para aprobación jurídica interna",
+      "document": "docs/v229/CO-TR-002_EXPEDIENTE_APROBACION_JURIDICA_V229.docx",
+      "pdf": "docs/v229/CO-TR-002_EXPEDIENTE_APROBACION_JURIDICA_V229.pdf",
+      "objective": "Reconstruir cronología, notificación, etapa, imputación y evidencia técnica para seleccionar actuaciones compatibles, sin prometer nulidad, revocación o devolución automática.",
+      "decisions": [
+        "La falta, tardanza o defecto de notificación no genera por sí solo nulidad automática: se identifica la etapa, el soporte, la afectación de defensa y el remedio procedente.",
+        "El artículo 8 de la Ley 1843 de 2017 exige envío dentro de tres días hábiles posteriores a la validación; el artículo 7 reinicia los términos de descuento desde la notificación cuando se demuestre ausencia o indebida notificación.",
+        "No existe responsabilidad automática por ser propietario. Deben diferenciarse la imputación personal de la conducta y los deberes propios del propietario, con culpabilidad y debido proceso conforme a C-038 de 2020 y C-321 de 2022.",
+        "Cada salida depende de la etapa: expediente, reclamación de notificación, audiencia y pruebas, revocatoria directa condicionada o corrección registral. La revocatoria directa no sustituye recursos ni revive términos judiciales.",
+        "La revisión técnica individualiza punto, fecha, autorización, calibración, trazabilidad y señalización. El concepto de desempeño solo se controla para hechos entre 22/03/2018 y 19/08/2020 y nunca equivale a autorización.",
+        "Los anuncios e investigaciones oficiales de 2026 son alertas de contraste. No se trasladan masivamente a un comparendo sin individualizar autoridad, dispositivo, período, acto y estado."
+      ],
+      "blocks": [
+        "comparendo no electrónico",
+        "cobro coactivo, mandamiento o embargo",
+        "proceso judicial activo",
+        "pago o aceptación no aclarados",
+        "término próximo",
+        "dudas de autenticidad",
+        "venta previa, hurto, clonación o suplantación"
+      ],
+      "documents": [
+        "Solicitud integral de expediente y evidencia",
+        "Reclamación por notificación y debido proceso",
+        "Solicitud de audiencia, pruebas y contradicción",
+        "Revocatoria directa condicionada",
+        "Corrección SIMIT/RUNT",
+        "Matriz técnica SAST",
+        "Guía de términos y escalamiento"
+      ],
+      "sources": [
+        "TR2-S1",
+        "TR2-S2",
+        "TR2-S3",
+        "TR2-S4",
+        "TR2-S5",
+        "TR2-S6",
+        "TR2-S7",
+        "TR2-S8",
+        "TR2-S9",
+        "TR2-S10",
+        "TR2-S11",
+        "TR2-S12",
+        "TR2-S13"
+      ],
+      "traceability": [
+        {
+          "decision": "Aplicabilidad a fotodetección y cronología",
+          "questions": [
+            "electronic",
+            "validation_date",
+            "sent_date",
+            "delivery_date",
+            "first_knowledge_date"
+          ],
+          "rules": [
+            "TR2-R01",
+            "TR2-R22"
+          ],
+          "sources": [
+            "TR2-S2",
+            "TR2-S3"
+          ]
+        },
+        {
+          "decision": "Notificación, RUNT y defensa",
+          "questions": [
+            "notice_received",
+            "notice_channel",
+            "notice_address_match",
+            "notice_support",
+            "owner_updated_runt"
+          ],
+          "rules": [
+            "TR2-R10",
+            "TR2-R11",
+            "TR2-R12",
+            "TR2-R13",
+            "TR2-R23"
+          ],
+          "sources": [
+            "TR2-S1",
+            "TR2-S2",
+            "TR2-S3",
+            "TR2-S8",
+            "TR2-S10"
+          ]
+        },
+        {
+          "decision": "Etapa y remedio procesal",
+          "questions": [
+            "resolution",
+            "hearing_held",
+            "coercive",
+            "paid",
+            "court",
+            "deadline_urgent",
+            "prior_request"
+          ],
+          "rules": [
+            "TR2-R02",
+            "TR2-R03",
+            "TR2-R04",
+            "TR2-R05",
+            "TR2-R09",
+            "TR2-R20",
+            "TR2-R21",
+            "TR2-R24"
+          ],
+          "sources": [
+            "TR2-S2",
+            "TR2-S3",
+            "TR2-S7",
+            "TR2-S9"
+          ]
+        },
+        {
+          "decision": "Imputación personal y deberes del propietario",
+          "questions": [
+            "owner_was_driver",
+            "conduct_category",
+            "special_vehicle_event"
+          ],
+          "rules": [
+            "TR2-R08",
+            "TR2-R14"
+          ],
+          "sources": [
+            "TR2-S4",
+            "TR2-S5",
+            "TR2-S6"
+          ]
+        },
+        {
+          "decision": "Validez técnica individualizada",
+          "questions": [
+            "device_id",
+            "sast_authorization",
+            "calibration_traceability",
+            "signage_verified",
+            "performance_concept"
+          ],
+          "rules": [
+            "TR2-R15",
+            "TR2-R16",
+            "TR2-R17",
+            "TR2-R18",
+            "TR2-R26"
+          ],
+          "sources": [
+            "TR2-S2",
+            "TR2-S11",
+            "TR2-S12"
+          ]
+        },
+        {
+          "decision": "Anuncios oficiales 2026 como alerta",
+          "questions": [
+            "official_2026_match",
+            "authority",
+            "territory",
+            "event_date"
+          ],
+          "rules": [
+            "TR2-R19"
+          ],
+          "sources": [
+            "TR2-S13"
+          ]
+        }
+      ],
+      "tests": [
+        "notificación no acreditada sin resolución",
+        "resolución existente sin ejecutoria confirmada",
+        "propietario distinto del conductor",
+        "cobro coactivo bloqueado",
+        "hecho fuera del período del concepto de desempeño",
+        "coincidencia oficial 2026 sin individualización",
+        "solicitud previa existente"
+      ]
+    },
+    {
+      "code": "CO-TR-001",
+      "name": "Chequeo SAST e inscripción verificada",
+      "owner": "Tránsito y administrativo",
+      "source_lineage": "v2.26",
+      "status": "candidato para aprobación jurídica interna",
+      "document": "docs/v229/CO-TR-001_EXPEDIENTE_APROBACION_JURIDICA_V229.docx",
+      "pdf": "docs/v229/CO-TR-001_EXPEDIENTE_APROBACION_JURIDICA_V229.pdf",
+      "objective": "Convertir coincidencias preliminares en un expediente de verificación oficial individual, manteniendo la diferencia entre alerta, investigación administrativa y decisión firme.",
+      "decisions": [
+        "El dataset local y la coincidencia por autoridad, territorio o fecha son herramientas de priorización, no fuentes oficiales ni declaraciones de invalidez.",
+        "Toda conclusión exige individualizar dispositivo, punto exacto, fecha, autorización ANSV o excepción legal, vigencia, calibración, trazabilidad, señalización y expediente.",
+        "La autorización y el mapa oficial se consultan en el sistema ANSV. La ausencia de coincidencia local no acredita regularidad; la coincidencia tampoco acredita irregularidad individual.",
+        "Una apertura de investigación, formulación de cargos o comunicado de 2026 no equivale a decisión individual firme. Deben registrarse acto, radicado, autoridad, estado y fuente.",
+        "El concepto de desempeño se controla exclusivamente para el período 22/03/2018-19/08/2020; no era autorización y la trazabilidad metrológica continúa bajo el régimen vigente.",
+        "Pago, cobro coactivo, embargo, proceso judicial, fraude, urgencia o lotes superiores a diez actuaciones se escalan y no reciben conclusión automática."
+      ],
+      "blocks": [
+        "cobro coactivo, embargo o proceso judicial",
+        "término urgente",
+        "suplantación, clonación, hurto o fraude",
+        "datos no confirmados",
+        "más de diez comparendos relacionados"
+      ],
+      "documents": [
+        "Informe de coincidencia y diagnóstico",
+        "Matriz individual de autorización y evidencia",
+        "Solicitud de expediente técnico y autorización",
+        "Solicitud de certificación del estado oficial",
+        "Revisión administrativa condicionada",
+        "Registro de alertas y seguimiento",
+        "Guía de verificación y escalamiento"
+      ],
+      "sources": [
+        "TR1-S1",
+        "TR1-S2",
+        "TR1-S3",
+        "TR1-S4",
+        "TR1-S5",
+        "TR1-S6",
+        "TR1-S7",
+        "TR1-S8",
+        "TR1-S9",
+        "TR1-S10",
+        "TR1-S11",
+        "TR1-S12",
+        "TR1-S13"
+      ],
+      "traceability": [
+        {
+          "decision": "Coincidencia preliminar y límites del dataset",
+          "questions": [
+            "authority",
+            "territory",
+            "event_date",
+            "official_2026_match",
+            "case_count"
+          ],
+          "rules": [
+            "TR1-R05",
+            "TR1-R11",
+            "TR1-R16"
+          ],
+          "sources": [
+            "TR1-S11",
+            "TR1-S12",
+            "TR1-S13"
+          ]
+        },
+        {
+          "decision": "Individualización de dispositivo y punto",
+          "questions": [
+            "device_known",
+            "device_id",
+            "event_location",
+            "exact_point_match"
+          ],
+          "rules": [
+            "TR1-R06",
+            "TR1-R07",
+            "TR1-R20"
+          ],
+          "sources": [
+            "TR1-S1",
+            "TR1-S5",
+            "TR1-S8"
+          ]
+        },
+        {
+          "decision": "Autorización y vigencia",
+          "questions": [
+            "ansv_authorization",
+            "authorization_number",
+            "authorization_issue_date",
+            "authorization_expiry_date"
+          ],
+          "rules": [
+            "TR1-R08",
+            "TR1-R17",
+            "TR1-R18",
+            "TR1-R21"
+          ],
+          "sources": [
+            "TR1-S1",
+            "TR1-S3",
+            "TR1-S4",
+            "TR1-S6",
+            "TR1-S8"
+          ]
+        },
+        {
+          "decision": "Calibración, trazabilidad y señalización",
+          "questions": [
+            "calibration_traceability",
+            "calibration_date",
+            "signage_verified"
+          ],
+          "rules": [
+            "TR1-R09",
+            "TR1-R10",
+            "TR1-R22",
+            "TR1-R23"
+          ],
+          "sources": [
+            "TR1-S1",
+            "TR1-S5",
+            "TR1-S7"
+          ]
+        },
+        {
+          "decision": "Concepto histórico de desempeño",
+          "questions": [
+            "performance_concept",
+            "event_date"
+          ],
+          "rules": [
+            "TR1-R19"
+          ],
+          "sources": [
+            "TR1-S5",
+            "TR1-S7"
+          ]
+        },
+        {
+          "decision": "Estado oficial y escalamiento",
+          "questions": [
+            "official_act_number",
+            "official_act_status",
+            "official_act_source",
+            "enforcement",
+            "paid",
+            "deadline_urgent",
+            "identity_fraud",
+            "data_confirmed"
+          ],
+          "rules": [
+            "TR1-R01",
+            "TR1-R02",
+            "TR1-R03",
+            "TR1-R04",
+            "TR1-R12",
+            "TR1-R13",
+            "TR1-R14",
+            "TR1-R15"
+          ],
+          "sources": [
+            "TR1-S2",
+            "TR1-S9",
+            "TR1-S10",
+            "TR1-S11",
+            "TR1-S12"
+          ]
+        }
+      ],
+      "tests": [
+        "dispositivo no individualizado",
+        "punto no coincidente",
+        "autorización sin fechas",
+        "coincidencia con investigación no firme",
+        "pago no claro",
+        "más de diez comparendos",
+        "concepto de desempeño fuera de período",
+        "consulta oficial sin soportes completos"
+      ]
+    }
+  ],
+  "quality_gates": [
+    {
+      "id": "V229-G1",
+      "name": "Auditoría normativa oficial al 20/07/2026",
+      "owner": "Especialista jurídico",
+      "status": "closed"
+    },
+    {
+      "id": "V229-G2",
+      "name": "Matriz pregunta-regla-fuente de los tres productos",
+      "owner": "Producto jurídico",
+      "status": "closed"
+    },
+    {
+      "id": "V229-G3",
+      "name": "Hashes de expedientes DOCX/PDF",
+      "owner": "QA documental",
+      "status": "closed"
+    },
+    {
+      "id": "V229-G4",
+      "name": "Pruebas funcionales y regresión completa",
+      "owner": "QA técnico",
+      "status": "closed"
+    },
+    {
+      "id": "V229-G5",
+      "name": "QA visual de documentos y vista web",
+      "owner": "QA visual",
+      "status": "closed"
+    },
+    {
+      "id": "V229-G6",
+      "name": "Aprobación jurídica interna de decisiones",
+      "owner": "Abogado responsable",
+      "status": "pending"
+    },
+    {
+      "id": "V229-G7",
+      "name": "Aprobación dual especialista jurídico + QA",
+      "owner": "Gobernanza",
+      "status": "blocked"
+    }
+  ],
+  "sources_verified": [
+    {
+      "id": "V229-F1",
+      "title": "Decreto 1469 de 2025 — SMLMV 2026",
+      "authority": "SUIN-Juriscol",
+      "verified_at": "2026-07-20",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30055940"
+    },
+    {
+      "id": "V229-F2",
+      "title": "Revocatoria de suspensión provisional del Decreto 1469",
+      "authority": "Consejo de Estado",
+      "verified_at": "2026-07-20",
+      "url": "https://consejodeestado.gov.co/noticias/"
+    },
+    {
+      "id": "V229-F3",
+      "title": "Código Sustantivo del Trabajo consolidado",
+      "authority": "SUIN-Juriscol / Secretaría del Senado",
+      "verified_at": "2026-07-20",
+      "url": "https://www.suin-juriscol.gov.co/viewdocument.asp?ruta=codigo%2F30019323"
+    },
+    {
+      "id": "V229-F4",
+      "title": "Ley 1843 de 2017 — SAST y notificación",
+      "authority": "Secretaría del Senado",
+      "verified_at": "2026-07-20",
+      "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1843_2017.html"
+    },
+    {
+      "id": "V229-F5",
+      "title": "Sentencia C-038 de 2020",
+      "authority": "Corte Constitucional",
+      "verified_at": "2026-07-20",
+      "url": "https://www.corteconstitucional.gov.co/relatoria/2020/C-038-20.htm"
+    },
+    {
+      "id": "V229-F6",
+      "title": "Sentencia C-321 de 2022",
+      "authority": "Corte Constitucional",
+      "verified_at": "2026-07-20",
+      "url": "https://www.corteconstitucional.gov.co/Relatoria/2022/C-321-22.htm"
+    },
+    {
+      "id": "V229-F7",
+      "title": "Resolución 20203040011245 de 2020",
+      "authority": "Ministerio de Transporte / ANSV",
+      "verified_at": "2026-07-20",
+      "url": "https://mintransporte.gov.co/publicaciones/9590/normatividad-racionalizacion/"
+    },
+    {
+      "id": "V229-F8",
+      "title": "Aclaración sobre concepto de desempeño",
+      "authority": "Instituto Nacional de Metrología",
+      "verified_at": "2026-07-20",
+      "url": "https://inm.gov.co/informacion-fotomultas-concepto-de-desempeno/"
+    },
+    {
+      "id": "V229-F9",
+      "title": "Sistema oficial de información de fotodetección",
+      "authority": "Agencia Nacional de Seguridad Vial",
+      "verified_at": "2026-07-20",
+      "url": "https://fotodeteccion.ansv.gov.co/"
+    },
+    {
+      "id": "V229-F10",
+      "title": "Investigaciones SAST comunicadas el 19/05/2026",
+      "authority": "Superintendencia de Transporte",
+      "verified_at": "2026-07-20",
+      "url": "https://www.supertransporte.gov.co/index.php/comunicaciones-2026/gobierno-nacional-investiga-a-37-organismos-de-transito-mas-de-75-millones-de-fotomultas-estan-bajo-la-lupa-y-58-millones-quedaran-sin-validez/page/2/"
+    }
+  ],
+  "artifact_registry": [
+    {
+      "path": "docs/v229/CO-LA-001_EXPEDIENTE_APROBACION_JURIDICA_V229.docx",
+      "format": "DOCX",
+      "sha256": "fc7bf87ee009bd30519f1b1145233b8b5121eb98755221b7fbd2409be56eca96",
+      "bytes": 107772
+    },
+    {
+      "path": "docs/v229/CO-LA-001_EXPEDIENTE_APROBACION_JURIDICA_V229.pdf",
+      "format": "PDF",
+      "sha256": "acd57e4883a19f33cb0c7fe1074bc6306a3fccd7a3137e2e7fd111ebb443066f",
+      "bytes": 199846
+    },
+    {
+      "path": "docs/v229/CO-TR-002_EXPEDIENTE_APROBACION_JURIDICA_V229.docx",
+      "format": "DOCX",
+      "sha256": "11762998d7760742a7ee4f36575de3718789e3a26f181f373e8692485d5aa6ce",
+      "bytes": 108042
+    },
+    {
+      "path": "docs/v229/CO-TR-002_EXPEDIENTE_APROBACION_JURIDICA_V229.pdf",
+      "format": "PDF",
+      "sha256": "27b579bb69d75a46a466a1ddbb1057230de2f31adffa9f1bf18371d0f2d432c7",
+      "bytes": 210669
+    },
+    {
+      "path": "docs/v229/CO-TR-001_EXPEDIENTE_APROBACION_JURIDICA_V229.docx",
+      "format": "DOCX",
+      "sha256": "c04bf878f1e421168660316253bed28bd820dd1066bc83c30d9ed0500a6213aa",
+      "bytes": 107530
+    },
+    {
+      "path": "docs/v229/CO-TR-001_EXPEDIENTE_APROBACION_JURIDICA_V229.pdf",
+      "format": "PDF",
+      "sha256": "3166791ffe20d4c49ab8ad2dd7c173158a1c41a716bf013fc34d23f689b29a64",
+      "bytes": 204712
+    },
+    {
+      "path": "docs/v229/LegalAIZit_Matriz_Segunda_Ola_V229.docx",
+      "format": "DOCX",
+      "sha256": "c9ae84d01b32aed41c5eff39c4f36b33dc95f8f8ed8050edeaf44e68942eefc6",
+      "bytes": 105900
+    },
+    {
+      "path": "docs/v229/LegalAIZit_Matriz_Segunda_Ola_V229.pdf",
+      "format": "PDF",
+      "sha256": "815933b6477cf63318f55ba74e67c839ce4856c3c88037e5ceff911649dae8c5",
+      "bytes": 143745
+    }
+  ],
+  "consolidated_documents": [
+    "docs/v229/LegalAIZit_Matriz_Segunda_Ola_V229.docx",
+    "docs/v229/LegalAIZit_Matriz_Segunda_Ola_V229.pdf"
+  ]
+}

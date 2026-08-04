@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "migration_id": "M24.1-M23.2-PREINTEGRATION-20260801",
+  "product_code": "CO-CD-003",
+  "revision_id": "M23.2-ad9fb5356874",
+  "source_revision_label": "M23.2",
+  "status": "candidate_blocked_pending_legal_and_qa_approval",
+  "immutable": true,
+  "asset_hashes": {
+    "CO-CD-003_Modelo_Maestro_Reclamacion_Consumidor_M23.docx": "ad9fb53568748891678f79dbcd6e41dccd7e3653b280118ff1391eb65b7f01e1",
+    "CO-CD-003_Modelo_Maestro_Reclamacion_Consumidor_M23.pdf": "311054483c26b900490ef52dfe3e672a2608986a0efb628fe22a8afe2860d190",
+    "CO-CD-003_M23_Bloques_Reglas_y_Fuentes.json": "0d2d428754e46f50f2c51eb268eb819dd0cb8bb491c3bccf8d2d9cf31ee47e1c",
+    "CO-CD-003_Ejemplo_Final_Garantia_Reversion_M23.docx": "c2c172d31f30623a57a9899a2bc68d768354f8e64b331771d5ca7fc67b8ff524",
+    "CO-CD-003_Ejemplo_Final_Garantia_Reversion_M23.pdf": "df607f577c6f3e00757ed1d8a496245a5c8fca9638b640042db26f3f960d0a4c"
+  },
+  "approvals": {
+    "legal": {
+      "required": true,
+      "approved": false,
+      "actor": null
+    },
+    "qa": {
+      "required": true,
+      "approved": false,
+      "actor": null
+    },
+    "must_be_distinct_users": true
+  },
+  "questionnaire_binding": {
+    "status": "pending_runtime_resolution",
+    "expected_legacy_ref": "M22://questionnaires/CO-CD-003",
+    "prohibition": "do_not_create_duplicate_questionnaire_before_runtime_audit"
+  },
+  "ruleset_binding": {
+    "status": "candidate_from_m23_2",
+    "source_file": "CO-CD-003/CO-CD-003_M23_Bloques_Reglas_y_Fuentes.json",
+    "rule_count": 10,
+    "rule_ids": [
+      "M23-CD3-001",
+      "M23-CD3-002",
+      "M23-CD3-003",
+      "M23-CD3-004",
+      "M23-CD3-005",
+      "M23-CD3-006",
+      "M23-CD3-007",
+      "M23-CD3-008",
+      "M23-CD3-009",
+      "M23-CD3-010"
+    ]
+  },
+  "created_at": "2026-08-01T05:58:46.986240+00:00",
+  "publication_change": "none"
+}

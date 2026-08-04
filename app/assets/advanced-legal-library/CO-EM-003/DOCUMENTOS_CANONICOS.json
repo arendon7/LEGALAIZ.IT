@@ -1,0 +1,62 @@
+[
+  {
+    "id": "DOC-EM-CONTRACT-001",
+    "name": "Contrato de prestación de servicios independientes",
+    "trigger": "always",
+    "required": true
+  },
+  {
+    "id": "ANX-EM-SCOPE-001",
+    "name": "Anexo de alcance, entregables y cronograma",
+    "trigger": "always",
+    "required": true
+  },
+  {
+    "id": "ANX-EM-FEES-001",
+    "name": "Anexo económico y de honorarios",
+    "trigger": "fees.model in milestone, success, mixed or complex",
+    "required": false
+  },
+  {
+    "id": "ANX-EM-CONF-001",
+    "name": "Anexo de confidencialidad y secretos empresariales",
+    "trigger": "confidentiality.required",
+    "required": false
+  },
+  {
+    "id": "ANX-EM-IP-001",
+    "name": "Anexo de propiedad intelectual y activos preexistentes",
+    "trigger": "ip.required",
+    "required": false
+  },
+  {
+    "id": "ANX-EM-DATA-001",
+    "name": "Acuerdo de encargo o tratamiento de datos personales",
+    "trigger": "data_processing.required",
+    "required": false
+  },
+  {
+    "id": "ANX-EM-AI-001",
+    "name": "Anexo de uso controlado de inteligencia artificial",
+    "trigger": "ai.required",
+    "required": false
+  },
+  {
+    "id": "ACT-EM-ACCEPT-001",
+    "name": "Acta de aceptación de entregables",
+    "trigger": "deliverables exist",
+    "required": false
+  },
+  {
+    "id": "ACT-EM-CHANGE-001",
+    "name": "Orden o acta de control de cambios",
+    "trigger": "scope change",
+    "required": false
+  },
+  {
+    "id": "ACT-EM-CLOSE-001",
+    "name": "Acta de terminación, entrega y cierre",
+    "trigger": "always_at_closure",
+    "required": true
+  }
+]

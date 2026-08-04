@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "migration_id": "M24.1-M23.2-PREINTEGRATION-20260801",
+  "product_code": "CO-TR-001",
+  "revision_id": "M23.2-d7a116b079f9",
+  "source_revision_label": "M23.2",
+  "status": "candidate_blocked_pending_legal_and_qa_approval",
+  "immutable": true,
+  "asset_hashes": {
+    "CO-TR-001_Modelo_Maestro_Informe_Verificacion_SAST_M23.docx": "d7a116b079f91b594a43d7ea46abfa8e306e146e0d4a628bb774ced1abbf6d95",
+    "CO-TR-001_Modelo_Maestro_Informe_Verificacion_SAST_M23.pdf": "f1e99e24764c5b00412e18f936c88bdc8a72705dad0e513d1df15c0aa2c5dc5d",
+    "CO-TR-001_M23_Bloques_Reglas_y_Fuentes.json": "7d4106d1227a7b6e90b84916cae2045d7316bc2c2344c6edebd9ea2a36428f52",
+    "CO-TR-001_Ejemplo_Final_Chequeo_Inscripcion_SAST_M23.docx": "3cd5044c66a04eb641dcf1c16b69a06e21e82d530754f3cecf35170add626ad1",
+    "CO-TR-001_Ejemplo_Final_Chequeo_Inscripcion_SAST_M23.pdf": "f5d999a70a3277df10cdf46a8260c7a1b119bba2e5832a837570b88aad1ea7fe"
+  },
+  "approvals": {
+    "legal": {
+      "required": true,
+      "approved": false,
+      "actor": null
+    },
+    "qa": {
+      "required": true,
+      "approved": false,
+      "actor": null
+    },
+    "must_be_distinct_users": true
+  },
+  "questionnaire_binding": {
+    "status": "pending_runtime_resolution",
+    "expected_legacy_ref": "M22://questionnaires/CO-TR-001",
+    "prohibition": "do_not_create_duplicate_questionnaire_before_runtime_audit"
+  },
+  "ruleset_binding": {
+    "status": "candidate_from_m23_2",
+    "source_file": "CO-TR-001/CO-TR-001_M23_Bloques_Reglas_y_Fuentes.json",
+    "rule_count": 10,
+    "rule_ids": [
+      "M23-TR1-001",
+      "M23-TR1-002",
+      "M23-TR1-003",
+      "M23-TR1-004",
+      "M23-TR1-005",
+      "M23-TR1-006",
+      "M23-TR1-007",
+      "M23-TR1-008",
+      "M23-TR1-009",
+      "M23-TR1-010"
+    ]
+  },
+  "created_at": "2026-08-01T05:58:46.989169+00:00",
+  "publication_change": "none"
+}

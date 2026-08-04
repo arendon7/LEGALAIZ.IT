@@ -1,0 +1,76 @@
+{
+  "schema": "legalaizit-m30-3-pilot-visuals-v1",
+  "count": 10,
+  "assets": [
+    {
+      "file": "operations-center.svg",
+      "title": "Centro operativo del piloto",
+      "purpose": "Panel coordinado con etapas, controles y responsables",
+      "format": "svg",
+      "editable": true
+    },
+    {
+      "file": "cohort.svg",
+      "title": "Cohorte controlada",
+      "purpose": "Veinte cupos organizados por producto y escenario",
+      "format": "svg",
+      "editable": true
+    },
+    {
+      "file": "co_la_002.svg",
+      "title": "Contrato laboral",
+      "purpose": "Recorrido de contrato laboral para el piloto",
+      "format": "svg",
+      "editable": true
+    },
+    {
+      "file": "co_em_003.svg",
+      "title": "Prestación de servicios",
+      "purpose": "Recorrido de contrato de servicios para el piloto",
+      "format": "svg",
+      "editable": true
+    },
+    {
+      "file": "co_ar_001.svg",
+      "title": "Arrendamiento de vivienda",
+      "purpose": "Recorrido de arrendamiento para el piloto",
+      "format": "svg",
+      "editable": true
+    },
+    {
+      "file": "co_cd_003.svg",
+      "title": "Protección al consumidor",
+      "purpose": "Recorrido de reclamación de consumidor para el piloto",
+      "format": "svg",
+      "editable": true
+    },
+    {
+      "file": "governance.svg",
+      "title": "Gobernanza integral del piloto",
+      "purpose": "Hero para comunicaciones, incidentes, retención y cierre",
+      "format": "svg",
+      "editable": true
+    },
+    {
+      "file": "communications.svg",
+      "title": "Comunicaciones controladas",
+      "purpose": "Avisos dentro de la cuenta y exportación manual",
+      "format": "svg",
+      "editable": true
+    },
+    {
+      "file": "incident-response.svg",
+      "title": "Respuesta a incidentes",
+      "purpose": "Contención, evaluación y reporte regulatorio",
+      "format": "svg",
+      "editable": true
+    },
+    {
+      "file": "retention-closure.svg",
+      "title": "Retención y cierre",
+      "purpose": "Doble aprobación, depuración controlada y cierre de cohorte",
+      "format": "svg",
+      "editable": true
+    }
+  ]
+}

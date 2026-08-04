@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "migration_id": "M24.1-M23.2-PREINTEGRATION-20260801",
+  "product_code": "CO-EM-004",
+  "revision_id": "M23.2-edc528873058",
+  "source_revision_label": "M23.2",
+  "status": "candidate_blocked_pending_legal_and_qa_approval",
+  "immutable": true,
+  "asset_hashes": {
+    "CO-EM-004_Modelo_Maestro_Confidencialidad_PI_M23.docx": "edc528873058abd523a7dbce70ecd7420063c283f199c378140411e849235328",
+    "CO-EM-004_Modelo_Maestro_Confidencialidad_PI_M23.pdf": "2abad4bb465cbb0ff2e4c00e636b0ba4159aa775ca05ee87fa102dca040fad5f",
+    "CO-EM-004_M23_Bloques_Reglas_y_Fuentes.json": "3f28ceeb15f8fb9a4e99aa15e3bf3bae755712ad33271e936e96cdd17a7f77d9",
+    "CO-EM-004_Ejemplo_Final_Nexo_BioData_M23.docx": "8dc1f7f46a5ac53efe4d9d7db3f434793360e224651ea2aa8446efbfef4ceda2",
+    "CO-EM-004_Ejemplo_Final_Nexo_BioData_M23.pdf": "97774aa2c5c4e2babd783d0b998c4a198c3d9b1dc1ff1ae7d949e2e160a6b840"
+  },
+  "approvals": {
+    "legal": {
+      "required": true,
+      "approved": false,
+      "actor": null
+    },
+    "qa": {
+      "required": true,
+      "approved": false,
+      "actor": null
+    },
+    "must_be_distinct_users": true
+  },
+  "questionnaire_binding": {
+    "status": "pending_runtime_resolution",
+    "expected_legacy_ref": "M22://questionnaires/CO-EM-004",
+    "prohibition": "do_not_create_duplicate_questionnaire_before_runtime_audit"
+  },
+  "ruleset_binding": {
+    "status": "candidate_from_m23_2",
+    "source_file": "CO-EM-004/CO-EM-004_M23_Bloques_Reglas_y_Fuentes.json",
+    "rule_count": 7,
+    "rule_ids": [
+      "CONF-M23-001",
+      "CONF-M23-002",
+      "CONF-M23-003",
+      "CONF-M23-004",
+      "CONF-M23-005",
+      "CONF-M23-006",
+      "CONF-M23-007"
+    ]
+  },
+  "created_at": "2026-08-01T05:58:46.980535+00:00",
+  "publication_change": "none"
+}

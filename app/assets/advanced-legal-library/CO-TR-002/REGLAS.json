@@ -1,0 +1,173 @@
+[
+  {
+    "id": "TR2-R1",
+    "risk": "red",
+    "message": "El producto está diseñado para detección tecnológica, no comparendo impuesto en vía.",
+    "action": "Cambiar de producto o solicitar revisión.",
+    "conditions": {
+      "all": [
+        {
+          "field": "electronic",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [],
+    "blocking": true
+  },
+  {
+    "id": "TR2-R2",
+    "risk": "red",
+    "message": "Cobro coactivo, mandamiento o embargo exige revisión profesional.",
+    "action": "Bloquear generación automática.",
+    "conditions": {
+      "all": [
+        {
+          "field": "coercive",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [],
+    "blocking": true
+  },
+  {
+    "id": "TR2-R3",
+    "risk": "red",
+    "message": "Existe proceso judicial activo.",
+    "action": "Escalar a especialista.",
+    "conditions": {
+      "all": [
+        {
+          "field": "court",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [],
+    "blocking": true
+  },
+  {
+    "id": "TR2-R4",
+    "risk": "yellow",
+    "message": "Debe verificarse ejecutoria, notificación y recursos.",
+    "action": "Solicitar expediente completo.",
+    "conditions": {
+      "all": [
+        {
+          "field": "resolution",
+          "op": "equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [],
+    "blocking": false
+  },
+  {
+    "id": "TR2-R5",
+    "risk": "yellow",
+    "message": "La ausencia de notificación debe probarse y contextualizarse por etapa.",
+    "action": "Preparar solicitud de expediente y reclamación.",
+    "conditions": {
+      "all": [
+        {
+          "field": "notice_received",
+          "op": "equals",
+          "value": "No"
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [],
+    "blocking": false
+  },
+  {
+    "id": "TR2-R6",
+    "risk": "yellow",
+    "message": "Datos RUNT no estaban actualizados o no se conocen.",
+    "action": "Analizar trazabilidad y deber de actualización.",
+    "conditions": {
+      "all": [
+        {
+          "field": "owner_updated_runt",
+          "op": "in",
+          "value": [
+            "No",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [],
+    "blocking": false
+  },
+  {
+    "id": "TR2-R7",
+    "risk": "yellow",
+    "message": "El comparendo fue pagado o no se conoce el pago.",
+    "action": "No solicitar devolución automática.",
+    "conditions": {
+      "all": [
+        {
+          "field": "paid",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "review",
+    "source_ids": [],
+    "blocking": false
+  },
+  {
+    "id": "TR2-R8",
+    "risk": "red",
+    "message": "Existe un término próximo.",
+    "action": "Especialista obligatorio.",
+    "conditions": {
+      "all": [
+        {
+          "field": "deadline_urgent",
+          "op": "in",
+          "value": [
+            "Sí",
+            "No sé"
+          ]
+        }
+      ]
+    },
+    "category": "exclusion",
+    "source_ids": [],
+    "blocking": true
+  },
+  {
+    "id": "TR2-R9",
+    "risk": "red",
+    "category": "validation",
+    "blocking": true,
+    "conditions": {
+      "all": [
+        {
+          "field": "data_confirmed",
+          "op": "not_equals",
+          "value": "Sí"
+        }
+      ]
+    },
+    "message": "La información no fue confirmada con los soportes disponibles.",
+    "action": "Solicitar confirmación antes de generar la reclamación.",
+    "source_ids": []
+  }
+]

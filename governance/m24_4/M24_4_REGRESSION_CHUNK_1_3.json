@@ -1,0 +1,35 @@
+[
+  {
+    "file": "test_assisted_review.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 7,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 9.29,
+    "summary": ".......                                                                  [100%] 7 passed in 7.55s"
+  },
+  {
+    "file": "test_continuity_delivery.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 5,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 6.8,
+    "summary": ".....                                                                    [100%] 5 passed in 5.21s"
+  },
+  {
+    "file": "test_document_factory.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 8,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 11.84,
+    "summary": "........                                                                 [100%] 8 passed in 10.21s"
+  }
+]

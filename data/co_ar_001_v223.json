@@ -1,0 +1,36 @@
+{
+  "version": "2.23",
+  "product_code": "CO-AR-001",
+  "title": "Maduración integral de arrendamiento de vivienda urbana",
+  "objective": "Transformar el piloto documental en un flujo jurídico completo que valide alcance, partes, inmueble, canon, garantías, habitabilidad, anexos, entrega y cierre antes de generar.",
+  "legal_model": "Ley 820 de 2003 + Código Civil + propiedad horizontal + control procesal y de datos",
+  "economic_controls": {
+    "max_rent_ratio": 0.01,
+    "max_commercial_value_vs_cadastral": 2.0,
+    "ipc_2025_for_2026_adjustment": 0.051
+  },
+  "documents": [
+    {
+      "kind": "lease_contract",
+      "title": "Contrato de arrendamiento de vivienda urbana completo"
+    },
+    {
+      "kind": "lease_inventory",
+      "title": "Inventario del inmueble y evidencia de estado"
+    },
+    {
+      "kind": "delivery_act",
+      "title": "Acta de entrega del inmueble"
+    },
+    {
+      "kind": "restitution_act",
+      "title": "Acta de restitución y cierre"
+    },
+    {
+      "kind": "lease_guide",
+      "title": "Guía operativa de firma, ejecución y cierre"
+    }
+  ],
+  "blocking_principle": "Los controles rojos entregan trazabilidad y escalamiento, no un contrato ordinario listo para firma.",
+  "verified_at": "2026-07-17"
+}

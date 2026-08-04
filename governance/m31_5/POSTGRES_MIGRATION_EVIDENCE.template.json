@@ -1,0 +1,12 @@
+{
+  "schema": "legalaizit-sqlite-postgres-migration-v2",
+  "milestone": "M31.5",
+  "version": "5.0.4",
+  "source_sha256": null,
+  "target_fingerprint": null,
+  "verification": {"missing_rows": null, "mismatched_rows": null},
+  "verified": false,
+  "sequences_reconciled": false,
+  "ok": false,
+  "production_authorized": false
+}

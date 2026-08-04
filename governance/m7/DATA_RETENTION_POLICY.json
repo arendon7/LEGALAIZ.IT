@@ -1,0 +1,21 @@
+{
+  "schema": "legalaizit-retention-v1",
+  "status": "draft_pending_controller_approval",
+  "jurisdiction": "Colombia",
+  "principles": [
+    "purpose limitation",
+    "data minimization",
+    "security",
+    "confidentiality",
+    "demonstrated accountability"
+  ],
+  "retention": {
+    "anonymous_drafts_days": 30,
+    "security_events_days": 365,
+    "application_logs_days": 180,
+    "inactive_sessions_days": 30,
+    "rejected_upload_quarantine_days": 30,
+    "closed_cases_days": 1825
+  },
+  "notice": "Final periods require validation against contractual, procedural, accounting, evidentiary and sector-specific duties."
+}

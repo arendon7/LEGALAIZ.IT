@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="t d">
+<title id="t">Solución jurídica guiada</title><desc id="d">Una persona avanza desde una necesidad hacia un documento revisado y trazable.</desc>
+<defs>
+  <linearGradient id="navyG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0D1324"/><stop offset="1" stop-color="#18375E"/></linearGradient>
+  <linearGradient id="goldG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#E6C98F"/><stop offset="1" stop-color="#B1843C"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#0D1324" flood-opacity=".14"/></filter>
+</defs>
+<rect width="640" height="480" rx="36" fill="#F7F5F1"/>
+<circle cx="535" cy="86" r="106" fill="#C9A96E" opacity=".16"/><circle cx="88" cy="402" r="76" fill="#2563EB" opacity=".08"/>
+<g filter="url(#shadow)"><rect x="112" y="58" width="416" height="348" rx="30" fill="url(#navyG)"/><rect x="138" y="84" width="364" height="296" rx="20" fill="#FFFFFF"/></g>
+<rect x="138" y="84" width="364" height="54" rx="20" fill="#FBFAF7"/><circle cx="163" cy="111" r="7" fill="#C9A96E"/><rect x="181" y="102" width="112" height="16" rx="8" fill="#0D1324"/><rect x="411" y="100" width="65" height="20" rx="10" fill="#E6E6E1"/>
+<rect x="162" y="162" width="146" height="92" rx="17" fill="#0D1324"/><circle cx="208" cy="208" r="27" fill="#C9A96E"/><path d="M196 208h24M208 196v24" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/><rect x="247" y="181" width="42" height="9" rx="4" fill="#FFFFFF" opacity=".9"/><rect x="247" y="199" width="32" height="7" rx="3" fill="#A8AEB8"/><rect x="247" y="216" width="47" height="7" rx="3" fill="#A8AEB8"/>
+<rect x="329" y="162" width="149" height="42" rx="13" fill="#F2F5FA"/><circle cx="351" cy="183" r="9" fill="#2563EB"/><rect x="369" y="176" width="78" height="7" rx="3" fill="#0D1324"/><rect x="369" y="189" width="55" height="6" rx="3" fill="#A8AEB8"/>
+<rect x="329" y="214" width="149" height="42" rx="13" fill="#F2F5FA"/><circle cx="351" cy="235" r="9" fill="#C9A96E"/><rect x="369" y="228" width="86" height="7" rx="3" fill="#0D1324"/><rect x="369" y="241" width="65" height="6" rx="3" fill="#A8AEB8"/>
+<rect x="162" y="278" width="316" height="73" rx="16" fill="#FBFAF7" stroke="#E6E6E1"/><rect x="181" y="297" width="116" height="11" rx="5" fill="#0D1324"/><rect x="181" y="319" width="177" height="8" rx="4" fill="#A8AEB8"/><rect x="387" y="294" width="72" height="38" rx="12" fill="url(#goldG)"/><path d="m408 313 8 8 19-22" fill="none" stroke="#0D1324" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<g filter="url(#shadow)"><rect x="54" y="180" width="115" height="142" rx="22" fill="#FFFFFF"/><circle cx="111" cy="225" r="28" fill="#F4EFE5"/><circle cx="111" cy="217" r="9" fill="#C9A96E"/><path d="M92 243c5-17 33-17 38 0" fill="none" stroke="#C9A96E" stroke-width="6" stroke-linecap="round"/><rect x="75" y="270" width="72" height="9" rx="4" fill="#0D1324"/><rect x="87" y="289" width="48" height="7" rx="3" fill="#A8AEB8"/></g>
+<g filter="url(#shadow)"><rect x="478" y="284" width="116" height="128" rx="22" fill="#FFFFFF"/><rect x="506" y="309" width="61" height="72" rx="9" fill="#F8F6F1" stroke="#E6E6E1"/><path d="M521 329h31M521 345h31M521 361h22" stroke="#C9A96E" stroke-width="5" stroke-linecap="round"/><circle cx="566" cy="301" r="19" fill="#2563EB"/><path d="m557 301 6 6 12-14" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg>

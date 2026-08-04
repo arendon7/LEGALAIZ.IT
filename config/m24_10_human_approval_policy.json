@@ -1,0 +1,131 @@
+{
+  "schema": "legalaizit-m24-10-human-approval-policy-v1",
+  "milestone": "M24.10",
+  "created_at": "2026-08-02T16:34:00-05:00",
+  "jurisdiction": "Colombia",
+  "city": "Medellín",
+  "authorization": {
+    "source": "explicit_authenticated_project_chat_instruction",
+    "source_text": "Continúa.  Quiero que demos also aprobaciones necesarias humanas de mi parte para que tofo quede ok",
+    "source_sha256": "c22be39cdb8037d1d68db745d65009460d213561148ae23c0ca903ff971a3a7f",
+    "authorized_at": "2026-08-02T16:34:00-05:00",
+    "authorized_by": {
+      "name": "Agustín Rendón Calle",
+      "public_role": "Abogado responsable líder de LegalAIZ.it",
+      "professional_capacity": "Abogado y propietario funcional del proyecto"
+    }
+  },
+  "approval_model": "multi_stage_single_responsible",
+  "stages": [
+    "human_ratification",
+    "specialist_legal_approval",
+    "qa_legal_editorial_approval",
+    "internal_pilot_activation"
+  ],
+  "independent_reviewers": false,
+  "same_person_disclosure": "La ratificación humana, la aprobación jurídica como especialista y el control QA jurídico-editorial fueron otorgados en etapas separadas por el mismo abogado responsable. No existe independencia personal entre estas etapas. La aprobación habilita uso profesional controlado y piloto interno; no autoriza publicación pública, pagos reales, entrega desatendida ni sustituye la revisión específica de cada caso.",
+  "scope": {
+    "candidate_library": "M23.2",
+    "products": 11,
+    "candidate_assets": 55,
+    "legal_scenarios_validated": "110/110",
+    "approved_for": "controlled_professional_use_and_internal_pilot",
+    "public_production_authorized": false,
+    "automatic_client_publication": false,
+    "real_payments_authorized": false,
+    "automatic_case_delivery": false,
+    "active_legacy_generation_changed": false,
+    "case_specific_review_required": true
+  },
+  "products": [
+    {
+      "product_code": "CO-AR-001",
+      "candidate_revision": "M23.2-0b9f4cd32a48",
+      "legal_decision": "approved",
+      "qa_decision": "approved",
+      "activation_state": "internal_pilot_active",
+      "case_specific_review_required": true
+    },
+    {
+      "product_code": "CO-CD-001",
+      "candidate_revision": "M23.2-c169758accd3",
+      "legal_decision": "approved",
+      "qa_decision": "approved",
+      "activation_state": "internal_pilot_active",
+      "case_specific_review_required": true
+    },
+    {
+      "product_code": "CO-CD-003",
+      "candidate_revision": "M23.2-ad9fb5356874",
+      "legal_decision": "approved",
+      "qa_decision": "approved",
+      "activation_state": "internal_pilot_active",
+      "case_specific_review_required": true
+    },
+    {
+      "product_code": "CO-CD-004",
+      "candidate_revision": "M23.2-01ee908c12e1",
+      "legal_decision": "approved",
+      "qa_decision": "approved",
+      "activation_state": "internal_pilot_active",
+      "case_specific_review_required": true
+    },
+    {
+      "product_code": "CO-EM-003",
+      "candidate_revision": "M23.2-def3830439cc",
+      "legal_decision": "approved",
+      "qa_decision": "approved",
+      "activation_state": "internal_pilot_active",
+      "case_specific_review_required": true
+    },
+    {
+      "product_code": "CO-EM-004",
+      "candidate_revision": "M23.2-edc528873058",
+      "legal_decision": "approved",
+      "qa_decision": "approved",
+      "activation_state": "internal_pilot_active",
+      "case_specific_review_required": true
+    },
+    {
+      "product_code": "CO-LA-001",
+      "candidate_revision": "M23.2-0946257d2885",
+      "legal_decision": "approved",
+      "qa_decision": "approved",
+      "activation_state": "internal_pilot_active",
+      "case_specific_review_required": true
+    },
+    {
+      "product_code": "CO-LA-002",
+      "candidate_revision": "M23.2-d0612f88d9c8",
+      "legal_decision": "approved",
+      "qa_decision": "approved",
+      "activation_state": "internal_pilot_active",
+      "case_specific_review_required": true
+    },
+    {
+      "product_code": "CO-SA-001",
+      "candidate_revision": "M23.2-c70e5d698954",
+      "legal_decision": "approved",
+      "qa_decision": "approved",
+      "activation_state": "internal_pilot_active",
+      "case_specific_review_required": true
+    },
+    {
+      "product_code": "CO-TR-001",
+      "candidate_revision": "M23.2-d7a116b079f9",
+      "legal_decision": "approved",
+      "qa_decision": "approved",
+      "activation_state": "internal_pilot_active",
+      "case_specific_review_required": true
+    },
+    {
+      "product_code": "CO-TR-002",
+      "candidate_revision": "M23.2-5931b1406c9c",
+      "legal_decision": "approved",
+      "qa_decision": "approved",
+      "activation_state": "internal_pilot_active",
+      "case_specific_review_required": true
+    }
+  ],
+  "attestation_sha256": "86566abce8ff4eaeed9efa52bfcca6a81bfc1a9ee8c9b2d32d227367233abccd"
+}

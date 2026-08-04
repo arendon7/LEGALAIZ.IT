@@ -1,0 +1,116 @@
+{
+  "product_code": "CO-EM-003",
+  "candidate_version": "2.8",
+  "source_file": "LegalAIZit_Paquete_01_Prestacion_de_Servicios_v1.docx",
+  "identity_status": "Pendiente: el binario original de File Library no pudo copiarse al entorno.",
+  "method": "Reconstrucción estructurada a partir del texto y páginas accesibles del DOCX/PDF y del Blueprint técnico.",
+  "fragments": [
+    {
+      "id": "EM3-CF-001",
+      "locator": "Paquete original, página 1",
+      "heading": "Alcance del producto",
+      "text": "Servicios civiles o comerciales independientes con autonomía real; exclusión de relaciones laborales encubiertas, contratación estatal y servicios altamente regulados.",
+      "targets": [
+        "TPL-CO-EM-003-CONTRACT-B01",
+        "TPL-CO-EM-003-CONTRACT-B05"
+      ]
+    },
+    {
+      "id": "EM3-CF-002",
+      "locator": "Página 2",
+      "heading": "Regla de bloqueo",
+      "text": "Horario impuesto, órdenes permanentes, control disciplinario, disponibilidad continua o puntaje alto de subordinación impiden generación definitiva.",
+      "targets": [
+        "TPL-CO-EM-003-CONTRACT-B05"
+      ]
+    },
+    {
+      "id": "EM3-CF-003",
+      "locator": "Páginas 2-3",
+      "heading": "Objeto y alcance",
+      "text": "Objeto preciso, Anexo No. 1, entregables, cronograma, criterios de aceptación y cambios escritos.",
+      "targets": [
+        "TPL-CO-EM-003-CONTRACT-B02",
+        "TPL-CO-EM-003-SCOPE-B01",
+        "TPL-CO-EM-003-SCOPE-B02"
+      ]
+    },
+    {
+      "id": "EM3-CF-004",
+      "locator": "Páginas 3-4",
+      "heading": "Obligaciones",
+      "text": "Diligencia, autonomía, soportes, información, pagos y prohibición de control disciplinario.",
+      "targets": [
+        "TPL-CO-EM-003-CONTRACT-B03"
+      ]
+    },
+    {
+      "id": "EM3-CF-005",
+      "locator": "Páginas 3-4",
+      "heading": "Honorarios, gastos y plazo",
+      "text": "Valor, esquema de pago, soportes, retenciones, gastos autorizados y vigencia escrita.",
+      "targets": [
+        "TPL-CO-EM-003-CONTRACT-B04",
+        "TPL-CO-EM-003-SCOPE-B03"
+      ]
+    },
+    {
+      "id": "EM3-CF-006",
+      "locator": "Páginas 4-5",
+      "heading": "Entrega y aceptación",
+      "text": "Revisión en término pactado, observaciones concretas, rechazo motivado y control de cambios.",
+      "targets": [
+        "TPL-CO-EM-003-CONTRACT-B06",
+        "TPL-CO-EM-003-SCOPE-B02"
+      ]
+    },
+    {
+      "id": "EM3-CF-007",
+      "locator": "Página 5",
+      "heading": "Confidencialidad, PI y datos",
+      "text": "Anexos especiales para reserva, modalidad patrimonial, derechos morales e instrucciones de datos.",
+      "targets": [
+        "TPL-CO-EM-003-NDA-B01",
+        "TPL-CO-EM-003-IP-B03",
+        "TPL-CO-EM-003-DATA-B01"
+      ]
+    },
+    {
+      "id": "EM3-CF-008",
+      "locator": "Páginas 5-6",
+      "heading": "Seguridad y responsabilidad",
+      "text": "Controles razonables, incidentes, garantías, daños directos, excepciones y terceros.",
+      "targets": [
+        "TPL-CO-EM-003-NDA-B03",
+        "TPL-CO-EM-003-DATA-B04",
+        "TPL-CO-EM-003-CONTRACT-B07"
+      ]
+    },
+    {
+      "id": "EM3-CF-009",
+      "locator": "Páginas 6-7",
+      "heading": "Suspensión, terminación y cierre",
+      "text": "Suspensión documentada, causales de terminación, pago de servicios aceptados y acta de cierre.",
+      "targets": [
+        "TPL-CO-EM-003-CONTRACT-B07",
+        "TPL-CO-EM-003-CLOSURE-B01",
+        "TPL-CO-EM-003-CLOSURE-B03"
+      ]
+    },
+    {
+      "id": "EM3-CF-010",
+      "locator": "Páginas 11-13",
+      "heading": "Formulario, riesgos y pruebas",
+      "text": "Quince preguntas mínimas, matriz de subordinación, diez reglas automatizables y escenarios obligatorios.",
+      "targets": [
+        "INTERVIEW-CO-EM-003",
+        "RULES-CO-EM-003"
+      ]
+    }
+  ],
+  "limitations": [
+    "No prueba identidad byte a byte.",
+    "No equivale a aprobación jurídica.",
+    "Los pasajes adaptados deben cotejarse antes de publicación."
+  ]
+}

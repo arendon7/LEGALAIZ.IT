@@ -1,0 +1,62 @@
+[
+  {
+    "id": "DOC-LA1-CALCULATION-001",
+    "name": "Informe técnico de liquidación laboral",
+    "kind": "main",
+    "trigger": "always"
+  },
+  {
+    "id": "ANX-LA1-CONCEPTS-001",
+    "name": "Matriz de cálculo por concepto y período",
+    "kind": "annex",
+    "trigger": "always"
+  },
+  {
+    "id": "ANX-LA1-EVIDENCE-001",
+    "name": "Matriz de soportes, pagos y diferencias",
+    "kind": "annex",
+    "trigger": "always"
+  },
+  {
+    "id": "DOC-LA1-CLAIM-001",
+    "name": "Reclamación directa de acreencias laborales",
+    "kind": "document",
+    "trigger": "requested_or_difference"
+  },
+  {
+    "id": "DOC-LA1-SUPPORT-REQUEST-001",
+    "name": "Solicitud de soportes laborales y de pago",
+    "kind": "document",
+    "trigger": "missing_supports"
+  },
+  {
+    "id": "DOC-LA1-PRESCRIPTION-001",
+    "name": "Informe de exigibilidad, reclamación y prescripción",
+    "kind": "report",
+    "trigger": "prescription_review"
+  },
+  {
+    "id": "DOC-LA1-MORATORY-001",
+    "name": "Análisis de indemnización moratoria",
+    "kind": "report",
+    "trigger": "moratory_review"
+  },
+  {
+    "id": "DOC-LA1-CONCILIATION-001",
+    "name": "Propuesta de conciliación laboral",
+    "kind": "document",
+    "trigger": "settlement"
+  },
+  {
+    "id": "AGR-LA1-PAYMENT-001",
+    "name": "Acuerdo de pago de acreencias laborales",
+    "kind": "agreement",
+    "trigger": "settlement"
+  },
+  {
+    "id": "ACT-LA1-CLOSE-001",
+    "name": "Acta de cumplimiento y cierre",
+    "kind": "record",
+    "trigger": "settlement"
+  }
+]

@@ -1,0 +1,74 @@
+{
+  "version": "M19.1",
+  "product_code": "CO-CD-003",
+  "title": "Garantía, retracto, reversión y comercio electrónico",
+  "objective": "Seleccionar y documentar el mecanismo correcto, con términos, evidencia, custodia, autoridad y no duplicidad.",
+  "verified_at": "2026-07-31",
+  "status": "Revalidado M19 para uso profesional controlado",
+  "documents": [
+    {
+      "kind": "classifier",
+      "title": "Clasificador de mecanismos",
+      "conditional": false
+    },
+    {
+      "kind": "warranty",
+      "title": "Reclamación de garantía",
+      "conditional": false
+    },
+    {
+      "kind": "retract",
+      "title": "Ejercicio de retracto",
+      "conditional": true
+    },
+    {
+      "kind": "reversal",
+      "title": "Solicitud coordinada de reversión",
+      "conditional": true
+    },
+    {
+      "kind": "ecommerce",
+      "title": "Terminación por no entrega o indisponibilidad",
+      "conditional": true
+    },
+    {
+      "kind": "sic",
+      "title": "Reclamación directa y expediente para SIC",
+      "conditional": true
+    },
+    {
+      "kind": "evidence",
+      "title": "Matriz de evidencia y plazos",
+      "conditional": false
+    }
+  ],
+  "controls": [
+    "relación de consumo",
+    "garantía solidaria",
+    "reparabilidad y repetición",
+    "reparación 30 días",
+    "reposición 10 días",
+    "devolución garantía 15 días hábiles",
+    "retracto 5 días hábiles",
+    "reembolso retracto 15 días calendario uniforme",
+    "excepciones",
+    "reversión y causal taxativa",
+    "no entrega 30 días",
+    "reclamación directa 15 días hábiles",
+    "SIC",
+    "custodia",
+    "no duplicidad",
+    "datos y seguridad"
+  ],
+  "official_source_ids": [
+    "CD3-S1",
+    "CD3-S2",
+    "CD3-S3",
+    "CD3-S4",
+    "CD3-S5",
+    "CD3-S6",
+    "CD3-S7",
+    "CD3-S8",
+    "CD3-S9"
+  ]
+}

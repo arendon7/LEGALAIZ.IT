@@ -1,0 +1,1128 @@
+{
+  "manifest": {
+    "schema": "legalai_m31_7_demo_reality_portfolio_v1",
+    "milestone": "M31.7",
+    "version": "5.0.6",
+    "status": "ready",
+    "generated_at": "2026-08-04T17:27:21+00:00",
+    "generated_by": "qa-final-m31.7",
+    "scope": "demo_documental_completa_con_datos_sinteticos",
+    "production_authorized": false,
+    "public_release_authorized": false,
+    "products": [
+      {
+        "product_code": "CO-AR-001",
+        "title": "Arrendamiento de vivienda urbana",
+        "generated_docx": 5,
+        "validated_reference_files": 2,
+        "package": {
+          "name": "LegalAIZit_CO-AR-001_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip",
+          "size_bytes": 815162,
+          "sha256": "e586a884d72c674112d72ef75c55900772c98d2cd712ba610b807f4bbe45ca8e",
+          "download_path": "CO-AR-001/LegalAIZit_CO-AR-001_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip"
+        },
+        "files": [
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-AR-001-DELIVERY-ACT",
+            "kind": "delivery_act",
+            "title": "Acta de entrega del inmueble",
+            "name": "CO-AR-001_01_acta_entrega_FINAL_DEMO.docx",
+            "size_bytes": 138769,
+            "sha256": "12c5090d31b46020f8ff71ccd08df70c1698b9fafc165b9b080ef201c11b34e0",
+            "download_path": "CO-AR-001/documentos_generados/CO-AR-001_01_acta_entrega_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-AR-001-LEASE-CONTRACT",
+            "kind": "lease_contract",
+            "title": "Contrato de arrendamiento de vivienda urbana",
+            "name": "CO-AR-001_02_contrato_arrendamiento_FINAL_DEMO.docx",
+            "size_bytes": 138955,
+            "sha256": "ab94b77b0a4c4b719ee64372d2f5e33baf41eacb027207748523a5d5e92b1cf0",
+            "download_path": "CO-AR-001/documentos_generados/CO-AR-001_02_contrato_arrendamiento_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-AR-001-LEASE-GUIDE",
+            "kind": "lease_guide",
+            "title": "Guía operativa de firma, ejecución y cierre",
+            "name": "CO-AR-001_03_guia_operativa_arrendamiento_FINAL_DEMO.docx",
+            "size_bytes": 138889,
+            "sha256": "d3fac1e66dde6f000e9e0b25fa7744abac43efe50dd22ed21b1d49593f3c958a",
+            "download_path": "CO-AR-001/documentos_generados/CO-AR-001_03_guia_operativa_arrendamiento_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-AR-001-LEASE-INVENTORY",
+            "kind": "lease_inventory",
+            "title": "Inventario del inmueble y evidencia de estado",
+            "name": "CO-AR-001_04_inventario_inmueble_FINAL_DEMO.docx",
+            "size_bytes": 138816,
+            "sha256": "e6d540a10a85d678d63d841592b8be7d8f72c99b02782d5b623a35ce42c14d6b",
+            "download_path": "CO-AR-001/documentos_generados/CO-AR-001_04_inventario_inmueble_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-AR-001-RESTITUTION-ACT",
+            "kind": "lease_restitution_act",
+            "title": "Acta de restitución del inmueble",
+            "name": "CO-AR-001_05_acta_restitucion_inmueble_FINAL_DEMO.docx",
+            "size_bytes": 138913,
+            "sha256": "487a54cf2cf538cc176ce29d5ea7bb3e79cb79f279e1fc1b8047c762b08ce359",
+            "download_path": "CO-AR-001/documentos_generados/CO-AR-001_05_acta_restitucion_inmueble_FINAL_DEMO.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "docx",
+            "name": "CO-AR-001_REFERENCIA_FINAL_VALIDADA.docx",
+            "size_bytes": 47766,
+            "sha256": "359f6cc24625af7c0d7c8daf0808df76cc67d31fff7c8736a4ec0fd3882fc973",
+            "download_path": "CO-AR-001/referencias_validadas/CO-AR-001_REFERENCIA_FINAL_VALIDADA.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "pdf",
+            "name": "CO-AR-001_REFERENCIA_FINAL_VALIDADA.pdf",
+            "size_bytes": 153177,
+            "sha256": "6c6093a7bf57e158053c559f22b946e2554863fc9da3dc72a90499ea4acb55ae",
+            "download_path": "CO-AR-001/referencias_validadas/CO-AR-001_REFERENCIA_FINAL_VALIDADA.pdf"
+          }
+        ]
+      },
+      {
+        "product_code": "CO-CD-001",
+        "title": "Centrales de riesgo y hábeas data",
+        "generated_docx": 7,
+        "validated_reference_files": 2,
+        "package": {
+          "name": "LegalAIZit_CO-CD-001_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip",
+          "size_bytes": 1070985,
+          "sha256": "07988c49cc6863bbd0584a1ac62ce620984136568c1e472066308820036bf01a",
+          "download_path": "CO-CD-001/LegalAIZit_CO-CD-001_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip"
+        },
+        "files": [
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-001-HABEAS-AUTHORITY-ESCALATION",
+            "kind": "habeas_authority_escalation",
+            "title": "Ruta y borrador de escalamiento ante autoridad",
+            "name": "CO-CD-001_01_escalamiento_autoridad_FINAL_DEMO.docx",
+            "size_bytes": 138332,
+            "sha256": "7b378c0ad92e5dfc26a8718e1d420d823e89d4147456e0f0ce813bce620e0675",
+            "download_path": "CO-CD-001/documentos_generados/CO-CD-001_01_escalamiento_autoridad_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-001-HABEAS-CLAIM",
+            "kind": "habeas_claim",
+            "title": "Reclamo integral de hábeas data financiero",
+            "name": "CO-CD-001_02_reclamo_integral_habeas_data_FINAL_DEMO.docx",
+            "size_bytes": 138642,
+            "sha256": "5b063f4c1c4094c91d99b474d74b15597cfedf1fadbea5b66dac0995a106dd30",
+            "download_path": "CO-CD-001/documentos_generados/CO-CD-001_02_reclamo_integral_habeas_data_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-001-HABEAS-CONSULTATION",
+            "kind": "habeas_consultation",
+            "title": "Consulta integral del dato, fuente, usuarios y soportes",
+            "name": "CO-CD-001_03_consulta_integral_habeas_data_FINAL_DEMO.docx",
+            "size_bytes": 138234,
+            "sha256": "2ed01c95e71f2bf0a0c1f83c4145652cc7a60179240af6b5db38d7c580bdccf1",
+            "download_path": "CO-CD-001/documentos_generados/CO-CD-001_03_consulta_integral_habeas_data_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-001-HABEAS-DEADLINE-CALENDAR",
+            "kind": "habeas_deadline_calendar",
+            "title": "Calendario de términos, permanencia y caducidad",
+            "name": "CO-CD-001_04_calendario_terminos_permanencia_FINAL_DEMO.docx",
+            "size_bytes": 138216,
+            "sha256": "8389dc61bfca687fd27a517741837c02d20df7b54efe59f8c9ea8f11cc6113a3",
+            "download_path": "CO-CD-001/documentos_generados/CO-CD-001_04_calendario_terminos_permanencia_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-001-HABEAS-EVIDENCE-MATRIX",
+            "kind": "habeas_evidence_matrix",
+            "title": "Matriz de evidencia, responsables y trazabilidad",
+            "name": "CO-CD-001_05_matriz_evidencia_responsables_FINAL_DEMO.docx",
+            "size_bytes": 138240,
+            "sha256": "91cc47feaafc9d78980aacd27c18297ffff96f38b115eca6fac73407c8e80fea",
+            "download_path": "CO-CD-001/documentos_generados/CO-CD-001_05_matriz_evidencia_responsables_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-001-HABEAS-REITERATION",
+            "kind": "habeas_reiteration",
+            "title": "Reiteración, leyenda y control de silencio",
+            "name": "CO-CD-001_06_reiteracion_control_silencio_FINAL_DEMO.docx",
+            "size_bytes": 138188,
+            "sha256": "8b25962d54446fb378acf7bea3b8d4e54ab05dc32ab212268464a5b0c97f1b0b",
+            "download_path": "CO-CD-001/documentos_generados/CO-CD-001_06_reiteracion_control_silencio_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-001-IDENTITY-THEFT-PROTOCOL",
+            "kind": "identity_theft_protocol",
+            "title": "Protocolo de suplantación, alertas y preservación",
+            "name": "CO-CD-001_07_protocolo_suplantacion_FINAL_DEMO.docx",
+            "size_bytes": 138219,
+            "sha256": "153dc19369878fb605e9a150d484040168b3129f8a8e1cc1aaf288d13ac2fcb2",
+            "download_path": "CO-CD-001/documentos_generados/CO-CD-001_07_protocolo_suplantacion_FINAL_DEMO.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "docx",
+            "name": "CO-CD-001_REFERENCIA_FINAL_VALIDADA.docx",
+            "size_bytes": 45287,
+            "sha256": "f95abd75858dac3f58ddb73800c570aeae7b653fe44ab0522761e50dbc1f97a3",
+            "download_path": "CO-CD-001/referencias_validadas/CO-CD-001_REFERENCIA_FINAL_VALIDADA.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "pdf",
+            "name": "CO-CD-001_REFERENCIA_FINAL_VALIDADA.pdf",
+            "size_bytes": 126932,
+            "sha256": "4ed74c69924245f165510516d9bd28fb4a7a6af7d7ab722785024c318439d383",
+            "download_path": "CO-CD-001/referencias_validadas/CO-CD-001_REFERENCIA_FINAL_VALIDADA.pdf"
+          }
+        ]
+      },
+      {
+        "product_code": "CO-CD-003",
+        "title": "Garantía, retracto y reversión del pago",
+        "generated_docx": 8,
+        "validated_reference_files": 2,
+        "package": {
+          "name": "LegalAIZit_CO-CD-003_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip",
+          "size_bytes": 1221680,
+          "sha256": "5aa595f749bfcb96216695ea3ba34529a861a3f407da9caa9d47f08173b8659d",
+          "download_path": "CO-CD-003/LegalAIZit_CO-CD-003_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip"
+        },
+        "files": [
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-003-CONSUMER-DEADLINE-CALENDAR",
+            "kind": "consumer_deadline_calendar",
+            "title": "Calendario de términos y actuaciones de consumo",
+            "name": "CO-CD-003_01_calendario_terminos_consumo_FINAL_DEMO.docx",
+            "size_bytes": 139174,
+            "sha256": "4f791c7fa49fe11ff6067853a9106933a3ac932b17fc7c4b93da8ab85920454d",
+            "download_path": "CO-CD-003/documentos_generados/CO-CD-003_01_calendario_terminos_consumo_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-003-CONSUMER-EVIDENCE-MATRIX",
+            "kind": "consumer_evidence_matrix",
+            "title": "Matriz de evidencia, pretensiones y destinatarios",
+            "name": "CO-CD-003_02_matriz_evidencia_consumidor_FINAL_DEMO.docx",
+            "size_bytes": 138986,
+            "sha256": "d409f59574c2f7c8ec24091f08598218fa8ff8950c60d45d6b461a9cc25b3257",
+            "download_path": "CO-CD-003/documentos_generados/CO-CD-003_02_matriz_evidencia_consumidor_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-003-CONSUMER-MECHANISM-DIAGNOSIS",
+            "kind": "consumer_mechanism_diagnosis",
+            "title": "Diagnóstico jurídico del mecanismo de consumo",
+            "name": "CO-CD-003_03_diagnostico_mecanismo_consumo_FINAL_DEMO.docx",
+            "size_bytes": 139205,
+            "sha256": "90911e750fda6ab8b7460a3dfd5928fe7611420589edeab00cc2b1fe92b5a89f",
+            "download_path": "CO-CD-003/documentos_generados/CO-CD-003_03_diagnostico_mecanismo_consumo_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-003-ECOMMERCE-NON-DELIVERY-TERMINATION",
+            "kind": "ecommerce_non_delivery_termination",
+            "title": "Terminación por falta de entrega y devolución",
+            "name": "CO-CD-003_04_terminacion_falta_entrega_FINAL_DEMO.docx",
+            "size_bytes": 138589,
+            "sha256": "9a489475d0d76f75cfa30e513e1ed245eed99c603267d46042dbff3c5554bcad",
+            "download_path": "CO-CD-003/documentos_generados/CO-CD-003_04_terminacion_falta_entrega_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-003-PAYMENT-REVERSAL-REQUEST",
+            "kind": "payment_reversal_request",
+            "title": "Solicitud coordinada de reversión del pago",
+            "name": "CO-CD-003_05_solicitud_reversion_pago_FINAL_DEMO.docx",
+            "size_bytes": 138809,
+            "sha256": "495ef0d91ac95cae75d8313e29a77eba83c934f7c44205cbad82448656a83bd3",
+            "download_path": "CO-CD-003/documentos_generados/CO-CD-003_05_solicitud_reversion_pago_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-003-RECURRING-DEBIT-REVOCATION",
+            "kind": "recurring_debit_revocation",
+            "title": "Revocación de débito periódico y control de cargos",
+            "name": "CO-CD-003_06_revocacion_debito_periodico_FINAL_DEMO.docx",
+            "size_bytes": 138630,
+            "sha256": "994f447e1b28335bf7105ff7187ef01326aca900c81407c64344d0e551d16f4f",
+            "download_path": "CO-CD-003/documentos_generados/CO-CD-003_06_revocacion_debito_periodico_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-003-WARRANTY-CLAIM",
+            "kind": "warranty_claim",
+            "title": "Reclamación directa de garantía legal",
+            "name": "CO-CD-003_07_reclamacion_garantia_legal_FINAL_DEMO.docx",
+            "size_bytes": 138978,
+            "sha256": "b5a4fca05ab2c98c1a3c02491d1960d1e6ddfa1cf74bbce2db5405cd87bad25d",
+            "download_path": "CO-CD-003/documentos_generados/CO-CD-003_07_reclamacion_garantia_legal_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-003-WITHDRAWAL-NOTICE",
+            "kind": "withdrawal_notice",
+            "title": "Comunicación de ejercicio del derecho de retracto",
+            "name": "CO-CD-003_08_ejercicio_retracto_FINAL_DEMO.docx",
+            "size_bytes": 138707,
+            "sha256": "1a9fdcc32d168c123690bf19683fa190fb2364357f2f33a81961eecfda50fa44",
+            "download_path": "CO-CD-003/documentos_generados/CO-CD-003_08_ejercicio_retracto_FINAL_DEMO.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "docx",
+            "name": "CO-CD-003_REFERENCIA_FINAL_VALIDADA.docx",
+            "size_bytes": 46481,
+            "sha256": "1f382ec842d1bf868556699bfed846b1e6e7c9e15e6c4641d1e5e81292408ff7",
+            "download_path": "CO-CD-003/referencias_validadas/CO-CD-003_REFERENCIA_FINAL_VALIDADA.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "pdf",
+            "name": "CO-CD-003_REFERENCIA_FINAL_VALIDADA.pdf",
+            "size_bytes": 157600,
+            "sha256": "feba73cd35958cbfcebcc6586b1bb5365436c940ec29873f83e03aeb91d422de",
+            "download_path": "CO-CD-003/referencias_validadas/CO-CD-003_REFERENCIA_FINAL_VALIDADA.pdf"
+          }
+        ]
+      },
+      {
+        "product_code": "CO-CD-004",
+        "title": "Cobro, acuerdo de pago, pagaré, garantías y cierre",
+        "generated_docx": 10,
+        "validated_reference_files": 2,
+        "package": {
+          "name": "LegalAIZit_CO-CD-004_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip",
+          "size_bytes": 1504445,
+          "sha256": "d4b885e99c43c5f0bf699a3d8b04a82308adf4be9dcc4ccc534205a041b00804",
+          "download_path": "CO-CD-004/LegalAIZit_CO-CD-004_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip"
+        },
+        "files": [
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-004-ACCOUNT-STATEMENT",
+            "kind": "account_statement",
+            "title": "Estado de cuenta conciliable y liquidación preliminar",
+            "name": "CO-CD-004_01_estado_cuenta_FINAL_DEMO.docx",
+            "size_bytes": 139009,
+            "sha256": "d6f0eb9f5130f1af2d900905b08a2e2dd25993a330fe893926f8b7ee3b0b4e01",
+            "download_path": "CO-CD-004/documentos_generados/CO-CD-004_01_estado_cuenta_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-004-COLLECTION-EVIDENCE-MATRIX",
+            "kind": "collection_evidence_matrix",
+            "title": "Matriz de evidencia, comunicaciones y trazabilidad",
+            "name": "CO-CD-004_02_matriz_evidencia_FINAL_DEMO.docx",
+            "size_bytes": 138762,
+            "sha256": "d75688c18ca23dcbace02b5c4b17e11e823c76dbb994a2677978f0ac13b0d67e",
+            "download_path": "CO-CD-004/documentos_generados/CO-CD-004_02_matriz_evidencia_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-004-COLLECTION-LETTER",
+            "kind": "collection_letter",
+            "title": "Requerimiento de pago y propuesta de solución",
+            "name": "CO-CD-004_03_requerimiento_pago_FINAL_DEMO.docx",
+            "size_bytes": 138653,
+            "sha256": "f90c10e33deacd6c0eecdcb8c849ba4b9f57f2e507eb45685203a6245fa41414",
+            "download_path": "CO-CD-004/documentos_generados/CO-CD-004_03_requerimiento_pago_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-004-DEBT-DIAGNOSTIC",
+            "kind": "debt_diagnostic",
+            "title": "Diagnóstico de obligación, título y ruta de cobro",
+            "name": "CO-CD-004_04_diagnostico_obligacion_FINAL_DEMO.docx",
+            "size_bytes": 138964,
+            "sha256": "846130bb096d864a2b128a5794701e94107cfb0e550935fc8537234d2c6806ac",
+            "download_path": "CO-CD-004/documentos_generados/CO-CD-004_04_diagnostico_obligacion_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-004-INSTRUCTION-LETTER",
+            "kind": "instruction_letter",
+            "title": "Carta de instrucciones para pagaré",
+            "name": "CO-CD-004_05_carta_instrucciones_FINAL_DEMO.docx",
+            "size_bytes": 138820,
+            "sha256": "78cead7bd1ef6f6f25679777fc0f867e19d6664fdac91aa3f5ade9e0cef26dbc",
+            "download_path": "CO-CD-004/documentos_generados/CO-CD-004_05_carta_instrucciones_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-004-PAYMENT-AGREEMENT",
+            "kind": "payment_agreement",
+            "title": "Acuerdo de pago integral",
+            "name": "CO-CD-004_06_acuerdo_pago_FINAL_DEMO.docx",
+            "size_bytes": 139180,
+            "sha256": "e5d07833d138cfff2996dfe41ce93813d51b118aa1f09c3e671dbf667d786966",
+            "download_path": "CO-CD-004/documentos_generados/CO-CD-004_06_acuerdo_pago_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-004-PAYMENT-RECEIPT",
+            "kind": "payment_receipt",
+            "title": "Recibo de pago y actualización de saldo",
+            "name": "CO-CD-004_07_recibo_pago_FINAL_DEMO.docx",
+            "size_bytes": 138415,
+            "sha256": "925de4b892dea8911811c481c298744f6a15bd9614e31527b16b4ef8138bf7bf",
+            "download_path": "CO-CD-004/documentos_generados/CO-CD-004_07_recibo_pago_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-004-PAYMENT-SCHEDULE",
+            "kind": "payment_schedule",
+            "title": "Cronograma e imputación de cuotas",
+            "name": "CO-CD-004_08_cronograma_cuotas_FINAL_DEMO.docx",
+            "size_bytes": 138358,
+            "sha256": "5e507847fa42275c20f6f80efe90385c52d7519a37b723e3bdd7f0759d1a52b1",
+            "download_path": "CO-CD-004/documentos_generados/CO-CD-004_08_cronograma_cuotas_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-004-PROMISSORY-NOTE",
+            "kind": "promissory_note",
+            "title": "Pagaré diligenciado y controlado",
+            "name": "CO-CD-004_09_pagare_FINAL_DEMO.docx",
+            "size_bytes": 138949,
+            "sha256": "79f2d1d05e139ddeb0500f423f76c1b88fb29fc3accffee56a9094e31e982e24",
+            "download_path": "CO-CD-004/documentos_generados/CO-CD-004_09_pagare_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-CD-004-SETTLEMENT-CERTIFICATE",
+            "kind": "settlement_certificate",
+            "title": "Paz y salvo o constancia de cierre condicionada",
+            "name": "CO-CD-004_10_paz_salvo_FINAL_DEMO.docx",
+            "size_bytes": 138539,
+            "sha256": "d52b3e1e0f27663ac20313b2987220b7b99a63f5ff2d2f8259fb0952052e5d2d",
+            "download_path": "CO-CD-004/documentos_generados/CO-CD-004_10_paz_salvo_FINAL_DEMO.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "docx",
+            "name": "CO-CD-004_REFERENCIA_FINAL_VALIDADA.docx",
+            "size_bytes": 49465,
+            "sha256": "bcd421c449c5f716adba92849bdf1f73f97dc4b5057d10ef7ee2b8b9a73d7f26",
+            "download_path": "CO-CD-004/referencias_validadas/CO-CD-004_REFERENCIA_FINAL_VALIDADA.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "pdf",
+            "name": "CO-CD-004_REFERENCIA_FINAL_VALIDADA.pdf",
+            "size_bytes": 160046,
+            "sha256": "f11901bec4b8dc789d19e45f17ecdaa51a94316638d244bf9ee39993546ebcad",
+            "download_path": "CO-CD-004/referencias_validadas/CO-CD-004_REFERENCIA_FINAL_VALIDADA.pdf"
+          }
+        ]
+      },
+      {
+        "product_code": "CO-EM-003",
+        "title": "Contrato de prestación de servicios",
+        "generated_docx": 6,
+        "validated_reference_files": 2,
+        "package": {
+          "name": "LegalAIZit_CO-EM-003_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip",
+          "size_bytes": 977252,
+          "sha256": "7c489626b4334d5e061abc5cfedce50775b54db82b6076d51039bbdc53fd8326",
+          "download_path": "CO-EM-003/LegalAIZit_CO-EM-003_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip"
+        },
+        "files": [
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-EM-003-CLOSURE",
+            "kind": "closure",
+            "title": "Acta de cierre y liquidación documental",
+            "name": "CO-EM-003_01_acta_cierre_FINAL_DEMO.docx",
+            "size_bytes": 138731,
+            "sha256": "4559299c578d63bd1de671c6c393593e42e74b1b36b8b45651b31fa3ef1a3f6b",
+            "download_path": "CO-EM-003/documentos_generados/CO-EM-003_01_acta_cierre_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-EM-003-CONTRACT",
+            "kind": "contract",
+            "title": "Contrato de prestación de servicios independientes",
+            "name": "CO-EM-003_02_contrato_servicios_FINAL_DEMO.docx",
+            "size_bytes": 139926,
+            "sha256": "57f144e5ac719fcf04ee61332896cec0a8fd67987c8a1f09bd2eb7b73012c996",
+            "download_path": "CO-EM-003/documentos_generados/CO-EM-003_02_contrato_servicios_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-EM-003-DATA",
+            "kind": "data_processing",
+            "title": "Anexo No. 2C — Tratamiento de datos personales",
+            "name": "CO-EM-003_03_anexo_tratamiento_datos_FINAL_DEMO.docx",
+            "size_bytes": 138545,
+            "sha256": "da07385bdff0b0c7ad805a2bc7a9c2a665e3bd0cae69e2f275ef7bc1e4a43a10",
+            "download_path": "CO-EM-003/documentos_generados/CO-EM-003_03_anexo_tratamiento_datos_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-EM-003-IP",
+            "kind": "intellectual_property",
+            "title": "Anexo No. 2B — Propiedad intelectual y entregables",
+            "name": "CO-EM-003_04_anexo_propiedad_intelectual_FINAL_DEMO.docx",
+            "size_bytes": 138704,
+            "sha256": "0afe92005cb5d2c81c924464eb734d0d914ec6472090fb3ce4a74ea99f8be494",
+            "download_path": "CO-EM-003/documentos_generados/CO-EM-003_04_anexo_propiedad_intelectual_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-EM-003-NDA",
+            "kind": "confidentiality",
+            "title": "Anexo No. 2A — Confidencialidad y seguridad de la información",
+            "name": "CO-EM-003_05_anexo_confidencialidad_FINAL_DEMO.docx",
+            "size_bytes": 138657,
+            "sha256": "9273a0adc5d532c5496654e7f96eeb15a9cc2b674184921350f7791ed3c54eb1",
+            "download_path": "CO-EM-003/documentos_generados/CO-EM-003_05_anexo_confidencialidad_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-EM-003-SCOPE",
+            "kind": "scope",
+            "title": "Anexo No. 1 — Alcance, entregables y cronograma",
+            "name": "CO-EM-003_06_anexo_alcance_FINAL_DEMO.docx",
+            "size_bytes": 138869,
+            "sha256": "5ceb235ce0dbe28dc24aa57f41b451dcf43b0f358a540408acf4786819561b6b",
+            "download_path": "CO-EM-003/documentos_generados/CO-EM-003_06_anexo_alcance_FINAL_DEMO.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "docx",
+            "name": "CO-EM-003_REFERENCIA_FINAL_VALIDADA.docx",
+            "size_bytes": 51951,
+            "sha256": "c67458de756ccc4900bd6edc58f20c6024465392392678370f7803dde180270a",
+            "download_path": "CO-EM-003/referencias_validadas/CO-EM-003_REFERENCIA_FINAL_VALIDADA.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "pdf",
+            "name": "CO-EM-003_REFERENCIA_FINAL_VALIDADA.pdf",
+            "size_bytes": 177272,
+            "sha256": "c884559f8067dc04d146965e5b274db7ed7100517c82f11c0279d6d292bb05eb",
+            "download_path": "CO-EM-003/referencias_validadas/CO-EM-003_REFERENCIA_FINAL_VALIDADA.pdf"
+          }
+        ]
+      },
+      {
+        "product_code": "CO-EM-004",
+        "title": "Confidencialidad y propiedad intelectual",
+        "generated_docx": 7,
+        "validated_reference_files": 2,
+        "package": {
+          "name": "LegalAIZit_CO-EM-004_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip",
+          "size_bytes": 1095086,
+          "sha256": "402aaab4c1f9e56d63d721e897d3abf50315b7ad70241a595f686b612aeb3147",
+          "download_path": "CO-EM-004/LegalAIZit_CO-EM-004_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip"
+        },
+        "files": [
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-EM-004-CLOSURE-ACT",
+            "kind": "closure_act",
+            "title": "Acta de devolución, eliminación y cierre",
+            "name": "CO-EM-004_01_acta_cierre_confidencialidad_FINAL_DEMO.docx",
+            "size_bytes": 138576,
+            "sha256": "1d02ffbc70c344e52e27f7ba2a3dd5c1aebedff037324a1f84ebb7a2c33fe391",
+            "download_path": "CO-EM-004/documentos_generados/CO-EM-004_01_acta_cierre_confidencialidad_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-EM-004-DATA-ANNEX",
+            "kind": "data_annex",
+            "title": "Anexo de datos personales y transferencias",
+            "name": "CO-EM-004_02_anexo_datos_transferencias_FINAL_DEMO.docx",
+            "size_bytes": 138327,
+            "sha256": "8a6538eb8db87d79703b132d1aeb9d8474abb7c2e65695cf49ff899ed1af026d",
+            "download_path": "CO-EM-004/documentos_generados/CO-EM-004_02_anexo_datos_transferencias_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-EM-004-INCIDENT-PROTOCOL",
+            "kind": "incident_protocol",
+            "title": "Protocolo de incidentes de información",
+            "name": "CO-EM-004_03_protocolo_incidentes_FINAL_DEMO.docx",
+            "size_bytes": 138394,
+            "sha256": "0197f4210cecd9f8f85f2325d4312e7291d6234771556d5a11eb99e2d8bb5b4b",
+            "download_path": "CO-EM-004/documentos_generados/CO-EM-004_03_protocolo_incidentes_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-EM-004-INFORMATION-INVENTORY",
+            "kind": "information_inventory",
+            "title": "Inventario de información y matriz de acceso",
+            "name": "CO-EM-004_04_inventario_informacion_accesos_FINAL_DEMO.docx",
+            "size_bytes": 138391,
+            "sha256": "637e27b02c5927fba89ca22707cf278e8bded61e7e4312eb071b920cc7e22adf",
+            "download_path": "CO-EM-004/documentos_generados/CO-EM-004_04_inventario_informacion_accesos_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-EM-004-IP-ANNEX",
+            "kind": "ip_annex",
+            "title": "Anexo de propiedad intelectual, antecedentes y OSS",
+            "name": "CO-EM-004_05_anexo_pi_antecedentes_oss_FINAL_DEMO.docx",
+            "size_bytes": 138303,
+            "sha256": "236e6478ad0d49f3b49eba28bccdd66dec93817a767ba5619e812d32638d8c65",
+            "download_path": "CO-EM-004/documentos_generados/CO-EM-004_05_anexo_pi_antecedentes_oss_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-EM-004-NDA",
+            "kind": "nda",
+            "title": "Acuerdo de confidencialidad",
+            "name": "CO-EM-004_06_acuerdo_confidencialidad_FINAL_DEMO.docx",
+            "size_bytes": 138741,
+            "sha256": "1138d75a9ec65fda3e5482d3354503bb293ce5a38e48846903c9af29928b6fb4",
+            "download_path": "CO-EM-004/documentos_generados/CO-EM-004_06_acuerdo_confidencialidad_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-EM-004-RELATIONSHIP-ANNEX",
+            "kind": "relationship_annex",
+            "title": "Anexo de confidencialidad según la relación",
+            "name": "CO-EM-004_07_anexo_relacion_FINAL_DEMO.docx",
+            "size_bytes": 138118,
+            "sha256": "800c03714594a4deef1e12761d88491f1a2efed5a5ab8771dfe24c6b09bbe4b5",
+            "download_path": "CO-EM-004/documentos_generados/CO-EM-004_07_anexo_relacion_FINAL_DEMO.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "docx",
+            "name": "CO-EM-004_REFERENCIA_FINAL_VALIDADA.docx",
+            "size_bytes": 49283,
+            "sha256": "d1b8cdb083d1cbb351714062514df8ec70e5d3dd09002ba96c1f6f41c7b5aeeb",
+            "download_path": "CO-EM-004/referencias_validadas/CO-EM-004_REFERENCIA_FINAL_VALIDADA.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "pdf",
+            "name": "CO-EM-004_REFERENCIA_FINAL_VALIDADA.pdf",
+            "size_bytes": 172040,
+            "sha256": "f57bc332872cb0d545a142c98b1f971b8cebafad6580d307dfdea024b61d7654",
+            "download_path": "CO-EM-004/referencias_validadas/CO-EM-004_REFERENCIA_FINAL_VALIDADA.pdf"
+          }
+        ]
+      },
+      {
+        "product_code": "CO-LA-001",
+        "title": "Liquidación laboral + reclamación",
+        "generated_docx": 4,
+        "validated_reference_files": 2,
+        "package": {
+          "name": "LegalAIZit_CO-LA-001_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip",
+          "size_bytes": 672512,
+          "sha256": "087557f1f2eb479dc47aa20ad11da23e9f4e8fb29dd25237302263279db7f099",
+          "download_path": "CO-LA-001/LegalAIZit_CO-LA-001_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip"
+        },
+        "files": [
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-LA-001-CALCULATION",
+            "kind": "calculation",
+            "title": "Informe técnico de liquidación laboral por concepto",
+            "name": "CO-LA-001_01_informe_liquidacion_v3_FINAL_DEMO.docx",
+            "size_bytes": 141217,
+            "sha256": "39b57bbcf8446b3e629be3ff5f92de80f25d17e05e193791e8233de102f52853",
+            "download_path": "CO-LA-001/documentos_generados/CO-LA-001_01_informe_liquidacion_v3_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-LA-001-CLAIM",
+            "kind": "claim",
+            "title": "Reclamación directa de acreencias laborales",
+            "name": "CO-LA-001_02_reclamacion_laboral_v3_FINAL_DEMO.docx",
+            "size_bytes": 140560,
+            "sha256": "413234612f5a918b2f16898f371e9ffa759a08269e77fb04f37145066df4ef3b",
+            "download_path": "CO-LA-001/documentos_generados/CO-LA-001_02_reclamacion_laboral_v3_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-LA-001-EVIDENCE",
+            "kind": "evidence_matrix",
+            "title": "Matriz de soportes y conciliación de pagos",
+            "name": "CO-LA-001_03_matriz_soportes_pagos_FINAL_DEMO.docx",
+            "size_bytes": 140792,
+            "sha256": "01ea3a68fb54de7bd795e8b21bb954f2ebb641b60723a4bc1f2b416538866996",
+            "download_path": "CO-LA-001/documentos_generados/CO-LA-001_03_matriz_soportes_pagos_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-LA-001-SETTLEMENT",
+            "kind": "settlement",
+            "title": "Propuesta de acuerdo de pago y cierre",
+            "name": "CO-LA-001_04_propuesta_acuerdo_pago_FINAL_DEMO.docx",
+            "size_bytes": 140431,
+            "sha256": "9b54ad1e2d7b8c0a681c38892a5e46c521b67b819c49faba8968189e2a83c00c",
+            "download_path": "CO-LA-001/documentos_generados/CO-LA-001_04_propuesta_acuerdo_pago_FINAL_DEMO.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "docx",
+            "name": "CO-LA-001_REFERENCIA_FINAL_VALIDADA.docx",
+            "size_bytes": 44843,
+            "sha256": "8a90e156032672933d4c190448fc0eec54d5bdfa4118571ac3f52773a796b0ac",
+            "download_path": "CO-LA-001/referencias_validadas/CO-LA-001_REFERENCIA_FINAL_VALIDADA.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "pdf",
+            "name": "CO-LA-001_REFERENCIA_FINAL_VALIDADA.pdf",
+            "size_bytes": 132897,
+            "sha256": "2d97db2449ef86eceefac43078d85ad49ed5568935a74254dcd15c9f522e8d72",
+            "download_path": "CO-LA-001/referencias_validadas/CO-LA-001_REFERENCIA_FINAL_VALIDADA.pdf"
+          }
+        ]
+      },
+      {
+        "product_code": "CO-LA-002",
+        "title": "Contrato de trabajo personalizado",
+        "generated_docx": 8,
+        "validated_reference_files": 2,
+        "package": {
+          "name": "LegalAIZit_CO-LA-002_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip",
+          "size_bytes": 1278379,
+          "sha256": "55d7d2977f8e0acfdc3acc535aa9e92580c65fd1116804f57aab0e3d5b413c44",
+          "download_path": "CO-LA-002/LegalAIZit_CO-LA-002_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip"
+        },
+        "files": [
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-LA-002-CONSOLIDATED-PACKAGE",
+            "kind": "consolidated_package",
+            "title": "Paquete jurídico laboral consolidado",
+            "name": "CO-LA-002_01_paquete_juridico_laboral_consolidado_FINAL_DEMO.docx",
+            "size_bytes": 138735,
+            "sha256": "0d1a094ce03b58b311e0e1e214cddd63a030243e2e68cd339a682bda586ddfe4",
+            "download_path": "CO-LA-002/documentos_generados/CO-LA-002_01_paquete_juridico_laboral_consolidado_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-LA-002-EMPLOYMENT-ANNEX",
+            "kind": "employment_functions_annex",
+            "title": "Anexo de perfil, cargo y funciones",
+            "name": "CO-LA-002_02_anexo_perfil_cargo_funciones_FINAL_DEMO.docx",
+            "size_bytes": 138804,
+            "sha256": "9d96db31103979464e4d1f3895e2e3ba1c722affb11d27301ce256060a929fe1",
+            "download_path": "CO-LA-002/documentos_generados/CO-LA-002_02_anexo_perfil_cargo_funciones_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-LA-002-EMPLOYMENT-CONFIDENTIALITY-ANNEX",
+            "kind": "employment_confidentiality_annex",
+            "title": "Anexo de confidencialidad, propiedad intelectual y datos",
+            "name": "CO-LA-002_03_anexo_confidencialidad_pi_datos_FINAL_DEMO.docx",
+            "size_bytes": 138863,
+            "sha256": "8c6d1321136fa48bc3dd2d9235f819120ca3bc1e7a140bae3fef9b01b35a8403",
+            "download_path": "CO-LA-002/documentos_generados/CO-LA-002_03_anexo_confidencialidad_pi_datos_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-LA-002-EMPLOYMENT-CONTRACT",
+            "kind": "employment_contract",
+            "title": "Contrato de trabajo personalizado",
+            "name": "CO-LA-002_04_contrato_trabajo_FINAL_DEMO.docx",
+            "size_bytes": 140466,
+            "sha256": "1a986eac3236d6fd2c78f70bce5d6dbed8fd5d31acf2ffb57b187505849d6258",
+            "download_path": "CO-LA-002/documentos_generados/CO-LA-002_04_contrato_trabajo_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-LA-002-EMPLOYMENT-EQUIPMENT-ANNEX",
+            "kind": "employment_equipment_annex",
+            "title": "Anexo de equipos, activos y credenciales",
+            "name": "CO-LA-002_05_anexo_equipos_activos_credenciales_FINAL_DEMO.docx",
+            "size_bytes": 138555,
+            "sha256": "29e71b2bb51d3a90f69434db4f74fe54dfbabf9abe2f5a75d93c8e4b96b8fedf",
+            "download_path": "CO-LA-002/documentos_generados/CO-LA-002_05_anexo_equipos_activos_credenciales_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-LA-002-EMPLOYMENT-ONBOARDING-CHECKLIST",
+            "kind": "employment_onboarding_checklist",
+            "title": "Lista de alistamiento, afiliaciones y cumplimiento",
+            "name": "CO-LA-002_06_lista_alistamiento_laboral_FINAL_DEMO.docx",
+            "size_bytes": 138669,
+            "sha256": "273d46ccc276d91bc3562ae361c45fed8c8454dee2b40dddc096be2a07a8c2e0",
+            "download_path": "CO-LA-002/documentos_generados/CO-LA-002_06_lista_alistamiento_laboral_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-LA-002-EMPLOYMENT-REMOTE-ANNEX",
+            "kind": "employment_remote_annex",
+            "title": "Anexo de modalidad no presencial",
+            "name": "CO-LA-002_07_anexo_modalidad_no_presencial_FINAL_DEMO.docx",
+            "size_bytes": 138709,
+            "sha256": "651103bee92b53d454111e8a90de2c89bb748281f6a478bea8047ccb44787ccb",
+            "download_path": "CO-LA-002/documentos_generados/CO-LA-002_07_anexo_modalidad_no_presencial_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-LA-002-TRACEABILITY",
+            "kind": "traceability",
+            "title": "Ficha de diagnóstico y trazabilidad laboral",
+            "name": "CO-LA-002_08_ficha_diagnostico_trazabilidad_FINAL_DEMO.docx",
+            "size_bytes": 138751,
+            "sha256": "da8ab4d2116b9599d2797d588bd9ee29ac721dd08ea3cbaf0a9fbaf563dd4536",
+            "download_path": "CO-LA-002/documentos_generados/CO-LA-002_08_ficha_diagnostico_trazabilidad_FINAL_DEMO.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "docx",
+            "name": "CO-LA-002_REFERENCIA_FINAL_VALIDADA.docx",
+            "size_bytes": 54632,
+            "sha256": "774d49c298fa11aa50ac67cf4754271b939dd7722926722379cf07b08563687f",
+            "download_path": "CO-LA-002/referencias_validadas/CO-LA-002_REFERENCIA_FINAL_VALIDADA.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "pdf",
+            "name": "CO-LA-002_REFERENCIA_FINAL_VALIDADA.pdf",
+            "size_bytes": 193951,
+            "sha256": "7795229855dc92c493e6c228109287ae751c69962fc21170cb36b1d051066634",
+            "download_path": "CO-LA-002/referencias_validadas/CO-LA-002_REFERENCIA_FINAL_VALIDADA.pdf"
+          }
+        ]
+      },
+      {
+        "product_code": "CO-SA-001",
+        "title": "Derecho de petición a EPS o IPS",
+        "generated_docx": 7,
+        "validated_reference_files": 2,
+        "package": {
+          "name": "LegalAIZit_CO-SA-001_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip",
+          "size_bytes": 1069441,
+          "sha256": "237d17c428e5af4a8c33c904b06692ed5b720833c65b379d3326ec1872d2281d",
+          "download_path": "CO-SA-001/LegalAIZit_CO-SA-001_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip"
+        },
+        "files": [
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-SA-001-HEALTH-DEADLINE-CALENDAR",
+            "kind": "health_deadline_calendar",
+            "title": "Calendario preliminar de términos y seguimiento",
+            "name": "CO-SA-001_01_calendario_terminos_salud_FINAL_DEMO.docx",
+            "size_bytes": 137958,
+            "sha256": "e5b1124014c5c2a9d06d2cbf87c572d72ed74c17fb3732f6c6cf1572541a1743",
+            "download_path": "CO-SA-001/documentos_generados/CO-SA-001_01_calendario_terminos_salud_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-SA-001-HEALTH-EVIDENCE-INDEX",
+            "kind": "health_evidence_index",
+            "title": "Matriz de soportes, legitimación y privacidad",
+            "name": "CO-SA-001_02_matriz_soportes_legitimacion_FINAL_DEMO.docx",
+            "size_bytes": 137985,
+            "sha256": "2f9b613792538db858d8bda88ee7718bb165e90f96e39f07753a1e0626280b2a",
+            "download_path": "CO-SA-001/documentos_generados/CO-SA-001_02_matriz_soportes_legitimacion_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-SA-001-HEALTH-FILING-GUIDE",
+            "kind": "health_filing_guide",
+            "title": "Guía de radicación, privacidad y seguimiento",
+            "name": "CO-SA-001_03_guia_radicacion_salud_FINAL_DEMO.docx",
+            "size_bytes": 138125,
+            "sha256": "3caead4b129179ece04097b9d86454f01155eeb03bbab872e3265fd1aebb4a8d",
+            "download_path": "CO-SA-001/documentos_generados/CO-SA-001_03_guia_radicacion_salud_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-SA-001-HEALTH-PETITION",
+            "kind": "health_petition",
+            "title": "Derecho de petición integral ante EPS o IPS",
+            "name": "CO-SA-001_04_derecho_peticion_integral_salud_FINAL_DEMO.docx",
+            "size_bytes": 138483,
+            "sha256": "a58d98bf75d810d18f06edeb20cbbd187a76af27a72d5308a39d4117206ef9c6",
+            "download_path": "CO-SA-001/documentos_generados/CO-SA-001_04_derecho_peticion_integral_salud_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-SA-001-HEALTH-REITERATION",
+            "kind": "health_reiteration",
+            "title": "Reiteración por falta o insuficiencia de respuesta",
+            "name": "CO-SA-001_05_reiteracion_peticion_salud_FINAL_DEMO.docx",
+            "size_bytes": 137960,
+            "sha256": "09bbff065faa6ff1ad107382ceab174b7b4e85c1f9a51c29fc2cb9a4e1515d9a",
+            "download_path": "CO-SA-001/documentos_generados/CO-SA-001_05_reiteracion_peticion_salud_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-SA-001-MEDICAL-RECORD-REQUEST",
+            "kind": "medical_record_request",
+            "title": "Solicitud de historia clínica y entrega segura",
+            "name": "CO-SA-001_06_solicitud_historia_clinica_segura_FINAL_DEMO.docx",
+            "size_bytes": 138076,
+            "sha256": "26b8d1c142381d1e9bdd9527140733222323f87ba1a8660af629a7fde4b56334",
+            "download_path": "CO-SA-001/documentos_generados/CO-SA-001_06_solicitud_historia_clinica_segura_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-SA-001-SUPERSALUD-ESCALATION",
+            "kind": "supersalud_escalation",
+            "title": "Ruta y borrador de PQRD ante Supersalud",
+            "name": "CO-SA-001_07_ruta_pqrd_supersalud_FINAL_DEMO.docx",
+            "size_bytes": 137961,
+            "sha256": "1ac8116e454a9db8d39b47117b4138d52ec9b2d19a9cba1bc566358d8518e72a",
+            "download_path": "CO-SA-001/documentos_generados/CO-SA-001_07_ruta_pqrd_supersalud_FINAL_DEMO.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "docx",
+            "name": "CO-SA-001_REFERENCIA_FINAL_VALIDADA.docx",
+            "size_bytes": 44940,
+            "sha256": "e8d70c8d8082754c8dcb802ca2f8b493a6e806dcb8eeaaa36dc6370669c73207",
+            "download_path": "CO-SA-001/referencias_validadas/CO-SA-001_REFERENCIA_FINAL_VALIDADA.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "pdf",
+            "name": "CO-SA-001_REFERENCIA_FINAL_VALIDADA.pdf",
+            "size_bytes": 125365,
+            "sha256": "3422dac1eaf8884470845c0fe1a4c5e4261c8d5b920a481b077fa4e110cd561d",
+            "download_path": "CO-SA-001/referencias_validadas/CO-SA-001_REFERENCIA_FINAL_VALIDADA.pdf"
+          }
+        ]
+      },
+      {
+        "product_code": "CO-TR-001",
+        "title": "Chequeo SAST + inscripción verificada",
+        "generated_docx": 6,
+        "validated_reference_files": 2,
+        "package": {
+          "name": "LegalAIZit_CO-TR-001_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip",
+          "size_bytes": 965636,
+          "sha256": "1237c39d5e86caaac7063b799f4f305ea1799f70a120e18e78fdf51962ca18e3",
+          "download_path": "CO-TR-001/LegalAIZit_CO-TR-001_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip"
+        },
+        "files": [
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-TR-001-FOLLOW-UP",
+            "kind": "sast_follow_up",
+            "title": "Registro de seguimiento y alertas SAST",
+            "name": "CO-TR-001_01_registro_seguimiento_alertas_sast_FINAL_DEMO.docx",
+            "size_bytes": 138560,
+            "sha256": "949d04b2207445ffe36cf00a76388491be01e52b96adb8719dcb92bcd27f6855",
+            "download_path": "CO-TR-001/documentos_generados/CO-TR-001_01_registro_seguimiento_alertas_sast_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-TR-001-PROFESSIONAL-REVIEW",
+            "kind": "sast_professional_review_request",
+            "title": "Solicitud de revisión profesional de caso SAST",
+            "name": "CO-TR-001_02_solicitud_revision_profesional_sast_FINAL_DEMO.docx",
+            "size_bytes": 138508,
+            "sha256": "bf3206feb5a43d082ac9a163f33fbb08992935d88a153ab6268e281fca28b2df",
+            "download_path": "CO-TR-001/documentos_generados/CO-TR-001_02_solicitud_revision_profesional_sast_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-TR-001-RECORD-REQUEST",
+            "kind": "sast_record_request",
+            "title": "Solicitud de expediente, autorización y soportes SAST",
+            "name": "CO-TR-001_03_solicitud_expediente_autorizacion_sast_FINAL_DEMO.docx",
+            "size_bytes": 139058,
+            "sha256": "3a7fdc43dbf1f98e03465562ca06e14281addecaf158346c3492690dd6eb8111",
+            "download_path": "CO-TR-001/documentos_generados/CO-TR-001_03_solicitud_expediente_autorizacion_sast_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-TR-001-SAST-REPORT",
+            "kind": "sast_preliminary_report",
+            "title": "Informe preliminar de chequeo SAST",
+            "name": "CO-TR-001_04_informe_preliminar_chequeo_sast_FINAL_DEMO.docx",
+            "size_bytes": 139069,
+            "sha256": "7757fbe6879d861a87a70a1d49e0589d1fe85b1d2f99437038aebfd32294400a",
+            "download_path": "CO-TR-001/documentos_generados/CO-TR-001_04_informe_preliminar_chequeo_sast_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-TR-001-SOURCE-TRACE",
+            "kind": "sast_source_trace",
+            "title": "Ficha de trazabilidad de fuentes y coincidencias SAST",
+            "name": "CO-TR-001_05_ficha_trazabilidad_fuentes_sast_FINAL_DEMO.docx",
+            "size_bytes": 138784,
+            "sha256": "680a68fc2ddc661e7641a2374ea38aa20df7844d07e3d069a6e7420f16b74ff8",
+            "download_path": "CO-TR-001/documentos_generados/CO-TR-001_05_ficha_trazabilidad_fuentes_sast_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-TR-001-VERIFIED-CASE-FILE",
+            "kind": "sast_verified_case_file",
+            "title": "Expediente verificado de chequeo SAST",
+            "name": "CO-TR-001_06_expediente_verificado_chequeo_sast_FINAL_DEMO.docx",
+            "size_bytes": 138855,
+            "sha256": "7115ac09cdc150032a538136b8948334c1bac7da1ec9cc17b419b56ecd841f18",
+            "download_path": "CO-TR-001/documentos_generados/CO-TR-001_06_expediente_verificado_chequeo_sast_FINAL_DEMO.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "docx",
+            "name": "CO-TR-001_REFERENCIA_FINAL_VALIDADA.docx",
+            "size_bytes": 49438,
+            "sha256": "fc48b9731463711dfcd649e9a3a0ebce52ddaf6c8ff2e8d0966003440a6eb4d6",
+            "download_path": "CO-TR-001/referencias_validadas/CO-TR-001_REFERENCIA_FINAL_VALIDADA.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "pdf",
+            "name": "CO-TR-001_REFERENCIA_FINAL_VALIDADA.pdf",
+            "size_bytes": 228804,
+            "sha256": "d15d58ac8e553df90b760d2fd04c50ff3e55f6f1a273993b0f6dc752e74be457",
+            "download_path": "CO-TR-001/referencias_validadas/CO-TR-001_REFERENCIA_FINAL_VALIDADA.pdf"
+          }
+        ]
+      },
+      {
+        "product_code": "CO-TR-002",
+        "title": "Fotomulta no notificada",
+        "generated_docx": 8,
+        "validated_reference_files": 2,
+        "package": {
+          "name": "LegalAIZit_CO-TR-002_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip",
+          "size_bytes": 1257170,
+          "sha256": "a46bd0d3043125c5f47c2c4d7926f2213812c2b27669885458ca92596c1ebbee",
+          "download_path": "CO-TR-002/LegalAIZit_CO-TR-002_PORTAFOLIO_FINAL_DEMO_v5.0.6.zip"
+        },
+        "files": [
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-TR-002-ESCALATION-GUIDE",
+            "kind": "traffic_escalation_guide",
+            "title": "Guía de escalamiento y control de riesgos",
+            "name": "CO-TR-002_01_guia_escalamiento_profesional_FINAL_DEMO.docx",
+            "size_bytes": 138634,
+            "sha256": "f6a46e08df4091597620c6f1e5fed1ef2383e0057cc427598d51370e38df52ee",
+            "download_path": "CO-TR-002/documentos_generados/CO-TR-002_01_guia_escalamiento_profesional_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-TR-002-HEARING-REQUEST",
+            "kind": "traffic_hearing_request",
+            "title": "Solicitud de audiencia, defensa y práctica de pruebas",
+            "name": "CO-TR-002_02_solicitud_audiencia_y_pruebas_FINAL_DEMO.docx",
+            "size_bytes": 138845,
+            "sha256": "88320337a065f7e47cde4a8ae9a3c0cc3178a5a2123c3b0af96db2b4a0828642",
+            "download_path": "CO-TR-002/documentos_generados/CO-TR-002_02_solicitud_audiencia_y_pruebas_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-TR-002-NOTICE-CLAIM",
+            "kind": "traffic_notice_claim",
+            "title": "Reclamación por falta o irregularidad de notificación",
+            "name": "CO-TR-002_03_reclamacion_notificacion_irregular_FINAL_DEMO.docx",
+            "size_bytes": 138959,
+            "sha256": "7c1d87094fc4836e751c13dcb7a75550a9a50da6aa976abdb09129d8413b1bde",
+            "download_path": "CO-TR-002/documentos_generados/CO-TR-002_03_reclamacion_notificacion_irregular_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-TR-002-REGISTRY-CORRECTION",
+            "kind": "traffic_registry_correction",
+            "title": "Solicitud de verificación y corrección de registros SIMIT/RUNT",
+            "name": "CO-TR-002_04_solicitud_correccion_simit_runt_FINAL_DEMO.docx",
+            "size_bytes": 138630,
+            "sha256": "e991b4bd2f5fdaf0d3747d5f00111d4178b21a753a7a64ef89b37219f47980af",
+            "download_path": "CO-TR-002/documentos_generados/CO-TR-002_04_solicitud_correccion_simit_runt_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-TR-002-REITERATION",
+            "kind": "traffic_reiteration",
+            "title": "Reiteración de petición y requerimiento de respuesta",
+            "name": "CO-TR-002_05_reiteracion_requerimiento_respuesta_FINAL_DEMO.docx",
+            "size_bytes": 138635,
+            "sha256": "9dbdc41d07a75e155103397dd70c52b6655c30682fd2bae14fee07d49870ac47",
+            "download_path": "CO-TR-002/documentos_generados/CO-TR-002_05_reiteracion_requerimiento_respuesta_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-TR-002-REVOCATION",
+            "kind": "traffic_revocation_request",
+            "title": "Solicitud condicionada de revocación directa",
+            "name": "CO-TR-002_06_revocatoria_directa_condicionada_FINAL_DEMO.docx",
+            "size_bytes": 139030,
+            "sha256": "20aa71f8cb0d892a694187861da48fbe37218a96b15fcb375f08c647414aec78",
+            "download_path": "CO-TR-002/documentos_generados/CO-TR-002_06_revocatoria_directa_condicionada_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-TR-002-TRACEABILITY",
+            "kind": "traffic_traceability",
+            "title": "Ficha de trazabilidad de generación",
+            "name": "CO-TR-002_07_ficha_trazabilidad_generacion_FINAL_DEMO.docx",
+            "size_bytes": 138558,
+            "sha256": "8eef5de138b85ac6a92b745e0bec8c6e79670a84b250cbebefd574bc0f79990d",
+            "download_path": "CO-TR-002/documentos_generados/CO-TR-002_07_ficha_trazabilidad_generacion_FINAL_DEMO.docx"
+          },
+          {
+            "type": "generated_docx",
+            "template_id": "TPL-CO-TR-002-TRAFFIC-REQUEST",
+            "kind": "traffic_record_request",
+            "title": "Solicitud integral de expediente administrativo",
+            "name": "CO-TR-002_08_solicitud_integral_expediente_FINAL_DEMO.docx",
+            "size_bytes": 139001,
+            "sha256": "0e938b47d0ca8334b78bad81fee2e1241b2986d22caccb70d2f1ea25d720f835",
+            "download_path": "CO-TR-002/documentos_generados/CO-TR-002_08_solicitud_integral_expediente_FINAL_DEMO.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "docx",
+            "name": "CO-TR-002_REFERENCIA_FINAL_VALIDADA.docx",
+            "size_bytes": 52064,
+            "sha256": "3cd5ff1bad99d29b7367fce7444d1ec546181b54e9205c94a3962d0681d26a18",
+            "download_path": "CO-TR-002/referencias_validadas/CO-TR-002_REFERENCIA_FINAL_VALIDADA.docx"
+          },
+          {
+            "type": "validated_reference",
+            "format": "pdf",
+            "name": "CO-TR-002_REFERENCIA_FINAL_VALIDADA.pdf",
+            "size_bytes": 239285,
+            "sha256": "e0df260d40a1c7a10c2bfe7da9a6665d7e8e64eb90569030da39277580b0507f",
+            "download_path": "CO-TR-002/referencias_validadas/CO-TR-002_REFERENCIA_FINAL_VALIDADA.pdf"
+          }
+        ]
+      }
+    ],
+    "metrics": {
+      "products": 11,
+      "generated_docx": 76,
+      "validated_reference_docx": 11,
+      "validated_reference_pdf": 11,
+      "unresolved_files": 0
+    },
+    "unresolved": [],
+    "notice": "Portafolio íntegramente sintético para demostración. Cada documento real debe conservar validación de hechos, anexos, riesgo, vigencia, aprobación jurídica y QA sobre su versión exacta.",
+    "global_package": {
+      "name": "LegalAIZit_M31_7_PORTAFOLIO_DOCUMENTAL_FINAL_DEMO_v5.0.6.zip",
+      "size_bytes": 23874449,
+      "sha256": "64124166c19c7919bbee27ae503c92ce18cbdae0c80b9c1c6da9f53d21f9c4bd",
+      "download_path": "LegalAIZit_M31_7_PORTAFOLIO_DOCUMENTAL_FINAL_DEMO_v5.0.6.zip"
+    }
+  },
+  "verification": {
+    "ok": true,
+    "status": "ready",
+    "checked": 110,
+    "failures": [],
+    "unresolved_files": 0
+  },
+  "marker_scan": []
+}

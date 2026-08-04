@@ -1,0 +1,29 @@
+{
+  "version": "2.53",
+  "scenarios": [
+    {
+      "id": "LA1-C01",
+      "purpose": "Relación vigente y corte prestacional"
+    },
+    {
+      "id": "LA1-C03",
+      "purpose": "Mutuo acuerdo y plan de pago"
+    },
+    {
+      "id": "LA1-C04",
+      "purpose": "Despido sin justa causa y mora"
+    },
+    {
+      "id": "LA1-C05",
+      "purpose": "Contrato fijo"
+    },
+    {
+      "id": "LA1-C08",
+      "purpose": "Salario variable"
+    },
+    {
+      "id": "LA1-C09",
+      "purpose": "Salario integral"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "version": "2.56",
+  "product_id": "CO-TR-002",
+  "blocks": [
+    {"id": "B256-CONTROL-PREVIO", "type": "mandatory", "purpose": "Evitar promesas de anulación o resultado automático."},
+    {"id": "B256-IDENTIFICACION", "type": "mandatory", "purpose": "Identificar solicitante, autoridad, comparendo y vehículo."},
+    {"id": "B256-HECHOS-NOTIFICACION", "type": "conditional", "purpose": "Construir cronología de validación, envío, entrega, aviso y conocimiento."},
+    {"id": "B256-SOLICITUD-EXPEDIENTE", "type": "mandatory", "purpose": "Solicitar expediente completo, soportes técnicos y constancias."},
+    {"id": "B256-PRUEBAS", "type": "mandatory", "purpose": "Relacionar y solicitar prueba pertinente sin datos sensibles innecesarios."},
+    {"id": "B256-AUDIENCIA", "type": "conditional", "purpose": "Solicitar oportunidad efectiva de defensa y contradicción."},
+    {"id": "B256-REVOCATORIA-CONDICIONADA", "type": "conditional_review", "purpose": "Plantear estudio de revocación sin presentarla como recurso ni prometer resultado."},
+    {"id": "B256-CORRECCION-REGISTROS", "type": "conditional", "purpose": "Alinear SIMIT/RUNT con el acto y expediente vigente."},
+    {"id": "B256-REITERACION", "type": "conditional", "purpose": "Reiterar petición y preservar prueba de radicación y términos."},
+    {"id": "B256-ANEXOS", "type": "mandatory", "purpose": "Generar índice de anexos seleccionados por reglas."},
+    {"id": "B256-FIRMA", "type": "mandatory", "purpose": "Completar identificación y canal de respuesta."},
+    {"id": "B256-REVISION-PROFESIONAL", "type": "mandatory_on_yellow_red", "purpose": "Mostrar riesgos, exclusiones y necesidad de especialista."},
+    {"id": "B256-AUDITORIA", "type": "governance", "purpose": "Registrar eventos encadenados por hash."},
+    {"id": "B256-REVISION-INMUTABLE", "type": "governance", "purpose": "Conservar cada revisión como evidencia no sobrescribible."},
+    {"id": "B256-APROBACION-JURIDICA", "type": "governance", "purpose": "Exigir aprobación jurídica sobre la revisión vigente."},
+    {"id": "B256-APROBACION-QA", "type": "governance", "purpose": "Exigir QA independiente posterior a aprobación jurídica."}
+  ]
+}

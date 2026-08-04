@@ -1,0 +1,88 @@
+{
+  "product_code": "CO-EM-004",
+  "version": "M23-OLA3-2026-07-31",
+  "strategy": "additive_maturation",
+  "preserve": [
+    "questions, variables, useful clauses and annexes from prior versions",
+    "immutable reviews, comparison, dual approval and DOCX/PDF generation",
+    "unilateral and bilateral variants, inventory, data, software, labor-context and incident modules"
+  ],
+  "conditional_rules": [
+    {
+      "id": "CONF-M23-001",
+      "when": "exchange_is_one_way",
+      "then": "activate_unilateral_variant_and_adjust_roles"
+    },
+    {
+      "id": "CONF-M23-002",
+      "when": "trade_secret_claimed",
+      "then": "require_inventory_owner_value_secrecy_measures_and_access_controls",
+      "risk": "high"
+    },
+    {
+      "id": "CONF-M23-003",
+      "when": "personal_data_present",
+      "then": "activate_data_roles_purposes_security_rights_transfer_and_incident_annex",
+      "risk": "high"
+    },
+    {
+      "id": "CONF-M23-004",
+      "when": "sensitive_or_minor_data",
+      "then": "require_specific_legal_basis_and_reinforced_controls",
+      "risk": "red"
+    },
+    {
+      "id": "CONF-M23-005",
+      "when": "generative_ai_or_external_model",
+      "then": "require_provider_retention_training_location_human_review_and_no_secret_upload_controls",
+      "risk": "high"
+    },
+    {
+      "id": "CONF-M23-006",
+      "when": "penalty_clause_selected",
+      "then": "require_amount_scope_compatibility_and_proportionality_review"
+    },
+    {
+      "id": "CONF-M23-007",
+      "when": "non_compete_or_non_solicit_requested",
+      "then": "route_to_specific_competition_and_labor_review",
+      "risk": "red"
+    }
+  ],
+  "official_sources": [
+    {
+      "name": "Ley 256 de 1996",
+      "topic": "competencia desleal y violación de secretos",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1656946"
+    },
+    {
+      "name": "Ley 1581 de 2012",
+      "topic": "protección de datos personales",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1684507"
+    },
+    {
+      "name": "Decreto 1074 de 2015",
+      "topic": "reglamentación sector comercio y datos personales",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Decretos%2F30019935"
+    },
+    {
+      "name": "Ley 23 de 1982, modificada",
+      "topic": "derecho de autor",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F30035790"
+    },
+    {
+      "name": "Ley 527 de 1999",
+      "topic": "mensajes de datos y firma digital",
+      "url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F1662013"
+    }
+  ],
+  "final_document_exclusions": [
+    "prices or product cards",
+    "risk semaphore",
+    "internal QA",
+    "approval status",
+    "hashes",
+    "demo labels",
+    "rules engine explanations"
+  ]
+}

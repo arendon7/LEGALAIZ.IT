@@ -1,0 +1,457 @@
+{
+  "version": "2.13",
+  "intro": "Completa la información confirmada del servicio. Las ayudas explican cada término y el sistema separa coordinación contractual de posibles señales de subordinación laboral.",
+  "sections": [
+    "Partes y comunicaciones",
+    "Alcance del servicio",
+    "Independencia y riesgos",
+    "Condiciones económicas y plazo",
+    "Módulos documentales"
+  ],
+  "questions": [
+    {
+      "id": "party_a",
+      "label": "¿Quién contratará el servicio?",
+      "type": "text",
+      "required": true,
+      "section": "Partes y comunicaciones",
+      "help": {
+        "short": "Escribe el nombre completo o la razón social del contratante.",
+        "example": "Ejemplo: Acme S.A.S.",
+        "where_to_find": "RUT, certificado de existencia o documento de identidad.",
+        "why_asked": "Identifica a la parte que recibe el servicio y asume el pago."
+      },
+      "min_length": 2,
+      "max_length": 160
+    },
+    {
+      "id": "party_a_id",
+      "label": "Identificación o NIT del contratante",
+      "type": "text",
+      "required": true,
+      "section": "Partes y comunicaciones",
+      "help": {
+        "short": "Incluye dígito de verificación cuando sea un NIT.",
+        "example": "Ejemplo: 901.000.111-2",
+        "where_to_find": "RUT, certificado de existencia o cédula.",
+        "why_asked": "Individualiza al contratante y evita errores en firmas y facturación."
+      },
+      "min_length": 2,
+      "max_length": 160
+    },
+    {
+      "id": "party_b",
+      "label": "¿Quién prestará el servicio?",
+      "type": "text",
+      "required": true,
+      "section": "Partes y comunicaciones",
+      "help": {
+        "short": "Escribe el nombre completo o la razón social del contratista independiente.",
+        "example": "Ejemplo: Consultor Demo S.A.S.",
+        "where_to_find": "RUT, certificado de existencia o documento de identidad.",
+        "why_asked": "Identifica a quien ejecutará los entregables y responderá por ellos."
+      },
+      "min_length": 2,
+      "max_length": 160
+    },
+    {
+      "id": "party_b_id",
+      "label": "Identificación o NIT del contratista",
+      "type": "text",
+      "required": true,
+      "section": "Partes y comunicaciones",
+      "help": {
+        "short": "Incluye dígito de verificación cuando sea un NIT.",
+        "example": "Ejemplo: 1.000.000.001 o 900.555.444-3",
+        "where_to_find": "RUT, certificado de existencia o cédula.",
+        "why_asked": "Permite identificar correctamente al prestador."
+      },
+      "min_length": 2,
+      "max_length": 160
+    },
+    {
+      "id": "contract_city",
+      "label": "Ciudad principal de ejecución o coordinación",
+      "type": "text",
+      "required": true,
+      "section": "Partes y comunicaciones",
+      "help": {
+        "short": "Indica la ciudad desde la cual se coordinará principalmente el servicio.",
+        "example": "Ejemplo: Medellín",
+        "where_to_find": "Propuesta, cotización o acuerdo entre las partes.",
+        "why_asked": "Ayuda a organizar comunicaciones y el contexto territorial del contrato."
+      },
+      "min_length": 2,
+      "max_length": 160
+    },
+    {
+      "id": "contact_email_a",
+      "label": "Correo autorizado del contratante",
+      "type": "email",
+      "required": true,
+      "section": "Partes y comunicaciones",
+      "help": {
+        "short": "Usa un correo que pueda recibir entregables y avisos contractuales.",
+        "example": "Ejemplo: legal@empresa.co",
+        "where_to_find": "Correo corporativo o personal revisado regularmente.",
+        "why_asked": "Define un canal trazable para avisos, entregas y observaciones."
+      },
+      "format": "email"
+    },
+    {
+      "id": "contact_email_b",
+      "label": "Correo autorizado del contratista",
+      "type": "email",
+      "required": true,
+      "section": "Partes y comunicaciones",
+      "help": {
+        "short": "Usa el correo habitual del prestador.",
+        "example": "Ejemplo: consultor@correo.co",
+        "where_to_find": "Correo corporativo o personal revisado regularmente.",
+        "why_asked": "Define un canal trazable para coordinación y notificaciones."
+      },
+      "format": "email"
+    },
+    {
+      "id": "state_entity",
+      "label": "¿Alguna parte pertenece al sector público?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Independencia y riesgos",
+      "help": {
+        "short": "Selecciona Sí si interviene una entidad estatal o un régimen de contratación pública.",
+        "example": "Ejemplo: Alcaldía, ministerio, establecimiento público o empresa estatal.",
+        "where_to_find": "Naturaleza jurídica, RUT, invitación o contrato proyectado.",
+        "why_asked": "La contratación estatal tiene reglas especiales y no corresponde a este producto estándar."
+      },
+      "allow_unknown": false
+    },
+    {
+      "id": "regulated_service",
+      "label": "¿El servicio está sometido a un régimen profesional o sectorial especial?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Independencia y riesgos",
+      "help": {
+        "short": "Incluye servicios que requieren licencia, habilitación o clausulado sectorial especializado.",
+        "example": "Ejemplo: Servicios médicos habilitados, intermediación financiera o representación judicial.",
+        "where_to_find": "Objeto, licencias, habilitaciones o regulación aplicable.",
+        "why_asked": "Permite bloquear el formato estándar cuando la actividad requiere tratamiento especializado."
+      },
+      "allow_unknown": false
+    },
+    {
+      "id": "object_clear",
+      "label": "¿El servicio y sus resultados están suficientemente definidos?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No"
+      ],
+      "required": true,
+      "section": "Alcance del servicio",
+      "help": {
+        "short": "Responde Sí cuando puedes describir qué se hará, qué se entregará y cómo se verificará.",
+        "example": "Ejemplo: Diseñar un prototipo y entregar código, manual y acta de aceptación.",
+        "where_to_find": "Propuesta, cotización, correo o términos de referencia.",
+        "why_asked": "Un alcance verificable reduce disputas y permite construir el anexo operativo."
+      },
+      "allow_unknown": false
+    },
+    {
+      "id": "fixed_schedule",
+      "label": "¿Se impondrá un horario fijo con control de asistencia?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Independencia y riesgos",
+      "help": {
+        "short": "No confundas una reunión o una fecha de entrega con un horario laboral diario.",
+        "example": "Ejemplo: Exigir conexión de 8:00 a. m. a 5:00 p. m. y registro de entrada.",
+        "where_to_find": "Forma real prevista de ejecución, mensajes o políticas.",
+        "why_asked": "Un horario rígido y controlado puede ser señal de subordinación."
+      },
+      "allow_unknown": false
+    },
+    {
+      "id": "permanent_orders",
+      "label": "¿El contratante dará órdenes continuas sobre la forma diaria de trabajar?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Independencia y riesgos",
+      "help": {
+        "short": "Coordinar resultados es normal; dirigir de manera permanente el método de trabajo puede afectar la autonomía.",
+        "example": "Ejemplo: Un supervisor asigna diariamente tareas y define cómo ejecutarlas.",
+        "where_to_find": "Modelo operativo previsto, propuesta o comunicaciones.",
+        "why_asked": "Ayuda a distinguir coordinación contractual de subordinación material."
+      },
+      "allow_unknown": false
+    },
+    {
+      "id": "disciplinary_control",
+      "label": "¿Se aplicarán sanciones internas o control disciplinario?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Independencia y riesgos",
+      "help": {
+        "short": "Incluye memorandos, permisos laborales, suspensiones o sanciones propias de empleados.",
+        "example": "Ejemplo: Llamados de atención disciplinarios o descuentos sancionatorios.",
+        "where_to_find": "Políticas internas o dinámica proyectada.",
+        "why_asked": "Es una señal fuerte de posible relación laboral y bloquea el formato estándar."
+      },
+      "allow_unknown": false
+    },
+    {
+      "id": "continuous_availability",
+      "label": "¿Se exigirá disponibilidad personal permanente o respuesta inmediata continua?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Independencia y riesgos",
+      "help": {
+        "short": "Una ventana razonable de atención no equivale a disponibilidad permanente.",
+        "example": "Ejemplo: Estar conectado todo el día y responder de inmediato incluso fuera de hitos.",
+        "where_to_find": "Acuerdos de servicio, propuesta o práctica prevista.",
+        "why_asked": "Puede limitar la autonomía y requiere precisar ventanas, canales y niveles de servicio."
+      },
+      "allow_unknown": false
+    },
+    {
+      "id": "exclusive",
+      "label": "¿Se pactará exclusividad total durante el contrato?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Independencia y riesgos",
+      "help": {
+        "short": "Indica Sí cuando el contratista no podrá atender a ningún otro cliente.",
+        "example": "Ejemplo: Prohibición general de prestar servicios a terceros.",
+        "where_to_find": "Propuesta o acuerdo comercial.",
+        "why_asked": "Una exclusividad amplia puede aumentar dependencia y debe justificarse y delimitarse."
+      },
+      "allow_unknown": false
+    },
+    {
+      "id": "personal_data",
+      "label": "¿El contratista accederá o tratará datos personales por cuenta del contratante?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Módulos documentales",
+      "help": {
+        "short": "Incluye bases de clientes, empleados, usuarios, historias o datos identificables.",
+        "example": "Ejemplo: Acceso a CRM con nombres, correos y teléfonos.",
+        "where_to_find": "Mapa de datos, alcance técnico o sistemas que utilizará.",
+        "why_asked": "Activa un anexo sobre instrucciones, seguridad, confidencialidad, incidentes y devolución."
+      },
+      "allow_unknown": false
+    },
+    {
+      "id": "confidentiality",
+      "label": "¿El servicio implica información reservada o confidencial?",
+      "type": "select",
+      "options": [
+        "Sí",
+        "No"
+      ],
+      "required": true,
+      "section": "Módulos documentales",
+      "help": {
+        "short": "Incluye información comercial, técnica, financiera, estratégica o de clientes no pública.",
+        "example": "Ejemplo: Precios, código fuente, listas de clientes o planes de negocio.",
+        "where_to_find": "Clasificación de información, alcance o propuesta.",
+        "why_asked": "Activa un acuerdo específico de confidencialidad y devolución de información."
+      },
+      "allow_unknown": false
+    },
+    {
+      "id": "ip_relevant",
+      "label": "¿El contratista creará software, contenidos, diseños u otros resultados protegibles?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Módulos documentales",
+      "help": {
+        "short": "Responde Sí cuando se producirán obras, código, marcas, diseños, metodologías o materiales creativos.",
+        "example": "Ejemplo: Software, fotografías, manuales, diseños o contenidos.",
+        "where_to_find": "Lista de entregables y activos preexistentes.",
+        "why_asked": "Activa un anexo que diferencia materiales previos, titularidad, cesión o licencia y usos autorizados."
+      },
+      "allow_unknown": false
+    },
+    {
+      "id": "object",
+      "label": "Describe el objeto concreto del servicio",
+      "type": "textarea",
+      "required": true,
+      "section": "Alcance del servicio",
+      "min_length": 20,
+      "help": {
+        "short": "Explica en una frase qué realizará el contratista y para qué resultado. Evita expresiones abiertas como “apoyar en lo que se necesite”.",
+        "example": "Ejemplo: Diseñar e implementar un prototipo web para gestionar solicitudes de clientes.",
+        "where_to_find": "Propuesta, cotización o correo de alcance.",
+        "why_asked": "Se convierte en la cláusula de objeto y debe ser preciso y verificable."
+      },
+      "max_length": 1500
+    },
+    {
+      "id": "deliverables",
+      "label": "Describe los entregables y criterios de aceptación",
+      "type": "textarea",
+      "required": true,
+      "section": "Alcance del servicio",
+      "min_length": 20,
+      "help": {
+        "short": "Enumera resultados, formato, fecha o hito y cómo se verificará cada uno.",
+        "example": "Ejemplo: Prototipo funcional, repositorio de código, manual y sesión de entrega.",
+        "where_to_find": "Propuesta, cronograma o términos acordados.",
+        "why_asked": "Alimenta el anexo de alcance y el proceso de aceptación."
+      },
+      "max_length": 2500
+    },
+    {
+      "id": "fees",
+      "label": "Valor total o mensual de los honorarios (COP)",
+      "type": "number",
+      "required": true,
+      "section": "Condiciones económicas y plazo",
+      "help": {
+        "short": "Ingresa solo números, sin puntos ni símbolo de moneda.",
+        "example": "Ejemplo: 3900000",
+        "where_to_find": "Cotización, propuesta o acuerdo económico.",
+        "why_asked": "Personaliza honorarios, resumen económico y controles de cuantía."
+      },
+      "min": 1,
+      "max": 999999999999
+    },
+    {
+      "id": "start_date",
+      "label": "Fecha prevista de inicio",
+      "type": "date",
+      "required": true,
+      "section": "Condiciones económicas y plazo",
+      "help": {
+        "short": "Selecciona la fecha desde la cual comenzarán las obligaciones.",
+        "example": "Ejemplo: 2026-08-01",
+        "where_to_find": "Cronograma o acuerdo entre las partes.",
+        "why_asked": "Define vigencia, hitos y fecha de inicio de ejecución."
+      }
+    },
+    {
+      "id": "end_date",
+      "label": "Fecha prevista de terminación o hito final",
+      "type": "date",
+      "required": false,
+      "section": "Condiciones económicas y plazo",
+      "help": {
+        "short": "Debe ser posterior a la fecha de inicio.",
+        "example": "Ejemplo: 2026-11-30",
+        "where_to_find": "Cronograma o acuerdo entre las partes.",
+        "why_asked": "Define duración y cierre del contrato."
+      },
+      "after_field": "start_date"
+    },
+    {
+      "id": "payment_scheme",
+      "label": "¿Cómo se pagarán los honorarios?",
+      "type": "select",
+      "options": [
+        "Pago único",
+        "Anticipo e hitos",
+        "Mensual",
+        "Por entregable"
+      ],
+      "required": true,
+      "section": "Condiciones económicas y plazo",
+      "help": {
+        "short": "Selecciona el esquema que mejor refleje el acuerdo real.",
+        "example": "Ejemplo: Anticipo e hitos",
+        "where_to_find": "Cotización o propuesta económica.",
+        "why_asked": "Determina la tabla económica y la relación entre pagos y entregables."
+      }
+    },
+    {
+      "id": "acceptance_days",
+      "label": "Días para revisar y formular observaciones a los entregables",
+      "type": "number",
+      "min": 1,
+      "required": true,
+      "section": "Alcance del servicio",
+      "help": {
+        "short": "Indica un plazo razonable contado desde la entrega.",
+        "example": "Ejemplo: 5",
+        "where_to_find": "Propuesta o acuerdo operativo.",
+        "why_asked": "Define un procedimiento claro de revisión y evita aceptaciones ambiguas."
+      },
+      "max": 60
+    },
+    {
+      "id": "subcontractors",
+      "label": "¿El contratista podrá apoyarse en subcontratistas?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Módulos documentales",
+      "help": {
+        "short": "Responde Sí si podrá delegar parte del servicio a terceros bajo su responsabilidad.",
+        "example": "Ejemplo: Equipo técnico o consultor especializado de apoyo.",
+        "where_to_find": "Modelo de ejecución y propuesta.",
+        "why_asked": "Activa autorización, responsabilidad y obligaciones equivalentes para terceros."
+      },
+      "allow_unknown": false
+    },
+    {
+      "id": "early_termination",
+      "label": "¿Desean regular la terminación anticipada y los entregables parciales?",
+      "type": "select",
+      "options": [
+        "No",
+        "Sí"
+      ],
+      "required": true,
+      "section": "Condiciones económicas y plazo",
+      "help": {
+        "short": "Es recomendable cuando existen fases, anticipos o entregables acumulativos.",
+        "example": "Ejemplo: Pago proporcional de hitos aceptados y devolución de información.",
+        "where_to_find": "Cronograma, anticipos y riesgos del proyecto.",
+        "why_asked": "Activa reglas de cierre, liquidación, entrega y obligaciones que sobreviven."
+      },
+      "allow_unknown": false
+    }
+  ],
+  "confirmation_required": true
+}

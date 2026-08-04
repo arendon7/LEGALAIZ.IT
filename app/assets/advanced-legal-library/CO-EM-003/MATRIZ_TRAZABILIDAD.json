@@ -1,0 +1,177 @@
+[
+  {
+    "question_id": "Q-EM-001",
+    "variable_path": "client.type",
+    "test_id": "TEST-Q-EM-001"
+  },
+  {
+    "question_id": "Q-EM-002",
+    "variable_path": "client.identification",
+    "test_id": "TEST-Q-EM-002"
+  },
+  {
+    "question_id": "Q-EM-003",
+    "variable_path": "client.signatory",
+    "test_id": "TEST-Q-EM-003"
+  },
+  {
+    "question_id": "Q-EM-004",
+    "variable_path": "contractor.type",
+    "test_id": "TEST-Q-EM-004"
+  },
+  {
+    "question_id": "Q-EM-005",
+    "variable_path": "contractor.identification",
+    "test_id": "TEST-Q-EM-005"
+  },
+  {
+    "question_id": "Q-EM-006",
+    "variable_path": "service.regulated",
+    "test_id": "TEST-Q-EM-006"
+  },
+  {
+    "question_id": "Q-EM-007",
+    "variable_path": "service.category",
+    "test_id": "TEST-Q-EM-007"
+  },
+  {
+    "question_id": "Q-EM-008",
+    "variable_path": "service.object",
+    "test_id": "TEST-Q-EM-008"
+  },
+  {
+    "question_id": "Q-EM-009",
+    "variable_path": "service.expected_result",
+    "test_id": "TEST-Q-EM-009"
+  },
+  {
+    "question_id": "Q-EM-010",
+    "variable_path": "scope.included",
+    "test_id": "TEST-Q-EM-010"
+  },
+  {
+    "question_id": "Q-EM-011",
+    "variable_path": "scope.excluded",
+    "test_id": "TEST-Q-EM-011"
+  },
+  {
+    "question_id": "Q-EM-012",
+    "variable_path": "scope.deliverables",
+    "test_id": "TEST-Q-EM-012"
+  },
+  {
+    "question_id": "Q-EM-013",
+    "variable_path": "autonomy.methods",
+    "test_id": "TEST-Q-EM-013"
+  },
+  {
+    "question_id": "Q-EM-014",
+    "variable_path": "autonomy.delegation",
+    "test_id": "TEST-Q-EM-014"
+  },
+  {
+    "question_id": "Q-EM-015",
+    "variable_path": "execution.arrangement",
+    "test_id": "TEST-Q-EM-015"
+  },
+  {
+    "question_id": "Q-EM-016",
+    "variable_path": "labor_indicators.fixed_schedule",
+    "test_id": "TEST-Q-EM-016"
+  },
+  {
+    "question_id": "Q-EM-017",
+    "variable_path": "labor_indicators.continuous_orders",
+    "test_id": "TEST-Q-EM-017"
+  },
+  {
+    "question_id": "Q-EM-018",
+    "variable_path": "labor_indicators.org_integration",
+    "test_id": "TEST-Q-EM-018"
+  },
+  {
+    "question_id": "Q-EM-019",
+    "variable_path": "labor_indicators.exclusivity_or_availability",
+    "test_id": "TEST-Q-EM-019"
+  },
+  {
+    "question_id": "Q-EM-020",
+    "variable_path": "term",
+    "test_id": "TEST-Q-EM-020"
+  },
+  {
+    "question_id": "Q-EM-021",
+    "variable_path": "schedule",
+    "test_id": "TEST-Q-EM-021"
+  },
+  {
+    "question_id": "Q-EM-022",
+    "variable_path": "fees.model",
+    "test_id": "TEST-Q-EM-022"
+  },
+  {
+    "question_id": "Q-EM-023",
+    "variable_path": "fees.financial_terms",
+    "test_id": "TEST-Q-EM-023"
+  },
+  {
+    "question_id": "Q-EM-024",
+    "variable_path": "fees.expenses",
+    "test_id": "TEST-Q-EM-024"
+  },
+  {
+    "question_id": "Q-EM-025",
+    "variable_path": "labor_indicators.personal_continuous_periodic",
+    "test_id": "TEST-Q-EM-025"
+  },
+  {
+    "question_id": "Q-EM-026",
+    "variable_path": "liability",
+    "test_id": "TEST-Q-EM-026"
+  },
+  {
+    "question_id": "Q-EM-027",
+    "variable_path": "risk_allocation",
+    "test_id": "TEST-Q-EM-027"
+  },
+  {
+    "question_id": "Q-EM-028",
+    "variable_path": "confidentiality.required",
+    "test_id": "TEST-Q-EM-028"
+  },
+  {
+    "question_id": "Q-EM-029",
+    "variable_path": "data_processing.required",
+    "test_id": "TEST-Q-EM-029"
+  },
+  {
+    "question_id": "Q-EM-030",
+    "variable_path": "ip.required",
+    "test_id": "TEST-Q-EM-030"
+  },
+  {
+    "question_id": "Q-EM-031",
+    "variable_path": "ai.required",
+    "test_id": "TEST-Q-EM-031"
+  },
+  {
+    "question_id": "Q-EM-032",
+    "variable_path": "termination",
+    "test_id": "TEST-Q-EM-032"
+  },
+  {
+    "question_id": "Q-EM-033",
+    "variable_path": "closure",
+    "test_id": "TEST-Q-EM-033"
+  },
+  {
+    "question_id": "Q-EM-034",
+    "variable_path": "disputes.mechanism",
+    "test_id": "TEST-Q-EM-034"
+  },
+  {
+    "question_id": "Q-EM-035",
+    "variable_path": "confirmation",
+    "test_id": "TEST-Q-EM-035"
+  }
+]

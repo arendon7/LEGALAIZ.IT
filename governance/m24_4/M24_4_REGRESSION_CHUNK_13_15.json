@@ -1,0 +1,35 @@
+[
+  {
+    "file": "test_m17_health_petition_quality.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 10,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 1.87,
+    "summary": "..........                                                               [100%] 10 passed in 0.29s"
+  },
+  {
+    "file": "test_m18_financial_habeas_data_quality.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 10,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 1.82,
+    "summary": "..........                                                               [100%] 10 passed in 0.28s"
+  },
+  {
+    "file": "test_m19_consumer_protection_quality.py",
+    "returncode": 0,
+    "timed_out": false,
+    "passed": 11,
+    "subtests": 0,
+    "failed": 0,
+    "errors": 0,
+    "duration_seconds": 1.82,
+    "summary": "...........                                                              [100%] 11 passed in 0.28s"
+  }
+]

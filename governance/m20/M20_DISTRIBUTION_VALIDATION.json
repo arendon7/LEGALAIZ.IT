@@ -1,0 +1,15 @@
+{
+  "schema": "legalaizit-m20-distribution-validation-v1",
+  "milestone": "M20",
+  "generated_at": "2026-07-31T17:47:31.088802+00:00",
+  "root": "LegalAIZit_M20_COBRO_ACUERDO_PAGARE_v2.59",
+  "checks": {
+    "forbidden_paths": [],
+    "runtime_files": [],
+    "deep_docx_files": 84,
+    "deep_pdf_files": 84,
+    "visual_qa_sources_removed": true,
+    "legacy_root_hash_indexes": []
+  },
+  "passed": true
+}

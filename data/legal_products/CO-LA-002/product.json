@@ -1,0 +1,186 @@
+{
+  "schema": "legalai_product_revision_registry_v1",
+  "product_code": "CO-LA-002",
+  "public_name": "Crear un contrato de trabajo completo",
+  "internal_name": "Contrato de trabajo",
+  "category": "Laboral",
+  "jurisdiction": "Colombia",
+  "legacy_runtime_binding": {
+    "products_file": "data/products.json",
+    "interviews_file": "data/interviews.json",
+    "rules_file": "data/rules.json",
+    "document_templates_file": "data/document_templates.json",
+    "deep_library_path": "app/assets/advanced-legal-library/CO-LA-002",
+    "current_product_version": "2.24",
+    "current_publication_status": "Aprobado para uso profesional controlado"
+  },
+  "active_revision": "legacy-m21.1-current",
+  "published_revision": "legacy-m21.1-current",
+  "candidate_revision": "M23.2-d0612f88d9c8",
+  "revisions": [
+    "legacy-m21.1-current",
+    "M23.2-d0612f88d9c8"
+  ],
+  "candidate_revisions": [
+    "M23.2-d0612f88d9c8"
+  ],
+  "revision_metadata": {
+    "legacy-m21.1-current": {
+      "status": "published_controlled_legacy_binding",
+      "immutable": true,
+      "source_milestone": "M20.1/M21.1",
+      "quality_status": "reviewed",
+      "verified_at": "2026-07-30",
+      "binding_mode": "legacy_runtime_files"
+    }
+  },
+  "candidate_policy": {
+    "status": "candidate_blocked_pending_legal_and_qa_approval",
+    "active_revision_change_allowed": false,
+    "published_revision_change_allowed": false,
+    "legal_approval_required": true,
+    "qa_approval_required": true,
+    "must_be_distinct_users": true,
+    "scenario_qa_required": true
+  },
+  "registry_snapshot": {
+    "product_code": "CO-LA-002",
+    "internal_name": "Contrato de trabajo",
+    "public_name": "Crear un contrato de trabajo completo",
+    "category": "Laboral",
+    "problem_solved": "El empleador necesita formalizar una relación laboral conforme a la modalidad, jornada, remuneración, funciones, riesgos y protecciones aplicables.",
+    "service_levels": [
+      "documento_personalizado",
+      "solucion_revisada"
+    ],
+    "risk_level": "high",
+    "scope": [
+      "contrato laboral",
+      "funciones y resultados",
+      "activos",
+      "confidencialidad y datos",
+      "módulos de jornada y modalidad"
+    ],
+    "exclusions": [
+      "decisiones de terminación con estabilidad reforzada sin revisión",
+      "jornadas contrarias al régimen aplicable",
+      "cláusulas de deducción automática o no competencia general"
+    ],
+    "required_evidence": [
+      "identificación de las partes",
+      "cargo y funciones",
+      "salario y pagos",
+      "jornada",
+      "lugar y modalidad",
+      "riesgos y herramientas"
+    ],
+    "pilot": true,
+    "jurisdiction": "CO",
+    "language": "es-CO",
+    "questionnaire_binding": {
+      "status": "pending_runtime_resolution",
+      "expected_legacy_ref": "M22://questionnaires/CO-LA-002",
+      "prohibition": "do_not_create_duplicate_questionnaire_before_runtime_audit"
+    },
+    "ruleset_binding": {
+      "status": "candidate_from_m23_2",
+      "source_file": "CO-LA-002/CO-LA-002_M23_Bloques_Reglas_y_Fuentes.json",
+      "rule_count": 14,
+      "rule_ids": [
+        "LAB-M23-001",
+        "LAB-M23-002",
+        "LAB-M23-003",
+        "LAB-M23-004",
+        "LAB-M23-005",
+        "LAB-M23-006",
+        "LAB-M23-007",
+        "LAB-M23-008",
+        "LAB-M23-009",
+        "LAB-M23-010",
+        "LAB-M23-011",
+        "LAB-M23-012",
+        "LAB-M23-013",
+        "LAB-M23-014"
+      ]
+    },
+    "template_candidate": {
+      "revision_label": "M23.2",
+      "master_docx": "CO-LA-002_Modelo_Maestro_Contrato_Indefinido_M23.docx",
+      "master_pdf": "CO-LA-002_Modelo_Maestro_Contrato_Indefinido_M23.pdf",
+      "worked_example_docx": "CO-LA-002_Ejemplo_Final_Auxiliar_Administrativa_M23.docx",
+      "worked_example_pdf": "CO-LA-002_Ejemplo_Final_Auxiliar_Administrativa_M23.pdf",
+      "integration_mode": "new_immutable_revision_no_overwrite"
+    },
+    "conditional_modules": [
+      "parties_and_capacity",
+      "considerations",
+      "object_and_role",
+      "duration",
+      "probation",
+      "place_and_modality",
+      "working_time",
+      "overtime_and_surcharges",
+      "disconnection",
+      "salary",
+      "variable_compensation",
+      "benefits_and_social_security",
+      "subordination_limits",
+      "employer_obligations",
+      "worker_obligations",
+      "prohibitions",
+      "osh",
+      "harassment_and_discrimination",
+      "confidentiality",
+      "intellectual_property",
+      "personal_data_and_monitoring",
+      "technology_and_ai",
+      "assets",
+      "conflicts_of_interest",
+      "performance",
+      "policies",
+      "leaves",
+      "special_protections",
+      "disciplinary_due_process",
+      "termination",
+      "handover",
+      "notices",
+      "integration",
+      "applicable_law"
+    ],
+    "legal_sources": [
+      {
+        "source": "Código Sustantivo del Trabajo consolidado",
+        "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Codigo%2F30019323",
+        "verified": "2026-07-31"
+      },
+      {
+        "source": "Ley 2466 de 2025",
+        "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?ruta=Leyes%2F30055086",
+        "verified": "2026-07-31"
+      },
+      {
+        "source": "Ley 2101 de 2021",
+        "official_url": "https://www.suin-juriscol.gov.co/",
+        "verified": "2026-07-31"
+      },
+      {
+        "source": "Ley 2191 de 2022",
+        "official_url": "https://www.suin-juriscol.gov.co/",
+        "verified": "2026-07-31"
+      },
+      {
+        "source": "Ley 1581 de 2012",
+        "official_url": "https://www.suin-juriscol.gov.co/",
+        "verified": "2026-07-31"
+      }
+    ],
+    "approvals": {
+      "legal_owner": "pending_assignment",
+      "qa_owner": "pending_assignment_distinct_from_legal_owner",
+      "legal_approval_required": true,
+      "qa_approval_required": true
+    },
+    "publication_status": "blocked_pending_runtime_integration_scenario_qa_and_dual_approval"
+  },
+  "last_migration_id": "M24.1-M23.2-PREINTEGRATION-20260801"
+}

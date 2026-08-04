@@ -1,0 +1,32 @@
+{
+  "product_id": "CO-LA-001",
+  "name": "Liquidación laboral, reclamación y acuerdo de pago",
+  "version": "2.53",
+  "status": "Aprobado para uso profesional controlado",
+  "steps": 8,
+  "questions": 48,
+  "profiles": 12,
+  "documents": 10,
+  "validations": 22,
+  "blocks": 56,
+  "sources": 12,
+  "legacy_compatibility": [
+    "v2.22",
+    "v2.50"
+  ],
+  "document_factory": true,
+  "immutable_revisions_preserved": true,
+  "dual_approval_preserved": true,
+  "professional_use": true,
+  "calculation_engine": true,
+  "governance": true,
+  "canonical_scenarios": 12,
+  "negative_scenarios": 15,
+  "visual_scenarios": 6,
+  "scenario_validation": true,
+  "document_qa_status": "passed_internal_v253",
+  "canonical_completion": true,
+  "approval_model": "multi_stage_single_responsible",
+  "approval_date": "2026-07-28",
+  "approval_disclosure": "La ratificación jurídica, la aprobación como especialista y el control final de QA fueron registrados como etapas separadas por el mismo abogado responsable. No existe independencia personal entre esas etapas. La autorización corresponde a uso profesional controlado y no sustituye la revisión específica del caso, de los hechos, las pruebas, los términos ni la vigencia de las fuentes aplicables."
+}
