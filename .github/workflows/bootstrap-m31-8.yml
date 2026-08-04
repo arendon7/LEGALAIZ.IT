@@ -1,4 +1,4 @@
-name: Publicar LegalAIZ.it M31.8
+name: Verificar transferencia LegalAIZ.it M31.8
 
 on:
   workflow_dispatch:
@@ -6,49 +6,22 @@ on:
     paths:
       - '.github/workflows/bootstrap-m31-8.yml'
 
-permissions:
-  contents: write
-
 jobs:
-  publicar:
+  verificar:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
     steps:
-      - name: Obtener repositorio
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Recuperar paquete verificado
-        env:
-          EXPECTED_SHA256: 8eacac346892b8ef545e8fe21bc562f65425076b01e9181b2f7f990c6c52cef8
+      - name: Verificar bloque binario
         run: |
-          set -euo pipefail
-          curl -L --fail --retry 2 \
-            'https://drive.usercontent.google.com/download?id=1hHUJBpIvC_hPyZ5sSt6IVhzd20JVgOkE&export=download&confirm=t' \
-            -o /tmp/legalaiz.tar.xz
-          echo "$EXPECTED_SHA256  /tmp/legalaiz.tar.xz" | sha256sum -c -
-
-      - name: Publicar árbol fuente
-        run: |
-          rm -rf /tmp/legalaiz-unpack
-          mkdir -p /tmp/legalaiz-unpack
-          tar -xJf /tmp/legalaiz.tar.xz -C /tmp/legalaiz-unpack
-          rsync -a --delete --exclude='.git' /tmp/legalaiz-unpack/legalaiz_runtime_repo_text/ ./
-          rm -rf .bootstrap
-          rm -f .github/workflows/bootstrap-m31-8.yml
-
-      - name: Validar sintaxis
-        env:
-          LEGAL_PROFILE: local
-          LEGAL_APP_ENV: demo
-          LEGAL_GITHUB_LITE_ASSETS: 'true'
-        run: python -m compileall -q .
-
-      - name: Confirmar publicación
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "feat: publicar LegalAIZ.it M31.8 v5.0.7"
-          git push
+          python -m pip install --quiet pillow
+          python <<'PY'
+          from urllib.request import Request, urlopen
+          from PIL import Image
+          import hashlib, io
+          url = 'https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2Ff302831d-f305-4fbb-b1d5-0f30d498a8b9/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAANuwdAEUNhVixs3lBXBzkG9P6qCqYsRHw63aqDCiQUhI&exp=1785895118&osig=AAAAAAAAAAAAAAAAAAAAAEVV7pAQomXdxn36dGfnvyqblMgGXLbxn6mwVL9Jh2oS&signer=media-rpc&x-canva-quality=thumbnail'
+          req=Request(url,headers={'User-Agent':'Mozilla/5.0','Referer':'https://www.canva.com/'})
+          with urlopen(req,timeout=40) as r: data=r.read()
+          raw=Image.open(io.BytesIO(data)).convert('RGB').tobytes()
+          digest=hashlib.sha256(raw).hexdigest()
+          print('dimensiones=',len(raw),'sha=',digest,'cabecera=',raw[:24].hex())
+          assert digest == '35d2cc2abee5a0710811c67ec5f42318efa4474210ad3ffe7bb38a672736f8b8'
+          PY
