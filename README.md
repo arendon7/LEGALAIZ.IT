@@ -4,15 +4,24 @@
 **Estado técnico:** publicada y validada automáticamente.
 
 [![Validación LegalAIZ.it](https://github.com/arendon7/LEGALAIZ.IT/actions/workflows/ci.yml/badge.svg)](https://github.com/arendon7/LEGALAIZ.IT/actions/workflows/ci.yml)
+[![GitHub Pages](https://github.com/arendon7/LEGALAIZ.IT/actions/workflows/pages.yml/badge.svg)](https://github.com/arendon7/LEGALAIZ.IT/actions/workflows/pages.yml)
 
-## Abrir directamente desde GitHub
+## Vista pública sincronizada
+
+La landing, las páginas públicas, los textos, las imágenes y los cambios de interfaz se publican automáticamente en:
+
+https://arendon7.github.io/LEGALAIZ.IT/
+
+Esta vista permite revisar diseño, navegación pública, contenidos y responsive. GitHub Pages no ejecuta el backend Python.
+
+## Aplicación funcional desde GitHub
 
 1. Selecciona **Code**.
 2. Abre **Codespaces**.
 3. Pulsa **Create codespace on main**.
 4. La aplicación instalará dependencias, iniciará el backend y abrirá el puerto `8765`.
 
-Acceso directo para crear el Codespace:
+Acceso directo:
 
 https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=1322097934
 
@@ -45,15 +54,10 @@ M31.8 conserva las capacidades acumuladas de LegalAIZ.it e incorpora once expedi
 
 La cohorte demo genera 76 DOCX activos, 11 certificados, 11 paquetes finales y un ZIP global. Al crear una nueva revisión, la liberación anterior pierde vigencia y deben repetirse las dos aprobaciones sobre el nuevo hash.
 
-## Validación automática
+## Automatización
 
-Cada modificación en `main` ejecuta:
+Cada modificación ejecuta validaciones de dependencias, sintaxis, arranque real del backend y endpoint `/api/live`. Los cambios integrados en `main` con validación satisfactoria reconstruyen la vista pública de GitHub Pages desde `app/`.
 
-- instalación de dependencias;
-- compilación de sintaxis Python;
-- arranque real del backend;
-- comprobación del endpoint `/api/live`.
-
-GitHub Pages no ejecuta el backend Python. Para probar la aplicación completa debe usarse Codespaces, Docker o un servicio de despliegue conectado al repositorio.
+El flujo de iteración está documentado en [`docs/FLUJO_ITERACION_CHAT_GITHUB.md`](docs/FLUJO_ITERACION_CHAT_GITHUB.md).
 
 **LegalAIZ.it — Más que respuestas, soluciones.**

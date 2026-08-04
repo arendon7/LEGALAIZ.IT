@@ -1,0 +1,118 @@
+name: Publicar vista web en GitHub Pages
+
+on:
+  workflow_run:
+    workflows:
+      - Validación LegalAIZ.it
+    types:
+      - completed
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Obtener versión validada
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - name: Preparar vista pública estática
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf dist
+          cp -R app dist
+          touch dist/.nojekyll
+
+          python - <<'PY'
+          from pathlib import Path
+
+          dist = Path('dist')
+          for path in dist.rglob('*'):
+              if not path.is_file() or path.suffix.lower() not in {'.html', '.js', '.css'}:
+                  continue
+              text = path.read_text(encoding='utf-8')
+              text = text.replace('"/assets/', '"./assets/')
+              text = text.replace("'/assets/", "'./assets/")
+              text = text.replace('url(/assets/', 'url(./assets/')
+              if path.name == 'index.html':
+                  text = text.replace('href="/app.css"', 'href="./app.css"')
+                  text = text.replace('href="/core.js"', 'href="./core.js"')
+                  text = text.replace('src="/main.js"', 'src="./main.js"')
+                  text = text.replace('</head>', '  <link rel="stylesheet" href="./pages-preview.css">\n</head>')
+                  text = text.replace('</body>', '  <script src="./pages-preview.js"></script>\n</body>')
+              path.write_text(text, encoding='utf-8')
+
+          (dist / 'pages-preview.css').write_text('''
+          .pages-preview-banner {
+            position: relative;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 10px 18px;
+            background: #0D1324;
+            color: #F7F5F1;
+            font: 500 14px/1.4 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            text-align: center;
+          }
+          .pages-preview-banner a {
+            color: #C9A96E;
+            font-weight: 700;
+            white-space: nowrap;
+          }
+          @media (max-width: 680px) {
+            .pages-preview-banner { align-items: flex-start; flex-direction: column; gap: 4px; text-align: left; }
+          }
+          ''', encoding='utf-8')
+
+          (dist / 'pages-preview.js').write_text('''
+          (() => {
+            const banner = document.createElement('div');
+            banner.className = 'pages-preview-banner';
+            banner.setAttribute('role', 'status');
+            banner.innerHTML = '<span><strong>Vista pública sincronizada.</strong> Diseño, contenidos e imágenes se actualizan desde el repositorio.</span><a href="https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=1322097934">Abrir aplicación funcional</a>';
+            document.body.prepend(banner);
+          })();
+          ''', encoding='utf-8')
+
+          (dist / '404.html').write_text((dist / 'index.html').read_text(encoding='utf-8'), encoding='utf-8')
+          PY
+
+          test -f dist/index.html
+          test -f dist/app.css
+          test -f dist/main.js
+          test -d dist/assets
+          ! grep -R '"/assets/' dist --include='*.html' --include='*.js' --include='*.css'
+          ! grep -R "'/assets/" dist --include='*.html' --include='*.js' --include='*.css'
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Empaquetar sitio
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+      - name: Publicar
+        id: deployment
+        uses: actions/deploy-pages@v4
