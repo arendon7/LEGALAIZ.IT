@@ -19,63 +19,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Preparar decodificador
-        run: python -m pip install --quiet pillow
-
       - name: Recuperar paquete verificado
         env:
           EXPECTED_SHA256: 8eacac346892b8ef545e8fe21bc562f65425076b01e9181b2f7f990c6c52cef8
         run: |
-          python <<'PY'
-          from pathlib import Path
-          from urllib.request import Request, urlopen
-          from urllib.error import HTTPError, URLError
-          from PIL import Image
-          import hashlib
-          import io
-          import os
-          import struct
-
-          root = "https://media.canva.com/v2/image-resize/format:PNG/{height}/quality:100/uri:ifs%3A%2F%2FM%2Fabeb32e6-3167-4f08-90a7-a0e494fd4865/watermark:F/{width}"
-          signed = "?csig=AAAAAAAAAAAAAAAAAAAAAL9EPYTfrdqtVBiLwNFubTgrez7-RcCXaoyyIGk_NDq_&exp=1785896900&osig=AAAAAAAAAAAAAAAAAAAAAAOhztcoHTqZckm3xMVrU6sk8vKz3ndJ2IF8aE3BWae4&signer=media-rpc&x-canva-quality=thumbnail"
-          candidates = [
-              root.format(height="height:385", width="width:1024") + signed,
-              root.format(height="height:385", width="width:1024") + signed.replace("&x-canva-quality=thumbnail", ""),
-              root.format(height="height:75", width="width:200") + signed,
-              "https://media.canva.com/v2/image-resize/format:PNG/quality:100/uri:ifs%3A%2F%2FM%2Fabeb32e6-3167-4f08-90a7-a0e494fd4865/watermark:F" + signed,
-          ]
-
-          expected = os.environ['EXPECTED_SHA256']
-          errors = []
-          for index, url in enumerate(candidates, 1):
-              try:
-                  req = Request(url, headers={
-                      "User-Agent": "Mozilla/5.0",
-                      "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
-                      "Referer": "https://www.canva.com/",
-                  })
-                  with urlopen(req, timeout=40) as response:
-                      content = response.read()
-                  image = Image.open(io.BytesIO(content)).convert("RGB")
-                  raw = image.tobytes()
-                  print(f"Candidato {index}: {image.size[0]}x{image.size[1]}, {len(content)} bytes")
-                  if raw[:4] != b"LZA1":
-                      errors.append(f"Candidato {index}: encabezado ausente")
-                      continue
-                  length = struct.unpack(">Q", raw[4:12])[0]
-                  archive = raw[12:12 + length]
-                  digest = hashlib.sha256(archive).hexdigest()
-                  if digest != expected:
-                      errors.append(f"Candidato {index}: SHA {digest}")
-                      continue
-                  Path('/tmp/legalaiz.tar.xz').write_bytes(archive)
-                  print(f"Paquete recuperado y verificado: {digest}")
-                  break
-              except (HTTPError, URLError, OSError, ValueError) as exc:
-                  errors.append(f"Candidato {index}: {exc}")
-          else:
-              raise SystemExit("No fue posible recuperar el paquete: " + " | ".join(errors))
-          PY
+          set -euo pipefail
+          curl -L --fail --retry 2 \
+            'https://drive.usercontent.google.com/download?id=1hHUJBpIvC_hPyZ5sSt6IVhzd20JVgOkE&export=download&confirm=t' \
+            -o /tmp/legalaiz.tar.xz
+          echo "$EXPECTED_SHA256  /tmp/legalaiz.tar.xz" | sha256sum -c -
 
       - name: Publicar árbol fuente
         run: |
