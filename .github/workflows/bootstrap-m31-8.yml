@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - '.github/workflows/bootstrap-m31-8.yml'
+      - '.bootstrap/publish_m31_8.py'
 
 permissions:
   contents: write
@@ -19,70 +20,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Reconstruir paquete verificado
-        env:
-          EXPECTED_SHA256: 8eacac346892b8ef545e8fe21bc562f65425076b01e9181b2f7f990c6c52cef8
+      - name: Reconstruir y publicar paquete
         run: |
           python -m pip install --quiet pillow
-          python <<'PY'
-          from urllib.request import Request, urlopen
-          from PIL import Image
-          import hashlib
-          import io
-          import os
-          import struct
-
-          urls = [
-            'https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2Ff302831d-f305-4fbb-b1d5-0f30d498a8b9/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAANuwdAEUNhVixs3lBXBzkG9P6qCqYsRHw63aqDCiQUhI&exp=1785895118&osig=AAAAAAAAAAAAAAAAAAAAAEVV7pAQomXdxn36dGfnvyqblMgGXLbxn6mwVL9Jh2oS&signer=media-rpc&x-canva-quality=thumbnail',
-            'https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2Fa8c848e9-cd07-4b8a-957a-aca9601179b1/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAAFIHK0OMJJanuTeoZvdfBUIaJVrO1hRT_sgnhpYMoFiz&exp=1785895874&osig=AAAAAAAAAAAAAAAAAAAAAKYXVqPYQXTThTZDPoA4DhuMMl_qInRZha7cX7TOxzgk&signer=media-rpc&x-canva-quality=thumbnail',
-            'https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2F3c139de6-bcea-42d1-8cb4-080c9a7bf1c2/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAAIFr0uyf5xnQAPdOOvviyKyvc-PG3M_jsV4PkqI9v2B-&exp=1785896812&osig=AAAAAAAAAAAAAAAAAAAAAHpIVMGJd-rthSqY9wlYikm1rp0dW4NGHKHYNY0Q9hZm&signer=media-rpc&x-canva-quality=thumbnail',
-            'https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2Fd8614755-151b-46b9-9025-ad239229bd09/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAAJs3B9VEdQhxwepb8H8KLfzab-ELpYB0u2FcSXpk12F0&exp=1785898248&osig=AAAAAAAAAAAAAAAAAAAAANErBD0G5fw2vm5p-eX3Pkh3qOqkeFlEMM44ENKwfMQS&signer=media-rpc&x-canva-quality=thumbnail',
-            'https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2F0e8b6969-44ea-4389-9183-cb25c387d284/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAAOacWA-1QehJLQ5dM6iW33IE3fgFtE0-lGP4mB89C_Bx&exp=1785897672&osig=AAAAAAAAAAAAAAAAAAAAALmjfzDgOT9XVt_1gMSVqIVfqV1Cf3f7FRyeyNyQauT1&signer=media-rpc&x-canva-quality=thumbnail',
-            'https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2Fab22c055-1a62-4313-9478-02f5cb2ecc07/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAAH-iiF8HTsYUyj_bExDIZY1WQJBJFExE7EqlQ22HHSLK&exp=1785895616&osig=AAAAAAAAAAAAAAAAAAAAAHmA9mTg-uEcpDMl0tsfD8YESiiDsGxaAN4nJw2qr0rX&signer=media-rpc&x-canva-quality=thumbnail',
-            'https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2F78aff40f-4eff-46b5-886e-c209c2467af3/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAAGveHyl6yTGX8UAM6NfRqfF5XfXDXKAQXxwASpgmVwBB&exp=1785897632&osig=AAAAAAAAAAAAAAAAAAAAABO-dkysJUIrwpmc-gw2T1hB3VzBvJKLOtLXJZL7toM6&signer=media-rpc&x-canva-quality=thumbnail',
-            'https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2F38281f1b-1537-4df3-a090-7c2ae371ee17/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAALZakV57W50S6mY6z2P9FAyFK5hJCkVECvi569722SmC&exp=1785895388&osig=AAAAAAAAAAAAAAAAAAAAAHmKmPqAOys5RPyYZSTfExh9k_hukWgQa435fd8vWaqz&signer=media-rpc&x-canva-quality=thumbnail',
-            'https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2F7df2df1e-0c1f-40b8-ac19-9aefa2fc17f3/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAACgmhtF-g_uV8_doDFEEvGAU1deXUdShznhRTDp50OP7&exp=1785897578&osig=AAAAAAAAAAAAAAAAAAAAAMs43Eqg1gWN1BdotO57fb03GRSVqxKMm8piViKxRms9&signer=media-rpc&x-canva-quality=thumbnail',
-            'https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2Ffeed7fe9-c93d-4880-874b-854f8ca953f2/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAAGgjB3TS47M6E04QjwepJOhI7HffhdthcBDOX_c-ZitG&exp=1785897082&osig=AAAAAAAAAAAAAAAAAAAAAMbbKVH-AYWhGQrlSUgrry-xRRDpgnIIZBzXkhqky0yb&signer=media-rpc&x-canva-quality=thumbnail',
-          ]
-
-          chunks = {}
-          declared_total = None
-          full_size = None
-          for expected_index, url in enumerate(urls):
-              req = Request(url, headers={'User-Agent':'Mozilla/5.0','Referer':'https://www.canva.com/'})
-              with urlopen(req, timeout=40) as response:
-                  image_bytes = response.read()
-              raw = Image.open(io.BytesIO(image_bytes)).convert('RGB').tobytes()
-              if raw[:4] != b'LZC1':
-                  raise SystemExit(f'Bloque {expected_index}: cabecera inválida')
-              index, total, length, archive_size = struct.unpack('>IIIQ', raw[4:24])
-              if index != expected_index:
-                  raise SystemExit(f'Bloque fuera de orden: {index} != {expected_index}')
-              if total != len(urls):
-                  raise SystemExit(f'Total inconsistente: {total}')
-              declared_total = total
-              full_size = archive_size
-              chunks[index] = raw[24:24 + length]
-              print(f'Bloque {index + 1}/{total}: {length} bytes')
-
-          archive = b''.join(chunks[i] for i in range(declared_total))
-          if len(archive) != full_size:
-              raise SystemExit(f'Tamaño inválido: {len(archive)} != {full_size}')
-          digest = hashlib.sha256(archive).hexdigest()
-          if digest != os.environ['EXPECTED_SHA256']:
-              raise SystemExit(f'SHA-256 inválido: {digest}')
-          open('/tmp/legalaiz.tar.xz', 'wb').write(archive)
-          print(f'Paquete completo verificado: {digest}')
-          PY
-
-      - name: Publicar árbol fuente
-        run: |
-          rm -rf /tmp/legalaiz-unpack
-          mkdir -p /tmp/legalaiz-unpack
-          tar -xJf /tmp/legalaiz.tar.xz -C /tmp/legalaiz-unpack
-          rsync -a --delete --exclude='.git' /tmp/legalaiz-unpack/legalaiz_runtime_repo_text/ ./
-          rm -rf .bootstrap
-          rm -f .github/workflows/bootstrap-m31-8.yml
+          python .bootstrap/publish_m31_8.py
 
       - name: Validar sintaxis
         env:
