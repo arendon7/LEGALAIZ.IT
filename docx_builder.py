@@ -53,12 +53,14 @@ def _paragraph(
 
 
 def _table(rows):
-    """Renderiza matrices de dos o más columnas sin romper documentos históricos."""
+    """Renderiza matrices con grilla OOXML válida y anchos deterministas."""
     normalized = [tuple(row) for row in rows]
     column_count = max((len(row) for row in normalized), default=0)
     if column_count == 0:
         return ""
-    if column_count == 2:
+    if column_count == 1:
+        widths = [9200]
+    elif column_count == 2:
         widths = [3100, 6100]
     else:
         first = min(2200, max(1500, 9200 // column_count))
@@ -80,14 +82,14 @@ def _table(rows):
         row_props = '<w:trPr><w:cantSplit/>' + ('<w:tblHeader/>' if i == 0 else '') + '</w:trPr>'
         rendered_rows.append('<w:tr>' + row_props + ''.join(cells) + '</w:tr>')
     borders = '<w:tblBorders><w:top w:val="single" w:sz="4" w:color="E6E6E1"/><w:left w:val="single" w:sz="4" w:color="E6E6E1"/><w:bottom w:val="single" w:sz="4" w:color="E6E6E1"/><w:right w:val="single" w:sz="4" w:color="E6E6E1"/><w:insideH w:val="single" w:sz="4" w:color="E6E6E1"/><w:insideV w:val="single" w:sz="4" w:color="E6E6E1"/></w:tblBorders>'
-    return f'<w:tbl><w:tblPr><w:tblW w:w="9200" w:type="dxa"/><w:tblLayout w:type="fixed"/><w:tblCellMar><w:top w:w="70" w:type="dxa"/><w:left w:w="90" w:type="dxa"/><w:bottom w:w="70" w:type="dxa"/><w:right w:w="90" w:type="dxa"/></w:tblCellMar>{borders}</w:tblPr>{"".join(rendered_rows)}</w:tbl>'
+    grid = '<w:tblGrid>' + ''.join(f'<w:gridCol w:w="{width}"/>' for width in widths) + '</w:tblGrid>'
+    return f'<w:tbl><w:tblPr><w:tblW w:w="9200" w:type="dxa"/><w:tblLayout w:type="fixed"/><w:tblCellMar><w:top w:w="70" w:type="dxa"/><w:left w:w="90" w:type="dxa"/><w:bottom w:w="70" w:type="dxa"/><w:right w:w="90" w:type="dxa"/></w:tblCellMar>{borders}</w:tblPr>{grid}{"".join(rendered_rows)}</w:tbl>'
 
 
 def _signature_table(parties):
     parties = list(parties or [])[:2]
     while len(parties) < 2:
         parties.append({"label": "Firma", "name": ""})
-    rows = []
     cells = []
     for party in parties:
         label = escape(str(party.get("label") or "Firma"))
@@ -99,8 +101,9 @@ def _signature_table(parties):
             f'<w:p><w:pPr><w:spacing w:after="30"/></w:pPr><w:r><w:t>{label if name else ""}</w:t></w:r></w:p>'
         )
         cells.append(f'<w:tc><w:tcPr><w:tcW w:w="4600" w:type="dxa"/></w:tcPr>{content}</w:tc>')
-    rows.append('<w:tr><w:trPr><w:cantSplit/></w:trPr>' + ''.join(cells) + '</w:tr>')
-    return '<w:tbl><w:tblPr><w:tblW w:w="9200" w:type="dxa"/></w:tblPr>' + ''.join(rows) + '</w:tbl>'
+    row = '<w:tr><w:trPr><w:cantSplit/></w:trPr>' + ''.join(cells) + '</w:tr>'
+    grid = '<w:tblGrid><w:gridCol w:w="4600"/><w:gridCol w:w="4600"/></w:tblGrid>'
+    return '<w:tbl><w:tblPr><w:tblW w:w="9200" w:type="dxa"/><w:tblLayout w:type="fixed"/></w:tblPr>' + grid + row + '</w:tbl>'
 
 
 def _header_xml(status_banner: str):
