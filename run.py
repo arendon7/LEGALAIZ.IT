@@ -1,25 +1,33 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+# La compuerta se instala antes de importar core_v11 para que todos los puntos
+# históricos que usan ``from docx_builder import build_docx`` reciban la versión
+# protegida. La instalación es idempotente y conserva la firma del constructor.
+from legalai_platform.document_release_gate import install_docx_release_gate
+
+install_docx_release_gate()
+
 # Public compatibility façade. The implementation is split into focused modules
 # while preserving the imports historically consumed by tests and integrations.
-from core_v11 import *  # noqa: F401,F403
-import core_v11 as core
+from core_v11 import *  # noqa: F401,F403,E402
+import core_v11 as core  # noqa: E402
 from http.server import ThreadingHTTPServer
 import sys
 import os
 import threading
 import webbrowser
 import signal
-from legalai_platform.runtime_registry import *  # noqa: F401,F403
-from legalai_platform.release_metadata import RELEASE_NAME
-from legalai_platform.application_services import *  # noqa: F401,F403
-import legalai_platform.application_services as _application_services
-from legalai_platform.http_handler import Handler
+from legalai_platform.runtime_registry import *  # noqa: F401,F403,E402
+from legalai_platform.release_metadata import RELEASE_NAME  # noqa: E402
+from legalai_platform.application_services import *  # noqa: F401,F403,E402
+import legalai_platform.application_services as _application_services  # noqa: E402
+from legalai_platform.http_handler import Handler  # noqa: E402
 # Compatibility markers retained for historical source-level verification only.
 # VERSION = "3.8.0"
 # co-ar-001-closed-v250
 # co-la-001-closed-v253
+# m32-2-document-release-gate
 # LEGAL_ALLOW_DEMO_ACCOUNTS
 # LEGAL_BOOTSTRAP_ADMIN_EMAIL
 # UPDATE users SET active=0 WHERE lower(email) LIKE '%@demo.legalaiz.it'
