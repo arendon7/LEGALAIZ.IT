@@ -1,7 +1,11 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 from co_la_001_document_factory_v252 import CoLa001DocumentFactoryV252
 from economic_calculation_engine import reconcile_line_items
+from legalai_platform.document_quality import assert_docx_quality
+from legalai_platform.document_visual_quality import assert_visual_structure
 
 
 class CoLa001DocumentFactoryV253(CoLa001DocumentFactoryV252):
@@ -62,3 +66,24 @@ class CoLa001DocumentFactoryV253(CoLa001DocumentFactoryV252):
         if key == "vacation":
             return f"{p['vacation']['pending_days']} días pendientes"
         return f"{self._date_es(p['employment']['start'])} a {self._date_es(p['employment']['end'])}"
+
+    def render_documents(self, answers, target_folder):
+        evaluation, generated, hashes, calculation = super().render_documents(answers, target_folder)
+        target_folder = Path(target_folder)
+        for item in generated:
+            path = target_folder / item["filename"]
+            quality = assert_docx_quality(path, expected_product="CO-LA-001")
+            visual = assert_visual_structure(path, expected_product="CO-LA-001")
+            item["quality"] = {
+                "valid": quality["valid"],
+                "warnings": quality["warnings"],
+                "metrics": quality["metrics"],
+            }
+            item["visual_preflight"] = {
+                "valid": visual["valid"],
+                "warnings": visual["warnings"],
+                "metrics": visual["metrics"],
+                "requires_human_visual_review": True,
+            }
+            hashes[item["filename"]] = quality["sha256"]
+        return evaluation, generated, hashes, calculation
