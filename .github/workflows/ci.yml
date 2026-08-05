@@ -21,6 +21,8 @@ jobs:
         run: pip install -r requirements.txt
       - name: Validar sintaxis
         run: python -m compileall -q .
+      - name: Validar integridad y generación documental
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Validar interfaz y datos demo
         run: |
           node --input-type=module --check < app/modules/demo_form_values_m32.js
