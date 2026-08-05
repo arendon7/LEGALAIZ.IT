@@ -11,10 +11,21 @@ from zipfile import ZIP_DEFLATED, ZipFile
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT, WD_CELL_VERTICAL_ALIGNMENT
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
 from docx.shared import Cm, Pt
+
+from legalai_platform.document_quality import assert_docx_quality
+from legalai_platform.document_visual_quality import assert_visual_structure
 
 
 UNRESOLVED_PATTERN = re.compile(r"\{\{[^{}]+\}\}|\b(?:NULL|undefined)\b", re.I)
+ORDINALS = [
+    "PRIMERA", "SEGUNDA", "TERCERA", "CUARTA", "QUINTA", "SEXTA", "SÉPTIMA", "OCTAVA", "NOVENA", "DÉCIMA",
+    "DÉCIMA PRIMERA", "DÉCIMA SEGUNDA", "DÉCIMA TERCERA", "DÉCIMA CUARTA", "DÉCIMA QUINTA", "DÉCIMA SEXTA",
+    "DÉCIMA SÉPTIMA", "DÉCIMA OCTAVA", "DÉCIMA NOVENA", "VIGÉSIMA", "VIGÉSIMA PRIMERA", "VIGÉSIMA SEGUNDA",
+    "VIGÉSIMA TERCERA", "VIGÉSIMA CUARTA", "VIGÉSIMA QUINTA", "VIGÉSIMA SEXTA", "VIGÉSIMA SÉPTIMA",
+]
 
 
 class CoLa002DocumentFactoryV239:
@@ -45,7 +56,6 @@ class CoLa002DocumentFactoryV239:
             return "$" + f"{int(float(value)):,}".replace(",", ".")
         except (TypeError, ValueError):
             return str(value or "")
-
 
     @staticmethod
     def _date_es(value):
@@ -81,11 +91,20 @@ class CoLa002DocumentFactoryV239:
         doc.styles["Title"].font.size = Pt(15)
         doc.styles["Heading 1"].font.size = Pt(12)
         doc.styles["Heading 2"].font.size = Pt(11)
+        footer = sec.footer.paragraphs[0]
+        footer.clear()
+        footer.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        run = footer.add_run("LegalAIZ.it | CO-LA-002 | Documento sujeto a revisión jurídica y QA | Página ")
+        run.font.size = Pt(8)
+        field = OxmlElement("w:fldSimple")
+        field.set(qn("w:instr"), "PAGE")
+        footer._p.append(field)
 
     @staticmethod
     def _title(doc: Document, text: str):
         p = doc.add_paragraph()
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        p.paragraph_format.keep_with_next = True
         r = p.add_run(text.upper())
         r.bold = True
         r.font.size = Pt(14)
@@ -95,6 +114,7 @@ class CoLa002DocumentFactoryV239:
     def _section(doc: Document, text: str):
         p = doc.add_paragraph()
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        p.paragraph_format.keep_with_next = True
         r = p.add_run(text.upper())
         r.bold = True
         r.font.size = Pt(11.5)
@@ -104,7 +124,8 @@ class CoLa002DocumentFactoryV239:
     def _clause(doc: Document, ordinal: int, heading: str, body: str):
         p = doc.add_paragraph()
         p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-        r = p.add_run(f"CLÁUSULA {ordinal}. {heading.upper()}: ")
+        ordinal_text = ORDINALS[ordinal - 1] if 0 < ordinal <= len(ORDINALS) else str(ordinal)
+        r = p.add_run(f"CLÁUSULA {ordinal_text}. {heading.upper()}: ")
         r.bold = True
         p.add_run(body.strip())
         return p
@@ -155,9 +176,12 @@ class CoLa002DocumentFactoryV239:
             "Los anexos y autorizaciones solo producirán los efectos expresamente identificados y legalmente procedentes.",
         ]
         ordinals = ["PRIMERA", "SEGUNDA", "TERCERA"]
-        for o, text in zip(ordinals, considerations):
-            p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-            r = p.add_run(f"{o}: "); r.bold = True; p.add_run(text)
+        for ordinal, text in zip(ordinals, considerations):
+            p = doc.add_paragraph()
+            p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+            r = p.add_run(f"{ordinal}: ")
+            r.bold = True
+            p.add_run(text)
 
         self._section(doc, "Cláusulas")
         clauses = []
@@ -167,7 +191,7 @@ class CoLa002DocumentFactoryV239:
 
         functions = self._v(answers, "role.essentialFunctions", [])
         if isinstance(functions, str):
-            functions = [x.strip() for x in functions.split("\n") if x.strip()]
+            functions = [item.strip() for item in functions.split("\n") if item.strip()]
         placement = self._v(answers, "role.functionsPlacement")
         if placement == "full_in_contract" and functions:
             clauses.append(("Funciones", "EL TRABAJADOR desarrollará las funciones que se relacionan a continuación:"))
@@ -179,7 +203,7 @@ class CoLa002DocumentFactoryV239:
         modality_label = {
             "onsite": "presencial", "telework_hybrid": "teletrabajo híbrido",
             "telework_autonomous": "teletrabajo autónomo", "telework_mobile": "teletrabajo móvil",
-            "remote_work": "trabajo remoto"
+            "remote_work": "trabajo remoto",
         }.get(modality, modality)
         clauses.append(("Lugar y modalidad", f"El servicio se prestará principalmente en {workplace}, bajo modalidad {modality_label}, con sujeción a los anexos aplicables."))
         clauses.append(("Duración e inicio", f"El contrato es a término indefinido y la prestación efectiva inicia el {self._date_es(self._v(answers, 'work.actualStartDate'))}."))
@@ -208,8 +232,8 @@ class CoLa002DocumentFactoryV239:
         clauses.append(("Entrega del cargo", "Al terminar o producirse una transición legítima, EL TRABAJADOR realizará una entrega razonable de asuntos, documentos, activos y accesos institucionales, sin incluir contraseñas en texto plano ni renunciar a derechos."))
         clauses.append(("Integridad y modificaciones", "El contrato y sus anexos vigentes contienen las condiciones aplicables. Toda modificación material deberá constar en una nueva revisión trazable y no podrá desconocer derechos mínimos."))
 
-        for i, (heading, body) in enumerate(clauses, 1):
-            self._clause(doc, i, heading, body)
+        for index, (heading, body) in enumerate(clauses, 1):
+            self._clause(doc, index, heading, body)
             if heading == "Funciones" and placement == "full_in_contract" and functions:
                 self._bullet_list(doc, functions)
 
@@ -227,11 +251,19 @@ class CoLa002DocumentFactoryV239:
             (ident["signatory"] or ident["employer"], ident["worker"]),
             ("Firma: ____________________", "Firma: ____________________"),
         ]
-        for row, vals in zip(table.rows, values):
-            for cell, val in zip(row.cells, vals):
+        for row_index, (row, values_row) in enumerate(zip(table.rows, values)):
+            row_properties = row._tr.get_or_add_trPr()
+            row_properties.append(OxmlElement("w:cantSplit"))
+            if row_index == 0:
+                repeat = OxmlElement("w:tblHeader")
+                repeat.set(qn("w:val"), "true")
+                row_properties.append(repeat)
+            for cell, value in zip(row.cells, values_row):
                 cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
-                p = cell.paragraphs[0]; p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-                r = p.add_run(val); r.bold = vals == values[0]
+                p = cell.paragraphs[0]
+                p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                r = p.add_run(value)
+                r.bold = row_index == 0
 
         doc.core_properties.title = "Contrato individual de trabajo a término indefinido"
         doc.core_properties.subject = "CO-LA-002 v2.39"
@@ -240,7 +272,8 @@ class CoLa002DocumentFactoryV239:
 
     def _annex(self, doc_id: str, answers: dict, target: Path):
         ident = self._identity(answers)
-        doc = Document(); self._set_doc_styles(doc)
+        doc = Document()
+        self._set_doc_styles(doc)
         titles = {
             "ANX-LA-FUN-001": "Anexo de perfil y funciones",
             "ANX-LA-MOD-001": "Anexo de modalidad no presencial",
@@ -259,15 +292,23 @@ class CoLa002DocumentFactoryV239:
         p = doc.add_paragraph(
             f"Documento relacionado con el contrato celebrado entre {ident['employer']} y {ident['worker']}, "
             f"para el cargo de {ident['role']}. Código: {doc_id}."
-        ); p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+        )
+        p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
 
         if doc_id == "ANX-LA-FUN-001":
             self._section(doc, "Propósito del cargo")
             doc.add_paragraph(self._v(answers, "role.purpose", "Propósito pendiente de validación."))
             self._section(doc, "Funciones esenciales")
-            funcs = self._v(answers, "role.essentialFunctions", []) or []
-            if isinstance(funcs, str): funcs = [x for x in funcs.split("\n") if x.strip()]
-            self._bullet_list(doc, funcs or ["Funciones definidas en el perfil ocupacional seleccionado y pendientes de validación final."])
+            functions = self._v(answers, "role.essentialFunctions", []) or []
+            if isinstance(functions, str):
+                functions = [item for item in functions.split("\n") if item.strip()]
+            self._bullet_list(doc, functions or ["Funciones definidas en el perfil ocupacional seleccionado y pendientes de validación final."])
+            self._section(doc, "Reglas de ejecución y límites")
+            self._bullet_list(doc, [
+                "Las funciones se ejecutarán bajo instrucciones legítimas, dentro de la jornada y con los recursos y controles definidos por EL EMPLEADOR.",
+                "La asignación de tareas conexas deberá guardar relación razonable con el cargo, la formación, la dignidad y la seguridad de EL TRABAJADOR.",
+                "Este anexo no autoriza descuentos, traslados permanentes, disponibilidad continua ni modificaciones esenciales sin el procedimiento aplicable.",
+            ])
         elif doc_id == "ANX-LA-MOD-001":
             self._clause(doc, 1, "Modalidad", f"La modalidad acordada es {self._v(answers, 'work.modality')}. El lugar remoto autorizado es {self._v(answers, 'remoteWork.authorizedLocation', 'pendiente de confirmación')}. ")
             self._clause(doc, 2, "Desconexión y privacidad", "La modalidad no autoriza disponibilidad continua, vigilancia audiovisual permanente ni ingreso al domicilio sin procedimiento válido.")
@@ -276,7 +317,8 @@ class CoLa002DocumentFactoryV239:
         elif doc_id == "ACT-LA-EQP-001":
             self._section(doc, "Activos")
             items = self._v(answers, "assets.items", []) or []
-            if isinstance(items, str): items = [items]
+            if isinstance(items, str):
+                items = [items]
             self._bullet_list(doc, items or [self._v(answers, "assets.summary", "Activos pendientes de inventario.")])
             doc.add_paragraph("El valor de referencia no constituye deuda automática ni autoriza descuento directo.")
         elif doc_id == "ANX-LA-DIS-001":
@@ -286,9 +328,10 @@ class CoLa002DocumentFactoryV239:
             self._clause(doc, 1, "Riesgos y controles", self._v(answers, "specialConditions.riskSummary", "La identificación detallada deberá ser completada y aprobada por SST antes de publicación."))
         elif doc_id.startswith("AUT-LA-"):
             self._clause(doc, 1, "Carácter independiente", "Esta autorización es facultativa, específica y separada del contrato. La negativa no autoriza represalias ni afecta derechos mínimos.")
-            table = doc.add_table(rows=2, cols=1); table.style = "Table Grid"
-            table.cell(0,0).text = "☐ AUTORIZO"
-            table.cell(1,0).text = "☐ NO AUTORIZO"
+            table = doc.add_table(rows=2, cols=1)
+            table.style = "Table Grid"
+            table.cell(0, 0).text = "☐ AUTORIZO"
+            table.cell(1, 0).text = "☐ NO AUTORIZO"
         elif doc_id == "ANX-LA-VPR-001":
             self._clause(doc, 1, "Vehículo propio", "El vehículo, sus documentos, seguros, gastos, mantenimiento, accidentes y terminación del acuerdo deberán identificarse expresamente. No se trasladarán automáticamente todos los costos al trabajador.")
         elif doc_id == "ACT-LA-ENT-001":
@@ -308,7 +351,7 @@ class CoLa002DocumentFactoryV239:
         parts = [p.text for p in doc.paragraphs]
         for table in doc.tables:
             for row in table.rows:
-                parts.extend(c.text for c in row.cells)
+                parts.extend(cell.text for cell in row.cells)
         return "\n".join(parts)
 
     def generate(self, answers: dict, actor: dict | None = None):
@@ -316,7 +359,7 @@ class CoLa002DocumentFactoryV239:
         if evaluation["blocked"]:
             raise ValueError("El expediente contiene bloqueos jurídicos y no puede generar documentos.")
         if evaluation["missing_fields"]:
-            missing = ", ".join(x["label"] for x in evaluation["missing_fields"])
+            missing = ", ".join(item["label"] for item in evaluation["missing_fields"])
             raise ValueError(f"Faltan datos esenciales: {missing}.")
 
         generation_id = "COLA002-" + uuid.uuid4().hex[:12].upper()
@@ -333,16 +376,23 @@ class CoLa002DocumentFactoryV239:
             self._annex(doc_id, answers, target)
             generated.append({"id": doc_id, "filename": target.name})
 
-        unresolved = []
         hashes = {}
         for item in generated:
             path = folder / item["filename"]
-            text = self._extract_text(path)
-            if UNRESOLVED_PATTERN.search(text):
-                unresolved.append(item["id"])
-            hashes[item["filename"]] = hashlib.sha256(path.read_bytes()).hexdigest()
-        if unresolved:
-            raise ValueError("Se detectaron variables o valores centinela sin resolver: " + ", ".join(unresolved))
+            quality = assert_docx_quality(path, expected_product="CO-LA-002")
+            visual = assert_visual_structure(path, expected_product="CO-LA-002")
+            item["quality"] = {
+                "valid": quality["valid"],
+                "warnings": quality["warnings"],
+                "metrics": quality["metrics"],
+            }
+            item["visual_preflight"] = {
+                "valid": visual["valid"],
+                "warnings": visual["warnings"],
+                "metrics": visual["metrics"],
+                "requires_human_visual_review": True,
+            }
+            hashes[item["filename"]] = quality["sha256"]
 
         manifest = {
             "generation_id": generation_id,
@@ -352,6 +402,7 @@ class CoLa002DocumentFactoryV239:
             "actor": {"id": (actor or {}).get("id"), "role": (actor or {}).get("role")},
             "readiness": evaluation["readiness"],
             "requires_professional_review": bool(evaluation["review_requirements"] or evaluation["warnings"]),
+            "requires_human_visual_review": True,
             "review_requirements": evaluation["review_requirements"],
             "documents": generated,
             "hashes": hashes,
@@ -363,9 +414,9 @@ class CoLa002DocumentFactoryV239:
         }
         (folder / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
         package = self.output_dir / f"{generation_id}.zip"
-        with ZipFile(package, "w", ZIP_DEFLATED) as zf:
+        with ZipFile(package, "w", ZIP_DEFLATED) as archive:
             for path in sorted(folder.iterdir()):
-                zf.write(path, arcname=path.name)
+                archive.write(path, arcname=path.name)
         manifest["package_filename"] = package.name
         manifest["package_sha256"] = hashlib.sha256(package.read_bytes()).hexdigest()
         (folder / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
