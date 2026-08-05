@@ -131,9 +131,11 @@ class DocumentVisualQualityTests(unittest.TestCase):
                 self.assertTrue(item["visual_preflight"]["valid"])
                 self.assertTrue(item["visual_preflight"]["requires_human_visual_review"])
             contract = root / "data" / "generated" / "co-la-002-v239" / manifest["generation_id"] / "CO-LA-002_Contrato_Indefinido.docx"
-            text = "\n".join(paragraph.text for paragraph in Document(contract).paragraphs)
+            document = Document(contract)
+            text = "\n".join(paragraph.text for paragraph in document.paragraphs)
+            footer_text = "\n".join(paragraph.text for paragraph in document.sections[0].footer.paragraphs)
             self.assertIn("CLÁUSULA PRIMERA. OBJETO:", text)
-            self.assertIn("LegalAIZ.it | CO-LA-002", Document(contract).sections[0].footer.text)
+            self.assertIn("LegalAIZ.it | CO-LA-002", footer_text)
 
     def test_co_la_001_wrapper_attaches_both_quality_reports(self):
         with tempfile.TemporaryDirectory() as tmp:
