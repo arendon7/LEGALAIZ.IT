@@ -85,3 +85,53 @@ jobs:
           done
           cat /tmp/legalaiz.log
           exit 1
+
+  visual-docx:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar dependencias Python
+        run: pip install -r requirements.txt
+      - name: Instalar motor de renderizado
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libreoffice-writer poppler-utils fonts-dejavu-core fonts-liberation
+      - name: Generar muestras con fábricas activas
+        run: python scripts/generate_m32_1_visual_samples.py --output "$RUNNER_TEMP/m32-1-visual/samples"
+      - name: Convertir DOCX a PDF y rasterizar todas las páginas
+        env:
+          HOME: ${{ runner.temp }}/lo-home
+        run: |
+          set -euo pipefail
+          SAMPLES="$RUNNER_TEMP/m32-1-visual/samples"
+          RENDERED="$RUNNER_TEMP/m32-1-visual/rendered"
+          PROFILE="$RUNNER_TEMP/m32-1-visual/lo-profile"
+          mkdir -p "$HOME" "$RENDERED" "$PROFILE"
+          for docx in "$SAMPLES"/*.docx; do
+            stem="$(basename "${docx%.docx}")"
+            out="$RENDERED/$stem"
+            mkdir -p "$out"
+            libreoffice --headless "-env:UserInstallation=file://$PROFILE-$stem" --convert-to pdf --outdir "$out" "$docx"
+            pdf="$out/$stem.pdf"
+            test -s "$pdf"
+            pages="$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')"
+            test -n "$pages"
+            test "$pages" -ge 1
+            pdftoppm -png -r 120 "$pdf" "$out/page"
+            rendered_pages="$(find "$out" -maxdepth 1 -name 'page-*.png' -type f | wc -l | tr -d ' ')"
+            test "$rendered_pages" -eq "$pages"
+            printf '%s\t%s\n' "$stem" "$pages" >> "$RENDERED/page-counts.tsv"
+          done
+          test "$(find "$RENDERED" -name 'page-*.png' -type f | wc -l)" -ge 2
+          cat "$RENDERED/page-counts.tsv"
+      - name: Conservar evidencia renderizada
+        uses: actions/upload-artifact@v4
+        with:
+          name: m32-1-evidencia-visual-docx
+          path: ${{ runner.temp }}/m32-1-visual
+          if-no-files-found: error
+          retention-days: 30
