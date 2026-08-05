@@ -1,0 +1,133 @@
+.demo-form-assistant {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  margin-bottom: 20px;
+  padding: 18px 20px;
+  border: 1px solid rgba(201, 169, 110, .5);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(247, 245, 241, .98), rgba(255, 255, 255, .98));
+  box-shadow: 0 12px 30px rgba(13, 19, 36, .07);
+}
+
+.demo-form-assistant-copy {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  min-width: 0;
+}
+
+.demo-form-assistant-icon {
+  display: grid;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 13px;
+  background: #0D1324;
+  color: #C9A96E;
+  font-size: 15px;
+}
+
+.demo-form-assistant h3,
+.demo-form-assistant p {
+  margin: 0;
+}
+
+.demo-form-assistant h3 {
+  margin-top: 3px;
+  color: #0D1324;
+  font-size: 1rem;
+}
+
+.demo-form-assistant p {
+  max-width: 720px;
+  margin-top: 5px;
+  color: #5f6674;
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+.demo-form-fill-button {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.demo-form-mode-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin: 0 0 20px;
+  padding: 16px 18px;
+  border: 1px solid rgba(201, 169, 110, .55);
+  border-radius: 16px;
+  background: #F7F5F1;
+  outline: none;
+}
+
+.demo-form-mode-notice b {
+  color: #0D1324;
+}
+
+.demo-form-mode-notice p {
+  margin: 4px 0 0;
+  color: #5f6674;
+  line-height: 1.5;
+}
+
+.demo-form-result-notice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 14px;
+  padding: 12px 15px;
+  border: 1px solid rgba(201, 169, 110, .45);
+  border-radius: 14px;
+  background: #F7F5F1;
+  color: #353b48;
+  font-size: .9rem;
+}
+
+.demo-form-dialog {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.demo-form-dialog p {
+  margin: 0 0 10px;
+  line-height: 1.55;
+}
+
+.demo-form-dialog-icon {
+  display: grid;
+  flex: 0 0 46px;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border-radius: 14px;
+  background: #0D1324;
+  color: #C9A96E;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .demo-form-assistant {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .demo-form-fill-button {
+    width: 100%;
+  }
+
+  .demo-form-mode-notice,
+  .demo-form-result-notice {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
