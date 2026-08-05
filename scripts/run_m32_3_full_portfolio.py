@@ -5,9 +5,10 @@ from __future__ import annotations
 
 Las fábricas especializadas históricas conservan pequeñas diferencias de interfaz:
 unas exponen ``evaluator.documents`` como catálogo descriptivo y otras retornan
-únicamente IDs; además, no todas publican el mismo campo para la carpeta de la
-revisión inmutable. Este adaptador preserva esas fábricas y localiza la salida
-primaria dentro de la generación exacta, sin introducir plantillas paralelas.
+únicamente IDs; no todas publican el mismo campo para la carpeta de la revisión
+inmutable ni el mismo tipo para los estados de aprobación. Este adaptador preserva
+esas fábricas, normaliza su gobierno y localiza la salida primaria dentro de la
+generación exacta, sin introducir plantillas paralelas.
 """
 
 from pathlib import Path
@@ -40,6 +41,25 @@ class FactoryCompatibleEvaluator:
             "warnings": [],
             "blocks": list(self.blocks),
         }
+
+
+def _approval_status(value, default: str = "pending") -> str:
+    """Normaliza objetos y cadenas heredadas sin convertir ausencia en aprobación."""
+    if isinstance(value, dict):
+        value = value.get("status", default)
+    if value in (None, ""):
+        return default
+    return str(value).strip().casefold()
+
+
+def _released_status(manifest: dict) -> bool:
+    """Considera liberado cualquier estado explícito distinto de falso o pendiente."""
+    value = manifest.get("released", False)
+    if isinstance(value, bool):
+        return value
+    if value in (None, "", 0):
+        return False
+    return str(value).strip().casefold() not in {"false", "no", "pending", "draft", "not_released"}
 
 
 def _resolve_generated_document(factory, manifest: dict, document: dict) -> Path:
@@ -104,9 +124,9 @@ def _copy_primary_compatible(factory, answers: dict, product_code: str, output: 
         "source_filename": document["filename"],
         "sample_name": destination.name,
         "generation_id": manifest["generation_id"],
-        "factory_legal_approval": manifest.get("legal_approval", {}).get("status", "pending"),
-        "factory_qa_approval": manifest.get("qa_approval", {}).get("status", "pending"),
-        "factory_released": bool(manifest.get("released", False)),
+        "factory_legal_approval": _approval_status(manifest.get("legal_approval")),
+        "factory_qa_approval": _approval_status(manifest.get("qa_approval")),
+        "factory_released": _released_status(manifest),
     }
 
 
