@@ -53,12 +53,14 @@ def _paragraph(
 
 
 def _table(rows):
-    """Renderiza matrices de dos o más columnas sin romper documentos históricos."""
+    """Renderiza matrices con grilla OOXML válida y anchos deterministas."""
     normalized = [tuple(row) for row in rows]
     column_count = max((len(row) for row in normalized), default=0)
     if column_count == 0:
         return ""
-    if column_count == 2:
+    if column_count == 1:
+        widths = [9200]
+    elif column_count == 2:
         widths = [3100, 6100]
     else:
         first = min(2200, max(1500, 9200 // column_count))
@@ -80,14 +82,14 @@ def _table(rows):
         row_props = '<w:trPr><w:cantSplit/>' + ('<w:tblHeader/>' if i == 0 else '') + '</w:trPr>'
         rendered_rows.append('<w:tr>' + row_props + ''.join(cells) + '</w:tr>')
     borders = '<w:tblBorders><w:top w:val="single" w:sz="4" w:color="E6E6E1"/><w:left w:val="single" w:sz="4" w:color="E6E6E1"/><w:bottom w:val="single" w:sz="4" w:color="E6E6E1"/><w:right w:val="single" w:sz="4" w:color="E6E6E1"/><w:insideH w:val="single" w:sz="4" w:color="E6E6E1"/><w:insideV w:val="single" w:sz="4" w:color="E6E6E1"/></w:tblBorders>'
-    return f'<w:tbl><w:tblPr><w:tblW w:w="9200" w:type="dxa"/><w:tblLayout w:type="fixed"/><w:tblCellMar><w:top w:w="70" w:type="dxa"/><w:left w:w="90" w:type="dxa"/><w:bottom w:w="70" w:type="dxa"/><w:right w:w="90" w:type="dxa"/></w:tblCellMar>{borders}</w:tblPr>{"".join(rendered_rows)}</w:tbl>'
+    grid = '<w:tblGrid>' + ''.join(f'<w:gridCol w:w="{width}"/>' for width in widths) + '</w:tblGrid>'
+    return f'<w:tbl><w:tblPr><w:tblW w:w="9200" w:type="dxa"/><w:tblLayout w:type="fixed"/><w:tblCellMar><w:top w:w="70" w:type="dxa"/><w:left w:w="90" w:type="dxa"/><w:bottom w:w="70" w:type="dxa"/><w:right w:w="90" w:type="dxa"/></w:tblCellMar>{borders}</w:tblPr>{grid}{"".join(rendered_rows)}</w:tbl>'
 
 
 def _signature_table(parties):
     parties = list(parties or [])[:2]
     while len(parties) < 2:
         parties.append({"label": "Firma", "name": ""})
-    rows = []
     cells = []
     for party in parties:
         label = escape(str(party.get("label") or "Firma"))
@@ -99,8 +101,9 @@ def _signature_table(parties):
             f'<w:p><w:pPr><w:spacing w:after="30"/></w:pPr><w:r><w:t>{label if name else ""}</w:t></w:r></w:p>'
         )
         cells.append(f'<w:tc><w:tcPr><w:tcW w:w="4600" w:type="dxa"/></w:tcPr>{content}</w:tc>')
-    rows.append('<w:tr><w:trPr><w:cantSplit/></w:trPr>' + ''.join(cells) + '</w:tr>')
-    return '<w:tbl><w:tblPr><w:tblW w:w="9200" w:type="dxa"/></w:tblPr>' + ''.join(rows) + '</w:tbl>'
+    row = '<w:tr><w:trPr><w:cantSplit/></w:trPr>' + ''.join(cells) + '</w:tr>'
+    grid = '<w:tblGrid><w:gridCol w:w="4600"/><w:gridCol w:w="4600"/></w:tblGrid>'
+    return '<w:tbl><w:tblPr><w:tblW w:w="9200" w:type="dxa"/><w:tblLayout w:type="fixed"/></w:tblPr>' + grid + row + '</w:tbl>'
 
 
 def _header_xml(status_banner: str):
@@ -149,7 +152,8 @@ def build_docx(
     path.parent.mkdir(parents=True, exist_ok=True)
     body = []
     logo_path = Path(__file__).resolve().parent / "app" / "assets" / "logo-legalaizit-docx.png"
-    if logo_path.exists():
+    has_logo = logo_path.is_file()
+    if has_logo:
         body.append(_image_paragraph())
         body.append(_paragraph("", spacing_after=90))
     else:
@@ -237,7 +241,21 @@ def build_docx(
     )
     content_types = '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="jpg" ContentType="image/jpeg"/><Default Extension="png" ContentType="image/png"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/><Override PartName="/word/settings.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.settings+xml"/><Override PartName="/word/header1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.header+xml"/><Override PartName="/word/footer1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml"/><Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/><Override PartName="/docProps/app.xml" ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/></Types>'''
     rels = '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/><Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties" Target="docProps/app.xml"/></Relationships>'''
-    docrels = '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/logo-legalaizit-docx.png"/><Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/header" Target="header1.xml"/><Relationship Id="rId4" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer" Target="footer1.xml"/><Relationship Id="rId5" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/settings" Target="settings.xml"/></Relationships>'''
+    image_relationship = (
+        '<Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/logo-legalaizit-docx.png"/>'
+        if has_logo
+        else ""
+    )
+    docrels = (
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+        '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>'
+        f'{image_relationship}'
+        '<Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/header" Target="header1.xml"/>'
+        '<Relationship Id="rId4" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer" Target="footer1.xml"/>'
+        '<Relationship Id="rId5" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/settings" Target="settings.xml"/>'
+        '</Relationships>'
+    )
     app = '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes"><Application>LegalAIZ.it</Application></Properties>'''
     settings = f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:settings xmlns:w="{NS}"><w:updateFields w:val="true"/><w:doNotTrackMoves/><w:compat><w:compatSetting w:name="compatibilityMode" w:uri="http://schemas.microsoft.com/office/word" w:val="15"/></w:compat></w:settings>'''
     with ZipFile(path, "w", ZIP_DEFLATED) as z:
@@ -249,7 +267,7 @@ def build_docx(
         z.writestr("word/header1.xml", _header_xml(document_status))
         z.writestr("word/footer1.xml", _footer_xml(footer))
         z.writestr("word/_rels/document.xml.rels", docrels)
-        if logo_path.exists():
+        if has_logo:
             z.writestr("word/media/logo-legalaizit-docx.png", logo_path.read_bytes())
         z.writestr("docProps/core.xml", core)
         z.writestr("docProps/app.xml", app)
