@@ -60,7 +60,7 @@ jobs:
           }
 
           if (Object.keys(interviews).length !== 11) failures.push(`Se esperaban 11 productos y se encontraron ${Object.keys(interviews).length}`);
-          if (questionCount !== 176) failures.push(`Se esperaban 176 preguntas y se encontraron ${questionCount}`);
+          if (questionCount < 473) failures.push(`La cobertura de formularios bajó de 473 a ${questionCount} preguntas`);
           if (failures.length) throw new Error(failures.join('\n'));
           console.log(`Datos demo verificados: 11 productos, ${questionCount} preguntas, ${answerCount} respuestas visibles.`);
           NODE
