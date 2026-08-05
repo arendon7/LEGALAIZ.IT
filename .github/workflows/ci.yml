@@ -14,10 +14,56 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
       - name: Instalar dependencias
         run: pip install -r requirements.txt
       - name: Validar sintaxis
         run: python -m compileall -q .
+      - name: Validar interfaz y datos demo
+        run: |
+          node --input-type=module --check < app/modules/demo_form_values_m32.js
+          node --input-type=module --check < app/modules/demo_form_data_m32.js
+          grep -q 'demo_form_data_m32.css' app/index.html
+          grep -q 'demo_form_data_m32.js' app/index.html
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+
+          const source = fs.readFileSync('app/modules/demo_form_values_m32.js', 'utf8');
+          const encoded = Buffer.from(source).toString('base64');
+          const { buildDemoAnswers, demoAnswerSummary, isDemoQuestionVisible } = await import(`data:text/javascript;base64,${encoded}`);
+          const interviews = JSON.parse(fs.readFileSync('data/interviews.json', 'utf8'));
+          const failures = [];
+          let questionCount = 0;
+          let answerCount = 0;
+
+          for (const [code, interview] of Object.entries(interviews)) {
+            const questions = interview.questions || [];
+            const answers = buildDemoAnswers(questions);
+            const summary = demoAnswerSummary(questions, answers);
+            questionCount += questions.length;
+            answerCount += summary.answeredCount;
+            if (summary.missingRequired.length) failures.push(`${code}: faltan ${summary.missingRequired.map(question => question.id).join(', ')}`);
+
+            for (const question of questions.filter(item => isDemoQuestionVisible(item, answers))) {
+              const value = answers[question.id];
+              if (question.type === 'select' && !(question.options || []).includes(value)) failures.push(`${code}/${question.id}: opción inválida`);
+              if (question.type === 'multiselect' && (!Array.isArray(value) || value.some(item => !(question.options || []).includes(item)))) failures.push(`${code}/${question.id}: selección múltiple inválida`);
+              if (question.type === 'number' && question.min != null && Number(value) < Number(question.min)) failures.push(`${code}/${question.id}: inferior al mínimo`);
+              if (question.type === 'number' && question.max != null && Number(value) > Number(question.max)) failures.push(`${code}/${question.id}: superior al máximo`);
+              if (question.after_field && answers[question.after_field] && String(value) <= String(answers[question.after_field])) failures.push(`${code}/${question.id}: fecha no posterior`);
+              if (question.min_length && String(value || '').length < Number(question.min_length)) failures.push(`${code}/${question.id}: texto demasiado corto`);
+              if (question.max_length && String(value || '').length > Number(question.max_length)) failures.push(`${code}/${question.id}: texto demasiado largo`);
+              if (question.format === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || ''))) failures.push(`${code}/${question.id}: correo inválido`);
+            }
+          }
+
+          if (Object.keys(interviews).length !== 11) failures.push(`Se esperaban 11 productos y se encontraron ${Object.keys(interviews).length}`);
+          if (questionCount < 473) failures.push(`La cobertura de formularios bajó de 473 a ${questionCount} preguntas`);
+          if (failures.length) throw new Error(failures.join('\n'));
+          console.log(`Datos demo verificados: 11 productos, ${questionCount} preguntas, ${answerCount} respuestas visibles.`);
+          NODE
       - name: Smoke HTTP
         env:
           LEGAL_PROFILE: local
