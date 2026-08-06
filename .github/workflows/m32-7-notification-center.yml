@@ -79,10 +79,12 @@ jobs:
           assert payload['notification_chain']['events'] >= 1
           assert payload['business_schedule']['legal_deadline'] is False
           assert payload['business_schedule']['calendar']['holidays'] == ['2026-08-07']
+          assert payload['business_schedule']['business_hours_remaining'] == 10
           assert payload['outbox_metrics']['queued'] >= 1
           assert payload['outbox_metrics']['delivered'] == 0
           assert payload['outbox_statuses'] == ['queued']
           assert payload['outbox_contains_document_content'] is False
+          assert payload['outbox_recipient_addresses_stored'] is False
           assert payload['external_delivery_active'] is False
           assert payload['external_delivery_performed'] is False
           assert payload['real_external_delivery'] is False
