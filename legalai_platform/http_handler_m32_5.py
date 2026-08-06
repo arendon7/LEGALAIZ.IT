@@ -35,10 +35,10 @@ class Handler(BaseHandler):
             if not self.require_csrf():
                 return
             return handle_m32_5_approval_desk_post(self, path, user)
-        except Exception as exc:
-            # El manejador de rutas traduce errores esperados. Este bloque conserva
-            # el contrato de error seguro ante una excepción no controlada.
-            return self.send_json({"error": "Error interno de la Mesa Jurídica", "detail": str(exc)}, 500)
+        except Exception:
+            # Los errores esperados se traducen en el módulo de rutas. Un fallo no
+            # controlado nunca expone rutas, clases, SQL ni mensajes internos.
+            return self.send_json({"error": "Error interno de la Mesa Jurídica"}, 500)
 
 
 __all__ = ["Handler"]
