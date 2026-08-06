@@ -194,6 +194,8 @@ class ApprovalNotificationCenterM327Tests(TestCase):
         self.assertTrue(all(item["status"] == "queued" for item in outbox["messages"]))
         self.assertTrue(all(item["provider"] is None for item in outbox["messages"]))
         self.assertTrue(all(item["contains_document_content"] is False for item in outbox["messages"]))
+        self.assertTrue(all(item["recipient_address_stored"] is False for item in outbox["messages"]))
+        self.assertTrue(all("recipient" not in item for item in outbox["messages"]))
 
     def test_lectura_aplazamiento_y_reconocimiento_son_append_only(self):
         self.prepare_first()
@@ -240,6 +242,7 @@ class ApprovalNotificationCenterM327Tests(TestCase):
         self.assertEqual(result["schedule"]["due_at"], datetime(2026,8,10,17,0,tzinfo=BOGOTA).isoformat(timespec="seconds"))
         self.assertFalse(result["schedule"]["legal_deadline"])
         self.assertEqual(result["business_sla"]["calendar"]["name"], "Jornada interna")
+        self.assertEqual(result["business_sla"]["business_hours_remaining"], 10)
 
     def test_carga_de_trabajo_es_operativa_y_acotada_por_rol(self):
         self.prepare_first()
@@ -247,6 +250,7 @@ class ApprovalNotificationCenterM327Tests(TestCase):
         legal = next(row for row in admin["professionals"] if row["professional"]["id"] == "USR-LEGAL")
         self.assertEqual(legal["legal_assignments"], 1)
         self.assertEqual(legal["overdue"], 1)
+        self.assertNotIn("email", legal["professional"])
         personal = self.center.workload(self.legal)
         self.assertEqual(len(personal["professionals"]), 1)
         self.assertEqual(personal["professionals"][0]["professional"]["id"], "USR-LEGAL")

@@ -18,15 +18,16 @@ function fmt(value){return value?dateText(value):'Sin fecha';}
 function active(item){return !item.acknowledged&&!item.snoozed;}
 
 function inboxItem(item,detail=false){
+  const canManage=item.can_manage!==false;
   return `<article class="m327-notification severity-${esc(item.severity||'info')} ${item.read?'is-read':''} ${item.acknowledged?'is-ack':''}">
     <div class="m327-notification-head"><span>${esc(severityLabel[item.severity]||item.severity)}</span><small>${esc(fmt(item.created_at))}</small></div>
     <h4>${esc(item.title||'Notificación')}</h4>
     <p>${esc(item.description||'')}</p>
     <div class="m327-meta"><code>${esc(item.product_code||'')}</code><span>Nivel ${esc(item.escalation_level??0)}</span>${item.due_at?`<span>Objetivo: ${esc(fmt(item.due_at))}</span>`:''}</div>
     <div class="m327-actions">
-      ${!item.read?`<button class="btn secondary sm" data-m327-action="read" data-id="${esc(item.notification_id)}">Marcar leída</button>`:''}
-      ${!item.acknowledged?`<button class="btn secondary sm" data-m327-action="ack" data-id="${esc(item.notification_id)}">Reconocer</button>`:''}
-      ${!item.acknowledged?`<button class="btn ghost sm" data-m327-action="snooze" data-id="${esc(item.notification_id)}">Aplazar</button>`:''}
+      ${canManage&&!item.read?`<button class="btn secondary sm" data-m327-action="read" data-id="${esc(item.notification_id)}">Marcar leída</button>`:''}
+      ${canManage&&!item.acknowledged?`<button class="btn secondary sm" data-m327-action="ack" data-id="${esc(item.notification_id)}">Reconocer</button>`:''}
+      ${canManage&&!item.acknowledged?`<button class="btn ghost sm" data-m327-action="snooze" data-id="${esc(item.notification_id)}">Aplazar</button>`:''}
       ${detail&&item.case_id?`<a class="btn ghost sm" href="#${ROUTE}/${encode(item.case_id)}">Abrir expediente</a>`:''}
     </div>
   </article>`;

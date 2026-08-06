@@ -163,6 +163,7 @@ def build(output: Path) -> dict:
             "outbox_metrics": outbox["metrics"],
             "outbox_statuses": sorted({item["status"] for item in outbox["messages"]}),
             "outbox_contains_document_content": any(item["contains_document_content"] for item in outbox["messages"]),
+            "outbox_recipient_addresses_stored": any(item.get("recipient_address_stored", True) for item in outbox["messages"]),
             "external_delivery_active": False,
             "external_delivery_performed": evaluation["external_delivery_performed"],
             "notification_chain": audit,

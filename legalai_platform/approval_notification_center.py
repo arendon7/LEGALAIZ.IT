@@ -110,6 +110,17 @@ def _clean_text(value: Any, limit: int = 1000) -> str:
     return re.sub(r"[\r\n]+", " ", str(value or "")).strip()[:limit]
 
 
+def _mask_email(value: Any) -> str | None:
+    text = str(value or "").strip()
+    if "@" not in text:
+        return None
+    local, domain = text.rsplit("@", 1)
+    if not local or not domain:
+        return None
+    visible = local[:1]
+    return f"{visible}{'*' * max(2, len(local) - 1)}@{domain}"
+
+
 class BusinessCalendar:
     """Calendario operativo explícito; no representa un calendario judicial."""
 
@@ -558,7 +569,9 @@ class ApprovalNotificationCenter:
                             "notification_id": notification_id,
                             "channel": "email",
                             "recipient_id": str(recipient["id"]),
-                            "recipient": str(recipient.get("email")),
+                            "recipient_reference": str(recipient["id"]),
+                            "recipient_hint": _mask_email(recipient.get("email")),
+                            "recipient_address_stored": False,
                             "subject": f"LegalAIZ.it · {alert.get('title')}",
                             "body": (
                                 f"Producto {row.get('product_code')} · expediente {row.get('desk_case_id')}. "
@@ -737,7 +750,9 @@ class ApprovalNotificationCenter:
         calendar = BusinessCalendar(schedule["calendar"])
         due = _parse_datetime(schedule["due_at"])
         now = self._now()
-        remaining = calendar.business_hours_between(now, due)
+        start = _parse_datetime(schedule["start_at"])
+        effective_start = max(now, start)
+        remaining = calendar.business_hours_between(effective_start, due)
         total = max(0.01, float(schedule["business_hours"]))
         if now > due:
             status = "overdue"
@@ -777,7 +792,7 @@ class ApprovalNotificationCenter:
                 critical += sum(item.get("severity") == "critical" for item in active)
             score = round(legal * 2 + qa * 1.5 + overdue * 5 + at_risk * 3 + critical * 4, 1)
             rows.append({
-                "professional": professional,
+                "professional": {key: value for key, value in professional.items() if key != "email"},
                 "legal_assignments": legal,
                 "qa_assignments": qa,
                 "overdue": overdue,
@@ -798,7 +813,20 @@ class ApprovalNotificationCenter:
     def case_notifications(self, user: dict[str, Any], case_id: str) -> dict[str, Any]:
         case_value = _safe_segment(case_id, "case_id")
         operation = self.operations.state(user, case_value)
-        rows = [item for item in self._state()["notifications"].values() if item.get("case_id") == case_value]
+        now = self._now()
+        rows: list[dict[str, Any]] = []
+        for raw in self._state()["notifications"].values():
+            if raw.get("case_id") != case_value:
+                continue
+            if user.get("role") != "admin" and str(raw.get("recipient_id")) != str(user.get("id")):
+                continue
+            item = dict(raw)
+            item["read"] = str(user.get("id")) in raw.get("read_by", {})
+            item["acknowledged"] = bool(raw.get("acknowledged_by"))
+            item["snoozed"] = bool(raw.get("snoozed_until") and _parse_datetime(raw["snoozed_until"]) > now)
+            item["active"] = not item["acknowledged"] and not item["snoozed"]
+            item["can_manage"] = user.get("role") == "admin" or str(raw.get("recipient_id")) == str(user.get("id"))
+            rows.append(item)
         rows.sort(key=lambda item: str(item.get("created_at") or ""), reverse=True)
         return {
             "schema_version": M32_7_SCHEMA,
