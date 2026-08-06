@@ -31,7 +31,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Ejecutar regresiones M32.3
-        run: python -m unittest discover -s tests -p 'test_m32_3_full_portfolio.py' -v
+        run: python -m unittest discover -s tests -p 'test_m32_3*.py' -v
 
       - name: Instalar motor de renderizado
         run: |
@@ -106,6 +106,12 @@ jobs:
           test "$(find "$RENDERED" -type f -name 'page-*.png' | wc -l | tr -d ' ')" -ge 11
           cat "$RENDERED/page-counts.tsv"
 
+      - name: Bloquear páginas visualmente vacías
+        run: |
+          python scripts/inspect_m32_3_rendered_pages.py \
+            --rendered "$RUNNER_TEMP/m32-3/rendered" \
+            --output "$RUNNER_TEMP/m32-3/rendered-page-inspection.json"
+
       - name: Construir expediente y hojas de contacto
         run: |
           python scripts/build_m32_3_review_packet.py \
@@ -121,6 +127,9 @@ jobs:
           from pathlib import Path
 
           root = Path(os.environ['RUNNER_TEMP']) / 'm32-3'
+          inspection = json.loads((root / 'rendered-page-inspection.json').read_text(encoding='utf-8'))
+          assert inspection['valid'] is True
+          assert inspection['blank_pages'] == []
           packet = json.loads((root / 'review' / 'm32-3-review-packet.json').read_text(encoding='utf-8'))
           assert packet['product_count'] == 11
           assert packet['page_count'] >= 11
