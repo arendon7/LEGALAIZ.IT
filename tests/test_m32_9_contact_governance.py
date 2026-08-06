@@ -325,7 +325,7 @@ class ContactGovernanceM329Tests(TestCase):
         self.assertGreater(dashboard["metrics"]["synthetic_contacts"], 0)
         self.assertTrue(result["governance_audit"]["valid"])
 
-    def test_supresion_bloquea_despacho_m32_8(self):
+    def test_supresion_bloquea_solo_destinatario_afectado_en_m32_8(self):
         self.prepare_outbox()
         self.governance.add_suppression(self.qa, {
             "subject_id": "USR-LEGAL",
@@ -336,8 +336,18 @@ class ContactGovernanceM329Tests(TestCase):
         })
         result = self.communications.process(self.admin)
         self.assertGreater(len(result["governance_blocked"]), 0)
-        self.assertEqual(result["accepted_sandbox"], [])
         queue = self.communications.queue(self.admin)
+        blocked = [
+            item for item in queue["dispatches"]
+            if item["dispatch_id"] in set(result["governance_blocked"])
+        ]
+        self.assertTrue(blocked)
+        self.assertTrue(all(item["recipient_id"] == "USR-LEGAL" for item in blocked))
+        self.assertTrue(all(item["status"] == "dead_letter" for item in blocked))
+        self.assertFalse(any(
+            item["recipient_id"] == "USR-LEGAL" and item["status"] == "accepted_sandbox"
+            for item in queue["dispatches"]
+        ))
         self.assertGreater(queue["metrics"]["dead_letter"], 0)
 
     def test_especialista_no_administra_ni_consulta_terceros(self):
