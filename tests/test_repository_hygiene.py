@@ -27,8 +27,11 @@ class RepositoryHygieneTests(TestCase):
         files = sorted(path.name for path in directory.iterdir() if path.is_file())
         self.assertEqual(files, ["README.md"])
 
-    def test_no_tracked_temporary_or_backup_files(self) -> None:
-        forbidden_suffixes = {".bak", ".old", ".orig", ".rej", ".tmp"}
+    def test_no_tracked_temporary_backup_or_local_data_files(self) -> None:
+        forbidden_suffixes = {
+            ".bak", ".old", ".orig", ".rej", ".tmp", ".log",
+            ".sqlite", ".sqlite3", ".db", ".p12", ".pfx",
+        }
         excluded_parts = {".git", ".venv", "venv", "node_modules", "__pycache__"}
         offenders: list[str] = []
         for path in ROOT.rglob("*"):
@@ -37,6 +40,43 @@ class RepositoryHygieneTests(TestCase):
             if path.suffix.casefold() in forbidden_suffixes or path.name.endswith("~"):
                 offenders.append(str(path.relative_to(ROOT)))
         self.assertEqual(offenders, [])
+
+    def test_no_tracked_local_artifact_directories(self) -> None:
+        forbidden = {
+            "generated", "uploads", "secrets", "artifacts", "output",
+            "rendered", "node_modules", "dist", "build", ".idea", ".vscode",
+        }
+        present = sorted(name for name in forbidden if (ROOT / name).exists())
+        self.assertEqual(present, [])
+
+    def test_runtime_and_audit_are_placeholders_only(self) -> None:
+        for relative in ("runtime", "audit"):
+            files = sorted(path.name for path in (ROOT / relative).iterdir())
+            self.assertEqual(files, [".gitkeep"], relative)
+
+    def test_ignore_files_cover_sensitive_and_generated_state(self) -> None:
+        gitignore = (ROOT / ".gitignore").read_text(encoding="utf-8").splitlines()
+        dockerignore = (ROOT / ".dockerignore").read_text(encoding="utf-8").splitlines()
+        required_git = {
+            ".env", ".env.*", "secrets/", "runtime/*", "audit/*",
+            "generated/", "uploads/", "artifacts/", "*.log", "*.sqlite",
+            "*.db", "node_modules/", "dist/", "build/", ".idea/", ".vscode/",
+        }
+        required_docker = {
+            ".env", ".env.*", "secrets", "runtime", "audit", "generated",
+            "uploads", "artifacts", "*.log", "*.sqlite", "*.db",
+            "node_modules", "dist", "build", ".idea", ".vscode",
+        }
+        self.assertTrue(required_git.issubset(set(gitignore)), required_git - set(gitignore))
+        self.assertTrue(required_docker.issubset(set(dockerignore)), required_docker - set(dockerignore))
+
+    def test_safe_environment_example_and_security_policy_exist(self) -> None:
+        example = (ROOT / ".env.example").read_text(encoding="utf-8")
+        self.assertIn("LEGAL_DEMO_PASSWORD=CHANGE_ME_BEFORE_USE", example)
+        self.assertNotIn("LegalAIZDemo2026!", example)
+        security = (ROOT / "SECURITY.md").read_text(encoding="utf-8")
+        self.assertIn("Reporte responsable", security)
+        self.assertIn("datos sintéticos", security)
 
     def test_readme_sets_main_as_source_of_truth_and_preserves_limits(self) -> None:
         content = (ROOT / "README.md").read_text(encoding="utf-8")
