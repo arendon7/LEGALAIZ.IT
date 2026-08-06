@@ -1,10 +1,71 @@
-.venv/
+# Python
 __pycache__/
 *.py[cod]
 .pytest_cache/
-.DS_Store
+.mypy_cache/
+.ruff_cache/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Entornos y configuración local
+.venv/
+venv/
+env/
+ENV/
 .env
+.env.*
+!.env.example
+
+# Secretos y certificados
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+
+# Estado operativo y datos locales
 runtime/*
 !runtime/.gitkeep
 audit/*
 !audit/.gitkeep
+generated/
+uploads/
+artifacts/
+output/
+rendered/
+
+# Bases de datos y registros
+*.log
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Dependencias y compilaciones
+node_modules/
+dist/
+build/
+.parcel-cache/
+.next/
+
+# Paquetes y copias locales
+*.zip
+*.lzbackup
+*.bak
+*.old
+*.orig
+*.rej
+*.tmp
+*~
+
+# IDE y sistema operativo
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
