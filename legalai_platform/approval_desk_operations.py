@@ -18,7 +18,7 @@ import re
 from threading import RLock
 from typing import Any, Callable
 from uuid import uuid4
-from zipfile import ZIP_DEFLATED, ZipFile
+from zipfile import ZIP_DEFLATED, BadZipFile, ZipFile
 from zoneinfo import ZoneInfo
 
 import core_v11 as core
@@ -537,14 +537,33 @@ class ApprovalDeskOperations:
         if user.get("role") != "admin":
             raise PermissionDenied("Solo administración puede sincronizar el portafolio.")
         result = self.workspace.bootstrap(user, limit=limit)
-        for case_id in result.get("created", []):
+        initialized: list[str] = []
+        # M32.6 también debe incorporar expedientes creados previamente en M32.5.
+        # La ausencia de bitácora operativa no autoriza a sobrescribir la revisión;
+        # únicamente añade el primer evento M32.6 de forma append-only.
+        for row in self.workspace.list_for_user(user).get("cases", []):
+            case_id = str(row.get("desk_case_id") or "")
+            if not case_id:
+                continue
+            integrity = self.verify_chain(case_id)
+            if integrity["events"]:
+                continue
             self._append_event(case_id, "operations.initialized", user, {
                 "priority": "normal",
                 "sla_hours": DEFAULT_SLA_HOURS["normal"],
-                "professional_approval_pending": True,
+                "professional_approval_pending": row.get("status") != "released",
+                "source": "portfolio_sync",
             })
+            initialized.append(case_id)
         portfolio = self.portfolio(user)
-        return {"schema_version": M32_6_SCHEMA, "bootstrap": result, "portfolio": portfolio["portfolio"], "metrics": portfolio["metrics"]}
+        return {
+            "schema_version": M32_6_SCHEMA,
+            "bootstrap": result,
+            "initialized": initialized,
+            "initialized_count": len(initialized),
+            "portfolio": portfolio["portfolio"],
+            "metrics": portfolio["metrics"],
+        }
 
     def build_dossier(self, user: dict[str, Any], case_id: str, *, include_activity: bool = True) -> dict[str, Any]:
         detail = self.workspace.detail(user, case_id)
@@ -597,13 +616,36 @@ class ApprovalDeskOperations:
         if not current:
             raise ReleaseBlocked("El expediente no tiene una revisión documental exportable.")
         _, source = self.workspace._revision_file(detail, current["revision_id"])
-        package_id = f"EXP-{current['revision_id']}-{current['sha256'][:12]}"
+        approval_hash = str((detail.get("audit") or {}).get("last_hash") or "0" * 64)
+        operations_hash = str(operational_integrity.get("last_hash") or "0" * 64)
+        package_id = (
+            f"EXP-{current['revision_id']}-{current['sha256'][:12]}-"
+            f"{approval_hash[:10]}-{operations_hash[:10]}"
+        )
         filename = f"{case_id}_{package_id}_expediente_aprobacion.zip"
         target_dir = self._case_dir(case_id) / "dossiers"
         target_dir.mkdir(parents=True, exist_ok=True)
         target = target_dir / filename
         if target.is_file():
-            return target, filename
+            # El nombre incorpora la revisión y los últimos hashes de ambas cadenas.
+            # Una actuación nueva produce necesariamente un paquete distinto.
+            try:
+                with ZipFile(target) as archive:
+                    required = {
+                        "expediente_aprobacion.json",
+                        "cadena_aprobacion.json",
+                        "actividad_operativa.json",
+                        "revision_vigente.json",
+                        "revision_vigente.docx",
+                        "LEAME.txt",
+                    }
+                    if not required.issubset(set(archive.namelist())):
+                        raise ApprovalDeskError("El expediente almacenado está incompleto.")
+                    if sha256(archive.read("revision_vigente.docx")).hexdigest() != current["sha256"]:
+                        raise ApprovalDeskError("El DOCX del expediente no coincide con la revisión vigente.")
+                return target, filename
+            except (BadZipFile, OSError, ValueError, KeyError) as exc:
+                raise ApprovalDeskError("El expediente almacenado no supera la validación de integridad.") from exc
         approval_events = []
         approval_path = self._case_dir(case_id) / "events.jsonl"
         if approval_path.is_file():

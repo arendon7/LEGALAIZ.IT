@@ -156,6 +156,28 @@ class ApprovalDeskOperationsM326Tests(TestCase):
         self.assertEqual(portfolio["metrics"]["released"], 0)
         self.assertEqual(portfolio["metrics"]["unassigned"], 11)
 
+    def test_sincronizacion_inicializa_casos_m32_5_preexistentes(self):
+        created = self.workspace.bootstrap(self.admin)
+        self.assertEqual(created["created_count"], 11)
+        self.assertFalse((self.root / "approval-desk" / self.first_case() / "operations.jsonl").exists())
+        result = self.operations.sync_portfolio(self.admin)
+        self.assertEqual(result["bootstrap"]["created_count"], 0)
+        self.assertEqual(result["initialized_count"], 11)
+        self.assertTrue(self.operations.verify_chain(self.first_case())["valid"])
+        self.assertEqual(self.operations.verify_chain(self.first_case())["events"], 1)
+
+    def test_expediente_cambia_cuando_cambia_la_bitacora_operativa(self):
+        self.sync(); self.assign_first()
+        first, first_name = self.operations.export_dossier(self.admin, self.first_case())
+        first_digest = sha256(first.read_bytes()).hexdigest()
+        self.operations.add_note(self.legal, self.first_case(), "Nueva actuación posterior al primer expediente.")
+        second, second_name = self.operations.export_dossier(self.admin, self.first_case())
+        self.assertNotEqual(first_name, second_name)
+        self.assertNotEqual(first_digest, sha256(second.read_bytes()).hexdigest())
+        with ZipFile(second) as archive:
+            dossier = json.loads(archive.read("expediente_aprobacion.json"))
+        self.assertEqual(dossier["operations"]["notes"][-1]["text"], "Nueva actuación posterior al primer expediente.")
+
     def test_asignacion_es_exclusiva_de_admin_y_separa_funciones(self):
         self.sync()
         with self.assertRaises(PermissionDenied):

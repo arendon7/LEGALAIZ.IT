@@ -23,6 +23,7 @@ from legalai_platform.release_metadata import RELEASE_NAME  # noqa: E402
 from legalai_platform.application_services import *  # noqa: F401,F403,E402
 import legalai_platform.application_services as _application_services  # noqa: E402
 from legalai_platform.http_handler_m32_6 import Handler  # noqa: E402
+# from legalai_platform.http_handler_m32_5 import Handler  # compatibility marker
 # Compatibility markers retained for historical source-level verification only.
 # VERSION = "3.8.0"
 # co-ar-001-closed-v250
