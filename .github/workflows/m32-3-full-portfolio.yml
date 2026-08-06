@@ -1,0 +1,151 @@
+name: M32.3 Portafolio completo y revisión humana
+
+on:
+  push:
+    branches:
+      - main
+      - m32-3-portafolio-completo-revision-humana
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  portafolio-completo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      PYTHONPATH: .
+      LEGAL_PROFILE: local
+      LEGAL_ALLOW_DEMO_ACCOUNTS: "true"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias Python
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar regresiones M32.3
+        run: python -m unittest discover -s tests -p 'test_m32_3*.py' -v
+
+      - name: Instalar motor de renderizado
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libreoffice-writer poppler-utils fonts-dejavu-core fonts-liberation
+
+      - name: Generar portafolio de once productos
+        run: python scripts/run_m32_3_verified_portfolio.py --output "$RUNNER_TEMP/m32-3/portfolio"
+
+      - name: Verificar cobertura y estados de gobierno
+        run: |
+          set -euo pipefail
+          PORTFOLIO="$RUNNER_TEMP/m32-3/portfolio"
+          test "$(find "$PORTFOLIO" -maxdepth 1 -type f -name '*.docx' | wc -l | tr -d ' ')" -eq 11
+          test "$(find "$PORTFOLIO" -maxdepth 1 -type f -name '*.docx.quality.json' | wc -l | tr -d ' ')" -eq 11
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path(os.environ['RUNNER_TEMP']) / 'm32-3' / 'portfolio'
+          payload = json.loads((root / 'm32-3-portfolio.json').read_text(encoding='utf-8'))
+          expected = {
+              'CO-TR-001','CO-TR-002','CO-SA-001','CO-CD-001','CO-CD-003','CO-CD-004',
+              'CO-AR-001','CO-EM-003','CO-EM-004','CO-LA-001','CO-LA-002'
+          }
+          assert payload['product_count'] == 11
+          assert {item['product_code'] for item in payload['products']} == expected
+          assert payload['technical_preflight'] == 'passed'
+          assert payload['human_visual_review'] == 'pending'
+          assert payload['legal_substantive_review'] == 'pending'
+          assert payload['dual_approval'] == {'legal': 'pending', 'qa': 'pending'}
+          assert payload['release_candidate'] is False
+          for item in payload['products']:
+              assert item['technical_preflight'] == 'passed'
+              assert item['human_visual_review'] == 'pending'
+              assert item['legal_substantive_review'] == 'pending'
+              assert item['release_candidate'] is False
+              manifest = json.loads((root / item['quality_manifest']).read_text(encoding='utf-8'))
+              assert manifest['quality']['valid'] is True
+              assert manifest['visual_preflight']['valid'] is True
+              assert manifest['approval_state'] == {'legal': 'pending', 'qa': 'pending'}
+              assert manifest['requires_human_visual_review'] is True
+          PY
+
+      - name: Convertir DOCX a PDF y rasterizar todas las páginas
+        env:
+          HOME: ${{ runner.temp }}/lo-home-m32-3
+        run: |
+          set -euo pipefail
+          PORTFOLIO="$RUNNER_TEMP/m32-3/portfolio"
+          RENDERED="$RUNNER_TEMP/m32-3/rendered"
+          PROFILE="$RUNNER_TEMP/m32-3/lo-profile"
+          mkdir -p "$HOME" "$RENDERED" "$PROFILE"
+          : > "$RENDERED/page-counts.tsv"
+          for docx in "$PORTFOLIO"/*.docx; do
+            stem="$(basename "${docx%.docx}")"
+            out="$RENDERED/$stem"
+            mkdir -p "$out"
+            libreoffice --headless "-env:UserInstallation=file://$PROFILE-$stem" --convert-to pdf --outdir "$out" "$docx"
+            pdf="$out/$stem.pdf"
+            test -s "$pdf"
+            pages="$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')"
+            test -n "$pages"
+            test "$pages" -ge 1
+            pdftoppm -png -r 135 "$pdf" "$out/page"
+            rendered_pages="$(find "$out" -maxdepth 1 -type f -name 'page-*.png' | wc -l | tr -d ' ')"
+            test "$rendered_pages" -eq "$pages"
+            printf '%s\t%s\n' "$stem" "$pages" >> "$RENDERED/page-counts.tsv"
+          done
+          test "$(wc -l < "$RENDERED/page-counts.tsv" | tr -d ' ')" -eq 11
+          test "$(find "$RENDERED" -type f -name 'page-*.png' | wc -l | tr -d ' ')" -ge 11
+          cat "$RENDERED/page-counts.tsv"
+
+      - name: Bloquear páginas visualmente vacías
+        run: |
+          python scripts/inspect_m32_3_rendered_pages.py \
+            --rendered "$RUNNER_TEMP/m32-3/rendered" \
+            --output "$RUNNER_TEMP/m32-3/rendered-page-inspection.json"
+
+      - name: Construir expediente y hojas de contacto
+        run: |
+          python scripts/build_m32_3_review_packet.py \
+            --portfolio "$RUNNER_TEMP/m32-3/portfolio/m32-3-portfolio.json" \
+            --rendered "$RUNNER_TEMP/m32-3/rendered" \
+            --output "$RUNNER_TEMP/m32-3/review"
+
+      - name: Verificar expediente de revisión
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path(os.environ['RUNNER_TEMP']) / 'm32-3'
+          inspection = json.loads((root / 'rendered-page-inspection.json').read_text(encoding='utf-8'))
+          assert inspection['valid'] is True
+          assert inspection['blank_pages'] == []
+          packet = json.loads((root / 'review' / 'm32-3-review-packet.json').read_text(encoding='utf-8'))
+          assert packet['product_count'] == 11
+          assert packet['page_count'] >= 11
+          assert packet['technical_preflight'] == 'passed'
+          assert packet['human_visual_review'] == 'pending'
+          assert packet['legal_substantive_review'] == 'pending'
+          assert packet['dual_approval'] == {'legal': 'pending', 'qa': 'pending'}
+          assert packet['release_candidate'] is False
+          assert len(list((root / 'review' / 'contact-sheets').glob('*.png'))) == 11
+          assert (root / 'review' / 'M32_3_REVIEW_PACKET.md').is_file()
+          PY
+
+      - name: Conservar evidencia M32.3
+        uses: actions/upload-artifact@v4
+        with:
+          name: m32-3-portafolio-11-productos
+          path: ${{ runner.temp }}/m32-3
+          if-no-files-found: error
+          retention-days: 30
