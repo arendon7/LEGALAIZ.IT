@@ -28,7 +28,7 @@ def _error(handler, exc: Exception) -> bool:
         handler.send_json({"error": str(exc)}, 409)
     elif isinstance(exc, ReleaseBlocked):
         handler.send_json({"error": str(exc)}, 422)
-    elif isinstance(exc, (ApprovalDeskError, ValueError, TypeError, KeyError, OSError)):
+    elif isinstance(exc, (ApprovalDeskError, ValueError)):
         handler.send_json({"error": str(exc)}, 422)
     else:
         handler.send_json({"error": "Error interno de la Mesa Jurídica"}, 500)

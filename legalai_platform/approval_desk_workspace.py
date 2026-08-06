@@ -110,6 +110,8 @@ class ApprovalDeskWorkspace:
     @staticmethod
     def _workflow_state(detail: dict[str, Any]) -> str:
         case = detail.get("case", {})
+        if not bool(detail.get("audit", {}).get("valid")):
+            return "audit_invalid"
         if case.get("status") == "released":
             return "released"
         current = ApprovalDeskWorkspace._current_revision(detail)
@@ -283,9 +285,19 @@ class ApprovalDeskWorkspace:
         detected, digest, security_status = self.upload_validator(filename, data)
         if detected != "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
             raise ApprovalDeskError("La revisión debe ser un DOCX válido.")
+        actual_digest = sha256(data).hexdigest()
+        if str(digest or "").casefold() != actual_digest:
+            raise ApprovalDeskError("La huella del archivo no coincide con la validación de carga.")
+        digest = actual_digest
         original_name = core.safe_filename(Path(filename).name)
         if not original_name.casefold().endswith(".docx"):
             raise ApprovalDeskError("El nombre de la revisión debe terminar en .docx.")
+        base_note = str(note or "Revisión DOCX cargada desde la Mesa Jurídica.").strip()
+        security_label = re.sub(r"[\r\n]+", " ", str(security_status or "unknown")).strip()[:200]
+        persisted_note = (
+            f"{base_note}\n"
+            f"[Validación M32.5: estado={security_label}; archivo={original_name}; sha256={digest}]"
+        )
         with TemporaryDirectory(prefix="legalaiz-m325-") as temporary:
             target = Path(temporary) / original_name
             target.write_bytes(data)
@@ -293,7 +305,7 @@ class ApprovalDeskWorkspace:
                 case_id=desk_case_id,
                 source_file=target,
                 actor=_actor(user),
-                note=str(note or "Revisión DOCX cargada desde la Mesa Jurídica.").strip(),
+                note=persisted_note,
                 parent_revision_id=detail["case"].get("current_revision_id"),
             )
         revision["upload_sha256"] = digest
@@ -345,7 +357,9 @@ class ApprovalDeskWorkspace:
         )
 
     def release(self, user: dict[str, Any], desk_case_id: str, payload: dict[str, Any]) -> dict[str, Any]:
-        self._authorize_case(user, desk_case_id)
+        detail = self._authorize_case(user, desk_case_id)
+        if not bool(detail.get("audit", {}).get("valid")):
+            raise ReleaseBlocked("La cadena de auditoría no es íntegra; la liberación queda bloqueada.")
         return self.desk.release(
             case_id=desk_case_id,
             revision_id=str(payload.get("revision_id") or ""),
@@ -444,6 +458,8 @@ class ApprovalDeskWorkspace:
         source_case_id = self._source_case_id(detail)
         if not source_case_id or not self.access_check(user, source_case_id):
             raise PermissionDenied("El documento liberado no existe o no está dentro del alcance del usuario.")
+        if not bool(detail.get("audit", {}).get("valid")):
+            raise ReleaseBlocked("La cadena de auditoría no es íntegra; la descarga liberada queda bloqueada.")
         release = detail.get("release")
         if not release or detail.get("case", {}).get("status") != "released":
             raise ReleaseBlocked("El documento todavía no cuenta con liberación jurídica y QA vigente.")

@@ -9,11 +9,11 @@ const local = { summary:null, detail:null, preview:null, comparison:null, filter
 const statusLabels = {
   draft:'Sin revisión', legal_pending:'Pendiente jurídica', qa_pending:'Pendiente QA',
   changes_required:'Requiere ajustes', rejected:'Rechazado', findings_pending:'Hallazgos pendientes',
-  ready_to_release:'Listo para liberar', released:'Liberado',
+  audit_invalid:'Cadena de auditoría inválida', ready_to_release:'Listo para liberar', released:'Liberado',
 };
 const statusClass = {
   draft:'neutral', legal_pending:'warning', qa_pending:'blue', changes_required:'danger', rejected:'danger',
-  findings_pending:'warning', ready_to_release:'success', released:'success',
+  findings_pending:'warning', audit_invalid:'danger', ready_to_release:'success', released:'success',
 };
 const severityLabels = { blocking:'Bloqueante', major:'Mayor', minor:'Menor', observation:'Observación' };
 const severityClass = { blocking:'danger', major:'danger', minor:'warning', observation:'blue' };

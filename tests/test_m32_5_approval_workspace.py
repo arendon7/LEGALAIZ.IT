@@ -220,6 +220,12 @@ class ApprovalDeskWorkspaceM325Tests(TestCase):
         self.assertEqual(revision["parent_revision_id"], "REV-0001")
         self.assertEqual(revision["upload_sha256"], revision["sha256"])
         self.assertEqual(revision["filename"], "ajuste.docx")
+        detail = self.workspace.detail(self.legal, case_id)
+        persisted_note = detail["revisions"][-1]["note"]
+        self.assertIn("Validación M32.5", persisted_note)
+        self.assertIn("clean:test", persisted_note)
+        self.assertIn("ajuste.docx", persisted_note)
+        self.assertIn(revision["sha256"], persisted_note)
 
     def test_vista_estructural_declara_ausencia_de_paginacion(self):
         case_id = self.bootstrap()
@@ -234,6 +240,58 @@ class ApprovalDeskWorkspaceM325Tests(TestCase):
         with self.assertRaises(ApprovalDeskError):
             self.workspace.detail(self.admin, "../secreto")
 
+
+    def test_cadena_invalida_bloquea_liberacion(self):
+        case_id = self.bootstrap()
+        detail = self.workspace.detail(self.legal, case_id)
+        current = detail["revisions"][0]
+        self.workspace.approve(self.legal, case_id, {
+            "revision_id": current["revision_id"],
+            "approval_type": "legal",
+            "decision": "approve",
+            "comment": "Aprobación jurídica de prueba.",
+            "expected_sha256": current["sha256"],
+        })
+        self.workspace.approve(self.admin, case_id, {
+            "revision_id": current["revision_id"],
+            "approval_type": "qa",
+            "decision": "approve",
+            "comment": "Aprobación QA de prueba.",
+            "expected_sha256": current["sha256"],
+        })
+        events = self.workspace.root / case_id / "events.jsonl"
+        lines = events.read_text(encoding="utf-8").splitlines()
+        lines[0] = lines[0].replace('"case.created"', '"case.altered"')
+        events.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        detail = self.workspace.detail(self.admin, case_id)
+        self.assertFalse(detail["audit"]["valid"])
+        self.assertEqual(detail["workflow_status"], "audit_invalid")
+        with self.assertRaisesRegex(ReleaseBlocked, "cadena de auditoría"):
+            self.workspace.release(self.admin, case_id, {
+                "revision_id": current["revision_id"],
+                "expected_sha256": current["sha256"],
+            })
+
+    def test_cadena_alterada_bloquea_descarga_ya_liberada(self):
+        case_id = self.bootstrap()
+        detail = self.workspace.detail(self.legal, case_id)
+        current = detail["revisions"][0]
+        for user, approval_type in ((self.legal, "legal"), (self.admin, "qa")):
+            self.workspace.approve(user, case_id, {
+                "revision_id": current["revision_id"],
+                "approval_type": approval_type,
+                "decision": "approve",
+                "comment": f"Aprobación {approval_type} de prueba.",
+                "expected_sha256": current["sha256"],
+            })
+        self.workspace.release(self.admin, case_id, {
+            "revision_id": current["revision_id"],
+            "expected_sha256": current["sha256"],
+        })
+        events = self.workspace.root / case_id / "events.jsonl"
+        events.write_text(events.read_text(encoding="utf-8").replace('"document.released"', '"document.altered"'), encoding="utf-8")
+        with self.assertRaisesRegex(ReleaseBlocked, "cadena de auditoría"):
+            self.workspace.released_path(self.client, case_id)
 
 class ApprovalDeskStaticInterfaceM325Tests(TestCase):
     def test_activos_y_handler_estan_conectados(self):
