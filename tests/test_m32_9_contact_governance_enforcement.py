@@ -3,7 +3,7 @@ from __future__ import annotations
 from hashlib import sha256
 from unittest import TestCase
 
-from legalai_platform.approval_desk_workspace import ApprovalDeskError
+from legalai_platform.approval_desk_workspace import ApprovalDeskError, PermissionDenied
 from legalai_platform.contact_governance import ContactGovernanceIntegrityError
 from legalai_platform.contact_governance_enforcement import (
     EnforcedContactGovernance,
@@ -81,6 +81,32 @@ class ContactGovernanceEnforcementM329Tests(TestCase):
                 channel="email",
                 dispatch_id="DSP-EXACT-001",
             )
+
+    def test_especialista_no_evalua_ni_enumera_titulares_ajenos(self):
+        with self.assertRaises(PermissionDenied):
+            self.governance.evaluate(
+                self.fixture.legal,
+                subject_id="USR-OTHER",
+                purpose="professional_operational",
+                channel="email",
+                context_reference="DSP-FOREIGN-001",
+            )
+        with self.assertRaises(PermissionDenied):
+            self.governance.evaluate(
+                self.fixture.legal,
+                subject_id="USR-NOT-FOUND",
+                purpose="professional_operational",
+                channel="email",
+                context_reference="DSP-UNKNOWN-001",
+            )
+        with self.assertRaises(PermissionDenied):
+            self.governance.record_relationship(self.fixture.legal, {
+                "subject_id": "USR-NOT-FOUND",
+                "relationship_type": "client",
+                "lawful_basis": "contract",
+                "status": "active",
+                "evidence_reference": "EVIDENCE-UNKNOWN",
+            })
 
     def test_relacion_y_preferencia_rechazan_titular_inexistente(self):
         with self.assertRaises(ApprovalDeskError):
