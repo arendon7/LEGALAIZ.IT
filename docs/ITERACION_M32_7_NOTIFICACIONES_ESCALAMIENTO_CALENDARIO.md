@@ -54,6 +54,8 @@ El calendario predeterminado utiliza:
 
 No se incorporan festivos legales automáticamente. Esto evita representar como oficial una lista desactualizada o incompleta. Cada programación conserva una copia del calendario y su SHA-256, de modo que cambios posteriores no alteran retroactivamente el cálculo registrado.
 
+Cuando la programación comienza en el futuro, las horas pendientes se cuentan desde ese inicio efectivo y no desde la hora de consulta. Esto evita inflar artificialmente la carga pendiente antes de que comience la ventana programada.
+
 Los resultados incluyen `legal_deadline: false` y una advertencia expresa de validación profesional.
 
 ## Notificaciones y escalamiento
@@ -69,17 +71,29 @@ La deduplicación usa expediente, alerta, destinatario, revisión y vencimiento.
 
 Reconocer, leer o aplazar una notificación no resuelve la alerta subyacente. El expediente debe continuar gestionándose en M32.6 y la Mesa Jurídica.
 
+La vista por expediente respeta el mismo aislamiento que la bandeja personal: el especialista únicamente recibe las notificaciones dirigidas a su usuario. Administración puede consultar el conjunto completo dentro de su ámbito de gobierno.
+
 ## Cola externa
 
 M32.7 puede crear mensajes con estado `queued` para destinatarios con correo registrado. La cola:
 
 - no contiene el documento ni cláusulas;
 - identifica únicamente producto y expediente;
+- conserva una referencia interna del destinatario y, cuando aplica, una pista enmascarada;
+- no almacena la dirección electrónica completa mientras no exista proveedor;
 - no tiene proveedor configurado;
 - no registra mensajes como entregados;
 - permite cancelación administrativa append-only.
 
 `external_delivery_active`, `external_delivery_performed` y `real_external_delivery` permanecen en `false` mientras no exista integración real con evidencia de despacho.
+
+## Minimización de datos
+
+- La carga de trabajo no expone correos electrónicos.
+- La cola no persiste direcciones completas.
+- Las comunicaciones no incluyen contenido documental, cláusulas ni datos del cliente.
+- El destinatario se resuelve mediante una referencia interna y una pista enmascarada.
+- La futura integración con un proveedor deberá resolver el correo en el momento del despacho, aplicar mínimo privilegio y registrar evidencia separada.
 
 ## Carga de trabajo
 
@@ -109,8 +123,10 @@ La compuerta M32.7 valida:
 - compatibilidad M32.4 a M32.7;
 - cobertura 11/11;
 - cálculo de horas hábiles con cierre explícito y fin de semana;
+- inicio futuro de la programación sin inflar horas pendientes;
 - idempotencia de evaluación;
-- aislamiento de bandejas;
+- aislamiento de bandejas y vistas por expediente;
+- minimización de datos del destinatario;
 - cola externa sin entregas;
 - cadena M32.7 íntegra;
 - arranque HTTP;
