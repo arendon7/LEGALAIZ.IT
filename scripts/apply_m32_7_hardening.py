@@ -62,13 +62,6 @@ replace_once(
     '        self.assertEqual(legal["overdue"], 1)\n        self.assertNotIn("email", legal["professional"])\n',
 )
 
-workflow = Path(".github/workflows/m32-7-notification-center.yml")
-replace_once(
-    workflow,
-    "          assert payload['outbox_contains_document_content'] is False\n",
-    "          assert payload['outbox_contains_document_content'] is False\n          assert payload['outbox_recipient_addresses_stored'] is False\n",
-)
-
 runner = Path("scripts/run_m32_7_notification_center.py")
 replace_once(
     runner,
