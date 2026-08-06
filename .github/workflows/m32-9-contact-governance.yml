@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   gobierno-contacto:
-    runs-on: ubuntu-22.04
+    runs-on: macos-14
     timeout-minutes: 40
     env:
       PYTHONPATH: .
