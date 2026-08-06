@@ -1,0 +1,154 @@
+name: M32.9 Gobierno de consentimientos y contacto
+
+on:
+  push:
+    branches:
+      - main
+      - m32-9-gobierno-consentimientos-preferencias
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  gobierno-contacto:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      PYTHONPATH: .
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Validar sintaxis y activos M32.9
+        run: |
+          python -m py_compile \
+            run.py \
+            legalai_platform/contact_governance.py \
+            legalai_platform/http_handler_m32_9.py \
+            legalai_platform/routes/m32_9_contact_governance_routes.py \
+            legalai_platform/routes/m32_8_transactional_communications_routes.py \
+            scripts/run_m32_9_contact_governance.py \
+            tests/test_m32_9_contact_governance.py
+          node --check app/modules/contact_governance_m32_9.js
+          test -s app/modules/contact_governance_m32_9.css
+          grep -q "contact_governance_m32_9.js" app/index.html
+          grep -q "contact_governance_m32_9.css" app/index.html
+          grep -q "http_handler_m32_9 import Handler" run.py
+          grep -q "http_handler_m32_8 import Handler" run.py
+          grep -q "GovernedTransactionalCommunications" legalai_platform/routes/m32_8_transactional_communications_routes.py
+
+      - name: Ejecutar regresiones acumuladas M32.4 a M32.9
+        run: |
+          python -m unittest tests.test_document_approval_desk_m32_4 -v
+          python -m unittest tests.test_m32_5_approval_workspace -v
+          python -m unittest tests.test_m32_6_approval_operations -v
+          python -m unittest tests.test_m32_7_notification_center -v
+          python -m unittest tests.test_m32_8_transactional_communications -v
+          python -m unittest tests.test_m32_9_contact_governance -v
+
+      - name: Generar evidencia integral M32.9
+        run: python scripts/run_m32_9_contact_governance.py --output "$RUNNER_TEMP/m32-9"
+
+      - name: Verificar consentimiento, supresiones, horarios e integración
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path(os.environ['RUNNER_TEMP']) / 'm32-9'
+          payload = json.loads((root / 'm32-9-contact-governance-evidence.json').read_text(encoding='utf-8'))
+          assert payload['schema_version'] == 'M32.9'
+          assert payload['synthetic_evidence'] is True
+          assert payload['portfolio']['expected_products'] == 11
+          assert payload['portfolio']['covered_products'] == 11
+          assert payload['portfolio']['coverage_percent'] == 100
+          assert payload['m32_7']['evaluated_cases'] == 11
+          assert payload['m32_7']['queued_messages'] >= 1
+          assert payload['m32_7']['external_delivery_performed'] is False
+          assert payload['notice']['version'] >= 2
+          assert payload['notice']['active_version'] == payload['notice']['version']
+          assert len(payload['notice']['sha256']) == 64
+          assert payload['notice']['independent_activation'] is True
+          assert payload['relationship']['status'] == 'active'
+          assert payload['relationship']['evidence_reference_stored'] is False
+          assert len(payload['relationship']['evidence_sha256']) == 64
+          assert payload['preference']['state'] == 'granted'
+          assert payload['preference']['basis'] == 'consent'
+          assert payload['preference']['evidence_reference_stored'] is False
+          assert len(payload['preference']['evidence_sha256']) == 64
+          assert payload['preference']['notice_sha256'] == payload['notice']['sha256']
+          assert payload['decisions']['marketing_allowed']['allowed'] is True
+          assert payload['decisions']['marketing_sunday']['allowed'] is False
+          assert 'sunday' in payload['decisions']['marketing_sunday']['reasons']
+          assert payload['decisions']['marketing_suppressed']['allowed'] is False
+          assert 'active_suppression' in payload['decisions']['marketing_suppressed']['reasons']
+          assert payload['suppression']['active'] is True
+          assert len(payload['processing']['accepted_sandbox']) >= 1
+          assert payload['processing']['real_delivery_performed'] is False
+          assert payload['processing']['real_contact_performed'] is False
+          assert payload['governance_metrics']['synthetic_contacts'] >= 1
+          assert payload['m32_9_chain']['valid'] is True
+          assert payload['m32_8_chain']['valid'] is True
+          assert payload['m32_7_chain']['valid'] is True
+          assert payload['real_external_delivery'] is False
+          assert payload['real_contact_performed'] is False
+          assert payload['legal_conclusion'] is False
+          assert payload['official_holiday_calendar'] is False
+          for filename in payload['files'].values():
+              assert (root / filename).is_file()
+          PY
+
+      - name: Verificar arranque y protección de rutas
+        env:
+          LEGAL_PROFILE: local
+          LEGAL_APP_ENV: demo
+          LEGAL_RUNTIME_DIR: ${{ runner.temp }}/m32-9-http-runtime
+          LEGAL_ALLOW_DEMO_ACCOUNTS: "true"
+          LEGAL_DEMO_PASSWORD: "LegalAIZDemo2026!"
+          LEGAL_REQUIRE_MFA_ROLES: ""
+          LEGAL_GITHUB_LITE_ASSETS: "true"
+        run: |
+          mkdir -p "$LEGAL_RUNTIME_DIR"
+          python run.py 8899 --lan --no-browser > "$RUNNER_TEMP/m32-9-server.log" 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID 2>/dev/null || true' EXIT
+          READY=0
+          for attempt in $(seq 1 45); do
+            if ! kill -0 "$SERVER_PID" 2>/dev/null; then
+              cat "$RUNNER_TEMP/m32-9-server.log"
+              exit 1
+            fi
+            if curl -fsS http://127.0.0.1:8899/api/live >/dev/null; then READY=1; break; fi
+            sleep 1
+          done
+          if [ "$READY" != "1" ]; then cat "$RUNNER_TEMP/m32-9-server.log"; exit 1; fi
+          curl -fsS http://127.0.0.1:8899/modules/contact_governance_m32_9.js >/dev/null
+          curl -fsS http://127.0.0.1:8899/modules/contact_governance_m32_9.css >/dev/null
+          STATUS=$(curl -sS -o "$RUNNER_TEMP/m32-9-unauthorized.json" -w '%{http_code}' http://127.0.0.1:8899/api/m32/contact-governance)
+          test "$STATUS" = "401"
+          grep -q 'Autenticación requerida' "$RUNNER_TEMP/m32-9-unauthorized.json"
+
+      - name: Conservar evidencia M32.9
+        uses: actions/upload-artifact@v4
+        with:
+          name: m32-9-gobierno-contacto
+          path: |
+            ${{ runner.temp }}/m32-9
+            ${{ runner.temp }}/m32-9-server.log
+            ${{ runner.temp }}/m32-9-unauthorized.json
+          if-no-files-found: error
+          retention-days: 30
