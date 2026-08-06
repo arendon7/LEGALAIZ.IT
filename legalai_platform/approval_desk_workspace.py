@@ -283,8 +283,11 @@ class ApprovalDeskWorkspace:
         detected, digest, security_status = self.upload_validator(filename, data)
         if detected != "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
             raise ApprovalDeskError("La revisión debe ser un DOCX válido.")
+        original_name = core.safe_filename(Path(filename).name)
+        if not original_name.casefold().endswith(".docx"):
+            raise ApprovalDeskError("El nombre de la revisión debe terminar en .docx.")
         with TemporaryDirectory(prefix="legalaiz-m325-") as temporary:
-            target = Path(temporary) / "revision.docx"
+            target = Path(temporary) / original_name
             target.write_bytes(data)
             revision = self.desk.add_revision(
                 case_id=desk_case_id,
