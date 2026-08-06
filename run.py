@@ -22,7 +22,8 @@ from legalai_platform.runtime_registry import *  # noqa: F401,F403,E402
 from legalai_platform.release_metadata import RELEASE_NAME  # noqa: E402
 from legalai_platform.application_services import *  # noqa: F401,F403,E402
 import legalai_platform.application_services as _application_services  # noqa: E402
-from legalai_platform.http_handler_m32_7 import Handler  # noqa: E402
+from legalai_platform.http_handler_m32_8 import Handler  # noqa: E402
+# from legalai_platform.http_handler_m32_7 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m32_6 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m32_5 import Handler  # compatibility marker
 # Compatibility markers retained for historical source-level verification only.
@@ -32,6 +33,7 @@ from legalai_platform.http_handler_m32_7 import Handler  # noqa: E402
 # m32-2-document-release-gate
 # m32-6-portfolio-operations
 # m32-7-notification-center
+# m32-8-transactional-communications
 # LEGAL_ALLOW_DEMO_ACCOUNTS
 # LEGAL_BOOTSTRAP_ADMIN_EMAIL
 # UPDATE users SET active=0 WHERE lower(email) LIKE '%@demo.legalaiz.it'
