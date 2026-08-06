@@ -1,0 +1,137 @@
+name: M32.6 Operación del portafolio jurídico
+
+on:
+  push:
+    branches:
+      - main
+      - m32-6-operacion-portafolio
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  operacion-portafolio:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PYTHONPATH: .
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Validar sintaxis y conexión M32.6
+        run: |
+          python -m py_compile \
+            run.py \
+            legalai_platform/approval_desk_operations.py \
+            legalai_platform/http_handler_m32_6.py \
+            legalai_platform/routes/m32_6_approval_operations_routes.py \
+            scripts/run_m32_6_portfolio_operations.py \
+            tests/test_m32_6_approval_operations.py
+          node --check app/modules/approval_operations_m32_6.js
+          test -s app/modules/approval_operations_m32_6.css
+          grep -q "approval_operations_m32_6.js" app/index.html
+          grep -q "approval_operations_m32_6.css" app/index.html
+          grep -q "http_handler_m32_6 import Handler" run.py
+
+      - name: Ejecutar regresiones acumuladas M32.4 a M32.6
+        run: |
+          python -m unittest tests.test_document_approval_desk_m32_4 -v
+          python -m unittest tests.test_m32_5_approval_workspace -v
+          python -m unittest tests.test_m32_6_approval_operations -v
+
+      - name: Ejecutar evidencia integral de once productos
+        run: python scripts/run_m32_6_portfolio_operations.py --output "$RUNNER_TEMP/m32-6"
+
+      - name: Verificar cobertura, SLA, cadenas y expediente
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from hashlib import sha256
+          from pathlib import Path
+          from zipfile import ZipFile
+
+          root = Path(os.environ['RUNNER_TEMP']) / 'm32-6'
+          evidence = json.loads((root / 'm32-6-portfolio-evidence.json').read_text(encoding='utf-8'))
+          assert evidence['schema_version'] == 'M32.6'
+          portfolio = evidence['portfolio']
+          assert portfolio['expected_products'] == 11
+          assert portfolio['covered_products'] == 11
+          assert portfolio['coverage_percent'] == 100
+          assert evidence['desk_cases'] == 11
+          assert evidence['assigned_cases'] == 11
+          assert evidence['valid_operations_chains'] == 11
+          assert evidence['overdue_cases'] >= 1
+          assert evidence['at_risk_cases'] >= 1
+          assert evidence['released_cases'] == 1
+          assert evidence['pending_professional_review'] == 10
+          assert evidence['real_legal_approval'] is False
+          assert evidence['real_qa_approval'] is False
+          dossier = root / evidence['dossier']['filename']
+          assert dossier.is_file()
+          assert sha256(dossier.read_bytes()).hexdigest() == evidence['dossier']['sha256']
+          assert evidence['dossier']['professional_approval_complete'] is True
+          assert evidence['dossier']['human_review_required'] is False
+          assert evidence['dossier']['revision_sha256'] == evidence['dossier']['released_sha256']
+          expected = {'expediente_aprobacion.json','cadena_aprobacion.json','actividad_operativa.json','revision_vigente.json','revision_vigente.docx','LEAME.txt'}
+          with ZipFile(dossier) as archive:
+              assert expected.issubset(set(archive.namelist()))
+          PY
+          unzip -t "$RUNNER_TEMP/m32-6/"*_expediente_aprobacion.zip
+
+      - name: Verificar arranque y protección de rutas
+        env:
+          LEGAL_PROFILE: local
+          LEGAL_APP_ENV: demo
+          LEGAL_RUNTIME_DIR: ${{ runner.temp }}/m32-6-http-runtime
+          LEGAL_ALLOW_DEMO_ACCOUNTS: "true"
+          LEGAL_DEMO_PASSWORD: "LegalAIZDemo2026!"
+          LEGAL_REQUIRE_MFA_ROLES: ""
+          LEGAL_GITHUB_LITE_ASSETS: "true"
+        run: |
+          mkdir -p "$LEGAL_RUNTIME_DIR"
+          python run.py 8896 --lan --no-browser > "$RUNNER_TEMP/m32-6-server.log" 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID 2>/dev/null || true' EXIT
+          READY=0
+          for attempt in $(seq 1 45); do
+            if ! kill -0 "$SERVER_PID" 2>/dev/null; then
+              cat "$RUNNER_TEMP/m32-6-server.log"
+              exit 1
+            fi
+            if curl -fsS http://127.0.0.1:8896/api/live >/dev/null; then READY=1; break; fi
+            sleep 1
+          done
+          if [ "$READY" != "1" ]; then cat "$RUNNER_TEMP/m32-6-server.log"; exit 1; fi
+          curl -fsS http://127.0.0.1:8896/modules/approval_operations_m32_6.js >/dev/null
+          curl -fsS http://127.0.0.1:8896/modules/approval_operations_m32_6.css >/dev/null
+          STATUS=$(curl -sS -o "$RUNNER_TEMP/m32-6-unauthorized.json" -w '%{http_code}' http://127.0.0.1:8896/api/m32/approval-operations)
+          test "$STATUS" = "401"
+          grep -q 'Autenticación requerida' "$RUNNER_TEMP/m32-6-unauthorized.json"
+          LEGACY=$(curl -sS -o /dev/null -w '%{http_code}' http://127.0.0.1:8896/api/m32/approval-desk)
+          test "$LEGACY" = "401"
+
+      - name: Conservar evidencia M32.6
+        uses: actions/upload-artifact@v4
+        with:
+          name: m32-6-operacion-portafolio
+          path: |
+            ${{ runner.temp }}/m32-6
+            ${{ runner.temp }}/m32-6-server.log
+            ${{ runner.temp }}/m32-6-unauthorized.json
+          if-no-files-found: error
+          retention-days: 30
