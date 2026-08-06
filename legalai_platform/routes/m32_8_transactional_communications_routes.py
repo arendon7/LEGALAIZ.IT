@@ -11,18 +11,16 @@ from legalai_platform.approval_desk_workspace import (
     ReleaseBlocked,
 )
 from legalai_platform.approval_notification_center import NotificationIntegrityError
-from legalai_platform.transactional_communications import (
-    CommunicationsIntegrityError,
-    TransactionalCommunications,
-)
+from legalai_platform.transactional_communications import CommunicationsIntegrityError
+from legalai_platform.contact_governance_enforcement import EnforcedGovernedTransactionalCommunications
 
 
 PREFIX = "/api/m32/communications"
 
 
 @lru_cache(maxsize=1)
-def communications() -> TransactionalCommunications:
-    return TransactionalCommunications(core.RUNTIME / "approval-desk")
+def communications() -> EnforcedGovernedTransactionalCommunications:
+    return EnforcedGovernedTransactionalCommunications(core.RUNTIME / "approval-desk")
 
 
 def _parts(path: str) -> list[str]:
