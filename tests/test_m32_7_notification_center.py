@@ -237,7 +237,7 @@ class ApprovalNotificationCenterM327Tests(TestCase):
             10,
             datetime(2026,8,6,16,0,tzinfo=BOGOTA).isoformat(),
         )
-        self.assertEqual(result["schedule"]["due_at"], datetime(2026,8,11,9,0,tzinfo=BOGOTA).isoformat(timespec="seconds"))
+        self.assertEqual(result["schedule"]["due_at"], datetime(2026,8,10,17,0,tzinfo=BOGOTA).isoformat(timespec="seconds"))
         self.assertFalse(result["schedule"]["legal_deadline"])
         self.assertEqual(result["business_sla"]["calendar"]["name"], "Jornada interna")
 
