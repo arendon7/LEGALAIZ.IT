@@ -1,0 +1,145 @@
+name: M32.8 Comunicaciones transaccionales auditables
+
+on:
+  push:
+    branches:
+      - main
+      - m32-8-comunicaciones-transaccionales
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  comunicaciones-transaccionales:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      PYTHONPATH: .
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Validar sintaxis y activos M32.8
+        run: |
+          python -m py_compile \
+            run.py \
+            legalai_platform/transactional_communications.py \
+            legalai_platform/http_handler_m32_8.py \
+            legalai_platform/routes/m32_8_transactional_communications_routes.py \
+            scripts/run_m32_8_transactional_communications.py \
+            tests/test_m32_8_transactional_communications.py
+          node --check app/modules/transactional_communications_m32_8.js
+          test -s app/modules/transactional_communications_m32_8.css
+          grep -q "transactional_communications_m32_8.js" app/index.html
+          grep -q "transactional_communications_m32_8.css" app/index.html
+          grep -q "http_handler_m32_8 import Handler" run.py
+          grep -q "http_handler_m32_7 import Handler" run.py
+
+      - name: Ejecutar regresiones acumuladas M32.4 a M32.8
+        run: |
+          python -m unittest tests.test_document_approval_desk_m32_4 -v
+          python -m unittest tests.test_m32_5_approval_workspace -v
+          python -m unittest tests.test_m32_6_approval_operations -v
+          python -m unittest tests.test_m32_7_notification_center -v
+          python -m unittest tests.test_m32_8_transactional_communications -v
+
+      - name: Generar evidencia integral M32.8
+        run: python scripts/run_m32_8_transactional_communications.py --output "$RUNNER_TEMP/m32-8"
+
+      - name: Verificar plantillas, despachos, privacidad y sandbox
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path(os.environ['RUNNER_TEMP']) / 'm32-8'
+          payload = json.loads((root / 'm32-8-transactional-communications-evidence.json').read_text(encoding='utf-8'))
+          assert payload['schema_version'] == 'M32.8'
+          assert payload['synthetic_evidence'] is True
+          assert payload['portfolio']['expected_products'] == 11
+          assert payload['portfolio']['covered_products'] == 11
+          assert payload['portfolio']['coverage_percent'] == 100
+          assert payload['m32_7_evaluation']['evaluated_cases'] == 11
+          assert payload['m32_7_evaluation']['queued_messages'] >= 1
+          assert payload['m32_7_evaluation']['external_delivery_performed'] is False
+          assert payload['template']['version'] >= 2
+          assert payload['template']['active_version'] == payload['template']['version']
+          assert len(payload['template']['sha256']) == 64
+          assert payload['template']['independent_activation'] is True
+          assert payload['template']['contains_document_content'] is False
+          assert payload['template']['attachments_allowed'] is False
+          assert len(payload['sync']['imported_dispatches']) >= 1
+          assert len(payload['processing']['accepted_sandbox']) >= 1
+          assert payload['processing']['real_delivery_performed'] is False
+          assert payload['queue_metrics']['delivered_sandbox'] >= 1
+          assert 'delivered_sandbox' in payload['queue_statuses']
+          assert payload['personal_queue_total'] >= 1
+          assert payload['recipient_addresses_stored'] is False
+          assert payload['contains_document_content'] is False
+          assert payload['all_attachments_empty'] is True
+          assert payload['all_real_delivery_false'] is True
+          assert payload['m32_8_chain']['valid'] is True
+          assert payload['m32_8_chain']['events'] >= 1
+          assert payload['m32_7_chain']['valid'] is True
+          assert payload['real_external_delivery'] is False
+          assert payload['real_delivery_evidence'] is False
+          assert payload['real_legal_approval'] is False
+          assert payload['real_qa_approval'] is False
+          assert (root / payload['files']['events']).is_file()
+          assert (root / payload['files']['source_events']).is_file()
+          PY
+
+      - name: Verificar arranque y protección de rutas
+        env:
+          LEGAL_PROFILE: local
+          LEGAL_APP_ENV: demo
+          LEGAL_RUNTIME_DIR: ${{ runner.temp }}/m32-8-http-runtime
+          LEGAL_ALLOW_DEMO_ACCOUNTS: "true"
+          LEGAL_DEMO_PASSWORD: "LegalAIZDemo2026!"
+          LEGAL_REQUIRE_MFA_ROLES: ""
+          LEGAL_GITHUB_LITE_ASSETS: "true"
+        run: |
+          mkdir -p "$LEGAL_RUNTIME_DIR"
+          python run.py 8898 --lan --no-browser > "$RUNNER_TEMP/m32-8-server.log" 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID 2>/dev/null || true' EXIT
+          READY=0
+          for attempt in $(seq 1 45); do
+            if ! kill -0 "$SERVER_PID" 2>/dev/null; then
+              cat "$RUNNER_TEMP/m32-8-server.log"
+              exit 1
+            fi
+            if curl -fsS http://127.0.0.1:8898/api/live >/dev/null; then READY=1; break; fi
+            sleep 1
+          done
+          if [ "$READY" != "1" ]; then cat "$RUNNER_TEMP/m32-8-server.log"; exit 1; fi
+          curl -fsS http://127.0.0.1:8898/modules/transactional_communications_m32_8.js >/dev/null
+          curl -fsS http://127.0.0.1:8898/modules/transactional_communications_m32_8.css >/dev/null
+          STATUS=$(curl -sS -o "$RUNNER_TEMP/m32-8-unauthorized.json" -w '%{http_code}' http://127.0.0.1:8898/api/m32/communications)
+          test "$STATUS" = "401"
+          grep -q 'Autenticación requerida' "$RUNNER_TEMP/m32-8-unauthorized.json"
+
+      - name: Conservar evidencia M32.8
+        uses: actions/upload-artifact@v4
+        with:
+          name: m32-8-comunicaciones-transaccionales
+          path: |
+            ${{ runner.temp }}/m32-8
+            ${{ runner.temp }}/m32-8-server.log
+            ${{ runner.temp }}/m32-8-unauthorized.json
+          if-no-files-found: error
+          retention-days: 30
