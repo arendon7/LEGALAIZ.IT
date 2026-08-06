@@ -11,3 +11,5 @@ La validación automática del repositorio se ejecuta únicamente mediante `.git
 - generación y revisión visual automatizada de DOCX.
 
 Los archivos de esta carpeta no son ejecutados automáticamente por GitHub Actions. Para reproducir una compuerta especializada, puede copiarse temporalmente el workflow correspondiente a `.github/workflows/` o ejecutar directamente sus comandos documentados.
+
+La consolidación se aplicó para evitar ejecuciones duplicadas, colas obsoletas y conflictos entre validaciones históricas. `ci.yml` usa concurrencia con cancelación de ejecuciones anteriores del mismo PR o rama.
