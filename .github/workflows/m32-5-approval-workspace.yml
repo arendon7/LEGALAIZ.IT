@@ -105,17 +105,28 @@ jobs:
 
       - name: Verificar arranque y protección de la ruta
         env:
+          LEGAL_PROFILE: local
+          LEGAL_APP_ENV: demo
           LEGAL_RUNTIME_DIR: ${{ runner.temp }}/m32-5-http-runtime
-          LEGAL_ALLOW_DEMO_ACCOUNTS: "1"
-          LEGAL_PORT: "8895"
+          LEGAL_ALLOW_DEMO_ACCOUNTS: "true"
+          LEGAL_DEMO_PASSWORD: "LegalAIZDemo2026!"
+          LEGAL_REQUIRE_MFA_ROLES: ""
+          LEGAL_GITHUB_LITE_ASSETS: "true"
         run: |
-          python run.py --no-browser > "$RUNNER_TEMP/m32-5-server.log" 2>&1 &
+          mkdir -p "$LEGAL_RUNTIME_DIR"
+          python run.py 8895 --lan --no-browser > "$RUNNER_TEMP/m32-5-server.log" 2>&1 &
           SERVER_PID=$!
           trap 'kill $SERVER_PID 2>/dev/null || true' EXIT
-          for attempt in $(seq 1 60); do
-            if curl -fsS http://127.0.0.1:8895/ >/dev/null; then break; fi
+          READY=0
+          for attempt in $(seq 1 45); do
+            if ! kill -0 "$SERVER_PID" 2>/dev/null; then
+              cat "$RUNNER_TEMP/m32-5-server.log"
+              exit 1
+            fi
+            if curl -fsS http://127.0.0.1:8895/api/live >/dev/null; then READY=1; break; fi
             sleep 1
           done
+          if [ "$READY" != "1" ]; then cat "$RUNNER_TEMP/m32-5-server.log"; exit 1; fi
           curl -fsS http://127.0.0.1:8895/modules/approval_desk_m32_5.js >/dev/null
           curl -fsS http://127.0.0.1:8895/modules/approval_desk_m32_5.css >/dev/null
           STATUS=$(curl -sS -o "$RUNNER_TEMP/m32-5-unauthorized.json" -w '%{http_code}' http://127.0.0.1:8895/api/m32/approval-desk)
