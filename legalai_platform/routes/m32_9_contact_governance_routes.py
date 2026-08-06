@@ -5,18 +5,16 @@ from urllib.parse import unquote, urlparse
 
 import core_v11 as core
 from legalai_platform.approval_desk_workspace import ApprovalDeskError, PermissionDenied
-from legalai_platform.contact_governance import (
-    ContactGovernance,
-    ContactGovernanceIntegrityError,
-)
+from legalai_platform.contact_governance import ContactGovernanceIntegrityError
+from legalai_platform.contact_governance_enforcement import EnforcedContactGovernance
 
 
 PREFIX = "/api/m32/contact-governance"
 
 
 @lru_cache(maxsize=1)
-def contact_governance() -> ContactGovernance:
-    return ContactGovernance(core.RUNTIME / "approval-desk")
+def contact_governance() -> EnforcedContactGovernance:
+    return EnforcedContactGovernance(core.RUNTIME / "approval-desk")
 
 
 def _parts(path: str) -> list[str]:
