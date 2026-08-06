@@ -1,0 +1,45 @@
+name: M32.6 aplicar endurecimiento
+
+on:
+  push:
+    branches:
+      - m32-6-operacion-portafolio
+    paths:
+      - scripts/apply_m32_6_hardening.py
+      - .github/workflows/m32-6-apply-hardening.yml
+
+permissions:
+  contents: write
+
+jobs:
+  aplicar:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: m32-6-operacion-portafolio
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Aplicar parche idempotente
+        run: |
+          python scripts/apply_m32_6_hardening.py
+          python -m py_compile legalai_platform/approval_desk_operations.py tests/test_m32_6_approval_operations.py run.py
+          git diff --check
+
+      - name: Confirmar y publicar cambio funcional
+        run: |
+          if git diff --quiet; then
+            echo "El endurecimiento ya estaba aplicado."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add legalai_platform/approval_desk_operations.py tests/test_m32_6_approval_operations.py run.py
+          git commit -m "M32.6: endurecer sincronización y expediente operativo"
+          git push origin HEAD:m32-6-operacion-portafolio
