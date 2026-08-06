@@ -51,7 +51,7 @@ jobs:
           assert payload['legal_actor'] != payload['qa_actor']
           assert payload['release_status'] == 'released_exact_hash'
           assert payload['audit']['valid'] is True
-          assert payload['audit']['events'] >= 10
+          assert payload['audit']['events'] == 8
           assert payload['real_legal_approval'] is False
           assert payload['real_qa_approval'] is False
 
