@@ -153,15 +153,17 @@ async function renderDetail(caseId,force=false) {
   pageFrame(detailPageHtml(local.detail,local.preview),'Revisión documental');
 }
 async function route(force=false) {
-  if (!currentPath().startsWith(ROUTE)) return;
-  ensureNavigation();
-  if (!mainNode()) return setTimeout(()=>route(force),80);
-  if (!professional()) return accessDenied();
+  if (!currentPath().startsWith(ROUTE) || local.rendering) return;
+  local.rendering=true;
   try {
+    ensureNavigation();
+    if (!mainNode()) { setTimeout(()=>route(force),80); return; }
+    if (!professional()) { accessDenied(); return; }
     loading();
     const caseId=currentCaseId();
     if (caseId) await renderDetail(caseId,force); else await renderList(force);
   } catch (error) { errorPanel(error); }
+  finally { local.rendering=false; }
 }
 async function refreshCurrent() {
   local.summary=null; local.detail=null; local.preview=null; local.comparison=null;
@@ -248,6 +250,9 @@ function schedule(force=false) {
 }
 window.addEventListener('hashchange',()=>schedule(false));
 window.addEventListener('DOMContentLoaded',()=>schedule(false));
-const observer=new MutationObserver(()=>schedule(false));
+const observer=new MutationObserver(()=>{
+  ensureNavigation();
+  if (currentPath().startsWith(ROUTE) && !document.querySelector('.m325-page') && !local.rendering) schedule(false);
+});
 observer.observe(app,{childList:true,subtree:true});
 schedule(false);
