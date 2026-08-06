@@ -32,11 +32,15 @@ class EnforcedContactGovernance(ContactGovernance):
         return profile
 
     def record_relationship(self, user: dict[str, Any], payload: dict[str, Any]) -> dict[str, Any]:
+        if user.get("role") != "admin":
+            raise PermissionDenied("Solo administración puede registrar relaciones de contacto.")
         subject_id = str((payload or {}).get("subject_id") or "").strip()
         self._active_subject(subject_id)
         return super().record_relationship(user, payload)
 
     def record_preference(self, user: dict[str, Any], payload: dict[str, Any]) -> dict[str, Any]:
+        if user.get("role") not in {"admin", "qa"}:
+            raise PermissionDenied("El registro verificado de preferencias requiere administración o QA.")
         subject_id = str((payload or {}).get("subject_id") or "").strip()
         self._active_subject(subject_id)
         state_value = str((payload or {}).get("state") or "").strip().casefold()
@@ -48,6 +52,11 @@ class EnforcedContactGovernance(ContactGovernance):
         return super().record_preference(user, payload)
 
     def evaluate(self, user: dict[str, Any], **kwargs) -> dict[str, Any]:
+        subject_id = str(kwargs.get("subject_id") or "").strip()
+        if user.get("role") == "specialist" and str(user.get("id")) != subject_id:
+            raise PermissionDenied("El especialista solo puede evaluar sus propias preferencias de contacto.")
+        if user.get("role") not in {"specialist", "admin", "qa"}:
+            raise PermissionDenied("La evaluación requiere un actor profesional autenticado.")
         integrity = self.verify_chain()
         if not integrity["valid"]:
             raise ContactGovernanceIntegrityError("La evaluación está bloqueada por una cadena M32.9 inválida.")
@@ -138,6 +147,8 @@ class EnforcedGovernedTransactionalCommunications(GovernedTransactionalCommunica
             )
 
     def process(self, user: dict[str, Any], *, limit: int | None = None) -> dict[str, Any]:
+        if user.get("role") != "admin":
+            raise PermissionDenied("Solo administración puede procesar despachos.")
         if not self.verify_chain()["valid"]:
             raise CommunicationsIntegrityError("El procesamiento está bloqueado por una cadena M32.8 inválida.")
         if not self.notification_center.verify_chain()["valid"]:
