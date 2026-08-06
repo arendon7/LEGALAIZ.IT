@@ -11,6 +11,7 @@ from docx import Document
 from legalai_platform.approval_desk_workspace import (
     ApprovalDeskError,
     ApprovalDeskWorkspace,
+    ImmutableRecordError,
     PermissionDenied,
     ReleaseBlocked,
 )
@@ -192,7 +193,7 @@ class ApprovalDeskWorkspaceM325Tests(TestCase):
 
     def test_nueva_revision_requiere_archivo_diferente_y_obsoleta_decisiones(self):
         case_id = self.bootstrap()
-        with self.assertRaises(Exception):
+        with self.assertRaises(ImmutableRecordError):
             self.workspace.register_current_document(self.legal, case_id, "Sin cambios")
         self.write_docx(self.source, "Versión dos con alcance corregido.")
         revision = self.workspace.register_current_document(self.legal, case_id, "Corrección de alcance")
@@ -218,6 +219,7 @@ class ApprovalDeskWorkspaceM325Tests(TestCase):
         self.assertEqual(revision["revision_id"], "REV-0002")
         self.assertEqual(revision["parent_revision_id"], "REV-0001")
         self.assertEqual(revision["upload_sha256"], revision["sha256"])
+        self.assertEqual(revision["filename"], "ajuste.docx")
 
     def test_vista_estructural_declara_ausencia_de_paginacion(self):
         case_id = self.bootstrap()
