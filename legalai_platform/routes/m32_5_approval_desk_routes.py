@@ -31,7 +31,7 @@ def _error(handler, exc: Exception) -> bool:
     elif isinstance(exc, (ApprovalDeskError, ValueError, TypeError, KeyError, OSError)):
         handler.send_json({"error": str(exc)}, 422)
     else:
-        raise exc
+        handler.send_json({"error": "Error interno de la Mesa Jurídica"}, 500)
     return True
 
 
