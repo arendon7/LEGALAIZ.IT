@@ -110,19 +110,62 @@ def _structured_signature(code: str, answers: dict) -> dict:
     }
 
 
+def _labor_evidence_spec(specs: list[dict], answers: dict) -> dict:
+    metadata = specs[0].get("metadata") if specs else []
+    return {
+        "kind": "labor_evidence_index",
+        "title": "Índice probatorio y matriz de trazabilidad laboral",
+        "filename_suffix": "indice_probatorio_laboral",
+        "subtitle": "Expediente probatorio M33.0",
+        "metadata": metadata,
+        "document_standard": "M33.0",
+        "sections": [
+            {
+                "heading": "1. FINALIDAD DEL ÍNDICE",
+                "paragraphs": [
+                    "El índice identifica los documentos que permiten acreditar cada hecho utilizado por el diagnóstico, la liquidación y la reclamación. Un dato extraído de un archivo o informado en el formulario no se considera definitivamente confirmado hasta que pueda vincularse con un soporte suficientemente confiable o sea ratificado por la persona usuaria.",
+                    "La ausencia de un documento no se interpreta automáticamente contra ninguna de las partes. Se registra como vacío probatorio para solicitarlo, sustituirlo mediante otra evidencia admisible o ajustar el nivel de certeza de la afirmación correspondiente.",
+                ],
+            },
+            {
+                "heading": "2. MATRIZ DE EVIDENCIAS",
+                "table": [
+                    ["ID", "Documento o evidencia", "Hecho que acredita", "Estado", "Observación"],
+                    ["LAB-EV-001", "Contrato de trabajo y anexos", "Modalidad, cargo, salario y condiciones", "Por verificar", "Conservar versión íntegra"],
+                    ["LAB-EV-002", "Desprendibles de nómina", "Devengos, deducciones y pagos", "Por verificar", "Cotejar con banco"],
+                    ["LAB-EV-003", "Comprobantes bancarios", "Pago efectivo", "Por verificar", "Identificar concepto y período"],
+                    ["LAB-EV-004", "Soportes de prima y cesantías", "Pagos prestacionales previos", "Por verificar", "Evitar doble cobro"],
+                    ["LAB-EV-005", "Registro de vacaciones", "Días disfrutados o pendientes", "Por verificar", "Cotejar fechas"],
+                    ["LAB-EV-006", "Comunicación de terminación", "Fecha, autor y causa informada", "Por verificar", "Revisar anexos"],
+                    ["LAB-EV-007", "PILA / seguridad social", "Aportes durante la relación", "Condicional", "Solo períodos pertinentes"],
+                    ["LAB-EV-008", "Liquidación del empleador", "Posición económica de la contraparte", "Pendiente", "Comparar por concepto"],
+                    ["LAB-EV-009", "Reclamación y acuse", "Contenido y fecha de recepción", "Por generar", "Conservar versión exacta"],
+                ],
+            },
+            {
+                "heading": "3. REGLAS DE TRAZABILIDAD",
+                "numbered": [
+                    "Conservar el archivo original y trabajar sobre copias identificadas.",
+                    "Registrar fecha, fuente, nombre de archivo y versión.",
+                    "Vincular cada documento con el hecho o cálculo que soporta.",
+                    "No eliminar evidencia desfavorable ni sobrescribir una versión anterior.",
+                    "Distinguir hechos confirmados, manifestaciones del usuario, inferencias y supuestos de cálculo.",
+                    "Actualizar el índice cuando llegue una respuesta o un documento adicional.",
+                ],
+            },
+            _control("CO-LA-001"),
+        ],
+    }
+
+
 def _finalize_spec(code: str, answers: dict, spec: dict) -> dict:
     result = deepcopy(spec)
     result["document_standard"] = "M33.0"
     sections = [_sanitize_section(section) for section in result.get("sections") or []]
 
-    # Un documento conservado de la biblioteca histórica puede traer una línea de
-    # firma manual. Al sanearla agregamos una firma OOXML estructurada solo en kinds
-    # que son comunicaciones o instrumentos suscribibles.
     if result.get("kind") in _SIGNATURE_KINDS and not any(section.get("_type") == "signature" for section in sections):
         sections.append(_structured_signature(code, answers))
 
-    # El control debe ser único y cerrar el documento. Si la composición profunda
-    # ya lo incorporó, se mueve al final sin duplicarlo.
     controls = [section for section in sections if section.get("_type") == "control" or "control de uso" in str(section.get("heading") or "").casefold()]
     sections = [section for section in sections if section not in controls]
     sections.append(controls[0] if controls else _control(code))
@@ -134,4 +177,6 @@ def document_specs_m33_runtime(case_id, code, answers, result, product, generate
     specs = document_specs_m33(case_id, code, answers, result, product, generated_at, question_rows)
     if code not in M33_PROCEDURAL_CODES or result.get("risk") == "red":
         return specs
+    if code == "CO-LA-001" and not any(spec.get("kind") == "labor_evidence_index" for spec in specs):
+        specs.append(_labor_evidence_spec(specs, answers))
     return [_finalize_spec(code, answers, spec) for spec in specs]
