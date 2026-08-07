@@ -22,7 +22,7 @@ from co_em_004_document_factory_v248 import CoEm004DocumentFactoryV248
 from co_em_004_governance_v248 import CoEm004GovernanceV248
 from co_la_002_document_factory_v240 import CoLa002DocumentFactoryV240
 from co_la_002_governance_v240 import CoLa002GovernanceV240
-from m33_procedural_composition import document_specs_m33
+from m33_procedural_runtime import document_specs_m33_runtime
 
 
 _ACTIVE = False
@@ -45,7 +45,6 @@ def _build(registry: ModuleType) -> dict[str, Any]:
     employment_governance = CoLa002GovernanceV240(root, employment_factory)
 
     return {
-        # Símbolos nuevos explícitos.
         "COEM003_FACTORY_V245": services_factory,
         "COEM003_GOVERNANCE_V245": services_governance,
         "COEM004_FACTORY_V248": nda_factory,
@@ -54,9 +53,9 @@ def _build(registry: ModuleType) -> dict[str, Any]:
         "COAR001_GOVERNANCE_V251": lease_governance,
         "COLA002_FACTORY_V240": employment_factory,
         "COLA002_GOVERNANCE_M33": employment_governance,
-        "DOCUMENT_SPECS_M33": document_specs_m33,
+        "DOCUMENT_SPECS_M33": document_specs_m33_runtime,
 
-        # Alias de compatibilidad consumidos por endpoints M32.x. No se cambia la API.
+        # Alias de compatibilidad consumidos por endpoints M32.x.
         "COEM003_FACTORY_V244": services_factory,
         "COEM003_GOVERNANCE_V244": services_governance,
         "COEM004_FACTORY_V247": nda_factory,
@@ -76,8 +75,8 @@ def activate_m33_contract_factories(
     """Activa una única vez las capas M33.0 y propaga alias compatibles.
 
     Además de las cuatro fábricas contractuales, rebindea `core.document_specs` al
-    wrapper M33.0. El wrapper devuelve exactamente la salida histórica para productos
-    fuera de la segunda oleada y para expedientes rojos; de este modo el cambio es
+    wrapper procedimental M33.0. El wrapper devuelve exactamente la salida histórica
+    para productos fuera de la segunda oleada y para expedientes rojos; el cambio es
     incremental y no altera motores sustantivos ni reglas de riesgo.
     """
     global _ACTIVE, _CACHE
@@ -85,13 +84,11 @@ def activate_m33_contract_factories(
         _CACHE = _build(registry)
         _ACTIVE = True
 
-    # `generate_documents()` y las rutas históricas de core resuelven este global en
-    # tiempo de ejecución. No se reescribe core_v11.py ni expanded_documents.py.
-    registry.core.document_specs = document_specs_m33
+    registry.core.document_specs = document_specs_m33_runtime
     if application_services is not None:
-        setattr(application_services, "document_specs", document_specs_m33)
+        setattr(application_services, "document_specs", document_specs_m33_runtime)
     if target_namespace is not None:
-        target_namespace["document_specs"] = document_specs_m33
+        target_namespace["document_specs"] = document_specs_m33_runtime
 
     for name, value in _CACHE.items():
         setattr(registry, name, value)
