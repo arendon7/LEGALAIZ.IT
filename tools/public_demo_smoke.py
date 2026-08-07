@@ -63,7 +63,7 @@ def main():
                     break
                 except Exception:
                     time.sleep(.25)
-            startup_ok = bool(live and live.get("version") == "5.1.1")
+            startup_ok = isinstance(live, dict) and process.poll() is None
             checks.append(("startup", startup_ok))
             if not startup_ok:
                 if process.poll() is None:
@@ -76,7 +76,7 @@ def main():
                 return 2
             plain = urllib.request.build_opener()
             status, demo = req(plain, f"{base}/api/m33/public-demo")
-            checks.append(("public_demo_status", status == 200 and demo.get("public_demo_mode") is True and demo.get("production_authorized") is True and demo.get("real_production_authorized") is False))
+            checks.append(("public_demo_status", status == 200 and demo.get("milestone") == "M33.0" and demo.get("version") == "5.1.1" and demo.get("public_demo_mode") is True and demo.get("production_authorized") is True and demo.get("real_production_authorized") is False))
             jar = http.cookiejar.CookieJar(); admin = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
             status, auth = req(admin, f"{base}/api/auth/login", "POST", {"email":"ana@demo.legalaiz.it","password":password}, {"Origin":base})
             checks.append(("admin_login", status == 200 and auth.get("user",{}).get("role") == "admin"))
