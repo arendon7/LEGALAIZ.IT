@@ -42,6 +42,7 @@ def main():
     base = f"http://127.0.0.1:{port}"
     password = "LegalAIZDemo2026!"
     checks = []
+    output = ""
     with tempfile.TemporaryDirectory(prefix="legalaiz-m330-") as runtime:
         env = {**os.environ,
             "LEGAL_RUNTIME_DIR": runtime, "LEGAL_PORT": str(port), "LEGAL_HOST": "127.0.0.1",
@@ -49,7 +50,7 @@ def main():
             "LEGAL_ALLOW_DEMO_ACCOUNTS": "true", "LEGAL_DEMO_PASSWORD": password,
             "LEGAL_REQUIRE_MFA_ROLES": "", "LEGAL_REQUIRE_ORIGIN_CHECK": "false",
             "LEGAL_SECURE_COOKIES": "false", "LEGAL_DATABASE_BACKEND": "sqlite",
-            "PYTHONDONTWRITEBYTECODE": "1"}
+            "LEGAL_GITHUB_LITE_ASSETS": "true", "PYTHONDONTWRITEBYTECODE": "1"}
         process = subprocess.Popen([sys.executable, "run.py", "--no-browser"], env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
         try:
             live = None
@@ -62,7 +63,17 @@ def main():
                     break
                 except Exception:
                     time.sleep(.25)
-            checks.append(("startup", bool(live and live.get("version") == "5.1.1")))
+            startup_ok = bool(live and live.get("version") == "5.1.1")
+            checks.append(("startup", startup_ok))
+            if not startup_ok:
+                if process.poll() is None:
+                    process.terminate()
+                    try: process.wait(timeout=10)
+                    except subprocess.TimeoutExpired: process.kill()
+                output = process.stdout.read() if process.stdout else ""
+                report = {"schema":"legalaizit-m33-public-demo-smoke-v1","checks":[{"key":k,"passed":v} for k,v in checks],"passed":sum(v for _,v in checks),"total":len(checks),"ok":False,"server_output_tail":output[-6000:]}
+                print(json.dumps(report, ensure_ascii=False, indent=2))
+                return 2
             plain = urllib.request.build_opener()
             status, demo = req(plain, f"{base}/api/m33/public-demo")
             checks.append(("public_demo_status", status == 200 and demo.get("public_demo_mode") is True and demo.get("production_authorized") is True and demo.get("real_production_authorized") is False))
@@ -82,7 +93,8 @@ def main():
                 process.terminate()
                 try: process.wait(timeout=10)
                 except subprocess.TimeoutExpired: process.kill()
-            output = process.stdout.read() if process.stdout else ""
+            if not output:
+                output = process.stdout.read() if process.stdout else ""
     report = {"schema":"legalaizit-m33-public-demo-smoke-v1","checks":[{"key":k,"passed":v} for k,v in checks],"passed":sum(v for _,v in checks),"total":len(checks),"ok":all(v for _,v in checks),"server_output_tail":output[-3000:]}
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0 if report["ok"] else 2
