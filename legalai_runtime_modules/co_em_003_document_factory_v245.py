@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import date
 from pathlib import Path
 
 from co_em_003_document_factory_v244 import CoEm003DocumentFactoryV244
@@ -11,6 +12,9 @@ from m33_document_presentation import (
     build_m33_presentation,
 )
 from m33_services_legal_finalize import compose_services_m33_final
+
+
+_MONTHS = ("", "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre")
 
 
 class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
@@ -25,7 +29,33 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
     @staticmethod
-    def _render_m33_primary(normalized: dict, target: Path) -> dict:
+    def _date_es(value) -> str:
+        text = str(value or "").strip()
+        try:
+            parsed = date.fromisoformat(text)
+        except ValueError:
+            return text
+        return f"{parsed.day} de {_MONTHS[parsed.month]} de {parsed.year}"
+
+    @classmethod
+    def _approval_cover_subtitle(cls, normalized: dict) -> str:
+        client = normalized.get("client", {}).get("identification", {})
+        contractor = normalized.get("contractor", {}).get("identification", {})
+        client_name = str(client.get("name") or "EL CONTRATANTE")
+        contractor_name = str(contractor.get("name") or "EL CONTRATISTA")
+        city = str(
+            normalized.get("dispute", {}).get("city")
+            or normalized.get("disputes", {}).get("city")
+            or client.get("domicile")
+            or ""
+        ).strip()
+        start = cls._date_es(normalized.get("schedule", {}).get("start_date") or normalized.get("term", {}).get("start_date"))
+        context = f"{client_name} · {contractor_name}"
+        location_date = " · ".join(value for value in (city, start) if value)
+        return f"{context}\n{location_date}" if location_date else context
+
+    @classmethod
+    def _render_m33_primary(cls, normalized: dict, target: Path) -> dict:
         # Compatibilidad del producto CO-EM-003: la familia vigente es profesional
         # por defecto, pero la entrevista puede desactivarlo expresamente.
         service = normalized.setdefault("service", {})
@@ -48,6 +78,7 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
             sections=composition["sections"],
             product_code="CO-EM-003",
             presentation_mode=APPROVAL_CANDIDATE_MODE,
+            approval_subtitle=cls._approval_cover_subtitle(normalized),
         )
 
     def render_documents(self, answers, target_folder):
