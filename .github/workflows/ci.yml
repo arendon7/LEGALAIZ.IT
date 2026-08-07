@@ -33,6 +33,8 @@ jobs:
       - name: Validar sintaxis
         run: python -m compileall -q .
       - name: Validar integridad y generación documental
+        env:
+          LEGAL_RUNTIME_DIR: ${{ runner.temp }}/legalaiz-test-runtime
         run: |
           set -o pipefail
           python -m unittest discover -s tests -p 'test_*.py' -v 2>&1 | tee "$RUNNER_TEMP/legalaiz-unittest.log"
