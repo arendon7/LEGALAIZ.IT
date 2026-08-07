@@ -97,8 +97,22 @@ class ServicesReferenceM330Tests(unittest.TestCase):
             document = Document(contract)
             paragraphs = [paragraph.text.strip() for paragraph in document.paragraphs if paragraph.text.strip()]
             text = "\n".join(paragraphs)
+            table_text = "\n".join(cell.text for table in document.tables for row in table.rows for cell in row.cells)
+            title = "CONTRATO DE PRESTACIÓN DE SERVICIOS PROFESIONALES INDEPENDIENTES"
+            contract_titles = [paragraph for paragraph in paragraphs if paragraph.startswith("CONTRATO DE PRESTACIÓN DE SERVICIOS")]
             clause_headings = [p for p in paragraphs if re.match(r"^(PRIMERA|SEGUNDA|TERCERA|CUARTA|QUINTA|SEXTA|SÉPTIMA|OCTAVA|NOVENA|DÉCIMA|VIGÉSIMA|TRIGÉSIMA|CUADRAGÉSIMA)", p)]
-            self.assertIn("CONTRATO DE PRESTACIÓN DE SERVICIOS PROFESIONALES INDEPENDIENTES", text)
+
+            self.assertIn(title, text)
+            self.assertTrue(contract_titles)
+            self.assertTrue(all(paragraph == title for paragraph in contract_titles), contract_titles)
+            self.assertIn("Soluciones Andinas S.A.S. · Consultoría Documental Segura S.A.S.", text)
+            self.assertIn("Medellín · 15 de agosto de 2026", text)
+            self.assertIn("NIT 901234567-8", text)
+            self.assertIn("NIT 900765432-1", text)
+            self.assertIn("María Fernanda Gómez Ruiz", text)
+            self.assertIn("Juan David Torres Mejía", text)
+            self.assertNotIn("identificado en la ficha contractual", text)
+            self.assertNotIn("identificado en la misma ficha", text)
             self.assertIn("PRIMERA: OBJETO", text)
             self.assertIn("ANEXO NO. 1", text.upper())
             self.assertNotIn("CONTROL DE USO, FUENTES Y REVISIÓN", text)
@@ -109,6 +123,8 @@ class ServicesReferenceM330Tests(unittest.TestCase):
             self.assertGreaterEqual(len((primary.get("review_evidence") or {}).get("legal_sources") or []), 6)
             self.assertGreater(len(text.split()), 2_700)
             self.assertGreaterEqual(len(clause_headings), 40)
+            self.assertIn("representante legal de Soluciones Andinas S.A.S. · NIT 901234567-8", table_text)
+            self.assertIn("representante legal de Consultoría Documental Segura S.A.S. · NIT 900765432-1", table_text)
 
             with ZipFile(contract) as archive:
                 styles = archive.read("word/styles.xml").decode("utf-8")
