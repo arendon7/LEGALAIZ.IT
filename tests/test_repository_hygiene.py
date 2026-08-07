@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 from unittest import TestCase
+import subprocess
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -49,10 +50,12 @@ class RepositoryHygieneTests(TestCase):
         present = sorted(name for name in forbidden if (ROOT / name).exists())
         self.assertEqual(present, [])
 
-    def test_runtime_and_audit_are_placeholders_only(self) -> None:
+    def test_runtime_and_audit_are_tracked_as_placeholders_only(self) -> None:
         for relative in ("runtime", "audit"):
-            files = sorted(path.name for path in (ROOT / relative).iterdir())
-            self.assertEqual(files, [".gitkeep"], relative)
+            tracked = subprocess.check_output(
+                ["git", "ls-files", relative], cwd=ROOT, text=True
+            ).splitlines()
+            self.assertEqual(tracked, [f"{relative}/.gitkeep"], relative)
 
     def test_ignore_files_cover_sensitive_and_generated_state(self) -> None:
         gitignore = (ROOT / ".gitignore").read_text(encoding="utf-8").splitlines()
