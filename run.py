@@ -8,8 +8,6 @@ from legalai_platform.document_release_gate import install_docx_release_gate
 
 install_docx_release_gate()
 
-# Public compatibility façade. The implementation is split into focused modules
-# while preserving the imports historically consumed by tests and integrations.
 from core_v11 import *  # noqa: F401,F403,E402
 import core_v11 as core  # noqa: E402
 from http.server import ThreadingHTTPServer
@@ -20,27 +18,26 @@ import webbrowser
 import signal
 from legalai_platform.runtime_registry import *  # noqa: F401,F403,E402
 import legalai_platform.runtime_registry as _runtime_registry  # noqa: E402
-from legalai_platform.release_metadata import RELEASE_NAME  # noqa: E402
+from legalai_platform.release_metadata import RELEASE_NAME, PUBLIC_DEMO_MODE  # noqa: E402
 from legalai_platform.application_services import *  # noqa: F401,F403,E402
 import legalai_platform.application_services as _application_services  # noqa: E402
 from legalai_platform.runtime_m33_overrides import activate_m33_contract_factories  # noqa: E402
 
-# M33.0 se activa después de cargar el registro y los servicios para preservar la
-# API histórica, pero antes de importar el Handler. De este modo los endpoints M32.x
-# reciben las nuevas fábricas por los mismos símbolos y las versiones previas siguen
-# disponibles como clases/módulos para comparación y regresión.
+# La Fábrica Documental M33.0 se activa sobre el mismo runtime que la producción
+# demostrativa pública. Conserva los aliases M32.x y no reemplaza el perfil demo,
+# el Handler M33.0 ni las compuertas de liberación exacta por hash.
 activate_m33_contract_factories(
     _runtime_registry,
     application_services=_application_services,
     target_namespace=globals(),
 )
 
-from legalai_platform.http_handler_m32_9 import Handler  # noqa: E402
+from legalai_platform.http_handler_m33_0 import Handler  # noqa: E402
+# from legalai_platform.http_handler_m32_9 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m32_8 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m32_7 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m32_6 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m32_5 import Handler  # compatibility marker
-# Compatibility markers retained for historical source-level verification only.
 # VERSION = "3.8.0"
 # co-ar-001-closed-v250
 # co-la-001-closed-v253
@@ -49,6 +46,7 @@ from legalai_platform.http_handler_m32_9 import Handler  # noqa: E402
 # m32-7-notification-center
 # m32-8-transactional-communications
 # m32-9-contact-governance
+# m33-0-public-demo-integration
 # m33-0-document-standard
 # LEGAL_ALLOW_DEMO_ACCOUNTS
 # LEGAL_BOOTSTRAP_ADMIN_EMAIL
@@ -66,9 +64,20 @@ def authenticate(*args, **kwargs):
         _application_services.SETTINGS = previous
 
 
+def _bootstrap_public_demo() -> None:
+    if not PUBLIC_DEMO_MODE:
+        return
+    con = core.db()
+    try:
+        M31_CASE_DEMO.bootstrap(con, "USR-ADMIN", reset=False, auto_release=True)
+    finally:
+        con.close()
+
+
 def main():
     init_db()
-    port = int(os.environ.get("LEGAL_PORT", PORT))
+    _bootstrap_public_demo()
+    port = int(os.environ.get("LEGAL_PORT") or os.environ.get("PORT") or PORT)
     host = os.environ.get("LEGAL_HOST", HOST).strip() or HOST
     for arg in sys.argv[1:]:
         if arg.isdigit():
@@ -85,9 +94,11 @@ def main():
     allow_demo = str(os.environ.get("LEGAL_ALLOW_DEMO_ACCOUNTS", "")).strip().lower() in {"1", "true", "yes", "si", "sí"}
     if SETTINGS.profile == "local" and allow_demo:
         print(f"Acceso demo local: ana@demo.legalaiz.it · clave: {DEMO_PASSWORD}")
-        print("Estas credenciales funcionan únicamente en el entorno demostrativo local.")
+        print("Estas credenciales funcionan únicamente en el entorno demostrativo.")
+    if PUBLIC_DEMO_MODE:
+        print("MODO M33.0: producción demostrativa pública activa; datos sintéticos y pagos sandbox.")
     if host == "0.0.0.0":
-        print("ADVERTENCIA: modo LAN/preproducción. Exponga el servicio únicamente detrás del proxy TLS administrado.")
+        print("ADVERTENCIA: servicio expuesto en red. Use un proxy TLS administrado para acceso público.")
     if "--no-browser" not in sys.argv and SETTINGS.profile == "local":
         threading.Timer(0.7, lambda: webbrowser.open(url)).start()
 

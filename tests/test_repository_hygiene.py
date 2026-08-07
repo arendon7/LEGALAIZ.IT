@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 from unittest import TestCase
+import subprocess
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -9,12 +10,12 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class RepositoryHygieneTests(TestCase):
     def test_version_marker_is_canonical(self) -> None:
-        self.assertEqual((ROOT / "VERSION").read_text(encoding="utf-8").strip(), "M32.9")
+        self.assertEqual((ROOT / "VERSION").read_text(encoding="utf-8").strip(), "M33.0")
 
-    def test_public_documents_do_not_declare_old_release(self) -> None:
+    def test_public_documents_declare_current_release(self) -> None:
         for relative in ("README.md", "FINAL_RELEASE_NOTES.md"):
             content = (ROOT / relative).read_text(encoding="utf-8")
-            self.assertIn("M32.9", content, relative)
+            self.assertIn("M33.0", content, relative)
             self.assertNotIn("M31.8", content, relative)
             self.assertNotIn("v5.0.7", content, relative)
 
@@ -49,10 +50,12 @@ class RepositoryHygieneTests(TestCase):
         present = sorted(name for name in forbidden if (ROOT / name).exists())
         self.assertEqual(present, [])
 
-    def test_runtime_and_audit_are_placeholders_only(self) -> None:
+    def test_runtime_and_audit_are_tracked_as_placeholders_only(self) -> None:
         for relative in ("runtime", "audit"):
-            files = sorted(path.name for path in (ROOT / relative).iterdir())
-            self.assertEqual(files, [".gitkeep"], relative)
+            tracked = subprocess.check_output(
+                ["git", "ls-files", relative], cwd=ROOT, text=True
+            ).splitlines()
+            self.assertEqual(tracked, [f"{relative}/.gitkeep"], relative)
 
     def test_ignore_files_cover_sensitive_and_generated_state(self) -> None:
         gitignore = (ROOT / ".gitignore").read_text(encoding="utf-8").splitlines()

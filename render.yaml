@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: legalaiz-it-demo
+    runtime: docker
+    branch: main
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/live
+    envVars:
+      - key: LEGAL_PROFILE
+        value: local
+      - key: LEGAL_APP_ENV
+        value: demo_public
+      - key: LEGAL_PUBLIC_DEMO_MODE
+        value: "true"
+      - key: LEGAL_ALLOW_DEMO_ACCOUNTS
+        value: "true"
+      - key: LEGAL_DEMO_PASSWORD
+        value: LegalAIZDemo2026!
+      - key: LEGAL_REQUIRE_MFA_ROLES
+        value: ""
+      - key: LEGAL_REQUIRE_ORIGIN_CHECK
+        value: "false"
+      - key: LEGAL_SECURE_COOKIES
+        value: "true"
+      - key: LEGAL_DATABASE_BACKEND
+        value: sqlite
+      - key: LEGAL_GITHUB_LITE_ASSETS
+        value: "true"
+      - key: LEGAL_RUNTIME_DIR
+        value: /tmp/legalaiz-runtime
+      - key: LEGAL_HOST
+        value: 0.0.0.0
