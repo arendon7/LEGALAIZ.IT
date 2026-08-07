@@ -3,10 +3,13 @@ from __future__ import annotations
 from pathlib import Path
 
 from co_em_003_document_factory_v244 import CoEm003DocumentFactoryV244
-from document_standard_v33 import audit_docx_legal_standard
 from legalai_platform.document_quality import assert_docx_quality
 from legalai_platform.document_visual_quality import assert_visual_structure
-from m33_document_presentation import APPROVAL_CANDIDATE_MODE, build_m33_presentation
+from m33_document_presentation import (
+    APPROVAL_CANDIDATE_MODE,
+    audit_m33_presentation,
+    build_m33_presentation,
+)
 from m33_services_legal_finalize import compose_services_m33_final
 
 
@@ -59,7 +62,7 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
 
         quality = assert_docx_quality(target, expected_product="CO-EM-003")
         visual = assert_visual_structure(target, expected_product="CO-EM-003")
-        standard = audit_docx_legal_standard(target)
+        standard = audit_m33_presentation(target, APPROVAL_CANDIDATE_MODE)
         if not standard["valid"]:
             raise ValueError(f"CO-EM-003 no supera el estándar M33.0: {standard['findings']}")
         primary["quality"] = {
