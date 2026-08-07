@@ -16,6 +16,8 @@ from typing import Any
 from m33_procedural_composition import M33_PROCEDURAL_CODES, document_specs_m33
 
 _SEPARATOR_RE = re.compile(r"(?:_{4,}|={5,}|-{6,})")
+_PLACEHOLDER_RE = re.compile(r"\[[A-ZÁÉÍÓÚÜÑ0-9][A-ZÁÉÍÓÚÜÑ0-9 _./:-]{1,80}\]")
+_SENTINELS = {"none", "null", "undefined", "n/a", "na", "nan"}
 
 _SIGNATURE_KINDS = {
     "habeas_authority_escalation",
@@ -36,9 +38,27 @@ _SIGNATURE_KINDS = {
 
 
 def _clean_text(value: Any) -> Any:
+    """Normaliza valores heredados sin alterar valores jurídicamente significativos.
+
+    M33.0 no debe exponer representaciones de Python ni marcadores de plantilla. Los
+    nulos y centinelas se convierten en un estado explícito de verificación; cero,
+    ``False`` y demás valores reales se conservan. La obligatoriedad material de un
+    dato sigue controlada por las reglas y compuertas del producto.
+    """
+    if value is None:
+        return "Dato pendiente de verificación"
+    if isinstance(value, bool):
+        return "Sí" if value else "No"
+    if isinstance(value, (int, float)):
+        return str(value)
     if not isinstance(value, str):
         return value
-    cleaned = _SEPARATOR_RE.sub("", value)
+
+    cleaned = value.strip()
+    if cleaned.casefold() in _SENTINELS:
+        return "Dato pendiente de verificación"
+    cleaned = _SEPARATOR_RE.sub("", cleaned)
+    cleaned = _PLACEHOLDER_RE.sub("Dato pendiente de verificación", cleaned)
     cleaned = re.sub(r"[ \t]+\n", "\n", cleaned)
     cleaned = re.sub(r"\n{3,}", "\n\n", cleaned)
     return cleaned.strip()
