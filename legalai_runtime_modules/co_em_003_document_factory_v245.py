@@ -7,7 +7,7 @@ from document_standard_v33 import audit_docx_legal_standard
 from docx_builder import build_docx
 from legalai_platform.document_quality import assert_docx_quality
 from legalai_platform.document_visual_quality import assert_visual_structure
-from m33_legal_composition import compose_services_m33
+from m33_services_legal_review import compose_services_m33_reviewed
 
 
 class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
@@ -23,7 +23,7 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
 
     @staticmethod
     def _render_m33_primary(normalized: dict, target: Path):
-        composition = compose_services_m33(normalized)
+        composition = compose_services_m33_reviewed(normalized)
         client = normalized.get("client", {}).get("identification", {})
         contractor = normalized.get("contractor", {}).get("identification", {})
         build_docx(
