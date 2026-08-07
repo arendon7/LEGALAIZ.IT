@@ -34,6 +34,24 @@ PRIMARY = {
 }
 
 
+class LeaseEvaluator(ControlledEvaluator):
+    """Compatibilidad con la interfaz documental heredada de CO-AR-001."""
+
+    def __init__(self):
+        super().__init__(["DOC-AR-CONTRACT-001"], ["AR-BASE", "AR-PROPERTY", "AR-ECONOMICS"])
+        self.documents = [
+            {"id": "DOC-AR-CONTRACT-001", "name": "Contrato de arrendamiento"},
+            {"id": "ANX-AR-INVENTORY-001", "name": "Inventario y estado del inmueble"},
+            {"id": "ANX-AR-DELIVERY-001", "name": "Acta de entrega"},
+            {"id": "ANX-AR-RETURN-001", "name": "Acta de restitución"},
+        ]
+
+    def evaluate(self, answers):
+        result = super().evaluate(answers)
+        result["documents"] = [item["id"] for item in self.documents]
+        return result
+
+
 def _copy_primary(factory, answers: dict, product_code: str, output: Path) -> dict:
     manifest = factory.generate(answers, actor={"id": "m33-visual-ci", "role": "qa"})
     document_id = PRIMARY[product_code]
@@ -69,26 +87,10 @@ def main() -> int:
     with tempfile.TemporaryDirectory(prefix="legalaiz-m33-contracts-") as temporary:
         root = Path(temporary)
         samples = (
-            (
-                CoAr001DocumentFactoryV251(root / "lease", ControlledEvaluator(["DOC-AR-CONTRACT-001"], ["AR-BASE", "AR-PROPERTY", "AR-ECONOMICS"])),
-                lease_answers(),
-                "CO-AR-001",
-            ),
-            (
-                CoEm003DocumentFactoryV245(root / "services", ControlledEvaluator(["DOC-EM-CONTRACT-001"], ["EM-BASE-001", "EM-SCOPE-001", "EM-FEES-001"])),
-                _services_answers(),
-                "CO-EM-003",
-            ),
-            (
-                CoEm004DocumentFactoryV248(root / "nda", ControlledEvaluator(["DOC-EM4-NDA-001"], ["NDA_BASE", "SECURITY", "IP"])),
-                _confidentiality_answers(),
-                "CO-EM-004",
-            ),
-            (
-                CoLa002DocumentFactoryV240(root / "employment", ControlledEvaluator(["DOC-LA-CONTRACT-001", "ANX-LA-FUN-001"], ["LABOR_BASE", "FUNCTIONS_ANNEX"])),
-                _labor_contract_answers(),
-                "CO-LA-002",
-            ),
+            (CoAr001DocumentFactoryV251(root / "lease", LeaseEvaluator()), lease_answers(), "CO-AR-001"),
+            (CoEm003DocumentFactoryV245(root / "services", ControlledEvaluator(["DOC-EM-CONTRACT-001"], ["EM-BASE-001", "EM-SCOPE-001", "EM-FEES-001"])), _services_answers(), "CO-EM-003"),
+            (CoEm004DocumentFactoryV248(root / "nda", ControlledEvaluator(["DOC-EM4-NDA-001"], ["NDA_BASE", "SECURITY", "IP"])), _confidentiality_answers(), "CO-EM-004"),
+            (CoLa002DocumentFactoryV240(root / "employment", ControlledEvaluator(["DOC-LA-CONTRACT-001", "ANX-LA-FUN-001"], ["LABOR_BASE", "FUNCTIONS_ANNEX"])), _labor_contract_answers(), "CO-LA-002"),
         )
         for factory, answers, product_code in samples:
             records.append(_copy_primary(factory, answers, product_code, output))
