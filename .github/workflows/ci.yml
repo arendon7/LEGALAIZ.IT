@@ -33,7 +33,17 @@ jobs:
       - name: Validar sintaxis
         run: python -m compileall -q .
       - name: Validar integridad y generación documental
-        run: python -m unittest discover -s tests -p 'test_*.py' -v
+        run: |
+          set -o pipefail
+          python -m unittest discover -s tests -p 'test_*.py' -v 2>&1 | tee "$RUNNER_TEMP/legalaiz-unittest.log"
+      - name: Conservar diagnóstico de pruebas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagnostico-unittest-${{ github.run_id }}
+          path: ${{ runner.temp }}/legalaiz-unittest.log
+          if-no-files-found: warn
+          retention-days: 14
       - name: Validar interfaz y datos demo
         run: |
           node --input-type=module --check < app/modules/demo_form_values_m32.js
