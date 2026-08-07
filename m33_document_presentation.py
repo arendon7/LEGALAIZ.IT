@@ -111,9 +111,15 @@ def build_m33_presentation(
     sections: list[dict[str, Any]],
     product_code: str,
     presentation_mode: str = REVIEW_MODE,
+    approval_subtitle: str = "",
     footer: str = "LegalAIZ.it · Más que respuestas, soluciones.",
 ) -> dict[str, Any]:
-    """Construye una copia de revisión o el instrumento exacto de aprobación."""
+    """Construye una copia de revisión o el instrumento exacto de aprobación.
+
+    `approval_subtitle` permite mostrar en la portada del instrumento limpio solo
+    contexto contractual legítimo —por ejemplo partes, ciudad y fecha— sin reintroducir
+    códigos internos, estados de QA ni leyendas de borrador.
+    """
     mode = str(presentation_mode or REVIEW_MODE).strip().casefold()
     if mode not in VALID_PRESENTATIONS:
         raise ValueError(f"Modo de presentación M33.0 inválido: {presentation_mode}.")
@@ -132,14 +138,11 @@ def build_m33_presentation(
         # Los datos operativos (producto, estándar, estado interno) viven en el
         # expediente y no forman parte del instrumento jurídico que se firma.
         rendered_metadata = []
-        rendered_subtitle = ""
+        rendered_subtitle = str(approval_subtitle or "").strip()
         status = ""
         append_control = False
         evidence = review_evidence_from_sections(sections)
 
-    # La validación semántica previa siempre permanece activa. El auditor OOXML
-    # final se ejecuta abajo con conocimiento del modo de presentación, por lo que
-    # no se desactiva ningún control salvo el banner cuando es intencionalmente limpio.
     build_docx(
         target,
         title,
