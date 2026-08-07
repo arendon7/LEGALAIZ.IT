@@ -9,12 +9,12 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class RepositoryHygieneTests(TestCase):
     def test_version_marker_is_canonical(self) -> None:
-        self.assertEqual((ROOT / "VERSION").read_text(encoding="utf-8").strip(), "M32.9")
+        self.assertEqual((ROOT / "VERSION").read_text(encoding="utf-8").strip(), "M33.0")
 
-    def test_public_documents_do_not_declare_old_release(self) -> None:
+    def test_public_documents_declare_current_release(self) -> None:
         for relative in ("README.md", "FINAL_RELEASE_NOTES.md"):
             content = (ROOT / relative).read_text(encoding="utf-8")
-            self.assertIn("M32.9", content, relative)
+            self.assertIn("M33.0", content, relative)
             self.assertNotIn("M31.8", content, relative)
             self.assertNotIn("v5.0.7", content, relative)
 
