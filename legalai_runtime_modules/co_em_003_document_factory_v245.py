@@ -37,33 +37,36 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
             return text
         return f"{parsed.day} de {_MONTHS[parsed.month]} de {parsed.year}"
 
+    @staticmethod
+    def _nested_dict(value) -> dict:
+        return value if isinstance(value, dict) else {}
+
     @classmethod
     def _approval_cover_subtitle(cls, normalized: dict) -> str:
-        client = normalized.get("client", {}).get("identification", {})
-        contractor = normalized.get("contractor", {}).get("identification", {})
+        client = cls._nested_dict(cls._nested_dict(normalized.get("client")).get("identification"))
+        contractor = cls._nested_dict(cls._nested_dict(normalized.get("contractor")).get("identification"))
+        dispute = cls._nested_dict(normalized.get("dispute"))
+        disputes = cls._nested_dict(normalized.get("disputes"))
+        term = cls._nested_dict(normalized.get("term"))
+        schedule = cls._nested_dict(normalized.get("schedule"))
         client_name = str(client.get("name") or "EL CONTRATANTE")
         contractor_name = str(contractor.get("name") or "EL CONTRATISTA")
-        city = str(
-            normalized.get("dispute", {}).get("city")
-            or normalized.get("disputes", {}).get("city")
-            or client.get("domicile")
-            or ""
-        ).strip()
-        start = cls._date_es(normalized.get("schedule", {}).get("start_date") or normalized.get("term", {}).get("start_date"))
+        city = str(dispute.get("city") or disputes.get("city") or client.get("domicile") or "").strip()
+        # v2.44 copia las fechas canónicas a `term` y luego compacta `schedule`
+        # en texto operativo. M33.0 debe funcionar con ambos estados.
+        start = cls._date_es(term.get("start_date") or schedule.get("start_date"))
         context = f"{client_name} · {contractor_name}"
         location_date = " · ".join(value for value in (city, start) if value)
         return f"{context}\n{location_date}" if location_date else context
 
     @classmethod
     def _render_m33_primary(cls, normalized: dict, target: Path) -> dict:
-        # Compatibilidad del producto CO-EM-003: la familia vigente es profesional
-        # por defecto, pero la entrevista puede desactivarlo expresamente.
         service = normalized.setdefault("service", {})
         if isinstance(service, dict):
             service.setdefault("professional", True)
         composition = compose_services_m33_final(normalized)
-        client = normalized.get("client", {}).get("identification", {})
-        contractor = normalized.get("contractor", {}).get("identification", {})
+        client = cls._nested_dict(cls._nested_dict(normalized.get("client")).get("identification"))
+        contractor = cls._nested_dict(cls._nested_dict(normalized.get("contractor")).get("identification"))
         return build_m33_presentation(
             path=target,
             title=composition["title"],
