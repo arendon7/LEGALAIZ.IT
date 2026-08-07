@@ -23,6 +23,11 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
 
     @staticmethod
     def _render_m33_primary(normalized: dict, target: Path):
+        # Compatibilidad del producto CO-EM-003: la familia vigente es profesional
+        # por defecto, pero la entrevista puede desactivarlo expresamente.
+        service = normalized.setdefault("service", {})
+        if isinstance(service, dict):
+            service.setdefault("professional", True)
         composition = compose_services_m33_reviewed(normalized)
         client = normalized.get("client", {}).get("identification", {})
         contractor = normalized.get("contractor", {}).get("identification", {})
