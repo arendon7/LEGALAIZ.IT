@@ -19,9 +19,22 @@ import threading
 import webbrowser
 import signal
 from legalai_platform.runtime_registry import *  # noqa: F401,F403,E402
+import legalai_platform.runtime_registry as _runtime_registry  # noqa: E402
 from legalai_platform.release_metadata import RELEASE_NAME  # noqa: E402
 from legalai_platform.application_services import *  # noqa: F401,F403,E402
 import legalai_platform.application_services as _application_services  # noqa: E402
+from legalai_platform.runtime_m33_overrides import activate_m33_contract_factories  # noqa: E402
+
+# M33.0 se activa después de cargar el registro y los servicios para preservar la
+# API histórica, pero antes de importar el Handler. De este modo los endpoints M32.x
+# reciben las nuevas fábricas por los mismos símbolos y las versiones previas siguen
+# disponibles como clases/módulos para comparación y regresión.
+activate_m33_contract_factories(
+    _runtime_registry,
+    application_services=_application_services,
+    target_namespace=globals(),
+)
+
 from legalai_platform.http_handler_m32_9 import Handler  # noqa: E402
 # from legalai_platform.http_handler_m32_8 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m32_7 import Handler  # compatibility marker
@@ -36,6 +49,7 @@ from legalai_platform.http_handler_m32_9 import Handler  # noqa: E402
 # m32-7-notification-center
 # m32-8-transactional-communications
 # m32-9-contact-governance
+# m33-0-document-standard
 # LEGAL_ALLOW_DEMO_ACCOUNTS
 # LEGAL_BOOTSTRAP_ADMIN_EMAIL
 # UPDATE users SET active=0 WHERE lower(email) LIKE '%@demo.legalaiz.it'
