@@ -111,7 +111,7 @@ jobs:
 
   visual-docx:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -123,14 +123,21 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends libreoffice-writer poppler-utils fonts-dejavu-core fonts-liberation
-      - name: Generar muestras históricas y contratos M33.0
+      - name: Generar portafolio visual M33.0
         env:
           LEGAL_RUNTIME_DIR: ${{ runner.temp }}/legalaiz-visual-runtime
         run: |
-          mkdir -p "$RUNNER_TEMP/document-visual/samples"
-          python scripts/generate_m32_1_visual_samples.py --output "$RUNNER_TEMP/document-visual/samples"
-          python scripts/generate_m33_0_contractual_samples.py --output "$RUNNER_TEMP/document-visual/samples"
-          test "$(find "$RUNNER_TEMP/document-visual/samples" -maxdepth 1 -name '*_M33_0.docx' -type f | wc -l | tr -d ' ')" -eq 4
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/document-visual/samples"
+          mkdir -p "$ROOT/historical" "$ROOT/contracts" "$ROOT/procedural" "$ROOT/wave3"
+          python scripts/generate_m32_1_visual_samples.py --output "$ROOT/historical"
+          python scripts/generate_m33_0_contractual_samples.py --output "$ROOT/contracts"
+          python scripts/generate_m33_0_procedural_samples.py --output "$ROOT/procedural"
+          python scripts/generate_m33_0_wave3_samples.py --output "$ROOT/wave3"
+          test "$(find "$ROOT/contracts" -maxdepth 1 -name '*_M33_0.docx' -type f | wc -l | tr -d ' ')" -eq 4
+          test "$(find "$ROOT/procedural" -maxdepth 1 -name '*_M33_0.docx' -type f | wc -l | tr -d ' ')" -eq 6
+          test "$(find "$ROOT/wave3" -maxdepth 1 -name '*_M33_0.docx' -type f | wc -l | tr -d ' ')" -eq 7
+          test "$(find "$ROOT" -name '*_M33_0.docx' -type f | wc -l | tr -d ' ')" -eq 17
       - name: Convertir DOCX a PDF y rasterizar todas las páginas
         env:
           HOME: ${{ runner.temp }}/lo-home
@@ -140,11 +147,12 @@ jobs:
           RENDERED="$RUNNER_TEMP/document-visual/rendered"
           PROFILE="$RUNNER_TEMP/document-visual/lo-profile"
           mkdir -p "$HOME" "$RENDERED" "$PROFILE"
-          for docx in "$SAMPLES"/*.docx; do
+          while IFS= read -r -d '' docx; do
+            group="$(basename "$(dirname "$docx")")"
             stem="$(basename "${docx%.docx}")"
-            out="$RENDERED/$stem"
+            out="$RENDERED/$group/$stem"
             mkdir -p "$out"
-            libreoffice --headless "-env:UserInstallation=file://$PROFILE-$stem" --convert-to pdf --outdir "$out" "$docx"
+            libreoffice --headless "-env:UserInstallation=file://$PROFILE-$group-$stem" --convert-to pdf --outdir "$out" "$docx"
             pdf="$out/$stem.pdf"
             test -s "$pdf"
             pages="$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')"
@@ -153,10 +161,10 @@ jobs:
             pdftoppm -png -r 120 "$pdf" "$out/page"
             rendered_pages="$(find "$out" -maxdepth 1 -name 'page-*.png' -type f | wc -l | tr -d ' ')"
             test "$rendered_pages" -eq "$pages"
-            printf '%s\t%s\n' "$stem" "$pages" >> "$RENDERED/page-counts.tsv"
-          done
-          test "$(find "$RENDERED" -name 'page-*.png' -type f | wc -l)" -ge 6
-          test "$(grep -c '_M33_0' "$RENDERED/page-counts.tsv")" -eq 4
+            printf '%s/%s\t%s\n' "$group" "$stem" "$pages" >> "$RENDERED/page-counts.tsv"
+          done < <(find "$SAMPLES" -name '*.docx' -type f -print0 | sort -z)
+          test "$(find "$RENDERED" -name 'page-*.png' -type f | wc -l)" -ge 17
+          test "$(grep -c '_M33_0' "$RENDERED/page-counts.tsv")" -eq 17
           cat "$RENDERED/page-counts.tsv"
       - name: Conservar evidencia renderizada
         uses: actions/upload-artifact@v4
