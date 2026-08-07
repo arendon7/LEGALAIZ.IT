@@ -19,7 +19,7 @@ permissions:
 jobs:
   smoke:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -38,8 +38,11 @@ jobs:
         run: |
           node --input-type=module --check < app/modules/demo_form_values_m32.js
           node --input-type=module --check < app/modules/demo_form_data_m32.js
+          node --input-type=module --check < app/modules/public_demo_m33.js
           grep -q 'demo_form_data_m32.css' app/index.html
           grep -q 'demo_form_data_m32.js' app/index.html
+          grep -q 'public_demo_m33.css' app/index.html
+          grep -q 'public_demo_m33.js' app/index.html
           node --input-type=module <<'NODE'
           import fs from 'node:fs';
 
@@ -96,6 +99,8 @@ jobs:
           done
           cat /tmp/legalaiz.log
           exit 1
+      - name: Smoke producción demostrativa M33.0
+        run: python tools/public_demo_smoke.py
 
   visual-docx:
     runs-on: ubuntu-latest
