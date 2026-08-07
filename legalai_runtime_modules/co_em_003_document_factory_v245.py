@@ -7,7 +7,7 @@ from document_standard_v33 import audit_docx_legal_standard
 from docx_builder import build_docx
 from legalai_platform.document_quality import assert_docx_quality
 from legalai_platform.document_visual_quality import assert_visual_structure
-from m33_services_legal_review import compose_services_m33_reviewed
+from m33_services_legal_finalize import compose_services_m33_final
 
 
 class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
@@ -28,7 +28,7 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
         service = normalized.setdefault("service", {})
         if isinstance(service, dict):
             service.setdefault("professional", True)
-        composition = compose_services_m33_reviewed(normalized)
+        composition = compose_services_m33_final(normalized)
         client = normalized.get("client", {}).get("identification", {})
         contractor = normalized.get("contractor", {}).get("identification", {})
         build_docx(
