@@ -42,6 +42,24 @@ class ControlledEvaluator:
         }
 
 
+class LeaseEvaluator(ControlledEvaluator):
+    """La fábrica histórica de arrendamiento consulta también nombres de documentos."""
+
+    def __init__(self):
+        super().__init__(["DOC-AR-CONTRACT-001"], ["AR-BASE", "AR-PROPERTY", "AR-ECONOMICS"])
+        self.documents = [
+            {"id": "DOC-AR-CONTRACT-001", "name": "Contrato de arrendamiento"},
+            {"id": "ANX-AR-INVENTORY-001", "name": "Inventario y estado del inmueble"},
+            {"id": "ANX-AR-DELIVERY-001", "name": "Acta de entrega"},
+            {"id": "ANX-AR-RETURN-001", "name": "Acta de restitución"},
+        ]
+
+    def evaluate(self, answers):
+        result = super().evaluate(answers)
+        result["documents"] = [item["id"] for item in self.documents]
+        return result
+
+
 def employment_answers() -> dict:
     return {
         "employer": {"type": "legal_person", "legalName": "Soluciones Andinas S.A.S.", "identificationNumber": "901234567-8"},
@@ -138,7 +156,7 @@ class ContractualWaveM330Tests(unittest.TestCase):
 
     def test_lease_m33(self):
         with tempfile.TemporaryDirectory() as tmp:
-            factory = CoAr001DocumentFactoryV251(Path(tmp), ControlledEvaluator(["DOC-AR-CONTRACT-001"], ["AR-BASE", "AR-PROPERTY", "AR-ECONOMICS"]))
+            factory = CoAr001DocumentFactoryV251(Path(tmp), LeaseEvaluator())
             self._assert_primary(factory, lease_answers(), "DOC-AR-CONTRACT-001", "CONTRATO DE ARRENDAMIENTO DE VIVIENDA URBANA", "PRIMERA: OBJETO", 1_800, 25)
             self.assertEqual(factory.VERSION, "2.51")
 
