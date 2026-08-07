@@ -3,8 +3,9 @@ from __future__ import annotations
 """Cierre de QA jurídico para el contrato patrón CO-EM-003 M33.0.
 
 Esta capa finaliza la segunda pasada de revisión: aplica encabezados reales de la
-biblioteca, elimina módulos inactivos, corrige prosa residual y renumera las
-cláusulas después de la composición condicional. No altera versiones históricas.
+biblioteca, elimina módulos inactivos, corrige prosa residual, incorpora la
+comparecencia completa de las partes y renumera las cláusulas después de la
+composición condicional. No altera versiones históricas.
 """
 
 from copy import deepcopy
@@ -80,6 +81,61 @@ def _clean_considerations(section: dict) -> None:
     section["paragraphs"] = cleaned
 
 
+def _format_identifier(value: Any) -> str:
+    text = str(value or "").strip()
+    if not text:
+        return "identificación pendiente de verificación"
+    if text.isdigit() and len(text) >= 7:
+        groups = []
+        while text:
+            groups.append(text[-3:])
+            text = text[:-3]
+        return ".".join(reversed(groups))
+    return text
+
+
+def _party(answers: dict, prefix: str) -> dict[str, str]:
+    identification = _read(answers, f"{prefix}.identification", {})
+    signatory = _read(answers, f"{prefix}.signatory", {})
+    if not isinstance(identification, dict):
+        identification = {}
+    if not isinstance(signatory, dict):
+        signatory = {}
+    return {
+        "type": str(identification.get("type") or "").strip().casefold(),
+        "name": str(identification.get("name") or identification.get("legal_name") or prefix.upper()).strip(),
+        "id": _format_identifier(identification.get("identification_number") or identification.get("nit") or identification.get("id_number")),
+        "domicile": str(identification.get("domicile") or "domicilio pendiente de verificación").strip(),
+        "signatory": str(signatory.get("name") or "representante pendiente de verificación").strip(),
+        "signatory_id": _format_identifier(signatory.get("identification_number") or signatory.get("id_number") or signatory.get("identification")),
+        "capacity": str(signatory.get("capacity") or signatory.get("position") or "representante autorizado").strip(),
+    }
+
+
+def _party_description(party: dict[str, str], role: str) -> str:
+    is_legal = party["type"] in {"legal_person", "persona jurídica", "persona juridica", "persona_juridica", "company", "corporation", "sas", "s.a.s."}
+    if is_legal:
+        return (
+            f"{party['name']}, persona jurídica identificada con NIT {party['id']}, con domicilio en {party['domicile']}, "
+            f"representada para este acto por {party['signatory']}, identificado(a) con documento de identidad No. {party['signatory_id']}, "
+            f"quien actúa en calidad de {party['capacity']} y para efectos del presente contrato se denomina {role}"
+        )
+    return (
+        f"{party['name']}, identificado(a) con documento No. {party['id']}, domiciliado(a) en {party['domicile']}, "
+        f"quien para efectos del presente contrato se denomina {role}"
+    )
+
+
+def _complete_appearance(answers: dict, title: str) -> str:
+    client = _party(answers, "client")
+    contractor = _party(answers, "contractor")
+    return (
+        f"Entre {_party_description(client, 'EL CONTRATANTE')}, y {_party_description(contractor, 'EL CONTRATISTA')}, "
+        f"se celebra el presente {title}. Las partes manifiestan que cuentan con capacidad y facultades suficientes para obligarse, "
+        "que han podido conocer y discutir su contenido y que la naturaleza jurídica del vínculo será determinada por la realidad de su ejecución."
+    )
+
+
 def _renumber_clauses(sections: list[dict]) -> list[dict]:
     number = 0
     for section in sections:
@@ -94,16 +150,42 @@ def _renumber_clauses(sections: list[dict]) -> list[dict]:
     return sections
 
 
+def _enrich_signatures(section: dict, answers: dict) -> None:
+    if section.get("_type") != "signature":
+        return
+    client = _party(answers, "client")
+    contractor = _party(answers, "contractor")
+    section["parties"] = [
+        {
+            "label": "EL CONTRATANTE",
+            "name": client["signatory"],
+            "role": f"{client['capacity']} de {client['name']} · NIT {client['id']}",
+            "id": f"Documento {client['signatory_id']}",
+        },
+        {
+            "label": "EL CONTRATISTA",
+            "name": contractor["signatory"],
+            "role": f"{contractor['capacity']} de {contractor['name']} · NIT {contractor['id']}",
+            "id": f"Documento {contractor['signatory_id']}",
+        },
+    ]
+
+
 def compose_services_m33_final(answers: dict) -> dict[str, Any]:
     composition = deepcopy(compose_services_m33_reviewed(answers))
     nature = _nature(answers)
     ai_used = _bool(_read(answers, "ai.used", False))
     liability_cap = _read(answers, "risk.liability_cap", _read(answers, "risk.cap", None))
     final: list[dict] = []
+    contract_title = str(composition.get("title") or "CONTRATO DE PRESTACIÓN DE SERVICIOS INDEPENDIENTES").upper()
 
     for original in composition.get("sections") or []:
         section = _clean_section(original)
         _clean_considerations(section)
+
+        if str(section.get("heading") or "").upper().startswith("CONTRATO DE PRESTACIÓN DE SERVICIOS"):
+            section["heading"] = contract_title
+            _paragraph(section, _complete_appearance(answers, contract_title))
 
         if _has(section, "INTELIGENCIA ARTIFICIAL"):
             if not ai_used:
@@ -122,6 +204,7 @@ def compose_services_m33_final(answers: dict) -> dict[str, Any]:
         elif nature == "legal_person" and _has(section, "SEGURIDAD SOCIAL DEL CONTRATISTA"):
             _paragraph(section, "EL CONTRATISTA es una persona jurídica. El valor de este contrato no constituye por sí mismo un ingreso base de cotización personal ni se le aplica una regla de cotización diseñada para determinadas personas naturales independientes. EL CONTRATISTA responderá, según cada relación jurídica real, por la afiliación, cotización, nómina, riesgos laborales y demás obligaciones respecto de sus trabajadores, contratistas y subcontratistas; EL CONTRATANTE conservará los deberes de verificación y coordinación que legalmente le correspondan frente al personal que participe en la ejecución.")
 
+        _enrich_signatures(section, answers)
         final.append(section)
 
     composition["sections"] = _renumber_clauses(final)
