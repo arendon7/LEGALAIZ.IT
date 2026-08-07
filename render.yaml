@@ -25,6 +25,8 @@ services:
         value: "true"
       - key: LEGAL_DATABASE_BACKEND
         value: sqlite
+      - key: LEGAL_GITHUB_LITE_ASSETS
+        value: "true"
       - key: LEGAL_RUNTIME_DIR
         value: /tmp/legalaiz-runtime
       - key: LEGAL_HOST
