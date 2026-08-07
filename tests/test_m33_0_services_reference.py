@@ -15,7 +15,7 @@ if str(RUNTIME_MODULES) not in sys.path:
     sys.path.insert(0, str(RUNTIME_MODULES))
 
 from co_em_003_document_factory_v245 import CoEm003DocumentFactoryV245
-from document_standard_v33 import audit_docx_legal_standard
+from m33_document_presentation import APPROVAL_CANDIDATE_MODE, audit_m33_presentation
 
 
 class ControlledEvaluator:
@@ -88,9 +88,10 @@ class ServicesReferenceM330Tests(unittest.TestCase):
             factory = CoEm003DocumentFactoryV245(Path(tmp), ControlledEvaluator(["DOC-EM-CONTRACT-001"], ["EM-BASE-001", "EM-SCOPE-001", "EM-FEES-001"]))
             manifest = factory.generate(services_answers(), actor={"id": "qa-m33", "role": "qa"})
             contract, primary = _primary_path(factory, manifest, "DOC-EM-CONTRACT-001")
-            report = audit_docx_legal_standard(contract)
+            report = audit_m33_presentation(contract, APPROVAL_CANDIDATE_MODE)
             self.assertTrue(report["valid"], report["findings"])
             self.assertEqual(primary.get("document_standard"), "M33.0")
+            self.assertEqual(primary.get("presentation_mode"), APPROVAL_CANDIDATE_MODE)
             self.assertEqual(factory.VERSION, "2.45")
 
             document = Document(contract)
@@ -100,9 +101,13 @@ class ServicesReferenceM330Tests(unittest.TestCase):
             self.assertIn("CONTRATO DE PRESTACIÓN DE SERVICIOS PROFESIONALES INDEPENDIENTES", text)
             self.assertIn("PRIMERA: OBJETO", text)
             self.assertIn("ANEXO NO. 1", text.upper())
-            self.assertIn("CONTROL DE USO, FUENTES Y REVISIÓN", text)
+            self.assertNotIn("CONTROL DE USO, FUENTES Y REVISIÓN", text)
+            self.assertNotIn("BORRADOR CONTROLADO", text)
+            self.assertNotIn("NO FIRMAR", text)
             self.assertNotIn("________", text)
-            self.assertGreater(len(text.split()), 3_000)
+            self.assertEqual(document.core_properties.subject, "CO-EM-003")
+            self.assertGreaterEqual(len((primary.get("review_evidence") or {}).get("legal_sources") or []), 6)
+            self.assertGreater(len(text.split()), 2_700)
             self.assertGreaterEqual(len(clause_headings), 40)
 
             with ZipFile(contract) as archive:
