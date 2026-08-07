@@ -12,6 +12,7 @@ from legalai_platform.document_quality import assert_docx_quality
 
 class CoEm003DocumentFactoryV244(CoEm003DocumentFactoryV243):
     VERSION = "2.44"
+    DOCUMENT_STANDARD = "M33.0"
 
     def __init__(self, root, evaluator):
         super().__init__(root, evaluator)
@@ -115,7 +116,7 @@ class CoEm003DocumentFactoryV244(CoEm003DocumentFactoryV243):
 
     @classmethod
     def _normalize_compound_fields(cls, answers: dict):
-        """Adapta estructuras canónicas modernas al contrato profundo v2.43."""
+        """Adapta estructuras canónicas modernas al contrato profundo v2.43 y M33."""
         service = answers.get("service")
         if isinstance(service, dict):
             service["object"] = cls._strip_leading_infinitive(service.get("object"), "prestar")
@@ -210,7 +211,7 @@ class CoEm003DocumentFactoryV244(CoEm003DocumentFactoryV243):
 
     @staticmethod
     def _remove_forced_signature_break(path: Path) -> bool:
-        """Retira solo el salto manual inmediatamente anterior a FIRMAS."""
+        """Compatibilidad heredada para documentos secundarios generados por v2.43."""
         doc = Document(path)
         changed = False
         paragraphs = list(doc.paragraphs)
@@ -231,6 +232,31 @@ class CoEm003DocumentFactoryV244(CoEm003DocumentFactoryV243):
             doc.save(path)
         return changed
 
+    @staticmethod
+    def _render_m33_primary(normalized: dict, target: Path):
+        """Reemplaza únicamente el contrato principal con composición jurídica M33."""
+        from docx_builder import build_docx
+        from m33_legal_composition import compose_services_m33
+
+        composition = compose_services_m33(normalized)
+        client = normalized.get("client", {}).get("identification", {})
+        contractor = normalized.get("contractor", {}).get("identification", {})
+        build_docx(
+            target,
+            composition["title"],
+            composition["subtitle"],
+            [
+                ("Producto", "CO-EM-003"),
+                ("Contratante", str(client.get("name") or "Parte contratante")),
+                ("Contratista", str(contractor.get("name") or "Parte contratista")),
+                ("Estándar documental", "M33.0"),
+                ("Estado", "Candidato sujeto a revisión jurídica y QA"),
+            ],
+            composition["sections"],
+            product_code="CO-EM-003",
+            enforce_legal_standard=True,
+        )
+
     def render_documents(self, answers, target_folder):
         normalized = self._normalize_answers(answers)
         evaluation, generated, hashes = super().render_documents(normalized, target_folder)
@@ -238,6 +264,11 @@ class CoEm003DocumentFactoryV244(CoEm003DocumentFactoryV243):
         for item in generated:
             target = target_folder / item["filename"]
             if item.get("id") == "DOC-EM-CONTRACT-001":
+                # M33.0 conecta la biblioteca contractual madura con el renderer
+                # transversal; el resto del paquete v2.43 sigue intacto en esta oleada.
+                self._render_m33_primary(normalized, target)
+                item["document_standard"] = self.DOCUMENT_STANDARD
+            else:
                 self._remove_forced_signature_break(target)
             report = assert_docx_quality(target, expected_product="CO-EM-003")
             item["quality"] = {
