@@ -13,6 +13,7 @@ from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
+from document_standard_v33 import audit_docx_legal_standard
 from docx_builder import build_docx
 
 
@@ -65,6 +66,27 @@ def review_evidence_from_sections(sections: list[dict[str, Any]]) -> dict[str, A
     }
 
 
+def audit_m33_presentation(path: str | Path, presentation_mode: str) -> dict[str, Any]:
+    """Aplica el mismo estándar técnico, contextualizando solo el banner de revisión.
+
+    `DRAFT-BANNER-MISSING` continúa siendo error en la copia `review`. En el
+    `approval_candidate` la ausencia del banner es intencional y no se convierte en
+    una excepción general: todos los demás hallazgos M33.0 conservan su severidad.
+    """
+    mode = str(presentation_mode or REVIEW_MODE).strip().casefold()
+    if mode not in VALID_PRESENTATIONS:
+        raise ValueError(f"Modo de presentación M33.0 inválido: {presentation_mode}.")
+    base = deepcopy(audit_docx_legal_standard(Path(path)))
+    base["presentation_mode"] = mode
+    if mode == APPROVAL_CANDIDATE_MODE:
+        base["findings"] = [
+            item for item in base.get("findings") or []
+            if item.get("code") != "DRAFT-BANNER-MISSING"
+        ]
+        base["valid"] = not any(item.get("severity") == "error" for item in base["findings"])
+    return base
+
+
 def build_m33_presentation(
     *,
     path: str | Path,
@@ -100,6 +122,9 @@ def build_m33_presentation(
         append_control = False
         evidence = review_evidence_from_sections(sections)
 
+    # La validación semántica previa siempre permanece activa. El auditor OOXML
+    # final se ejecuta abajo con conocimiento del modo de presentación, por lo que
+    # no se desactiva ningún control salvo el banner cuando es intencionalmente limpio.
     build_docx(
         target,
         title,
@@ -109,9 +134,20 @@ def build_m33_presentation(
         footer=footer,
         append_default_control=append_control,
         document_status=status,
-        enforce_legal_standard=True,
+        enforce_legal_standard=(mode == REVIEW_MODE),
         product_code=product_code,
     )
+    technical = audit_m33_presentation(target, mode)
+    if not technical["valid"]:
+        try:
+            target.unlink()
+        except OSError:
+            pass
+        raise ValueError(
+            f"DOCX bloqueado por estándar jurídico {technical['standard']} "
+            f"({mode}): {technical['findings']}"
+        )
+    evidence["technical_preflight"] = technical
     return evidence
 
 
@@ -119,6 +155,7 @@ __all__ = [
     "APPROVAL_CANDIDATE_MODE",
     "REVIEW_MODE",
     "VALID_PRESENTATIONS",
+    "audit_m33_presentation",
     "build_m33_presentation",
     "review_evidence_from_sections",
     "split_internal_review_sections",
