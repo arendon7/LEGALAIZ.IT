@@ -13,6 +13,8 @@ from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
+from docx import Document
+
 from document_standard_v33 import audit_docx_legal_standard
 from docx_builder import build_docx
 
@@ -61,7 +63,8 @@ def review_evidence_from_sections(sections: list[dict[str, Any]]) -> dict[str, A
         "review_notes": notes,
         "release_rule": (
             "El DOCX approval_candidate debe aprobarse y liberarse sin transformación posterior; "
-            "Jurídico y QA deben aprobar el SHA-256 exacto del archivo limpio."
+            "el SHA-256 aprobado es el mismo que posteriormente puede liberarse y Jurídico y QA "
+            "deben decidir sobre ese archivo limpio exacto."
         ),
     }
 
@@ -85,6 +88,18 @@ def audit_m33_presentation(path: str | Path, presentation_mode: str) -> dict[str
         ]
         base["valid"] = not any(item.get("severity") == "error" for item in base["findings"])
     return base
+
+
+def _stamp_internal_identity(path: Path, product_code: str, presentation_mode: str) -> None:
+    """Conserva el identificador anti-cruce en metadatos OOXML, no en el instrumento visible.
+
+    El sello se incorpora antes de calcular cualquier hash de aprobación. Es parte
+    del archivo canónico y no se modifica durante aprobación o liberación.
+    """
+    document = Document(path)
+    document.core_properties.subject = str(product_code or "").strip()
+    document.core_properties.comments = f"LegalAIZ.it · M33.0 · {presentation_mode}"
+    document.save(path)
 
 
 def build_m33_presentation(
@@ -137,6 +152,7 @@ def build_m33_presentation(
         enforce_legal_standard=(mode == REVIEW_MODE),
         product_code=product_code,
     )
+    _stamp_internal_identity(target, product_code, mode)
     technical = audit_m33_presentation(target, mode)
     if not technical["valid"]:
         try:
