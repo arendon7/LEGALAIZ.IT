@@ -43,21 +43,33 @@ class ControlledEvaluator:
 
 
 class LeaseEvaluator(ControlledEvaluator):
-    """La fábrica histórica de arrendamiento consulta también nombres de documentos."""
+    """Fixture mínimo compatible con la interfaz histórica de CO-AR-001."""
 
     def __init__(self):
-        super().__init__(["DOC-AR-CONTRACT-001"], ["AR-BASE", "AR-PROPERTY", "AR-ECONOMICS"])
+        # La fábrica v2.49 consulta metadatos de `evaluator.documents` para nombrar
+        # documentos, pero esta prueba M33.0 valida únicamente el contrato principal.
+        # Los anexos históricos permanecen disponibles en la fábrica y se migran en
+        # una oleada separada; no deben mezclarse en este control del contrato patrón.
         self.documents = [
             {"id": "DOC-AR-CONTRACT-001", "name": "Contrato de arrendamiento"},
-            {"id": "ANX-AR-INVENTORY-001", "name": "Inventario y estado del inmueble"},
-            {"id": "ANX-AR-DELIVERY-001", "name": "Acta de entrega"},
-            {"id": "ANX-AR-RETURN-001", "name": "Acta de restitución"},
         ]
+        self.blocks = ["AR-BASE", "AR-PROPERTY", "AR-ECONOMICS"]
 
     def evaluate(self, answers):
-        result = super().evaluate(answers)
-        result["documents"] = [item["id"] for item in self.documents]
-        return result
+        return {
+            "blocked": False,
+            "missing_fields": [],
+            "documents": ["DOC-AR-CONTRACT-001"],
+            "readiness": "ready_for_human_review",
+            "status": "ready_for_human_review",
+            "professional_review_required": True,
+            "professional_reviews": ["Revisión jurídica sustantiva", "QA visual humano"],
+            "review_requirements": ["Revisión jurídica sustantiva", "QA visual humano"],
+            "findings": [],
+            "blockers": [],
+            "warnings": [],
+            "blocks": self.blocks,
+        }
 
 
 def employment_answers() -> dict:
