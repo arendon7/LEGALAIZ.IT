@@ -38,6 +38,43 @@ _SIGNATURE_KINDS = {
 }
 
 
+def _affirmative(value: Any) -> bool:
+    return str(value or "").strip().casefold() in {"sí", "si", "yes", "true", "1"}
+
+
+def _normalize_legacy_answers(code: str, answers: dict) -> dict:
+    """Traduce aliases de UX al vocabulario que consume el generador histórico.
+
+    No modifica el diccionario original ni altera reglas o cálculos. El objetivo es
+    que la capa M33.0 pueda recibir tanto los valores canónicos vigentes como nombres
+    de UX equivalentes sin perder documentos condicionales en la composición.
+    """
+    normalized = deepcopy(answers)
+    if code != "CO-CD-004":
+        return normalized
+
+    if "promissory_note_requested" not in normalized and "promissory_note_required" in normalized:
+        normalized["promissory_note_requested"] = normalized.get("promissory_note_required")
+    if "blanks_present" not in normalized and "promissory_note_blank_spaces" in normalized:
+        normalized["blanks_present"] = normalized.get("promissory_note_blank_spaces")
+
+    stage = str(normalized.get("package_stage") or "").strip()
+    stage_aliases = {
+        "Enviar un cobro inicial": "Cobro inicial",
+        "Negociar una solución": "Negociación",
+        "Registrar o seguir pagos": "Seguimiento de pagos",
+        "Cerrar la obligación": "Cierre",
+    }
+    if stage == "Acordar un plan de pago":
+        normalized["package_stage"] = (
+            "Formalización" if _affirmative(normalized.get("promissory_note_requested")) else "Negociación"
+        )
+    elif stage in stage_aliases:
+        normalized["package_stage"] = stage_aliases[stage]
+
+    return normalized
+
+
 def _clean_text(value: Any) -> Any:
     """Normaliza valores heredados sin alterar valores jurídicamente significativos.
 
@@ -196,7 +233,8 @@ def _finalize_spec(code: str, answers: dict, spec: dict) -> dict:
 
 
 def document_specs_m33_runtime(case_id, code, answers, result, product, generated_at, question_rows):
-    specs = document_specs_m33(case_id, code, answers, result, product, generated_at, question_rows)
+    legacy_answers = _normalize_legacy_answers(code, answers)
+    specs = document_specs_m33(case_id, code, legacy_answers, result, product, generated_at, question_rows)
     if code not in M33_PROCEDURAL_CODES or result.get("risk") == "red":
         return specs
     if code == "CO-LA-001" and not any(spec.get("kind") == "labor_evidence_index" for spec in specs):
