@@ -3,12 +3,11 @@ from __future__ import annotations
 """Activación acotada de la Fábrica Documental M33.0.
 
 La primera oleada sustituye únicamente las fábricas principales de cuatro contratos
-mediante nuevas versiones. La segunda oleada conserva el motor genérico histórico
-`expanded_documents.document_specs`, pero reemplaza su símbolo activo por un wrapper
-M33.0 que reutiliza cálculos, condiciones y bloqueos y solo recompone las salidas.
+mediante nuevas versiones. Las oleadas segunda y tercera conservan los motores
+históricos y utilizan un único compositor transversal M33.0 para presentar sus
+salidas, sin cambiar la API consumida por los handlers M32.x.
 
-Los símbolos/API M32.x permanecen disponibles para no romper handlers e integraciones.
-Las clases y funciones históricas siguen importables para regresión y comparación.
+Los símbolos/API históricos permanecen disponibles para comparación y regresión.
 """
 
 from types import ModuleType
@@ -22,7 +21,7 @@ from co_em_004_document_factory_v248 import CoEm004DocumentFactoryV248
 from co_em_004_governance_v248 import CoEm004GovernanceV248
 from co_la_002_document_factory_v240 import CoLa002DocumentFactoryV240
 from co_la_002_governance_v240 import CoLa002GovernanceV240
-from m33_procedural_runtime import document_specs_m33_runtime
+from m33_wave3_runtime import document_specs_m33_all
 
 
 _ACTIVE = False
@@ -53,7 +52,7 @@ def _build(registry: ModuleType) -> dict[str, Any]:
         "COAR001_GOVERNANCE_V251": lease_governance,
         "COLA002_FACTORY_V240": employment_factory,
         "COLA002_GOVERNANCE_M33": employment_governance,
-        "DOCUMENT_SPECS_M33": document_specs_m33_runtime,
+        "DOCUMENT_SPECS_M33": document_specs_m33_all,
 
         # Alias de compatibilidad consumidos por endpoints M32.x.
         "COEM003_FACTORY_V244": services_factory,
@@ -72,23 +71,23 @@ def activate_m33_contract_factories(
     application_services: ModuleType | None = None,
     target_namespace: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Activa una única vez las capas M33.0 y propaga alias compatibles.
+    """Activa una única vez las tres oleadas M33.0 y propaga alias compatibles.
 
-    Además de las cuatro fábricas contractuales, rebindea `core.document_specs` al
-    wrapper procedimental M33.0. El wrapper devuelve exactamente la salida histórica
-    para productos fuera de la segunda oleada y para expedientes rojos; el cambio es
-    incremental y no altera motores sustantivos ni reglas de riesgo.
+    Las fábricas contractuales se versionan de forma independiente. Para los demás
+    productos se rebindea ``document_specs`` al único agregador M33.0, que enruta
+    cada código a su compositor correspondiente y conserva el comportamiento
+    histórico para productos externos y compuertas que no deben recomponerse.
     """
     global _ACTIVE, _CACHE
     if not _ACTIVE:
         _CACHE = _build(registry)
         _ACTIVE = True
 
-    registry.core.document_specs = document_specs_m33_runtime
+    registry.core.document_specs = document_specs_m33_all
     if application_services is not None:
-        setattr(application_services, "document_specs", document_specs_m33_runtime)
+        setattr(application_services, "document_specs", document_specs_m33_all)
     if target_namespace is not None:
-        target_namespace["document_specs"] = document_specs_m33_runtime
+        target_namespace["document_specs"] = document_specs_m33_all
 
     for name, value in _CACHE.items():
         setattr(registry, name, value)
