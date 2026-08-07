@@ -111,7 +111,7 @@ jobs:
 
   visual-docx:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -123,16 +123,22 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends libreoffice-writer poppler-utils fonts-dejavu-core fonts-liberation
-      - name: Generar muestras con fábricas activas
-        run: python scripts/generate_m32_1_visual_samples.py --output "$RUNNER_TEMP/m32-1-visual/samples"
+      - name: Generar muestras históricas y contratos M33.0
+        env:
+          LEGAL_RUNTIME_DIR: ${{ runner.temp }}/legalaiz-visual-runtime
+        run: |
+          mkdir -p "$RUNNER_TEMP/document-visual/samples"
+          python scripts/generate_m32_1_visual_samples.py --output "$RUNNER_TEMP/document-visual/samples"
+          python scripts/generate_m33_0_contractual_samples.py --output "$RUNNER_TEMP/document-visual/samples"
+          test "$(find "$RUNNER_TEMP/document-visual/samples" -maxdepth 1 -name '*_M33_0.docx' -type f | wc -l | tr -d ' ')" -eq 4
       - name: Convertir DOCX a PDF y rasterizar todas las páginas
         env:
           HOME: ${{ runner.temp }}/lo-home
         run: |
           set -euo pipefail
-          SAMPLES="$RUNNER_TEMP/m32-1-visual/samples"
-          RENDERED="$RUNNER_TEMP/m32-1-visual/rendered"
-          PROFILE="$RUNNER_TEMP/m32-1-visual/lo-profile"
+          SAMPLES="$RUNNER_TEMP/document-visual/samples"
+          RENDERED="$RUNNER_TEMP/document-visual/rendered"
+          PROFILE="$RUNNER_TEMP/document-visual/lo-profile"
           mkdir -p "$HOME" "$RENDERED" "$PROFILE"
           for docx in "$SAMPLES"/*.docx; do
             stem="$(basename "${docx%.docx}")"
@@ -149,12 +155,13 @@ jobs:
             test "$rendered_pages" -eq "$pages"
             printf '%s\t%s\n' "$stem" "$pages" >> "$RENDERED/page-counts.tsv"
           done
-          test "$(find "$RENDERED" -name 'page-*.png' -type f | wc -l)" -ge 2
+          test "$(find "$RENDERED" -name 'page-*.png' -type f | wc -l)" -ge 6
+          test "$(grep -c '_M33_0' "$RENDERED/page-counts.tsv")" -eq 4
           cat "$RENDERED/page-counts.tsv"
       - name: Conservar evidencia renderizada
         uses: actions/upload-artifact@v4
         with:
-          name: m32-1-evidencia-visual-docx
-          path: ${{ runner.temp }}/m32-1-visual
+          name: m33-0-evidencia-visual-docx
+          path: ${{ runner.temp }}/document-visual
           if-no-files-found: error
           retention-days: 30
