@@ -4,9 +4,9 @@ from pathlib import Path
 
 from co_em_003_document_factory_v244 import CoEm003DocumentFactoryV244
 from document_standard_v33 import audit_docx_legal_standard
-from docx_builder import build_docx
 from legalai_platform.document_quality import assert_docx_quality
 from legalai_platform.document_visual_quality import assert_visual_structure
+from m33_document_presentation import APPROVAL_CANDIDATE_MODE, build_m33_presentation
 from m33_services_legal_finalize import compose_services_m33_final
 
 
@@ -22,7 +22,7 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
     @staticmethod
-    def _render_m33_primary(normalized: dict, target: Path):
+    def _render_m33_primary(normalized: dict, target: Path) -> dict:
         # Compatibilidad del producto CO-EM-003: la familia vigente es profesional
         # por defecto, pero la entrevista puede desactivarlo expresamente.
         service = normalized.setdefault("service", {})
@@ -31,20 +31,20 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
         composition = compose_services_m33_final(normalized)
         client = normalized.get("client", {}).get("identification", {})
         contractor = normalized.get("contractor", {}).get("identification", {})
-        build_docx(
-            target,
-            composition["title"],
-            composition["subtitle"],
-            [
+        return build_m33_presentation(
+            path=target,
+            title=composition["title"],
+            subtitle=composition.get("subtitle") or "",
+            metadata=[
                 ("Producto", "CO-EM-003"),
                 ("Contratante", str(client.get("name") or "Parte contratante")),
                 ("Contratista", str(contractor.get("name") or "Parte contratista")),
                 ("Estándar documental", "M33.0"),
                 ("Estado", "Candidato sujeto a revisión jurídica y QA"),
             ],
-            composition["sections"],
+            sections=composition["sections"],
             product_code="CO-EM-003",
-            enforce_legal_standard=True,
+            presentation_mode=APPROVAL_CANDIDATE_MODE,
         )
 
     def render_documents(self, answers, target_folder):
@@ -55,7 +55,7 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
         if not primary:
             raise RuntimeError("CO-EM-003 M33.0 no encontró el contrato principal generado.")
         target = target_folder / primary["filename"]
-        self._render_m33_primary(normalized, target)
+        review_evidence = self._render_m33_primary(normalized, target)
 
         quality = assert_docx_quality(target, expected_product="CO-EM-003")
         visual = assert_visual_structure(target, expected_product="CO-EM-003")
@@ -74,6 +74,10 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
             "requires_human_visual_review": True,
         }
         primary["document_standard"] = self.DOCUMENT_STANDARD
+        primary["presentation_mode"] = APPROVAL_CANDIDATE_MODE
+        primary["review_evidence"] = review_evidence
+        primary["approval_state"] = {"legal": "pending", "qa": "pending"}
+        primary["release_rule"] = "Liberar únicamente el mismo SHA-256 aprobado por Jurídico y QA."
         primary["m33_preflight"] = standard
         hashes[primary["filename"]] = quality["sha256"]
         return evaluation, generated, hashes
