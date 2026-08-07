@@ -17,6 +17,7 @@ from m33_procedural_composition import M33_PROCEDURAL_CODES, document_specs_m33
 
 _SEPARATOR_RE = re.compile(r"(?:_{4,}|={5,}|-{6,})")
 _PLACEHOLDER_RE = re.compile(r"\[[A-ZÁÉÍÓÚÜÑ0-9][A-ZÁÉÍÓÚÜÑ0-9 _./:-]{1,80}\]")
+_INLINE_SENTINEL_RE = re.compile(r"\b(?:none|null|undefined|n/a|nan)\b", re.IGNORECASE)
 _SENTINELS = {"none", "null", "undefined", "n/a", "na", "nan"}
 
 _SIGNATURE_KINDS = {
@@ -59,6 +60,7 @@ def _clean_text(value: Any) -> Any:
         return "Dato pendiente de verificación"
     cleaned = _SEPARATOR_RE.sub("", cleaned)
     cleaned = _PLACEHOLDER_RE.sub("Dato pendiente de verificación", cleaned)
+    cleaned = _INLINE_SENTINEL_RE.sub("Dato pendiente de verificación", cleaned)
     cleaned = re.sub(r"[ \t]+\n", "\n", cleaned)
     cleaned = re.sub(r"\n{3,}", "\n\n", cleaned)
     return cleaned.strip()
