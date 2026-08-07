@@ -1,16 +1,31 @@
 from __future__ import annotations
 
+import os
+
+
+def _flag(name: str, default: bool = False) -> bool:
+    raw = str(os.environ.get(name, "")).strip().lower()
+    if not raw:
+        return default
+    return raw in {"1", "true", "yes", "si", "sí", "on"}
+
+
 PROJECT_NAME = "LegalAIZ.it"
-MILESTONE = "M31.8"
-VERSION = "5.0.7"
-BUILD_ID = "M31-8-DEMO-EXPEDIENTES-REALES-2026-08-04"
-RELEASE_ID = "M31-8-DEMO-EXPEDIENTES-REALES-5.0.7-2026-08-04"
-RELEASE_NAME = "M31.8 — Demo integral por expediente y liberación documental"
-RELEASE_DATE = "2026-08-04"
-BASE_RELEASE = "M31.7 v5.0.6"
-RELEASE_CHANNEL = "controlled_demo_case_workflows"
-PRODUCTION_AUTHORIZED = False
-PUBLIC_PRODUCTION_READY = False
+MILESTONE = "M33.0"
+VERSION = "5.1.1"
+BUILD_ID = "M33-0-INTEGRACION-DEMO-PUBLICA-M32-9-2026-08-07"
+RELEASE_ID = "M33-0-DEMO-PUBLICA-INTEGRADA-5.1.1-2026-08-07"
+RELEASE_NAME = "M33.0 — M32.9 con producción demostrativa pública integral"
+RELEASE_DATE = "2026-08-07"
+BASE_RELEASE = "M32.9 + M31.9 v5.1.0 aprobada"
+PUBLIC_DEMO_AVAILABLE = True
+PUBLIC_DEMO_MODE = _flag("LEGAL_PUBLIC_DEMO_MODE", False)
+RELEASE_CHANNEL = "public_demo_final" if PUBLIC_DEMO_MODE else "controlled_demo_case_workflows"
+PRODUCTION_AUTHORIZED = PUBLIC_DEMO_MODE
+PUBLIC_PRODUCTION_READY = PUBLIC_DEMO_MODE
+REAL_PRODUCTION_AUTHORIZED = False
+REAL_PAYMENTS_AUTHORIZED = False
+SYNTHETIC_DATA_ONLY = True
 POSTGRES_ADAPTER_IMPLEMENTED = True
 POSTGRES_EXTERNAL_CERTIFIED = False
 POSTGRES_BACKUP_RESTORE_CERTIFIED = False
