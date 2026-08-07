@@ -1,0 +1,18 @@
+{
+  "phase": "M33.0",
+  "version": "5.1.1",
+  "base": ["M32.9", "M31.9 v5.1.0 aprobada"],
+  "public_demo_available": true,
+  "public_demo_mode_opt_in": true,
+  "all_demo_features_enabled": true,
+  "auto_bootstrap_cases": 11,
+  "auto_bootstrap_documents": 76,
+  "public_products": 11,
+  "demo_accounts": 5,
+  "payments": "sandbox_only",
+  "synthetic_data_only": true,
+  "real_production_authorized": false,
+  "real_payments_authorized": false,
+  "production_authorized_when_public_demo_mode": true,
+  "release_channel": "public_demo_final"
+}

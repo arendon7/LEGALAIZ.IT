@@ -17,7 +17,7 @@ RUN useradd --create-home --uid 10001 legalaiz \
 USER legalaiz
 EXPOSE 8765
 HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
-  CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/api/live', timeout=3)" || exit 1
+  CMD python -c "import os,urllib.request; p=os.environ.get('LEGAL_PORT') or os.environ.get('PORT') or '8765'; urllib.request.urlopen('http://127.0.0.1:'+p+'/api/live', timeout=3)" || exit 1
 CMD ["python", "run.py", "--lan", "--no-browser"]
 
 STOPSIGNAL SIGTERM

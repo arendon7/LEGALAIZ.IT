@@ -1,0 +1,30 @@
+name: legalaizit-public-demo
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    command: ["python", "run.py", "--lan", "--no-browser"]
+    environment:
+      LEGAL_PROFILE: local
+      LEGAL_APP_ENV: demo_public
+      LEGAL_PUBLIC_DEMO_MODE: "true"
+      LEGAL_ALLOW_DEMO_ACCOUNTS: "true"
+      LEGAL_DEMO_PASSWORD: ${LEGAL_DEMO_PASSWORD:-LegalAIZDemo2026!}
+      LEGAL_REQUIRE_MFA_ROLES: ""
+      LEGAL_REQUIRE_ORIGIN_CHECK: "false"
+      LEGAL_SECURE_COOKIES: "false"
+      LEGAL_DATABASE_BACKEND: sqlite
+      LEGAL_RUNTIME_DIR: /app/runtime
+      LEGAL_HOST: 0.0.0.0
+      LEGAL_PORT: 8765
+    ports:
+      - "8765:8765"
+    volumes:
+      - legalaizit_demo_runtime:/app/runtime
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+volumes:
+  legalaizit_demo_runtime:
