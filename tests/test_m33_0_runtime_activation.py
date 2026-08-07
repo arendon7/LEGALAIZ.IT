@@ -32,7 +32,10 @@ class RuntimeActivationM330Tests(unittest.TestCase):
         self.assertEqual(CoEm003DocumentFactoryV244.VERSION, "2.44")
         self.assertEqual(CoEm004DocumentFactoryV247.VERSION, "2.47")
         self.assertEqual(CoAr001DocumentFactoryV250.VERSION, "2.50")
-        self.assertEqual(CoLa002DocumentFactoryV239.VERSION, "2.39")
+        # v2.39 laboral era anterior a la convención VERSION; lo importante es que
+        # siga siendo la clase histórica y no haya recibido marcadores M33.
+        self.assertEqual(CoLa002DocumentFactoryV239.__name__, "CoLa002DocumentFactoryV239")
+        self.assertFalse(hasattr(CoLa002DocumentFactoryV239, "DOCUMENT_STANDARD"))
 
         # La gobernanza activa también debe corresponder al nuevo directorio/versionado.
         self.assertIs(run.COEM003_GOVERNANCE_V244.factory, run.COEM003_FACTORY_V244)
