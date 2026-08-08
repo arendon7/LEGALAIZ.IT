@@ -12,13 +12,8 @@ if str(ROOT) not in sys.path:
 
 from docx_builder import build_docx
 from m33_wave3_runtime import document_specs_m33_all
-from tests.test_m33_0_procedural_wave import (
-    PRODUCTS,
-    consumer_fixture,
-    debt_fixture,
-    habeas_fixture,
-    labor_fixture,
-)
+from tests.test_m33_0_consumer_legal_finalize import MECHANISMS, consumer_route_fixture
+from tests.test_m33_0_procedural_wave import PRODUCTS, debt_fixture, habeas_fixture, labor_fixture
 
 SELECTIONS = {
     "CO-LA-001": ("calculation", "claim"),
@@ -31,14 +26,17 @@ SELECTIONS = {
         "habeas_evidence_matrix",
         "habeas_deadline_calendar",
     ),
-    "CO-CD-003": ("warranty_claim",),
     "CO-CD-004": ("payment_agreement", "promissory_note"),
 }
 
+CONSUMER_COMMON = (
+    "consumer_mechanism_diagnosis",
+    "consumer_evidence_matrix",
+    "consumer_deadline_calendar",
+)
+
 
 def _specs(code: str, answers: dict, result: dict) -> list[dict]:
-    # El QA visual debe recorrer el mismo agregador activado por la aplicación.
-    # Esto evita validar una composición histórica mientras el runtime sirve otra.
     return document_specs_m33_all(
         "CASE-M33-VISUAL",
         code,
@@ -51,8 +49,6 @@ def _specs(code: str, answers: dict, result: dict) -> list[dict]:
 
 
 def _visible_metadata(code: str, spec: dict) -> list[tuple[str, str]]:
-    # Cuando la gobernanza ya fue externalizada, el ejemplar externo no debe
-    # exhibir códigos de producto, versiones del estándar ni estados de QA.
     if spec.get("internal_controls_externalized"):
         return []
     return [
@@ -62,6 +58,30 @@ def _visible_metadata(code: str, spec: dict) -> list[tuple[str, str]]:
     ]
 
 
+def _write_sample(output: Path, code: str, kind: str, spec: dict, records: list[dict]) -> None:
+    target = output / f"{code}_{kind}_M33_0.docx"
+    build_docx(
+        target,
+        spec["title"],
+        spec.get("subtitle", ""),
+        _visible_metadata(code, spec),
+        spec["sections"],
+        product_code=code,
+        enforce_legal_standard=True,
+        append_default_control=not bool(spec.get("internal_controls_externalized")),
+    )
+    records.append({
+        "product_code": code,
+        "kind": kind,
+        "sample": target.name,
+        "document_standard": spec.get("document_standard"),
+        "released": False,
+        "legal_approval": "pending",
+        "qa_approval": "pending",
+        "internal_controls_externalized": bool(spec.get("internal_controls_externalized")),
+    })
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Genera muestras representativas de la segunda oleada M33.0.")
     parser.add_argument("--output", required=True, type=Path)
@@ -69,41 +89,35 @@ def main() -> int:
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
 
+    records: list[dict] = []
     fixtures = {
         "CO-LA-001": labor_fixture(),
         "CO-CD-001": habeas_fixture(),
-        "CO-CD-003": consumer_fixture("warranty_claim"),
         "CO-CD-004": debt_fixture(),
     }
-    records = []
     for code, (answers, result) in fixtures.items():
-        specs = _specs(code, answers, result)
-        by_kind = {spec["kind"]: spec for spec in specs}
+        by_kind = {spec["kind"]: spec for spec in _specs(code, answers, result)}
         for kind in SELECTIONS[code]:
             if kind not in by_kind:
                 raise RuntimeError(f"{code}: no se generó la muestra requerida {kind}.")
-            spec = by_kind[kind]
-            target = output / f"{code}_{kind}_M33_0.docx"
-            build_docx(
-                target,
-                spec["title"],
-                spec.get("subtitle", ""),
-                _visible_metadata(code, spec),
-                spec["sections"],
-                product_code=code,
-                enforce_legal_standard=True,
-                append_default_control=not bool(spec.get("internal_controls_externalized")),
-            )
-            records.append({
-                "product_code": code,
-                "kind": kind,
-                "sample": target.name,
-                "document_standard": spec.get("document_standard"),
-                "released": False,
-                "legal_approval": "pending",
-                "qa_approval": "pending",
-                "internal_controls_externalized": bool(spec.get("internal_controls_externalized")),
-            })
+            _write_sample(output, code, kind, by_kind[kind], records)
+
+    # CO-CD-003 se valida como cinco expedientes alternativos. Los documentos
+    # comunes se toman una sola vez del caso de garantía; cada comunicación
+    # sustantiva se genera desde un expediente compatible con su propio mecanismo.
+    common_written = False
+    for mechanism_kind in MECHANISMS:
+        answers, result = consumer_route_fixture(mechanism_kind)
+        by_kind = {spec["kind"]: spec for spec in _specs("CO-CD-003", answers, result)}
+        if mechanism_kind not in by_kind:
+            raise RuntimeError(f"CO-CD-003: no se generó la ruta {mechanism_kind}.")
+        if not common_written:
+            for kind in CONSUMER_COMMON:
+                if kind not in by_kind:
+                    raise RuntimeError(f"CO-CD-003: falta documento común {kind}.")
+                _write_sample(output, "CO-CD-003", kind, by_kind[kind], records)
+            common_written = True
+        _write_sample(output, "CO-CD-003", mechanism_kind, by_kind[mechanism_kind], records)
 
     manifest = output / "m33-procedural-samples.json"
     manifest.write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding="utf-8")
