@@ -141,9 +141,9 @@ jobs:
           python scripts/generate_m33_0_procedural_samples.py --output "$ROOT/procedural"
           python scripts/generate_m33_0_wave3_samples.py --output "$ROOT/wave3"
           test "$(find "$ROOT/contracts" -maxdepth 1 -name '*_M33_0.docx' -type f | wc -l | tr -d ' ')" -eq 4
-          test "$(find "$ROOT/procedural" -maxdepth 1 -name '*_M33_0.docx' -type f | wc -l | tr -d ' ')" -eq 19
+          test "$(find "$ROOT/procedural" -maxdepth 1 -name '*_M33_0.docx' -type f | wc -l | tr -d ' ')" -eq 27
           test "$(find "$ROOT/wave3" -maxdepth 1 -name '*_M33_0.docx' -type f | wc -l | tr -d ' ')" -eq 7
-          test "$(find "$ROOT" -name '*_M33_0.docx' -type f | wc -l | tr -d ' ')" -eq 30
+          test "$(find "$ROOT" -name '*_M33_0.docx' -type f | wc -l | tr -d ' ')" -eq 38
       - name: Convertir DOCX a PDF y rasterizar todas las páginas
         env:
           HOME: ${{ runner.temp }}/lo-home
@@ -169,8 +169,8 @@ jobs:
             test "$rendered_pages" -eq "$pages"
             printf '%s/%s\t%s\n' "$group" "$stem" "$pages" >> "$RENDERED/page-counts.tsv"
           done < <(find "$SAMPLES" -name '*.docx' -type f -print0 | sort -z)
-          test "$(find "$RENDERED" -name 'page-*.png' -type f | wc -l)" -ge 30
-          test "$(grep -c '_M33_0' "$RENDERED/page-counts.tsv")" -eq 30
+          test "$(find "$RENDERED" -name 'page-*.png' -type f | wc -l)" -ge 38
+          test "$(grep -c '_M33_0' "$RENDERED/page-counts.tsv")" -eq 38
           cat "$RENDERED/page-counts.tsv"
       - name: Conservar evidencia renderizada
         uses: actions/upload-artifact@v4
