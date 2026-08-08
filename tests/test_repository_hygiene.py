@@ -10,12 +10,12 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class RepositoryHygieneTests(TestCase):
     def test_version_marker_is_canonical(self) -> None:
-        self.assertEqual((ROOT / "VERSION").read_text(encoding="utf-8").strip(), "M33.0")
+        self.assertEqual((ROOT / "VERSION").read_text(encoding="utf-8").strip(), "M33.1")
 
     def test_public_documents_declare_current_release(self) -> None:
         for relative in ("README.md", "FINAL_RELEASE_NOTES.md"):
             content = (ROOT / relative).read_text(encoding="utf-8")
-            self.assertIn("M33.0", content, relative)
+            self.assertIn("M33.1", content, relative)
             self.assertNotIn("M31.8", content, relative)
             self.assertNotIn("v5.0.7", content, relative)
 
@@ -80,6 +80,11 @@ class RepositoryHygieneTests(TestCase):
         security = (ROOT / "SECURITY.md").read_text(encoding="utf-8")
         self.assertIn("Reporte responsable", security)
         self.assertIn("datos sintéticos", security)
+
+    def test_public_docs_do_not_publish_demo_password(self) -> None:
+        for relative in ("README.md", "FINAL_RELEASE_NOTES.md", "docs/DESPLIEGUE_M33.md", "render.yaml"):
+            content = (ROOT / relative).read_text(encoding="utf-8")
+            self.assertNotIn("LegalAIZDemo2026!", content, relative)
 
     def test_readme_sets_main_as_source_of_truth_and_preserves_limits(self) -> None:
         content = (ROOT / "README.md").read_text(encoding="utf-8")
