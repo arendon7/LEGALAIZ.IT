@@ -103,6 +103,7 @@ def main() -> int:
                 spec["sections"],
                 product_code=code,
                 enforce_legal_standard=True,
+                append_default_control=not bool(spec.get("internal_controls_externalized")),
             )
             records.append({
                 "product_code": code,
@@ -114,6 +115,7 @@ def main() -> int:
                 "released": False,
                 "legal_approval": "pending",
                 "qa_approval": "pending",
+                "internal_controls_externalized": bool(spec.get("internal_controls_externalized")),
             })
 
     manifest = output / "m33-wave3-samples.json"
