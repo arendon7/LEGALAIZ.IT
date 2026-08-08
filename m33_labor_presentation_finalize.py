@@ -3,8 +3,8 @@ from __future__ import annotations
 """Pulido visual del informe CO-LA-001 después del cierre jurídico/probatorio.
 
 No recalcula valores ni altera solicitudes. Se limita a presentar las mismas variables
-en tablas de ancho razonable y a evitar saltos de página forzados que generen páginas
-casi vacías.
+en tablas de ancho razonable, evitar saltos de página forzados y compactar el control
+interno sin perder sus fuentes ni alertas jurídicas.
 """
 
 from copy import deepcopy
@@ -105,6 +105,15 @@ def _polish_calculation(spec: dict, answers: dict, result: dict) -> dict:
             section.pop("page_break_before", None)
             section["paragraphs"] = [
                 "Este anexo reproduce exclusivamente las variables y resultados de la misma revisión que sustenta el cuerpo del informe. No incorpora matrices históricas vacías ni una segunda capa de datos que pueda contradecir el cálculo vigente."
+            ]
+
+        elif section.get("_type") == "control":
+            section["text"] = (
+                "Control interno: antes de liberar esta revisión deben cotejarse los soportes de la relación, la vigencia normativa y la aprobación jurídica y QA sobre el mismo hash."
+            )
+            section["bullets"] = [
+                "Fuentes de control: Código Sustantivo del Trabajo, artículos 64, 186, 249, 306, 488 y 489; Ley 52 de 1975, artículo 1; y Ley 2466 de 2025, artículo 62.",
+                "No automatizar sin análisis individual: indemnización moratoria, estabilidad laboral reforzada, fueros, contrato realidad, sanciones, perjuicios o indexaciones.",
             ]
 
         sections.append(section)
