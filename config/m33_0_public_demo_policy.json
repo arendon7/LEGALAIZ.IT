@@ -1,7 +1,7 @@
 {
-  "phase": "M33.0",
-  "version": "5.1.1",
-  "base": ["M32.9", "M31.9 v5.1.0 aprobada"],
+  "phase": "M33.1",
+  "version": "5.1.2",
+  "base": ["M33.0 v5.1.1", "M32.9", "M31.9 v5.1.0 aprobada"],
   "public_demo_available": true,
   "public_demo_mode_opt_in": true,
   "all_demo_features_enabled": true,
@@ -14,5 +14,15 @@
   "real_production_authorized": false,
   "real_payments_authorized": false,
   "production_authorized_when_public_demo_mode": true,
-  "release_channel": "public_demo_final"
+  "release_channel": "public_demo_hardened",
+  "deployment": {
+    "provider_blueprint": "render.yaml",
+    "explicit_plan": "free",
+    "deploy_after_checks_pass": true,
+    "demo_password_in_repository": false,
+    "master_key_seed_managed_by_provider": true,
+    "origin_check": true,
+    "secure_cookies_public_https": true,
+    "runtime_persistence": "ephemeral_demo_only"
+  }
 }

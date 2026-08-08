@@ -1,17 +1,16 @@
 {
-  "name": "LegalAIZ.it M31.8",
+  "name": "LegalAIZ.it M33.1",
   "build": {"dockerfile": "../Dockerfile", "context": ".."},
   "forwardPorts": [8765],
   "portsAttributes": {"8765": {"label": "LegalAIZ.it", "onAutoForward": "openBrowser"}},
   "containerEnv": {
     "LEGAL_PROFILE": "local",
-    "LEGAL_APP_ENV": "demo",
+    "LEGAL_APP_ENV": "demo_public",
     "LEGAL_RUNTIME_DIR": "/workspaces/LEGALAIZ.IT/runtime/demo",
     "LEGAL_ALLOW_DEMO_ACCOUNTS": "true",
-    "LEGAL_DEMO_PASSWORD": "LegalAIZDemo2026!",
     "LEGAL_REQUIRE_MFA_ROLES": "",
     "LEGAL_GITHUB_LITE_ASSETS": "true"
   },
   "postCreateCommand": "pip install -r requirements.txt",
-  "postStartCommand": "python run.py --lan --no-browser"
+  "postStartCommand": "echo 'Ejecute: bash 01_INICIAR_DEMO_PUBLICA_LINUX.sh para iniciar la demo y generar una contraseña de sesión.'"
 }

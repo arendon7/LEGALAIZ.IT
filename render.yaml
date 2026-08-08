@@ -2,10 +2,13 @@ services:
   - type: web
     name: legalaiz-it-demo
     runtime: docker
+    plan: free
     branch: main
+    autoDeployTrigger: checksPass
     dockerfilePath: ./Dockerfile
     dockerContext: .
     healthCheckPath: /api/live
+    maxShutdownDelaySeconds: 30
     envVars:
       - key: LEGAL_PROFILE
         value: local
@@ -16,11 +19,13 @@ services:
       - key: LEGAL_ALLOW_DEMO_ACCOUNTS
         value: "true"
       - key: LEGAL_DEMO_PASSWORD
-        value: LegalAIZDemo2026!
+        sync: false
+      - key: LEGAL_MASTER_KEY_SEED
+        generateValue: true
       - key: LEGAL_REQUIRE_MFA_ROLES
         value: ""
       - key: LEGAL_REQUIRE_ORIGIN_CHECK
-        value: "false"
+        value: "true"
       - key: LEGAL_SECURE_COOKIES
         value: "true"
       - key: LEGAL_DATABASE_BACKEND

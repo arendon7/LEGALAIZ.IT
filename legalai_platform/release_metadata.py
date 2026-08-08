@@ -11,16 +11,16 @@ def _flag(name: str, default: bool = False) -> bool:
 
 
 PROJECT_NAME = "LegalAIZ.it"
-MILESTONE = "M33.0"
-VERSION = "5.1.1"
-BUILD_ID = "M33-0-INTEGRACION-DEMO-PUBLICA-M32-9-2026-08-07"
-RELEASE_ID = "M33-0-DEMO-PUBLICA-INTEGRADA-5.1.1-2026-08-07"
-RELEASE_NAME = "M33.0 — M32.9 con producción demostrativa pública integral"
-RELEASE_DATE = "2026-08-07"
-BASE_RELEASE = "M32.9 + M31.9 v5.1.0 aprobada"
+MILESTONE = "M33.1"
+VERSION = "5.1.2"
+BUILD_ID = "M33-1-DESPLIEGUE-RENDER-ENDURECIDO-2026-08-08"
+RELEASE_ID = "M33-1-RENDER-HARDENING-5.1.2-2026-08-08"
+RELEASE_NAME = "M33.1 — despliegue público demostrativo endurecido"
+RELEASE_DATE = "2026-08-08"
+BASE_RELEASE = "M33.0 v5.1.1"
 PUBLIC_DEMO_AVAILABLE = True
 PUBLIC_DEMO_MODE = _flag("LEGAL_PUBLIC_DEMO_MODE", False)
-RELEASE_CHANNEL = "public_demo_final" if PUBLIC_DEMO_MODE else "controlled_demo_case_workflows"
+RELEASE_CHANNEL = "public_demo_hardened" if PUBLIC_DEMO_MODE else "controlled_demo_case_workflows"
 PRODUCTION_AUTHORIZED = PUBLIC_DEMO_MODE
 PUBLIC_PRODUCTION_READY = PUBLIC_DEMO_MODE
 REAL_PRODUCTION_AUTHORIZED = False

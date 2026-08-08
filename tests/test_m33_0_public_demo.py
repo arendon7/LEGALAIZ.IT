@@ -5,12 +5,12 @@ from pathlib import Path
 from unittest.mock import patch
 
 
-class M330PublicDemoTests(unittest.TestCase):
+class M331PublicDemoTests(unittest.TestCase):
     def test_release_flags_are_demo_only(self):
         with patch.dict(os.environ, {"LEGAL_PUBLIC_DEMO_MODE": "true"}, clear=False):
             import legalai_platform.release_metadata as release
             release = importlib.reload(release)
-            self.assertEqual((release.MILESTONE, release.VERSION), ("M33.0", "5.1.1"))
+            self.assertEqual((release.MILESTONE, release.VERSION), ("M33.1", "5.1.2"))
             self.assertTrue(release.PRODUCTION_AUTHORIZED)
             self.assertTrue(release.PUBLIC_PRODUCTION_READY)
             self.assertFalse(release.REAL_PRODUCTION_AUTHORIZED)
@@ -31,7 +31,7 @@ class M330PublicDemoTests(unittest.TestCase):
 
     def test_version_file(self):
         root = Path(__file__).resolve().parents[1]
-        self.assertEqual((root / "VERSION").read_text(encoding="utf-8").strip(), "M33.0")
+        self.assertEqual((root / "VERSION").read_text(encoding="utf-8").strip(), "M33.1")
 
 
 if __name__ == "__main__":

@@ -10,12 +10,12 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class RepositoryHygieneTests(TestCase):
     def test_version_marker_is_canonical(self) -> None:
-        self.assertEqual((ROOT / "VERSION").read_text(encoding="utf-8").strip(), "M33.0")
+        self.assertEqual((ROOT / "VERSION").read_text(encoding="utf-8").strip(), "M33.1")
 
     def test_public_documents_declare_current_release(self) -> None:
         for relative in ("README.md", "FINAL_RELEASE_NOTES.md"):
             content = (ROOT / relative).read_text(encoding="utf-8")
-            self.assertIn("M33.0", content, relative)
+            self.assertIn("M33.1", content, relative)
             self.assertNotIn("M31.8", content, relative)
             self.assertNotIn("v5.0.7", content, relative)
 
@@ -76,10 +76,27 @@ class RepositoryHygieneTests(TestCase):
     def test_safe_environment_example_and_security_policy_exist(self) -> None:
         example = (ROOT / ".env.example").read_text(encoding="utf-8")
         self.assertIn("LEGAL_DEMO_PASSWORD=CHANGE_ME_BEFORE_USE", example)
-        self.assertNotIn("LegalAIZDemo2026!", example)
+        legacy_password = "LegalAIZDemo" + "2026!"
+        self.assertNotIn(legacy_password, example)
         security = (ROOT / "SECURITY.md").read_text(encoding="utf-8")
         self.assertIn("Reporte responsable", security)
         self.assertIn("datos sintéticos", security)
+
+    def test_legacy_demo_password_is_confined_to_inert_m31_compatibility_literal(self) -> None:
+        legacy_password = "LegalAIZDemo" + "2026!"
+        result = subprocess.run(
+            ["git", "grep", "-n", "-F", legacy_password],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+        )
+        lines = [line for line in result.stdout.splitlines() if line.strip()]
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(len(lines), 1, lines)
+        self.assertTrue(lines[0].startswith("legalai_platform/m31_case_demo.py:"), lines)
+        run_source = (ROOT / "run.py").read_text(encoding="utf-8")
+        self.assertIn('credentials.pop("password", None)', run_source)
+        self.assertIn('credentials["password_source"] = "LEGAL_DEMO_PASSWORD"', run_source)
 
     def test_readme_sets_main_as_source_of_truth_and_preserves_limits(self) -> None:
         content = (ROOT / "README.md").read_text(encoding="utf-8")
