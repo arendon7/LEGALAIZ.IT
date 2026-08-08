@@ -46,7 +46,7 @@ def document_specs_m33_all(case_id, code, answers, result, product, generated_at
         return finalize_debt_layout_polish(debt_specs, answers, result)
     if code == "CO-SA-001":
         health_specs = finalize_health_specs(specs, answers, result)
-        return finalize_health_compat_polish(health_specs)
+        return finalize_health_compat_polish(health_specs, answers)
     if code not in WAVE3_CODES:
         return specs
     return [_finalize_spec(code, answers, spec) for spec in specs]
