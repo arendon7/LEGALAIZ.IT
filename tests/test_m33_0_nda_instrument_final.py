@@ -16,6 +16,24 @@ from test_m33_0_nda_legal_review import nda_answers, section_text, visible_text
 
 
 class NdaInstrumentFinalM330Tests(unittest.TestCase):
+    def test_comparecencia_survives_title_keywords_and_ai_stays_in_its_clause(self):
+        composition = compose_nda_m33_instrument(nda_answers())
+        title_section = next(
+            item for item in composition["sections"]
+            if item.get("_type") != "clause"
+            and str(item.get("heading") or "").upper().startswith("ACUERDO DE CONFIDENCIALIDAD")
+        )
+        appearance = "\n".join(str(value) for value in title_section.get("paragraphs") or [])
+        self.assertIn("Soluciones Andinas S.A.S., NIT 901.234.567-8", appearance)
+        self.assertIn("María Fernanda Gómez Ruiz", appearance)
+        self.assertIn("Tecnología Segura S.A.S., NIT 900.765.432-1", appearance)
+        self.assertIn("Juan David Torres", appearance)
+        self.assertIn("Cada parte tendrá la calidad de PARTE REVELADORA", appearance)
+        self.assertNotIn("condición contractual: uso controlado sin entrenamiento", appearance)
+
+        ai = section_text(composition, "INTELIGENCIA ARTIFICIAL")
+        self.assertIn("condición contractual: uso controlado sin entrenamiento", ai)
+
     def test_clean_instrument_contains_no_internal_workspace_language(self):
         composition = compose_nda_m33_instrument(nda_answers())
         text = visible_text(composition)
