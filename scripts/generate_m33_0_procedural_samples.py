@@ -13,7 +13,8 @@ if str(ROOT) not in sys.path:
 from docx_builder import build_docx
 from m33_wave3_runtime import document_specs_m33_all
 from tests.test_m33_0_consumer_legal_finalize import MECHANISMS, consumer_route_fixture
-from tests.test_m33_0_procedural_wave import PRODUCTS, debt_fixture, habeas_fixture, labor_fixture
+from tests.test_m33_0_debt_legal_finalize import debt_stage_fixture
+from tests.test_m33_0_procedural_wave import PRODUCTS, habeas_fixture, labor_fixture
 
 SELECTIONS = {
     "CO-LA-001": ("calculation", "claim"),
@@ -26,13 +27,35 @@ SELECTIONS = {
         "habeas_evidence_matrix",
         "habeas_deadline_calendar",
     ),
-    "CO-CD-004": ("payment_agreement", "promissory_note"),
 }
 
 CONSUMER_COMMON = (
     "consumer_mechanism_diagnosis",
     "consumer_evidence_matrix",
     "consumer_deadline_calendar",
+)
+
+DEBT_VISUAL_STAGES = (
+    (
+        "Enviar un cobro inicial",
+        False,
+        ("debt_diagnostic", "account_statement", "collection_evidence_matrix", "collection_letter"),
+    ),
+    (
+        "Acordar un plan de pago",
+        False,
+        ("payment_agreement", "payment_schedule", "promissory_note", "instruction_letter"),
+    ),
+    (
+        "Registrar o seguir pagos",
+        False,
+        ("payment_receipt",),
+    ),
+    (
+        "Cerrar la obligación",
+        True,
+        ("settlement_certificate",),
+    ),
 )
 
 
@@ -93,7 +116,6 @@ def main() -> int:
     fixtures = {
         "CO-LA-001": labor_fixture(),
         "CO-CD-001": habeas_fixture(),
-        "CO-CD-004": debt_fixture(),
     }
     for code, (answers, result) in fixtures.items():
         by_kind = {spec["kind"]: spec for spec in _specs(code, answers, result)}
@@ -118,6 +140,23 @@ def main() -> int:
                 _write_sample(output, "CO-CD-003", kind, by_kind[kind], records)
             common_written = True
         _write_sample(output, "CO-CD-003", mechanism_kind, by_kind[mechanism_kind], records)
+
+    # CO-CD-004 se revisa como un ciclo completo. Cada documento condicional se
+    # genera desde la etapa que realmente lo habilita; los tres documentos comunes
+    # se escriben una sola vez para no falsear la selección histórica del producto.
+    written_debt: set[str] = set()
+    for stage, zero_balance, kinds in DEBT_VISUAL_STAGES:
+        answers, result = debt_stage_fixture(stage, zero_balance=zero_balance)
+        by_kind = {spec["kind"]: spec for spec in _specs("CO-CD-004", answers, result)}
+        for kind in kinds:
+            if kind in written_debt:
+                continue
+            if kind not in by_kind:
+                raise RuntimeError(f"CO-CD-004/{stage}: no se generó la muestra requerida {kind}.")
+            _write_sample(output, "CO-CD-004", kind, by_kind[kind], records)
+            written_debt.add(kind)
+    if len(written_debt) != 10:
+        raise RuntimeError(f"CO-CD-004: se esperaban 10 piezas visuales y se generaron {len(written_debt)}.")
 
     manifest = output / "m33-procedural-samples.json"
     manifest.write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding="utf-8")
