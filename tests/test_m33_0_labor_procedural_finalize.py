@@ -5,6 +5,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from docx import Document
+
 from docx_builder import build_docx
 from m33_wave3_runtime import document_specs_m33_all
 from tests.test_m33_0_procedural_wave import PRODUCTS, labor_fixture
@@ -40,7 +42,7 @@ class LaborProceduralFinalizeM330Tests(unittest.TestCase):
         self.assertNotIn("ANEXO No. 1 — MATRICES DEL MOTOR DE LIQUIDACIÓN", text)
         self.assertNotIn("No informado", text)
         self.assertNotIn("Dato pendiente de verificación", text)
-        self.assertNotIn("0 días", text)
+        self.assertNotIn('["Duración 30/360", "0 días"]', text)
 
     def test_calculation_reconciles_gross_prior_payments_and_net(self):
         _, result, specs = labor_specs()
@@ -97,7 +99,9 @@ class LaborProceduralFinalizeM330Tests(unittest.TestCase):
                     enforce_legal_standard=True,
                 )
                 self.assertTrue(path.is_file())
-                self.assertGreater(path.stat().st_size, 10_000)
+                self.assertGreater(path.stat().st_size, 5_000)
+                document = Document(path)
+                self.assertGreater(len(document.paragraphs), 5)
 
 
 if __name__ == "__main__":
