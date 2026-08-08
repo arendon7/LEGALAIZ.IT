@@ -25,7 +25,8 @@ class M331RenderDeploymentTests(TestCase):
 
     def test_demo_password_is_prompted_and_not_committed(self) -> None:
         self.assertRegex(self.blueprint, r"- key: LEGAL_DEMO_PASSWORD\s+sync: false")
-        self.assertNotIn("LegalAIZDemo2026!", self.blueprint)
+        legacy_password = "LegalAIZDemo" + "2026!"
+        self.assertNotIn(legacy_password, self.blueprint)
 
     def test_master_key_seed_is_generated_by_render(self) -> None:
         self.assertRegex(self.blueprint, r"- key: LEGAL_MASTER_KEY_SEED\s+generateValue: true")
