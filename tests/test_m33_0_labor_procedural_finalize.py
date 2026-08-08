@@ -49,7 +49,8 @@ class LaborProceduralFinalizeM330Tests(unittest.TestCase):
         c = result["calculation"]
         self.assertEqual(c["gross_total"] - c["prior_paid_total"], c["total"])
         self.assertIn("COP $6.173.734 - COP $0 = COP $6.173.734", text)
-        self.assertIn("cinco", text)  # cinco líneas calculadas
+        self.assertIn("Número de líneas calculadas", text)
+        self.assertIn('"5"', text)
 
     def test_claim_individualizes_amounts_and_prescription_control(self):
         _, _, specs = labor_specs()
