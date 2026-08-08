@@ -2,8 +2,8 @@ from __future__ import annotations
 
 """Cierre estilístico del instrumento laboral CO-LA-002 M33.0.
 
-No altera reglas, módulos ni fuentes. Corrige únicamente concordancia y contracciones
-visibles que deben quedar naturales en el documento que firman las partes.
+No altera reglas, módulos ni fuentes. Corrige únicamente concordancia, contracciones
+y consistencia de términos definidos visibles en el documento que firman las partes.
 """
 
 from copy import deepcopy
@@ -16,12 +16,20 @@ def _polish(value: Any) -> Any:
     if not isinstance(value, str):
         return value
     replacements = (
-        ("a EL EMPLEADOR", "al EMPLEADOR"),
-        ("de EL EMPLEADOR", "del EMPLEADOR"),
         (
             "La entrega de un equipo empresarial o el uso de una red corporativa no elimina por sí solos toda expectativa legítima de privacidad.",
             "Ni la entrega de un equipo empresarial ni el uso de una red corporativa eliminan por sí solos toda expectativa legítima de privacidad.",
         ),
+        ("al trabajador", "a LA PERSONA TRABAJADORA"),
+        ("del trabajador", "de LA PERSONA TRABAJADORA"),
+        ("El trabajador", "LA PERSONA TRABAJADORA"),
+        ("el trabajador", "LA PERSONA TRABAJADORA"),
+        ("al empleador", "al EMPLEADOR"),
+        ("del empleador", "del EMPLEADOR"),
+        ("El empleador", "EL EMPLEADOR"),
+        ("el empleador", "EL EMPLEADOR"),
+        ("a EL EMPLEADOR", "al EMPLEADOR"),
+        ("de EL EMPLEADOR", "del EMPLEADOR"),
     )
     text = value
     for source, target in replacements:
