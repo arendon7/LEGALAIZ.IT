@@ -165,7 +165,7 @@ class ConsumerLegalFinalizeM330Tests(unittest.TestCase):
         self.assertIn("dentro de cinco (5) días", text)
         self.assertIn("cinco (5) días hábiles", text)
         self.assertIn("dentro del mes siguiente", text.casefold())
-        self.assertIn("no extingue automáticamente", text.casefold())
+        self.assertIn("ni extingue automáticamente", text.casefold())
 
     def test_non_delivery_uses_current_thirty_day_delivery_and_fifteen_day_refund(self):
         _, _, specs = _specs("ecommerce_non_delivery_termination")
