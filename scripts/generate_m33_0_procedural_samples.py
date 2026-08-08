@@ -50,6 +50,18 @@ def _specs(code: str, answers: dict, result: dict) -> list[dict]:
     )
 
 
+def _visible_metadata(code: str, spec: dict) -> list[tuple[str, str]]:
+    # Cuando la gobernanza ya fue externalizada, el ejemplar externo no debe
+    # exhibir códigos de producto, versiones del estándar ni estados de QA.
+    if spec.get("internal_controls_externalized"):
+        return []
+    return [
+        ("Producto", code),
+        ("Estándar documental", "M33.0"),
+        ("Estado", "Candidato sujeto a revisión jurídica y QA"),
+    ]
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Genera muestras representativas de la segunda oleada M33.0.")
     parser.add_argument("--output", required=True, type=Path)
@@ -76,7 +88,7 @@ def main() -> int:
                 target,
                 spec["title"],
                 spec.get("subtitle", ""),
-                [("Producto", code), ("Estándar documental", "M33.0"), ("Estado", "Candidato sujeto a revisión jurídica y QA")],
+                _visible_metadata(code, spec),
                 spec["sections"],
                 product_code=code,
                 enforce_legal_standard=True,
