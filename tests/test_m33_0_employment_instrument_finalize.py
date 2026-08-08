@@ -20,6 +20,23 @@ class EmploymentInstrumentFinalizeM330Tests(unittest.TestCase):
         self.assertNotIn("de EL EMPLEADOR", text)
         self.assertIn("al EMPLEADOR", text)
 
+    def test_defined_parties_are_used_consistently(self):
+        text = public_text(compose_employment_m33_instrument(employment_answers()))
+        for legacy in (
+            "El empleador",
+            "el empleador",
+            "al empleador",
+            "del empleador",
+            "El trabajador",
+            "el trabajador",
+            "al trabajador",
+            "del trabajador",
+        ):
+            self.assertNotIn(legacy, text)
+        self.assertIn("EL EMPLEADOR", text)
+        self.assertIn("LA PERSONA TRABAJADORA", text)
+        self.assertIn("a LA PERSONA TRABAJADORA", text)
+
     def test_monitoring_clause_has_correct_agreement(self):
         text = public_text(compose_employment_m33_instrument(employment_answers()))
         self.assertIn(
