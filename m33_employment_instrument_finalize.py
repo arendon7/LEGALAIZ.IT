@@ -18,8 +18,10 @@ def _polish(value: Any) -> Any:
     replacements = (
         ("a EL EMPLEADOR", "al EMPLEADOR"),
         ("de EL EMPLEADOR", "del EMPLEADOR"),
-        ("para EL EMPLEADOR", "para el EMPLEADOR"),
-        ("no elimina por sí solos toda expectativa legítima de privacidad", "no eliminan por sí solos toda expectativa legítima de privacidad"),
+        (
+            "La entrega de un equipo empresarial o el uso de una red corporativa no elimina por sí solos toda expectativa legítima de privacidad.",
+            "Ni la entrega de un equipo empresarial ni el uso de una red corporativa eliminan por sí solos toda expectativa legítima de privacidad.",
+        ),
     )
     text = value
     for source, target in replacements:
