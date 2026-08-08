@@ -4,6 +4,7 @@ import tempfile
 import unittest
 from copy import deepcopy
 from pathlib import Path
+from zipfile import ZipFile
 
 from document_standard_v33 import validate_rendered_sections
 from docx_builder import build_docx
@@ -28,6 +29,11 @@ def health_specs(answers=None, result=None):
 
 def visible(spec: dict) -> str:
     return " ".join(str(section) for section in spec.get("sections") or [])
+
+
+def document_xml(path: Path) -> str:
+    with ZipFile(path) as package:
+        return package.read("word/document.xml").decode("utf-8", errors="replace")
 
 
 class HealthLegalFinalizeM330Tests(unittest.TestCase):
@@ -114,6 +120,45 @@ class HealthLegalFinalizeM330Tests(unittest.TestCase):
         self.assertIn("que no exista respuesta o actuación posterior", body)
         self.assertIn("incluida la hora cuando sea relevante", body)
 
+    def test_externalized_health_docx_does_not_print_default_internal_control(self):
+        spec = next(item for item in health_specs() if item.get("kind") == "health_diagnostic")
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp) / "CO-SA-001_health_diagnostic.docx"
+            build_docx(
+                target,
+                spec["title"],
+                spec.get("subtitle", ""),
+                [],
+                spec["sections"],
+                product_code="CO-SA-001",
+                enforce_legal_standard=True,
+                append_default_control=not bool(spec.get("internal_controls_externalized")),
+            )
+            xml = document_xml(target).casefold()
+            self.assertNotIn("control de uso", xml)
+            self.assertNotIn("documento candidato interno", xml)
+            self.assertNotIn("su liberación depende de la aprobación jurídica", xml)
+
+    def test_runtime_presentation_policy_suppresses_internal_control_for_health(self):
+        import run
+
+        spec = next(item for item in health_specs() if item.get("kind") == "health_diagnostic")
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp) / "CO-SA-001_runtime_health_diagnostic.docx"
+            run.build_docx(
+                target,
+                spec["title"],
+                spec.get("subtitle", ""),
+                [],
+                spec["sections"],
+                product_code="CO-SA-001",
+                enforce_legal_standard=True,
+            )
+            xml = document_xml(target).casefold()
+            self.assertNotIn("control de uso", xml)
+            self.assertNotIn("documento candidato interno", xml)
+            self.assertNotIn("su liberación depende de la aprobación jurídica", xml)
+
     def test_all_health_outputs_pass_semantic_validation_and_docx_generation(self):
         specs = health_specs()
         with tempfile.TemporaryDirectory() as tmp:
@@ -123,7 +168,16 @@ class HealthLegalFinalizeM330Tests(unittest.TestCase):
                 report = validate_rendered_sections(spec["sections"], product_code="CO-SA-001")
                 self.assertTrue(report["valid"], (spec.get("kind"), report["errors"]))
                 target = Path(tmp) / f"{spec['kind']}.docx"
-                build_docx(target, spec["title"], spec.get("subtitle", ""), [], spec["sections"], product_code="CO-SA-001", enforce_legal_standard=True)
+                build_docx(
+                    target,
+                    spec["title"],
+                    spec.get("subtitle", ""),
+                    [],
+                    spec["sections"],
+                    product_code="CO-SA-001",
+                    enforce_legal_standard=True,
+                    append_default_control=not bool(spec.get("internal_controls_externalized")),
+                )
                 self.assertTrue(target.is_file())
 
 
