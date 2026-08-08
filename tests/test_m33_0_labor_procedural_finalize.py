@@ -96,6 +96,8 @@ class LaborProceduralFinalizeM330Tests(unittest.TestCase):
             self.assertGreaterEqual(len(controls), 1)
             self.assertNotIn("aprobación jurídica y QA", public_text)
             self.assertNotIn("mismo hash", public_text)
+            self.assertNotIn("M33-test", public_text)
+            self.assertNotIn("Versión del motor", public_text)
         internal = json.dumps(spec_of(specs, "calculation").get("internal_review_sections") or [], ensure_ascii=False)
         self.assertIn("Código Sustantivo del Trabajo", internal)
         self.assertIn("Ley 52 de 1975", internal)
@@ -145,6 +147,8 @@ class LaborProceduralFinalizeM330Tests(unittest.TestCase):
                 self.assertNotIn("aprobación jurídica y QA", visible)
                 self.assertNotIn("misma revisión y hash", visible)
                 self.assertNotIn("mismo hash", visible)
+                self.assertNotIn("M33-test", visible)
+                self.assertNotIn("Versión del motor", visible)
 
 
 if __name__ == "__main__":
