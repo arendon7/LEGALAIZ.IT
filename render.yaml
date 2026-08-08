@@ -22,6 +22,11 @@ services:
         sync: false
       - key: LEGAL_MASTER_KEY
         generateValue: true
+      - key: LEGAL_PUBLIC_BASE_URL
+        fromService:
+          type: web
+          name: legalaiz-it-demo
+          envVarKey: RENDER_EXTERNAL_URL
       - key: LEGAL_REQUIRE_MFA_ROLES
         value: ""
       - key: LEGAL_REQUIRE_ORIGIN_CHECK
