@@ -15,7 +15,15 @@ from m33_wave3_runtime import document_specs_m33_all
 from tests.test_m33_0_wave3 import PRODUCTS, health_fixture, sast_fixture, traffic_fixture
 
 SELECTIONS = {
-    "CO-SA-001": ("health_petition", "health_evidence"),
+    "CO-SA-001": (
+        "health_diagnostic",
+        "health_petition",
+        "health_reiteration",
+        "health_supersalud",
+        "health_history_request",
+        "health_evidence",
+        "health_calendar",
+    ),
     "CO-TR-001": ("sast_report", "sast_record_request"),
     "CO-TR-002": ("traffic_diagnostic", "traffic_record_request", "traffic_notification_claim"),
 }
@@ -28,7 +36,7 @@ def _specs(code: str, answers: dict, result: dict) -> list[dict]:
         answers,
         result,
         PRODUCTS[code],
-        "2026-08-07T16:00:00-05:00",
+        "2026-08-08T12:25:00-05:00",
         [],
     )
 
@@ -37,10 +45,14 @@ def _find(specs: list[dict], requested: str) -> dict:
     by_kind = {str(spec.get("kind")): spec for spec in specs}
     if requested in by_kind:
         return by_kind[requested]
-    # Las piezas recompuestas pueden conservar el kind histórico por compatibilidad.
     tokens = {
+        "health_diagnostic": ("diagnóstico", "salud"),
         "health_petition": ("petición", "reclamo"),
-        "health_evidence": ("índice", "radicación"),
+        "health_reiteration": ("reiteración",),
+        "health_supersalud": ("supersalud",),
+        "health_history_request": ("historia clínica",),
+        "health_evidence": ("matriz", "radicación"),
+        "health_calendar": ("calendario", "seguimiento"),
         "sast_report": ("informe", "sast"),
         "sast_record_request": ("expediente", "certificación"),
         "traffic_diagnostic": ("diagnóstico", "contravencional"),
@@ -52,6 +64,17 @@ def _find(specs: list[dict], requested: str) -> dict:
         if all(token.casefold() in title for token in tokens):
             return spec
     raise RuntimeError(f"No se encontró muestra {requested}; disponibles: {sorted(by_kind)}")
+
+
+def _metadata(code: str, result: dict, spec: dict) -> list[tuple[str, str]]:
+    if spec.get("internal_controls_externalized"):
+        return []
+    return [
+        ("Producto", code),
+        ("Estándar documental", "M33.0"),
+        ("Nivel de riesgo", str(result.get("risk") or "por verificar")),
+        ("Estado", "Candidato sujeto a revisión jurídica y QA"),
+    ]
 
 
 def main() -> int:
@@ -76,12 +99,7 @@ def main() -> int:
                 target,
                 spec["title"],
                 spec.get("subtitle", ""),
-                [
-                    ("Producto", code),
-                    ("Estándar documental", "M33.0"),
-                    ("Nivel de riesgo", str(result.get("risk") or "por verificar")),
-                    ("Estado", "Candidato sujeto a revisión jurídica y QA"),
-                ],
+                _metadata(code, result, spec),
                 spec["sections"],
                 product_code=code,
                 enforce_legal_standard=True,
