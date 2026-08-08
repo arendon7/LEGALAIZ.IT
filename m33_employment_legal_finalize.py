@@ -2,10 +2,10 @@ from __future__ import annotations
 
 """Segunda pasada jurídica del contrato laboral CO-LA-002 M33.0.
 
-No reutiliza reglas de contratos civiles. Parte de la biblioteca laboral madura y
-ajusta la salida a la fecha efectiva del vínculo, la modalidad y los hechos del
-expediente. Mantiene la versión histórica intacta y produce un candidato apto para
-revisión jurídica/QA, no una aprobación automática.
+Parte de la biblioteca laboral madura y ajusta la salida a la fecha efectiva, la
+modalidad y los hechos del expediente. No reutiliza reglas de contratos civiles ni
+infiere datos personales ausentes. La aprobación jurídica y QA siguen siendo humanas
+sobre el mismo hash del candidato limpio.
 """
 
 from copy import deepcopy
@@ -18,6 +18,7 @@ from m33_contractual_adapters import compose_employment_m33
 
 
 _MONTHS = ("", "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre")
+_HOUR_WORDS = {42: "cuarenta y dos", 44: "cuarenta y cuatro", 46: "cuarenta y seis", 47: "cuarenta y siete", 48: "cuarenta y ocho"}
 
 
 def _read(data: dict, path: str, default=None):
@@ -27,6 +28,14 @@ def _read(data: dict, path: str, default=None):
             return default
         current = current[part]
     return default if current is None else current
+
+
+def _first(data: dict, *paths: str, default=None):
+    for path in paths:
+        value = _read(data, path)
+        if value not in (None, "", [], {}):
+            return value
+    return default
 
 
 def _date(value: Any) -> date | None:
@@ -53,13 +62,15 @@ def _money(value: Any) -> str:
 
 def _id(value: Any) -> str:
     text = str(value or "").strip()
+    if not text:
+        return ""
     if text.isdigit() and len(text) >= 7:
         groups: list[str] = []
         while text:
             groups.append(text[-3:])
             text = text[:-3]
         return ".".join(reversed(groups))
-    return text or "identificación pendiente de verificación"
+    return text
 
 
 def _employer(answers: dict) -> dict[str, str]:
@@ -73,8 +84,8 @@ def _employer(answers: dict) -> dict[str, str]:
         "type": str(employer.get("type") or "").strip().casefold(),
         "name": str(employer.get("legalName") or employer.get("naturalPersonFullName") or "EL EMPLEADOR").strip(),
         "id": _id(employer.get("identificationNumber")),
-        "domicile": str(employer.get("domicile") or employer.get("address") or _read(answers, "work.mainWorkplace", "domicilio pendiente de verificación")).strip(),
-        "signatory": str(signatory.get("fullName") or signatory.get("name") or "representante pendiente de verificación").strip(),
+        "domicile": str(employer.get("domicile") or employer.get("address") or "").strip(),
+        "signatory": str(signatory.get("fullName") or signatory.get("name") or "").strip(),
         "signatory_id": _id(signatory.get("identificationNumber") or signatory.get("id_number") or signatory.get("identification")),
         "capacity": str(signatory.get("positionOrCapacity") or signatory.get("capacity") or "representante autorizado").strip(),
     }
@@ -87,25 +98,31 @@ def _worker(answers: dict) -> dict[str, str]:
     return {
         "name": str(worker.get("fullName") or "LA PERSONA TRABAJADORA").strip(),
         "id": _id(worker.get("identificationNumber")),
-        "domicile": str(worker.get("domicile") or worker.get("address") or _read(answers, "work.mainWorkplace", "domicilio pendiente de verificación")).strip(),
+        "domicile": str(worker.get("domicile") or worker.get("address") or "").strip(),
     }
+
+
+def _join_identity(name: str, identity: str, domicile: str, *, legal: bool = False) -> str:
+    parts = [name]
+    if identity:
+        parts.append(("identificada con NIT " if legal else "identificado(a) con documento No. ") + identity)
+    if domicile:
+        parts.append("con domicilio en " + domicile)
+    return ", ".join(parts)
 
 
 def _appearance(answers: dict, title: str) -> str:
     employer = _employer(answers)
     worker = _worker(answers)
-    if employer["type"] == "legal_person":
-        employer_text = (
-            f"{employer['name']}, persona jurídica identificada con NIT {employer['id']}, con domicilio en {employer['domicile']}, "
-            f"representada para este acto por {employer['signatory']}, identificado(a) con documento No. {employer['signatory_id']}, "
-            f"quien actúa en calidad de {employer['capacity']} y en adelante se denomina EL EMPLEADOR"
-        )
-    else:
-        employer_text = f"{employer['name']}, identificado(a) con documento No. {employer['id']}, domiciliado(a) en {employer['domicile']}, en adelante EL EMPLEADOR"
-    worker_text = (
-        f"{worker['name']}, identificado(a) con documento No. {worker['id']}, domiciliado(a) en {worker['domicile']}, "
-        "quien en adelante se denomina LA PERSONA TRABAJADORA"
-    )
+    is_legal = employer["type"] == "legal_person"
+    employer_text = _join_identity(employer["name"], employer["id"], employer["domicile"], legal=is_legal)
+    if is_legal and employer["signatory"]:
+        employer_text += f", representada para este acto por {employer['signatory']}"
+        if employer["signatory_id"]:
+            employer_text += f", identificado(a) con documento No. {employer['signatory_id']}"
+        employer_text += f", quien actúa en calidad de {employer['capacity']}"
+    employer_text += ", en adelante EL EMPLEADOR"
+    worker_text = _join_identity(worker["name"], worker["id"], worker["domicile"]) + ", en adelante LA PERSONA TRABAJADORA"
     return (
         f"Entre {employer_text}, y {worker_text}, se celebra el presente {title}. Las partes reconocen que la relación es laboral, "
         "que las normas mínimas y la realidad de la ejecución prevalecen sobre estipulaciones incompatibles y que ninguna cláusula "
@@ -114,7 +131,6 @@ def _appearance(answers: dict, title: str) -> str:
 
 
 def _weekly_limit(start: date | None) -> int:
-    # Calendario de reducción de la Ley 2101 de 2021. Desde 15-jul-2026: 42 h.
     if start is None or start >= date(2026, 7, 15):
         return 42
     if start >= date(2025, 7, 15):
@@ -127,8 +143,6 @@ def _weekly_limit(start: date | None) -> int:
 
 
 def _night_start(start: date | None) -> str:
-    # Art. 160 CST modificado por Ley 2466/2025; la regla de 7 p.m. entró a regir
-    # seis meses después de la sanción de la reforma.
     if start is None or start >= date(2025, 12, 25):
         return "7:00 p. m."
     return "9:00 p. m."
@@ -153,6 +167,56 @@ def _schedule_label(value: Any) -> str:
     }
     raw = str(value or "").strip()
     return mapping.get(raw.casefold(), raw or "distribución por definir")
+
+
+def _modality(answers: dict) -> str:
+    raw = str(_first(
+        answers,
+        "contract.type",
+        "employment.contractType",
+        "employment.modality",
+        "work.contractType",
+        "need_type",
+        default="indefinite",
+    ) or "").strip().casefold()
+    if raw in {"fixed", "fixed_term", "término fijo", "termino fijo", "temporal con fecha cierta"}:
+        return "fixed"
+    if raw in {"work", "work_labor", "obra", "obra o labor", "obra o labor específica", "obra o labor especifica"}:
+        return "work"
+    return "indefinite"
+
+
+def _title_for_modality(modality: str) -> str:
+    return {
+        "fixed": "CONTRATO INDIVIDUAL DE TRABAJO A TÉRMINO FIJO",
+        "work": "CONTRATO INDIVIDUAL DE TRABAJO POR DURACIÓN DE OBRA O LABOR DETERMINADA",
+        "indefinite": "CONTRATO INDIVIDUAL DE TRABAJO A TÉRMINO INDEFINIDO",
+    }[modality]
+
+
+def _duration_text(answers: dict, modality: str) -> str:
+    if modality == "fixed":
+        end = _first(answers, "contract.endDate", "employment.endDate", "work.endDate")
+        end_text = _date_es(end) if end else "la fecha cierta incorporada y verificada antes de firma"
+        return (
+            f"El contrato se celebra a término fijo hasta el {end_text}. Debe constar por escrito y, sumadas sus prórrogas bajo el régimen vigente, "
+            "no podrá superar cuatro (4) años. Si con treinta (30) días de antelación al vencimiento ninguna parte manifiesta su intención de terminarlo, "
+            "operará la prórroga legal aplicable sin superar dicho límite. En contratos inferiores a un año deberán observarse además las reglas especiales "
+            "de prórroga previstas en el artículo 46 del Código Sustantivo del Trabajo vigente. El incumplimiento de las condiciones legales de esta modalidad "
+            "puede conducir a que el vínculo se entienda a término indefinido desde su inicio."
+        )
+    if modality == "work":
+        work_description = str(_first(answers, "contract.workDescription", "employment.workDescription", "work.workDescription", default="")).strip()
+        work_description = work_description or "la obra o labor descrita de forma precisa en el anexo de funciones y alcance"
+        return (
+            f"El contrato dura el tiempo necesario para ejecutar {work_description}. La obra o labor debe quedar identificada por escrito de forma precisa y detallada, "
+            "con un hito objetivo de finalización. Si la persona trabajadora continúa prestando servicios después de terminada la obra sin documentarse una nueva y diferente, "
+            "la relación podrá entenderse a término indefinido desde el inicio, conforme al artículo 46 vigente."
+        )
+    return (
+        "El contrato es a término indefinido y permanecerá vigente mientras subsistan las causas que le dieron origen y la materia del trabajo. "
+        "Su continuidad no impide las modificaciones lícitas acordadas por escrito ni la terminación por una causa y procedimiento legalmente procedentes."
+    )
 
 
 def _has(section: dict, phrase: str) -> bool:
@@ -189,10 +253,10 @@ def _clean_section(section: dict) -> dict:
 def _clean_considerations(section: dict) -> None:
     if str(section.get("heading") or "").strip().casefold() != "consideraciones":
         return
-    paragraphs = []
-    for item in section.get("paragraphs") or []:
-        paragraphs.append(re.sub(r"^([^:]+):\s+Que\s+", r"\1: ", str(item), flags=re.IGNORECASE))
-    section["paragraphs"] = paragraphs
+    section["paragraphs"] = [
+        re.sub(r"^([^:]+):\s+Que\s+", r"\1: ", str(item), flags=re.IGNORECASE)
+        for item in section.get("paragraphs") or []
+    ]
 
 
 def _renumber(sections: list[dict]) -> list[dict]:
@@ -224,7 +288,8 @@ def _sources() -> list[str]:
 
 def compose_employment_m33_final(answers: dict) -> dict[str, Any]:
     composition = deepcopy(compose_employment_m33(answers))
-    title = str(composition.get("title") or "CONTRATO INDIVIDUAL DE TRABAJO A TÉRMINO INDEFINIDO").upper()
+    modality = _modality(answers)
+    title = _title_for_modality(modality)
     start = _date(_read(answers, "work.actualStartDate"))
     weekly_limit = _weekly_limit(start)
     weekly_hours = _read(answers, "schedule.weeklyHours", weekly_limit)
@@ -250,15 +315,19 @@ def compose_employment_m33_final(answers: dict) -> dict[str, Any]:
             section["heading"] = title
             _paragraph(section, _appearance(answers, title))
 
+        elif _has(section, "DURACIÓN") and section.get("_type") == "clause":
+            _paragraph(section, _duration_text(answers, modality))
+
         elif _has(section, "FECHA DE INICIO"):
             _paragraph(section, f"La prestación personal del servicio inicia el {_date_es(_read(answers, 'work.actualStartDate'))}. La afiliación al Sistema de Seguridad Social Integral y la gestión inicial de riesgos deberán realizarse de forma oportuna conforme a la ley. La falta de formalidad no permite desconocer el tiempo realmente trabajado ni los derechos causados desde la ejecución efectiva.")
 
         elif _has(section, "JORNADA ORDINARIA"):
+            limit_words = _HOUR_WORDS.get(weekly_limit, str(weekly_limit))
             if str(_read(answers, "schedule.type", "")).casefold() == "flexible":
                 distribution = "Al tratarse de distribución flexible, las partes podrán acordar jornadas variables entre cuatro (4) y nueve (9) horas ordinarias diarias, en máximo seis días por semana y con un día de descanso obligatorio, siempre que no se exceda el promedio semanal legal dentro de la jornada ordinaria."
             else:
                 distribution = f"La distribución será {schedule}; el horario concreto deberá comunicarse de forma trazable y respetar descansos, trabajo nocturno, horas suplementarias y cualquier excepción legal aplicable."
-            _paragraph(section, f"A la fecha de inicio del vínculo la jornada máxima ordinaria aplicable es de cuarenta y dos (42) horas semanales. Para este contrato se pactan {weekly_hours} horas semanales. {distribution} La reducción legal de jornada no disminuye salario, prestaciones ni valor de la hora ordinaria.")
+            _paragraph(section, f"A la fecha de inicio del vínculo la jornada máxima ordinaria aplicable es de {limit_words} ({weekly_limit}) horas semanales. Para este contrato se pactan {weekly_hours} horas semanales. {distribution} La reducción legal de jornada no disminuye salario, prestaciones ni valor de la hora ordinaria.")
 
         elif _has(section, "TRABAJO SUPLEMENTARIO Y RECARGOS"):
             tail = f" {transition}" if transition else ""
@@ -268,26 +337,31 @@ def compose_employment_m33_final(answers: dict) -> dict[str, Any]:
             _paragraph(section, "Toda actuación dirigida a imponer una sanción disciplinaria respetará como mínimo dignidad, presunción de inocencia, in dubio pro disciplinado, proporcionalidad, defensa, contradicción de pruebas, intimidad, buena fe, imparcialidad, buen nombre, honra y non bis in idem. EL EMPLEADOR comunicará formalmente la apertura, trasladará por escrito los hechos, conductas u omisiones y la totalidad de las pruebas, concederá a LA PERSONA TRABAJADORA un término no inferior a cinco (5) días para pronunciarse y aportar o controvertir pruebas, emitirá decisión motivada y permitirá impugnación. Cuando opere la excepción legal para trabajo del hogar o micro y pequeñas empresas de menos de diez (10) trabajadores, se garantizarán en todo caso audiencia previa, defensa y debido proceso.")
 
         elif _has(section, "TERMINACIÓN") and section.get("_type") == "clause":
-            _paragraph(section, "El contrato terminará únicamente por las causas y procedimientos previstos en la ley. LA PERSONA TRABAJADORA podrá dar por terminado el contrato indefinido mediante preaviso de treinta (30) días calendario para facilitar el reemplazo; en ningún caso podrá pactarse o imponerse sanción por omitir ese preaviso. El preaviso no será exigible cuando la terminación unilateral del trabajador se funde en una causa imputable al empleador de las previstas legalmente. Antes de una decisión del empleador deberán verificarse estabilidad reforzada, fueros, embarazo, salud, discapacidad, actividad sindical, denuncias, represalias y autorizaciones administrativas o judiciales que resulten exigibles.")
+            if modality == "indefinite":
+                modality_rule = "LA PERSONA TRABAJADORA podrá dar por terminado el contrato indefinido mediante preaviso de treinta (30) días calendario para facilitar el reemplazo; en ningún caso podrá pactarse o imponerse sanción por omitir ese preaviso. El preaviso no será exigible cuando la terminación unilateral del trabajador se funde en una causa imputable al empleador de las previstas legalmente."
+            elif modality == "fixed":
+                modality_rule = "La terminación por vencimiento del término fijo y sus prórrogas se sujetará al aviso escrito de treinta (30) días y al límite máximo de cuatro (4) años previstos en el artículo 46 vigente, sin perjuicio de las demás causales legales de terminación."
+            else:
+                modality_rule = "La terminación por finalización de la obra o labor exige que el objeto haya sido definido por escrito de forma precisa y que exista evidencia objetiva de su culminación; la continuidad material del servicio debe revisarse antes de cerrar el vínculo."
+            _paragraph(section, f"El contrato terminará únicamente por las causas y procedimientos previstos en la ley. {modality_rule} Antes de una decisión del empleador deberán verificarse estabilidad reforzada, fueros, embarazo, salud, discapacidad, actividad sindical, denuncias, represalias y autorizaciones administrativas o judiciales que resulten exigibles.")
 
         elif _has(section, "SALARIO") and section.get("_type") == "clause":
             _paragraph(section, f"EL EMPLEADOR pagará a LA PERSONA TRABAJADORA un salario básico mensual de {salary}, con la periodicidad y por el medio trazable pactados. El salario remunera la jornada ordinaria; horas extras, recargos nocturnos, trabajo en día de descanso obligatorio y demás conceptos que legalmente deban reconocerse por separado se liquidarán conforme a la causación real. La denominación contractual de un pago no puede excluir su naturaleza salarial cuando en la realidad remunera directamente el servicio.")
 
         if section.get("_type") == "signature":
-            section["parties"] = [
-                {
-                    "label": "EL EMPLEADOR",
-                    "name": employer["signatory"] if employer["type"] == "legal_person" else employer["name"],
-                    "role": f"{employer['capacity']} de {employer['name']} · NIT {employer['id']}" if employer["type"] == "legal_person" else "Empleador",
-                    "id": f"Documento {employer['signatory_id']}" if employer["type"] == "legal_person" else f"Documento {employer['id']}",
-                },
-                {
-                    "label": "LA PERSONA TRABAJADORA",
-                    "name": worker["name"],
-                    "role": role,
-                    "id": f"Documento {worker['id']}",
-                },
-            ]
+            employer_party = {
+                "label": "EL EMPLEADOR",
+                "name": employer["signatory"] if employer["type"] == "legal_person" and employer["signatory"] else employer["name"],
+                "role": f"{employer['capacity']} de {employer['name']}" + (f" · NIT {employer['id']}" if employer["id"] else "") if employer["type"] == "legal_person" else "Empleador",
+            }
+            if employer["type"] == "legal_person" and employer["signatory_id"]:
+                employer_party["id"] = f"Documento {employer['signatory_id']}"
+            elif employer["type"] != "legal_person" and employer["id"]:
+                employer_party["id"] = f"Documento {employer['id']}"
+            worker_party = {"label": "LA PERSONA TRABAJADORA", "name": worker["name"], "role": role}
+            if worker["id"]:
+                worker_party["id"] = f"Documento {worker['id']}"
+            section["parties"] = [employer_party, worker_party]
 
         final.append(section)
 
@@ -301,6 +375,7 @@ def compose_employment_m33_final(answers: dict) -> dict[str, Any]:
     composition["sections"] = _renumber(final)
     composition["title"] = title
     composition.setdefault("maturity_answers", {})["legal_review_finalized"] = True
+    composition["maturity_answers"]["employment_modality_m33"] = modality
     composition["maturity_answers"]["weekly_limit_at_start"] = weekly_limit
     composition["maturity_answers"]["rest_day_surcharge_at_start"] = surcharge
     return composition
