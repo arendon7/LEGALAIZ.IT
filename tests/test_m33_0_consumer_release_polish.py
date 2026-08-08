@@ -38,7 +38,8 @@ class ConsumerReleasePolishM330Tests(unittest.TestCase):
                     self.assertNotIn("el motor", text)
                     self.assertNotIn("del motor", text)
                     self.assertNotIn("no debe reescribirse", text)
-                    self.assertNotIn("no debe presentarse como", text)
+                    self.assertNotIn("ese término no debe presentarse", text)
+                    self.assertNotIn("cinco días hábiles cuando la norma", text)
 
     def test_periodic_debit_has_client_facing_five_day_wording(self):
         spec = next(item for item in _specs("recurring_debit_revocation") if item.get("kind") == "recurring_debit_revocation")
