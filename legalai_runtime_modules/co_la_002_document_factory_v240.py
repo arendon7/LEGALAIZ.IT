@@ -12,7 +12,7 @@ from m33_document_presentation import (
     audit_m33_presentation,
     build_m33_presentation,
 )
-from m33_employment_legal_finalize import compose_employment_m33_final
+from m33_employment_release_polish import compose_employment_m33_release
 
 
 class CoLa002DocumentFactoryV240(CoLa002DocumentFactoryV239):
@@ -72,7 +72,7 @@ class CoLa002DocumentFactoryV240(CoLa002DocumentFactoryV239):
         return value
 
     def _contract(self, answers: dict, evaluation: dict, target: Path):
-        composition = compose_employment_m33_final(answers)
+        composition = compose_employment_m33_release(answers)
         employer = answers.get("employer") if isinstance(answers.get("employer"), dict) else {}
         worker = answers.get("worker") if isinstance(answers.get("worker"), dict) else {}
 
