@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-"""Pulido visual del informe CO-LA-001 después del cierre jurídico/probatorio.
+"""Pulido visual y separación cliente/gobierno de CO-LA-001 M33.0.
 
-No recalcula valores ni altera solicitudes. Se limita a presentar las mismas variables
-en tablas de ancho razonable, evitar saltos de página forzados y compactar el control
-interno sin perder sus fuentes ni alertas jurídicas.
+No recalcula valores ni altera solicitudes. Presenta las mismas variables en tablas de
+ancho razonable, evita saltos de página forzados y conserva fuentes/QA/hash como
+secciones internas de revisión sin imprimirlas en el documento que recibe el cliente.
 """
 
 from copy import deepcopy
@@ -122,13 +122,32 @@ def _polish_calculation(spec: dict, answers: dict, result: dict) -> dict:
     return spec
 
 
+def _externalize_internal_controls(spec: dict) -> dict:
+    result = deepcopy(spec)
+    public_sections: list[dict] = []
+    internal_sections = list(deepcopy(result.get("internal_review_sections") or []))
+
+    for section in result.get("sections") or []:
+        heading = str(section.get("heading") or "").strip().casefold()
+        if section.get("_type") == "control" or "control de uso, fuentes y revisión" in heading:
+            internal_sections.append(deepcopy(section))
+            continue
+        public_sections.append(section)
+
+    result["sections"] = public_sections
+    result["internal_review_sections"] = internal_sections
+    result["internal_controls_externalized"] = True
+    return result
+
+
 def finalize_labor_presentation(specs: list[dict], answers: dict, result: dict) -> list[dict]:
     if str((result or {}).get("risk") or "").casefold() == "red":
         return specs
     output = deepcopy(specs)
     for index, spec in enumerate(output):
         if spec.get("kind") == "calculation":
-            output[index] = _polish_calculation(spec, answers, result)
+            spec = _polish_calculation(spec, answers, result)
+        output[index] = _externalize_internal_controls(spec)
     return output
 
 
