@@ -13,6 +13,7 @@ from m33_health_legal_finalize import finalize_health_specs
 from m33_labor_presentation_finalize import finalize_labor_presentation
 from m33_labor_procedural_finalize import finalize_labor_specs
 from m33_procedural_runtime import _finalize_spec
+from m33_sast_legal_finalize import finalize_sast_specs
 from m33_wave3_composition import WAVE3_CODES, document_specs_m33_wave3
 
 
@@ -47,6 +48,8 @@ def document_specs_m33_all(case_id, code, answers, result, product, generated_at
     if code == "CO-SA-001":
         health_specs = finalize_health_specs(specs, answers, result)
         return finalize_health_compat_polish(health_specs, answers)
+    if code == "CO-TR-001":
+        return finalize_sast_specs(specs, answers, result)
     if code not in WAVE3_CODES:
         return specs
     return [_finalize_spec(code, answers, spec) for spec in specs]
