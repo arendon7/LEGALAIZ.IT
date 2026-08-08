@@ -89,7 +89,17 @@ class EmploymentLegalReviewM330Tests(unittest.TestCase):
         text = public_text(composition).casefold()
         self.assertIn("primacía de la realidad", text)
         self.assertIn("derechos ciertos e indiscutibles", text)
-        for forbidden in ("ficha", "expediente", "la plataforma", "aprobación jurídica", "jurídico y qa", "hash"):
+        # "Expediente" puede ser un objeto legítimo del cargo jurídico; lo que no
+        # puede llegar al instrumento es lenguaje de workspace/gobierno LegalAIZ.it.
+        for forbidden in (
+            "constan en la ficha",
+            "consta en la ficha",
+            "definido en el expediente",
+            "la plataforma",
+            "aprobación jurídica",
+            "jurídico y qa",
+            "liberar únicamente el mismo sha",
+        ):
             self.assertNotIn(forbidden, text)
 
     def test_salary_is_in_cop_and_words_without_artificial_non_salary_exclusion(self):
