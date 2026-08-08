@@ -1,8 +1,8 @@
-# LegalAIZ.it M33.0 — Producción demostrativa pública integrada
+# LegalAIZ.it M33.1 — Despliegue público demostrativo endurecido
 
-## Línea base canónica de demostración
+## Línea base canónica
 
-M33.0 integra la activación pública demostrativa aprobada en M31.9 v5.1.0 sobre la línea M32.9. Conserva las iteraciones M32.0 a M32.9 y no retira capacidades jurídicas, documentales, operativas, de comunicaciones, gobierno ni seguridad.
+M33.1 evoluciona M33.0 v5.1.1 sin retirar capacidades. Conserva la producción demostrativa pública integrada sobre M32.9 y añade controles específicos para desplegar la aplicación completa en un proveedor administrado sin versionar credenciales ni relajar las protecciones de navegador.
 
 ## Capacidades vigentes
 
@@ -19,7 +19,20 @@ M33.0 integra la activación pública demostrativa aprobada en M31.9 v5.1.0 sobr
 - Integridad cruzada de las cadenas M32.7, M32.8 y M32.9.
 - RBAC, CSRF, control de origen y minimización de datos.
 - GitHub Pages para la presencia pública estática.
-- Docker, Codespaces y blueprint Render para la aplicación Python completa.
+- Docker, Codespaces y Blueprint Render para la aplicación Python completa.
+
+## Endurecimiento M33.1
+
+- `render.yaml` fija explícitamente el plan de demostración y usa `autoDeployTrigger: checksPass`.
+- `LEGAL_DEMO_PASSWORD` se solicita como secreto al crear el Blueprint; no existe una contraseña fija en Git.
+- `LEGAL_MASTER_KEY_SEED` se genera en el proveedor y se deriva a una llave AES-256 válida antes de cargar el runtime.
+- `RENDER_EXTERNAL_URL` se convierte automáticamente en `LEGAL_PUBLIC_BASE_URL` cuando no existe una URL explícita.
+- El control de origen queda activo en la demo desplegada.
+- Las cookies permanecen `Secure` bajo el acceso HTTPS público.
+- `run.py` no imprime contraseñas en logs.
+- Los iniciadores locales generan una contraseña aleatoria por sesión cuando el usuario no define una.
+- La configuración gratuita se declara deliberadamente efímera y limitada a datos sintéticos.
+- La suite incorpora regresiones específicas de Blueprint, secretos, derivación de llave y rechazo de orígenes no autorizados.
 
 ## Producción demostrativa
 
@@ -28,9 +41,9 @@ Cuando `LEGAL_PUBLIC_DEMO_MODE=true`, la aplicación habilita el flujo integral 
 ## Gobierno del repositorio
 
 - `main` es la única fuente de verdad.
-- `VERSION` contiene el identificador canónico M33.0.
+- `VERSION` contiene el identificador canónico M33.1.
 - Solo `ci.yml` y `pages.yml` permanecen activos en GitHub Actions.
-- M33 añade un smoke específico de producción demostrativa a la CI existente.
+- El smoke M33 valida arranque, estado público, autenticación, control de origen, cohorte, integridad y compuerta demostrativa.
 - Los workflows especializados anteriores permanecen únicamente como historial recuperable en Git.
 
 ## Límites expresos

@@ -86,7 +86,6 @@ jobs:
           LEGAL_APP_ENV: demo
           LEGAL_RUNTIME_DIR: ${{ runner.temp }}/legalaiz-runtime
           LEGAL_ALLOW_DEMO_ACCOUNTS: 'true'
-          LEGAL_DEMO_PASSWORD: 'LegalAIZDemo2026!'
           LEGAL_REQUIRE_MFA_ROLES: ''
           LEGAL_GITHUB_LITE_ASSETS: 'true'
         run: |
@@ -99,7 +98,7 @@ jobs:
           done
           cat /tmp/legalaiz.log
           exit 1
-      - name: Smoke producción demostrativa M33.0
+      - name: Smoke producción demostrativa M33.1
         run: python tools/public_demo_smoke.py
 
   visual-docx:
