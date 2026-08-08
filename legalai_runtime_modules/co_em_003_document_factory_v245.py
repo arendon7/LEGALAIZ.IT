@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from copy import deepcopy
 from datetime import date
 from pathlib import Path
 
@@ -60,6 +61,34 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
         return f"{context}\n{location_date}" if location_date else context
 
     @classmethod
+    def _presentation_answers(cls, normalized: dict, original: dict) -> dict:
+        """Restaura datos contractuales que v2.44 compacta para su renderer histórico.
+
+        La normalización heredada sigue siendo la base porque aporta identidad, fechas,
+        matrices y compatibilidad; solo se reponen los campos cuya literalidad gobierna
+        el contenido jurídico M33.0. Así evitamos que una respuesta válida del formulario
+        termine sustituida por un texto genérico antes de componer el instrumento.
+        """
+        result = deepcopy(normalized)
+        original = original if isinstance(original, dict) else {}
+        for section_name, field_names in {
+            "service": ("object", "expected_result", "professional"),
+            "termination": ("rules", "cure_period"),
+        }.items():
+            source = original.get(section_name)
+            if not isinstance(source, dict):
+                continue
+            target = result.setdefault(section_name, {})
+            if not isinstance(target, dict):
+                target = {}
+                result[section_name] = target
+            for field_name in field_names:
+                value = source.get(field_name)
+                if value not in (None, "", [], {}):
+                    target[field_name] = deepcopy(value)
+        return result
+
+    @classmethod
     def _render_m33_primary(cls, normalized: dict, target: Path) -> dict:
         service = normalized.setdefault("service", {})
         if isinstance(service, dict):
@@ -92,7 +121,8 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
         if not primary:
             raise RuntimeError("CO-EM-003 M33.0 no encontró el contrato principal generado.")
         target = target_folder / primary["filename"]
-        review_evidence = self._render_m33_primary(normalized, target)
+        presentation_answers = self._presentation_answers(normalized, answers)
+        review_evidence = self._render_m33_primary(presentation_answers, target)
 
         quality = assert_docx_quality(target, expected_product="CO-EM-003")
         visual = assert_visual_structure(target, expected_product="CO-EM-003")
