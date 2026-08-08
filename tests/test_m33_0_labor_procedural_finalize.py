@@ -73,12 +73,18 @@ class LaborProceduralFinalizeM330Tests(unittest.TestCase):
             self.assertNotIn("Modelo madurado", subtitle)
             self.assertNotIn("M33.0", subtitle)
 
-    def test_internal_control_keeps_legal_sources(self):
+    def test_internal_control_keeps_legal_sources_but_is_not_public(self):
         _, _, specs = labor_specs()
-        calculation = spec_of(specs, "calculation")
-        controls = [section for section in calculation["sections"] if section.get("_type") == "control"]
-        self.assertEqual(1, len(controls))
-        internal = json.dumps(controls[0], ensure_ascii=False)
+        for kind in ("calculation", "claim"):
+            spec = spec_of(specs, kind)
+            public_text = json.dumps(spec.get("sections") or [], ensure_ascii=False)
+            controls = spec.get("internal_review_sections") or []
+            self.assertTrue(spec.get("internal_controls_externalized"))
+            self.assertFalse(any(section.get("_type") == "control" for section in spec.get("sections") or []))
+            self.assertGreaterEqual(len(controls), 1)
+            self.assertNotIn("aprobación jurídica y QA", public_text)
+            self.assertNotIn("mismo hash", public_text)
+        internal = json.dumps(spec_of(specs, "calculation").get("internal_review_sections") or [], ensure_ascii=False)
         self.assertIn("Código Sustantivo del Trabajo", internal)
         self.assertIn("Ley 52 de 1975", internal)
         self.assertIn("Ley 2466 de 2025", internal)
@@ -102,6 +108,9 @@ class LaborProceduralFinalizeM330Tests(unittest.TestCase):
                 self.assertGreater(path.stat().st_size, 5_000)
                 document = Document(path)
                 self.assertGreater(len(document.paragraphs), 5)
+                visible = "\n".join(paragraph.text for paragraph in document.paragraphs)
+                self.assertNotIn("CONTROL DE USO, FUENTES Y REVISIÓN", visible)
+                self.assertNotIn("aprobación jurídica y QA", visible)
 
 
 if __name__ == "__main__":
