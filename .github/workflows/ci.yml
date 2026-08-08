@@ -98,7 +98,6 @@ jobs:
           LEGAL_APP_ENV: demo
           LEGAL_RUNTIME_DIR: ${{ runner.temp }}/legalaiz-runtime
           LEGAL_ALLOW_DEMO_ACCOUNTS: 'true'
-          LEGAL_DEMO_PASSWORD: 'LegalAIZDemo2026!'
           LEGAL_REQUIRE_MFA_ROLES: ''
           LEGAL_GITHUB_LITE_ASSETS: 'true'
         run: |
@@ -111,7 +110,7 @@ jobs:
           done
           cat /tmp/legalaiz.log
           exit 1
-      - name: Smoke producción demostrativa M33.0
+      - name: Smoke producción demostrativa M33.1
         env:
           LEGAL_RUNTIME_DIR: ${{ runner.temp }}/legalaiz-public-demo-runtime
         run: python tools/public_demo_smoke.py
@@ -130,7 +129,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends libreoffice-writer poppler-utils fonts-dejavu-core fonts-liberation
-      - name: Generar portafolio visual M33.0
+      - name: Generar portafolio visual M33.0 sobre runtime M33.1
         env:
           LEGAL_RUNTIME_DIR: ${{ runner.temp }}/legalaiz-visual-runtime
         run: |
