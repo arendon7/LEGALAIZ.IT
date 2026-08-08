@@ -10,7 +10,7 @@ from m33_document_presentation import (
     audit_m33_presentation,
     build_m33_presentation,
 )
-from m33_nda_release_polish import compose_nda_m33_release
+from m33_nda_instrument_finalize import compose_nda_m33_instrument
 
 
 class CoEm004DocumentFactoryV248(CoEm004DocumentFactoryV247):
@@ -45,7 +45,7 @@ class CoEm004DocumentFactoryV248(CoEm004DocumentFactoryV247):
         return " · ".join(value for value in (party_a, party_b, reference) if value)
 
     def _render_m33_primary(self, answers: dict, target: Path):
-        composition = compose_nda_m33_release(answers)
+        composition = compose_nda_m33_instrument(answers)
         party_a = self._party_name(answers, "party_a", "LA PRIMERA PARTE")
         party_b = self._party_name(answers, "party_b", "LA SEGUNDA PARTE")
         evidence = build_m33_presentation(
