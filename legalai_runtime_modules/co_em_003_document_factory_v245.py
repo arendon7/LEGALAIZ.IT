@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from contextvars import ContextVar
 from copy import deepcopy
 from datetime import date
 from pathlib import Path
@@ -16,6 +17,7 @@ from m33_services_release_polish import compose_services_m33_release
 
 
 _MONTHS = ("", "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre")
+_M33_SERVICES_SOURCE: ContextVar[dict | None] = ContextVar("m33_services_source", default=None)
 
 
 class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
@@ -62,13 +64,7 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
 
     @classmethod
     def _presentation_answers(cls, normalized: dict, original: dict) -> dict:
-        """Restaura datos contractuales que v2.44 compacta para su renderer histórico.
-
-        La normalización heredada sigue siendo la base porque aporta identidad, fechas,
-        matrices y compatibilidad; solo se reponen los campos cuya literalidad gobierna
-        el contenido jurídico M33.0. Así evitamos que una respuesta válida del formulario
-        termine sustituida por un texto genérico antes de componer el instrumento.
-        """
+        """Restaura datos contractuales que v2.44 compacta para su renderer histórico."""
         result = deepcopy(normalized)
         original = original if isinstance(original, dict) else {}
         for section_name, field_names in {
@@ -114,6 +110,7 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
         )
 
     def render_documents(self, answers, target_folder):
+        original = _M33_SERVICES_SOURCE.get() or answers
         normalized = self._normalize_answers(answers)
         evaluation, generated, hashes = super().render_documents(normalized, target_folder)
         target_folder = Path(target_folder)
@@ -121,7 +118,7 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
         if not primary:
             raise RuntimeError("CO-EM-003 M33.0 no encontró el contrato principal generado.")
         target = target_folder / primary["filename"]
-        presentation_answers = self._presentation_answers(normalized, answers)
+        presentation_answers = self._presentation_answers(normalized, original)
         review_evidence = self._render_m33_primary(presentation_answers, target)
 
         quality = assert_docx_quality(target, expected_product="CO-EM-003")
@@ -148,3 +145,15 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
         primary["m33_preflight"] = standard
         hashes[primary["filename"]] = quality["sha256"]
         return evaluation, generated, hashes
+
+    def generate(self, answers, actor=None):
+        # v2.44 normaliza y compacta antes de llegar a render_documents. Conservamos
+        # la fuente original en un ContextVar para restaurar únicamente la literalidad
+        # jurídica necesaria en M33.0, sin escribirla como metadato ni compartir estado
+        # entre solicitudes concurrentes.
+        source = deepcopy(answers or {})
+        token = _M33_SERVICES_SOURCE.set(source)
+        try:
+            return super().generate(answers, actor=actor)
+        finally:
+            _M33_SERVICES_SOURCE.reset(token)
