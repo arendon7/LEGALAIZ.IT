@@ -11,7 +11,7 @@ from m33_document_presentation import (
     audit_m33_presentation,
     build_m33_presentation,
 )
-from m33_services_instrument_finalize import compose_services_m33_instrument
+from m33_services_release_polish import compose_services_m33_release
 
 
 _MONTHS = ("", "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre")
@@ -64,7 +64,7 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
         service = normalized.setdefault("service", {})
         if isinstance(service, dict):
             service.setdefault("professional", True)
-        composition = compose_services_m33_instrument(normalized)
+        composition = compose_services_m33_release(normalized)
         client = cls._nested_dict(cls._nested_dict(normalized.get("client")).get("identification"))
         contractor = cls._nested_dict(cls._nested_dict(normalized.get("contractor")).get("identification"))
         return build_m33_presentation(
