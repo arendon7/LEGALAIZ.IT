@@ -6,9 +6,12 @@ from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
 
 from co_la_002_document_factory_v239 import CoLa002DocumentFactoryV239
-from document_standard_v33 import audit_docx_legal_standard
-from docx_builder import build_docx
-from m33_contractual_adapters import compose_employment_m33
+from m33_document_presentation import (
+    APPROVAL_CANDIDATE_MODE,
+    audit_m33_presentation,
+    build_m33_presentation,
+)
+from m33_employment_legal_finalize import compose_employment_m33_final
 
 
 class CoLa002DocumentFactoryV240(CoLa002DocumentFactoryV239):
@@ -21,22 +24,42 @@ class CoLa002DocumentFactoryV240(CoLa002DocumentFactoryV239):
         super().__init__(root, evaluator)
         self.output_dir = Path(root) / "data" / "generated" / "co-la-002-v240"
         self.output_dir.mkdir(parents=True, exist_ok=True)
+        self._m33_review_evidence: dict[str, dict] = {}
+
+    @staticmethod
+    def _cover_subtitle(answers: dict) -> str:
+        employer = answers.get("employer") if isinstance(answers.get("employer"), dict) else {}
+        worker = answers.get("worker") if isinstance(answers.get("worker"), dict) else {}
+        work = answers.get("work") if isinstance(answers.get("work"), dict) else {}
+        employer_name = str(employer.get("legalName") or employer.get("naturalPersonFullName") or "EL EMPLEADOR")
+        worker_name = str(worker.get("fullName") or "LA PERSONA TRABAJADORA")
+        place = str(work.get("mainWorkplace") or "").strip()
+        start = CoLa002DocumentFactoryV239._date_es(work.get("actualStartDate"))
+        context = f"{employer_name} · {worker_name}"
+        location_date = " · ".join(value for value in (place, start) if value)
+        return f"{context}\n{location_date}" if location_date else context
 
     def _contract(self, answers: dict, evaluation: dict, target: Path):
-        composition = compose_employment_m33(answers)
-        build_docx(
-            target,
-            composition["title"],
-            composition["subtitle"],
-            [
+        composition = compose_employment_m33_final(answers)
+        employer = answers.get("employer") if isinstance(answers.get("employer"), dict) else {}
+        worker = answers.get("worker") if isinstance(answers.get("worker"), dict) else {}
+        evidence = build_m33_presentation(
+            path=target,
+            title=composition["title"],
+            subtitle=composition.get("subtitle") or "",
+            metadata=[
                 ("Producto", "CO-LA-002"),
+                ("Empleador", str(employer.get("legalName") or employer.get("naturalPersonFullName") or "Empleador")),
+                ("Persona trabajadora", str(worker.get("fullName") or "Persona trabajadora")),
                 ("Estándar documental", self.DOCUMENT_STANDARD),
                 ("Estado", "Candidato sujeto a revisión jurídica y QA"),
             ],
-            composition["sections"],
+            sections=composition["sections"],
             product_code="CO-LA-002",
-            enforce_legal_standard=True,
+            presentation_mode=APPROVAL_CANDIDATE_MODE,
+            approval_subtitle=self._cover_subtitle(answers),
         )
+        self._m33_review_evidence[target.name] = evidence
 
     def generate(self, answers, actor=None):
         manifest = super().generate(answers, actor=actor)
@@ -50,10 +73,14 @@ class CoLa002DocumentFactoryV240(CoLa002DocumentFactoryV239):
         if not primary:
             raise RuntimeError("CO-LA-002 M33.0 no encontró el contrato principal generado.")
         primary_path = folder / primary["filename"]
-        standard = audit_docx_legal_standard(primary_path)
+        standard = audit_m33_presentation(primary_path, APPROVAL_CANDIDATE_MODE)
         if not standard["valid"]:
             raise ValueError(f"CO-LA-002 no supera el estándar M33.0: {standard['findings']}")
         primary["document_standard"] = self.DOCUMENT_STANDARD
+        primary["presentation_mode"] = APPROVAL_CANDIDATE_MODE
+        primary["review_evidence"] = self._m33_review_evidence.get(primary["filename"], {})
+        primary["approval_state"] = {"legal": "pending", "qa": "pending"}
+        primary["release_rule"] = "Liberar únicamente el mismo SHA-256 aprobado por Jurídico y QA."
         primary["m33_preflight"] = standard
 
         # Reescribe el manifiesto versionado y recompone el ZIP para que la evidencia
