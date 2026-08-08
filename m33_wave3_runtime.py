@@ -9,13 +9,27 @@ from m33_procedural_runtime import _finalize_spec
 from m33_wave3_composition import WAVE3_CODES, document_specs_m33_wave3
 
 
+_HABEAS_CLIENT_SUBTITLE = (
+    "Hábeas data financiero · documento sujeto a verificación de hechos y soportes"
+)
+
+
+def _polish_habeas_client_presentation(specs: list[dict]) -> list[dict]:
+    """Retira metadatos editoriales del subtítulo sin tocar la gobernanza interna."""
+    for spec in specs:
+        if spec.get("internal_controls_externalized"):
+            spec["subtitle"] = _HABEAS_CLIENT_SUBTITLE
+    return specs
+
+
 def document_specs_m33_all(case_id, code, answers, result, product, generated_at, question_rows):
     specs = document_specs_m33_wave3(case_id, code, answers, result, product, generated_at, question_rows)
     if code == "CO-LA-001":
         labor_specs = finalize_labor_specs(specs, answers, result)
         return finalize_labor_presentation(labor_specs, answers, result)
     if code == "CO-CD-001":
-        return finalize_habeas_specs(specs, answers, result)
+        habeas_specs = finalize_habeas_specs(specs, answers, result)
+        return _polish_habeas_client_presentation(habeas_specs)
     if code not in WAVE3_CODES:
         return specs
     return [_finalize_spec(code, answers, spec) for spec in specs]
