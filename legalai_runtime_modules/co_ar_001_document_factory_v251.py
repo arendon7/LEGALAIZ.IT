@@ -10,7 +10,7 @@ from m33_document_presentation import (
     audit_m33_presentation,
     build_m33_presentation,
 )
-from m33_lease_release_polish import compose_lease_m33_release
+from m33_lease_instrument_finalize import compose_lease_m33_instrument
 
 
 class CoAr001DocumentFactoryV251(CoAr001DocumentFactoryV250):
@@ -42,7 +42,7 @@ class CoAr001DocumentFactoryV251(CoAr001DocumentFactoryV250):
         return " · ".join(value for value in (landlord, tenant, address, municipality) if value)
 
     def _render_m33_primary(self, answers: dict, target: Path):
-        composition = compose_lease_m33_release(answers)
+        composition = compose_lease_m33_instrument(answers)
         landlord = self._party_name(answers, "landlord", "LA PARTE ARRENDADORA")
         tenant = self._party_name(answers, "tenant", "LA PARTE ARRENDATARIA")
         evidence = build_m33_presentation(
