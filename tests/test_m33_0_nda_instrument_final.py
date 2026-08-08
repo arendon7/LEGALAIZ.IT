@@ -42,11 +42,15 @@ class NdaInstrumentFinalM330Tests(unittest.TestCase):
         self.assertNotIn("jurídico y qa", text.casefold())
         self.assertNotIn("aprobación jurídica", text.casefold())
 
-    def test_no_personal_data_case_omits_personal_data_references_from_visible_instrument(self):
+    def test_no_personal_data_case_omits_data_module_vocabulary_from_visible_instrument(self):
         composition = compose_nda_m33_instrument(nda_answers())
-        text = visible_text(composition)
-        self.assertNotIn("datos personales", text.casefold())
-        self.assertNotIn("encargado/subencargado", text.casefold())
+        text = visible_text(composition).casefold()
+        self.assertNotIn("datos personales", text)
+        self.assertNotIn("encargado/subencargado", text)
+        self.assertNotIn("responsable/encargado", text)
+        self.assertNotIn("protección de datos", text)
+        definitions = section_text(composition, "DEFINICIONES OPERATIVAS")
+        self.assertIn("titularidad, autoría, representación, relación laboral, licenciamiento", definitions)
 
     def test_security_provider_ai_and_liability_are_contract_language_not_case_metadata(self):
         composition = compose_nda_m33_instrument(nda_answers())
@@ -79,6 +83,7 @@ class NdaInstrumentFinalM330Tests(unittest.TestCase):
         text = visible_text(composition)
         self.assertIn("datos personales", text.casefold())
         self.assertIn("tratamiento de datos personales", section_text(composition, "DURACIÓN Y SUPERVIVENCIA"))
+        self.assertIn("protección de datos", section_text(composition, "SOLUCIÓN DE CONTROVERSIAS"))
 
 
 if __name__ == "__main__":
