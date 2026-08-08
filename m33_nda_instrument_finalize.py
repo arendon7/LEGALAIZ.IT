@@ -42,8 +42,12 @@ def compose_nda_m33_instrument(answers: dict) -> dict[str, Any]:
 
     for section in composition.get("sections") or []:
         heading_cf = str(section.get("heading") or "").casefold()
+        is_clause = section.get("_type") == "clause"
 
-        if "seguridad de la información" in heading_cf:
+        # Todas las sustituciones de esta capa se limitan a cláusulas. La portada y
+        # la sección de comparecencia pueden contener palabras como "IA" o "PI" en
+        # el título y nunca deben confundirse con módulos sustantivos.
+        if is_clause and "seguridad de la información" in heading_cf:
             _paragraph(
                 section,
                 f"LA PARTE RECEPTORA aplicará medidas razonables y proporcionales al riesgo, incluyendo controles técnicos de {technical}; "
@@ -54,7 +58,7 @@ def compose_nda_m33_instrument(answers: dict) -> dict[str, Any]:
                 "o el deber contractual de reserva."
             )
 
-        elif "proveedores, nube y terceros" in heading_cf:
+        elif is_clause and "proveedores, nube y terceros" in heading_cf:
             data_tail = (
                 " Cuando un tercero trate datos personales por cuenta de alguna parte, deberán documentarse previamente los roles, instrucciones y garantías aplicables bajo la normativa correspondiente."
                 if personal_data
@@ -68,7 +72,7 @@ def compose_nda_m33_instrument(answers: dict) -> dict[str, Any]:
                 + data_tail
             )
 
-        elif "inteligencia artificial" in heading_cf:
+        elif is_clause and "inteligencia artificial" in heading_cf:
             _paragraph(
                 section,
                 f"Las partes autorizan únicamente el uso de sistemas de inteligencia artificial bajo la siguiente condición contractual: {ai_rule}. "
@@ -78,7 +82,7 @@ def compose_nda_m33_instrument(answers: dict) -> dict[str, Any]:
                 "Esta cláusula establece obligaciones contractuales de gobernanza tecnológica y no atribuye a políticas públicas o normas sectoriales un alcance de ley general que no tengan."
             )
 
-        elif "desarrollo independiente y conocimiento residual" in heading_cf and not personal_data:
+        elif is_clause and "desarrollo independiente y conocimiento residual" in heading_cf and not personal_data:
             _paragraph(
                 section,
                 "Podrá utilizarse conocimiento general y experiencia profesional sin reproducir Información Confidencial, siempre que exista evidencia de desarrollo independiente. "
@@ -86,7 +90,7 @@ def compose_nda_m33_instrument(answers: dict) -> dict[str, Any]:
                 "La experiencia legítimamente adquirida no autoriza reconstruir, extraer o explotar activos protegidos ni aprovechar una ventaja obtenida mediante incumplimiento del presente acuerdo."
             )
 
-        elif "duración y supervivencia" in heading_cf:
+        elif is_clause and "duración y supervivencia" in heading_cf:
             data_survival = ", tratamiento de datos personales" if personal_data else ""
             _paragraph(
                 section,
@@ -97,7 +101,7 @@ def compose_nda_m33_instrument(answers: dict) -> dict[str, Any]:
                 "La expiración no autoriza un uso nuevo de información recibida durante la vigencia."
             )
 
-        elif "responsabilidad y mitigación" in heading_cf:
+        elif is_clause and "responsabilidad y mitigación" in heading_cf:
             _paragraph(
                 section,
                 f"Las partes acuerdan como regla de responsabilidad para este contrato: {liability_rule}. Esta estipulación no constituye por sí sola cláusula penal, liquidación anticipada de perjuicios ni presunción de daño. "
@@ -106,7 +110,7 @@ def compose_nda_m33_instrument(answers: dict) -> dict[str, Any]:
                 "Cualquier límite de responsabilidad que se pretenda incorporar deberá ser expreso, cuantificado o determinable y revisado frente a dolo, culpa grave, derechos de terceros y materias legalmente indisponibles."
             )
 
-        elif "reclamos de terceros" in heading_cf:
+        elif is_clause and "reclamos de terceros" in heading_cf:
             data_reference = ", tratamiento de datos personales" if personal_data else ""
             _paragraph(
                 section,
@@ -115,7 +119,7 @@ def compose_nda_m33_instrument(answers: dict) -> dict[str, Any]:
                 "Cada parte conserva el control de su propia defensa y deberá mitigar razonablemente los daños bajo su esfera de actuación."
             )
 
-        elif "integridad, prelación y modificaciones" in heading_cf:
+        elif is_clause and "integridad, prelación y modificaciones" in heading_cf:
             data_instrument = ", tratamiento de datos personales" if personal_data else ""
             _paragraph(
                 section,
@@ -124,7 +128,7 @@ def compose_nda_m33_instrument(answers: dict) -> dict[str, Any]:
                 "Toda modificación material deberá constar por escrito o en un mensaje de datos que satisfaga los requisitos jurídicos aplicables. La tolerancia, demora o falta de ejercicio de un derecho no implica renuncia; la invalidez o ineficacia de una estipulación no afectará las demás y se sustituirá, cuando sea posible, por una regla válida que preserve razonablemente su finalidad lícita."
             )
 
-        elif "firma y evidencia electrónica" in heading_cf:
+        elif is_clause and "firma y evidencia electrónica" in heading_cf:
             _paragraph(
                 section,
                 "El acuerdo podrá suscribirse manuscrita o electrónicamente. Cuando se utilicen mensajes de datos, el método deberá permitir identificar al firmante, evidenciar su aprobación y ser confiable y apropiado para la finalidad; la copia deberá permanecer accesible para consulta posterior y conservar integridad, versión, fecha y evidencia de aceptación. "
