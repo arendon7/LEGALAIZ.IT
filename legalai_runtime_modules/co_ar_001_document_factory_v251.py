@@ -39,9 +39,7 @@ class CoAr001DocumentFactoryV251(CoAr001DocumentFactoryV250):
         ident = prop.get("identification") if isinstance(prop.get("identification"), dict) else {}
         address = str(ident.get("address") or "").strip()
         municipality = str(ident.get("municipality") or "").strip()
-        context = f"{landlord} · {tenant}"
-        location = " · ".join(value for value in (address, municipality) if value)
-        return f"{context}\n{location}" if location else context
+        return " · ".join(value for value in (landlord, tenant, address, municipality) if value)
 
     def _render_m33_primary(self, answers: dict, target: Path):
         composition = compose_lease_m33_final(answers)
