@@ -455,12 +455,12 @@ def compose_lease_m33_final(answers: dict) -> dict[str, Any]:
         elif _has(section, "SEGUROS") and guarantee_type not in {"policy", "póliza", "poliza", "insurance"}:
             continue
 
-        elif _has(section, "TERMINACIÓN POR EL ARRENDADOR"):
-            section["heading"] = str(section.get("heading") or "").replace("ARRENDADOR", "PARTE ARRENDADORA")
+        elif _has(section, "TERMINACIÓN POR LA PARTE ARRENDADORA") or _has(section, "TERMINACIÓN POR EL ARRENDADOR"):
+            section["heading"] = str(section.get("heading") or "").replace("EL ARRENDADOR", "LA PARTE ARRENDADORA")
             _paragraph(section, _termination_landlord())
 
-        elif _has(section, "TERMINACIÓN POR EL ARRENDATARIO"):
-            section["heading"] = str(section.get("heading") or "").replace("ARRENDATARIO", "PARTE ARRENDATARIA")
+        elif _has(section, "TERMINACIÓN POR LA PARTE ARRENDATARIA") or _has(section, "TERMINACIÓN POR EL ARRENDATARIO"):
+            section["heading"] = str(section.get("heading") or "").replace("EL ARRENDATARIO", "LA PARTE ARRENDATARIA")
             _paragraph(section, _termination_tenant())
 
         if section.get("_type") == "signature":
