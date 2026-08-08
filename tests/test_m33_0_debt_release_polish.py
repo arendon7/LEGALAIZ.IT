@@ -63,6 +63,14 @@ class DebtReleasePolishM330Tests(unittest.TestCase):
         self.assertIn("IV. VERIFICACIONES DE CIERRE", text(close))
         self.assertIn("V. CONSTANCIA DOCUMENTAL", text(close))
 
+    def test_agreement_annex_does_not_force_redundant_page_break(self):
+        agreement = next(item for item in specs_for("Acordar un plan de pago") if item.get("kind") == "payment_agreement")
+        annex = next(
+            section for section in agreement.get("sections") or []
+            if str(section.get("heading") or "").startswith("ANEXO ECONÓMICO")
+        )
+        self.assertFalse(bool(annex.get("page_break_before")))
+
     def test_polish_preserves_governance_flags(self):
         for stage, zero in (
             ("Enviar un cobro inicial", False),
