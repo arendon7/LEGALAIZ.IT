@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
 
@@ -39,10 +40,49 @@ class CoLa002DocumentFactoryV240(CoLa002DocumentFactoryV239):
         location_date = " · ".join(value for value in (place, start) if value)
         return f"{context}\n{location_date}" if location_date else context
 
+    @staticmethod
+    def _format_nit(value) -> str:
+        """Formatea el NIT para lectura humana sin modificar el dato canónico de entrada."""
+        text = str(value or "").strip()
+        match = re.fullmatch(r"(\d{7,12})(?:-(\d))?", text)
+        if not match:
+            return text
+        base, check_digit = match.groups()
+        groups = []
+        while base:
+            groups.append(base[-3:])
+            base = base[:-3]
+        formatted = ".".join(reversed(groups))
+        return f"{formatted}-{check_digit}" if check_digit else formatted
+
+    @classmethod
+    def _normalize_render_identifiers(cls, value, raw_nit: str, formatted_nit: str):
+        """Sustituye únicamente la representación visible del NIT dentro de la composición."""
+        if isinstance(value, str):
+            return value.replace(raw_nit, formatted_nit) if raw_nit and formatted_nit else value
+        if isinstance(value, list):
+            return [cls._normalize_render_identifiers(item, raw_nit, formatted_nit) for item in value]
+        if isinstance(value, tuple):
+            return tuple(cls._normalize_render_identifiers(item, raw_nit, formatted_nit) for item in value)
+        if isinstance(value, dict):
+            return {
+                key: cls._normalize_render_identifiers(item, raw_nit, formatted_nit)
+                for key, item in value.items()
+            }
+        return value
+
     def _contract(self, answers: dict, evaluation: dict, target: Path):
         composition = compose_employment_m33_final(answers)
         employer = answers.get("employer") if isinstance(answers.get("employer"), dict) else {}
         worker = answers.get("worker") if isinstance(answers.get("worker"), dict) else {}
+
+        raw_nit = str(employer.get("identificationNumber") or "").strip()
+        formatted_nit = self._format_nit(raw_nit)
+        if raw_nit and formatted_nit != raw_nit:
+            composition["sections"] = self._normalize_render_identifiers(
+                composition.get("sections") or [], raw_nit, formatted_nit
+            )
+
         evidence = build_m33_presentation(
             path=target,
             title=composition["title"],
