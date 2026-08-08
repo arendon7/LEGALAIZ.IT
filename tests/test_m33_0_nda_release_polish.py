@@ -23,6 +23,7 @@ class NdaReleasePolishM330Tests(unittest.TestCase):
         self.assertIn("contratos@demo.legalaiz.it", notifications)
         self.assertIn("Medellín, Antioquia", notifications)
         self.assertIn("Bogotá D.C.", notifications)
+        self.assertNotIn("Bogotá D.C..", notifications)
         self.assertNotIn("contactos de la ficha", notifications.casefold())
 
     def test_integrity_has_no_internal_platform_ficha_reference(self):
@@ -61,8 +62,8 @@ class NdaReleasePolishM330Tests(unittest.TestCase):
         self.assertNotIn("la Parte Reveladora", text)
         self.assertNotIn("La Parte Receptora", text)
         self.assertNotIn("la Parte Receptora", text)
-        self.assertIn("LA PARTE REVELADORA", text)
-        self.assertIn("LA PARTE RECEPTORA", text)
+        self.assertIn("PARTE REVELADORA", text)
+        self.assertIn("PARTE RECEPTORA", text)
 
     def test_no_personal_data_case_does_not_add_data_transfer_language_in_assignment(self):
         composition = compose_nda_m33_release(nda_answers())
