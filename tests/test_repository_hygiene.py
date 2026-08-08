@@ -76,15 +76,21 @@ class RepositoryHygieneTests(TestCase):
     def test_safe_environment_example_and_security_policy_exist(self) -> None:
         example = (ROOT / ".env.example").read_text(encoding="utf-8")
         self.assertIn("LEGAL_DEMO_PASSWORD=CHANGE_ME_BEFORE_USE", example)
-        self.assertNotIn("LegalAIZDemo2026!", example)
+        legacy_password = "LegalAIZDemo" + "2026!"
+        self.assertNotIn(legacy_password, example)
         security = (ROOT / "SECURITY.md").read_text(encoding="utf-8")
         self.assertIn("Reporte responsable", security)
         self.assertIn("datos sintéticos", security)
 
-    def test_public_docs_do_not_publish_demo_password(self) -> None:
-        for relative in ("README.md", "FINAL_RELEASE_NOTES.md", "docs/DESPLIEGUE_M33.md", "render.yaml"):
-            content = (ROOT / relative).read_text(encoding="utf-8")
-            self.assertNotIn("LegalAIZDemo2026!", content, relative)
+    def test_legacy_demo_password_is_not_tracked_anywhere(self) -> None:
+        legacy_password = "LegalAIZDemo" + "2026!"
+        result = subprocess.run(
+            ["git", "grep", "-n", "-F", legacy_password],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+        )
+        self.assertEqual(result.returncode, 1, result.stdout)
 
     def test_readme_sets_main_as_source_of_truth_and_preserves_limits(self) -> None:
         content = (ROOT / "README.md").read_text(encoding="utf-8")
