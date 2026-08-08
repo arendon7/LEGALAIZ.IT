@@ -44,6 +44,22 @@ from legalai_platform.http_handler_m33_0 import Handler  # noqa: E402
 # "code": "internal_error"
 
 
+_original_m31_case_demo_summary = M31_CASE_DEMO.summary
+
+
+def _safe_m31_case_demo_summary(con):
+    """Neutraliza credenciales heredadas del snapshot M31.8 antes de cualquier salida M33."""
+    payload = _original_m31_case_demo_summary(con)
+    credentials = payload.get("credentials") if isinstance(payload, dict) else None
+    if isinstance(credentials, dict):
+        credentials.pop("password", None)
+        credentials["password_source"] = "LEGAL_DEMO_PASSWORD"
+    return payload
+
+
+M31_CASE_DEMO.summary = _safe_m31_case_demo_summary
+
+
 def authenticate(*args, **kwargs):
     """Compatibility wrapper for callers that temporarily replace run.SETTINGS."""
     previous = _application_services.SETTINGS
