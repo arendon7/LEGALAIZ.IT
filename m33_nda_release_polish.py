@@ -32,7 +32,7 @@ def _contact(answers: dict, prefix: str, label: str) -> str:
     identification = identification if isinstance(identification, dict) else {}
     name = str(identification.get("name") or identification.get("legalName") or label).strip()
     email = str(identification.get("email") or "").strip()
-    address = str(identification.get("address") or "").strip()
+    address = str(identification.get("address") or "").strip().rstrip(".")
     values = [name]
     if email:
         values.append(f"correo {email}")
