@@ -2,6 +2,7 @@ from __future__ import annotations
 
 """Runtime M33.0 completo hasta la tercera oleada."""
 
+from m33_consumer_legal_finalize import finalize_consumer_specs
 from m33_habeas_legal_finalize import finalize_habeas_specs
 from m33_labor_presentation_finalize import finalize_labor_presentation
 from m33_labor_procedural_finalize import finalize_labor_specs
@@ -30,6 +31,8 @@ def document_specs_m33_all(case_id, code, answers, result, product, generated_at
     if code == "CO-CD-001":
         habeas_specs = finalize_habeas_specs(specs, answers, result)
         return _polish_habeas_client_presentation(habeas_specs)
+    if code == "CO-CD-003":
+        return finalize_consumer_specs(specs, answers, result)
     if code not in WAVE3_CODES:
         return specs
     return [_finalize_spec(code, answers, spec) for spec in specs]
