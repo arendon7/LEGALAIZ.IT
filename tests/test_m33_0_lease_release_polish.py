@@ -13,7 +13,7 @@ for candidate in (ROOT, RUNTIME_MODULES):
 
 from co_ar_001_test_fixtures_v249 import complete_answers
 from m33_document_presentation import split_internal_review_sections
-from m33_lease_release_polish import compose_lease_m33_release
+from m33_lease_instrument_finalize import compose_lease_m33_instrument
 
 
 def section_text(composition: dict, phrase: str) -> str:
@@ -35,7 +35,7 @@ def public_text(composition: dict) -> str:
 
 class LeaseReleasePolishM330Tests(unittest.TestCase):
     def test_considerations_are_substantive_and_client_facing(self):
-        composition = compose_lease_m33_release(complete_answers())
+        composition = compose_lease_m33_instrument(complete_answers())
         considerations = next(
             section for section in composition["sections"]
             if str(section.get("heading") or "").strip().casefold() == "consideraciones"
@@ -48,7 +48,7 @@ class LeaseReleasePolishM330Tests(unittest.TestCase):
         self.assertIn("buena fe y por la realidad acreditada", text)
 
     def test_signed_instrument_has_no_workspace_language(self):
-        composition = compose_lease_m33_release(complete_answers())
+        composition = compose_lease_m33_instrument(complete_answers())
         text = public_text(composition).casefold()
         for forbidden in ("ficha", "expediente", "la plataforma", "aprobación jurídica", "jurídico y qa", "hash"):
             self.assertNotIn(forbidden, text)
@@ -58,7 +58,7 @@ class LeaseReleasePolishM330Tests(unittest.TestCase):
         self.assertIn("Ley 820 de 2003", internal_text)
 
     def test_rent_is_in_cop_and_words_and_preserves_article_18_control(self):
-        composition = compose_lease_m33_release(complete_answers())
+        composition = compose_lease_m33_instrument(complete_answers())
         rent = section_text(composition, "CANON")
         self.assertIn("COP $2.500.000", rent)
         self.assertIn("dos millones quinientos mil pesos moneda corriente", rent)
@@ -66,9 +66,10 @@ class LeaseReleasePolishM330Tests(unittest.TestCase):
         self.assertIn("COP $350.000.000", rent)
         self.assertIn("COP $3.500.000", rent)
         self.assertIn("COP $200.000.000", rent)
+        self.assertNotIn("Cuenta informada por el arrendador", rent)
 
     def test_deposit_clause_distinguishes_prohibited_deposit_and_utility_guarantee(self):
-        composition = compose_lease_m33_release(complete_answers())
+        composition = compose_lease_m33_instrument(complete_answers())
         deposits = section_text(composition, "DEPÓSITOS Y GARANTÍAS")
         self.assertIn("artículo 16 de la Ley 820 de 2003", deposits)
         self.assertIn("artículo 15 de la Ley 820 de 2003", deposits)
@@ -77,7 +78,7 @@ class LeaseReleasePolishM330Tests(unittest.TestCase):
         self.assertIn("no convierte una estimación unilateral en deuda cierta", deposits)
 
     def test_repair_inventory_and_closeout_are_evidence_driven(self):
-        composition = compose_lease_m33_release(complete_answers())
+        composition = compose_lease_m33_instrument(complete_answers())
         repairs = section_text(composition, "REPARACIONES NECESARIAS")
         inventory = section_text(composition, "INVENTARIO Y EVIDENCIA")
         restitution = section_text(composition, "RESTITUCIÓN")
@@ -88,7 +89,7 @@ class LeaseReleasePolishM330Tests(unittest.TestCase):
         self.assertIn("Las cotizaciones constituyen elementos de estimación", liquidation)
 
     def test_notices_preserve_statutory_formality_and_real_channels(self):
-        composition = compose_lease_m33_release(complete_answers())
+        composition = compose_lease_m33_instrument(complete_answers())
         communications = section_text(composition, "COMUNICACIONES")
         self.assertIn("arrendador@example.com", communications)
         self.assertIn("tenant@example.com", communications)
@@ -96,15 +97,29 @@ class LeaseReleasePolishM330Tests(unittest.TestCase):
         self.assertIn("correo electrónico o mensaje informal no sustituirá", communications)
 
     def test_signature_integrity_has_no_platform_language(self):
-        composition = compose_lease_m33_release(complete_answers())
+        composition = compose_lease_m33_instrument(complete_answers())
         signature = section_text(composition, "FIRMA Y COPIA")
         self.assertIn("copia íntegra del contrato", signature)
         self.assertIn("preservarse sin modificaciones posteriores", signature)
         self.assertIn("nueva versión, otrosí o instrumento válido", signature)
         self.assertNotIn("plataforma", signature.casefold())
 
+    def test_residual_risk_clauses_are_substantive(self):
+        composition = compose_lease_m33_instrument(complete_answers())
+        insurance = section_text(composition, "SEGUROS")
+        data = section_text(composition, "DATOS PERSONALES")
+        breach = section_text(composition, "INCUMPLIMIENTO Y SUBSANACIÓN")
+        abandonment = section_text(composition, "ABANDONO Y BIENES")
+        disputes = section_text(composition, "SOLUCIÓN DE CONTROVERSIAS")
+        self.assertIn("Aseguradora Ejemplo S.A.", insurance)
+        self.assertIn("doble recuperación", insurance)
+        self.assertIn("acceso restringido", data)
+        self.assertIn("no convierte por sí sola la afirmación de una parte en hecho probado", breach)
+        self.assertIn("La mera ausencia temporal", abandonment)
+        self.assertIn("conciliación ante un centro o conciliador competente", disputes)
+
     def test_landlord_and_tenant_termination_rules_survive_release_polish(self):
-        composition = compose_lease_m33_release(complete_answers())
+        composition = compose_lease_m33_instrument(complete_answers())
         landlord = section_text(composition, "TERMINACIÓN POR LA PARTE ARRENDADORA")
         tenant = section_text(composition, "TERMINACIÓN POR LA PARTE ARRENDATARIA")
         self.assertIn("seis (6) cánones", landlord)
