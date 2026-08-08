@@ -18,6 +18,7 @@ from co_ar_001_test_fixtures_v249 import complete_answers as lease_answers
 from co_em_004_document_factory_v248 import CoEm004DocumentFactoryV248
 from co_la_002_document_factory_v240 import CoLa002DocumentFactoryV240
 from document_standard_v33 import audit_docx_legal_standard
+from m33_document_presentation import APPROVAL_CANDIDATE_MODE, audit_m33_presentation
 
 
 class ControlledEvaluator:
@@ -46,13 +47,7 @@ class LeaseEvaluator(ControlledEvaluator):
     """Fixture mínimo compatible con la interfaz histórica de CO-AR-001."""
 
     def __init__(self):
-        # La fábrica v2.49 consulta metadatos de `evaluator.documents` para nombrar
-        # documentos, pero esta prueba M33.0 valida únicamente el contrato principal.
-        # Los anexos históricos permanecen disponibles en la fábrica y se migran en
-        # una oleada separada; no deben mezclarse en este control del contrato patrón.
-        self.documents = [
-            {"id": "DOC-AR-CONTRACT-001", "name": "Contrato de arrendamiento"},
-        ]
+        self.documents = [{"id": "DOC-AR-CONTRACT-001", "name": "Contrato de arrendamiento"}]
         self.blocks = ["AR-BASE", "AR-PROPERTY", "AR-ECONOMICS"]
 
     def evaluate(self, answers):
@@ -74,9 +69,22 @@ class LeaseEvaluator(ControlledEvaluator):
 
 def employment_answers() -> dict:
     return {
-        "employer": {"type": "legal_person", "legalName": "Soluciones Andinas S.A.S.", "identificationNumber": "901234567-8"},
-        "employerSignatory": {"fullName": "María Fernanda Gómez Ruiz", "positionOrCapacity": "representante legal"},
-        "worker": {"fullName": "Carlos Andrés Pérez López", "identificationNumber": "1030123456"},
+        "employer": {
+            "type": "legal_person",
+            "legalName": "Soluciones Andinas S.A.S.",
+            "identificationNumber": "901234567-8",
+            "domicile": "Medellín, Antioquia",
+        },
+        "employerSignatory": {
+            "fullName": "María Fernanda Gómez Ruiz",
+            "identificationNumber": "43678901",
+            "positionOrCapacity": "representante legal",
+        },
+        "worker": {
+            "fullName": "Carlos Andrés Pérez López",
+            "identificationNumber": "1030123456",
+            "domicile": "Medellín, Antioquia",
+        },
         "role": {
             "jobTitle": "Analista jurídico y documental",
             "purpose": "gestionar contratos, expedientes y controles de trazabilidad jurídica de la organización",
@@ -138,14 +146,20 @@ class ContractualWaveM330Tests(unittest.TestCase):
     def _assert_primary(self, factory, answers, document_id: str, expected_title: str, expected_clause: str, minimum_words: int, minimum_clauses: int):
         manifest = factory.generate(answers, actor={"id": "qa-m33", "role": "qa"})
         path, item = primary_path(factory, manifest, document_id)
-        report = audit_docx_legal_standard(path)
+        mode = item.get("presentation_mode")
+        report = audit_m33_presentation(path, mode) if mode == APPROVAL_CANDIDATE_MODE else audit_docx_legal_standard(path)
         self.assertTrue(report["valid"], report["findings"])
         self.assertEqual(item.get("document_standard"), "M33.0")
         document = Document(path)
         text = "\n".join(p.text for p in document.paragraphs if p.text.strip())
         self.assertIn(expected_title, text)
         self.assertIn(expected_clause, text)
-        self.assertIn("CONTROL DE USO, FUENTES Y REVISIÓN", text)
+        if mode == APPROVAL_CANDIDATE_MODE:
+            self.assertNotIn("CONTROL DE USO, FUENTES Y REVISIÓN", text)
+            self.assertNotIn("BORRADOR CONTROLADO", text)
+            self.assertGreaterEqual(len((item.get("review_evidence") or {}).get("legal_sources") or []), 5)
+        else:
+            self.assertIn("CONTROL DE USO, FUENTES Y REVISIÓN", text)
         self.assertNotIn("________", text)
         self.assertGreater(len(text.split()), minimum_words)
         self.assertGreaterEqual(clause_count(document), minimum_clauses)
@@ -157,7 +171,17 @@ class ContractualWaveM330Tests(unittest.TestCase):
     def test_employment_m33(self):
         with tempfile.TemporaryDirectory() as tmp:
             factory = CoLa002DocumentFactoryV240(Path(tmp), ControlledEvaluator(["DOC-LA-CONTRACT-001", "ANX-LA-FUN-001"], ["LABOR_BASE", "FUNCTIONS_ANNEX"]))
-            self._assert_primary(factory, employment_answers(), "DOC-LA-CONTRACT-001", "CONTRATO INDIVIDUAL DE TRABAJO A TÉRMINO INDEFINIDO", "PRIMERA: OBJETO", 1_800, 25)
+            _, path = self._assert_primary(factory, employment_answers(), "DOC-LA-CONTRACT-001", "CONTRATO INDIVIDUAL DE TRABAJO A TÉRMINO INDEFINIDO", "PRIMERA: OBJETO", 1_800, 25)
+            text = "\n".join(p.text for p in Document(path).paragraphs if p.text.strip())
+            self.assertIn("NIT 901.234.567-8", text)
+            self.assertIn("María Fernanda Gómez Ruiz", text)
+            self.assertIn("43.678.901", text)
+            self.assertIn("42 horas semanales", text)
+            self.assertNotRegex(text, r"\bfixed\b")
+            self.assertIn("7:00 p. m.", text)
+            self.assertIn("recargo del 90 %", text)
+            self.assertIn("cinco (5) días", text)
+            self.assertIn("preaviso de treinta (30) días calendario", text)
             self.assertEqual(factory.VERSION, "2.40")
 
     def test_nda_m33(self):
