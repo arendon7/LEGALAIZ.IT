@@ -22,7 +22,15 @@ from tests.test_m33_0_procedural_wave import (
 
 SELECTIONS = {
     "CO-LA-001": ("calculation", "claim"),
-    "CO-CD-001": ("habeas_reiteration",),
+    "CO-CD-001": (
+        "habeas_consultation",
+        "habeas_claim",
+        "habeas_reiteration",
+        "identity_theft_protocol",
+        "habeas_authority_escalation",
+        "habeas_evidence_matrix",
+        "habeas_deadline_calendar",
+    ),
     "CO-CD-003": ("warranty_claim",),
     "CO-CD-004": ("payment_agreement", "promissory_note"),
 }
