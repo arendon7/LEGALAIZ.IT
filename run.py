@@ -14,7 +14,7 @@ import threading
 import webbrowser
 import signal
 from legalai_platform.runtime_registry import *  # noqa: F401,F403,E402
-from legalai_platform.release_metadata import RELEASE_NAME, PUBLIC_DEMO_MODE  # noqa: E402
+from legalai_platform.release_metadata import RELEASE_NAME, PUBLIC_DEMO_MODE, MILESTONE  # noqa: E402
 from legalai_platform.application_services import *  # noqa: F401,F403,E402
 import legalai_platform.application_services as _application_services  # noqa: E402
 from legalai_platform.http_handler_m33_0 import Handler  # noqa: E402
@@ -32,6 +32,7 @@ from legalai_platform.http_handler_m33_0 import Handler  # noqa: E402
 # m32-8-transactional-communications
 # m32-9-contact-governance
 # m33-0-public-demo-integration
+# m33-1-render-deployment-hardening
 # LEGAL_ALLOW_DEMO_ACCOUNTS
 # LEGAL_BOOTSTRAP_ADMIN_EMAIL
 # UPDATE users SET active=0 WHERE lower(email) LIKE '%@demo.legalaiz.it'
@@ -77,10 +78,10 @@ def main():
     print("Expedientes · documentos · revisión controlada · trazabilidad · seguridad por rol")
     allow_demo = str(os.environ.get("LEGAL_ALLOW_DEMO_ACCOUNTS", "")).strip().lower() in {"1", "true", "yes", "si", "sí"}
     if SETTINGS.profile == "local" and allow_demo:
-        print(f"Acceso demo local: ana@demo.legalaiz.it · clave: {DEMO_PASSWORD}")
-        print("Estas credenciales funcionan únicamente en el entorno demostrativo.")
+        print("Acceso demo habilitado para cuentas @demo.legalaiz.it.")
+        print("La contraseña se obtiene de LEGAL_DEMO_PASSWORD y no se imprime en logs.")
     if PUBLIC_DEMO_MODE:
-        print("MODO M33.0: producción demostrativa pública activa; datos sintéticos y pagos sandbox.")
+        print(f"MODO {MILESTONE}: producción demostrativa pública activa; datos sintéticos y pagos sandbox.")
     if host == "0.0.0.0":
         print("ADVERTENCIA: servicio expuesto en red. Use un proxy TLS administrado para acceso público.")
     if "--no-browser" not in sys.argv and SETTINGS.profile == "local":
