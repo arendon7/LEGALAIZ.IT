@@ -11,7 +11,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from docx_builder import build_docx
-from m33_procedural_runtime import document_specs_m33_runtime
+from m33_wave3_runtime import document_specs_m33_all
 from tests.test_m33_0_procedural_wave import (
     PRODUCTS,
     consumer_fixture,
@@ -29,13 +29,15 @@ SELECTIONS = {
 
 
 def _specs(code: str, answers: dict, result: dict) -> list[dict]:
-    return document_specs_m33_runtime(
+    # El QA visual debe recorrer el mismo agregador activado por la aplicación.
+    # Esto evita validar una composición histórica mientras el runtime sirve otra.
+    return document_specs_m33_all(
         "CASE-M33-VISUAL",
         code,
         answers,
         result,
         PRODUCTS[code],
-        "2026-08-07T15:00:00-05:00",
+        "2026-08-08T08:00:00-05:00",
         [],
     )
 
