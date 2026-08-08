@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from m33_consumer_legal_finalize import finalize_consumer_specs
 from m33_consumer_release_polish import finalize_consumer_release_polish
+from m33_debt_layout_polish import finalize_debt_layout_polish
 from m33_debt_legal_finalize import finalize_debt_specs
 from m33_debt_release_polish import finalize_debt_release_polish
 from m33_habeas_legal_finalize import finalize_habeas_specs
@@ -39,7 +40,8 @@ def document_specs_m33_all(case_id, code, answers, result, product, generated_at
         return finalize_consumer_release_polish(consumer_specs)
     if code == "CO-CD-004":
         debt_specs = finalize_debt_specs(specs, answers, result)
-        return finalize_debt_release_polish(debt_specs, answers, result)
+        debt_specs = finalize_debt_release_polish(debt_specs, answers, result)
+        return finalize_debt_layout_polish(debt_specs, answers, result)
     if code not in WAVE3_CODES:
         return specs
     return [_finalize_spec(code, answers, spec) for spec in specs]
