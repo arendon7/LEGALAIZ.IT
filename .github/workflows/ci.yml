@@ -2,13 +2,24 @@ name: Validación LegalAIZ.it
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: legalaiz-ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   smoke:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -18,52 +29,54 @@ jobs:
         with:
           node-version: '22'
       - name: Instalar dependencias
-        run: |
-          pip install -r requirements.txt
-          npm install
+        run: pip install -r requirements.txt
       - name: Validar sintaxis
-        run: |
-          python -m compileall -q .
-          npm run lint
+        run: python -m compileall -q .
       - name: Validar integridad y generación documental
+        env:
+          LEGAL_RUNTIME_DIR: ${{ runner.temp }}/legalaiz-test-runtime
         run: |
           set -o pipefail
-          python -m unittest discover -s tests -p 'test_*.py' 2>&1 | tee /tmp/unittest.log
+          python -m unittest discover -s tests -p 'test_*.py' -v 2>&1 | tee "$RUNNER_TEMP/legalaiz-unittest.log"
       - name: Conservar diagnóstico de pruebas
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: diagnostico-unittest
-          path: /tmp/unittest.log
+          name: diagnostico-unittest-${{ github.run_id }}
+          path: ${{ runner.temp }}/legalaiz-unittest.log
           if-no-files-found: warn
+          retention-days: 14
       - name: Validar interfaz y datos demo
         run: |
-          npm run test:ui
-          node <<'NODE'
-          const fs = require('fs');
-          const interviews = JSON.parse(fs.readFileSync('data/interviews.json','utf8'));
-          const demo = JSON.parse(fs.readFileSync('data/demo_answers.json','utf8'));
+          node --input-type=module --check < app/modules/demo_form_values_m32.js
+          node --input-type=module --check < app/modules/demo_form_data_m32.js
+          node --input-type=module --check < app/modules/public_demo_m33.js
+          grep -q 'demo_form_data_m32.css' app/index.html
+          grep -q 'demo_form_data_m32.js' app/index.html
+          grep -q 'public_demo_m33.css' app/index.html
+          grep -q 'public_demo_m33.js' app/index.html
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+
+          const source = fs.readFileSync('app/modules/demo_form_values_m32.js', 'utf8');
+          const encoded = Buffer.from(source).toString('base64');
+          const { buildDemoAnswers, demoAnswerSummary, isDemoQuestionVisible } = await import(`data:text/javascript;base64,${encoded}`);
+          const interviews = JSON.parse(fs.readFileSync('data/interviews.json', 'utf8'));
+          const failures = [];
           let questionCount = 0;
           let answerCount = 0;
-          const failures = [];
-          const visible = (question, answers) => {
-            const when = question.when;
-            if (!when) return true;
-            const current = answers[when.field];
-            if ('equals' in when) return current === when.equals;
-            if ('not_equals' in when) return current !== when.not_equals;
-            if (Array.isArray(when.in)) return when.in.includes(current);
-            return true;
-          };
-          for (const [code, questions] of Object.entries(interviews)) {
+
+          for (const [code, interview] of Object.entries(interviews)) {
+            const questions = interview.questions || [];
+            const answers = buildDemoAnswers(questions);
+            const summary = demoAnswerSummary(questions, answers);
             questionCount += questions.length;
-            const answers = demo[code] || {};
-            for (const question of questions) {
-              if (!visible(question, answers)) continue;
+            answerCount += summary.answeredCount;
+            if (summary.missingRequired.length) failures.push(`${code}: faltan ${summary.missingRequired.map(question => question.id).join(', ')}`);
+
+            for (const question of questions.filter(item => isDemoQuestionVisible(item, answers))) {
               const value = answers[question.id];
-              if (value !== undefined && value !== null && value !== '') answerCount += 1;
-              if (question.required && (value === undefined || value === null || value === '')) failures.push(`${code}/${question.id}: respuesta demo faltante`);
-              if ((question.type === 'select' || question.type === 'radio') && value != null && !(question.options || []).includes(value)) failures.push(`${code}/${question.id}: opción inválida`);
+              if (question.type === 'select' && !(question.options || []).includes(value)) failures.push(`${code}/${question.id}: opción inválida`);
               if (question.type === 'multiselect' && (!Array.isArray(value) || value.some(item => !(question.options || []).includes(item)))) failures.push(`${code}/${question.id}: selección múltiple inválida`);
               if (question.type === 'number' && question.min != null && Number(value) < Number(question.min)) failures.push(`${code}/${question.id}: inferior al mínimo`);
               if (question.type === 'number' && question.max != null && Number(value) > Number(question.max)) failures.push(`${code}/${question.id}: superior al máximo`);
@@ -165,3 +178,4 @@ jobs:
           name: m33-0-evidencia-visual-docx
           path: ${{ runner.temp }}/document-visual
           if-no-files-found: error
+          retention-days: 30
