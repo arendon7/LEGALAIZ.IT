@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import os
+
+from legalai_platform.deployment_environment import prepare_deployment_environment
+
+prepare_deployment_environment()
+
 from legalai_platform.document_release_gate import install_docx_release_gate
 
 install_docx_release_gate()
@@ -9,7 +15,6 @@ from core_v11 import *  # noqa: F401,F403,E402
 import core_v11 as core  # noqa: E402
 from http.server import ThreadingHTTPServer
 import sys
-import os
 import threading
 import webbrowser
 import signal
