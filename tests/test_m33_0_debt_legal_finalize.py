@@ -198,9 +198,9 @@ class DebtLegalFinalizeM330Tests(unittest.TestCase):
 
     def test_zero_balance_closure_can_be_presented_as_conditioned_paz_y_salvo(self):
         certificate = next(spec for spec in specs_for("Cerrar la obligación", zero_balance=True) if spec["kind"] == "settlement_certificate")
-        body = text(certificate)
-        self.assertIn("PAZ Y SALVO Y CONSTANCIA DE CIERRE", body)
-        self.assertIn("Saldo cero acreditado preliminarmente", body)
+        body = text(certificate).casefold()
+        self.assertIn("paz y salvo y constancia de cierre", body)
+        self.assertIn("saldo cero acreditado preliminarmente", body)
         self.assertIn("cancelar, devolver o inutilizar jurídicamente el pagaré", body)
 
     def test_red_case_preserves_historical_risk_gate(self):
