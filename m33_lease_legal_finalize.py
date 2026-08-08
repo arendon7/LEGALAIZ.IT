@@ -75,6 +75,11 @@ def _number(value: Any) -> float | None:
         return None
 
 
+def _lower_initial(value: str) -> str:
+    text = str(value or "").strip()
+    return text[:1].lower() + text[1:] if text else text
+
+
 def _format_id(value: Any) -> str:
     text = str(value or "").strip()
     if not text:
@@ -202,7 +207,7 @@ def _property_description(answers: dict) -> str:
         pieces.append("comprende " + "; ".join(units))
     if bool(_read(answers, "property.horizontal", False)) and ph.get("name"):
         pieces.append(f"sometido al régimen de propiedad horizontal de {ph['name']}")
-    return ". ".join(pieces) + ". El inventario, fotografías, lecturas de medidores, llaves y estado de conservación forman parte integral del expediente de entrega."
+    return "; ".join(pieces) + ". El inventario, fotografías, lecturas de medidores, llaves y estado de conservación forman parte integral del expediente de entrega."
 
 
 def _term_text(answers: dict) -> str:
@@ -233,7 +238,7 @@ def _rent_text(answers: dict) -> str:
         raise ValueError("CO-AR-001: el canon suministrado excede el uno por ciento del valor comercial informado.")
     payment_day = _read(answers, "rent.payment.day")
     method = str(_read(answers, "rent.payment.method") or "canal trazable acordado")
-    account = str(_read(answers, "rent.payment.account") or "cuenta informada por la parte arrendadora")
+    account = _clean_text(str(_read(answers, "rent.payment.account") or "cuenta informada por la parte arrendadora"))
     control = ""
     if commercial is not None:
         control = f" Con la información suministrada, el valor comercial de referencia es {_money(commercial)} y el límite mensual resultante del artículo 18 es {_money(commercial * 0.01)}."
@@ -247,8 +252,8 @@ def _rent_text(answers: dict) -> str:
 
 def _utilities_text(answers: dict) -> str:
     responsible = str(_read(answers, "charges.utilities.responsible") or "").strip().casefold()
-    distribution = str(_read(answers, "charges.utilities.distribution") or "según medidores y facturas aplicables").strip()
-    gas = str(_read(answers, "charges.utilities.gas_or_other") or "").strip()
+    distribution = _lower_initial(str(_read(answers, "charges.utilities.distribution") or "según medidores y facturas aplicables"))
+    gas = _lower_initial(str(_read(answers, "charges.utilities.gas_or_other") or ""))
     if responsible in {"tenant", "arrendatario", "arrendataria", "lessee"}:
         payer = "LA PARTE ARRENDATARIA asumirá los consumos y cargos que se causen durante su ocupación"
     elif responsible in {"landlord", "arrendador", "arrendadora", "lessor"}:
@@ -326,14 +331,28 @@ def _clean_text(value: Any) -> Any:
         return value
     value = re.sub(r"\b20\d{2}-\d{2}-\d{2}\b", lambda m: _date_es(m.group(0)), value)
     replacements = (
-        ("EL ARRENDADOR", "LA PARTE ARRENDADORA"),
-        ("EL ARRENDATARIO", "LA PARTE ARRENDATARIA"),
-        ("El arrendador", "LA PARTE ARRENDADORA"),
-        ("El arrendatario", "LA PARTE ARRENDATARIA"),
-        ("el arrendador", "la parte arrendadora"),
-        ("el arrendatario", "la parte arrendataria"),
+        ("DEL ARRENDADOR", "DE LA PARTE ARRENDADORA"),
+        ("DEL ARRENDATARIO", "DE LA PARTE ARRENDATARIA"),
+        ("Del arrendador", "De la parte arrendadora"),
+        ("Del arrendatario", "De la parte arrendataria"),
+        ("del arrendador", "de la parte arrendadora"),
+        ("del arrendatario", "de la parte arrendataria"),
+        ("AL ARRENDADOR", "A LA PARTE ARRENDADORA"),
+        ("AL ARRENDATARIO", "A LA PARTE ARRENDATARIA"),
+        ("Al arrendador", "A la parte arrendadora"),
+        ("Al arrendatario", "A la parte arrendataria"),
         ("al arrendador", "a la parte arrendadora"),
         ("al arrendatario", "a la parte arrendataria"),
+        ("EL ARRENDADOR", "LA PARTE ARRENDADORA"),
+        ("EL ARRENDATARIO", "LA PARTE ARRENDATARIA"),
+        ("El arrendador", "La parte arrendadora"),
+        ("El arrendatario", "La parte arrendataria"),
+        ("el arrendador", "la parte arrendadora"),
+        ("el arrendatario", "la parte arrendataria"),
+        ("Arrendador", "Parte arrendadora"),
+        ("Arrendatario", "Parte arrendataria"),
+        ("arrendador", "parte arrendadora"),
+        ("arrendatario", "parte arrendataria"),
     )
     for source, target in replacements:
         value = value.replace(source, target)
@@ -412,7 +431,7 @@ def compose_lease_m33_final(answers: dict) -> dict[str, Any]:
             delivery_date = _date_es(_read(answers, "delivery.date"))
             defects = str(_read(answers, "condition.defects") or "").strip().rstrip(".")
             pending = str(_read(answers, "condition.repairs_pending.items") or "").strip().rstrip(".")
-            responsible = str(_read(answers, "condition.repairs_pending.responsible") or "").strip().rstrip(".")
+            responsible = _clean_text(str(_read(answers, "condition.repairs_pending.responsible") or "").strip().rstrip("."))
             details = []
             if defects:
                 details.append(f"Se deja constancia inicial de {defects}.")
@@ -467,16 +486,18 @@ def compose_lease_m33_final(answers: dict) -> dict[str, Any]:
             parties = []
             capacity = signatory["capacity"] or "representante autorizado"
             capacity_display = capacity[:1].upper() + capacity[1:] if capacity else "Representante autorizado"
-            landlord_role = f"{capacity_display} de {landlord['name']}" if signatory["name"] else "Parte arrendadora"
-            if landlord["id"]:
-                landlord_role += f" · NIT {landlord['id']}" if landlord["type"] in {"legal", "legal_person"} else f" · Documento {landlord['id']}"
             landlord_party = {
                 "label": "LA PARTE ARRENDADORA",
                 "name": signatory["name"] or landlord["name"],
-                "role": landlord_role,
+                "role": f"{capacity_display} de {landlord['name']}" if signatory["name"] else "Parte arrendadora",
             }
+            identity_parts = []
             if signatory["id"]:
-                landlord_party["id"] = f"Documento {signatory['id']}"
+                identity_parts.append(f"Documento {signatory['id']}")
+            if landlord["id"]:
+                identity_parts.append(("NIT " if landlord["type"] in {"legal", "legal_person"} else "Documento ") + landlord["id"])
+            if identity_parts:
+                landlord_party["id"] = " · ".join(identity_parts)
             parties.append(landlord_party)
             tenant_party = {"label": "LA PARTE ARRENDATARIA", "name": tenant["name"]}
             if tenant["id"]:
