@@ -4,10 +4,12 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from types import ModuleType
 
 from docx import Document
 
 from docx_builder import build_docx
+from legalai_platform.runtime_m33_overrides import _install_m33_docx_presentation_policy
 from m33_wave3_runtime import document_specs_m33_all
 from tests.test_m33_0_procedural_wave import PRODUCTS, labor_fixture
 
@@ -28,6 +30,15 @@ def labor_specs():
 
 def spec_of(specs: list[dict], kind: str) -> dict:
     return next(spec for spec in specs if spec.get("kind") == kind)
+
+
+def visible_docx_text(document: Document) -> str:
+    chunks = [paragraph.text for paragraph in document.paragraphs]
+    for table in document.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                chunks.append(cell.text)
+    return "\n".join(chunks)
 
 
 class LaborProceduralFinalizeM330Tests(unittest.TestCase):
@@ -81,6 +92,7 @@ class LaborProceduralFinalizeM330Tests(unittest.TestCase):
             controls = spec.get("internal_review_sections") or []
             self.assertTrue(spec.get("internal_controls_externalized"))
             self.assertFalse(any(section.get("_type") == "control" for section in spec.get("sections") or []))
+            self.assertTrue(any(section.get("_suppress_default_control") for section in spec.get("sections") or []))
             self.assertGreaterEqual(len(controls), 1)
             self.assertNotIn("aprobación jurídica y QA", public_text)
             self.assertNotIn("mismo hash", public_text)
@@ -89,7 +101,26 @@ class LaborProceduralFinalizeM330Tests(unittest.TestCase):
         self.assertIn("Ley 52 de 1975", internal)
         self.assertIn("Ley 2466 de 2025", internal)
 
-    def test_calculation_and_claim_render_strictly(self):
+    def test_runtime_policy_only_suppresses_marked_sections(self):
+        core_module = ModuleType("fake_core_m33")
+        calls: list[dict] = []
+
+        def fake_builder(*args, **kwargs):
+            calls.append(dict(kwargs))
+            return kwargs
+
+        core_module.build_docx = fake_builder
+        wrapped = _install_m33_docx_presentation_policy(core_module)
+        marked = [{"heading": "Documento cliente", "_suppress_default_control": True}]
+        ordinary = [{"heading": "Documento ordinario"}]
+
+        wrapped(Path("marked.docx"), "T", "S", [], marked)
+        self.assertFalse(calls[-1].get("append_default_control"))
+        wrapped(Path("ordinary.docx"), "T", "S", [], ordinary)
+        self.assertNotIn("append_default_control", calls[-1])
+        self.assertIs(wrapped, _install_m33_docx_presentation_policy(core_module))
+
+    def test_calculation_and_claim_render_strictly_without_internal_box(self):
         _, _, specs = labor_specs()
         with tempfile.TemporaryDirectory() as tmp:
             for kind in ("calculation", "claim"):
@@ -103,14 +134,17 @@ class LaborProceduralFinalizeM330Tests(unittest.TestCase):
                     spec["sections"],
                     product_code="CO-LA-001",
                     enforce_legal_standard=True,
+                    append_default_control=not bool(spec.get("internal_controls_externalized")),
                 )
                 self.assertTrue(path.is_file())
                 self.assertGreater(path.stat().st_size, 5_000)
                 document = Document(path)
                 self.assertGreater(len(document.paragraphs), 5)
-                visible = "\n".join(paragraph.text for paragraph in document.paragraphs)
-                self.assertNotIn("CONTROL DE USO, FUENTES Y REVISIÓN", visible)
+                visible = visible_docx_text(document)
+                self.assertNotIn("CONTROL DE USO", visible)
                 self.assertNotIn("aprobación jurídica y QA", visible)
+                self.assertNotIn("misma revisión y hash", visible)
+                self.assertNotIn("mismo hash", visible)
 
 
 if __name__ == "__main__":
