@@ -7,8 +7,9 @@ de la Ley 820 de 2003, evita parámetros temporales congelados y mantiene fuente
 controles fuera del instrumento liberable mediante la presentación M33.0.
 """
 
+from calendar import monthrange
 from copy import deepcopy
-from datetime import date
+from datetime import date, timedelta
 import re
 from typing import Any
 
@@ -36,13 +37,27 @@ def _first(data: dict, *paths: str, default=None):
     return default
 
 
-def _date_es(value: Any) -> str:
+def _parse_date(value: Any) -> date | None:
     text = str(value or "").strip()
     try:
-        parsed = date.fromisoformat(text[:10])
+        return date.fromisoformat(text[:10])
     except ValueError:
-        return text
+        return None
+
+
+def _date_es(value: Any) -> str:
+    parsed = _parse_date(value)
+    if not parsed:
+        return str(value or "").strip()
     return f"{parsed.day} de {_MONTHS[parsed.month]} de {parsed.year}"
+
+
+def _add_months(value: date, months: int) -> date:
+    month_index = value.month - 1 + months
+    year = value.year + month_index // 12
+    month = month_index % 12 + 1
+    day = min(value.day, monthrange(year, month)[1])
+    return date(year, month, day)
 
 
 def _money(value: Any) -> str:
@@ -135,7 +150,7 @@ def _party_description(identity: dict[str, str], signatory: dict[str, str] | Non
     if identity.get("id"):
         pieces.append(("NIT " if legal else "documento No. ") + identity["id"])
     if identity.get("address"):
-        pieces.append("domiciliada en " + identity["address"])
+        pieces.append("con domicilio en " + identity["address"])
     text = ", ".join(pieces)
     if legal and signatory and signatory.get("name"):
         text += f", representada para este acto por {signatory['name']}"
@@ -190,6 +205,24 @@ def _property_description(answers: dict) -> str:
     return ". ".join(pieces) + ". El inventario, fotografías, lecturas de medidores, llaves y estado de conservación forman parte integral del expediente de entrega."
 
 
+def _term_text(answers: dict) -> str:
+    months_number = _number(_read(answers, "term.duration_months"))
+    months = int(months_number) if months_number and months_number > 0 else 12
+    start_raw = _first(answers, "term.start_date", "lease.start_date", "delivery.date")
+    start = _parse_date(start_raw)
+    period = f"El término inicial será de {months} meses"
+    if start:
+        end = _add_months(start, months) - timedelta(days=1)
+        period += f", contado desde el {_date_es(start)} hasta el {_date_es(end)}, ambas fechas inclusive"
+    else:
+        period += ", contado desde la fecha de entrega material y comienzo de ejecución acreditada"
+    return (
+        f"{period}. Si al vencimiento ninguna parte ha comunicado válidamente su decisión de terminar y se cumplen los presupuestos legales, "
+        "el contrato se prorrogará en iguales condiciones y por el mismo término inicial, sin perjuicio del reajuste legal del canon. "
+        "Los preavisos, indemnizaciones, cauciones y formas de comunicación se determinarán por la ruta de terminación efectivamente utilizada; el silencio no sustituye una formalidad legal incumplida."
+    )
+
+
 def _rent_text(answers: dict) -> str:
     rent = _number(_read(answers, "rent.amount"))
     commercial = _number(_read(answers, "rent.values.commercial_value"))
@@ -212,6 +245,23 @@ def _rent_text(answers: dict) -> str:
     )
 
 
+def _utilities_text(answers: dict) -> str:
+    responsible = str(_read(answers, "charges.utilities.responsible") or "").strip().casefold()
+    distribution = str(_read(answers, "charges.utilities.distribution") or "según medidores y facturas aplicables").strip()
+    gas = str(_read(answers, "charges.utilities.gas_or_other") or "").strip()
+    if responsible in {"tenant", "arrendatario", "arrendataria", "lessee"}:
+        payer = "LA PARTE ARRENDATARIA asumirá los consumos y cargos que se causen durante su ocupación"
+    elif responsible in {"landlord", "arrendador", "arrendadora", "lessor"}:
+        payer = "LA PARTE ARRENDADORA asumirá los consumos y cargos expresamente asignados a su cargo"
+    else:
+        payer = "La responsabilidad económica por cada servicio se determinará conforme a la distribución pactada y a la factura o medición correspondiente, sin presumir traslados no documentados"
+    extra = f" En particular, {gas}." if gas else ""
+    return (
+        f"{payer}. La liquidación se realizará {distribution}. Cada parte entregará oportunamente los soportes que tenga bajo su control y conciliará saldos al cierre.{extra} "
+        "Cuando proceda el mecanismo especial del artículo 15 de la Ley 820 de 2003, se documentarán la denuncia del contrato y las garantías constituidas frente a la empresa prestadora para delimitar la solidaridad del inmueble."
+    )
+
+
 def _additional_services_text(answers: dict) -> str:
     exists = bool(_read(answers, "charges.additional_services.exists", False))
     description = str(_read(answers, "charges.additional_services.description") or "").strip()
@@ -224,7 +274,7 @@ def _additional_services_text(answers: dict) -> str:
     return (
         f"Se pacta como servicio adicional: {description or 'el servicio identificado en la ficha'}, por valor de {_money(value)}. "
         "Su precio, sumado al de los demás servicios, cosas o usos adicionales, no podrá exceder el cincuenta por ciento (50 %) del canon del inmueble. "
-        "Este valor se discrimina del canon y no puede utilizarse para eludir límites, reajustes o obligaciones propias de la renta de arrendamiento."
+        "Este valor se discrimina del canon y no puede utilizarse para eludir límites, reajustes u obligaciones propias de la renta de arrendamiento."
     )
 
 
@@ -236,7 +286,7 @@ def _administration_text(answers: dict) -> str:
     extraordinary_party = "LA PARTE ARRENDATARIA" if extraordinary_responsible in {"tenant", "arrendatario", "arrendataria"} else "LA PARTE ARRENDADORA"
     return (
         f"La administración ordinaria, actualmente informada en {ordinary}, estará a cargo de {ordinary_party}; las cuotas extraordinarias estarán a cargo de {extraordinary_party}. "
-        "La distribución corresponde a este contrato concreto y no convierte en obligación del arrendatario conceptos que legalmente correspondan al propietario. "
+        "La distribución corresponde a este contrato concreto y no convierte en obligación de LA PARTE ARRENDATARIA conceptos que legalmente correspondan al propietario. "
         "Las multas atribuibles a conducta de ocupantes exigirán soporte de la actuación de propiedad horizontal y no podrán trasladarse cuando provengan de una omisión propia del propietario."
     )
 
@@ -252,10 +302,10 @@ def _termination_landlord() -> str:
 
 def _termination_tenant() -> str:
     return (
-        "LA PARTE ARRENDATARIA podrá terminar unilateralmente por las causales legales imputables a la parte arrendadora, con la prueba y procedimiento aplicables. "
+        "LA PARTE ARRENDATARIA podrá terminar unilateralmente por las causales legales imputables a LA PARTE ARRENDADORA, con la prueba y procedimiento aplicables. "
         "También podrá terminar dentro del término inicial o durante sus prórrogas por plena voluntad, mediante aviso escrito enviado a través de servicio postal autorizado con antelación no menor de tres (3) meses y pago de una indemnización equivalente a tres (3) cánones. "
         "A la fecha de vencimiento del término inicial o de cualquiera de sus prórrogas podrá terminar sin indemnización mediante preaviso escrito no menor de tres (3) meses. "
-        "La comunicación deberá identificar fecha de restitución y conservar prueba de contenido, envío y entrega; la negativa del arrendador a recibir el inmueble deberá gestionarse por los mecanismos legales aplicables y nunca mediante abandono informal del bien."
+        "La comunicación deberá identificar fecha de restitución y conservar prueba de contenido, envío y entrega; la negativa de LA PARTE ARRENDADORA a recibir el inmueble deberá gestionarse por los mecanismos legales aplicables y nunca mediante abandono informal del bien."
     )
 
 
@@ -275,6 +325,18 @@ def _clean_text(value: Any) -> Any:
     if not isinstance(value, str):
         return value
     value = re.sub(r"\b20\d{2}-\d{2}-\d{2}\b", lambda m: _date_es(m.group(0)), value)
+    replacements = (
+        ("EL ARRENDADOR", "LA PARTE ARRENDADORA"),
+        ("EL ARRENDATARIO", "LA PARTE ARRENDATARIA"),
+        ("El arrendador", "LA PARTE ARRENDADORA"),
+        ("El arrendatario", "LA PARTE ARRENDATARIA"),
+        ("el arrendador", "la parte arrendadora"),
+        ("el arrendatario", "la parte arrendataria"),
+        ("al arrendador", "a la parte arrendadora"),
+        ("al arrendatario", "a la parte arrendataria"),
+    )
+    for source, target in replacements:
+        value = value.replace(source, target)
     return value
 
 
@@ -348,21 +410,31 @@ def compose_lease_m33_final(answers: dict) -> dict[str, Any]:
 
         elif _has(section, "ENTREGA") and section.get("_type") == "clause":
             delivery_date = _date_es(_read(answers, "delivery.date"))
-            defects = str(_read(answers, "condition.defects") or "").strip()
-            pending = str(_read(answers, "condition.repairs_pending.items") or "").strip()
+            defects = str(_read(answers, "condition.defects") or "").strip().rstrip(".")
+            pending = str(_read(answers, "condition.repairs_pending.items") or "").strip().rstrip(".")
+            responsible = str(_read(answers, "condition.repairs_pending.responsible") or "").strip().rstrip(".")
             details = []
             if defects:
-                details.append(f"Se deja constancia inicial de: {defects}")
+                details.append(f"Se deja constancia inicial de {defects}.")
             if pending:
-                details.append(f"Queda pendiente: {pending}")
+                pending_text = f"Queda pendiente {pending}."
+                if responsible:
+                    pending_text += f" Responsable y plazo informados: {responsible}."
+                details.append(pending_text)
             suffix = " " + " ".join(details) if details else ""
             _paragraph(section, f"La entrega material se realizará el {delivery_date} mediante acta, inventario detallado, evidencia fotográfica, lectura de medidores y relación de llaves. El inmueble deberá entregarse en condiciones de servicio, seguridad y sanidad compatibles con la destinación habitacional.{suffix} La recepción no implica renuncia a reclamar defectos ocultos, incumplimientos o daños preexistentes no razonablemente detectables en ese momento.")
+
+        elif _has(section, "TÉRMINO") and section.get("_type") == "clause":
+            _paragraph(section, _term_text(answers))
 
         elif _has(section, "CANON") and section.get("_type") == "clause":
             _paragraph(section, _rent_text(answers))
 
         elif _has(section, "REAJUSTE"):
             _paragraph(section, "Cada doce (12) meses de ejecución del contrato bajo un mismo precio, LA PARTE ARRENDADORA podrá incrementar el canon hasta una proporción que no supere el cien por ciento (100 %) del incremento del IPC del año calendario inmediatamente anterior al reajuste, sin exceder el límite del artículo 18 de la Ley 820 de 2003. El porcentaje no se congela en este contrato: deberá verificarse en la publicación oficial del DANE correspondiente al momento de cada reajuste. El nuevo monto y su fecha de vigencia deberán comunicarse por servicio postal autorizado o por el mecanismo de notificación personal expresamente pactado; sin esa comunicación el reajuste será inoponible. No habrá reajuste antes de completar doce meses bajo el mismo precio ni cobro retroactivo del incremento no comunicado.")
+
+        elif _has(section, "SERVICIOS PÚBLICOS"):
+            _paragraph(section, _utilities_text(answers))
 
         elif _has(section, "ADMINISTRACIÓN Y CUOTAS"):
             _paragraph(section, _administration_text(answers))
@@ -371,7 +443,7 @@ def compose_lease_m33_final(answers: dict) -> dict[str, Any]:
             _paragraph(section, _additional_services_text(answers))
 
         elif _has(section, "DEPÓSITOS Y GARANTÍAS"):
-            _paragraph(section, "No se exigirán depósitos en dinero efectivo ni cauciones reales para garantizar las obligaciones ordinarias de LA PARTE ARRENDATARIA, por prohibición del artículo 16 de la Ley 820 de 2003. Esta prohibición no se confunde con las garantías o depósitos que, cuando el pago de servicios públicos esté a cargo del arrendatario, puedan constituirse a favor de la respectiva empresa prestadora dentro del procedimiento especial del artículo 15 de la Ley 820 y el Decreto 3130 de 2003. Las garantías personales, pólizas u otros mecanismos permitidos deberán estar identificados, ser proporcionales y no autorizan retenciones o cobros automáticos sin liquidación y soporte.")
+            _paragraph(section, "No se exigirán depósitos en dinero efectivo ni cauciones reales para garantizar las obligaciones ordinarias de LA PARTE ARRENDATARIA, por prohibición del artículo 16 de la Ley 820 de 2003. Esta prohibición no se confunde con las garantías o depósitos que, cuando el pago de servicios públicos esté a cargo de LA PARTE ARRENDATARIA, puedan constituirse a favor de la respectiva empresa prestadora dentro del procedimiento especial del artículo 15 de la Ley 820 y el Decreto 3130 de 2003. Las garantías personales, pólizas u otros mecanismos permitidos deberán estar identificados, ser proporcionales y no autorizan retenciones o cobros automáticos sin liquidación y soporte.")
 
         elif _has(section, "MASCOTAS") and not pets:
             continue
@@ -384,22 +456,27 @@ def compose_lease_m33_final(answers: dict) -> dict[str, Any]:
             continue
 
         elif _has(section, "TERMINACIÓN POR EL ARRENDADOR"):
+            section["heading"] = str(section.get("heading") or "").replace("ARRENDADOR", "PARTE ARRENDADORA")
             _paragraph(section, _termination_landlord())
 
         elif _has(section, "TERMINACIÓN POR EL ARRENDATARIO"):
+            section["heading"] = str(section.get("heading") or "").replace("ARRENDATARIO", "PARTE ARRENDATARIA")
             _paragraph(section, _termination_tenant())
 
         if section.get("_type") == "signature":
             parties = []
+            capacity = signatory["capacity"] or "representante autorizado"
+            capacity_display = capacity[:1].upper() + capacity[1:] if capacity else "Representante autorizado"
+            landlord_role = f"{capacity_display} de {landlord['name']}" if signatory["name"] else "Parte arrendadora"
+            if landlord["id"]:
+                landlord_role += f" · NIT {landlord['id']}" if landlord["type"] in {"legal", "legal_person"} else f" · Documento {landlord['id']}"
             landlord_party = {
                 "label": "LA PARTE ARRENDADORA",
                 "name": signatory["name"] or landlord["name"],
-                "role": (signatory["capacity"] + f" de {landlord['name']}").strip() if signatory["name"] else "Arrendador(a)",
+                "role": landlord_role,
             }
             if signatory["id"]:
                 landlord_party["id"] = f"Documento {signatory['id']}"
-            elif landlord["id"]:
-                landlord_party["id"] = ("NIT " if landlord["type"] in {"legal", "legal_person"} else "Documento ") + landlord["id"]
             parties.append(landlord_party)
             tenant_party = {"label": "LA PARTE ARRENDATARIA", "name": tenant["name"]}
             if tenant["id"]:
