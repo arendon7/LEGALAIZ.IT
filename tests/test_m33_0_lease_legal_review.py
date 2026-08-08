@@ -52,7 +52,8 @@ class LeaseLegalReviewM330Tests(unittest.TestCase):
         self.assertEqual(len(names), 3)
         landlord = next(party for party in parties if party.get("name") == "Ana Representante")
         self.assertIn("Arrendamientos Ejemplo S.A.S.", landlord.get("role") or "")
-        self.assertIn("NIT 901.000.001-1", landlord.get("role") or "")
+        self.assertIn("Documento 43.000.001", landlord.get("id") or "")
+        self.assertIn("NIT 901.000.001-1", landlord.get("id") or "")
 
     def test_appearance_uses_complete_parties_without_gender_or_role_crossing(self):
         composition = compose_lease_m33_final(complete_answers())
@@ -74,7 +75,7 @@ class LeaseLegalReviewM330Tests(unittest.TestCase):
         self.assertIn("Cuarto útil 7", property_text)
         self.assertIn("1 de agosto de 2026", delivery)
         self.assertIn("Ajuste de una bisagra.", delivery)
-        self.assertIn("Arrendador dentro de los cinco días siguientes.", delivery)
+        self.assertIn("Parte arrendadora dentro de los cinco días siguientes.", delivery)
         self.assertNotIn("2026-08-01", delivery)
         self.assertIn("desde el 1 de agosto de 2026 hasta el 31 de julio de 2027", term)
         self.assertIn("mismo término inicial", term)
@@ -114,6 +115,8 @@ class LeaseLegalReviewM330Tests(unittest.TestCase):
         self.assertIn("Decreto 3130 de 2003", deposits)
         self.assertIn("medidores individuales y facturas", utilities)
         self.assertIn("artículo 15", utilities)
+        self.assertNotIn("Según medidores", utilities)
+        self.assertNotIn("En particular, Gas", utilities)
 
     def test_landlord_and_tenant_termination_paths_are_not_collapsed(self):
         composition = compose_lease_m33_final(complete_answers())
@@ -132,6 +135,9 @@ class LeaseLegalReviewM330Tests(unittest.TestCase):
         self.assertNotIn("EL ARRENDATARIO", text)
         self.assertNotIn("El arrendador", text)
         self.assertNotIn("El arrendatario", text)
+        self.assertNotIn("dla parte", text.casefold())
+        self.assertNotIn("Cuenta informada por el arrendador", text)
+        self.assertNotIn("Arrendador, arrendatario", text)
 
     def test_pet_clause_is_conditional_and_sources_remain_externalizable(self):
         answers = complete_answers()
