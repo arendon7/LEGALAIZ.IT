@@ -64,7 +64,7 @@ def _approve_demo_preproduction(payload: dict) -> dict:
         "real_production_ready": False,
         "production_blocking": [],
         "notices": [
-            "M33.0 opera como producción demostrativa pública con las capacidades funcionales habilitadas.",
+            f"{MILESTONE} opera como producción demostrativa pública con las capacidades funcionales habilitadas.",
             "Los usuarios, expedientes y datos son sintéticos y los pagos continúan en sandbox.",
             "Esta autorización no equivale a producción jurídica real.",
         ],
@@ -80,7 +80,7 @@ def _approve_demo_preproduction(payload: dict) -> dict:
 
 
 class Handler(BaseHandler):
-    """M33.0 conserva M32.9 y añade el perfil de producción demostrativa."""
+    """Extensión M33: conserva M32.9 y añade el perfil de producción demostrativa."""
 
     def do_GET(self):
         path = urlparse(self.path).path
