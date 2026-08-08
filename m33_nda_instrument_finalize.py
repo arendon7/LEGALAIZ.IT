@@ -58,7 +58,7 @@ def compose_nda_m33_instrument(answers: dict) -> dict[str, Any]:
             data_tail = (
                 " Cuando un tercero trate datos personales por cuenta de alguna parte, deberán documentarse previamente los roles, instrucciones y garantías aplicables bajo la normativa correspondiente."
                 if personal_data
-                else " Si en el futuro un tercero fuera a tratar datos personales por cuenta de alguna parte, ese tratamiento requerirá habilitación y documentación separadas antes de conceder el acceso."
+                else ""
             )
             _paragraph(
                 section,
