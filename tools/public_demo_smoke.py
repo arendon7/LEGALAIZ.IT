@@ -86,7 +86,9 @@ def main():
             checks.append(("origin_rejected", status == 403 and rejected.get("code") == "ORIGIN_REJECTED"))
             status, cohort = req(admin, f"{base}/api/m31/case-demo")
             metrics = cohort.get("metrics", {}) if isinstance(cohort, dict) else {}
+            credentials = cohort.get("credentials", {}) if isinstance(cohort, dict) else {}
             checks.append(("cohort", status == 200 and metrics.get("cases") == 11 and metrics.get("documents") == 76 and metrics.get("released_cases") == 11))
+            checks.append(("credentials_not_exposed", "password" not in credentials and credentials.get("password_source") == "LEGAL_DEMO_PASSWORD"))
             status, verified = req(admin, f"{base}/api/m31/case-demo/verify")
             checks.append(("integrity", status == 200 and verified.get("ok") is True and verified.get("checked") == 88))
             status, pre = req(admin, f"{base}/api/m31/preproduction")
