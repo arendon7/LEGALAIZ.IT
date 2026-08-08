@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from copy import deepcopy
 import sys
 import unittest
 from pathlib import Path
@@ -104,10 +103,16 @@ def nda_answers() -> dict:
 
 
 def section(composition: dict, phrase: str) -> dict | None:
-    for item in composition.get("sections") or []:
-        if phrase.casefold() in str(item.get("heading") or "").casefold():
-            return item
-    return None
+    matches = [
+        item for item in composition.get("sections") or []
+        if phrase.casefold() in str(item.get("heading") or "").casefold()
+    ]
+    if not matches:
+        return None
+    # Los títulos de portada pueden contener nombres de módulos (PI, datos, IA,
+    # secretos). Para una consulta temática se prefiere siempre la cláusula real;
+    # la portada se usa solo cuando no existe una cláusula coincidente.
+    return next((item for item in matches if item.get("_type") == "clause"), matches[0])
 
 
 def section_text(composition: dict, phrase: str) -> str:
