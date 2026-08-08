@@ -47,7 +47,14 @@ def compose_nda_m33_instrument(answers: dict) -> dict[str, Any]:
         # Todas las sustituciones de esta capa se limitan a cláusulas. La portada y
         # la sección de comparecencia pueden contener palabras como "IA" o "PI" en
         # el título y nunca deben confundirse con módulos sustantivos.
-        if is_clause and "seguridad de la información" in heading_cf:
+        if is_clause and "definiciones operativas" in heading_cf and not personal_data:
+            _paragraph(
+                section,
+                "Para interpretar y operar el acuerdo se utilizarán, según el rol real de cada operación, las categorías PARTE REVELADORA, PARTE RECEPTORA, INFORMACIÓN CONFIDENCIAL, SECRETO EMPRESARIAL, MATERIAL PREEXISTENTE, RESULTADO, INCIDENTE, PROVEEDOR AUTORIZADO y, cuando corresponda, SISTEMA DE INTELIGENCIA ARTIFICIAL. "
+                "Estas definiciones describen funciones y activos dentro del acuerdo; no modifican por sí mismas la titularidad, autoría, representación, relación laboral, licenciamiento, responsabilidad ni condición jurídica de secreto empresarial. La denominación utilizada deberá interpretarse conforme a los hechos y al alcance de cada revelación o acceso."
+            )
+
+        elif is_clause and "seguridad de la información" in heading_cf:
             _paragraph(
                 section,
                 f"LA PARTE RECEPTORA aplicará medidas razonables y proporcionales al riesgo, incluyendo controles técnicos de {technical}; "
@@ -117,6 +124,13 @@ def compose_nda_m33_instrument(answers: dict) -> dict[str, Any]:
                 f"La parte que conozca un reclamo, requerimiento o investigación de un tercero relacionado con información, secreto empresarial, propiedad intelectual, seguridad{data_reference} informará a la otra parte tan pronto como sea razonablemente posible si la ley lo permite. "
                 "Preservará evidencia, evitará admisiones innecesarias y coordinará la defensa cuando los intereses sean comunes. Ninguna parte podrá celebrar, sin consentimiento de la otra, un acuerdo que le imponga pagos, admisiones, cesiones, licencias, restricciones o deberes de hacer; ese consentimiento no podrá negarse de manera abusiva cuando el acuerdo no afecte derechos de quien debe otorgarlo. "
                 "Cada parte conserva el control de su propia defensa y deberá mitigar razonablemente los daños bajo su esfera de actuación."
+            )
+
+        elif is_clause and "solución de controversias" in heading_cf and not personal_data:
+            _paragraph(
+                section,
+                "Las partes procurarán resolver las controversias mediante negociación directa entre responsables con capacidad de decisión y, si no existe solución, conciliación ante un centro o conciliador legalmente competente. Lo anterior no impide solicitar medidas cautelares o urgentes para contener una divulgación, preservar evidencia o evitar un daño inminente, ni desplaza competencias administrativas, penales, de propiedad intelectual, secretos empresariales o competencia desleal. "
+                "El acuerdo se interpreta conforme al derecho aplicable en Colombia; la competencia territorial o judicial concreta se determinará por las normas aplicables y los hechos del caso, salvo pacto válido posterior que la defina expresamente."
             )
 
         elif is_clause and "integridad, prelación y modificaciones" in heading_cf:
