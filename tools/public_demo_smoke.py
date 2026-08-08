@@ -4,6 +4,7 @@ from __future__ import annotations
 import http.cookiejar
 import json
 import os
+import secrets
 import socket
 import subprocess
 import sys
@@ -40,17 +41,18 @@ def req(opener, url, method="GET", body=None, headers=None):
 def main():
     port = free_port()
     base = f"http://127.0.0.1:{port}"
-    password = "LegalAIZDemo2026!"
+    password = secrets.token_urlsafe(24)
     checks = []
     output = ""
-    with tempfile.TemporaryDirectory(prefix="legalaiz-m330-") as runtime:
+    with tempfile.TemporaryDirectory(prefix="legalaiz-m331-") as runtime:
         env = {**os.environ,
             "LEGAL_RUNTIME_DIR": runtime, "LEGAL_PORT": str(port), "LEGAL_HOST": "127.0.0.1",
             "LEGAL_PROFILE": "local", "LEGAL_APP_ENV": "demo_public", "LEGAL_PUBLIC_DEMO_MODE": "true",
             "LEGAL_ALLOW_DEMO_ACCOUNTS": "true", "LEGAL_DEMO_PASSWORD": password,
-            "LEGAL_REQUIRE_MFA_ROLES": "", "LEGAL_REQUIRE_ORIGIN_CHECK": "false",
-            "LEGAL_SECURE_COOKIES": "false", "LEGAL_DATABASE_BACKEND": "sqlite",
-            "LEGAL_GITHUB_LITE_ASSETS": "true", "PYTHONDONTWRITEBYTECODE": "1"}
+            "LEGAL_REQUIRE_MFA_ROLES": "", "LEGAL_REQUIRE_ORIGIN_CHECK": "true",
+            "LEGAL_PUBLIC_BASE_URL": base, "LEGAL_SECURE_COOKIES": "false",
+            "LEGAL_DATABASE_BACKEND": "sqlite", "LEGAL_GITHUB_LITE_ASSETS": "true",
+            "PYTHONDONTWRITEBYTECODE": "1"}
         process = subprocess.Popen([sys.executable, "run.py", "--no-browser"], env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
         try:
             live = None
@@ -71,15 +73,17 @@ def main():
                     try: process.wait(timeout=10)
                     except subprocess.TimeoutExpired: process.kill()
                 output = process.stdout.read() if process.stdout else ""
-                report = {"schema":"legalaizit-m33-public-demo-smoke-v1","checks":[{"key":k,"passed":v} for k,v in checks],"passed":sum(v for _,v in checks),"total":len(checks),"ok":False,"server_output_tail":output[-6000:]}
+                report = {"schema":"legalaizit-m33-1-public-demo-smoke-v1","checks":[{"key":k,"passed":v} for k,v in checks],"passed":sum(v for _,v in checks),"total":len(checks),"ok":False,"server_output_tail":output[-6000:]}
                 print(json.dumps(report, ensure_ascii=False, indent=2))
                 return 2
             plain = urllib.request.build_opener()
             status, demo = req(plain, f"{base}/api/m33/public-demo")
-            checks.append(("public_demo_status", status == 200 and demo.get("milestone") == "M33.0" and demo.get("version") == "5.1.1" and demo.get("public_demo_mode") is True and demo.get("production_authorized") is True and demo.get("real_production_authorized") is False))
+            checks.append(("public_demo_status", status == 200 and demo.get("milestone") == "M33.1" and demo.get("version") == "5.1.2" and demo.get("public_demo_mode") is True and demo.get("production_authorized") is True and demo.get("real_production_authorized") is False))
             jar = http.cookiejar.CookieJar(); admin = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
             status, auth = req(admin, f"{base}/api/auth/login", "POST", {"email":"ana@demo.legalaiz.it","password":password}, {"Origin":base})
             checks.append(("admin_login", status == 200 and auth.get("user",{}).get("role") == "admin"))
+            status, rejected = req(urllib.request.build_opener(), f"{base}/api/auth/login", "POST", {"email":"ana@demo.legalaiz.it","password":password}, {"Origin":"https://origen-no-autorizado.example"})
+            checks.append(("origin_rejected", status == 403 and rejected.get("code") == "ORIGIN_REJECTED"))
             status, cohort = req(admin, f"{base}/api/m31/case-demo")
             metrics = cohort.get("metrics", {}) if isinstance(cohort, dict) else {}
             checks.append(("cohort", status == 200 and metrics.get("cases") == 11 and metrics.get("documents") == 76 and metrics.get("released_cases") == 11))
@@ -95,7 +99,7 @@ def main():
                 except subprocess.TimeoutExpired: process.kill()
             if not output:
                 output = process.stdout.read() if process.stdout else ""
-    report = {"schema":"legalaizit-m33-public-demo-smoke-v1","checks":[{"key":k,"passed":v} for k,v in checks],"passed":sum(v for _,v in checks),"total":len(checks),"ok":all(v for _,v in checks),"server_output_tail":output[-3000:]}
+    report = {"schema":"legalaizit-m33-1-public-demo-smoke-v1","checks":[{"key":k,"passed":v} for k,v in checks],"passed":sum(v for _,v in checks),"total":len(checks),"ok":all(v for _,v in checks),"server_output_tail":output[-3000:]}
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0 if report["ok"] else 2
 
