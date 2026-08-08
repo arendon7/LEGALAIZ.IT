@@ -62,9 +62,19 @@ class PortfolioActivationM330Tests(unittest.TestCase):
             self.assertTrue(specs)
             self.assertTrue(all(spec.get("document_standard") == "M33.0" for spec in specs), code)
             combined = " ".join(str(spec.get("sections")) for spec in specs).casefold()
-            self.assertIn("aprobación jurídica", combined)
-            self.assertIn("qa", combined)
-            self.assertNotIn("released = true", combined)
+            if code == "CO-SA-001":
+                # En salud el gobierno se externaliza de la copia cliente, pero las
+                # mismas piezas permanecen bloqueadas para aprobación y liberación.
+                self.assertTrue(all(spec.get("legal_approval") == "pending" for spec in specs))
+                self.assertTrue(all(spec.get("qa_approval") == "pending" for spec in specs))
+                self.assertTrue(all(spec.get("released") is False for spec in specs))
+                self.assertTrue(all(spec.get("requires_human_review") for spec in specs))
+                self.assertTrue(all(spec.get("critical_human_review") for spec in specs))
+                self.assertNotIn("control de uso, fuentes y revisión", combined)
+            else:
+                self.assertIn("aprobación jurídica", combined)
+                self.assertIn("qa", combined)
+                self.assertNotIn("released = true", combined)
 
     def test_unknown_product_keeps_historical_document_specs_behavior(self):
         product = {"code": "CO-XX-999", "title": "Producto externo a M33"}
