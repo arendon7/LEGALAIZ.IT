@@ -8,6 +8,7 @@ from m33_debt_layout_polish import finalize_debt_layout_polish
 from m33_debt_legal_finalize import finalize_debt_specs
 from m33_debt_release_polish import finalize_debt_release_polish
 from m33_habeas_legal_finalize import finalize_habeas_specs
+from m33_health_legal_finalize import finalize_health_specs
 from m33_labor_presentation_finalize import finalize_labor_presentation
 from m33_labor_procedural_finalize import finalize_labor_specs
 from m33_procedural_runtime import _finalize_spec
@@ -42,6 +43,8 @@ def document_specs_m33_all(case_id, code, answers, result, product, generated_at
         debt_specs = finalize_debt_specs(specs, answers, result)
         debt_specs = finalize_debt_release_polish(debt_specs, answers, result)
         return finalize_debt_layout_polish(debt_specs, answers, result)
+    if code == "CO-SA-001":
+        return finalize_health_specs(specs, answers, result)
     if code not in WAVE3_CODES:
         return specs
     return [_finalize_spec(code, answers, spec) for spec in specs]
