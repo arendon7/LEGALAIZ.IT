@@ -10,6 +10,7 @@ salidas, sin cambiar la API consumida por los handlers M32.x.
 Los símbolos/API históricos permanecen disponibles para comparación y regresión.
 """
 
+from functools import wraps
 from types import ModuleType
 from typing import Any
 
@@ -26,6 +27,41 @@ from m33_wave3_runtime import document_specs_m33_all
 
 _ACTIVE = False
 _CACHE: dict[str, Any] = {}
+
+
+def _sections_externalize_default_control(sections: Any) -> bool:
+    return any(
+        isinstance(section, dict) and bool(section.get("_suppress_default_control"))
+        for section in (sections or [])
+    )
+
+
+def _install_m33_docx_presentation_policy(core_module: ModuleType):
+    """Respeta la separación cliente/gobierno sin tocar la release gate instalada.
+
+    `core_v11.generate_case_documents` conserva su API histórica y solo entrega las
+    secciones al builder. Las composiciones M33.0 que externalizan controles dejan un
+    marcador privado no renderizable; esta envoltura lo traduce al argumento ya
+    soportado `append_default_control=False`. Los demás documentos mantienen el
+    comportamiento previo.
+    """
+    current = getattr(core_module, "build_docx")
+    if getattr(current, "_m33_presentation_policy", False):
+        return current
+
+    @wraps(current)
+    def wrapped(*args, **kwargs):
+        sections = kwargs.get("sections")
+        if sections is None and len(args) >= 5:
+            sections = args[4]
+        if "append_default_control" not in kwargs and _sections_externalize_default_control(sections):
+            kwargs["append_default_control"] = False
+        return current(*args, **kwargs)
+
+    wrapped._m33_presentation_policy = True
+    wrapped._m33_wrapped_builder = current
+    setattr(core_module, "build_docx", wrapped)
+    return wrapped
 
 
 def _build(registry: ModuleType) -> dict[str, Any]:
@@ -83,11 +119,16 @@ def activate_m33_contract_factories(
         _CACHE = _build(registry)
         _ACTIVE = True
 
+    wrapped_builder = _install_m33_docx_presentation_policy(registry.core)
     registry.core.document_specs = document_specs_m33_all
     if application_services is not None:
         setattr(application_services, "document_specs", document_specs_m33_all)
+        if hasattr(application_services, "build_docx"):
+            setattr(application_services, "build_docx", wrapped_builder)
     if target_namespace is not None:
         target_namespace["document_specs"] = document_specs_m33_all
+        if "build_docx" in target_namespace:
+            target_namespace["build_docx"] = wrapped_builder
 
     for name, value in _CACHE.items():
         setattr(registry, name, value)
