@@ -27,22 +27,47 @@ def _paragraph(section: dict, text: str) -> None:
     section["paragraphs"] = [text]
 
 
+def _client_facing_controls(value: Any) -> str:
+    """Conserva el dato dinámico, pero desarrolla siglas técnicas para el lector contractual."""
+    text = str(value or "").strip()
+    if "MFA" in text and "multifactor" not in text.casefold():
+        text = text.replace("MFA", "autenticación multifactor (MFA)")
+    return text
+
+
 def compose_nda_m33_instrument(answers: dict) -> dict[str, Any]:
     composition = deepcopy(compose_nda_m33_release(answers))
     personal_data = bool(_read(answers, "data.personal", False))
     controls = _read(answers, "security.controls", {})
     controls = controls if isinstance(controls, dict) else {}
-    technical = str(controls.get("technical") or "controles de acceso, autenticación, cifrado y registros").strip()
+    technical = _client_facing_controls(
+        controls.get("technical") or "controles de acceso, autenticación, cifrado y registros"
+    )
     organizational = str(controls.get("organizational") or "mínimo privilegio, capacitación, gestión de terceros y respuesta a incidentes").strip()
     physical = str(controls.get("physical") or "medidas físicas proporcionales al soporte y al lugar de acceso").strip()
     ai_rule = str(_read(answers, "ai.training_outputs") or "uso controlado sin entrenamiento ni retención con información protegida").strip()
     liability_rule = str(_read(answers, "term_remedies.penalty_or_liability") or "responsabilidad conforme a la ley por daños demostrados").strip()
     agreement_years = int(float(_read(answers, "term_remedies.agreement_years", 2)))
     ordinary_years = int(float(_read(answers, "term_remedies.ordinary_confidentiality_years", 5)))
+    purpose = str(_read(answers, "agreement.purpose") or "desarrollar la finalidad común expresamente acordada por las partes").strip()
+    reference = str(_read(answers, "agreement.reference") or "la relación negocial identificada por las partes").strip()
 
     for section in composition.get("sections") or []:
-        heading_cf = str(section.get("heading") or "").casefold()
+        heading = str(section.get("heading") or "")
+        heading_cf = heading.casefold()
         is_clause = section.get("_type") == "clause"
+
+        if heading_cf.strip() == "consideraciones":
+            section.pop("text", None)
+            section["paragraphs"] = [
+                f"PRIMERA: Las partes prevén intercambiar información no pública en relación con {reference}, exclusivamente para {purpose}; por ello consideran necesario fijar de manera previa y verificable las condiciones de acceso, uso, custodia, revelación, conservación y cierre aplicables a dicha información.",
+                "SEGUNDA: Las partes reconocen que la confidencialidad contractual y el secreto empresarial son categorías relacionadas pero no equivalentes. La obligación de reserva puede proteger información que no reúna todos los requisitos de un secreto empresarial, mientras que la protección reforzada del secreto exige que concurran y se mantengan los presupuestos jurídicos correspondientes y medidas razonables de protección.",
+                "TERCERA: La información se administrará conforme a una finalidad determinada, al principio de necesidad de conocer y a controles proporcionales a su sensibilidad y riesgo. La revelación a una persona autorizada no convierte la información en pública ni amplía la finalidad, y cada parte deberá poder identificar razonablemente quién tuvo acceso, para qué lo tuvo y cuándo debió cesar.",
+                "CUARTA: La entrega o acceso a información no transfiere por sí sola propiedad intelectual, titularidad sobre materiales preexistentes, licencias, exclusividad, derechos sobre resultados ni facultades de explotación distintas de las expresamente pactadas. Cuando un resultado requiera cesión, licencia o asignación específica, deberá instrumentarse con el alcance exigido por el régimen jurídico aplicable.",
+                "QUINTA: El uso de proveedores, servicios en la nube, repositorios externos o sistemas de inteligencia artificial puede modificar materialmente el riesgo de divulgación, retención, reutilización o acceso por terceros. En consecuencia, tales herramientas solo podrán utilizarse dentro de la finalidad autorizada, con controles equivalentes y sin trasladar información protegida a entornos no autorizados.",
+                "SEXTA: Las partes pretenden que este acuerdo funcione como un instrumento operativo y probatorio de prevención, no como una declaración genérica de reserva. Por ello incorporan reglas sobre incidentes, devolución o eliminación, conservación excepcional, evidencia, responsabilidad y medidas urgentes, sin sustituir requisitos imperativos, competencias de autoridad ni cargas probatorias que correspondan en una controversia concreta.",
+            ]
+            continue
 
         # Todas las sustituciones de esta capa se limitan a cláusulas. La portada y
         # la sección de comparecencia pueden contener palabras como "IA" o "PI" en
@@ -52,6 +77,15 @@ def compose_nda_m33_instrument(answers: dict) -> dict[str, Any]:
                 section,
                 "Para interpretar y operar el acuerdo se utilizarán, según el rol real de cada operación, las categorías PARTE REVELADORA, PARTE RECEPTORA, INFORMACIÓN CONFIDENCIAL, SECRETO EMPRESARIAL, MATERIAL PREEXISTENTE, RESULTADO, INCIDENTE, PROVEEDOR AUTORIZADO y, cuando corresponda, SISTEMA DE INTELIGENCIA ARTIFICIAL. "
                 "Estas definiciones describen funciones y activos dentro del acuerdo; no modifican por sí mismas la titularidad, autoría, representación, relación laboral, licenciamiento, responsabilidad ni condición jurídica de secreto empresarial. La denominación utilizada deberá interpretarse conforme a los hechos y al alcance de cada revelación o acceso."
+            )
+
+        elif is_clause and "finalidad autorizada" in heading_cf:
+            permitted = str(_read(answers, "access.permitted_use") or purpose).strip()
+            _paragraph(
+                section,
+                f"La información solo podrá utilizarse para {purpose}; dentro de esa finalidad, el uso permitido se limita a {permitted}. "
+                "Quedan excluidos los usos secundarios incompatibles, la prospección ajena al proyecto, la publicidad basada en información reservada, las evaluaciones comparativas destinadas a identificar o reconstruir activos protegidos, la extracción de bases, el entrenamiento no autorizado, la ingeniería competitiva y cualquier explotación que exceda la necesidad documentada. "
+                "Un cambio material de finalidad requerirá autorización previa, expresa y trazable de la parte legitimada para concederla; el silencio, la tolerancia operativa o la mera disponibilidad técnica de la información no se interpretarán como ampliación del permiso."
             )
 
         elif is_clause and "seguridad de la información" in heading_cf:
@@ -108,6 +142,10 @@ def compose_nda_m33_instrument(answers: dict) -> dict[str, Any]:
                 "La expiración no autoriza un uso nuevo de información recibida durante la vigencia."
             )
 
+        elif is_clause and "conservación y legal hold" in heading_cf:
+            ordinal = heading.split(":", 1)[0].strip() if ":" in heading else ""
+            section["heading"] = f"{ordinal}: CONSERVACIÓN PROBATORIA Y RETENCIÓN LEGAL" if ordinal else "CONSERVACIÓN PROBATORIA Y RETENCIÓN LEGAL"
+
         elif is_clause and "responsabilidad y mitigación" in heading_cf:
             _paragraph(
                 section,
@@ -124,6 +162,14 @@ def compose_nda_m33_instrument(answers: dict) -> dict[str, Any]:
                 f"La parte que conozca un reclamo, requerimiento o investigación de un tercero relacionado con información, secreto empresarial, propiedad intelectual, seguridad{data_reference} informará a la otra parte tan pronto como sea razonablemente posible si la ley lo permite. "
                 "Preservará evidencia, evitará admisiones innecesarias y coordinará la defensa cuando los intereses sean comunes. Ninguna parte podrá celebrar, sin consentimiento de la otra, un acuerdo que le imponga pagos, admisiones, cesiones, licencias, restricciones o deberes de hacer; ese consentimiento no podrá negarse de manera abusiva cuando el acuerdo no afecte derechos de quien debe otorgarlo. "
                 "Cada parte conserva el control de su propia defensa y deberá mitigar razonablemente los daños bajo su esfera de actuación."
+            )
+
+        elif is_clause and "restricciones comerciales" in heading_cf:
+            _paragraph(
+                section,
+                "El presente acuerdo no crea obligaciones de no competencia, no captación, exclusividad, reparto de mercado, contratación preferente ni impedimentos generales para desarrollar actividades lícitas de manera independiente. "
+                "La protección recae sobre la información y los derechos jurídicamente protegibles, no sobre el conocimiento general, la experiencia legítima ni la competencia por méritos. "
+                "Cualquier restricción comercial adicional deberá constar en instrumento separado, responder a una finalidad legítima, estar delimitada en alcance, sujetos, duración y ámbito de aplicación, y someterse a revisión frente a las normas imperativas de libre competencia y demás reglas aplicables."
             )
 
         elif is_clause and "solución de controversias" in heading_cf and not personal_data:
