@@ -43,11 +43,50 @@ def _line_context(item: dict, calculation: dict) -> tuple[str, str]:
         return _value(calculation.get("vacation_pending_days")), _money(calculation.get("vacation_base"))
     if key == "indemnizacion":
         return _value(calculation.get("indemnity_days")), _money(calculation.get("indemnity_base"))
-    return "Según motor", "Según motor"
+    return "Según cálculo", "Según cálculo"
 
 
 def _is_heading(section: dict, fragment: str) -> bool:
     return fragment.casefold() in str(section.get("heading") or "").casefold()
+
+
+def _client_text(value: Any) -> Any:
+    if not isinstance(value, str):
+        return value
+    replacements = (
+        ("motor determinístico vigente", "modelo determinístico de cálculo vigente"),
+        ("incorporados al motor", "incorporados a esta revisión de cálculo"),
+        ("resultado del motor", "resultado de esta revisión de cálculo"),
+        ("RESULTADO DEL MOTOR", "RESULTADO DE ESTA REVISIÓN DE CÁLCULO"),
+        ("CONTROLES DEL MOTOR", "CONTROLES DE CÁLCULO"),
+        ("Según motor", "Según cálculo"),
+    )
+    text = value
+    for source, target in replacements:
+        text = text.replace(source, target)
+    return text
+
+
+def _client_section(section: dict) -> dict:
+    result = deepcopy(section)
+    for key in ("heading", "text", "notes"):
+        if key in result:
+            result[key] = _client_text(result[key])
+    for key in ("paragraphs", "bullets", "numbered"):
+        if isinstance(result.get(key), list):
+            result[key] = [_client_text(item) for item in result[key]]
+    if isinstance(result.get("table"), list):
+        rows = []
+        for row in result["table"]:
+            if isinstance(row, list) and row:
+                label = str(row[0] or "").strip().casefold()
+                if label == "versión del motor":
+                    continue
+                rows.append([_client_text(cell) for cell in row])
+            else:
+                rows.append(row)
+        result["table"] = rows
+    return result
 
 
 def _polish_calculation(spec: dict, answers: dict, result: dict) -> dict:
@@ -132,7 +171,7 @@ def _externalize_internal_controls(spec: dict) -> dict:
         if section.get("_type") == "control" or "control de uso, fuentes y revisión" in heading:
             internal_sections.append(deepcopy(section))
             continue
-        public_sections.append(section)
+        public_sections.append(_client_section(section))
 
     # Marcador privado de presentación: el runtime histórico solo recibe `sections`
     # al invocar build_docx. Esta clave no se renderiza y permite conservar el
