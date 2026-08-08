@@ -134,6 +134,12 @@ def _externalize_internal_controls(spec: dict) -> dict:
             continue
         public_sections.append(section)
 
+    # Marcador privado de presentación: el runtime histórico solo recibe `sections`
+    # al invocar build_docx. Esta clave no se renderiza y permite conservar el
+    # control en `internal_review_sections` sin que el builder vuelva a insertarlo.
+    if public_sections:
+        public_sections[0]["_suppress_default_control"] = True
+
     result["sections"] = public_sections
     result["internal_review_sections"] = internal_sections
     result["internal_controls_externalized"] = True
