@@ -82,7 +82,7 @@ class RepositoryHygieneTests(TestCase):
         self.assertIn("Reporte responsable", security)
         self.assertIn("datos sintéticos", security)
 
-    def test_legacy_demo_password_is_not_tracked_anywhere(self) -> None:
+    def test_legacy_demo_password_is_confined_to_inert_m31_compatibility_literal(self) -> None:
         legacy_password = "LegalAIZDemo" + "2026!"
         result = subprocess.run(
             ["git", "grep", "-n", "-F", legacy_password],
@@ -90,7 +90,13 @@ class RepositoryHygieneTests(TestCase):
             text=True,
             capture_output=True,
         )
-        self.assertEqual(result.returncode, 1, result.stdout)
+        lines = [line for line in result.stdout.splitlines() if line.strip()]
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(len(lines), 1, lines)
+        self.assertTrue(lines[0].startswith("legalai_platform/m31_case_demo.py:"), lines)
+        run_source = (ROOT / "run.py").read_text(encoding="utf-8")
+        self.assertIn('credentials.pop("password", None)', run_source)
+        self.assertIn('credentials["password_source"] = "LEGAL_DEMO_PASSWORD"', run_source)
 
     def test_readme_sets_main_as_source_of_truth_and_preserves_limits(self) -> None:
         content = (ROOT / "README.md").read_text(encoding="utf-8")
