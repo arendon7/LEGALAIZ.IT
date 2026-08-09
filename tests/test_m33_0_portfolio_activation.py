@@ -21,14 +21,10 @@ from tests.test_m33_0_wave3 import (
 class PortfolioActivationM330Tests(unittest.TestCase):
     def test_active_runtime_uses_m33_across_three_waves(self):
         import run
-
-        # Primera oleada: fábricas versionadas dedicadas.
         self.assertEqual(run.COEM003_FACTORY_V244.VERSION, "2.45")
         self.assertEqual(run.COEM004_FACTORY_V247.VERSION, "2.48")
         self.assertEqual(run.COAR001_FACTORY_V250.VERSION, "2.51")
         self.assertEqual(run.COLA002_FACTORY_V239.VERSION, "2.40")
-
-        # Segunda y tercera oleada: compositor genérico activo sin cambiar la API.
         self.assertIs(run.document_specs, document_specs_m33_all)
         self.assertIs(run._application_services.document_specs, document_specs_m33_all)
         self.assertIs(run._runtime_registry.core.document_specs, document_specs_m33_all)
@@ -44,7 +40,6 @@ class PortfolioActivationM330Tests(unittest.TestCase):
             specs = document_specs_m33_all("CASE", code, answers, result, WAVE2_PRODUCTS[code], "2026-08-07", [])
             self.assertTrue(specs)
             self.assertTrue(all(spec.get("document_standard") == "M33.0" for spec in specs), code)
-
         answers, result = consumer_fixture("warranty_claim")
         result["risk"] = "red"
         specs = document_specs_m33_all("CASE", "CO-CD-003", answers, result, WAVE2_PRODUCTS["CO-CD-003"], "2026-08-07", [])
@@ -62,22 +57,14 @@ class PortfolioActivationM330Tests(unittest.TestCase):
             self.assertTrue(specs)
             self.assertTrue(all(spec.get("document_standard") == "M33.0" for spec in specs), code)
             combined = " ".join(str(spec.get("sections")) for spec in specs).casefold()
-            if code in {"CO-SA-001", "CO-TR-001"}:
-                # Salud y SAST externalizan la gobernanza de la copia cliente.
-                # La revisión humana se exige siempre; la marca de criticidad
-                # adicional solo corresponde a expedientes clasificados en rojo.
-                self.assertTrue(all(spec.get("legal_approval") == "pending" for spec in specs))
-                self.assertTrue(all(spec.get("qa_approval") == "pending" for spec in specs))
-                self.assertTrue(all(spec.get("released") is False for spec in specs))
-                self.assertTrue(all(spec.get("requires_human_review") for spec in specs))
-                if str(result.get("risk") or "").casefold() == "red":
-                    self.assertTrue(all(spec.get("critical_human_review") for spec in specs))
-                self.assertNotIn("control de uso, fuentes y revisión", combined)
-                self.assertNotIn("documento candidato interno", combined)
-            else:
-                self.assertIn("aprobación jurídica", combined)
-                self.assertIn("qa", combined)
-                self.assertNotIn("released = true", combined)
+            self.assertTrue(all(spec.get("legal_approval") == "pending" for spec in specs))
+            self.assertTrue(all(spec.get("qa_approval") == "pending" for spec in specs))
+            self.assertTrue(all(spec.get("released") is False for spec in specs))
+            self.assertTrue(all(spec.get("requires_human_review") for spec in specs))
+            if str(result.get("risk") or "").casefold() == "red":
+                self.assertTrue(all(spec.get("critical_human_review") for spec in specs))
+            self.assertNotIn("control de uso, fuentes y revisión", combined)
+            self.assertNotIn("documento candidato interno", combined)
 
     def test_unknown_product_keeps_historical_document_specs_behavior(self):
         product = {"code": "CO-XX-999", "title": "Producto externo a M33"}
