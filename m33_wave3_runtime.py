@@ -16,6 +16,7 @@ from m33_procedural_runtime import _finalize_spec
 from m33_sast_compat_polish import finalize_sast_compat_polish
 from m33_sast_legal_finalize import finalize_sast_specs
 from m33_sast_release_polish import finalize_sast_release_polish
+from m33_traffic_legal_finalize import finalize_traffic_specs
 from m33_wave3_composition import WAVE3_CODES, document_specs_m33_wave3
 
 
@@ -54,6 +55,8 @@ def document_specs_m33_all(case_id, code, answers, result, product, generated_at
         sast_specs = finalize_sast_specs(specs, answers, result)
         sast_specs = finalize_sast_compat_polish(sast_specs)
         return finalize_sast_release_polish(sast_specs)
+    if code == "CO-TR-002":
+        return finalize_traffic_specs(specs, answers, result)
     if code not in WAVE3_CODES:
         return specs
     return [_finalize_spec(code, answers, spec) for spec in specs]
