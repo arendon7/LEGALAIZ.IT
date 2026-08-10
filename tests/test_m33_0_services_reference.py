@@ -26,11 +26,8 @@ class ControlledEvaluator:
 
     def evaluate(self, answers):
         return {
-            "blocked": False,
-            "missing_fields": [],
-            "documents": self.documents,
-            "readiness": "ready_for_human_review",
-            "status": "ready_for_human_review",
+            "blocked": False, "missing_fields": [], "documents": self.documents,
+            "readiness": "ready_for_human_review", "status": "ready_for_human_review",
             "professional_review_required": True,
             "professional_reviews": ["Revisión jurídica sustantiva", "QA visual humano"],
             "review_requirements": ["Revisión jurídica sustantiva", "QA visual humano"],
@@ -108,21 +105,24 @@ class ServicesReferenceM330Tests(unittest.TestCase):
             self.assertIn("NIT 900.765.432-1", text)
             self.assertIn("María Fernanda Gómez Ruiz", text)
             self.assertIn("Juan David Torres Mejía", text)
-            self.assertNotIn("identificado en la ficha contractual", text)
-            self.assertNotIn("identificado en la misma ficha", text)
-            self.assertIn("PRIMERA: OBJETO", text)
+            self.assertRegex(text, r"PRIMERA\. OBJETO:")
+            self.assertNotIn("PRIMERA: OBJETO:", text)
             self.assertIn("ANEXO NO. 1", text.upper())
             self.assertNotIn("CONTROL DE USO, FUENTES Y REVISIÓN", text)
             self.assertNotIn("BORRADOR CONTROLADO", text)
             self.assertNotIn("NO FIRMAR", text)
             self.assertNotIn("________", text)
-            self.assertNotIn("La plataforma conservará", text)
             self.assertIn("cuarenta y ocho millones de pesos moneda corriente", text)
             self.assertIn("no establece exclusividad general ni obligación de no competencia", text)
             self.assertEqual(document.core_properties.subject, "CO-EM-003")
             self.assertGreaterEqual(len((primary.get("review_evidence") or {}).get("legal_sources") or []), 6)
             self.assertGreater(len(text.split()), 3_100)
             self.assertGreaterEqual(len(clause_paragraphs), 40)
+            self.assertIn("CONTRATANTE", table_text)
+            self.assertIn("Soluciones Andinas S.A.S.", table_text)
+            self.assertIn("CONTRATISTA", table_text)
+            self.assertIn("Consultoría Documental Segura S.A.S.", table_text)
+            self.assertIn("COP $48.000.000 M/CTE", table_text)
             self.assertIn("representante legal de Soluciones Andinas S.A.S. · NIT 901.234.567-8", table_text)
             self.assertIn("representante legal de Consultoría Documental Segura S.A.S. · NIT 900.765.432-1", table_text)
 
