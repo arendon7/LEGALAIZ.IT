@@ -62,7 +62,7 @@ def _install_m33_docx_presentation_policy(core_module: ModuleType):
     def wrapped(*args, **kwargs):
         sections = kwargs.get("sections")
         if sections is None and len(args) >= 5:
-            sections = call_args[4] if (call_args := list(args)) else None
+            sections = args[4]
         if "append_default_control" not in kwargs and _sections_externalize_default_control(sections):
             kwargs["append_default_control"] = False
         return current(*args, **kwargs)
