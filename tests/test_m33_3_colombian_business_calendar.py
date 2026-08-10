@@ -13,6 +13,28 @@ from legalai_platform.colombian_business_calendar import (
 )
 from m33_3_business_day_overrides import install_m33_3_business_day_overrides
 from m33_3_consumer_calendar_finalize import finalize_consumer_calendar_m33_3
+from m33_3_cross_calendar_finalize import (
+    finalize_habeas_calendar_m33_3,
+    finalize_health_calendar_m33_3,
+)
+
+
+def audited_calculation(start: date = date(2026, 8, 7), days: int = 15) -> dict:
+    audit = calculate_colombian_business_days(start, days).to_dict()
+    audit["sequence"] = 1
+    return {
+        "holiday_calendar_applied": True,
+        "deadline_is_preliminary": True,
+        "business_day_calendar_scope": CALENDAR_SCOPE,
+        "business_day_calendar_engine": "M33.3-test",
+        "business_day_calendar_verified_at": RULESET_VERIFIED_AT,
+        "business_day_calendar_basis": ["Ley 51 de 1983", "Ley 2578 de 2026, artículo 6"],
+        "business_day_calendar_limitations": ["No se incluyen vacaciones judiciales."],
+        "business_day_calculations": [audit],
+        "preliminary_due_date": audit["due_date"],
+        "preliminary_business_days": days,
+        "term_category": "petición general subsidiaria",
+    }
 
 
 class ColombianBusinessCalendarM333Tests(unittest.TestCase):
@@ -115,7 +137,7 @@ def habeas_data_calc(a):
         self.assertEqual(calc["business_day_calculations"][0]["due_date"], "2026-08-31")
         self.assertNotIn("no descuentan festivos", " ".join(calc["assumptions"]).casefold())
 
-    def test_consumer_calendar_only_claims_national_calendar_when_audit_flag_exists(self):
+    def test_consumer_calendar_uses_compact_traceability_without_separate_sparse_audit_section(self):
         specs = [{
             "kind": "consumer_deadline_calendar",
             "title": "Calendario jurídico de protección al consumidor",
@@ -135,28 +157,65 @@ def habeas_data_calc(a):
                 },
             ],
         }]
-        result = {
-            "calculation": {
-                "holiday_calendar_applied": True,
-                "business_day_calendar_scope": CALENDAR_SCOPE,
-                "business_day_calendar_engine": "M33.3-test",
-                "business_day_calendar_verified_at": RULESET_VERIFIED_AT,
-                "business_day_calendar_basis": ["Ley 51 de 1983", "Ley 2578 de 2026, artículo 6"],
-                "business_day_calendar_limitations": ["No se incluyen vacaciones judiciales."],
-                "business_day_calculations": [calculate_colombian_business_days(date(2026, 8, 7), 15).to_dict()],
-            }
-        }
+        result = {"calculation": audited_calculation()}
         finalized = finalize_consumer_calendar_m33_3(specs, result)
         calendar = finalized[0]
         visible = " ".join(str(section) for section in calendar["sections"]).casefold()
+        headings = [section.get("heading") for section in calendar["sections"]]
         self.assertIn("calendario nacional aplicado", visible)
         self.assertIn("trazabilidad del cómputo nacional", visible)
         self.assertIn("31 de agosto de 2026", visible)
+        self.assertIn("17 de agosto de 2026: asunción", visible)
         self.assertNotIn("no descuenta festivos", visible)
+        self.assertNotIn("V. REGISTRO DE SUMAS HÁBILES", headings)
         self.assertEqual(calendar["calendar_standard"], "M33.3")
 
         unchanged = finalize_consumer_calendar_m33_3(specs, {"calculation": {}})
         self.assertIs(unchanged, specs)
+
+    def test_habeas_calendar_declares_audited_national_calendar_without_changing_terms(self):
+        specs = [{
+            "kind": "habeas_deadline_calendar",
+            "subtitle": "original",
+            "sections": [{
+                "heading": "1. REGLAS LEGALES DE CÓMPUTO",
+                "table": [["Actuación", "Término", "Control"], ["Reclamo", "15 días hábiles", "Artículo 16"]],
+            }],
+        }]
+        finalized = finalize_habeas_calendar_m33_3(specs, {"calculation": audited_calculation()})
+        calendar = finalized[0]
+        visible = " ".join(str(section) for section in calendar["sections"]).casefold()
+        self.assertIn("trazabilidad m33.3", visible)
+        self.assertIn("17 de agosto de 2026: asunción", visible)
+        self.assertIn("15 días hábiles", visible)
+        self.assertEqual(calendar["calendar_standard"], "M33.3")
+        self.assertIn("calendario nacional auditable", calendar["subtitle"].casefold())
+
+    def test_health_calendar_replaces_unaudited_inherited_date_and_keeps_sector_rule_primary(self):
+        specs = [{
+            "kind": "health_calendar",
+            "sections": [
+                {"heading": "REGLA DE CÓMPUTO", "paragraphs": ["Máximo 48 horas corridas."]},
+                {"heading": "I. HITOS", "table": [
+                    ["Actuación", "Fecha / regla", "Estado"],
+                    ["Vencimiento genérico heredado", "21 de agosto de 2026", "No usar como término rector del reclamo sectorial"],
+                ]},
+            ],
+        }]
+        audited = finalize_health_calendar_m33_3(specs, {"calculation": audited_calculation()})[0]
+        visible = " ".join(str(section) for section in audited["sections"]).casefold()
+        self.assertIn("máximo 48 horas corridas", visible)
+        self.assertIn("control general de petición", visible)
+        self.assertIn("31 de agosto de 2026", visible)
+        self.assertNotIn("vencimiento genérico heredado", visible)
+        self.assertIn("no sustituye el término sectorial", visible)
+        self.assertEqual(audited["calendar_standard"], "M33.3")
+
+        conservative = finalize_health_calendar_m33_3(specs, {"calculation": {}})[0]
+        conservative_text = " ".join(str(section) for section in conservative["sections"]).casefold()
+        self.assertIn("sin fecha nacional auditada", conservative_text)
+        self.assertNotIn("21 de agosto de 2026", conservative_text)
+        self.assertIn("no se presenta una fecha genérica heredada", conservative_text)
 
 
 if __name__ == "__main__":
