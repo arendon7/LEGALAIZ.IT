@@ -15,6 +15,7 @@ from m33_2_analytical_reference_format import apply_m33_2_analytical_format
 from m33_2_operational_reference_format import apply_m33_2_operational_format
 from m33_2_procedural_reference_format import apply_m33_2_procedural_format
 from m33_2_special_reference_format import apply_m33_2_special_format
+from m33_2_special_pagination_finalize import apply_m33_2_special_pagination_finalize
 from m33_wave3_runtime import document_specs_m33_all
 from tests.test_m33_0_consumer_legal_finalize import MECHANISMS, consumer_route_fixture
 from tests.test_m33_0_debt_legal_finalize import debt_stage_fixture
@@ -97,6 +98,10 @@ def _apply_presentation(target: Path, *, code: str, title: str) -> dict:
         return operational
     special = apply_m33_2_special_format(target, product_code=code, title=title)
     if special.get("applied"):
+        pagination = apply_m33_2_special_pagination_finalize(target, product_code=code, title=title)
+        if pagination.get("applied"):
+            special = dict(special)
+            special["pagination_profile"] = pagination.get("profile")
         return special
     return {"applied": False, "profile": "M33.2-base", "reason": "base_family"}
 
@@ -121,6 +126,7 @@ def _write_sample(output: Path, code: str, kind: str, spec: dict, records: list[
         "document_standard": spec.get("document_standard"),
         "presentation_standard": "M33.2" if presentation.get("applied") else "M33.2-base",
         "presentation_profile": presentation.get("profile"),
+        "pagination_profile": presentation.get("pagination_profile"),
         "released": False,
         "legal_approval": "pending",
         "qa_approval": "pending",
