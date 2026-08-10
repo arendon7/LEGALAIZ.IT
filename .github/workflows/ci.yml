@@ -121,19 +121,58 @@ jobs:
               payload = json.load(response)
           interview = payload.get('interview') or {}
           questions = interview.get('questions') or []
-          matches = [q for q in questions if q.get('id') == 'prior_claim_identity_theft']
-          if len(matches) != 1:
-              raise SystemExit(f"M33.3: se esperaba una pregunta prior_claim_identity_theft y se encontraron {len(matches)}")
-          question = matches[0]
-          if question.get('show_if') != {'field': 'prior_claim', 'equals': 'Sí'}:
-              raise SystemExit(f"M33.3: condición inesperada: {question.get('show_if')!r}")
-          if question.get('options') != ['Sí', 'No', 'No sé']:
-              raise SystemExit(f"M33.3: opciones inesperadas: {question.get('options')!r}")
+          by_id = {}
+          for question in questions:
+              by_id.setdefault(question.get('id'), []).append(question)
+
+          identity = by_id.get('prior_claim_identity_theft') or []
+          if len(identity) != 1:
+              raise SystemExit(f"M33.3: se esperaba una prior_claim_identity_theft y se encontraron {len(identity)}")
+          if identity[0].get('show_if') != {'field': 'prior_claim', 'equals': 'Sí'}:
+              raise SystemExit(f"M33.3: condición de suplantación inesperada: {identity[0].get('show_if')!r}")
+          if identity[0].get('options') != ['Sí', 'No', 'No sé']:
+              raise SystemExit(f"M33.3: opciones de suplantación inesperadas: {identity[0].get('options')!r}")
+
+          communication_ids = [
+              'prior_communication_sent',
+              'prior_communication_channel',
+              'prior_communication_destination_verified',
+              'prior_communication_alternative_channel_agreed',
+              'prior_communication_message_consultable',
+              'prior_communication_content_sufficient',
+              'prior_communication_first_date',
+          ]
+          for field in communication_ids:
+              matches = by_id.get(field) or []
+              if len(matches) != 1:
+                  raise SystemExit(f"M33.3: se esperaba una {field} y se encontraron {len(matches)}")
+
+          send = by_id['prior_communication_sent'][0]
+          if send.get('options') != ['Sí', 'No', 'No sé']:
+              raise SystemExit(f"M33.3: opciones de envío inesperadas: {send.get('options')!r}")
+          for field in [
+              'prior_communication_channel',
+              'prior_communication_destination_verified',
+              'prior_communication_alternative_channel_agreed',
+              'prior_communication_message_consultable',
+              'prior_communication_content_sufficient',
+          ]:
+              if by_id[field][0].get('show_if') != {'field': 'prior_communication_sent', 'equals': 'Sí'}:
+                  raise SystemExit(f"M33.3: condición inesperada en {field}: {by_id[field][0].get('show_if')!r}")
+          if by_id['prior_communication_first_date'][0].get('show_if') != {'field': 'small_obligation_two_notices', 'equals': 'Sí'}:
+              raise SystemExit("M33.3: la primera fecha de pequeña cuantía no depende de la regla de dos avisos")
+
+          send_date = by_id.get('prior_communication_date') or []
+          if len(send_date) != 1 or 'envío' not in str(send_date[0].get('label') or '').casefold():
+              raise SystemExit("M33.3: prior_communication_date no está presentada como fecha de envío")
           if interview.get('interview_standard') != 'M33.3':
               raise SystemExit(f"M33.3: estándar de entrevista no activo: {interview.get('interview_standard')!r}")
+          if len(questions) < 60:
+              raise SystemExit(f"M33.3: entrevista CO-CD-001 incompleta; solo {len(questions)} preguntas activas")
+
           print(
               f"Entrevista runtime CO-CD-001 verificada: {len(questions)} preguntas; "
-              "prior_claim_identity_theft activa una sola vez bajo M33.3."
+              "suplantación y comunicación previa se sirven una sola vez bajo M33.3."
           )
           PY
       - name: Smoke producción demostrativa M33.1
