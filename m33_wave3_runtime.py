@@ -7,6 +7,7 @@ from m33_3_cross_calendar_finalize import (
     finalize_habeas_calendar_m33_3,
     finalize_health_calendar_m33_3,
 )
+from m33_3_habeas_permanence_finalize import finalize_habeas_permanence_m33_3
 from m33_consumer_legal_finalize import finalize_consumer_specs
 from m33_consumer_release_polish import finalize_consumer_release_polish
 from m33_debt_layout_polish import finalize_debt_layout_polish
@@ -33,12 +34,6 @@ _HABEAS_CLIENT_SUBTITLE = (
 
 
 def _polish_habeas_client_presentation(specs: list[dict]) -> list[dict]:
-    """Retira metadatos editoriales del subtítulo sin tocar la gobernanza interna.
-
-    El calendario conserva un subtítulo especializado únicamente cuando la salida
-    acredita explícitamente el estándar M33.3. Sin esa evidencia se mantiene el
-    subtítulo público histórico y nunca se filtra el texto interno del compositor.
-    """
     for spec in specs:
         if not spec.get("internal_controls_externalized"):
             continue
@@ -56,6 +51,7 @@ def document_specs_m33_all(case_id, code, answers, result, product, generated_at
     if code == "CO-CD-001":
         habeas_specs = finalize_habeas_specs(specs, answers, result)
         habeas_specs = finalize_habeas_calendar_m33_3(habeas_specs, result)
+        habeas_specs = finalize_habeas_permanence_m33_3(habeas_specs, result)
         return _polish_habeas_client_presentation(habeas_specs)
     if code == "CO-CD-003":
         consumer_specs = finalize_consumer_specs(specs, answers, result)
