@@ -1,15 +1,17 @@
 from __future__ import annotations
 
-"""Cierre estilístico del instrumento laboral CO-LA-002 M33.0.
+"""Cierre estilístico del instrumento laboral CO-LA-002 M33.0/M33.4.
 
-No altera reglas, módulos ni fuentes. Corrige únicamente concordancia, contracciones
-y consistencia de términos definidos visibles en el documento que firman las partes.
+No altera reglas ni módulos sustantivos. Corrige únicamente concordancia,
+contracciones y consistencia de términos definidos visibles. M33.4 incorpora antes
+de esta capa el manifiesto normativo auditable y mantiene su control fuera del
+instrumento firmable.
 """
 
 from copy import deepcopy
 from typing import Any
 
-from m33_employment_release_polish import compose_employment_m33_release
+from m33_4_employment_source_finalize import compose_employment_m33_release
 
 
 def _polish(value: Any) -> Any:
