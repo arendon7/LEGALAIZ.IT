@@ -29,6 +29,13 @@ from m33_2_analytical_reference_format import install_m33_2_analytical_format_ga
 
 install_m33_2_analytical_format_gate()
 
+# Las matrices, calendarios y cronogramas necesitan lectura operativa y control
+# temporal más que apariencia de informe. Esta capa aplica tablas estables,
+# orientación adaptativa y vuelve a gobernar el hash exacto del DOCX resultante.
+from m33_2_operational_reference_format import install_m33_2_operational_format_gate
+
+install_m33_2_operational_format_gate()
+
 from core_v11 import *  # noqa: F401,F403,E402
 import core_v11 as core  # noqa: E402
 from http.server import ThreadingHTTPServer
