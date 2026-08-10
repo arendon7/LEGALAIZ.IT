@@ -11,6 +11,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from docx_builder import build_docx
+from m33_2_procedural_reference_format import apply_m33_2_procedural_format
 from m33_wave3_runtime import document_specs_m33_all
 from tests.test_m33_0_consumer_legal_finalize import MECHANISMS, consumer_route_fixture
 from tests.test_m33_0_debt_legal_finalize import debt_stage_fixture
@@ -93,11 +94,18 @@ def _write_sample(output: Path, code: str, kind: str, spec: dict, records: list[
         enforce_legal_standard=True,
         append_default_control=not bool(spec.get("internal_controls_externalized")),
     )
+    presentation = apply_m33_2_procedural_format(
+        target,
+        product_code=code,
+        title=spec["title"],
+    )
     records.append({
         "product_code": code,
         "kind": kind,
         "sample": target.name,
         "document_standard": spec.get("document_standard"),
+        "presentation_standard": "M33.2" if presentation.get("applied") else "M33.2-base",
+        "presentation_profile": presentation.get("profile"),
         "released": False,
         "legal_approval": "pending",
         "qa_approval": "pending",
