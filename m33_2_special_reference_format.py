@@ -74,7 +74,14 @@ def classify_m33_2_special_document(product_code: str, title: str) -> str | None
     if code not in SPECIAL_PRODUCT_CODES:
         return None
     lowered = str(title or "").strip().casefold()
-    for expected_code, token, profile in _SPECIAL_RULES:
+    # Las reglas más específicas deben prevalecer sobre términos genéricos. Así,
+    # por ejemplo, una "carta de instrucciones ... pagaré" no se clasifica como
+    # pagaré únicamente por contener esa palabra.
+    for expected_code, token, profile in sorted(
+        _SPECIAL_RULES,
+        key=lambda item: len(item[1]),
+        reverse=True,
+    ):
         if code == expected_code and token in lowered:
             return profile
     return None
