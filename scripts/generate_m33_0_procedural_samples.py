@@ -27,6 +27,7 @@ from m33_2_procedural_reference_format import apply_m33_2_procedural_format
 from m33_2_special_reference_format import apply_m33_2_special_format
 from m33_2_special_pagination_finalize import apply_m33_2_special_pagination_finalize
 from m33_3_habeas_communication_guard import enforce_habeas_prior_communication
+from m33_3_habeas_law2573_transition import enforce_law2573_transition
 from m33_3_habeas_permanence_guard import enforce_habeas_permanence
 from m33_wave3_runtime import document_specs_m33_all
 from tests.test_m33_0_consumer_legal_finalize import MECHANISMS, consumer_route_fixture
@@ -91,9 +92,10 @@ def _habeas_visual_fixture() -> tuple[dict, dict]:
     """Completa de forma explícita la fixture sintética usada por el QA visual.
 
     No se infieren estados desde prosa libre. La muestra declara una obligación pagada
-    y, para probar la nueva distinción M33.3, modela una comunicación física enviada
-    21 días antes del reporte aunque el titular declare no haberla recibido. Así la
-    evidencia demuestra que recepción y envío son hechos jurídicamente separados.
+    y modela un envío físico previo al reporte aunque el titular declare no haberlo
+    recibido. La ruta de suplantación se mantiene separada y, para probar la transición
+    de Ley 2573, declara solicitud de corrección pero NO da por verificado un
+    incumplimiento de seguridad: el parágrafo 2 debe quedar fail-closed.
     """
     answers, result = habeas_fixture()
     answers = deepcopy(answers)
@@ -115,6 +117,8 @@ def _habeas_visual_fixture() -> tuple[dict, dict]:
         "prior_communication_message_consultable": "No aplica",
         "prior_communication_content_sufficient": "Sí",
         "small_obligation_two_notices": "No aplica",
+        "identity_theft_correction_requested": "Sí",
+        "identity_theft_security_noncompliance_verified": "No sé",
     })
     calculation = result.setdefault("calculation", {})
     calculation["small_obligation_reference_value"] = HABEAS_PARAMETERS["small_obligation_reference_value"]
@@ -163,7 +167,16 @@ def _m33_3_habeas_calendar_evidence(answers: dict, result: dict) -> tuple[dict, 
             "La fixture visual M33.3 de comunicación previa dejó de representar un envío "
             f"preliminarmente soportado: {calculation.get('communication_status')!r}."
         )
-    updated_result["calculation"] = enforce_habeas_permanence(updated_answers, calculation)
+    calculation = enforce_habeas_permanence(updated_answers, calculation)
+    calculation = enforce_law2573_transition(updated_answers, calculation)
+    if calculation.get("law2573_transition_phase") != "partial_immediate_only":
+        raise RuntimeError("La fixture visual dejó de representar la ventana transitoria de Ley 2573.")
+    if calculation.get("law2573_article5_paragraph2_status") != "not_proven_security_noncompliance":
+        raise RuntimeError(
+            "La fixture visual debe demostrar que el parágrafo 2 no se activa por la sola alegación de fraude: "
+            f"{calculation.get('law2573_article5_paragraph2_status')!r}."
+        )
+    updated_result["calculation"] = calculation
     return updated_answers, updated_result
 
 
@@ -204,6 +217,9 @@ def _write_sample(output: Path, code: str, kind: str, spec: dict, records: list[
         "permanence_ruleset_verified_at": spec.get("permanence_ruleset_verified_at"),
         "communication_standard": spec.get("communication_standard"),
         "communication_ruleset_verified_at": spec.get("communication_ruleset_verified_at"),
+        "law2573_transition_standard": spec.get("law2573_transition_standard"),
+        "law2573_ruleset_verified_at": spec.get("law2573_ruleset_verified_at"),
+        "law2573_human_review_required": spec.get("law2573_human_review_required"),
         "released": False, "legal_approval": "pending", "qa_approval": "pending",
         "internal_controls_externalized": bool(spec.get("internal_controls_externalized")),
     })
