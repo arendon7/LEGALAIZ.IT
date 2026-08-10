@@ -26,10 +26,14 @@ BODY_PT = 11
 TABLE_PT = 10
 TITLE_PT = 11
 SUBTITLE_PT = 10.5
-PARAGRAPH_AFTER_PT = 6
-SECTION_BEFORE_PT = 8
-SECTION_AFTER_PT = 6
-TITLE_AFTER_PT = 12
+PARAGRAPH_AFTER_PT = 4
+NUMBERED_AFTER_PT = 2
+SECTION_BEFORE_PT = 4
+SECTION_AFTER_PT = 3
+SIGNATURE_BEFORE_PT = 2
+SIGNATURE_AFTER_PT = 1
+TITLE_AFTER_PT = 7
+SUBTITLE_AFTER_PT = 7
 
 FORMAL_PRODUCT_CODES = frozenset({
     "CO-LA-001",
@@ -107,6 +111,35 @@ def _remove_paragraph(paragraph) -> None:
         parent.remove(element)
 
 
+def _has_explicit_page_break(paragraph) -> bool:
+    for br in paragraph._p.iter(qn("w:br")):
+        if br.get(qn("w:type")) == "page":
+            return True
+    p_pr = paragraph._p.pPr
+    if p_pr is None:
+        return False
+    page_break_before = p_pr.find(qn("w:pageBreakBefore"))
+    return bool(
+        page_break_before is not None
+        and page_break_before.get(qn("w:val"), "1") not in {"0", "false"}
+    )
+
+
+def _remove_top_level_blank_paragraphs(document: Document) -> int:
+    """Elimina separadores vacíos del cuerpo; el espaciado queda en propiedades.
+
+    No toca párrafos que materializan un salto de página explícito ni párrafos dentro
+    de tablas, de modo que firmas y estructuras tabulares conservan su semántica.
+    """
+    removed = 0
+    for paragraph in list(document.paragraphs):
+        if paragraph.text.strip() or _has_explicit_page_break(paragraph):
+            continue
+        _remove_paragraph(paragraph)
+        removed += 1
+    return removed
+
+
 def _is_formal_writing(product_code: str, title: str) -> bool:
     code = str(product_code or "").strip().upper()
     if code not in FORMAL_PRODUCT_CODES:
@@ -169,7 +202,7 @@ def _format_title_and_subtitle(document: Document, title: str) -> None:
         return
     subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
     subtitle.paragraph_format.space_before = Pt(0)
-    subtitle.paragraph_format.space_after = Pt(12)
+    subtitle.paragraph_format.space_after = Pt(SUBTITLE_AFTER_PT)
     subtitle.paragraph_format.keep_with_next = True
     for run in subtitle.runs:
         _set_run_font(run, size_pt=SUBTITLE_PT, bold=False, italic=True, underline=False)
@@ -188,9 +221,10 @@ def _format_headings(document: Document, title: str) -> int:
         style_name = paragraph.style.name if paragraph.style else ""
         if not style_name.lower().startswith("heading"):
             continue
-        paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER if text.upper() in {"FIRMA", "FIRMAS"} else WD_ALIGN_PARAGRAPH.LEFT
-        paragraph.paragraph_format.space_before = Pt(SECTION_BEFORE_PT)
-        paragraph.paragraph_format.space_after = Pt(SECTION_AFTER_PT)
+        signature = text.upper() in {"FIRMA", "FIRMAS"}
+        paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER if signature else WD_ALIGN_PARAGRAPH.LEFT
+        paragraph.paragraph_format.space_before = Pt(SIGNATURE_BEFORE_PT if signature else SECTION_BEFORE_PT)
+        paragraph.paragraph_format.space_after = Pt(SIGNATURE_AFTER_PT if signature else SECTION_AFTER_PT)
         paragraph.paragraph_format.keep_with_next = True
         for run in paragraph.runs:
             _set_run_font(run, size_pt=BODY_PT, bold=True, italic=_is_control_heading(text), underline=False)
@@ -208,9 +242,10 @@ def _format_body(document: Document, title: str) -> int:
         if style_name.lower().startswith("heading"):
             continue
         paragraph.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-        paragraph.paragraph_format.space_after = Pt(PARAGRAPH_AFTER_PT)
+        numbered = bool(_NUMBERED_RE.match(text))
+        paragraph.paragraph_format.space_after = Pt(NUMBERED_AFTER_PT if numbered else PARAGRAPH_AFTER_PT)
         paragraph.paragraph_format.line_spacing = 1.0
-        if _NUMBERED_RE.match(text):
+        if numbered:
             paragraph.paragraph_format.left_indent = Pt(24)
             paragraph.paragraph_format.first_line_indent = Pt(-12)
         _set_paragraph_font(paragraph, size_pt=BODY_PT)
@@ -244,7 +279,7 @@ def _format_tables(document: Document) -> int:
                 for paragraph in cell.paragraphs:
                     paragraph.alignment = WD_ALIGN_PARAGRAPH.LEFT
                     paragraph.paragraph_format.space_before = Pt(0)
-                    paragraph.paragraph_format.space_after = Pt(2 if signature else 0)
+                    paragraph.paragraph_format.space_after = Pt(0)
                     for run in paragraph.runs:
                         _set_run_font(
                             run,
@@ -279,6 +314,7 @@ def apply_m33_2_procedural_format(path: str | Path, *, product_code: str, title:
     _normalize_styles(document)
     title_p = _title_paragraph(document, title)
     removed_branding = _remove_body_branding(document, title_p)
+    removed_blank_paragraphs = _remove_top_level_blank_paragraphs(document)
     headings = _format_headings(document, title)
     paragraphs = _format_body(document, title)
     _format_title_and_subtitle(document, title)
@@ -293,10 +329,12 @@ def apply_m33_2_procedural_format(path: str | Path, *, product_code: str, title:
         "profile": "M33.2-procedural",
         "font": FONT_NAME,
         "removed_body_branding": removed_branding,
+        "removed_blank_paragraphs": removed_blank_paragraphs,
         "formatted_headings": headings,
         "formatted_paragraphs": paragraphs,
         "formatted_tables": tables,
         "paragraph_after_pt": PARAGRAPH_AFTER_PT,
+        "numbered_after_pt": NUMBERED_AFTER_PT,
     }
 
 
