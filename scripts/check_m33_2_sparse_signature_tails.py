@@ -10,7 +10,7 @@ import sys
 
 WORD_RE = re.compile(r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9]+")
 SIGNATURE_RE = re.compile(r"\bFIRMAS?\b", re.IGNORECASE)
-DEFAULT_MAX_WORDS = 42
+DEFAULT_MAX_WORDS = 55
 
 
 def _pdf_pages(path: Path) -> int:
@@ -70,7 +70,7 @@ def audit_sparse_signature_tails(rendered: Path, *, max_words: int = DEFAULT_MAX
             })
 
     return {
-        "schema": "legalaizit-m33-2-sparse-signature-tail-audit-v1",
+        "schema": "legalaizit-m33-2-sparse-signature-tail-audit-v2",
         "checked_documents": checked,
         "multi_page_documents": multi_page,
         "signature_last_pages": signature_tails,
