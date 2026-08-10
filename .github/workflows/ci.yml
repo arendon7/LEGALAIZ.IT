@@ -200,12 +200,12 @@ jobs:
           # Snapshot Graphify
 
           - SHA: `{sha}`
-          - Rama: `{ref}`
+          - Rama fuente: `{ref}`
           - Workflow: `{run_id}`
           - Nodos: **{len(nodes)}**
           - Relaciones: **{len(edges)}**
 
-          El grafo es un índice estructural generado. No reemplaza pruebas, revisión jurídica ni decisiones registradas en `project-memory/`.
+          Este snapshot vive en la rama generada `context/graphify-snapshot`. El grafo orienta el análisis, pero no reemplaza pruebas, revisión jurídica ni decisiones registradas en `project-memory/` de `main`.
           '''
           Path('project-memory/01_STATE').mkdir(parents=True, exist_ok=True)
           Path('project-memory/01_STATE/GRAPHIFY.md').write_text('\n'.join(line.strip() for line in text.splitlines()) + '\n', encoding='utf-8')
@@ -218,19 +218,15 @@ jobs:
             graphify-out/graph.json
             graphify-out/CHATGPT_GRAPH_INDEX.md
             graphify-out/obsidian
+            project-memory/01_STATE/GRAPHIFY.md
           if-no-files-found: error
           retention-days: 90
-      - name: Persistir solo el snapshot compacto
+      - name: Publicar snapshot compacto en rama generada
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -f graphify-out/CHATGPT_GRAPH_INDEX.md
-          git add project-memory/01_STATE/GRAPHIFY.md
-          if git diff --cached --quiet; then
-            echo 'Snapshot compacto sin cambios.'
-            exit 0
-          fi
-          git commit -m 'chore(context): refresh compact Graphify snapshot [skip ci]'
-          git push
+          git add -f graphify-out/CHATGPT_GRAPH_INDEX.md project-memory/01_STATE/GRAPHIFY.md
+          git commit -m 'chore(context): snapshot Graphify de ${{ github.sha }}'
+          git push --force origin HEAD:refs/heads/context/graphify-snapshot
