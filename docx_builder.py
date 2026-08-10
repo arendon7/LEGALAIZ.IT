@@ -300,7 +300,8 @@ def build_docx(
                 )
             )
             body.append(_signature_table(sec.get("parties") or []))
-            body.append(_paragraph("", spacing_after=60))
+            if sec_index < len(sections) - 1:
+                body.append(_paragraph("", spacing_after=60))
             continue
 
         is_annex = section_type == "annex" or heading.upper().startswith("ANEXO")
