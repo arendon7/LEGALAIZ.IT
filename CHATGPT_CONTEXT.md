@@ -5,14 +5,14 @@ Este archivo es el punto de entrada corto para retomar el proyecto sin reconstru
 ## Regla de lectura
 1. Leer `project-memory/00_INDEX.md`.
 2. Leer `project-memory/01_STATE/CURRENT.md`.
-3. Si existe `graphify-out/GRAPH_REPORT.md`, usarlo para orientación arquitectónica antes de abrir archivos fuente.
-4. Consultar únicamente los archivos directamente relacionados con la tarea activa.
-5. Antes de cerrar una iteración, actualizar el estado, decisiones y handoff correspondientes.
+3. Para arquitectura, consultar el snapshot más reciente de la rama generada `context/graphify-snapshot` (`graphify-out/CHATGPT_GRAPH_INDEX.md` y `project-memory/01_STATE/GRAPHIFY.md`).
+4. Abrir únicamente los archivos fuente directamente relacionados con la tarea activa.
+5. Antes de cerrar una iteración relevante, actualizar estado, decisiones o runbook cuando corresponda.
 
 ## Fuentes de verdad
 - Código y configuración: GitHub, rama/commit expresamente identificados.
-- Estado humano y decisiones: `project-memory/`.
-- Mapa estructural del repositorio: `graphify-out/`.
+- Estado humano y decisiones: `project-memory/` en la rama canónica.
+- Mapa estructural: rama generada `context/graphify-snapshot` y artifact `graphify-context-<sha>`.
 - Evidencia de CI: GitHub Actions y artifacts del SHA exacto.
 
 ## Regla de no regresión
