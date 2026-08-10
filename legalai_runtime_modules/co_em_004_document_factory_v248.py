@@ -7,11 +7,11 @@ from co_em_004_document_factory_v247 import CoEm004DocumentFactoryV247
 from legalai_platform.document_quality import assert_docx_quality
 from legalai_platform.document_visual_quality import assert_visual_structure
 from m33_document_presentation import APPROVAL_CANDIDATE_MODE, audit_m33_presentation, build_m33_presentation
-from m33_nda_instrument_finalize import compose_nda_m33_instrument
+from m33_4_nda_instrument_finalize import compose_nda_m33_instrument
 
 
 class CoEm004DocumentFactoryV248(CoEm004DocumentFactoryV247):
-    """CO-EM-004: contenido M33.0 con presentación contractual M33.2."""
+    """CO-EM-004: contenido M33.0 con presentación contractual M33.2 y trazabilidad M33.4."""
 
     VERSION = "2.48"
     DOCUMENT_STANDARD = "M33.0"
