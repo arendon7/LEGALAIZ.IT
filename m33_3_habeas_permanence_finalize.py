@@ -4,7 +4,9 @@ from __future__ import annotations
 
 La capa no calcula términos. Consume la salida de `m33_3_habeas_permanence_guard`
 y evita presentar simultáneamente las rutas pagada e insoluta como si ambas fueran
-aplicables al mismo expediente.
+aplicables al mismo expediente. El calendario jurídico usa una variante compacta
+para no duplicar hipótesis ni crear páginas residuales; las demás piezas conservan
+el detalle ampliado.
 """
 
 from copy import deepcopy
@@ -93,6 +95,42 @@ def _rewrite_permanence_table(table: list[list[Any]], calculation: dict) -> list
     return rewritten
 
 
+def _rewrite_calendar_permanence_table(table: list[list[Any]], calculation: dict) -> list[list[Any]]:
+    """Conserva trazabilidad sin mostrar dos hipótesis incompatibles en el calendario.
+
+    La tabla original contiene inicio de mora, pago/extinción, duración y dos fechas
+    hipotéticas paralelas. En una pieza de calendario solo interesa la ruta que puede
+    gobernar el expediente actual, por lo que las dos filas hipotéticas se sustituyen
+    por una fila de ruta y otra de fecha/corte. El número total de filas no aumenta.
+    """
+    route = str(calculation.get("permanence_route") or "undetermined")
+    applicable = calculation.get("permanence_applicable_expiry")
+    rewritten: list[list[Any]] = []
+    for row in deepcopy(table):
+        if not row:
+            rewritten.append(row)
+            continue
+        label = str(row[0])
+        if label in {"Retiro preliminar del dato pagado", "Caducidad preliminar del dato insoluto"}:
+            continue
+        rewritten.append(row)
+
+    rewritten.append([
+        "Ruta temporal aplicable",
+        _ROUTE_LABELS.get(route, route),
+        _status_text(calculation),
+    ])
+    rewritten.append([
+        "Fecha aplicable / corte M33.3",
+        _date_es(applicable),
+        (
+            f"Corte {_date_es(calculation.get('permanence_reference_date'))}; "
+            "la permanencia del dato no declara pago, inexistencia, prescripción ni extinción de la obligación"
+        ),
+    ])
+    return rewritten
+
+
 def finalize_habeas_permanence_m33_3(specs: list[dict], result: dict) -> list[dict]:
     calculation = _calc(result)
     if calculation.get("permanence_standard") != "M33.3-habeas-permanence-v1":
@@ -101,6 +139,7 @@ def finalize_habeas_permanence_m33_3(specs: list[dict], result: dict) -> list[di
     finalized: list[dict] = []
     for original in specs:
         spec = deepcopy(original)
+        kind = str(spec.get("kind") or "")
         sections = deepcopy(spec.get("sections") or [])
         for section in sections:
             if not isinstance(section, dict):
@@ -111,6 +150,11 @@ def finalize_habeas_permanence_m33_3(specs: list[dict], result: dict) -> list[di
             labels = {str(row[0]) for row in table if isinstance(row, list) and row}
             if "Retiro preliminar del dato pagado" not in labels and "Caducidad preliminar del dato insoluto" not in labels:
                 continue
+
+            if kind == "habeas_deadline_calendar":
+                section["table"] = _rewrite_calendar_permanence_table(table, calculation)
+                continue
+
             section["table"] = _rewrite_permanence_table(table, calculation)
             paragraphs = list(section.get("paragraphs") or [])
             note = (
