@@ -16,7 +16,7 @@ from m33_employment_instrument_finalize import compose_employment_m33_instrument
 
 
 class CoLa002DocumentFactoryV240(CoLa002DocumentFactoryV239):
-    """CO-LA-002 M33.0: conserva paquete v2.39 y recompone solo el contrato principal."""
+    """CO-LA-002 M33.x: conserva la profundidad v2.40 y aplica presentación M33.2."""
 
     VERSION = "2.40"
     DOCUMENT_STANDARD = "M33.0"
@@ -55,6 +55,25 @@ class CoLa002DocumentFactoryV240(CoLa002DocumentFactoryV239):
         formatted = ".".join(reversed(groups))
         return f"{formatted}-{check_digit}" if check_digit else formatted
 
+    @staticmethod
+    def _format_document(value) -> str:
+        text = re.sub(r"\D", "", str(value or ""))
+        if not text:
+            return str(value or "").strip()
+        groups = []
+        while text:
+            groups.append(text[-3:])
+            text = text[:-3]
+        return ".".join(reversed(groups))
+
+    @staticmethod
+    def _format_cop(value) -> str:
+        try:
+            amount = int(round(float(value)))
+        except (TypeError, ValueError):
+            return str(value or "").strip()
+        return f"COP ${amount:,}".replace(",", ".") + " M/CTE"
+
     @classmethod
     def _normalize_render_identifiers(cls, value, raw_nit: str, formatted_nit: str):
         """Sustituye únicamente la representación visible del NIT dentro de la composición."""
@@ -75,6 +94,9 @@ class CoLa002DocumentFactoryV240(CoLa002DocumentFactoryV239):
         composition = compose_employment_m33_instrument(answers)
         employer = answers.get("employer") if isinstance(answers.get("employer"), dict) else {}
         worker = answers.get("worker") if isinstance(answers.get("worker"), dict) else {}
+        role = answers.get("role") if isinstance(answers.get("role"), dict) else {}
+        work = answers.get("work") if isinstance(answers.get("work"), dict) else {}
+        compensation = answers.get("compensation") if isinstance(answers.get("compensation"), dict) else {}
 
         raw_nit = str(employer.get("identificationNumber") or "").strip()
         formatted_nit = self._format_nit(raw_nit)
@@ -83,14 +105,21 @@ class CoLa002DocumentFactoryV240(CoLa002DocumentFactoryV239):
                 composition.get("sections") or [], raw_nit, formatted_nit
             )
 
+        employer_name = str(employer.get("legalName") or employer.get("naturalPersonFullName") or "EL EMPLEADOR")
+        worker_name = str(worker.get("fullName") or "LA PERSONA TRABAJADORA")
+        worker_id = self._format_document(worker.get("identificationNumber"))
+        job_title = str(role.get("jobTitle") or "").strip()
+        salary = self._format_cop(compensation.get("baseSalary"))
+        start = CoLa002DocumentFactoryV239._date_es(work.get("actualStartDate"))
+
         evidence = build_m33_presentation(
             path=target,
             title=composition["title"],
             subtitle=composition.get("subtitle") or "",
             metadata=[
                 ("Producto", "CO-LA-002"),
-                ("Empleador", str(employer.get("legalName") or employer.get("naturalPersonFullName") or "Empleador")),
-                ("Persona trabajadora", str(worker.get("fullName") or "Persona trabajadora")),
+                ("Empleador", employer_name),
+                ("Persona trabajadora", worker_name),
                 ("Estándar documental", self.DOCUMENT_STANDARD),
                 ("Estado", "Candidato sujeto a revisión jurídica y QA"),
             ],
@@ -98,6 +127,16 @@ class CoLa002DocumentFactoryV240(CoLa002DocumentFactoryV239):
             product_code="CO-LA-002",
             presentation_mode=APPROVAL_CANDIDATE_MODE,
             approval_subtitle=self._cover_subtitle(answers),
+            approval_metadata=[
+                ("NOMBRE EMPLEADOR", employer_name.upper()),
+                ("NIT", formatted_nit),
+                ("NOMBRE TRABAJADOR", worker_name.upper()),
+                ("DOCUMENTO", worker_id),
+                ("CARGO", job_title.upper()),
+                ("SALARIO", salary),
+                ("INICIO", start.upper()),
+                ("DURACIÓN", "TÉRMINO INDEFINIDO"),
+            ],
         )
         self._m33_review_evidence[target.name] = evidence
 
@@ -115,16 +154,15 @@ class CoLa002DocumentFactoryV240(CoLa002DocumentFactoryV239):
         primary_path = folder / primary["filename"]
         standard = audit_m33_presentation(primary_path, APPROVAL_CANDIDATE_MODE)
         if not standard["valid"]:
-            raise ValueError(f"CO-LA-002 no supera el estándar M33.0: {standard['findings']}")
+            raise ValueError(f"CO-LA-002 no supera el estándar M33.2: {standard['findings']}")
         primary["document_standard"] = self.DOCUMENT_STANDARD
+        primary["presentation_standard"] = "M33.2"
         primary["presentation_mode"] = APPROVAL_CANDIDATE_MODE
         primary["review_evidence"] = self._m33_review_evidence.get(primary["filename"], {})
         primary["approval_state"] = {"legal": "pending", "qa": "pending"}
         primary["release_rule"] = "Liberar únicamente el mismo SHA-256 aprobado por Jurídico y QA."
         primary["m33_preflight"] = standard
 
-        # Reescribe el manifiesto versionado y recompone el ZIP para que la evidencia
-        # descargable corresponda a la fábrica M33.0, sin alterar el esquema histórico.
         manifest_path = folder / "manifest.json"
         manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
         package = self.output_dir / f"{manifest['generation_id']}.zip"
