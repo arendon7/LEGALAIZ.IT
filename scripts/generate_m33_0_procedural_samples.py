@@ -51,49 +51,38 @@ CONSUMER_COMMON = (
 )
 
 DEBT_VISUAL_STAGES = (
-    (
-        "Enviar un cobro inicial",
-        False,
-        ("debt_diagnostic", "account_statement", "collection_evidence_matrix", "collection_letter"),
-    ),
-    (
-        "Acordar un plan de pago",
-        False,
-        ("payment_agreement", "payment_schedule", "promissory_note", "instruction_letter"),
-    ),
-    (
-        "Registrar o seguir pagos",
-        False,
-        ("payment_receipt",),
-    ),
-    (
-        "Cerrar la obligación",
-        True,
-        ("settlement_certificate",),
-    ),
+    ("Enviar un cobro inicial", False, ("debt_diagnostic", "account_statement", "collection_evidence_matrix", "collection_letter")),
+    ("Acordar un plan de pago", False, ("payment_agreement", "payment_schedule", "promissory_note", "instruction_letter")),
+    ("Registrar o seguir pagos", False, ("payment_receipt",)),
+    ("Cerrar la obligación", True, ("settlement_certificate",)),
 )
 
 
 def _specs(code: str, answers: dict, result: dict) -> list[dict]:
     return document_specs_m33_all(
-        "CASE-M33-VISUAL",
-        code,
-        answers,
-        result,
-        PRODUCTS[code],
-        "2026-08-08T08:00:00-05:00",
-        [],
+        "CASE-M33-VISUAL", code, answers, result, PRODUCTS[code],
+        "2026-08-08T08:00:00-05:00", [],
     )
 
 
-def _m33_3_consumer_calendar_evidence(answers: dict, result: dict) -> tuple[dict, dict]:
-    """Actualiza solo la fixture visual para probar el calendario real M33.3.
+def _attach_calendar_metadata(calculation: dict, audits: list) -> None:
+    calculation["holiday_calendar_applied"] = bool(audits)
+    calculation["deadline_is_preliminary"] = True
+    calculation["business_day_calendar_engine"] = "M33.3-colombia-national-business-days-v1"
+    calculation["business_day_calendar_scope"] = CALENDAR_SCOPE
+    calculation["business_day_calendar_verified_at"] = RULESET_VERIFIED_AT
+    calculation["business_day_counting_rule"] = COUNTING_RULE
+    calculation["business_day_calendar_basis"] = list(CALENDAR_BASIS)
+    calculation["business_day_calendar_limitations"] = list(CALENDAR_LIMITATIONS)
+    payloads = []
+    for sequence, audit in enumerate(audits, 1):
+        payload = audit.to_dict()
+        payload["sequence"] = sequence
+        payloads.append(payload)
+    calculation["business_day_calculations"] = payloads
 
-    La fixture histórica conserva su valor como prueba del fallback cuando no existe
-    un calendario validado. Para la evidencia de CI, en cambio, no es aceptable
-    renderizar el antiguo 28 de agosto: se reconstruye la suma hábil desde la fecha
-    declarada y se adjunta la misma traza que emite el runtime activo.
-    """
+
+def _m33_3_consumer_calendar_evidence(answers: dict, result: dict) -> tuple[dict, dict]:
     updated_answers = deepcopy(answers)
     updated_result = deepcopy(result)
     calculation = updated_result.setdefault("calculation", {})
@@ -104,17 +93,42 @@ def _m33_3_consumer_calendar_evidence(answers: dict, result: dict) -> tuple[dict
     business_days = int(calculation.get("direct_claim_business_days") or 15)
     audit = calculate_colombian_business_days(start, business_days)
     calculation["direct_claim_due_date"] = audit.due_date.isoformat()
-    calculation["holiday_calendar_applied"] = True
-    calculation["deadline_is_preliminary"] = True
-    calculation["business_day_calendar_engine"] = "M33.3-colombia-national-business-days-v1"
-    calculation["business_day_calendar_scope"] = CALENDAR_SCOPE
-    calculation["business_day_calendar_verified_at"] = RULESET_VERIFIED_AT
-    calculation["business_day_counting_rule"] = COUNTING_RULE
-    calculation["business_day_calendar_basis"] = list(CALENDAR_BASIS)
-    calculation["business_day_calendar_limitations"] = list(CALENDAR_LIMITATIONS)
-    payload = audit.to_dict()
-    payload["sequence"] = 1
-    calculation["business_day_calculations"] = [payload]
+    _attach_calendar_metadata(calculation, [audit])
+    return updated_answers, updated_result
+
+
+def _m33_3_habeas_calendar_evidence(answers: dict, result: dict) -> tuple[dict, dict]:
+    """Reemplaza únicamente fechas hábiles precalculadas de la fixture visual."""
+    updated_answers = deepcopy(answers)
+    updated_result = deepcopy(result)
+    calculation = updated_result.setdefault("calculation", {})
+    audits = []
+
+    filing_raw = updated_answers.get("filing_date")
+    if filing_raw:
+        filing = date.fromisoformat(str(filing_raw))
+        due = calculate_colombian_business_days(filing, 15)
+        extension = calculate_colombian_business_days(due.due_date, 8)
+        calculation["preliminary_due_date"] = due.due_date.isoformat()
+        calculation["preliminary_due_with_extension"] = extension.due_date.isoformat()
+        audits.extend([due, extension])
+
+    prior_raw = updated_answers.get("prior_claim_date")
+    if prior_raw:
+        prior = date.fromisoformat(str(prior_raw))
+        legend = calculate_colombian_business_days(prior, 2)
+        prior_due = calculate_colombian_business_days(prior, 15)
+        # La fixture histórica mostraba un término máximo distinto del ordinario; para
+        # conservar esa intención visual se modela una prórroga notificada y se
+        # recalcula con el calendario nacional en lugar de mantener el 21 de agosto.
+        updated_answers["extension_notified"] = "Sí"
+        prior_max = calculate_colombian_business_days(prior_due.due_date, 8)
+        calculation["claim_legend_due_date"] = legend.due_date.isoformat()
+        calculation["prior_preliminary_due_date"] = prior_due.due_date.isoformat()
+        calculation["prior_max_due_date"] = prior_max.due_date.isoformat()
+        audits.extend([legend, prior_due, prior_max])
+
+    _attach_calendar_metadata(calculation, audits)
     return updated_answers, updated_result
 
 
@@ -122,8 +136,7 @@ def _visible_metadata(code: str, spec: dict) -> list[tuple[str, str]]:
     if spec.get("internal_controls_externalized"):
         return []
     return [
-        ("Producto", code),
-        ("Estándar documental", "M33.0"),
+        ("Producto", code), ("Estándar documental", "M33.0"),
         ("Estado", "Candidato sujeto a revisión jurídica y QA"),
     ]
 
@@ -151,20 +164,13 @@ def _apply_presentation(target: Path, *, code: str, title: str) -> dict:
 def _write_sample(output: Path, code: str, kind: str, spec: dict, records: list[dict]) -> None:
     target = output / f"{code}_{kind}_M33_0.docx"
     build_docx(
-        target,
-        spec["title"],
-        spec.get("subtitle", ""),
-        _visible_metadata(code, spec),
-        spec["sections"],
-        product_code=code,
-        enforce_legal_standard=True,
+        target, spec["title"], spec.get("subtitle", ""), _visible_metadata(code, spec), spec["sections"],
+        product_code=code, enforce_legal_standard=True,
         append_default_control=not bool(spec.get("internal_controls_externalized")),
     )
     presentation = _apply_presentation(target, code=code, title=spec["title"])
     records.append({
-        "product_code": code,
-        "kind": kind,
-        "sample": target.name,
+        "product_code": code, "kind": kind, "sample": target.name,
         "document_standard": spec.get("document_standard"),
         "presentation_standard": "M33.2" if presentation.get("applied") else "M33.2-base",
         "presentation_profile": presentation.get("profile"),
@@ -172,9 +178,7 @@ def _write_sample(output: Path, code: str, kind: str, spec: dict, records: list[
         "calendar_standard": spec.get("calendar_standard"),
         "calendar_scope": spec.get("calendar_scope"),
         "calendar_ruleset_verified_at": spec.get("calendar_ruleset_verified_at"),
-        "released": False,
-        "legal_approval": "pending",
-        "qa_approval": "pending",
+        "released": False, "legal_approval": "pending", "qa_approval": "pending",
         "internal_controls_externalized": bool(spec.get("internal_controls_externalized")),
     })
 
@@ -182,14 +186,14 @@ def _write_sample(output: Path, code: str, kind: str, spec: dict, records: list[
 def main() -> int:
     parser = argparse.ArgumentParser(description="Genera muestras representativas de la segunda oleada M33.0.")
     parser.add_argument("--output", required=True, type=Path)
-    args = parser.parse_args()
-    output = args.output.resolve()
-    output.mkdir(parents=True, exist_ok=True)
+    args = parser.parse_args(); output = args.output.resolve(); output.mkdir(parents=True, exist_ok=True)
 
     records: list[dict] = []
+    labor_answers, labor_result = labor_fixture()
+    habeas_answers, habeas_result = _m33_3_habeas_calendar_evidence(*habeas_fixture())
     fixtures = {
-        "CO-LA-001": labor_fixture(),
-        "CO-CD-001": habeas_fixture(),
+        "CO-LA-001": (labor_answers, labor_result),
+        "CO-CD-001": (habeas_answers, habeas_result),
     }
     for code, (answers, result) in fixtures.items():
         by_kind = {spec["kind"]: spec for spec in _specs(code, answers, result)}
@@ -198,13 +202,9 @@ def main() -> int:
                 raise RuntimeError(f"{code}: no se generó la muestra requerida {kind}.")
             _write_sample(output, code, kind, by_kind[kind], records)
 
-    # CO-CD-003 se valida como cinco expedientes alternativos. Los documentos
-    # comunes se toman una sola vez del caso de garantía; cada comunicación
-    # sustantiva se genera desde un expediente compatible con su propio mecanismo.
     common_written = False
     for mechanism_kind in MECHANISMS:
-        answers, result = consumer_route_fixture(mechanism_kind)
-        answers, result = _m33_3_consumer_calendar_evidence(answers, result)
+        answers, result = _m33_3_consumer_calendar_evidence(*consumer_route_fixture(mechanism_kind))
         by_kind = {spec["kind"]: spec for spec in _specs("CO-CD-003", answers, result)}
         if mechanism_kind not in by_kind:
             raise RuntimeError(f"CO-CD-003: no se generó la ruta {mechanism_kind}.")
@@ -216,9 +216,6 @@ def main() -> int:
             common_written = True
         _write_sample(output, "CO-CD-003", mechanism_kind, by_kind[mechanism_kind], records)
 
-    # CO-CD-004 se revisa como un ciclo completo. Cada documento condicional se
-    # genera desde la etapa que realmente lo habilita; los tres documentos comunes
-    # se escriben una sola vez para no falsear la selección histórica del producto.
     written_debt: set[str] = set()
     for stage, zero_balance, kinds in DEBT_VISUAL_STAGES:
         answers, result = debt_stage_fixture(stage, zero_balance=zero_balance)
