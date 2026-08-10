@@ -165,8 +165,6 @@ def _format_title_and_subtitle(document: Document, title: str) -> None:
     subtitle = _paragraph_after(document, title_p)
     if subtitle is None or not subtitle.text.strip():
         return
-    # El subtítulo histórico conserva información útil, pero deja de verse como
-    # una pieza publicitaria: se mantiene discreto y subordinado al título.
     if subtitle.style and subtitle.style.name.lower().startswith("heading"):
         return
     subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -258,7 +256,9 @@ def _format_tables(document: Document) -> int:
 
 
 def _normalize_styles(document: Document) -> None:
-    for style_name in ("Normal", "Title", "Heading 1", "Heading1"):
+    # `Heading1` era un style_id histórico y python-docx advierte que su lookup está
+    # deprecado. Los documentos M33 usan el nombre canónico `Heading 1`.
+    for style_name in ("Normal", "Title", "Heading 1"):
         try:
             style = document.styles[style_name]
         except KeyError:
@@ -281,8 +281,6 @@ def apply_m33_2_procedural_format(path: str | Path, *, product_code: str, title:
     removed_branding = _remove_body_branding(document, title_p)
     headings = _format_headings(document, title)
     paragraphs = _format_body(document, title)
-    # Se aplica al final para que la rutina general del cuerpo no reinterprete el
-    # subtítulo histórico como un párrafo ordinario.
     _format_title_and_subtitle(document, title)
     tables = _format_tables(document)
     document.save(target)
@@ -325,9 +323,6 @@ def install_m33_2_procedural_format_gate() -> bool:
         final_path = Path(path or result)
         presentation = apply_m33_2_procedural_format(final_path, product_code=product_code, title=str(title or ""))
         if presentation.get("applied"):
-            # La compuerta anterior validó la versión previa al postproceso. Se vuelve
-            # a ejecutar para que hash, estructura y manifiesto correspondan al DOCX
-            # exacto que verá Jurídico/QA y eventualmente el usuario.
             enforce_document_release_gate(final_path, expected_product=product_code or None, metadata=metadata)
         return result
 
