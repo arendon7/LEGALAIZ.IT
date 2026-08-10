@@ -38,9 +38,8 @@ artifacts/
 output/
 rendered/
 
-# Graphify: el grafo completo y vault son artifacts; Git conserva solo el índice compacto
-graphify-out/*
-!graphify-out/CHATGPT_GRAPH_INDEX.md
+# Graphify: snapshots regenerables viven en context/graphify-snapshot y artifacts
+graphify-out/
 
 # Bases de datos y registros
 *.log
