@@ -11,16 +11,16 @@ from pathlib import Path
 import re
 from zipfile import BadZipFile, ZipFile
 
-STANDARD_VERSION = "M33.0"
-FONT_NAME = "Times New Roman"
-BODY_SIZE_HALF_POINTS = 24  # 12 pt
+STANDARD_VERSION = "M33.2"
+FONT_NAME = "Book Antiqua"
+BODY_SIZE_HALF_POINTS = 22  # 11 pt
 TABLE_SIZE_HALF_POINTS = 20  # 10 pt, para matrices densas
-TITLE_SIZE_HALF_POINTS = 28  # 14 pt
-HEADING_SIZE_HALF_POINTS = 24  # 12 pt
+TITLE_SIZE_HALF_POINTS = 24  # 12 pt
+HEADING_SIZE_HALF_POINTS = 22  # 11 pt
 MARGIN_TWIPS = 1417  # 2,5 cm
 HEADER_FOOTER_TWIPS = 567  # ~1 cm
-LINE_SPACING_TWIPS = 276  # 1,15 con lineRule=auto
-PARAGRAPH_AFTER_TWIPS = 120  # 6 pt
+LINE_SPACING_TWIPS = 240  # interlineado sencillo/compacto jurídico
+PARAGRAPH_AFTER_TWIPS = 80  # 4 pt
 
 SENTINEL_PATTERNS = (
     r"\{\{",
@@ -77,12 +77,6 @@ def find_sentinels(text: str) -> list[str]:
 
 
 def validate_rendered_sections(sections: list[dict], *, product_code: str | None = None) -> dict:
-    """QA semántico mínimo previo a empaquetar el DOCX.
-
-    No intenta decidir suficiencia jurídica sustantiva; bloquea defectos objetivos
-    que nunca deben llegar a revisión humana como variables rotas, separadores de
-    firma, cláusulas vacías o estructuras incompatibles con el estándar aprobado.
-    """
     errors: list[dict] = []
     warnings: list[dict] = []
     headings: set[str] = set()
@@ -158,7 +152,6 @@ def validate_rendered_sections(sections: list[dict], *, product_code: str | None
 
 
 def audit_docx_legal_standard(path: Path) -> dict:
-    """Verifica en OOXML las invariantes formales aprobadas para M33.0."""
     path = Path(path)
     findings: list[dict] = []
     try:
@@ -187,17 +180,17 @@ def audit_docx_legal_standard(path: Path) -> dict:
             if DECORATIVE_SEPARATOR_RE.search(plain):
                 findings.append({"severity": "error", "code": "DECORATIVE-SEPARATOR", "detail": "Se detectaron líneas manuales o separadores decorativos."})
 
-            if FONT_NAME not in styles or 'w:sz w:val="24"' not in styles:
-                findings.append({"severity": "error", "code": "LEGAL-FONT-STYLE", "detail": "Normal debe usar Times New Roman 12 pt."})
-            if "Arial" in styles:
-                findings.append({"severity": "error", "code": "LEGACY-ARIAL-STYLE", "detail": "El estilo base todavía contiene Arial."})
+            if FONT_NAME not in styles or 'w:sz w:val="22"' not in styles:
+                findings.append({"severity": "error", "code": "LEGAL-FONT-STYLE", "detail": "Normal debe usar Book Antiqua 11 pt."})
+            if "Arial" in styles or "Times New Roman" in styles:
+                findings.append({"severity": "error", "code": "LEGACY-FONT-STYLE", "detail": "El estilo base contiene una tipografía jurídica anterior."})
 
             margin_fragment = f'w:top="{MARGIN_TWIPS}" w:right="{MARGIN_TWIPS}" w:bottom="{MARGIN_TWIPS}" w:left="{MARGIN_TWIPS}"'
             if margin_fragment not in document:
                 findings.append({"severity": "error", "code": "LEGAL-MARGINS", "detail": "Márgenes principales deben ser 2,5 cm."})
 
             if f'w:line="{LINE_SPACING_TWIPS}"' not in document and f'w:line="{LINE_SPACING_TWIPS}"' not in styles:
-                findings.append({"severity": "error", "code": "LEGAL-LINE-SPACING", "detail": "Interlineado 1,15 no acreditado."})
+                findings.append({"severity": "error", "code": "LEGAL-LINE-SPACING", "detail": "Interlineado compacto jurídico no acreditado."})
 
             justified = document.count('<w:jc w:val="both"/>')
             body_paragraphs = max(1, document.count("<w:p>"))
@@ -225,5 +218,4 @@ def audit_docx_legal_standard(path: Path) -> dict:
 
 
 def signature_count_from_xml(document_xml: str) -> int:
-    """Cuenta tablas marcadas internamente como firmas M33.0."""
     return document_xml.count('w:tblDescription w:val="LegalAIZ-SignatureTable"')
