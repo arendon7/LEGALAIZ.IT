@@ -33,10 +33,18 @@ _HABEAS_CLIENT_SUBTITLE = (
 
 
 def _polish_habeas_client_presentation(specs: list[dict]) -> list[dict]:
-    """Retira metadatos editoriales del subtítulo sin tocar la gobernanza interna."""
+    """Retira metadatos editoriales del subtítulo sin tocar la gobernanza interna.
+
+    El calendario conserva un subtítulo especializado únicamente cuando la salida
+    acredita explícitamente el estándar M33.3. Sin esa evidencia se mantiene el
+    subtítulo público histórico y nunca se filtra el texto interno del compositor.
+    """
     for spec in specs:
-        if spec.get("internal_controls_externalized") and spec.get("kind") != "habeas_deadline_calendar":
-            spec["subtitle"] = _HABEAS_CLIENT_SUBTITLE
+        if not spec.get("internal_controls_externalized"):
+            continue
+        if spec.get("kind") == "habeas_deadline_calendar" and spec.get("calendar_standard") == "M33.3":
+            continue
+        spec["subtitle"] = _HABEAS_CLIENT_SUBTITLE
     return specs
 
 
