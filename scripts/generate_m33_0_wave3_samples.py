@@ -11,6 +11,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from docx_builder import build_docx
+from m33_2_analytical_reference_format import apply_m33_2_analytical_format
 from m33_2_procedural_reference_format import apply_m33_2_procedural_format
 from m33_wave3_runtime import document_specs_m33_all
 from tests.test_m33_0_wave3 import PRODUCTS, health_fixture, sast_fixture, traffic_fixture
@@ -77,6 +78,16 @@ def _metadata(code: str, result: dict, spec: dict) -> list[tuple[str, str]]:
     ]
 
 
+def _apply_presentation(target: Path, *, code: str, title: str) -> dict:
+    procedural = apply_m33_2_procedural_format(target, product_code=code, title=title)
+    if procedural.get("applied"):
+        return procedural
+    analytical = apply_m33_2_analytical_format(target, product_code=code, title=title)
+    if analytical.get("applied"):
+        return analytical
+    return {"applied": False, "profile": "M33.2-base", "reason": "base_family"}
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Genera muestras representativas M33.0 de salud y tránsito.")
     parser.add_argument("--output", required=True, type=Path)
@@ -92,11 +103,7 @@ def main() -> int:
                 spec["sections"], product_code=code, enforce_legal_standard=True,
                 append_default_control=not bool(spec.get("internal_controls_externalized")),
             )
-            presentation = apply_m33_2_procedural_format(
-                target,
-                product_code=code,
-                title=spec["title"],
-            )
+            presentation = _apply_presentation(target, code=code, title=spec["title"])
             records.append({
                 "product_code": code, "requested_kind": requested, "actual_kind": spec.get("kind"),
                 "sample": target.name, "document_standard": "M33.0",
