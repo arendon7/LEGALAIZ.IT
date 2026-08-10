@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-"""Presentaciones documentales M33.0 sin alterar el contenido jurídico aprobado.
+"""Presentaciones documentales M33.x sin alterar el contenido jurídico aprobado.
 
 La copia de revisión y el instrumento sometido a aprobación son artefactos distintos.
 El instrumento `approval_candidate` nace limpio ANTES de las aprobaciones; por tanto,
@@ -15,8 +15,9 @@ from typing import Any
 
 from docx import Document
 
-from document_standard_v33 import audit_docx_legal_standard
+from document_standard_v33 import STANDARD_VERSION, audit_docx_legal_standard
 from docx_builder import build_docx
+from m33_2_reference_format import apply_m33_2_reference_format
 
 
 REVIEW_MODE = "review"
@@ -57,6 +58,7 @@ def review_evidence_from_sections(sections: list[dict[str, Any]]) -> dict[str, A
             sources.append(value)
     return {
         "document_standard": "M33.0",
+        "presentation_standard": STANDARD_VERSION,
         "presentation_mode": APPROVAL_CANDIDATE_MODE,
         "controls_externalized": len(controls),
         "legal_sources": list(dict.fromkeys(sources)),
@@ -70,15 +72,10 @@ def review_evidence_from_sections(sections: list[dict[str, Any]]) -> dict[str, A
 
 
 def audit_m33_presentation(path: str | Path, presentation_mode: str) -> dict[str, Any]:
-    """Aplica el mismo estándar técnico, contextualizando solo el banner de revisión.
-
-    `DRAFT-BANNER-MISSING` continúa siendo error en la copia `review`. En el
-    `approval_candidate` la ausencia del banner es intencional y no se convierte en
-    una excepción general: todos los demás hallazgos M33.0 conservan su severidad.
-    """
+    """Aplica el estándar técnico vigente, contextualizando solo el banner de revisión."""
     mode = str(presentation_mode or REVIEW_MODE).strip().casefold()
     if mode not in VALID_PRESENTATIONS:
-        raise ValueError(f"Modo de presentación M33.0 inválido: {presentation_mode}.")
+        raise ValueError(f"Modo de presentación M33 inválido: {presentation_mode}.")
     base = deepcopy(audit_docx_legal_standard(Path(path)))
     base["presentation_mode"] = mode
     if mode == APPROVAL_CANDIDATE_MODE:
@@ -91,14 +88,10 @@ def audit_m33_presentation(path: str | Path, presentation_mode: str) -> dict[str
 
 
 def _stamp_internal_identity(path: Path, product_code: str, presentation_mode: str) -> None:
-    """Conserva el identificador anti-cruce en metadatos OOXML, no en el instrumento visible.
-
-    El sello se incorpora antes de calcular cualquier hash de aprobación. Es parte
-    del archivo canónico y no se modifica durante aprobación o liberación.
-    """
+    """Conserva el identificador anti-cruce en metadatos OOXML, no en el instrumento visible."""
     document = Document(path)
     document.core_properties.subject = str(product_code or "").strip()
-    document.core_properties.comments = f"LegalAIZ.it · M33.0 · {presentation_mode}"
+    document.core_properties.comments = f"LegalAIZ.it · {STANDARD_VERSION} · {presentation_mode}"
     document.save(path)
 
 
@@ -112,17 +105,19 @@ def build_m33_presentation(
     product_code: str,
     presentation_mode: str = REVIEW_MODE,
     approval_subtitle: str = "",
+    approval_metadata: list[tuple[str, str]] | None = None,
     footer: str = "LegalAIZ.it · Más que respuestas, soluciones.",
 ) -> dict[str, Any]:
     """Construye una copia de revisión o el instrumento exacto de aprobación.
 
-    `approval_subtitle` permite mostrar en la portada del instrumento limpio solo
-    contexto contractual legítimo —por ejemplo partes, ciudad y fecha— sin reintroducir
-    códigos internos, estados de QA ni leyendas de borrador.
+    `approval_metadata` contiene exclusivamente datos contractuales visibles que
+    legítimamente forman parte del instrumento (partes, identificación, cargo,
+    precio, vigencia, inmueble, etc.). Datos operativos de LegalAIZ.it permanecen
+    en el expediente y nunca se insertan en la versión de firma.
     """
     mode = str(presentation_mode or REVIEW_MODE).strip().casefold()
     if mode not in VALID_PRESENTATIONS:
-        raise ValueError(f"Modo de presentación M33.0 inválido: {presentation_mode}.")
+        raise ValueError(f"Modo de presentación M33 inválido: {presentation_mode}.")
 
     target = Path(path)
     if mode == REVIEW_MODE:
@@ -135,9 +130,7 @@ def build_m33_presentation(
         evidence["presentation_mode"] = REVIEW_MODE
     else:
         rendered_sections, _ = split_internal_review_sections(sections)
-        # Los datos operativos (producto, estándar, estado interno) viven en el
-        # expediente y no forman parte del instrumento jurídico que se firma.
-        rendered_metadata = []
+        rendered_metadata = list(approval_metadata or [])
         rendered_subtitle = str(approval_subtitle or "").strip()
         status = ""
         append_control = False
@@ -155,6 +148,16 @@ def build_m33_presentation(
         enforce_legal_standard=(mode == REVIEW_MODE),
         product_code=product_code,
     )
+
+    if mode == APPROVAL_CANDIDATE_MODE:
+        reference_format = apply_m33_2_reference_format(
+            target,
+            product_code=product_code,
+            title=title,
+            approval_subtitle=rendered_subtitle,
+        )
+        evidence["reference_format"] = reference_format
+
     _stamp_internal_identity(target, product_code, mode)
     technical = audit_m33_presentation(target, mode)
     if not technical["valid"]:
