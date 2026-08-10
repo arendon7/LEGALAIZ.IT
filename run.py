@@ -43,6 +43,12 @@ from m33_2_special_reference_format import install_m33_2_special_format_gate
 
 install_m33_2_special_format_gate()
 
+# Las guías especiales reciben un último ajuste de espaciado, sin reducir Book
+# Antiqua 11 pt, para evitar colas huérfanas de una sola sección en página nueva.
+from m33_2_special_pagination_finalize import install_m33_2_special_pagination_gate
+
+install_m33_2_special_pagination_gate()
+
 from core_v11 import *  # noqa: F401,F403,E402
 import core_v11 as core  # noqa: E402
 from http.server import ThreadingHTTPServer
