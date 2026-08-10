@@ -82,6 +82,19 @@ _EXCLUDED_INSTRUMENT_TOKENS = (
     "índice probatorio",
 )
 
+# Estas cinco piezas fueron identificadas mediante rasterización integral como
+# cierres de alta densidad donde la firma podía quedar sola o casi sola en la última
+# página. No se comprimen: se mantiene unido el último bloque sustantivo con la firma
+# para redistribuir la paginación sin reducir fuente, márgenes ni contenido.
+_DENSE_SIGNATURE_CLOSURES = (
+    ("CO-CD-001", "reclamación de hábeas data financiero"),
+    ("CO-CD-001", "solicitud de intervención administrativa por hábeas data financiero"),
+    ("CO-SA-001", "solicitud reservada de copia de historia clínica"),
+    ("CO-SA-001", "reiteración y requerimiento de solución material en salud"),
+    ("CO-TR-001", "petición de expediente técnico, autorización y soportes de operación sast"),
+)
+_DENSE_SIGNATURE_CONTEXT_PARAGRAPHS = 3
+
 _NUMBERED_RE = re.compile(r"^\s*\d+[.)]\s+")
 
 
@@ -148,6 +161,12 @@ def _is_formal_writing(product_code: str, title: str) -> bool:
     if any(token in lowered for token in _EXCLUDED_INSTRUMENT_TOKENS):
         return False
     return any(token in lowered for token in _FORMAL_TITLE_TOKENS)
+
+
+def _uses_dense_signature_closure(product_code: str, title: str) -> bool:
+    code = str(product_code or "").strip().upper()
+    lowered = str(title or "").strip().casefold()
+    return any(code == expected and token in lowered for expected, token in _DENSE_SIGNATURE_CLOSURES)
 
 
 def _title_paragraph(document: Document, title: str):
@@ -290,6 +309,29 @@ def _format_tables(document: Document) -> int:
     return changed
 
 
+def _balance_dense_signature_closure(document: Document, *, product_code: str, title: str) -> int:
+    """Mantiene contexto jurídico junto a la firma en cinco cierres densos conocidos."""
+    if not _uses_dense_signature_closure(product_code, title):
+        return 0
+    paragraphs = document.paragraphs
+    signature_index = next(
+        (index for index, paragraph in enumerate(paragraphs) if paragraph.text.strip().upper() in {"FIRMA", "FIRMAS"}),
+        None,
+    )
+    if signature_index is None:
+        return 0
+
+    linked = 0
+    for paragraph in reversed(paragraphs[:signature_index]):
+        if not paragraph.text.strip():
+            continue
+        paragraph.paragraph_format.keep_with_next = True
+        linked += 1
+        if linked >= _DENSE_SIGNATURE_CONTEXT_PARAGRAPHS:
+            break
+    return linked
+
+
 def _normalize_styles(document: Document) -> None:
     # `Heading1` era un style_id histórico y python-docx advierte que su lookup está
     # deprecado. Los documentos M33 usan el nombre canónico `Heading 1`.
@@ -319,6 +361,11 @@ def apply_m33_2_procedural_format(path: str | Path, *, product_code: str, title:
     paragraphs = _format_body(document, title)
     _format_title_and_subtitle(document, title)
     tables = _format_tables(document)
+    linked_signature_context = _balance_dense_signature_closure(
+        document,
+        product_code=product_code,
+        title=title,
+    )
     document.save(target)
 
     report = audit_docx_legal_standard(target)
@@ -333,6 +380,7 @@ def apply_m33_2_procedural_format(path: str | Path, *, product_code: str, title:
         "formatted_headings": headings,
         "formatted_paragraphs": paragraphs,
         "formatted_tables": tables,
+        "linked_signature_context": linked_signature_context,
         "paragraph_after_pt": PARAGRAPH_AFTER_PT,
         "numbered_after_pt": NUMBERED_AFTER_PT,
     }
