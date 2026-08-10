@@ -54,6 +54,20 @@ DEBT_VISUAL_STAGES = (
 )
 
 
+def _load_habeas_parameters() -> dict:
+    payload = json.loads((ROOT / "data" / "parameters.json").read_text(encoding="utf-8"))
+    params = payload.get("CO-CD-001")
+    if not isinstance(params, dict):
+        raise RuntimeError("No existe configuración canónica CO-CD-001 en data/parameters.json.")
+    threshold = params.get("small_obligation_reference_value")
+    if threshold in (None, ""):
+        raise RuntimeError("CO-CD-001 no define small_obligation_reference_value en parameters.json.")
+    return params
+
+
+HABEAS_PARAMETERS = _load_habeas_parameters()
+
+
 def _specs(code: str, answers: dict, result: dict) -> list[dict]:
     return document_specs_m33_all("CASE-M33-VISUAL", code, answers, result, PRODUCTS[code], "2026-08-08T08:00:00-05:00", [])
 
@@ -102,6 +116,10 @@ def _habeas_visual_fixture() -> tuple[dict, dict]:
         "prior_communication_content_sufficient": "Sí",
         "small_obligation_two_notices": "No aplica",
     })
+    calculation = result.setdefault("calculation", {})
+    calculation["small_obligation_reference_value"] = HABEAS_PARAMETERS["small_obligation_reference_value"]
+    calculation["small_obligation_threshold_smmlv"] = HABEAS_PARAMETERS.get("small_obligation_threshold_smmlv")
+    calculation["smmlv_reference_2026"] = HABEAS_PARAMETERS.get("smmlv_reference_2026")
     return answers, result
 
 
@@ -140,6 +158,11 @@ def _m33_3_habeas_calendar_evidence(answers: dict, result: dict) -> tuple[dict, 
         calculation["prior_max_due_date"] = prior_max.due_date.isoformat(); audits.extend([legend, prior_due, prior_max])
     _attach_calendar_metadata(calculation, audits)
     calculation = enforce_habeas_prior_communication(updated_answers, calculation)
+    if calculation.get("communication_status") != "preliminarily_supported":
+        raise RuntimeError(
+            "La fixture visual M33.3 de comunicación previa dejó de representar un envío "
+            f"preliminarmente soportado: {calculation.get('communication_status')!r}."
+        )
     updated_result["calculation"] = enforce_habeas_permanence(updated_answers, calculation)
     return updated_answers, updated_result
 
