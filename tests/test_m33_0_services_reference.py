@@ -8,6 +8,7 @@ from pathlib import Path
 from zipfile import ZipFile
 
 from docx import Document
+from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 ROOT = Path(__file__).resolve().parents[1]
 RUNTIME_MODULES = ROOT / "legalai_runtime_modules"
@@ -19,8 +20,6 @@ from m33_document_presentation import APPROVAL_CANDIDATE_MODE, audit_m33_present
 
 
 class ControlledEvaluator:
-    """Evaluador local sin efectos laterales sobre runtime/ del repositorio."""
-
     def __init__(self, documents: list[str], blocks: list[str] | None = None):
         self.documents = list(documents)
         self.blocks = list(blocks or [])
@@ -35,10 +34,7 @@ class ControlledEvaluator:
             "professional_review_required": True,
             "professional_reviews": ["Revisión jurídica sustantiva", "QA visual humano"],
             "review_requirements": ["Revisión jurídica sustantiva", "QA visual humano"],
-            "findings": [],
-            "blockers": [],
-            "warnings": [],
-            "blocks": self.blocks,
+            "findings": [], "blockers": [], "warnings": [], "blocks": self.blocks,
         }
 
 
@@ -99,14 +95,15 @@ class ServicesReferenceM330Tests(unittest.TestCase):
             text = "\n".join(paragraphs)
             table_text = "\n".join(cell.text for table in document.tables for row in table.rows for cell in row.cells)
             title = "CONTRATO DE PRESTACIÓN DE SERVICIOS PROFESIONALES INDEPENDIENTES"
-            contract_titles = [paragraph for paragraph in paragraphs if paragraph.startswith("CONTRATO DE PRESTACIÓN DE SERVICIOS")]
-            clause_headings = [p for p in paragraphs if re.match(r"^(PRIMERA|SEGUNDA|TERCERA|CUARTA|QUINTA|SEXTA|SÉPTIMA|OCTAVA|NOVENA|DÉCIMA|VIGÉSIMA|TRIGÉSIMA|CUADRAGÉSIMA)", p)]
+            title_paragraph = next(p for p in document.paragraphs if p.text.strip() == title)
+            clause_paragraphs = [p for p in paragraphs if re.match(r"^(PRIMERA|SEGUNDA|TERCERA|CUARTA|QUINTA|SEXTA|SÉPTIMA|OCTAVA|NOVENA|DÉCIMA|VIGÉSIMA|TRIGÉSIMA|CUADRAGÉSIMA|QUINCUAGÉSIMA)", p)]
 
             self.assertIn(title, text)
-            self.assertTrue(contract_titles)
-            self.assertTrue(all(paragraph == title for paragraph in contract_titles), contract_titles)
-            self.assertIn("Soluciones Andinas S.A.S. · Consultoría Documental Segura S.A.S.", text)
-            self.assertIn("Medellín · 15 de agosto de 2026", text)
+            self.assertEqual(title_paragraph.alignment, WD_ALIGN_PARAGRAPH.CENTER)
+            self.assertTrue(any(run.bold and run.underline for run in title_paragraph.runs))
+            self.assertNotIn("Soluciones Andinas S.A.S. · Consultoría Documental Segura S.A.S.", text)
+            self.assertNotIn("Medellín · 15 de agosto de 2026", text)
+            self.assertIn("Entre Soluciones Andinas S.A.S.", text)
             self.assertIn("NIT 901.234.567-8", text)
             self.assertIn("NIT 900.765.432-1", text)
             self.assertIn("María Fernanda Gómez Ruiz", text)
@@ -125,14 +122,15 @@ class ServicesReferenceM330Tests(unittest.TestCase):
             self.assertEqual(document.core_properties.subject, "CO-EM-003")
             self.assertGreaterEqual(len((primary.get("review_evidence") or {}).get("legal_sources") or []), 6)
             self.assertGreater(len(text.split()), 3_100)
-            self.assertGreaterEqual(len(clause_headings), 40)
+            self.assertGreaterEqual(len(clause_paragraphs), 40)
             self.assertIn("representante legal de Soluciones Andinas S.A.S. · NIT 901.234.567-8", table_text)
             self.assertIn("representante legal de Consultoría Documental Segura S.A.S. · NIT 900.765.432-1", table_text)
 
             with ZipFile(contract) as archive:
                 styles = archive.read("word/styles.xml").decode("utf-8")
                 body = archive.read("word/document.xml").decode("utf-8")
-            self.assertIn("Times New Roman", styles)
+            self.assertIn("Book Antiqua", styles)
+            self.assertNotIn("Times New Roman", styles)
             self.assertNotIn("Arial", styles)
             self.assertIn('w:tblDescription w:val="LegalAIZ-SignatureTable"', body)
 
