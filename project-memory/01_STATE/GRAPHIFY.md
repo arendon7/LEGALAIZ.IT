@@ -2,16 +2,16 @@
 project: LegalAIZ.it
 type: generated-state
 status: active
-sha: f974bb1aefc3214b222ad1c870a62be0bb6d301e
+sha: 4be6913055a929e48fb154f79e256e55b36dd9fb
 branch: infra/graphify-obsidian-context
-workflow_run: 31431393354
+workflow_run: 31431613085
 ---
 
 # Snapshot Graphify
 
-- SHA: `f974bb1aefc3214b222ad1c870a62be0bb6d301e`
+- SHA: `4be6913055a929e48fb154f79e256e55b36dd9fb`
 - Rama: `infra/graphify-obsidian-context`
-- Workflow: `31431393354`
+- Workflow: `31431613085`
 - Nodos: **4398**
 - Relaciones: **11690**
 
