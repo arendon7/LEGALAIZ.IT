@@ -72,6 +72,27 @@ def _attach_calendar_metadata(calculation: dict, audits: list) -> None:
     calculation["business_day_calculations"] = payloads
 
 
+def _habeas_visual_fixture() -> tuple[dict, dict]:
+    """Completa la intención estructurada de la fixture sintética de evidencia.
+
+    La fixture histórica declara en ``facts_detail`` que la obligación fue pagada y
+    aporta una fecha de pago/extinción, pero omitía responder el campo obligatorio
+    ``obligation_status`` que sí existe en la entrevista canónica. La evidencia visual
+    M33.3 no debe inferir el estado desde prosa libre ni mostrar una contradicción;
+    por eso esta adaptación de QA declara explícitamente ``Pagada`` antes de aplicar
+    la compuerta de permanencia. No altera el runtime ni el cuestionario de usuario.
+    """
+    answers, result = habeas_fixture()
+    answers = deepcopy(answers)
+    result = deepcopy(result)
+    if "obligación fue pagada" not in str(answers.get("facts_detail") or "").casefold():
+        raise RuntimeError("La fixture visual CO-CD-001 dejó de describir una obligación pagada.")
+    if not answers.get("payment_or_extinction_date"):
+        raise RuntimeError("La fixture visual CO-CD-001 pagada carece de fecha de pago/extinción.")
+    answers["obligation_status"] = "Pagada"
+    return answers, result
+
+
 def _m33_3_consumer_calendar_evidence(answers: dict, result: dict) -> tuple[dict, dict]:
     updated_answers = deepcopy(answers); updated_result = deepcopy(result)
     calculation = updated_result.setdefault("calculation", {})
@@ -155,7 +176,7 @@ def main() -> int:
     parser.add_argument("--output", required=True, type=Path); args = parser.parse_args()
     output = args.output.resolve(); output.mkdir(parents=True, exist_ok=True); records: list[dict] = []
     labor_answers, labor_result = labor_fixture()
-    habeas_answers, habeas_result = _m33_3_habeas_calendar_evidence(*habeas_fixture())
+    habeas_answers, habeas_result = _m33_3_habeas_calendar_evidence(*_habeas_visual_fixture())
     fixtures = {"CO-LA-001": (labor_answers, labor_result), "CO-CD-001": (habeas_answers, habeas_result)}
     for code, (answers, result) in fixtures.items():
         by_kind = {spec["kind"]: spec for spec in _specs(code, answers, result)}
