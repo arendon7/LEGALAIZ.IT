@@ -135,7 +135,8 @@ def finalize_health_calendar_m33_3(specs: list[dict], result: dict) -> list[dict
                         detail = f"{days} días hábiles · {category}" if days else category
                         row[2] = (
                             f"Referencia subsidiaria M33.3 ({detail}); no usar como término rector del "
-                            "reclamo sectorial, no sustituye el término de riesgo ni autoriza esperar su vencimiento."
+                            "reclamo sectorial; no sustituye el término sectorial de riesgo ni autoriza "
+                            "esperar su vencimiento."
                         )
                     else:
                         row[2] = (
