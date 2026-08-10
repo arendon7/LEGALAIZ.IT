@@ -14,8 +14,14 @@ from m33_2_procedural_reference_format import apply_m33_2_procedural_format
 
 
 class ProceduralReferenceFormatM332Tests(unittest.TestCase):
-    def _build(self, root: Path, *, title: str = "Reclamación directa de garantía legal") -> Path:
-        path = root / "CO-CD-003_formal_m33_2.docx"
+    def _build(
+        self,
+        root: Path,
+        *,
+        title: str = "Reclamación directa de garantía legal",
+        product_code: str = "CO-CD-003",
+    ) -> Path:
+        path = root / f"{product_code}_formal_m33_2.docx"
         build_docx(
             path,
             title,
@@ -54,7 +60,7 @@ class ProceduralReferenceFormatM332Tests(unittest.TestCase):
                     "text": "Documento sujeto a revisión jurídica y QA sobre la misma revisión.",
                 },
             ],
-            product_code="CO-CD-003",
+            product_code=product_code,
             enforce_legal_standard=True,
         )
         return path
@@ -71,6 +77,7 @@ class ProceduralReferenceFormatM332Tests(unittest.TestCase):
             self.assertEqual(result["font"], "Book Antiqua")
             self.assertEqual(result["paragraph_after_pt"], 4)
             self.assertEqual(result["numbered_after_pt"], 2)
+            self.assertEqual(result["linked_signature_context"], 0)
 
             document = Document(path)
             nonempty = [p for p in document.paragraphs if p.text.strip()]
@@ -105,6 +112,22 @@ class ProceduralReferenceFormatM332Tests(unittest.TestCase):
             signature_heading = next(p for p in document.paragraphs if p.text.strip() == "FIRMA")
             self.assertAlmostEqual(signature_heading.paragraph_format.space_before.pt, 2.0, places=1)
             self.assertAlmostEqual(signature_heading.paragraph_format.space_after.pt, 1.0, places=1)
+
+    def test_dense_signature_closure_keeps_three_substantive_paragraphs_with_signature(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            title = "Reclamación de hábeas data financiero — corrección, actualización y retiro condicionado"
+            path = self._build(Path(tmp), title=title, product_code="CO-CD-001")
+            result = apply_m33_2_procedural_format(path, product_code="CO-CD-001", title=title)
+            self.assertTrue(result["applied"])
+            self.assertEqual(result["linked_signature_context"], 3)
+
+            document = Document(path)
+            paragraphs = document.paragraphs
+            signature_index = next(i for i, p in enumerate(paragraphs) if p.text.strip() == "FIRMA")
+            context = [p for p in paragraphs[:signature_index] if p.text.strip()][-3:]
+            self.assertEqual(len(context), 3)
+            self.assertTrue(all(p.paragraph_format.keep_with_next is True for p in context))
+            self.assertTrue(all(any((run.font.name or "") == "Book Antiqua" for run in p.runs if run.text) for p in context))
 
     def test_top_level_blank_paragraphs_are_removed_without_touching_explicit_page_breaks(self):
         with tempfile.TemporaryDirectory() as tmp:
