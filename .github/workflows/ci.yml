@@ -167,6 +167,7 @@ jobs:
           done < <(find "$SAMPLES" -name '*.docx' -type f -print0 | sort -z)
           test "$(find "$RENDERED" -name 'page-*.png' -type f | wc -l)" -ge 53
           test "$(grep -c '_M33_0' "$RENDERED/page-counts.tsv")" -eq 53
+          python scripts/check_rendered_blank_pages.py "$RENDERED"
           cat "$RENDERED/page-counts.tsv"
       - name: Conservar evidencia renderizada
         uses: actions/upload-artifact@v4
