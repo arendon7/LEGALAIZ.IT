@@ -1,7 +1,8 @@
 from __future__ import annotations
 
-"""Runtime M33.0 completo hasta la tercera oleada."""
+"""Runtime M33.0 completo hasta M33.3."""
 
+from m33_3_consumer_calendar_finalize import finalize_consumer_calendar_m33_3
 from m33_consumer_legal_finalize import finalize_consumer_specs
 from m33_consumer_release_polish import finalize_consumer_release_polish
 from m33_debt_layout_polish import finalize_debt_layout_polish
@@ -46,6 +47,7 @@ def document_specs_m33_all(case_id, code, answers, result, product, generated_at
     if code == "CO-CD-003":
         consumer_specs = finalize_consumer_specs(specs, answers, result)
         consumer_specs = finalize_consumer_release_polish(consumer_specs)
+        consumer_specs = finalize_consumer_calendar_m33_3(consumer_specs, result)
         return finalize_depth_polish(code, consumer_specs, answers, result)
     if code == "CO-CD-004":
         debt_specs = finalize_debt_specs(specs, answers, result)
