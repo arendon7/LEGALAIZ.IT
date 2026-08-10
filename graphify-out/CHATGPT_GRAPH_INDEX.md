@@ -1,0 +1,90 @@
+# LegalAIZ.it · índice compacto Graphify
+
+> Archivo generado. Sirve para orientar la exploración; verificar siempre contra el código y el SHA vigente.
+
+- Nodos: **4398**
+- Relaciones: **11690**
+
+## Archivos más conectados
+- `runtime_registry.py` — grado 185
+- `main.js` — grado 171
+- `http_handler.py` — grado 97
+- `core_v11.py` — grado 92
+- `expanded_documents.py` — grado 73
+- `playbook_maturity.py` — grado 61
+- `approval_desk_m32_5.js` — grado 47
+- `application_services.py` — grado 47
+- `core.js` — grado 44
+- `pilot_center_m30_1.js` — grado 38
+- `approval_desk_workspace.py` — grado 37
+- `contractual_maturity.py` — grado 34
+- `approval_operations_m32_6.js` — grado 33
+- `pilot_governance_m30_3.js` — grado 32
+- `complete_legal_models_v215.py` — grado 32
+- `pilot_documents.py` — grado 31
+- `notification_center_m32_7.js` — grado 27
+- `experience_m29_4.js` — grado 26
+- `navigation_m29_3.js` — grado 26
+- `approval_notification_center.py` — grado 26
+- `transactional_communications.py` — grado 26
+- `contact_governance_m32_9.js` — grado 25
+- `participant_m30_2.js` — grado 25
+- `transactional_communications_m32_8.js` — grado 25
+- `approval_desk_operations.py` — grado 24
+- `conversion_m29_5.js` — grado 23
+- `security.py` — grado 23
+- `demo_form_data_m32.js` — grado 22
+- `live_evaluation_m30_5.js` — grado 22
+- `database.py` — grado 22
+- `internal_m29_2.js` — grado 21
+- `contact_governance.py` — grado 21
+- `professional_contract_docx.py` — grado 21
+- `infrastructure.py` — grado 19
+- `professional_playbook_docx.py` — grado 19
+- `master-legal-models/manifest.json` — grado 18
+- `pilot_simulation_m30_4.js` — grado 18
+- `preproduction_m31_1.js` — grado 18
+- `ux_m21.js` — grado 18
+- `release_integrity.py` — grado 18
+
+## Símbolos más conectados
+- `esc()` — grado 154
+- `sha256()` — grado 124
+- `ZipFile` — grado 108
+- `.do_GET()` — grado 70
+- `ApprovalDeskError` — grado 70
+- `document_specs()` — grado 68
+- `ApprovalDeskWorkspace` — grado 66
+- `api()` — grado 63
+- `ApprovalNotificationCenter` — grado 60
+- `Any` — grado 60
+- `db()` — grado 59
+- `ApprovalDeskOperations` — grado 58
+- `.do_POST()` — grado 57
+- `section()` — grado 57
+- `PermissionDenied` — grado 54
+- `dateText()` — grado 45
+- `humanize()` — grado 44
+- `CoEm003DocumentFactoryV243` — grado 44
+- `toast()` — grado 43
+- `val()` — grado 42
+- `ContactGovernance` — grado 40
+- `M31CaseDemoCenter` — grado 38
+- `CoLa001DocumentFactoryV252` — grado 38
+- `CoAr001DocumentFactoryV249` — grado 37
+- `CoTr002DocumentFactoryV256` — grado 37
+- `TransactionalCommunications` — grado 36
+- `CoEm004DocumentFactoryV246` — grado 36
+- `shell()` — grado 34
+- `M30PilotGovernanceCenter` — grado 34
+- `CoTr001DocumentFactoryV258` — grado 34
+- `build_docx()` — grado 33
+- `Any` — grado 33
+- `Any` — grado 33
+- `Any` — grado 33
+- `router()` — grado 32
+- `ContactGovernanceM329Tests` — grado 32
+- `M24ProfessionalNetwork` — grado 31
+- `Any` — grado 31
+- `cop()` — grado 30
+- `DocumentApprovalDesk` — grado 30
