@@ -22,6 +22,13 @@ from m33_2_procedural_reference_format import install_m33_2_procedural_format_ga
 
 install_m33_2_procedural_format_gate()
 
+# Los diagnósticos, consultas e informes usan un perfil editorial distinto del
+# escrito de radicación. La capa analítica envuelve el constructor ya protegido y
+# también revalida el DOCX exacto después de aplicar jerarquía, tablas y tipografía.
+from m33_2_analytical_reference_format import install_m33_2_analytical_format_gate
+
+install_m33_2_analytical_format_gate()
+
 from core_v11 import *  # noqa: F401,F403,E402
 import core_v11 as core  # noqa: E402
 from http.server import ThreadingHTTPServer
