@@ -1,16 +1,17 @@
 from __future__ import annotations
 
-"""Cierre del instrumento firmable CO-AR-001 M33.0.
+"""Cierre del instrumento firmable CO-AR-001 M33.0/M33.4.
 
 Elimina referencias residuales de workspace y desarrolla cláusulas que, aun después
 del pulido jurídico, seguían siendo demasiado esquemáticas para un contrato final.
-La sección interna de control y fuentes permanece intacta y externalizable.
+La sección interna de control y fuentes permanece intacta y externalizable. M33.4
+inyecta antes de esta capa el manifiesto normativo auditable del producto.
 """
 
 from copy import deepcopy
 from typing import Any
 
-from m33_lease_release_polish import compose_lease_m33_release
+from m33_4_lease_source_finalize import compose_lease_m33_release
 
 
 def _read(data: dict, path: str, default=None):
