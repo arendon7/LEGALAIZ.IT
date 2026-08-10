@@ -84,9 +84,9 @@ jobs:
             }
           }
           if (Object.keys(interviews).length !== 11) failures.push(`Se esperaban 11 productos y se encontraron ${Object.keys(interviews).length}`);
-          if (questionCount < 473) failures.push(`La cobertura de formularios bajó de 473 a ${questionCount} preguntas`);
+          if (questionCount < 473) failures.push(`La cobertura fuente de formularios bajó de 473 a ${questionCount} preguntas`);
           if (failures.length) throw new Error(failures.join('\n'));
-          console.log(`Datos demo verificados: 11 productos, ${questionCount} preguntas, ${answerCount} respuestas visibles.`);
+          console.log(`Fuente histórica verificada: 11 productos, ${questionCount} preguntas, ${answerCount} respuestas demo visibles antes de overlays runtime.`);
           NODE
       - name: Smoke HTTP
         env:
@@ -97,15 +97,45 @@ jobs:
           LEGAL_REQUIRE_MFA_ROLES: ''
           LEGAL_GITHUB_LITE_ASSETS: 'true'
         run: |
+          set -euo pipefail
           python run.py --lan --no-browser > /tmp/legalaiz.log 2>&1 &
           PID=$!
           trap 'kill $PID || true' EXIT
+          READY=0
           for i in {1..30}; do
-            python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/api/live', timeout=2).read()" && exit 0 || true
+            if python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/api/live', timeout=2).read()"; then
+              READY=1
+              break
+            fi
             sleep 1
           done
-          cat /tmp/legalaiz.log
-          exit 1
+          if [ "$READY" -ne 1 ]; then
+            cat /tmp/legalaiz.log
+            exit 1
+          fi
+          python <<'PY'
+          import json
+          import urllib.request
+
+          with urllib.request.urlopen('http://127.0.0.1:8765/api/products/CO-CD-001', timeout=5) as response:
+              payload = json.load(response)
+          interview = payload.get('interview') or {}
+          questions = interview.get('questions') or []
+          matches = [q for q in questions if q.get('id') == 'prior_claim_identity_theft']
+          if len(matches) != 1:
+              raise SystemExit(f"M33.3: se esperaba una pregunta prior_claim_identity_theft y se encontraron {len(matches)}")
+          question = matches[0]
+          if question.get('show_if') != {'field': 'prior_claim', 'equals': 'Sí'}:
+              raise SystemExit(f"M33.3: condición inesperada: {question.get('show_if')!r}")
+          if question.get('options') != ['Sí', 'No', 'No sé']:
+              raise SystemExit(f"M33.3: opciones inesperadas: {question.get('options')!r}")
+          if interview.get('interview_standard') != 'M33.3':
+              raise SystemExit(f"M33.3: estándar de entrevista no activo: {interview.get('interview_standard')!r}")
+          print(
+              f"Entrevista runtime CO-CD-001 verificada: {len(questions)} preguntas; "
+              "prior_claim_identity_theft activa una sola vez bajo M33.3."
+          )
+          PY
       - name: Smoke producción demostrativa M33.1
         env:
           LEGAL_RUNTIME_DIR: ${{ runner.temp }}/legalaiz-public-demo-runtime
