@@ -44,8 +44,6 @@ class ControlledEvaluator:
 
 
 class LeaseEvaluator(ControlledEvaluator):
-    """Fixture mínimo compatible con la interfaz histórica de CO-AR-001."""
-
     def __init__(self):
         self.documents = [{"id": "DOC-AR-CONTRACT-001", "name": "Contrato de arrendamiento"}]
         self.blocks = ["AR-BASE", "AR-PROPERTY", "AR-ECONOMICS"]
@@ -69,22 +67,9 @@ class LeaseEvaluator(ControlledEvaluator):
 
 def employment_answers() -> dict:
     return {
-        "employer": {
-            "type": "legal_person",
-            "legalName": "Soluciones Andinas S.A.S.",
-            "identificationNumber": "901234567-8",
-            "domicile": "Medellín, Antioquia",
-        },
-        "employerSignatory": {
-            "fullName": "María Fernanda Gómez Ruiz",
-            "identificationNumber": "43678901",
-            "positionOrCapacity": "representante legal",
-        },
-        "worker": {
-            "fullName": "Carlos Andrés Pérez López",
-            "identificationNumber": "1030123456",
-            "domicile": "Medellín, Antioquia",
-        },
+        "employer": {"type": "legal_person", "legalName": "Soluciones Andinas S.A.S.", "identificationNumber": "901234567-8", "domicile": "Medellín, Antioquia"},
+        "employerSignatory": {"fullName": "María Fernanda Gómez Ruiz", "identificationNumber": "43678901", "positionOrCapacity": "representante legal"},
+        "worker": {"fullName": "Carlos Andrés Pérez López", "identificationNumber": "1030123456", "domicile": "Medellín, Antioquia"},
         "role": {
             "jobTitle": "Analista jurídico y documental",
             "purpose": "gestionar contratos, expedientes y controles de trazabilidad jurídica de la organización",
@@ -171,7 +156,7 @@ class ContractualWaveM330Tests(unittest.TestCase):
     def test_employment_m33(self):
         with tempfile.TemporaryDirectory() as tmp:
             factory = CoLa002DocumentFactoryV240(Path(tmp), ControlledEvaluator(["DOC-LA-CONTRACT-001", "ANX-LA-FUN-001"], ["LABOR_BASE", "FUNCTIONS_ANNEX"]))
-            _, path = self._assert_primary(factory, employment_answers(), "DOC-LA-CONTRACT-001", "CONTRATO INDIVIDUAL DE TRABAJO A TÉRMINO INDEFINIDO", "PRIMERA: OBJETO", 1_800, 25)
+            _, path = self._assert_primary(factory, employment_answers(), "DOC-LA-CONTRACT-001", "CONTRATO INDIVIDUAL DE TRABAJO A TÉRMINO INDEFINIDO", "PRIMERA. OBJETO", 1_800, 25)
             text = "\n".join(p.text for p in Document(path).paragraphs if p.text.strip())
             self.assertIn("NIT 901.234.567-8", text)
             self.assertIn("María Fernanda Gómez Ruiz", text)
@@ -187,13 +172,13 @@ class ContractualWaveM330Tests(unittest.TestCase):
     def test_nda_m33(self):
         with tempfile.TemporaryDirectory() as tmp:
             factory = CoEm004DocumentFactoryV248(Path(tmp), ControlledEvaluator(["DOC-EM4-NDA-001"], ["NDA_BASE", "SECURITY", "IP"]))
-            self._assert_primary(factory, nda_answers(), "DOC-EM4-NDA-001", "ACUERDO DE CONFIDENCIALIDAD", "PRIMERA: OBJETO", 1_800, 20)
+            self._assert_primary(factory, nda_answers(), "DOC-EM4-NDA-001", "ACUERDO DE CONFIDENCIALIDAD", "PRIMERA. OBJETO", 1_800, 20)
             self.assertEqual(factory.VERSION, "2.48")
 
     def test_lease_m33(self):
         with tempfile.TemporaryDirectory() as tmp:
             factory = CoAr001DocumentFactoryV251(Path(tmp), LeaseEvaluator())
-            self._assert_primary(factory, lease_answers(), "DOC-AR-CONTRACT-001", "CONTRATO DE ARRENDAMIENTO DE VIVIENDA URBANA", "PRIMERA: OBJETO", 1_800, 25)
+            self._assert_primary(factory, lease_answers(), "DOC-AR-CONTRACT-001", "CONTRATO DE ARRENDAMIENTO DE VIVIENDA URBANA", "PRIMERA. OBJETO", 1_800, 25)
             self.assertEqual(factory.VERSION, "2.51")
 
 
