@@ -1,12 +1,12 @@
 from __future__ import annotations
 
-"""Revisión jurídica de segunda pasada para CO-EM-003 M33.0.
+"""Revisión jurídica de segunda pasada para CO-EM-003 M33.0/M33.4.
 
 La biblioteca contractual histórica permanece inmutable. Esta capa recibe su
 composición M33.0 y corrige únicamente decisiones que dependen de hechos actuales
 del expediente: naturaleza del contratista, datos, IA, seguros, pago y límites de
-responsabilidad. El objetivo es evitar que una regla propia de persona natural se
-proyecte automáticamente sobre una persona jurídica.
+responsabilidad. M33.4 añade trazabilidad normativa estructurada sin insertar metadatos
+internos en el instrumento que firman las partes.
 """
 
 from copy import deepcopy
@@ -14,6 +14,10 @@ from datetime import date
 import re
 from typing import Any
 
+from legalai_platform.legal_source_registry import (
+    build_legal_source_manifest,
+    source_control_lines,
+)
 from m33_legal_composition import compose_services_m33 as compose_services_m33_base
 
 
@@ -87,25 +91,34 @@ def _paragraph(section: dict, text: str) -> None:
     section["paragraphs"] = [text]
 
 
-def _sources(nature: str) -> list[str]:
+def _source_ids(nature: str) -> list[str]:
     values = [
-        "Código Sustantivo del Trabajo, artículo 23 vigente, modificado por el artículo 16 de la Ley 2466 de 2025, para subordinación y primacía de la realidad.",
-        "Código de Comercio, artículo 871, sobre ejecución de buena fe de los contratos mercantiles.",
-        "Ley 2024 de 2020, artículo 3, cuando resulte aplicable el régimen de pago en plazos justos y con sus excepciones vigentes.",
-        "Decreto 1072 de 2015, régimen vigente de riesgos laborales y coordinación del SG-SST.",
-        "Ley 23 de 1982, artículo 183, modificado por el artículo 181 de la Ley 1955 de 2019, y Decisión Andina 351 de 1993, según el activo de propiedad intelectual involucrado.",
-        "Ley 1581 de 2012 y Decreto 1074 de 2015, cuando exista tratamiento de datos personales.",
-        "Ley 527 de 1999, especialmente artículos 6, 7 y 14, para mensajes de datos, firma y contratación electrónica.",
+        "CO-CST-ART23-2025",
+        "CO-COM-ART871",
+        "CO-LEY2024-ART3",
+        "CO-D1072-SGRL-SGSST",
+        "CO-LEY23-ART183",
+        "CO-LEY1955-ART181",
+        "CAN-DEC351-DA",
+        "CO-LEY1581-2012",
+        "CO-D1074-DATOS",
+        "CO-LEY527-ARTS6-7-14",
     ]
     if nature == "natural_person":
-        values.insert(3, "Ley 2277 de 2022, artículo 89, para personas naturales independientes por prestación personal de servicios cuando concurran sus presupuestos.")
+        values.insert(3, "CO-LEY2277-ART89")
     return values
+
+
+def _apply_source_control(section: dict, source_ids: list[str]) -> None:
+    section["source_ids"] = list(source_ids)
+    section["bullets"] = source_control_lines(source_ids)
 
 
 def _review_principal(sections: list[dict], answers: dict, nature: str) -> list[dict]:
     ai_used = _bool(_read(answers, "ai.used", False))
     insurance_required = _bool(_read(answers, "risk.insurance_required", False))
     liability_cap = _read(answers, "risk.liability_cap", _read(answers, "risk.cap", None))
+    source_ids = _source_ids(nature)
     reviewed: list[dict] = []
 
     for original in sections:
@@ -159,7 +172,7 @@ def _review_principal(sections: list[dict], answers: dict, nature: str) -> list[
             _paragraph(section, f"Por la valoración de riesgo de este servicio se exige mantener {description}. El anexo identificará cobertura, asegurado, vigencia, límites, deducibles y evidencia de mantenimiento. La existencia de seguro no amplía por sí misma la responsabilidad contractual ni sustituye obligaciones de prevención.")
 
         if section.get("_type") == "control":
-            section["bullets"] = [f"Fuente jurídica de control: {source}" for source in _sources(nature)]
+            _apply_source_control(section, source_ids)
         reviewed.append(section)
     return reviewed
 
@@ -210,6 +223,8 @@ def _review_scope(sections: list[dict], nature: str) -> list[dict]:
 def compose_services_m33_reviewed(answers: dict) -> dict[str, Any]:
     composition = deepcopy(compose_services_m33_base(answers))
     nature = _contractor_nature(answers)
+    source_ids = _source_ids(nature)
+    source_manifest = build_legal_source_manifest(source_ids)
     sections = composition.get("sections") or []
 
     annex_index = next((i for i, section in enumerate(sections) if section.get("_type") == "annex"), len(sections))
@@ -222,13 +237,23 @@ def compose_services_m33_reviewed(answers: dict) -> dict[str, Any]:
     controls = [_clean_section(section) for section in controls]
     for section in controls:
         if section.get("_type") == "control":
-            section["bullets"] = [f"Fuente jurídica de control: {source}" for source in _sources(nature)]
-            section["text"] = "Documento candidato interno CO-EM-003 M33.0. La liberación exige verificar identidad y naturaleza de las partes, capacidad, hechos, cuantías, fechas, módulos condicionales, vigencia normativa, ejecución real y aprobación jurídica y QA sobre la misma revisión y hash."
+            _apply_source_control(section, source_ids)
+            section["source_manifest_status"] = source_manifest["status"]
+            section["text"] = (
+                "Documento candidato interno CO-EM-003 M33.4. La liberación exige verificar identidad y naturaleza "
+                "de las partes, capacidad, hechos, cuantías, fechas, módulos condicionales, ejecución real, fuentes "
+                "jurídicas estructuradas y vigentes, y aprobación jurídica y QA sobre la misma revisión y hash. "
+                "Si el manifiesto normativo indica needs_reverification, la fuente debe revalidarse antes de liberar."
+            )
     reviewed += controls
 
     professional = _bool(_read(answers, "service.professional", False))
     composition["title"] = "CONTRATO DE PRESTACIÓN DE SERVICIOS PROFESIONALES INDEPENDIENTES" if professional else "CONTRATO DE PRESTACIÓN DE SERVICIOS INDEPENDIENTES"
     composition["sections"] = reviewed
+    composition["legal_source_manifest"] = source_manifest
     composition.setdefault("maturity_answers", {})["contractor_type_m33"] = nature
     composition["maturity_answers"]["ai_used_m33"] = _bool(_read(answers, "ai.used", False))
+    composition["maturity_answers"]["legal_source_standard"] = "M33.4"
+    composition["maturity_answers"]["legal_source_gate_m334"] = source_manifest["status"]
+    composition["maturity_answers"]["legal_source_ids_m334"] = list(source_ids)
     return composition
