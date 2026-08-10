@@ -162,17 +162,39 @@ jobs:
           if by_id['prior_communication_first_date'][0].get('show_if') != {'field': 'small_obligation_two_notices', 'equals': 'Sí'}:
               raise SystemExit("M33.3: la primera fecha de pequeña cuantía no depende de la regla de dos avisos")
 
+          transition_ids = [
+              'identity_theft_correction_requested',
+              'identity_theft_security_noncompliance_verified',
+              'identity_theft_security_noncompliance_support',
+          ]
+          for field in transition_ids:
+              matches = by_id.get(field) or []
+              if len(matches) != 1:
+                  raise SystemExit(f"M33.3: se esperaba una {field} y se encontraron {len(matches)}")
+          if by_id['identity_theft_correction_requested'][0].get('show_if') != {'field': 'identity_theft', 'equals': 'Sí'}:
+              raise SystemExit("M33.3: solicitud de corrección Ley 2573 no depende de identity_theft=Sí")
+          if by_id['identity_theft_security_noncompliance_verified'][0].get('show_if') != {'field': 'identity_theft', 'equals': 'Sí'}:
+              raise SystemExit("M33.3: verificación de seguridad Ley 2573 no depende de identity_theft=Sí")
+          if by_id['identity_theft_security_noncompliance_support'][0].get('show_if') != {'field': 'identity_theft_security_noncompliance_verified', 'equals': 'Sí'}:
+              raise SystemExit("M33.3: soporte de seguridad Ley 2573 no depende de incumplimiento verificado=Sí")
+          if by_id['identity_theft_correction_requested'][0].get('options') != ['Sí', 'No', 'No sé']:
+              raise SystemExit("M33.3: opciones inesperadas en solicitud de corrección Ley 2573")
+          if by_id['identity_theft_security_noncompliance_verified'][0].get('options') != ['Sí', 'No', 'No sé']:
+              raise SystemExit("M33.3: opciones inesperadas en verificación de seguridad Ley 2573")
+          if by_id['identity_theft_security_noncompliance_support'][0].get('options') != ['Completo', 'Parcial', 'No', 'No sé']:
+              raise SystemExit("M33.3: opciones inesperadas en soporte de seguridad Ley 2573")
+
           send_date = by_id.get('prior_communication_date') or []
           if len(send_date) != 1 or 'envío' not in str(send_date[0].get('label') or '').casefold():
               raise SystemExit("M33.3: prior_communication_date no está presentada como fecha de envío")
           if interview.get('interview_standard') != 'M33.3':
               raise SystemExit(f"M33.3: estándar de entrevista no activo: {interview.get('interview_standard')!r}")
-          if len(questions) < 60:
+          if len(questions) < 63:
               raise SystemExit(f"M33.3: entrevista CO-CD-001 incompleta; solo {len(questions)} preguntas activas")
 
           print(
               f"Entrevista runtime CO-CD-001 verificada: {len(questions)} preguntas; "
-              "suplantación y comunicación previa se sirven una sola vez bajo M33.3."
+              "suplantación, comunicación previa y transición Ley 2573 se sirven una sola vez bajo M33.3."
           )
           PY
       - name: Smoke producción demostrativa M33.1
