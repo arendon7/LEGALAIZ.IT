@@ -26,6 +26,7 @@ from m33_2_operational_reference_format import apply_m33_2_operational_format
 from m33_2_procedural_reference_format import apply_m33_2_procedural_format
 from m33_2_special_reference_format import apply_m33_2_special_format
 from m33_2_special_pagination_finalize import apply_m33_2_special_pagination_finalize
+from m33_3_habeas_communication_guard import enforce_habeas_prior_communication
 from m33_3_habeas_permanence_guard import enforce_habeas_permanence
 from m33_wave3_runtime import document_specs_m33_all
 from tests.test_m33_0_consumer_legal_finalize import MECHANISMS, consumer_route_fixture
@@ -73,14 +74,12 @@ def _attach_calendar_metadata(calculation: dict, audits: list) -> None:
 
 
 def _habeas_visual_fixture() -> tuple[dict, dict]:
-    """Completa la intención estructurada de la fixture sintética de evidencia.
+    """Completa de forma explícita la fixture sintética usada por el QA visual.
 
-    La fixture histórica declara en ``facts_detail`` que la obligación fue pagada y
-    aporta una fecha de pago/extinción, pero omitía responder el campo obligatorio
-    ``obligation_status`` que sí existe en la entrevista canónica. La evidencia visual
-    M33.3 no debe inferir el estado desde prosa libre ni mostrar una contradicción;
-    por eso esta adaptación de QA declara explícitamente ``Pagada`` antes de aplicar
-    la compuerta de permanencia. No altera el runtime ni el cuestionario de usuario.
+    No se infieren estados desde prosa libre. La muestra declara una obligación pagada
+    y, para probar la nueva distinción M33.3, modela una comunicación física enviada
+    21 días antes del reporte aunque el titular declare no haberla recibido. Así la
+    evidencia demuestra que recepción y envío son hechos jurídicamente separados.
     """
     answers, result = habeas_fixture()
     answers = deepcopy(answers)
@@ -89,7 +88,20 @@ def _habeas_visual_fixture() -> tuple[dict, dict]:
         raise RuntimeError("La fixture visual CO-CD-001 dejó de describir una obligación pagada.")
     if not answers.get("payment_or_extinction_date"):
         raise RuntimeError("La fixture visual CO-CD-001 pagada carece de fecha de pago/extinción.")
-    answers["obligation_status"] = "Pagada"
+    answers.update({
+        "obligation_status": "Pagada",
+        "obligation_amount": 5_000_000,
+        "prior_communication_received": "No",
+        "prior_communication_sent": "Sí",
+        "prior_communication_date": "2023-10-20",
+        "prior_communication_evidence": "Completa",
+        "prior_communication_channel": "Dirección física registrada",
+        "prior_communication_destination_verified": "Sí",
+        "prior_communication_alternative_channel_agreed": "No aplica",
+        "prior_communication_message_consultable": "No aplica",
+        "prior_communication_content_sufficient": "Sí",
+        "small_obligation_two_notices": "No aplica",
+    })
     return answers, result
 
 
@@ -106,7 +118,7 @@ def _m33_3_consumer_calendar_evidence(answers: dict, result: dict) -> tuple[dict
 
 
 def _m33_3_habeas_calendar_evidence(answers: dict, result: dict) -> tuple[dict, dict]:
-    """Recalcula fechas hábiles y activa la compuerta de permanencia en la evidencia."""
+    """Recalcula fechas hábiles y activa las compuertas M33.3 de la evidencia."""
     updated_answers = deepcopy(answers); updated_result = deepcopy(result)
     calculation = updated_result.setdefault("calculation", {}); audits = []
     filing_raw = updated_answers.get("filing_date")
@@ -127,6 +139,7 @@ def _m33_3_habeas_calendar_evidence(answers: dict, result: dict) -> tuple[dict, 
         calculation["prior_preliminary_due_date"] = prior_due.due_date.isoformat()
         calculation["prior_max_due_date"] = prior_max.due_date.isoformat(); audits.extend([legend, prior_due, prior_max])
     _attach_calendar_metadata(calculation, audits)
+    calculation = enforce_habeas_prior_communication(updated_answers, calculation)
     updated_result["calculation"] = enforce_habeas_permanence(updated_answers, calculation)
     return updated_answers, updated_result
 
@@ -166,6 +179,8 @@ def _write_sample(output: Path, code: str, kind: str, spec: dict, records: list[
         "calendar_ruleset_verified_at": spec.get("calendar_ruleset_verified_at"),
         "permanence_standard": spec.get("permanence_standard"),
         "permanence_ruleset_verified_at": spec.get("permanence_ruleset_verified_at"),
+        "communication_standard": spec.get("communication_standard"),
+        "communication_ruleset_verified_at": spec.get("communication_ruleset_verified_at"),
         "released": False, "legal_approval": "pending", "qa_approval": "pending",
         "internal_controls_externalized": bool(spec.get("internal_controls_externalized")),
     })
