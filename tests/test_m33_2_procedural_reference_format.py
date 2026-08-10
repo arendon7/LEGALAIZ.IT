@@ -6,6 +6,8 @@ from pathlib import Path
 
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
 
 from docx_builder import build_docx
 from m33_2_procedural_reference_format import apply_m33_2_procedural_format
@@ -67,7 +69,8 @@ class ProceduralReferenceFormatM332Tests(unittest.TestCase):
             )
             self.assertTrue(result["applied"])
             self.assertEqual(result["font"], "Book Antiqua")
-            self.assertEqual(result["paragraph_after_pt"], 6)
+            self.assertEqual(result["paragraph_after_pt"], 4)
+            self.assertEqual(result["numbered_after_pt"], 2)
 
             document = Document(path)
             nonempty = [p for p in document.paragraphs if p.text.strip()]
@@ -79,19 +82,61 @@ class ProceduralReferenceFormatM332Tests(unittest.TestCase):
             self.assertTrue(any(run.bold for run in title.runs))
             self.assertTrue(any(run.underline for run in title.runs))
             self.assertTrue(all((run.font.name or "") == "Book Antiqua" for run in title.runs if run.text))
+            self.assertAlmostEqual(title.paragraph_format.space_after.pt, 7.0, places=1)
 
             subtitle = next(p for p in document.paragraphs if p.text.strip() == "Garantía legal · reclamación directa")
             self.assertEqual(subtitle.alignment, WD_ALIGN_PARAGRAPH.CENTER)
             self.assertTrue(any(run.italic for run in subtitle.runs))
+            self.assertAlmostEqual(subtitle.paragraph_format.space_after.pt, 7.0, places=1)
 
             body = next(p for p in document.paragraphs if p.text.startswith("La persona consumidora"))
             self.assertEqual(body.alignment, WD_ALIGN_PARAGRAPH.JUSTIFY)
-            self.assertAlmostEqual(body.paragraph_format.space_after.pt, 6.0, places=1)
+            self.assertAlmostEqual(body.paragraph_format.space_after.pt, 4.0, places=1)
 
             heading = next(p for p in document.paragraphs if p.text.strip() == "I. HECHOS")
             self.assertEqual(heading.alignment, WD_ALIGN_PARAGRAPH.LEFT)
             self.assertTrue(all(run.bold for run in heading.runs if run.text))
-            self.assertAlmostEqual(heading.paragraph_format.space_before.pt, 8.0, places=1)
+            self.assertAlmostEqual(heading.paragraph_format.space_before.pt, 4.0, places=1)
+            self.assertAlmostEqual(heading.paragraph_format.space_after.pt, 3.0, places=1)
+
+            numbered = next(p for p in document.paragraphs if p.text.startswith("1. El producto"))
+            self.assertAlmostEqual(numbered.paragraph_format.space_after.pt, 2.0, places=1)
+
+            signature_heading = next(p for p in document.paragraphs if p.text.strip() == "FIRMA")
+            self.assertAlmostEqual(signature_heading.paragraph_format.space_before.pt, 2.0, places=1)
+            self.assertAlmostEqual(signature_heading.paragraph_format.space_after.pt, 1.0, places=1)
+
+    def test_top_level_blank_paragraphs_are_removed_without_touching_explicit_page_breaks(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = self._build(Path(tmp))
+            document = Document(path)
+            body_anchor = next(p for p in document.paragraphs if p.text.startswith("La comunicación conserva"))
+            body_anchor.insert_paragraph_before("")
+            explicit = body_anchor.insert_paragraph_before("")
+            br = OxmlElement("w:br")
+            br.set(qn("w:type"), "page")
+            explicit.add_run()._r.append(br)
+            document.save(path)
+
+            result = apply_m33_2_procedural_format(
+                path,
+                product_code="CO-CD-003",
+                title="Reclamación directa de garantía legal",
+            )
+            self.assertGreater(result["removed_blank_paragraphs"], 0)
+            document = Document(path)
+            plain_blanks = [
+                p
+                for p in document.paragraphs
+                if not p.text.strip() and qn("w:br") not in {node.tag for node in p._p.iter()}
+            ]
+            self.assertEqual(plain_blanks, [])
+            self.assertTrue(
+                any(
+                    any(br.get(qn("w:type")) == "page" for br in p._p.iter(qn("w:br")))
+                    for p in document.paragraphs
+                )
+            )
 
     def test_non_formal_family_keeps_base_presentation(self):
         with tempfile.TemporaryDirectory() as tmp:
