@@ -4,15 +4,12 @@ from contextvars import ContextVar
 from copy import deepcopy
 from datetime import date
 from pathlib import Path
+import re
 
 from co_em_003_document_factory_v244 import CoEm003DocumentFactoryV244
 from legalai_platform.document_quality import assert_docx_quality
 from legalai_platform.document_visual_quality import assert_visual_structure
-from m33_document_presentation import (
-    APPROVAL_CANDIDATE_MODE,
-    audit_m33_presentation,
-    build_m33_presentation,
-)
+from m33_document_presentation import APPROVAL_CANDIDATE_MODE, audit_m33_presentation, build_m33_presentation
 from m33_services_release_polish import compose_services_m33_release
 
 
@@ -21,7 +18,7 @@ _M33_SERVICES_SOURCE: ContextVar[dict | None] = ContextVar("m33_services_source"
 
 
 class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
-    """CO-EM-003 M33.0: nueva revisión documental sobre la fábrica histórica v2.44."""
+    """CO-EM-003: contenido M33.0 con presentación contractual M33.2."""
 
     VERSION = "2.45"
     DOCUMENT_STANDARD = "M33.0"
@@ -44,6 +41,28 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
     def _nested_dict(value) -> dict:
         return value if isinstance(value, dict) else {}
 
+    @staticmethod
+    def _format_identifier(value) -> str:
+        text = str(value or "").strip()
+        match = re.fullmatch(r"(\d{7,12})(?:-(\d))?", re.sub(r"[.]", "", text))
+        if not match:
+            return text
+        base, check = match.groups()
+        groups = []
+        while base:
+            groups.append(base[-3:])
+            base = base[:-3]
+        result = ".".join(reversed(groups))
+        return f"{result}-{check}" if check else result
+
+    @staticmethod
+    def _format_cop(value) -> str:
+        try:
+            amount = int(round(float(value)))
+        except (TypeError, ValueError):
+            return str(value or "").strip()
+        return f"COP ${amount:,}".replace(",", ".") + " M/CTE"
+
     @classmethod
     def _approval_cover_subtitle(cls, normalized: dict) -> str:
         client = cls._nested_dict(cls._nested_dict(normalized.get("client")).get("identification"))
@@ -55,8 +74,6 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
         client_name = str(client.get("name") or "EL CONTRATANTE")
         contractor_name = str(contractor.get("name") or "EL CONTRATISTA")
         city = str(dispute.get("city") or disputes.get("city") or client.get("domicile") or "").strip()
-        # v2.44 copia las fechas canónicas a `term` y luego compacta `schedule`
-        # en texto operativo. M33.0 debe funcionar con ambos estados.
         start = cls._date_es(term.get("start_date") or schedule.get("start_date"))
         context = f"{client_name} · {contractor_name}"
         location_date = " · ".join(value for value in (city, start) if value)
@@ -64,7 +81,6 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
 
     @classmethod
     def _presentation_answers(cls, normalized: dict, original: dict) -> dict:
-        """Restaura datos contractuales que v2.44 compacta para su renderer histórico."""
         result = deepcopy(normalized)
         original = original if isinstance(original, dict) else {}
         for section_name, field_names in {
@@ -92,14 +108,25 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
         composition = compose_services_m33_release(normalized)
         client = cls._nested_dict(cls._nested_dict(normalized.get("client")).get("identification"))
         contractor = cls._nested_dict(cls._nested_dict(normalized.get("contractor")).get("identification"))
+        fees = cls._nested_dict(normalized.get("fees"))
+        term = cls._nested_dict(normalized.get("term"))
+        schedule = cls._nested_dict(normalized.get("schedule"))
+
+        client_name = str(client.get("name") or "PARTE CONTRATANTE")
+        contractor_name = str(contractor.get("name") or "PARTE CONTRATISTA")
+        start = cls._date_es(term.get("start_date") or schedule.get("start_date"))
+        end = cls._date_es(term.get("end_date") or schedule.get("end_date"))
+        object_text = str(service.get("object") or "").strip()
+        fee_value = cls._format_cop(fees.get("amount"))
+
         return build_m33_presentation(
             path=target,
             title=composition["title"],
             subtitle=composition.get("subtitle") or "",
             metadata=[
                 ("Producto", "CO-EM-003"),
-                ("Contratante", str(client.get("name") or "Parte contratante")),
-                ("Contratista", str(contractor.get("name") or "Parte contratista")),
+                ("Contratante", client_name),
+                ("Contratista", contractor_name),
                 ("Estándar documental", "M33.0"),
                 ("Estado", "Candidato sujeto a revisión jurídica y QA"),
             ],
@@ -107,6 +134,16 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
             product_code="CO-EM-003",
             presentation_mode=APPROVAL_CANDIDATE_MODE,
             approval_subtitle=cls._approval_cover_subtitle(normalized),
+            approval_metadata=[
+                ("CONTRATANTE", client_name.upper()),
+                ("NIT / DOCUMENTO", cls._format_identifier(client.get("identification_number"))),
+                ("CONTRATISTA", contractor_name.upper()),
+                ("NIT / DOCUMENTO", cls._format_identifier(contractor.get("identification_number"))),
+                ("OBJETO", object_text),
+                ("HONORARIOS", fee_value),
+                ("INICIO", start.upper()),
+                ("TERMINACIÓN", end.upper()),
+            ],
         )
 
     def render_documents(self, answers, target_folder):
@@ -125,19 +162,14 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
         visual = assert_visual_structure(target, expected_product="CO-EM-003")
         standard = audit_m33_presentation(target, APPROVAL_CANDIDATE_MODE)
         if not standard["valid"]:
-            raise ValueError(f"CO-EM-003 no supera el estándar M33.0: {standard['findings']}")
-        primary["quality"] = {
-            "valid": quality["valid"],
-            "warnings": quality["warnings"],
-            "metrics": quality["metrics"],
-        }
+            raise ValueError(f"CO-EM-003 no supera el estándar M33.2: {standard['findings']}")
+        primary["quality"] = {"valid": quality["valid"], "warnings": quality["warnings"], "metrics": quality["metrics"]}
         primary["visual_preflight"] = {
-            "valid": visual["valid"],
-            "warnings": visual["warnings"],
-            "metrics": visual["metrics"],
+            "valid": visual["valid"], "warnings": visual["warnings"], "metrics": visual["metrics"],
             "requires_human_visual_review": True,
         }
         primary["document_standard"] = self.DOCUMENT_STANDARD
+        primary["presentation_standard"] = "M33.2"
         primary["presentation_mode"] = APPROVAL_CANDIDATE_MODE
         primary["review_evidence"] = review_evidence
         primary["approval_state"] = {"legal": "pending", "qa": "pending"}
@@ -147,10 +179,6 @@ class CoEm003DocumentFactoryV245(CoEm003DocumentFactoryV244):
         return evaluation, generated, hashes
 
     def generate(self, answers, actor=None):
-        # v2.44 normaliza y compacta antes de llegar a render_documents. Conservamos
-        # la fuente original en un ContextVar para restaurar únicamente la literalidad
-        # jurídica necesaria en M33.0, sin escribirla como metadato ni compartir estado
-        # entre solicitudes concurrentes.
         source = deepcopy(answers or {})
         token = _M33_SERVICES_SOURCE.set(source)
         try:
