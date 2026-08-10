@@ -17,6 +17,7 @@ from docx import Document
 
 from document_standard_v33 import STANDARD_VERSION, audit_docx_legal_standard
 from docx_builder import build_docx
+from m33_2_contract_style_finalize import finalize_contract_style
 from m33_2_reference_format import apply_m33_2_reference_format
 
 
@@ -31,7 +32,6 @@ def _is_control(section: dict[str, Any]) -> bool:
 
 
 def split_internal_review_sections(sections: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
-    """Separa contenido contractual de evidencias internas sin perder trazabilidad."""
     public: list[dict[str, Any]] = []
     internal: list[dict[str, Any]] = []
     for section in deepcopy(list(sections or [])):
@@ -40,7 +40,6 @@ def split_internal_review_sections(sections: list[dict[str, Any]]) -> tuple[list
 
 
 def review_evidence_from_sections(sections: list[dict[str, Any]]) -> dict[str, Any]:
-    """Extrae controles/fuentes para persistirlos en el manifiesto, no en el contrato."""
     _, controls = split_internal_review_sections(sections)
     sources: list[str] = []
     notes: list[str] = []
@@ -72,7 +71,6 @@ def review_evidence_from_sections(sections: list[dict[str, Any]]) -> dict[str, A
 
 
 def audit_m33_presentation(path: str | Path, presentation_mode: str) -> dict[str, Any]:
-    """Aplica el estándar técnico vigente, contextualizando solo el banner de revisión."""
     mode = str(presentation_mode or REVIEW_MODE).strip().casefold()
     if mode not in VALID_PRESENTATIONS:
         raise ValueError(f"Modo de presentación M33 inválido: {presentation_mode}.")
@@ -88,7 +86,6 @@ def audit_m33_presentation(path: str | Path, presentation_mode: str) -> dict[str
 
 
 def _stamp_internal_identity(path: Path, product_code: str, presentation_mode: str) -> None:
-    """Conserva el identificador anti-cruce en metadatos OOXML, no en el instrumento visible."""
     document = Document(path)
     document.core_properties.subject = str(product_code or "").strip()
     document.core_properties.comments = f"LegalAIZ.it · {STANDARD_VERSION} · {presentation_mode}"
@@ -110,10 +107,9 @@ def build_m33_presentation(
 ) -> dict[str, Any]:
     """Construye una copia de revisión o el instrumento exacto de aprobación.
 
-    `approval_metadata` contiene exclusivamente datos contractuales visibles que
-    legítimamente forman parte del instrumento (partes, identificación, cargo,
-    precio, vigencia, inmueble, etc.). Datos operativos de LegalAIZ.it permanecen
-    en el expediente y nunca se insertan en la versión de firma.
+    `approval_metadata` contiene exclusivamente datos jurídicamente útiles del
+    instrumento. Los datos operativos de LegalAIZ.it permanecen fuera de la
+    versión destinada a firma.
     """
     mode = str(presentation_mode or REVIEW_MODE).strip().casefold()
     if mode not in VALID_PRESENTATIONS:
@@ -157,6 +153,8 @@ def build_m33_presentation(
             approval_subtitle=rendered_subtitle,
         )
         evidence["reference_format"] = reference_format
+        if reference_format.get("applied"):
+            evidence["reference_format_finalize"] = finalize_contract_style(target)
 
     _stamp_internal_identity(target, product_code, mode)
     technical = audit_m33_presentation(target, mode)
