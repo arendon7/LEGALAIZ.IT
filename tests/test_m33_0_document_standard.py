@@ -129,6 +129,7 @@ class DocumentStandardM33Tests(unittest.TestCase):
             "product_code": "CO-EM-003",
             "kind": "contract",
             "title": "CONTRATO {{client}}",
+            "version_label": "M33.2",
             "variables": [{"id": "client", "type": "text"}, {"id": "contractor", "type": "text"}],
             "blocks": [
                 {
