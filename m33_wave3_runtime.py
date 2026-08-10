@@ -8,6 +8,7 @@ from m33_3_cross_calendar_finalize import (
     finalize_health_calendar_m33_3,
 )
 from m33_3_habeas_communication_finalize import finalize_habeas_communication_m33_3
+from m33_3_habeas_law2573_transition import finalize_law2573_transition
 from m33_3_habeas_permanence_finalize import finalize_habeas_permanence_m33_3
 from m33_consumer_legal_finalize import finalize_consumer_specs
 from m33_consumer_release_polish import finalize_consumer_release_polish
@@ -54,6 +55,7 @@ def document_specs_m33_all(case_id, code, answers, result, product, generated_at
         habeas_specs = finalize_habeas_calendar_m33_3(habeas_specs, result)
         habeas_specs = finalize_habeas_permanence_m33_3(habeas_specs, result)
         habeas_specs = finalize_habeas_communication_m33_3(habeas_specs, answers, result)
+        habeas_specs = finalize_law2573_transition(habeas_specs, answers, result)
         return _polish_habeas_client_presentation(habeas_specs)
     if code == "CO-CD-003":
         consumer_specs = finalize_consumer_specs(specs, answers, result)
