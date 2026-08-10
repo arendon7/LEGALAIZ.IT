@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from datetime import date
 from types import ModuleType
 import unittest
 
@@ -22,13 +21,18 @@ class HabeasPermanenceGuardM333Tests(unittest.TestCase):
             "unpaid_negative_expiry_preliminary": None,
         }
 
+    def _paid_calculation(self) -> dict:
+        return enforce_habeas_permanence(
+            {
+                "obligation_status": "Pagada",
+                "mora_start_date": "2023-08-11",
+                "payment_or_extinction_date": "2024-08-10",
+            },
+            self._calc(),
+        )
+
     def test_paid_route_uses_double_mora_and_marks_exact_anniversary_as_completed(self):
-        answers = {
-            "obligation_status": "Pagada",
-            "mora_start_date": "2023-08-11",
-            "payment_or_extinction_date": "2024-08-10",
-        }
-        calculation = enforce_habeas_permanence(answers, self._calc())
+        calculation = self._paid_calculation()
         self.assertEqual(calculation["mora_duration_days"], 365)
         self.assertEqual(calculation["paid_negative_expiry_preliminary"], "2026-08-10")
         self.assertEqual(calculation["permanence_applicable_expiry"], "2026-08-10")
@@ -110,14 +114,7 @@ class HabeasPermanenceGuardM333Tests(unittest.TestCase):
         self.assertIn("Resolución SIC 28170", basis)
 
     def test_visible_table_exposes_only_applicable_route_as_primary(self):
-        calculation = enforce_habeas_permanence(
-            {
-                "obligation_status": "Pagada",
-                "mora_start_date": "2023-08-11",
-                "payment_or_extinction_date": "2024-08-10",
-            },
-            self._calc(),
-        )
+        calculation = self._paid_calculation()
         specs = [{
             "kind": "habeas_consultation",
             "sections": [{
@@ -136,6 +133,34 @@ class HabeasPermanenceGuardM333Tests(unittest.TestCase):
         self.assertEqual(by_label["Caducidad preliminar del dato insoluto"][1], "No aplica como ruta principal")
         self.assertEqual(by_label["Ruta temporal aplicable"][1], "Obligación pagada o extinguida")
         self.assertIn("Término preliminar cumplido", by_label["Ruta temporal aplicable"][2])
+
+    def test_deadline_calendar_replaces_two_hypotheses_without_increasing_table_rows(self):
+        calculation = self._paid_calculation()
+        original_table = [
+            ["Variable", "Dato disponible", "Uso jurídico"],
+            ["Inicio de mora", "11 de agosto de 2023", "control"],
+            ["Pago o extinción", "10 de agosto de 2024", "control"],
+            ["Duración de mora", "365", "control"],
+            ["Retiro preliminar del dato pagado", "10 de agosto de 2026", "hipótesis"],
+            ["Caducidad preliminar del dato insoluto", "11 de agosto de 2031", "hipótesis"],
+        ]
+        specs = [{
+            "kind": "habeas_deadline_calendar",
+            "sections": [{"heading": "4. HITOS DE PERMANENCIA", "table": original_table}],
+        }]
+        finalized = finalize_habeas_permanence_m33_3(specs, {"calculation": calculation})
+        section = finalized[0]["sections"][0]
+        table = section["table"]
+        self.assertEqual(len(table), len(original_table))
+        labels = [row[0] for row in table]
+        self.assertNotIn("Retiro preliminar del dato pagado", labels)
+        self.assertNotIn("Caducidad preliminar del dato insoluto", labels)
+        self.assertIn("Ruta temporal aplicable", labels)
+        self.assertIn("Fecha aplicable / corte M33.3", labels)
+        self.assertNotIn("paragraphs", section)
+        by_label = {row[0]: row for row in table[1:]}
+        self.assertEqual(by_label["Fecha aplicable / corte M33.3"][1], "10 de agosto de 2026")
+        self.assertIn("no declara pago", by_label["Fecha aplicable / corte M33.3"][2].casefold())
 
     def test_runtime_installer_is_idempotent(self):
         module = ModuleType("fake_habeas_permanence_core")
