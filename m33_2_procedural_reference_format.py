@@ -72,6 +72,7 @@ _EXCLUDED_INSTRUMENT_TOKENS = (
     "estado de cuenta",
     "acuerdo de pago",
     "pagaré",
+    "carta de instrucciones",
     "recibo",
     "certificado de cierre",
     "índice probatorio",
@@ -278,9 +279,11 @@ def apply_m33_2_procedural_format(path: str | Path, *, product_code: str, title:
     _normalize_styles(document)
     title_p = _title_paragraph(document, title)
     removed_branding = _remove_body_branding(document, title_p)
-    _format_title_and_subtitle(document, title)
     headings = _format_headings(document, title)
     paragraphs = _format_body(document, title)
+    # Se aplica al final para que la rutina general del cuerpo no reinterprete el
+    # subtítulo histórico como un párrafo ordinario.
+    _format_title_and_subtitle(document, title)
     tables = _format_tables(document)
     document.save(target)
 
