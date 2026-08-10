@@ -36,6 +36,13 @@ from m33_2_operational_reference_format import install_m33_2_operational_format_
 
 install_m33_2_operational_format_gate()
 
+# Los instrumentos económicos, constancias, autorizaciones, protocolos, resúmenes
+# y guías que no pertenecen a las familias anteriores reciben una gramática propia.
+# La capa sigue siendo editorial y revalida la revisión exacta que entra a gobierno.
+from m33_2_special_reference_format import install_m33_2_special_format_gate
+
+install_m33_2_special_format_gate()
+
 from core_v11 import *  # noqa: F401,F403,E402
 import core_v11 as core  # noqa: E402
 from http.server import ThreadingHTTPServer
