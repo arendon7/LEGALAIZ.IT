@@ -288,3 +288,83 @@ jobs:
           path: ${{ runner.temp }}/document-visual
           if-no-files-found: error
           retention-days: 30
+
+  graphify-context:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar Graphify
+        run: python -m pip install --disable-pip-version-check 'graphifyy==0.9.29'
+      - name: Construir grafo estructural local
+        run: graphify extract . --code-only --force
+      - name: Construir índice compacto para ChatGPT
+        run: python scripts/build_graphify_index.py
+      - name: Exportar vault Obsidian generado
+        run: graphify export obsidian --dir graphify-out/obsidian
+      - name: Registrar snapshot
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          graph = json.loads(Path('graphify-out/graph.json').read_text(encoding='utf-8'))
+          nodes = graph.get('nodes', [])
+          edges = graph.get('edges', graph.get('links', []))
+          sha = os.environ['GITHUB_SHA']
+          ref = os.environ['GITHUB_REF_NAME']
+          run_id = os.environ['GITHUB_RUN_ID']
+          text = f'''---
+          project: LegalAIZ.it
+          type: generated-state
+          status: active
+          sha: {sha}
+          branch: {ref}
+          workflow_run: {run_id}
+          ---
+
+          # Snapshot Graphify
+
+          - SHA: `{sha}`
+          - Rama fuente: `{ref}`
+          - Workflow: `{run_id}`
+          - Nodos: **{len(nodes)}**
+          - Relaciones: **{len(edges)}**
+
+          Este snapshot vive en la rama generada `context/graphify-snapshot`. El grafo orienta el análisis, pero no reemplaza pruebas, revisión jurídica ni decisiones registradas en `project-memory/` de `main`.
+          '''
+          Path('project-memory/01_STATE').mkdir(parents=True, exist_ok=True)
+          Path('project-memory/01_STATE/GRAPHIFY.md').write_text('\n'.join(line.strip() for line in text.splitlines()) + '\n', encoding='utf-8')
+          PY
+      - name: Publicar grafo y vault como artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: graphify-context-${{ github.sha }}
+          path: |
+            graphify-out/graph.json
+            graphify-out/CHATGPT_GRAPH_INDEX.md
+            graphify-out/obsidian
+            project-memory/01_STATE/GRAPHIFY.md
+          if-no-files-found: error
+          retention-days: 90
+      - name: Publicar snapshot compacto en rama generada
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f graphify-out/CHATGPT_GRAPH_INDEX.md project-memory/01_STATE/GRAPHIFY.md
+          git commit -m 'chore(context): snapshot Graphify de ${{ github.sha }}'
+          git push --force origin HEAD:refs/heads/context/graphify-snapshot
