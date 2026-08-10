@@ -3,6 +3,10 @@ from __future__ import annotations
 """Runtime M33.0 completo hasta M33.3."""
 
 from m33_3_consumer_calendar_finalize import finalize_consumer_calendar_m33_3
+from m33_3_cross_calendar_finalize import (
+    finalize_habeas_calendar_m33_3,
+    finalize_health_calendar_m33_3,
+)
 from m33_consumer_legal_finalize import finalize_consumer_specs
 from m33_consumer_release_polish import finalize_consumer_release_polish
 from m33_debt_layout_polish import finalize_debt_layout_polish
@@ -31,7 +35,7 @@ _HABEAS_CLIENT_SUBTITLE = (
 def _polish_habeas_client_presentation(specs: list[dict]) -> list[dict]:
     """Retira metadatos editoriales del subtítulo sin tocar la gobernanza interna."""
     for spec in specs:
-        if spec.get("internal_controls_externalized"):
+        if spec.get("internal_controls_externalized") and spec.get("kind") != "habeas_deadline_calendar":
             spec["subtitle"] = _HABEAS_CLIENT_SUBTITLE
     return specs
 
@@ -43,6 +47,7 @@ def document_specs_m33_all(case_id, code, answers, result, product, generated_at
         return finalize_labor_presentation(labor_specs, answers, result)
     if code == "CO-CD-001":
         habeas_specs = finalize_habeas_specs(specs, answers, result)
+        habeas_specs = finalize_habeas_calendar_m33_3(habeas_specs, result)
         return _polish_habeas_client_presentation(habeas_specs)
     if code == "CO-CD-003":
         consumer_specs = finalize_consumer_specs(specs, answers, result)
@@ -55,6 +60,7 @@ def document_specs_m33_all(case_id, code, answers, result, product, generated_at
         return finalize_debt_layout_polish(debt_specs, answers, result)
     if code == "CO-SA-001":
         health_specs = finalize_health_specs(specs, answers, result)
+        health_specs = finalize_health_calendar_m33_3(health_specs, result)
         health_specs = finalize_health_compat_polish(health_specs, answers)
         return finalize_depth_polish(code, health_specs, answers, result)
     if code == "CO-TR-001":
