@@ -14,6 +14,7 @@ from docx_builder import build_docx
 from m33_2_analytical_reference_format import apply_m33_2_analytical_format
 from m33_2_operational_reference_format import apply_m33_2_operational_format
 from m33_2_procedural_reference_format import apply_m33_2_procedural_format
+from m33_2_special_reference_format import apply_m33_2_special_format
 from m33_wave3_runtime import document_specs_m33_all
 from tests.test_m33_0_wave3 import PRODUCTS, health_fixture, sast_fixture, traffic_fixture
 
@@ -89,6 +90,9 @@ def _apply_presentation(target: Path, *, code: str, title: str) -> dict:
     operational = apply_m33_2_operational_format(target, product_code=code, title=title)
     if operational.get("applied"):
         return operational
+    special = apply_m33_2_special_format(target, product_code=code, title=title)
+    if special.get("applied"):
+        return special
     return {"applied": False, "profile": "M33.2-base", "reason": "base_family"}
 
 
