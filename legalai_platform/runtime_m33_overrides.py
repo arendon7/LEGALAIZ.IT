@@ -11,8 +11,9 @@ M33.3 añade controles sustantivos acotados:
 - calendario nacional colombiano auditable para cómputos compatibles en días hábiles;
 - compuerta fail-closed para silencio favorable en hábeas data;
 - compuerta probatoria para permanencia/caducidad del dato negativo;
-- compuerta de comunicación previa que separa envío de recepción; y
-- overlays condicionales de entrevista para suplantación y trazabilidad de comunicación.
+- compuerta de comunicación previa que separa envío de recepción;
+- compuerta temporal para Ley 2573 de 2026; y
+- overlays condicionales de entrevista para suplantación, comunicación y transición normativa.
 
 Los símbolos/API históricos permanecen disponibles para comparación y regresión.
 """
@@ -32,6 +33,8 @@ from co_la_002_governance_v240 import CoLa002GovernanceV240
 from m33_3_business_day_overrides import install_m33_3_business_day_overrides
 from m33_3_habeas_communication_guard import install_m33_3_habeas_communication_guard
 from m33_3_habeas_communication_interview import install_m33_3_habeas_communication_interview
+from m33_3_habeas_law2573_interview import install_m33_3_habeas_law2573_interview
+from m33_3_habeas_law2573_transition import install_m33_3_habeas_law2573_guard
 from m33_3_habeas_permanence_guard import install_m33_3_habeas_permanence_guard
 from m33_3_habeas_silence_guard import install_m33_3_habeas_silence_guard
 from m33_3_interview_overrides import install_m33_3_interview_overrides
@@ -109,16 +112,19 @@ def activate_m33_contract_factories(
 
     interview_status = install_m33_3_interview_overrides(registry.core)
     communication_interview_status = install_m33_3_habeas_communication_interview(registry.core)
+    law2573_interview_status = install_m33_3_habeas_law2573_interview(registry.core)
     calendar_status = install_m33_3_business_day_overrides(registry.core)
     silence_guard_status = install_m33_3_habeas_silence_guard(registry.core)
     permanence_guard_status = install_m33_3_habeas_permanence_guard(registry.core)
     communication_guard_status = install_m33_3_habeas_communication_guard(registry.core)
+    law2573_guard_status = install_m33_3_habeas_law2573_guard(registry.core)
 
     if not _ACTIVE:
         _CACHE = _build(registry)
         _ACTIVE = True
     _CACHE["M33_3_INTERVIEW_OVERLAY"] = interview_status
     _CACHE["M33_3_HABEAS_COMMUNICATION_INTERVIEW"] = communication_interview_status
+    _CACHE["M33_3_HABEAS_LAW2573_INTERVIEW"] = law2573_interview_status
     _CACHE["M33_3_BUSINESS_CALENDAR"] = calendar_status
     _CACHE["M33_3_HABEAS_SILENCE_GUARD"] = {
         "installed": silence_guard_status,
@@ -144,6 +150,13 @@ def activate_m33_contract_factories(
             "Decreto 2952 de 2010, artículo 2",
         ],
         "principle": "send_not_receipt",
+    }
+    _CACHE["M33_3_HABEAS_LAW2573_GUARD"] = {
+        "installed": law2573_guard_status,
+        "ruleset_verified_at": "2026-08-10",
+        "general_effective_date": "2026-11-20",
+        "immediate_scope": ["artículo 5 parágrafo 1", "artículo 5 parágrafo 2"],
+        "principle": "partial_immediate_only_before_general_effective_date",
     }
 
     wrapped_builder = _install_m33_docx_presentation_policy(registry.core)
