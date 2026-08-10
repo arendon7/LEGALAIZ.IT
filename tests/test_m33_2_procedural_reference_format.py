@@ -77,7 +77,7 @@ class ProceduralReferenceFormatM332Tests(unittest.TestCase):
             self.assertEqual(result["font"], "Book Antiqua")
             self.assertEqual(result["paragraph_after_pt"], 4)
             self.assertEqual(result["numbered_after_pt"], 2)
-            self.assertEqual(result["linked_signature_context"], 0)
+            self.assertEqual(result["linked_signature_context"], 3)
 
             document = Document(path)
             nonempty = [p for p in document.paragraphs if p.text.strip()]
