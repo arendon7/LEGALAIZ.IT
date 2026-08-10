@@ -38,14 +38,9 @@ artifacts/
 output/
 rendered/
 
-# Graphify: conservar en Git solo el snapshot compacto seleccionado por CI
-graphify-out/cache/
-graphify-out/obsidian/
-graphify-out/converted/
-graphify-out/cost.json
-graphify-out/*.html
-graphify-out/*.svg
-graphify-out/*.graphml
+# Graphify: el grafo completo y vault son artifacts; Git conserva solo el índice compacto
+graphify-out/*
+!graphify-out/CHATGPT_GRAPH_INDEX.md
 
 # Bases de datos y registros
 *.log
