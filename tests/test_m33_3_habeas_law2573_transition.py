@@ -4,6 +4,7 @@ from types import ModuleType
 import unittest
 
 from m33_3_habeas_law2573_transition import (
+    SPECIFIC_PROTOCOL_REVIEW_STATUS,
     TRANSITION_STANDARD,
     enforce_law2573_transition,
     finalize_law2573_transition,
@@ -23,6 +24,18 @@ class HabeasLaw2573TransitionM333Tests(unittest.TestCase):
     def calculation(self) -> dict:
         return {"reference_date": "2026-08-07", "issues": []}
 
+    def complete_official_instrument(self, answers: dict) -> dict:
+        answers = dict(answers)
+        answers.update({
+            "identity_theft_security_noncompliance_verified": "Sí",
+            "identity_theft_security_noncompliance_support": "Completo",
+            "identity_theft_security_instrument_authority": "Superintendencia Financiera de Colombia",
+            "identity_theft_security_instrument_reference": "Circular Básica Jurídica, Parte I, Título II, Capítulo I",
+            "identity_theft_security_requirement_tested": "La entidad debía aplicar el mecanismo fuerte de autenticación exigible para la operación evaluada.",
+            "identity_theft_security_instrument_applicable": "Sí",
+        })
+        return answers
+
     def test_august_2026_only_immediate_paragraphs_are_active(self):
         result = enforce_law2573_transition(self.answers(), self.calculation())
         self.assertEqual(result["law2573_transition_standard"], TRANSITION_STANDARD)
@@ -31,15 +44,34 @@ class HabeasLaw2573TransitionM333Tests(unittest.TestCase):
         self.assertEqual(result["law2573_article5_paragraph2_status"], "not_proven_security_noncompliance")
         self.assertEqual(result["law2573_articles_6_to_10_status"], "deferred_until_2026-11-20")
         self.assertTrue(result["law2573_human_review_required"])
+        self.assertEqual(result["law2573_specific_protocol_review_status"], SPECIFIC_PROTOCOL_REVIEW_STATUS)
+        self.assertIn("no prueba inexistencia", result["law2573_specific_protocol_review_limitation"])
+        self.assertTrue(result["law2573_existing_security_instruments_may_apply"])
 
-    def test_paragraph2_candidate_requires_correction_verified_breach_and_complete_support(self):
+    def test_complete_support_without_official_instrument_stays_blocked(self):
         answers = self.answers()
         answers["identity_theft_security_noncompliance_verified"] = "Sí"
         answers["identity_theft_security_noncompliance_support"] = "Completo"
         result = enforce_law2573_transition(answers, self.calculation())
+        self.assertEqual(result["law2573_article5_paragraph2_status"], "not_proven_official_security_instrument")
+        self.assertFalse(result["law2573_security_instrument_individualized"])
+        self.assertTrue(result["law2573_human_review_required"])
+
+    def test_paragraph2_candidate_requires_complete_support_and_individualized_official_instrument(self):
+        answers = self.complete_official_instrument(self.answers())
+        result = enforce_law2573_transition(answers, self.calculation())
         self.assertEqual(result["law2573_article5_paragraph2_status"], "preliminary_candidate_human_review_required")
+        self.assertTrue(result["law2573_security_instrument_individualized"])
+        self.assertEqual(result["law2573_security_instrument_authority"], "Superintendencia Financiera de Colombia")
         self.assertTrue(result["law2573_human_review_required"])
         self.assertTrue(any("revisión jurídica humana" in reason for reason in result["law2573_transition_reasons"]))
+
+    def test_instrument_explicitly_not_applicable_blocks_paragraph2(self):
+        answers = self.complete_official_instrument(self.answers())
+        answers["identity_theft_security_instrument_applicable"] = "No"
+        result = enforce_law2573_transition(answers, self.calculation())
+        self.assertEqual(result["law2573_article5_paragraph2_status"], "not_applicable_security_instrument")
+        self.assertFalse(result["law2573_security_instrument_individualized"])
 
     def test_alleged_fraud_alone_never_activates_paragraph2(self):
         answers = self.answers()
@@ -49,15 +81,13 @@ class HabeasLaw2573TransitionM333Tests(unittest.TestCase):
         self.assertNotEqual(result["law2573_article5_paragraph2_status"], "preliminary_candidate_human_review_required")
 
     def test_no_correction_request_blocks_paragraph2_candidate(self):
-        answers = self.answers(); answers["identity_theft_correction_requested"] = "No"
-        answers["identity_theft_security_noncompliance_verified"] = "Sí"
-        answers["identity_theft_security_noncompliance_support"] = "Completo"
+        answers = self.complete_official_instrument(self.answers())
+        answers["identity_theft_correction_requested"] = "No"
         result = enforce_law2573_transition(answers, self.calculation())
         self.assertEqual(result["law2573_article5_paragraph2_status"], "not_applicable_without_correction_request")
 
     def test_verified_breach_with_partial_support_fails_closed(self):
-        answers = self.answers()
-        answers["identity_theft_security_noncompliance_verified"] = "Sí"
+        answers = self.complete_official_instrument(self.answers())
         answers["identity_theft_security_noncompliance_support"] = "Parcial"
         result = enforce_law2573_transition(answers, self.calculation())
         self.assertEqual(result["law2573_article5_paragraph2_status"], "not_proven_security_support")
@@ -72,7 +102,7 @@ class HabeasLaw2573TransitionM333Tests(unittest.TestCase):
 
     def test_general_effective_date_changes_phase_but_not_to_automatic_relief(self):
         calculation = {"reference_date": "2026-11-20"}
-        result = enforce_law2573_transition(self.answers(), calculation)
+        result = enforce_law2573_transition(self.complete_official_instrument(self.answers()), calculation)
         self.assertEqual(result["law2573_transition_phase"], "general_regime_effective")
         self.assertEqual(result["law2573_articles_6_to_10_status"], "general_regime_effective_article_by_article_review")
         self.assertNotEqual(result["law2573_article5_paragraph2_status"], "preliminary_candidate_human_review_required")
@@ -96,6 +126,23 @@ class HabeasLaw2573TransitionM333Tests(unittest.TestCase):
         self.assertIn("parágrafos 1 y 2 del artículo 5", text)
         self.assertIn("artículos 6 a 10", text)
         self.assertIn("no están demostrados todos los presupuestos", text)
+        self.assertIn("no se ha incorporado al expediente un acto específico", text)
+        self.assertIn("no prueba su inexistencia", text)
+        self.assertIn("oficiales preexistentes", text)
+
+    def test_candidate_protocol_names_instrument_but_keeps_human_review(self):
+        answers = self.complete_official_instrument(self.answers())
+        calculation = enforce_law2573_transition(answers, self.calculation())
+        specs = [{
+            "kind": "identity_theft_protocol",
+            "sections": [{"heading": "RÉGIMEN JURÍDICO Y CONTROL TEMPORAL", "numbered": ["Base vigente."]}],
+        }]
+        finalized = finalize_law2573_transition(specs, answers, {"calculation": calculation})
+        text = " ".join(finalized[0]["sections"][0]["numbered"])
+        self.assertIn("Superintendencia Financiera de Colombia", text)
+        self.assertIn("Circular Básica Jurídica", text)
+        self.assertIn("revisión jurídica humana", text)
+        self.assertNotIn("queda demostrado", text.casefold())
 
     def test_runtime_installer_is_idempotent(self):
         module = ModuleType("fake_law2573_core")
