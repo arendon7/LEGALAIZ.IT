@@ -7,13 +7,11 @@ mediante nuevas versiones. Las oleadas segunda y tercera conservan los motores
 históricos y utilizan un único compositor transversal M33.0 para presentar sus
 salidas, sin cambiar la API consumida por los handlers M32.x.
 
-M33.3 añade tres controles sustantivos acotados:
-- un calendario nacional colombiano auditable para cómputos compatibles en días
-  hábiles;
-- una compuerta fail-closed para no confundir respuesta tardía con efecto favorable
-  del silencio en hábeas data; y
-- una pregunta condicional que individualiza si el reclamo previo correspondía
-  realmente a la obligación o producto desconocido por posible suplantación.
+M33.3 añade controles sustantivos acotados:
+- calendario nacional colombiano auditable para cómputos compatibles en días hábiles;
+- compuerta fail-closed para silencio favorable en hábeas data;
+- compuerta probatoria para permanencia/caducidad del dato negativo; y
+- overlay condicional de entrevista para individualizar la ruta de suplantación.
 
 Los símbolos/API históricos permanecen disponibles para comparación y regresión.
 """
@@ -31,6 +29,7 @@ from co_em_004_governance_v248 import CoEm004GovernanceV248
 from co_la_002_document_factory_v240 import CoLa002DocumentFactoryV240
 from co_la_002_governance_v240 import CoLa002GovernanceV240
 from m33_3_business_day_overrides import install_m33_3_business_day_overrides
+from m33_3_habeas_permanence_guard import install_m33_3_habeas_permanence_guard
 from m33_3_habeas_silence_guard import install_m33_3_habeas_silence_guard
 from m33_3_interview_overrides import install_m33_3_interview_overrides
 from m33_wave3_runtime import document_specs_m33_all
@@ -48,14 +47,6 @@ def _sections_externalize_default_control(sections: Any) -> bool:
 
 
 def _install_m33_docx_presentation_policy(core_module: ModuleType):
-    """Respeta la separación cliente/gobierno sin tocar la release gate instalada.
-
-    `core_v11.generate_case_documents` conserva su API histórica y solo entrega las
-    secciones al builder. Las composiciones M33.0 que externalizan controles dejan un
-    marcador privado no renderizable; esta envoltura lo traduce al argumento ya
-    soportado `append_default_control=False`. Los demás documentos mantienen el
-    comportamiento previo.
-    """
     current = getattr(core_module, "build_docx")
     if getattr(current, "_m33_presentation_policy", False):
         return current
@@ -77,19 +68,14 @@ def _install_m33_docx_presentation_policy(core_module: ModuleType):
 
 def _build(registry: ModuleType) -> dict[str, Any]:
     root = registry.core.ROOT
-
     services_factory = CoEm003DocumentFactoryV245(root, registry.COEM003_V244)
     services_governance = CoEm003GovernanceV245(root, services_factory)
-
     nda_factory = CoEm004DocumentFactoryV248(root, registry.COEM004_V247)
     nda_governance = CoEm004GovernanceV248(root, nda_factory)
-
     lease_factory = CoAr001DocumentFactoryV251(root, registry.COAR001_V250)
     lease_governance = CoAr001GovernanceV251(root, lease_factory)
-
     employment_factory = CoLa002DocumentFactoryV240(root, registry.COLA002_V236)
     employment_governance = CoLa002GovernanceV240(root, employment_factory)
-
     return {
         "COEM003_FACTORY_V245": services_factory,
         "COEM003_GOVERNANCE_V245": services_governance,
@@ -100,8 +86,6 @@ def _build(registry: ModuleType) -> dict[str, Any]:
         "COLA002_FACTORY_V240": employment_factory,
         "COLA002_GOVERNANCE_M33": employment_governance,
         "DOCUMENT_SPECS_M33": document_specs_m33_all,
-
-        # Alias de compatibilidad consumidos por endpoints M32.x.
         "COEM003_FACTORY_V244": services_factory,
         "COEM003_GOVERNANCE_V244": services_governance,
         "COEM004_FACTORY_V247": nda_factory,
@@ -118,14 +102,12 @@ def activate_m33_contract_factories(
     application_services: ModuleType | None = None,
     target_namespace: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Activa una única vez las oleadas M33 y propaga aliases compatibles."""
     global _ACTIVE, _CACHE
 
-    # Los tres controles se instalan antes de exponer servicios activos. La entrevista
-    # se muta en memoria sobre el mismo diccionario compartido que sirve /api/products.
     interview_status = install_m33_3_interview_overrides(registry.core)
     calendar_status = install_m33_3_business_day_overrides(registry.core)
     silence_guard_status = install_m33_3_habeas_silence_guard(registry.core)
+    permanence_guard_status = install_m33_3_habeas_permanence_guard(registry.core)
 
     if not _ACTIVE:
         _CACHE = _build(registry)
@@ -136,6 +118,15 @@ def activate_m33_contract_factories(
         "installed": silence_guard_status,
         "scope": "identity_theft_claim_only",
         "authority": "Resolución SIC 107492 del 17 de diciembre de 2025",
+    }
+    _CACHE["M33_3_HABEAS_PERMANENCE_GUARD"] = {
+        "installed": permanence_guard_status,
+        "ruleset_verified_at": "2026-08-10",
+        "basis": [
+            "Ley 1266 de 2008, artículo 13",
+            "Ley 2157 de 2021, artículo 3",
+            "Resolución SIC 28170 de 2022, numeral 1.6",
+        ],
     }
 
     wrapped_builder = _install_m33_docx_presentation_policy(registry.core)
