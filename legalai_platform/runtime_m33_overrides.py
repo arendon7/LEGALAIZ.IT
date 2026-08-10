@@ -1,11 +1,16 @@
 from __future__ import annotations
 
-"""Activación acotada de la Fábrica Documental M33.0.
+"""Activación acotada de la Fábrica Documental M33.0/M33.3.
 
 La primera oleada sustituye únicamente las fábricas principales de cuatro contratos
 mediante nuevas versiones. Las oleadas segunda y tercera conservan los motores
 históricos y utilizan un único compositor transversal M33.0 para presentar sus
 salidas, sin cambiar la API consumida por los handlers M32.x.
+
+M33.3 añade un override acotado para cómputos en días hábiles nacionales: sustituye
+el primitivo lunes-viernes de los motores compatibles por un calendario colombiano
+auditable, sin alterar el número de días configurado ni pretender modelar calendarios
+judiciales o cierres especiales.
 
 Los símbolos/API históricos permanecen disponibles para comparación y regresión.
 """
@@ -22,6 +27,7 @@ from co_em_004_document_factory_v248 import CoEm004DocumentFactoryV248
 from co_em_004_governance_v248 import CoEm004GovernanceV248
 from co_la_002_document_factory_v240 import CoLa002DocumentFactoryV240
 from co_la_002_governance_v240 import CoLa002GovernanceV240
+from m33_3_business_day_overrides import install_m33_3_business_day_overrides
 from m33_wave3_runtime import document_specs_m33_all
 
 
@@ -107,17 +113,20 @@ def activate_m33_contract_factories(
     application_services: ModuleType | None = None,
     target_namespace: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Activa una única vez las tres oleadas M33.0 y propaga alias compatibles.
-
-    Las fábricas contractuales se versionan de forma independiente. Para los demás
-    productos se rebindea ``document_specs`` al único agregador M33.0, que enruta
-    cada código a su compositor correspondiente y conserva el comportamiento
-    histórico para productos externos y compuertas que no deben recomponerse.
-    """
+    """Activa una única vez las oleadas M33 y propaga aliases compatibles."""
     global _ACTIVE, _CACHE
+
+    # Se instala antes de exponer los servicios activos. `diagnose` conserva su API,
+    # pero sus referencias globales a los calculadores compatibles quedan enlazadas
+    # a las versiones auditadas M33.3.
+    calendar_status = install_m33_3_business_day_overrides(registry.core)
+
     if not _ACTIVE:
         _CACHE = _build(registry)
+        _CACHE["M33_3_BUSINESS_CALENDAR"] = calendar_status
         _ACTIVE = True
+    else:
+        _CACHE["M33_3_BUSINESS_CALENDAR"] = calendar_status
 
     wrapped_builder = _install_m33_docx_presentation_policy(registry.core)
     registry.core.document_specs = document_specs_m33_all
