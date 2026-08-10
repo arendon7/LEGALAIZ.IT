@@ -82,13 +82,14 @@ _EXCLUDED_INSTRUMENT_TOKENS = (
     "índice probatorio",
 )
 
-# Estas cinco piezas fueron identificadas mediante rasterización integral como
+# Estas seis piezas fueron identificadas mediante rasterización integral como
 # cierres de alta densidad donde la firma podía quedar sola o casi sola en la última
 # página. No se comprimen: se mantiene unido el último bloque sustantivo con la firma
 # para redistribuir la paginación sin reducir fuente, márgenes ni contenido.
 _DENSE_SIGNATURE_CLOSURES = (
     ("CO-CD-001", "reclamación de hábeas data financiero"),
     ("CO-CD-001", "solicitud de intervención administrativa por hábeas data financiero"),
+    ("CO-CD-003", "reclamación directa de garantía legal"),
     ("CO-SA-001", "solicitud reservada de copia de historia clínica"),
     ("CO-SA-001", "reiteración y requerimiento de solución material en salud"),
     ("CO-TR-001", "petición de expediente técnico, autorización y soportes de operación sast"),
@@ -310,7 +311,7 @@ def _format_tables(document: Document) -> int:
 
 
 def _balance_dense_signature_closure(document: Document, *, product_code: str, title: str) -> int:
-    """Mantiene contexto jurídico junto a la firma en cinco cierres densos conocidos."""
+    """Mantiene contexto jurídico junto a la firma en seis cierres densos conocidos."""
     if not _uses_dense_signature_closure(product_code, title):
         return 0
     paragraphs = document.paragraphs
