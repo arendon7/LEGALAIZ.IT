@@ -7,10 +7,12 @@ mediante nuevas versiones. Las oleadas segunda y tercera conservan los motores
 históricos y utilizan un único compositor transversal M33.0 para presentar sus
 salidas, sin cambiar la API consumida por los handlers M32.x.
 
-M33.3 añade un override acotado para cómputos en días hábiles nacionales: sustituye
-el primitivo lunes-viernes de los motores compatibles por un calendario colombiano
-auditable, sin alterar el número de días configurado ni pretender modelar calendarios
-judiciales o cierres especiales.
+M33.3 añade dos controles sustantivos acotados:
+- un calendario nacional colombiano auditable para cómputos compatibles en días
+  hábiles; y
+- una compuerta fail-closed para no confundir respuesta tardía con efecto favorable
+  del silencio en hábeas data cuando la controversia de suplantación no está
+  individualizada.
 
 Los símbolos/API históricos permanecen disponibles para comparación y regresión.
 """
@@ -28,6 +30,7 @@ from co_em_004_governance_v248 import CoEm004GovernanceV248
 from co_la_002_document_factory_v240 import CoLa002DocumentFactoryV240
 from co_la_002_governance_v240 import CoLa002GovernanceV240
 from m33_3_business_day_overrides import install_m33_3_business_day_overrides
+from m33_3_habeas_silence_guard import install_m33_3_habeas_silence_guard
 from m33_wave3_runtime import document_specs_m33_all
 
 
@@ -59,7 +62,7 @@ def _install_m33_docx_presentation_policy(core_module: ModuleType):
     def wrapped(*args, **kwargs):
         sections = kwargs.get("sections")
         if sections is None and len(args) >= 5:
-            sections = args[4]
+            sections = call_args[4] if (call_args := list(args)) else None
         if "append_default_control" not in kwargs and _sections_externalize_default_control(sections):
             kwargs["append_default_control"] = False
         return current(*args, **kwargs)
@@ -117,16 +120,19 @@ def activate_m33_contract_factories(
     global _ACTIVE, _CACHE
 
     # Se instala antes de exponer los servicios activos. `diagnose` conserva su API,
-    # pero sus referencias globales a los calculadores compatibles quedan enlazadas
-    # a las versiones auditadas M33.3.
+    # pero sus referencias globales quedan enlazadas a las compuertas auditadas M33.3.
     calendar_status = install_m33_3_business_day_overrides(registry.core)
+    silence_guard_status = install_m33_3_habeas_silence_guard(registry.core)
 
     if not _ACTIVE:
         _CACHE = _build(registry)
-        _CACHE["M33_3_BUSINESS_CALENDAR"] = calendar_status
         _ACTIVE = True
-    else:
-        _CACHE["M33_3_BUSINESS_CALENDAR"] = calendar_status
+    _CACHE["M33_3_BUSINESS_CALENDAR"] = calendar_status
+    _CACHE["M33_3_HABEAS_SILENCE_GUARD"] = {
+        "installed": silence_guard_status,
+        "scope": "identity_theft_claim_only",
+        "authority": "Resolución SIC 107492 del 17 de diciembre de 2025",
+    }
 
     wrapped_builder = _install_m33_docx_presentation_policy(registry.core)
     registry.core.document_specs = document_specs_m33_all
