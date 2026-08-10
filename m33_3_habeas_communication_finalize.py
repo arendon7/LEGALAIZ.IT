@@ -72,10 +72,10 @@ def _append_unique(paragraphs: list, text: str | None) -> list:
 def _evidence_status(calculation: dict) -> str:
     status = str(calculation.get("communication_status") or "not_proven")
     if status == "preliminarily_supported":
-        return "Envío preliminarmente soportado; conservar original y trazabilidad"
+        return "Envío preliminarmente soportado"
     if status == "noncompliance_preliminary":
-        return "Posible incumplimiento; requiere cotejo del soporte y consecuencia aplicable"
-    return "Envío no acreditado suficientemente; solicitar soporte completo"
+        return "Posible incumplimiento; cotejo jurídico"
+    return "Envío no acreditado; solicitar soporte"
 
 
 def finalize_habeas_communication_m33_3(specs: list[dict], answers: dict, result: dict) -> list[dict]:
