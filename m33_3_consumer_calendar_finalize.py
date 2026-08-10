@@ -31,32 +31,29 @@ def _date_es(value: Any) -> str:
 def _holiday_summary(entry: dict) -> str:
     skipped = entry.get("skipped_holidays") if isinstance(entry, dict) else []
     if not skipped:
-        return "Sin festivos nacionales omitidos en este tramo"
+        return "sin festivos nacionales omitidos"
     values: list[str] = []
     for item in skipped:
         if not isinstance(item, dict):
             continue
         when = _date_es(item.get("date"))
         name = str(item.get("name") or "Festivo nacional")
-        basis = str(item.get("basis") or "Base jurídica registrada")
-        values.append(f"{when}: {name} ({basis})")
-    return "; ".join(values) if values else "Festivo nacional omitido; ver trazabilidad interna"
+        values.append(f"{when}: {name}")
+    return "; ".join(values) if values else "festivo nacional omitido registrado internamente"
 
 
-def _audit_table(calculation: dict) -> list[list[str]]:
-    rows = [["Cómputo", "Fecha inicial", "Días hábiles", "Resultado y festivos omitidos"]]
+def _audit_summary(calculation: dict) -> str:
+    values: list[str] = []
     for index, entry in enumerate(calculation.get("business_day_calculations") or [], start=1):
         if not isinstance(entry, dict):
             continue
-        rows.append([
-            f"#{entry.get('sequence') or index}",
-            _date_es(entry.get("start_date")),
-            str(entry.get("business_days") if entry.get("business_days") is not None else "Por verificar"),
-            f"Vence {_date_es(entry.get('due_date'))}. {_holiday_summary(entry)}.",
-        ])
-    if len(rows) == 1:
-        rows.append(["Sin suma hábil registrada", "—", "—", "La salida no debe presentarse como fecha nacional auditada."])
-    return rows
+        sequence = entry.get("sequence") or index
+        values.append(
+            f"#{sequence}: {_date_es(entry.get('start_date'))} + "
+            f"{entry.get('business_days')} días hábiles = {_date_es(entry.get('due_date'))}; "
+            f"{_holiday_summary(entry)}"
+        )
+    return " | ".join(values) if values else "No existe una suma hábil trazada; no usar la fecha como calendario nacional auditado."
 
 
 def _replace_stale_calendar_phrases(value: Any) -> Any:
@@ -90,36 +87,20 @@ def _replace_stale_calendar_phrases(value: Any) -> Any:
 
 def _traceability_section(calculation: dict) -> dict:
     basis = calculation.get("business_day_calendar_basis") or []
-    limitations = calculation.get("business_day_calendar_limitations") or []
     return {
         "heading": "IV. TRAZABILIDAD DEL CÓMPUTO NACIONAL",
+        "paragraphs": [
+            "La trazabilidad siguiente resume el cálculo visible sin sustituir la evidencia estructurada conservada por el motor. La fecha continúa siendo un control jurídico sujeto a recepción efectiva, cierres, suspensiones, reglas sectoriales y, cuando corresponda, calendario judicial."
+        ],
         "table": [
             ["Control", "Valor"],
-            ["Motor de calendario", str(calculation.get("business_day_calendar_engine") or "M33.3")],
-            ["Alcance", str(calculation.get("business_day_calendar_scope") or "calendario nacional colombiano")],
-            ["Ruleset verificado", _date_es(calculation.get("business_day_calendar_verified_at"))],
-            ["Regla de conteo", "Fecha inicial excluida; se cuentan días hábiles posteriores"],
+            ["Ruleset", f"Calendario nacional M33.3 · verificado {_date_es(calculation.get('business_day_calendar_verified_at'))}"],
             ["Base jurídica", "; ".join(str(item) for item in basis) or "Requiere verificación"],
+            ["Regla de conteo", "Fecha inicial excluida; se cuentan días hábiles posteriores"],
+            ["Cómputos registrados", _audit_summary(calculation)],
+            ["Límites", "No cubre vacaciones judiciales, cierres extraordinarios, suspensiones, reglas sectoriales especiales ni festivos territoriales."],
         ],
-        "paragraphs": [
-            "La tabla siguiente permite reconstruir las sumas de días hábiles efectivamente ejecutadas por el motor. La fecha sigue siendo un control jurídico sujeto a las limitaciones expresas del calendario."
-        ],
-        "tables": [],
-        "numbered": [str(item) for item in limitations],
-        "audit_table": _audit_table(calculation),
     }
-
-
-def _materialize_traceability(section: dict) -> list[dict]:
-    """Divide la trazabilidad en bloques soportados por el esquema documental."""
-    audit_table = section.pop("audit_table", None)
-    sections = [section]
-    if audit_table:
-        sections.append({
-            "heading": "V. REGISTRO DE SUMAS HÁBILES",
-            "table": audit_table,
-        })
-    return sections
 
 
 def finalize_consumer_calendar_m33_3(specs: list[dict], result: dict) -> list[dict]:
@@ -144,7 +125,7 @@ def finalize_consumer_calendar_m33_3(specs: list[dict], result: dict) -> list[di
                 ]
         headings = {str(section.get("heading") or "") for section in sections if isinstance(section, dict)}
         if "IV. TRAZABILIDAD DEL CÓMPUTO NACIONAL" not in headings:
-            sections.extend(_materialize_traceability(_traceability_section(calculation)))
+            sections.append(_traceability_section(calculation))
         spec["sections"] = sections
         spec["calendar_standard"] = "M33.3"
         spec["calendar_scope"] = calculation.get("business_day_calendar_scope")
