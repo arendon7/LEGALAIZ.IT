@@ -9,9 +9,9 @@ from typing import Any
 COMMUNICATION_STANDARD = "M33.3-habeas-prior-communication-v1"
 
 _STATUS_LABELS = {
-    "preliminarily_supported": "Envío preliminarmente soportado",
-    "not_proven": "Cumplimiento no acreditado con la evidencia disponible",
-    "noncompliance_preliminary": "Posible incumplimiento que exige validación jurídica",
+    "preliminarily_supported": "envío preliminarmente soportado",
+    "not_proven": "cumplimiento no acreditado con la evidencia disponible",
+    "noncompliance_preliminary": "posible incumplimiento sujeto a validación jurídica",
 }
 
 
@@ -45,10 +45,9 @@ def _summary(calculation: dict) -> str:
     channel = str(calculation.get("communication_channel") or "canal por verificar")
     received = str(calculation.get("communication_received_status") or "No informado")
     return (
-        f"Control M33.3 de comunicación previa: {label}. Envío de la última comunicación: {send_date}; "
-        f"reporte negativo: {report_date}; intervalo: {lead_text}; canal: {channel}; recepción declarada: "
-        f"{received}. La recepción es un hecho separado: por sí sola no sustituye ni invalida la prueba del "
-        "envío, que debe individualizar fecha, destino, canal y contenido aplicables."
+        f"Control M33.3 de comunicación previa: {label}. Envío: {send_date}; reporte: {report_date}; "
+        f"intervalo: {lead_text}; canal: {channel}; recepción declarada: {received}. La recepción y el envío "
+        "son hechos distintos; el expediente debe conservar prueba individualizable de envío, destino y contenido."
     )
 
 
@@ -58,9 +57,8 @@ def _small_note(calculation: dict) -> str | None:
     first_date = _date_es(calculation.get("communication_first_date"))
     last_date = _date_es(calculation.get("prior_communication_date"))
     return (
-        "Regla especial de pequeña cuantía: el expediente debe acreditar al menos dos comunicaciones en "
-        f"días diferentes. Primera fecha modelada: {first_date}; última fecha modelada: {last_date}. El "
-        "intervalo de veinte días calendario se controla desde la última comunicación hasta el reporte."
+        "Pequeña cuantía: verificar al menos dos comunicaciones en días diferentes. "
+        f"Primera: {first_date}; última: {last_date}; los veinte días se controlan desde la última hasta el reporte."
     )
 
 
@@ -100,15 +98,16 @@ def finalize_habeas_communication_m33_3(specs: list[dict], answers: dict, result
                 continue
             heading = str(section.get("heading") or "").casefold()
 
+            # La reclamación sí debe explicar el control jurídico aplicado al caso.
             if kind == "habeas_claim" and "comunicación previa y permanencia" in heading:
                 section["paragraphs"] = _append_unique(section.get("paragraphs") or [], summary)
                 section["paragraphs"] = _append_unique(section.get("paragraphs") or [], small_note)
                 if calculation.get("communication_status") == "noncompliance_preliminary":
                     section["paragraphs"] = _append_unique(section.get("paragraphs") or [], consequence)
 
-            if kind == "habeas_consultation" and "información solicitada a la fuente" in heading:
-                section["paragraphs"] = _append_unique(section.get("paragraphs") or [], summary)
-                section["paragraphs"] = _append_unique(section.get("paragraphs") or [], small_note)
+            # La consulta ya solicita texto íntegro, fecha, prueba de envío, destinatario,
+            # canal y dirección. Repetir aquí la síntesis jurídica crea una página de firma
+            # residual sin agregar una petición nueva; por eso solo conserva metadatos M33.3.
 
             table = section.get("table")
             if kind == "habeas_evidence_matrix" and isinstance(table, list):
