@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-"""Estándar documental jurídico transversal M33.0 de LegalAIZ.it.
+"""Estándar documental jurídico transversal M33.2 de LegalAIZ.it.
 
 Este módulo no contiene reglas sustantivas de un producto concreto. Define las
 invariantes de presentación y QA que todas las salidas profesionales deben
@@ -19,7 +19,7 @@ TITLE_SIZE_HALF_POINTS = 24  # 12 pt
 HEADING_SIZE_HALF_POINTS = 22  # 11 pt
 MARGIN_TWIPS = 1417  # 2,5 cm
 HEADER_FOOTER_TWIPS = 567  # ~1 cm
-LINE_SPACING_TWIPS = 240  # interlineado sencillo/compacto jurídico
+LINE_SPACING_TWIPS = 240  # sencillo/compacto jurídico
 PARAGRAPH_AFTER_TWIPS = 80  # 4 pt
 
 SENTINEL_PATTERNS = (
@@ -77,6 +77,7 @@ def find_sentinels(text: str) -> list[str]:
 
 
 def validate_rendered_sections(sections: list[dict], *, product_code: str | None = None) -> dict:
+    """QA semántico mínimo previo a empaquetar el DOCX."""
     errors: list[dict] = []
     warnings: list[dict] = []
     headings: set[str] = set()
@@ -113,11 +114,7 @@ def validate_rendered_sections(sections: list[dict], *, product_code: str | None
                 [str(x) for x in section.get("bullets") or []]
             ).strip()
             if len(substantive) < 160:
-                warnings.append({
-                    "code": "THIN-CLAUSE",
-                    "section": index,
-                    "detail": f"{len(substantive)} caracteres sustantivos",
-                })
+                warnings.append({"code": "THIN-CLAUSE", "section": index, "detail": f"{len(substantive)} caracteres sustantivos"})
 
         if section_type == "annex" or heading.upper().startswith("ANEXO"):
             annex_count += 1
@@ -152,6 +149,7 @@ def validate_rendered_sections(sections: list[dict], *, product_code: str | None
 
 
 def audit_docx_legal_standard(path: Path) -> dict:
+    """Verifica en OOXML las invariantes formales aprobadas para M33.2."""
     path = Path(path)
     findings: list[dict] = []
     try:
@@ -183,7 +181,7 @@ def audit_docx_legal_standard(path: Path) -> dict:
             if FONT_NAME not in styles or 'w:sz w:val="22"' not in styles:
                 findings.append({"severity": "error", "code": "LEGAL-FONT-STYLE", "detail": "Normal debe usar Book Antiqua 11 pt."})
             if "Arial" in styles or "Times New Roman" in styles:
-                findings.append({"severity": "error", "code": "LEGACY-FONT-STYLE", "detail": "El estilo base contiene una tipografía jurídica anterior."})
+                findings.append({"severity": "error", "code": "LEGACY-FONT-STYLE", "detail": "El estilo base conserva una tipografía anterior."})
 
             margin_fragment = f'w:top="{MARGIN_TWIPS}" w:right="{MARGIN_TWIPS}" w:bottom="{MARGIN_TWIPS}" w:left="{MARGIN_TWIPS}"'
             if margin_fragment not in document:
