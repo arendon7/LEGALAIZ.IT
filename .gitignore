@@ -38,6 +38,9 @@ artifacts/
 output/
 rendered/
 
+# Graphify: snapshots regenerables viven en context/graphify-snapshot y artifacts
+graphify-out/
+
 # Bases de datos y registros
 *.log
 *.sqlite

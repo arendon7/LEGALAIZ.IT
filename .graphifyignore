@@ -1,0 +1,12 @@
+graphify-out/
+.git/
+node_modules/
+.venv/
+venv/
+runtime/
+audit/
+generated/
+uploads/
+artifacts/
+output/
+rendered/
