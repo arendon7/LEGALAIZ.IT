@@ -14,6 +14,14 @@ from legalai_platform.document_release_gate import install_docx_release_gate
 
 install_docx_release_gate()
 
+# M33.2 añade, después de la compuerta técnica, la capa editorial específica para
+# peticiones, reclamaciones y escritos formales. El wrapper vuelve a ejecutar el
+# preflight sobre el DOCX ya formateado para que el hash corresponda al archivo
+# exacto que revisan Jurídico y QA.
+from m33_2_procedural_reference_format import install_m33_2_procedural_format_gate
+
+install_m33_2_procedural_format_gate()
+
 from core_v11 import *  # noqa: F401,F403,E402
 import core_v11 as core  # noqa: E402
 from http.server import ThreadingHTTPServer
