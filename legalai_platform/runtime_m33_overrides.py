@@ -7,12 +7,13 @@ mediante nuevas versiones. Las oleadas segunda y tercera conservan los motores
 históricos y utilizan un único compositor transversal M33.0 para presentar sus
 salidas, sin cambiar la API consumida por los handlers M32.x.
 
-M33.3 añade dos controles sustantivos acotados:
+M33.3 añade tres controles sustantivos acotados:
 - un calendario nacional colombiano auditable para cómputos compatibles en días
-  hábiles; y
+  hábiles;
 - una compuerta fail-closed para no confundir respuesta tardía con efecto favorable
-  del silencio en hábeas data cuando la controversia de suplantación no está
-  individualizada.
+  del silencio en hábeas data; y
+- una pregunta condicional que individualiza si el reclamo previo correspondía
+  realmente a la obligación o producto desconocido por posible suplantación.
 
 Los símbolos/API históricos permanecen disponibles para comparación y regresión.
 """
@@ -31,6 +32,7 @@ from co_la_002_document_factory_v240 import CoLa002DocumentFactoryV240
 from co_la_002_governance_v240 import CoLa002GovernanceV240
 from m33_3_business_day_overrides import install_m33_3_business_day_overrides
 from m33_3_habeas_silence_guard import install_m33_3_habeas_silence_guard
+from m33_3_interview_overrides import install_m33_3_interview_overrides
 from m33_wave3_runtime import document_specs_m33_all
 
 
@@ -119,14 +121,16 @@ def activate_m33_contract_factories(
     """Activa una única vez las oleadas M33 y propaga aliases compatibles."""
     global _ACTIVE, _CACHE
 
-    # Se instala antes de exponer los servicios activos. `diagnose` conserva su API,
-    # pero sus referencias globales quedan enlazadas a las compuertas auditadas M33.3.
+    # Los tres controles se instalan antes de exponer servicios activos. La entrevista
+    # se muta en memoria sobre el mismo diccionario compartido que sirve /api/products.
+    interview_status = install_m33_3_interview_overrides(registry.core)
     calendar_status = install_m33_3_business_day_overrides(registry.core)
     silence_guard_status = install_m33_3_habeas_silence_guard(registry.core)
 
     if not _ACTIVE:
         _CACHE = _build(registry)
         _ACTIVE = True
+    _CACHE["M33_3_INTERVIEW_OVERLAY"] = interview_status
     _CACHE["M33_3_BUSINESS_CALENDAR"] = calendar_status
     _CACHE["M33_3_HABEAS_SILENCE_GUARD"] = {
         "installed": silence_guard_status,
