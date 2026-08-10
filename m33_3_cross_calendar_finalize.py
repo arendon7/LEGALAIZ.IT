@@ -134,11 +134,14 @@ def finalize_health_calendar_m33_3(specs: list[dict], result: dict) -> list[dict
                         category = str(calculation.get("term_category") or "modalidad por verificar")
                         detail = f"{days} días hábiles · {category}" if days else category
                         row[2] = (
-                            f"Referencia subsidiaria M33.3 ({detail}); no sustituye el término sectorial "
-                            "de riesgo ni autoriza esperar su vencimiento."
+                            f"Referencia subsidiaria M33.3 ({detail}); no usar como término rector del "
+                            "reclamo sectorial, no sustituye el término de riesgo ni autoriza esperar su vencimiento."
                         )
                     else:
-                        row[2] = "No usar una fecha heredada sin reconstruir modalidad, recepción y calendario aplicable."
+                        row[2] = (
+                            "No usar como término rector del reclamo sectorial; no usar una fecha heredada "
+                            "sin reconstruir modalidad, recepción y calendario aplicable."
+                        )
                 section["table"] = table
         spec["sections"] = sections
         if audited:
