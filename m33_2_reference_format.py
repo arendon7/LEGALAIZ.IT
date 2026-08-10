@@ -11,7 +11,6 @@ rótulos de cláusula en línea y cuadro visible de firmas.
 
 from pathlib import Path
 import re
-from typing import Iterable
 
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -349,7 +348,9 @@ def _set_post_table_spacing(document: Document, table) -> None:
 
 
 def _normalize_styles(document: Document) -> None:
-    for style_name in ("Normal", "Title", "Heading 1", "Heading1"):
+    # `Heading1` era un style_id heredado. python-docx recomienda resolver por el
+    # nombre canónico del estilo para evitar advertencias y futuras incompatibilidades.
+    for style_name in ("Normal", "Title", "Heading 1"):
         try:
             style = document.styles[style_name]
         except KeyError:
