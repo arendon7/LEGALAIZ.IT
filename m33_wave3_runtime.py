@@ -3,10 +3,7 @@ from __future__ import annotations
 """Runtime M33.0 completo hasta M33.4 para trazabilidad normativa procedimental."""
 
 from m33_3_consumer_calendar_finalize import finalize_consumer_calendar_m33_3
-from m33_3_cross_calendar_finalize import (
-    finalize_habeas_calendar_m33_3,
-    finalize_health_calendar_m33_3,
-)
+from m33_3_cross_calendar_finalize import finalize_habeas_calendar_m33_3, finalize_health_calendar_m33_3
 from m33_3_habeas_communication_finalize import finalize_habeas_communication_m33_3
 from m33_3_habeas_law2573_transition import finalize_law2573_transition
 from m33_3_habeas_permanence_finalize import finalize_habeas_permanence_m33_3
@@ -15,6 +12,7 @@ from m33_4_debt_source_finalize import finalize_debt_sources_m33_4
 from m33_4_habeas_source_finalize import finalize_habeas_sources_m33_4
 from m33_4_health_source_finalize import finalize_health_sources_m33_4
 from m33_4_labor_source_finalize import finalize_labor_sources_m33_4
+from m33_4_sast_source_finalize import finalize_sast_sources_m33_4
 from m33_consumer_legal_finalize import finalize_consumer_specs
 from m33_consumer_release_polish import finalize_consumer_release_polish
 from m33_debt_layout_polish import finalize_debt_layout_polish
@@ -34,10 +32,7 @@ from m33_traffic_legal_finalize import finalize_traffic_specs
 from m33_traffic_release_polish import finalize_traffic_release_polish
 from m33_wave3_composition import WAVE3_CODES, document_specs_m33_wave3
 
-
-_HABEAS_CLIENT_SUBTITLE = (
-    "Hábeas data financiero · documento sujeto a verificación de hechos y soportes"
-)
+_HABEAS_CLIENT_SUBTITLE = "Hábeas data financiero · documento sujeto a verificación de hechos y soportes"
 
 
 def _polish_habeas_client_presentation(specs: list[dict]) -> list[dict]:
@@ -84,7 +79,8 @@ def document_specs_m33_all(case_id, code, answers, result, product, generated_at
     if code == "CO-TR-001":
         sast_specs = finalize_sast_specs(specs, answers, result)
         sast_specs = finalize_sast_compat_polish(sast_specs)
-        return finalize_sast_release_polish(sast_specs)
+        sast_specs = finalize_sast_release_polish(sast_specs)
+        return finalize_sast_sources_m33_4(sast_specs, answers, result)
     if code == "CO-TR-002":
         traffic_specs = finalize_traffic_specs(specs, answers, result)
         traffic_specs = finalize_traffic_release_polish(traffic_specs, answers)
