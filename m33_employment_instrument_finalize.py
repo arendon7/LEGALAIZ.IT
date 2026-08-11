@@ -1,17 +1,17 @@
 from __future__ import annotations
 
-"""Cierre estilístico del instrumento laboral CO-LA-002 M33.0/M33.4.
+"""Cierre estilístico del instrumento laboral CO-LA-002.
 
-No altera reglas ni módulos sustantivos. Corrige únicamente concordancia,
-contracciones y consistencia de términos definidos visibles. M33.4 incorpora antes
-de esta capa el manifiesto normativo auditable y mantiene su control fuera del
+No altera reglas por sí mismo. Consume primero la trazabilidad M33.4 y la revisión
+sustantiva vigente; después corrige únicamente concordancia, contracciones y
+consistencia de términos definidos visibles. Los controles internos siguen fuera del
 instrumento firmable.
 """
 
 from copy import deepcopy
 from typing import Any
 
-from m33_4_employment_source_finalize import compose_employment_m33_release
+from m33_employment_substantive_review import compose_employment_m33_substantive
 
 
 def _polish(value: Any) -> Any:
@@ -60,7 +60,7 @@ def _section(section: dict) -> dict:
 
 
 def compose_employment_m33_instrument(answers: dict) -> dict[str, Any]:
-    composition = deepcopy(compose_employment_m33_release(answers))
+    composition = deepcopy(compose_employment_m33_substantive(answers))
     composition["sections"] = [_section(item) for item in composition.get("sections") or []]
     composition.setdefault("maturity_answers", {})["employment_instrument_finalized"] = True
     return composition
