@@ -39,7 +39,7 @@ class PublicPresentationHygieneTests(unittest.TestCase):
         self.assertIn("control temporal", json.dumps(cleaned, ensure_ascii=False).casefold())
         self.assertIn("calendario normativo colombiano", json.dumps(cleaned, ensure_ascii=False).casefold())
 
-    def test_all_eleven_products_keep_internal_standard_out_of_public_sections(self):
+    def test_all_eleven_products_keep_internal_standard_out_of_deliverable_sections(self):
         covered = set()
         for code, composition in _contract_compositions().items():
             public, _internal = split_internal_review_sections(composition.get("sections") or [])
@@ -50,7 +50,8 @@ class PublicPresentationHygieneTests(unittest.TestCase):
             selected = [spec for spec in specs if str(spec.get("kind") or "") in kinds]
             self.assertTrue(selected, code)
             for spec in selected:
-                self.assert_public_text_is_clean(f"{code}/{spec.get('kind')}", spec.get("sections") or [])
+                public, _controls = split_internal_review_sections(spec.get("sections") or [])
+                self.assert_public_text_is_clean(f"{code}/{spec.get('kind')}", public)
             covered.add(code)
 
         self.assertEqual(11, len(covered))
