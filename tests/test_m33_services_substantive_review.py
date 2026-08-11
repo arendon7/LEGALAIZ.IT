@@ -71,8 +71,11 @@ class ServicesSubstantiveReviewTests(unittest.TestCase):
         self.assertIn("Ley 2024 de 2020", text)
         self.assertIn("treinta días calendario después de aceptación y factura válida", text)
         self.assertIn("Toda cesión deberá constar por escrito", text)
-        self.assertIn("terminación sin causa con preaviso de treinta días", text)
+        self.assertIn("incumplimiento grave o acuerdo", text)
         self.assertIn("diez días hábiles", text)
+        self.assertIn("Si se ha pactado terminación sin causa o por conveniencia", text)
+        self.assertIn("preaviso expresamente convenido", text)
+        self.assertNotIn("terminación sin causa con preaviso de treinta días", text)
 
     def test_natural_person_does_not_receive_legal_entity_guard(self):
         answers = services_answers()
