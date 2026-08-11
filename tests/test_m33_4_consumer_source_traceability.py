@@ -16,7 +16,8 @@ if str(RUNTIME_MODULES) not in sys.path:
 from legalai_platform.consumer_legal_source_pack import CONSUMER_KINDS, consumer_source_ids
 from legalai_platform.legal_source_registry import build_legal_source_manifest, get_legal_source
 from m33_wave3_runtime import document_specs_m33_all
-from tests.test_m33_0_procedural_wave import PRODUCTS, consumer_fixture
+from tests.test_m33_0_consumer_legal_finalize import consumer_route_fixture
+from tests.test_m33_0_procedural_wave import PRODUCTS
 
 
 MECHANISMS = {
@@ -29,7 +30,7 @@ MECHANISMS = {
 
 
 def _specs(selected: str, *, risk: str = "yellow") -> list[dict]:
-    answers, result = consumer_fixture(selected)
+    answers, result = consumer_route_fixture(selected)
     result["risk"] = risk
     return document_specs_m33_all(
         "CASE-M334-CONSUMER",
