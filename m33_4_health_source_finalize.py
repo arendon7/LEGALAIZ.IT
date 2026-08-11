@@ -8,6 +8,7 @@ metadata y controles internos: las secciones públicas no se reescriben.
 
 from copy import deepcopy
 
+from legalai_platform import health_official_domains as _health_official_domains  # noqa: F401
 from legalai_platform.health_legal_source_pack import HEALTH_KINDS, health_source_ids
 from legalai_platform.legal_source_registry import build_legal_source_manifest, source_control_lines
 
