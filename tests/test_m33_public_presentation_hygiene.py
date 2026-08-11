@@ -10,7 +10,7 @@ from tests.test_m33_4_portfolio_source_coverage import _contract_compositions, _
 
 
 _INTERNAL_STANDARD = re.compile(r"\bM33(?:\.\d+)?\b", re.IGNORECASE)
-_INTERNAL_JARGON = re.compile(r"\bruleset\b", re.IGNORECASE)
+_INTERNAL_JARGON = re.compile(r"\b(?:ruleset|motor)\b|\bmodelo determin[ií]stico\b", re.IGNORECASE)
 
 
 class PublicPresentationHygieneTests(unittest.TestCase):
@@ -56,6 +56,33 @@ class PublicPresentationHygieneTests(unittest.TestCase):
         self.assertIn("RESULTADO PRELIMINAR DEL CÁLCULO", text)
         self.assertIn("Método de cálculo", text)
         self.assertIn("Liquidación determinística reproducible", text)
+
+    def test_generic_implementation_language_is_rewritten_to_client_language(self):
+        original = [
+            {
+                "kind": "consumer_deadline_calendar",
+                "sections": [{
+                    "paragraphs": [
+                        "La trazabilidad resume el cálculo sin sustituir la evidencia estructurada conservada por el motor."
+                    ]
+                }],
+            },
+            {
+                "kind": "calculation",
+                "sections": [{
+                    "paragraphs": [
+                        "La cifra se obtiene del modelo determinístico de cálculo vigente y se conserva concepto por concepto."
+                    ]
+                }],
+            },
+        ]
+        cleaned = finalize_public_presentation_hygiene(original)
+        consumer = json.dumps(cleaned[0]["sections"], ensure_ascii=False)
+        labor = json.dumps(cleaned[1]["sections"], ensure_ascii=False)
+        self.assertNotRegex(consumer, r"\bmotor\b")
+        self.assertIn("conservada en el expediente", consumer)
+        self.assertNotIn("modelo determinístico", labor.casefold())
+        self.assertIn("método determinístico de cálculo", labor.casefold())
 
     def test_all_eleven_products_keep_internal_standard_out_of_deliverable_sections(self):
         covered = set()

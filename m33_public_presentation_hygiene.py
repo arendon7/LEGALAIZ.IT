@@ -30,6 +30,11 @@ _REPLACEMENTS: tuple[tuple[str, str], ...] = (
     ("ruleset verificado", "calendario normativo verificado"),
     ("; ruleset ", "; calendario normativo verificado: "),
     ("Ruleset", "Conjunto de reglas"),
+    (
+        "evidencia estructurada conservada por el motor",
+        "evidencia estructurada conservada en el expediente",
+    ),
+    ("modelo determinístico de cálculo vigente", "método determinístico de cálculo vigente"),
     ("4. RESULTADO PRELIMINAR DEL MOTOR", "4. RESULTADO PRELIMINAR DEL CÁLCULO"),
     ("5. BASES, PERÍODOS Y CONTROLES DEL MOTOR", "5. BASES, PERÍODOS Y CONTROLES DEL CÁLCULO"),
     ("ANEXO No. 1 — MATRICES DEL MOTOR DE LIQUIDACIÓN", "ANEXO No. 1 — MATRICES DE LIQUIDACIÓN"),

@@ -40,6 +40,8 @@ SENTINEL_PATTERNS = (
 PUBLIC_PRESENTATION_PATTERNS = (
     ("estándar interno M33", re.compile(r"\bM33(?:\.\d+)?\b", re.IGNORECASE)),
     ("término técnico ruleset", re.compile(r"\bruleset\b", re.IGNORECASE)),
+    ("referencia interna genérica al motor", re.compile(r"\bmotor\b", re.IGNORECASE)),
+    ("modelo determinístico interno", re.compile(r"\bmodelo determin[ií]stico\b", re.IGNORECASE)),
     ("versión interna del motor", re.compile(r"\bversi[oó]n del motor\b", re.IGNORECASE)),
     ("encabezado interno resultado del motor", re.compile(r"RESULTADO PRELIMINAR DEL MOTOR", re.IGNORECASE)),
     ("encabezado interno controles del motor", re.compile(r"CONTROLES DEL MOTOR", re.IGNORECASE)),
