@@ -50,6 +50,14 @@ class ConsumerSourceTraceabilityM334Tests(unittest.TestCase):
         self.assertIn("15 días calendario", source["observed_status"])
         self.assertIn("condicionamiento vinculante", source["applicability"])
 
+    def test_every_source_id_resolves_in_canonical_registry(self):
+        for selected in MECHANISMS:
+            for kind in CONSUMER_KINDS:
+                with self.subTest(selected=selected, kind=kind):
+                    for source_id in consumer_source_ids(kind, selected):
+                        source = get_legal_source(source_id)
+                        self.assertEqual(source_id, source["id"])
+
     def test_each_mechanism_gets_only_material_special_sources(self):
         for selected, expected in MECHANISMS.items():
             with self.subTest(selected=selected):
@@ -84,8 +92,8 @@ class ConsumerSourceTraceabilityM334Tests(unittest.TestCase):
         self.assertIn("CO-CC-C192-2026", diagnosis_ids)
         self.assertIn("CO-D587-REVERSAL", diagnosis_ids)
         self.assertIn("CO-D587-REVERSAL", evidence_ids)
-        self.assertIn("CO-LEY1581-DATOS", evidence_ids)
-        self.assertIn("CO-LEY527-MENSAJES", evidence_ids)
+        self.assertIn("CO-LEY1581-2012", evidence_ids)
+        self.assertIn("CO-LEY527-ARTS6-7-14", evidence_ids)
         self.assertIn("CO-D587-REVERSAL", calendar_ids)
         self.assertNotIn("CO-D735-GARANTIA", calendar_ids)
 
