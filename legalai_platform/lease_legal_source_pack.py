@@ -24,13 +24,24 @@ OFFICIAL_DOMAINS.update({
 LEASE_SOURCE_RECORDS = {
     "CO-LEY820-2003": {
         "title": "Ley 820 de 2003",
-        "locator": "Régimen de arrendamiento de vivienda urbana; especialmente artículos 2 a 10 y 15 a 24",
+        "locator": "Régimen de arrendamiento de vivienda urbana; especialmente artículos 2 a 26",
         "authority": "SUIN-Juriscol · Ministerio de Justicia y del Derecho",
         "official_url": "https://suin-juriscol.gov.co/clp/contenidos.dll/Leyes/1669010",
         "observed_status": "vigente; régimen especial de arrendamiento de vivienda urbana",
         "verified_on": VERIFIED_ON.isoformat(),
         "review_due_on": REVIEW_DUE_ON.isoformat(),
-        "topics": ["arrendamiento vivienda urbana", "canon", "depósitos", "terminación", "restitución"],
+        "topics": [
+            "arrendamiento vivienda urbana",
+            "canon",
+            "depósitos",
+            "terminación",
+            "restitución",
+            "preaviso",
+            "indemnización",
+            "consignación",
+            "caución",
+            "derecho de retención",
+        ],
     },
     "CO-D3130-2003": {
         "title": "Decreto 3130 de 2003",
