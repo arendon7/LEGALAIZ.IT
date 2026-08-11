@@ -17,6 +17,7 @@ from docx import Document
 
 from document_standard_v33 import STANDARD_VERSION, audit_docx_legal_standard
 from docx_builder import build_docx
+from m33_2_contract_pagination_finalize import finalize_contract_pagination
 from m33_2_contract_style_finalize import finalize_contract_style
 from m33_2_reference_format import apply_m33_2_reference_format
 
@@ -155,6 +156,9 @@ def build_m33_presentation(
         evidence["reference_format"] = reference_format
         if reference_format.get("applied"):
             evidence["reference_format_finalize"] = finalize_contract_style(target)
+            pagination = finalize_contract_pagination(target, product_code=product_code)
+            if pagination.get("applied"):
+                evidence["contract_pagination_finalize"] = pagination
 
     _stamp_internal_identity(target, product_code, mode)
     technical = audit_m33_presentation(target, mode)
