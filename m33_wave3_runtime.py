@@ -13,6 +13,7 @@ from m33_3_habeas_permanence_finalize import finalize_habeas_permanence_m33_3
 from m33_4_consumer_source_finalize import finalize_consumer_sources_m33_4
 from m33_4_debt_source_finalize import finalize_debt_sources_m33_4
 from m33_4_habeas_source_finalize import finalize_habeas_sources_m33_4
+from m33_4_health_source_finalize import finalize_health_sources_m33_4
 from m33_4_labor_source_finalize import finalize_labor_sources_m33_4
 from m33_consumer_legal_finalize import finalize_consumer_specs
 from m33_consumer_release_polish import finalize_consumer_release_polish
@@ -78,7 +79,8 @@ def document_specs_m33_all(case_id, code, answers, result, product, generated_at
         health_specs = finalize_health_specs(specs, answers, result)
         health_specs = finalize_health_calendar_m33_3(health_specs, result)
         health_specs = finalize_health_compat_polish(health_specs, answers)
-        return finalize_depth_polish(code, health_specs, answers, result)
+        health_specs = finalize_depth_polish(code, health_specs, answers, result)
+        return finalize_health_sources_m33_4(health_specs, answers, result)
     if code == "CO-TR-001":
         sast_specs = finalize_sast_specs(specs, answers, result)
         sast_specs = finalize_sast_compat_polish(sast_specs)
