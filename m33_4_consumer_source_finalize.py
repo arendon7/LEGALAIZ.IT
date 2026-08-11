@@ -67,6 +67,11 @@ def finalize_consumer_sources_m33_4(specs: list[dict], answers: dict, result: di
         spec["source_manifest_status_m334"] = manifest["status"]
         spec["source_manifest_gate_m334"] = manifest["status"]
         spec["legal_source_ids_m334"] = list(source_ids)
+        spec["release_gate_m334"] = (
+            "release_block_reverification_required"
+            if manifest["status"] != "current"
+            else "human_legal_and_qa_review_required"
+        )
         spec["legal_source_scope_m334"] = {
             "selected_mechanism": selected_kind,
             "document_kind": kind,

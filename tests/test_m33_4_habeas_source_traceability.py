@@ -58,6 +58,7 @@ class HabeasSourceTraceabilityM334Tests(unittest.TestCase):
             self.assertEqual("M33.4", spec.get("legal_source_standard_m334"), spec.get("kind"))
             self.assertEqual("current", spec.get("source_manifest_status_m334"), spec.get("kind"))
             self.assertEqual("current", spec.get("source_manifest_gate_m334"), spec.get("kind"))
+            self.assertEqual("human_legal_and_qa_review_required", spec.get("release_gate_m334"), spec.get("kind"))
             self.assertEqual(spec["legal_source_manifest"]["source_ids"], spec.get("legal_source_ids_m334"))
             self.assertIn("human_legal_review_required", spec["legal_source_manifest"]["legal_effect"])
 
@@ -117,6 +118,7 @@ class HabeasSourceTraceabilityM334Tests(unittest.TestCase):
         specs = _specs(answers, result)
         self.assertFalse(any(spec.get("legal_source_manifest") for spec in specs))
         self.assertFalse(any(spec.get("legal_source_standard_m334") for spec in specs))
+        self.assertFalse(any(spec.get("release_gate_m334") for spec in specs))
 
 
 if __name__ == "__main__":

@@ -66,6 +66,11 @@ def finalize_habeas_sources_m33_4(specs: list[dict], answers: dict, result: dict
         spec["source_manifest_status_m334"] = manifest["status"]
         spec["source_manifest_gate_m334"] = manifest["status"]
         spec["legal_source_ids_m334"] = list(source_ids)
+        spec["release_gate_m334"] = (
+            "release_block_reverification_required"
+            if manifest["status"] != "current"
+            else "human_legal_and_qa_review_required"
+        )
         spec["legal_source_temporal_context_m334"] = {
             "law2573_transition_phase": transition_phase,
             "law2573_general_effective_date": "2026-11-20",
