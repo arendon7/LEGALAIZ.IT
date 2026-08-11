@@ -11,6 +11,7 @@ from m33_3_habeas_communication_finalize import finalize_habeas_communication_m3
 from m33_3_habeas_law2573_transition import finalize_law2573_transition
 from m33_3_habeas_permanence_finalize import finalize_habeas_permanence_m33_3
 from m33_4_consumer_source_finalize import finalize_consumer_sources_m33_4
+from m33_4_debt_source_finalize import finalize_debt_sources_m33_4
 from m33_4_habeas_source_finalize import finalize_habeas_sources_m33_4
 from m33_consumer_legal_finalize import finalize_consumer_specs
 from m33_consumer_release_polish import finalize_consumer_release_polish
@@ -69,7 +70,8 @@ def document_specs_m33_all(case_id, code, answers, result, product, generated_at
     if code == "CO-CD-004":
         debt_specs = finalize_debt_specs(specs, answers, result)
         debt_specs = finalize_debt_release_polish(debt_specs, answers, result)
-        return finalize_debt_layout_polish(debt_specs, answers, result)
+        debt_specs = finalize_debt_layout_polish(debt_specs, answers, result)
+        return finalize_debt_sources_m33_4(debt_specs, answers, result)
     if code == "CO-SA-001":
         health_specs = finalize_health_specs(specs, answers, result)
         health_specs = finalize_health_calendar_m33_3(health_specs, result)
