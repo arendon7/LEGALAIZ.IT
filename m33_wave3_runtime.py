@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-"""Runtime M33.0 completo hasta M33.4 para trazabilidad normativa CO-CD-001."""
+"""Runtime M33.0 completo hasta M33.4 para trazabilidad normativa procedimental."""
 
 from m33_3_consumer_calendar_finalize import finalize_consumer_calendar_m33_3
 from m33_3_cross_calendar_finalize import (
@@ -10,6 +10,7 @@ from m33_3_cross_calendar_finalize import (
 from m33_3_habeas_communication_finalize import finalize_habeas_communication_m33_3
 from m33_3_habeas_law2573_transition import finalize_law2573_transition
 from m33_3_habeas_permanence_finalize import finalize_habeas_permanence_m33_3
+from m33_4_consumer_source_finalize import finalize_consumer_sources_m33_4
 from m33_4_habeas_source_finalize import finalize_habeas_sources_m33_4
 from m33_consumer_legal_finalize import finalize_consumer_specs
 from m33_consumer_release_polish import finalize_consumer_release_polish
@@ -63,6 +64,7 @@ def document_specs_m33_all(case_id, code, answers, result, product, generated_at
         consumer_specs = finalize_consumer_specs(specs, answers, result)
         consumer_specs = finalize_consumer_release_polish(consumer_specs)
         consumer_specs = finalize_consumer_calendar_m33_3(consumer_specs, result)
+        consumer_specs = finalize_consumer_sources_m33_4(consumer_specs, answers, result)
         return finalize_depth_polish(code, consumer_specs, answers, result)
     if code == "CO-CD-004":
         debt_specs = finalize_debt_specs(specs, answers, result)
