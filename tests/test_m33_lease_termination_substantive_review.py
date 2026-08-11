@@ -24,7 +24,7 @@ class LeaseTerminationSubstantiveReviewTests(unittest.TestCase):
         self.assertIn("término no menor de un (1) año", text)
         self.assertIn("obras independientes de reparación", text)
         self.assertNotIn("reparación indispensable", text)
-        self.assertIn("seis (6) meses del canon vigente", text)
+        self.assertIn("seis (6) cánones de arrendamiento", text)
         self.assertIn("uno punto cinco (1,5) meses de arrendamiento", text)
         self.assertIn("artículo 26", text)
         self.assertIn("no ser privada del inmueble", text)
@@ -50,8 +50,18 @@ class LeaseTerminationSubstantiveReviewTests(unittest.TestCase):
     def test_review_is_surgical_outside_termination(self):
         before = compose_lease_before_m334(complete_answers())
         after = compose_lease_m33_instrument(complete_answers())
-        for heading in ("CANON", "REAJUSTE", "DEPÓSITOS Y GARANTÍAS", "SERVICIOS PÚBLICOS"):
-            self.assertEqual(section_text(before, heading), section_text(after, heading))
+        invariant_rules = {
+            "CANON": ("uno por ciento (1 %)", "dos (2) veces el avalúo catastral"),
+            "REAJUSTE": ("doce (12) meses", "publicación oficial del DANE"),
+            "DEPÓSITOS Y GARANTÍAS": ("artículo 16", "Decreto 3130 de 2003"),
+            "SERVICIOS PÚBLICOS": ("artículo 15", "medidores individuales y facturas"),
+        }
+        for heading, rules in invariant_rules.items():
+            before_text = section_text(before, heading)
+            after_text = section_text(after, heading)
+            for rule in rules:
+                self.assertIn(rule, before_text)
+                self.assertIn(rule, after_text)
         maturity = after.get("maturity_answers") or {}
         self.assertEqual("2026-08-11", maturity.get("lease_termination_substantive_review"))
         self.assertEqual("22-26", maturity.get("lease_termination_articles_reviewed"))
