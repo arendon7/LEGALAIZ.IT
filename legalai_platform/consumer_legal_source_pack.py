@@ -157,7 +157,7 @@ def consumer_source_ids(kind: str, selected_kind: str | None = None) -> list[str
     if mechanism in _MECHANISM_SOURCES:
         values.extend(_MECHANISM_SOURCES[mechanism])
     if kind == "consumer_evidence_matrix":
-        values.extend(["CO-LEY1581-DATOS", "CO-LEY527-MENSAJES"])
+        values.extend(["CO-LEY1581-2012", "CO-LEY527-ARTS6-7-14"])
     return _dedupe(values)
 
 
