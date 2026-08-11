@@ -13,6 +13,7 @@ from m33_4_habeas_source_finalize import finalize_habeas_sources_m33_4
 from m33_4_health_source_finalize import finalize_health_sources_m33_4
 from m33_4_labor_source_finalize import finalize_labor_sources_m33_4
 from m33_4_sast_source_finalize import finalize_sast_sources_m33_4
+from m33_4_traffic_source_finalize import finalize_traffic_sources_m33_4
 from m33_consumer_legal_finalize import finalize_consumer_specs
 from m33_consumer_release_polish import finalize_consumer_release_polish
 from m33_debt_layout_polish import finalize_debt_layout_polish
@@ -86,7 +87,8 @@ def document_specs_m33_all(case_id, code, answers, result, product, generated_at
     if code == "CO-TR-002":
         traffic_specs = finalize_traffic_specs(specs, answers, result)
         traffic_specs = finalize_traffic_release_polish(traffic_specs, answers)
-        return finalize_depth_polish(code, traffic_specs, answers, result)
+        traffic_specs = finalize_depth_polish(code, traffic_specs, answers, result)
+        return finalize_traffic_sources_m33_4(traffic_specs, answers, result)
     if code not in WAVE3_CODES:
         return specs
     return [_finalize_spec(code, answers, spec) for spec in specs]
