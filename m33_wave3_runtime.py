@@ -26,6 +26,7 @@ from m33_health_legal_finalize import finalize_health_specs
 from m33_labor_presentation_finalize import finalize_labor_presentation
 from m33_labor_procedural_finalize import finalize_labor_specs
 from m33_procedural_runtime import _finalize_spec
+from m33_public_presentation_hygiene import finalize_public_presentation_hygiene
 from m33_sast_compat_polish import finalize_sast_compat_polish
 from m33_sast_legal_finalize import finalize_sast_specs
 from m33_sast_output_normalize import normalize_sast_outputs
@@ -47,12 +48,16 @@ def _polish_habeas_client_presentation(specs: list[dict]) -> list[dict]:
     return specs
 
 
+def _public(specs: list[dict]) -> list[dict]:
+    return finalize_public_presentation_hygiene(specs)
+
+
 def document_specs_m33_all(case_id, code, answers, result, product, generated_at, question_rows):
     specs = document_specs_m33_wave3(case_id, code, answers, result, product, generated_at, question_rows)
     if code == "CO-LA-001":
         labor_specs = finalize_labor_specs(specs, answers, result)
         labor_specs = finalize_labor_presentation(labor_specs, answers, result)
-        return finalize_labor_sources_m33_4(labor_specs, answers, result)
+        return _public(finalize_labor_sources_m33_4(labor_specs, answers, result))
     if code == "CO-CD-001":
         habeas_specs = finalize_habeas_specs(specs, answers, result)
         habeas_specs = finalize_habeas_calendar_m33_3(habeas_specs, result)
@@ -60,35 +65,35 @@ def document_specs_m33_all(case_id, code, answers, result, product, generated_at
         habeas_specs = finalize_habeas_communication_m33_3(habeas_specs, answers, result)
         habeas_specs = finalize_law2573_transition(habeas_specs, answers, result)
         habeas_specs = finalize_habeas_sources_m33_4(habeas_specs, answers, result)
-        return _polish_habeas_client_presentation(habeas_specs)
+        return _public(_polish_habeas_client_presentation(habeas_specs))
     if code == "CO-CD-003":
         consumer_specs = finalize_consumer_specs(specs, answers, result)
         consumer_specs = finalize_consumer_release_polish(consumer_specs)
         consumer_specs = finalize_consumer_calendar_m33_3(consumer_specs, result)
         consumer_specs = finalize_consumer_sources_m33_4(consumer_specs, answers, result)
-        return finalize_depth_polish(code, consumer_specs, answers, result)
+        return _public(finalize_depth_polish(code, consumer_specs, answers, result))
     if code == "CO-CD-004":
         debt_specs = finalize_debt_specs(specs, answers, result)
         debt_specs = finalize_debt_release_polish(debt_specs, answers, result)
         debt_specs = finalize_debt_layout_polish(debt_specs, answers, result)
-        return finalize_debt_sources_m33_4(debt_specs, answers, result)
+        return _public(finalize_debt_sources_m33_4(debt_specs, answers, result))
     if code == "CO-SA-001":
         health_specs = finalize_health_specs(specs, answers, result)
         health_specs = finalize_health_calendar_m33_3(health_specs, result)
         health_specs = finalize_health_compat_polish(health_specs, answers)
         health_specs = finalize_depth_polish(code, health_specs, answers, result)
-        return finalize_health_sources_m33_4(health_specs, answers, result)
+        return _public(finalize_health_sources_m33_4(health_specs, answers, result))
     if code == "CO-TR-001":
         sast_specs = finalize_sast_specs(specs, answers, result)
         sast_specs = normalize_sast_outputs(sast_specs)
         sast_specs = finalize_sast_compat_polish(sast_specs)
         sast_specs = finalize_sast_release_polish(sast_specs)
-        return finalize_sast_sources_m33_4(sast_specs, answers, result)
+        return _public(finalize_sast_sources_m33_4(sast_specs, answers, result))
     if code == "CO-TR-002":
         traffic_specs = finalize_traffic_specs(specs, answers, result)
         traffic_specs = finalize_traffic_release_polish(traffic_specs, answers)
         traffic_specs = finalize_depth_polish(code, traffic_specs, answers, result)
-        return finalize_traffic_sources_m33_4(traffic_specs, answers, result)
+        return _public(finalize_traffic_sources_m33_4(traffic_specs, answers, result))
     if code not in WAVE3_CODES:
-        return specs
-    return [_finalize_spec(code, answers, spec) for spec in specs]
+        return _public(specs)
+    return _public([_finalize_spec(code, answers, spec) for spec in specs])
