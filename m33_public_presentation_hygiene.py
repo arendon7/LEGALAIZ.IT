@@ -29,21 +29,41 @@ _REPLACEMENTS: tuple[tuple[str, str], ...] = (
     ("ruleset colombiano verificado", "calendario normativo colombiano verificado"),
     ("ruleset verificado", "calendario normativo verificado"),
     ("Ruleset", "Conjunto de reglas"),
+    ("4. RESULTADO PRELIMINAR DEL MOTOR", "4. RESULTADO PRELIMINAR DEL CÁLCULO"),
+    ("5. BASES, PERÍODOS Y CONTROLES DEL MOTOR", "5. BASES, PERÍODOS Y CONTROLES DEL CÁLCULO"),
+    ("ANEXO No. 1 — MATRICES DEL MOTOR DE LIQUIDACIÓN", "ANEXO No. 1 — MATRICES DE LIQUIDACIÓN"),
+    ("motor determinístico vigente", "método de cálculo determinístico vigente"),
+    ("Según motor", "Según cálculo"),
 )
 
+_LABOR_ENGINE_KINDS = {"labor_diagnostic", "calculation"}
+_LABOR_ENGINE_ROW_LABELS = {"motor", "versión del motor"}
+_LABOR_METHOD_LABEL = "Método de cálculo"
+_LABOR_METHOD_VALUE = "Liquidación determinística reproducible con trazabilidad por concepto"
 
-def _sanitize(value: Any) -> Any:
+
+def _sanitize(value: Any, *, document_kind: str = "") -> Any:
     if isinstance(value, str):
         result = value
         for old, new in _REPLACEMENTS:
             result = result.replace(old, new)
         return result
     if isinstance(value, list):
-        return [_sanitize(item) for item in value]
+        if (
+            document_kind in _LABOR_ENGINE_KINDS
+            and len(value) >= 2
+            and isinstance(value[0], str)
+            and value[0].strip().casefold() in _LABOR_ENGINE_ROW_LABELS
+        ):
+            row = list(value)
+            row[0] = _LABOR_METHOD_LABEL
+            row[1] = _LABOR_METHOD_VALUE
+            return [_sanitize(item, document_kind=document_kind) for item in row]
+        return [_sanitize(item, document_kind=document_kind) for item in value]
     if isinstance(value, tuple):
-        return tuple(_sanitize(item) for item in value)
+        return tuple(_sanitize(item, document_kind=document_kind) for item in value)
     if isinstance(value, dict):
-        return {key: _sanitize(item) for key, item in value.items()}
+        return {key: _sanitize(item, document_kind=document_kind) for key, item in value.items()}
     return value
 
 
@@ -52,7 +72,8 @@ def finalize_public_presentation_hygiene(specs: list[dict]) -> list[dict]:
     finalized: list[dict] = []
     for original in specs:
         spec = deepcopy(original)
-        spec["sections"] = _sanitize(spec.get("sections") or [])
+        document_kind = str(spec.get("kind") or "")
+        spec["sections"] = _sanitize(spec.get("sections") or [], document_kind=document_kind)
         finalized.append(spec)
     return finalized
 

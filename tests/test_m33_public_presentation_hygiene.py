@@ -39,6 +39,24 @@ class PublicPresentationHygieneTests(unittest.TestCase):
         self.assertIn("control temporal", json.dumps(cleaned, ensure_ascii=False).casefold())
         self.assertIn("calendario normativo colombiano", json.dumps(cleaned, ensure_ascii=False).casefold())
 
+    def test_labor_engine_identifier_stays_out_of_client_facing_table(self):
+        original = [{
+            "kind": "labor_diagnostic",
+            "engine_version": "M33-test",
+            "sections": [{
+                "heading": "4. RESULTADO PRELIMINAR DEL MOTOR",
+                "table": [["Control", "Resultado"], ["Motor", "M33-test"]],
+            }],
+        }]
+        cleaned = finalize_public_presentation_hygiene(original)
+        self.assertEqual("M33-test", cleaned[0]["engine_version"])
+        text = json.dumps(cleaned[0]["sections"], ensure_ascii=False)
+        self.assertNotIn("M33-test", text)
+        self.assertNotIn("RESULTADO PRELIMINAR DEL MOTOR", text)
+        self.assertIn("RESULTADO PRELIMINAR DEL CÁLCULO", text)
+        self.assertIn("Método de cálculo", text)
+        self.assertIn("Liquidación determinística reproducible", text)
+
     def test_all_eleven_products_keep_internal_standard_out_of_deliverable_sections(self):
         covered = set()
         for code, composition in _contract_compositions().items():
