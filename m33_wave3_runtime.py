@@ -13,6 +13,7 @@ from m33_3_habeas_permanence_finalize import finalize_habeas_permanence_m33_3
 from m33_4_consumer_source_finalize import finalize_consumer_sources_m33_4
 from m33_4_debt_source_finalize import finalize_debt_sources_m33_4
 from m33_4_habeas_source_finalize import finalize_habeas_sources_m33_4
+from m33_4_labor_source_finalize import finalize_labor_sources_m33_4
 from m33_consumer_legal_finalize import finalize_consumer_specs
 from m33_consumer_release_polish import finalize_consumer_release_polish
 from m33_debt_layout_polish import finalize_debt_layout_polish
@@ -52,7 +53,8 @@ def document_specs_m33_all(case_id, code, answers, result, product, generated_at
     specs = document_specs_m33_wave3(case_id, code, answers, result, product, generated_at, question_rows)
     if code == "CO-LA-001":
         labor_specs = finalize_labor_specs(specs, answers, result)
-        return finalize_labor_presentation(labor_specs, answers, result)
+        labor_specs = finalize_labor_presentation(labor_specs, answers, result)
+        return finalize_labor_sources_m33_4(labor_specs, answers, result)
     if code == "CO-CD-001":
         habeas_specs = finalize_habeas_specs(specs, answers, result)
         habeas_specs = finalize_habeas_calendar_m33_3(habeas_specs, result)
