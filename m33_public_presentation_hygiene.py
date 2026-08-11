@@ -28,6 +28,7 @@ _REPLACEMENTS: tuple[tuple[str, str], ...] = (
     ("Referencia subsidiaria M33.3 (", "Referencia subsidiaria ("),
     ("ruleset colombiano verificado", "calendario normativo colombiano verificado"),
     ("ruleset verificado", "calendario normativo verificado"),
+    ("; ruleset ", "; calendario normativo verificado: "),
     ("Ruleset", "Conjunto de reglas"),
     ("4. RESULTADO PRELIMINAR DEL MOTOR", "4. RESULTADO PRELIMINAR DEL CÁLCULO"),
     ("5. BASES, PERÍODOS Y CONTROLES DEL MOTOR", "5. BASES, PERÍODOS Y CONTROLES DEL CÁLCULO"),

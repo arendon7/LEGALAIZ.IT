@@ -37,6 +37,15 @@ SENTINEL_PATTERNS = (
     re.compile(r"\{\{[^{}]{1,120}\}\}"),
     re.compile(r"\$\{[^{}]{1,120}\}"),
 )
+PUBLIC_PRESENTATION_PATTERNS = (
+    ("estándar interno M33", re.compile(r"\bM33(?:\.\d+)?\b", re.IGNORECASE)),
+    ("término técnico ruleset", re.compile(r"\bruleset\b", re.IGNORECASE)),
+    ("versión interna del motor", re.compile(r"\bversi[oó]n del motor\b", re.IGNORECASE)),
+    ("encabezado interno resultado del motor", re.compile(r"RESULTADO PRELIMINAR DEL MOTOR", re.IGNORECASE)),
+    ("encabezado interno controles del motor", re.compile(r"CONTROLES DEL MOTOR", re.IGNORECASE)),
+    ("anexo interno matrices del motor", re.compile(r"MATRICES DEL MOTOR", re.IGNORECASE)),
+    ("referencia interna motor determinístico", re.compile(r"\bmotor determin[ií]stico\b", re.IGNORECASE)),
+)
 
 
 def _container_text(container) -> str:
@@ -215,6 +224,9 @@ def audit_portfolio(samples: Path) -> dict:
         for pattern in SENTINEL_PATTERNS:
             if pattern.search(visible):
                 findings.append(f"{rel}: marcador o centinela visible detectado por {pattern.pattern!r}")
+        for label, pattern in PUBLIC_PRESENTATION_PATTERNS:
+            if pattern.search(visible):
+                findings.append(f"{rel}: nomenclatura interna visible ({label})")
 
         group, record = record_by_rel.get(rel, (path.parent.name, {}))
         document_summaries.append({
