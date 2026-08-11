@@ -25,7 +25,7 @@ class LeaseTerminationSubstantiveReviewTests(unittest.TestCase):
         self.assertIn("obras independientes de reparación", text)
         self.assertNotIn("reparación indispensable", text)
         self.assertIn("seis (6) cánones de arrendamiento", text)
-        self.assertIn("uno punto cinco (1,5) meses de arrendamiento", text)
+        self.assertIn("uno punto cinco (1,5) cánones de arrendamiento", text)
         self.assertIn("artículo 26", text)
         self.assertIn("no ser privada del inmueble", text)
 
