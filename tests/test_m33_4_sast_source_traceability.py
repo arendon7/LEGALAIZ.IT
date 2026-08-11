@@ -8,6 +8,7 @@ from datetime import date
 from legalai_platform.sast_official_domains import SAST_OFFICIAL_DOMAINS
 from legalai_platform.sast_legal_source_pack import SAST_KINDS, sast_source_ids, sast_temporal_control
 from legalai_platform.legal_source_registry import build_legal_source_manifest, get_legal_source
+from m33_sast_output_normalize import SAST_CANONICAL_ORDER, SAST_LEGACY_ABSORBED_KINDS
 from m33_wave3_runtime import document_specs_m33_all
 from test_m33_0_wave3 import PRODUCTS, sast_fixture
 
@@ -20,11 +21,15 @@ class SastSourceTraceabilityM334Tests(unittest.TestCase):
             PRODUCTS["CO-TR-001"], "2026-08-10T23:55:00-05:00", [],
         )
 
-    def test_all_seven_sast_pieces_receive_internal_traceability_without_public_rewrite(self):
+    def test_all_seven_sast_pieces_are_unique_canonical_and_receive_internal_traceability(self):
         specs = self.specs()
-        scoped = [spec for spec in specs if spec.get("kind") in SAST_KINDS]
-        self.assertEqual(7, len(scoped))
-        for spec in scoped:
+        kinds = [str(spec.get("kind") or "") for spec in specs]
+        self.assertEqual(7, len(specs), kinds)
+        self.assertEqual(list(SAST_CANONICAL_ORDER), kinds)
+        self.assertEqual(7, len(set(kinds)))
+        self.assertEqual(set(SAST_KINDS), set(kinds))
+        self.assertFalse(set(kinds).intersection(SAST_LEGACY_ABSORBED_KINDS))
+        for spec in specs:
             self.assertEqual("M33.4", spec.get("legal_source_standard_m334"))
             self.assertEqual("current", spec.get("source_manifest_status_m334"))
             self.assertTrue(spec.get("legal_source_scope_m334", {}).get("public_sections_unchanged"))

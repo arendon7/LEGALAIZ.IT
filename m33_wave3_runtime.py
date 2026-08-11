@@ -27,6 +27,7 @@ from m33_labor_procedural_finalize import finalize_labor_specs
 from m33_procedural_runtime import _finalize_spec
 from m33_sast_compat_polish import finalize_sast_compat_polish
 from m33_sast_legal_finalize import finalize_sast_specs
+from m33_sast_output_normalize import normalize_sast_outputs
 from m33_sast_release_polish import finalize_sast_release_polish
 from m33_traffic_legal_finalize import finalize_traffic_specs
 from m33_traffic_release_polish import finalize_traffic_release_polish
@@ -78,6 +79,7 @@ def document_specs_m33_all(case_id, code, answers, result, product, generated_at
         return finalize_health_sources_m33_4(health_specs, answers, result)
     if code == "CO-TR-001":
         sast_specs = finalize_sast_specs(specs, answers, result)
+        sast_specs = normalize_sast_outputs(sast_specs)
         sast_specs = finalize_sast_compat_polish(sast_specs)
         sast_specs = finalize_sast_release_polish(sast_specs)
         return finalize_sast_sources_m33_4(sast_specs, answers, result)
