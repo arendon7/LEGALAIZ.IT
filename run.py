@@ -7,9 +7,47 @@ from legalai_platform.deployment_environment import prepare_deployment_environme
 
 prepare_deployment_environment()
 
+# La compuerta se instala antes de importar core_v11 para que todos los puntos
+# históricos que usan ``from docx_builder import build_docx`` reciban la versión
+# protegida. La instalación es idempotente y conserva la firma del constructor.
 from legalai_platform.document_release_gate import install_docx_release_gate
 
 install_docx_release_gate()
+
+# M33.2 añade, después de la compuerta técnica, la capa editorial específica para
+# peticiones, reclamaciones y escritos formales. El wrapper vuelve a ejecutar el
+# preflight sobre el DOCX ya formateado para que el hash corresponda al archivo
+# exacto que revisan Jurídico y QA.
+from m33_2_procedural_reference_format import install_m33_2_procedural_format_gate
+
+install_m33_2_procedural_format_gate()
+
+# Los diagnósticos, consultas e informes usan un perfil editorial distinto del
+# escrito de radicación. La capa analítica envuelve el constructor ya protegido y
+# también revalida el DOCX exacto después de aplicar jerarquía, tablas y tipografía.
+from m33_2_analytical_reference_format import install_m33_2_analytical_format_gate
+
+install_m33_2_analytical_format_gate()
+
+# Las matrices, calendarios y cronogramas necesitan lectura operativa y control
+# temporal más que apariencia de informe. Esta capa aplica tablas estables,
+# orientación adaptativa y vuelve a gobernar el hash exacto del DOCX resultante.
+from m33_2_operational_reference_format import install_m33_2_operational_format_gate
+
+install_m33_2_operational_format_gate()
+
+# Los instrumentos económicos, constancias, autorizaciones, protocolos, resúmenes
+# y guías que no pertenecen a las familias anteriores reciben una gramática propia.
+# La capa sigue siendo editorial y revalida la revisión exacta que entra a gobierno.
+from m33_2_special_reference_format import install_m33_2_special_format_gate
+
+install_m33_2_special_format_gate()
+
+# Las guías especiales reciben un último ajuste de espaciado, sin reducir Book
+# Antiqua 11 pt, para evitar colas huérfanas de una sola sección en página nueva.
+from m33_2_special_pagination_finalize import install_m33_2_special_pagination_gate
+
+install_m33_2_special_pagination_gate()
 
 from core_v11 import *  # noqa: F401,F403,E402
 import core_v11 as core  # noqa: E402
@@ -19,9 +57,20 @@ import threading
 import webbrowser
 import signal
 from legalai_platform.runtime_registry import *  # noqa: F401,F403,E402
+import legalai_platform.runtime_registry as _runtime_registry  # noqa: E402
 from legalai_platform.release_metadata import RELEASE_NAME, PUBLIC_DEMO_MODE, MILESTONE  # noqa: E402
 from legalai_platform.application_services import *  # noqa: F401,F403,E402
 import legalai_platform.application_services as _application_services  # noqa: E402
+from legalai_platform.runtime_m33_overrides import activate_m33_contract_factories  # noqa: E402
+
+# La Fábrica Documental M33.0 se activa sobre el mismo runtime endurecido M33.1.
+# Conserva aliases M32.x, el Handler vigente y las compuertas de liberación por hash.
+activate_m33_contract_factories(
+    _runtime_registry,
+    application_services=_application_services,
+    target_namespace=globals(),
+)
+
 from legalai_platform.http_handler_m33_0 import Handler  # noqa: E402
 # from legalai_platform.http_handler_m32_9 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m32_8 import Handler  # compatibility marker
@@ -37,6 +86,7 @@ from legalai_platform.http_handler_m33_0 import Handler  # noqa: E402
 # m32-8-transactional-communications
 # m32-9-contact-governance
 # m33-0-public-demo-integration
+# m33-0-document-standard
 # m33-1-render-deployment-hardening
 # LEGAL_ALLOW_DEMO_ACCOUNTS
 # LEGAL_BOOTSTRAP_ADMIN_EMAIL
@@ -114,6 +164,7 @@ def main():
 
     for sig in (signal.SIGTERM, signal.SIGINT):
         signal.signal(sig, stop_server)
+
     try:
         OBSERVABILITY.write("server_started", host=host, port=port, profile=SETTINGS.profile, version=VERSION)
         server.serve_forever(poll_interval=0.5)

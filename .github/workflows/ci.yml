@@ -33,7 +33,19 @@ jobs:
       - name: Validar sintaxis
         run: python -m compileall -q .
       - name: Validar integridad y generación documental
-        run: python -m unittest discover -s tests -p 'test_*.py' -v
+        env:
+          LEGAL_RUNTIME_DIR: ${{ runner.temp }}/legalaiz-test-runtime
+        run: |
+          set -o pipefail
+          python -m unittest discover -s tests -p 'test_*.py' -v 2>&1 | tee "$RUNNER_TEMP/legalaiz-unittest.log"
+      - name: Conservar diagnóstico de pruebas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagnostico-unittest-${{ github.run_id }}
+          path: ${{ runner.temp }}/legalaiz-unittest.log
+          if-no-files-found: warn
+          retention-days: 14
       - name: Validar interfaz y datos demo
         run: |
           node --input-type=module --check < app/modules/demo_form_values_m32.js
@@ -45,7 +57,6 @@ jobs:
           grep -q 'public_demo_m33.js' app/index.html
           node --input-type=module <<'NODE'
           import fs from 'node:fs';
-
           const source = fs.readFileSync('app/modules/demo_form_values_m32.js', 'utf8');
           const encoded = Buffer.from(source).toString('base64');
           const { buildDemoAnswers, demoAnswerSummary, isDemoQuestionVisible } = await import(`data:text/javascript;base64,${encoded}`);
@@ -53,7 +64,6 @@ jobs:
           const failures = [];
           let questionCount = 0;
           let answerCount = 0;
-
           for (const [code, interview] of Object.entries(interviews)) {
             const questions = interview.questions || [];
             const answers = buildDemoAnswers(questions);
@@ -61,7 +71,6 @@ jobs:
             questionCount += questions.length;
             answerCount += summary.answeredCount;
             if (summary.missingRequired.length) failures.push(`${code}: faltan ${summary.missingRequired.map(question => question.id).join(', ')}`);
-
             for (const question of questions.filter(item => isDemoQuestionVisible(item, answers))) {
               const value = answers[question.id];
               if (question.type === 'select' && !(question.options || []).includes(value)) failures.push(`${code}/${question.id}: opción inválida`);
@@ -74,11 +83,10 @@ jobs:
               if (question.format === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || ''))) failures.push(`${code}/${question.id}: correo inválido`);
             }
           }
-
           if (Object.keys(interviews).length !== 11) failures.push(`Se esperaban 11 productos y se encontraron ${Object.keys(interviews).length}`);
-          if (questionCount < 473) failures.push(`La cobertura de formularios bajó de 473 a ${questionCount} preguntas`);
+          if (questionCount < 473) failures.push(`La cobertura fuente de formularios bajó de 473 a ${questionCount} preguntas`);
           if (failures.length) throw new Error(failures.join('\n'));
-          console.log(`Datos demo verificados: 11 productos, ${questionCount} preguntas, ${answerCount} respuestas visibles.`);
+          console.log(`Fuente histórica verificada: 11 productos, ${questionCount} preguntas, ${answerCount} respuestas demo visibles antes de overlays runtime.`);
           NODE
       - name: Smoke HTTP
         env:
@@ -89,21 +97,130 @@ jobs:
           LEGAL_REQUIRE_MFA_ROLES: ''
           LEGAL_GITHUB_LITE_ASSETS: 'true'
         run: |
+          set -euo pipefail
           python run.py --lan --no-browser > /tmp/legalaiz.log 2>&1 &
           PID=$!
           trap 'kill $PID || true' EXIT
+          READY=0
           for i in {1..30}; do
-            python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/api/live', timeout=2).read()" && exit 0 || true
+            if python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/api/live', timeout=2).read()"; then
+              READY=1
+              break
+            fi
             sleep 1
           done
-          cat /tmp/legalaiz.log
-          exit 1
+          if [ "$READY" -ne 1 ]; then
+            cat /tmp/legalaiz.log
+            exit 1
+          fi
+          python <<'PY'
+          import json
+          import urllib.request
+
+          with urllib.request.urlopen('http://127.0.0.1:8765/api/products/CO-CD-001', timeout=5) as response:
+              payload = json.load(response)
+          interview = payload.get('interview') or {}
+          questions = interview.get('questions') or []
+          by_id = {}
+          for question in questions:
+              by_id.setdefault(question.get('id'), []).append(question)
+
+          identity = by_id.get('prior_claim_identity_theft') or []
+          if len(identity) != 1:
+              raise SystemExit(f"M33.3: se esperaba una prior_claim_identity_theft y se encontraron {len(identity)}")
+          if identity[0].get('show_if') != {'field': 'prior_claim', 'equals': 'Sí'}:
+              raise SystemExit(f"M33.3: condición de suplantación inesperada: {identity[0].get('show_if')!r}")
+          if identity[0].get('options') != ['Sí', 'No', 'No sé']:
+              raise SystemExit(f"M33.3: opciones de suplantación inesperadas: {identity[0].get('options')!r}")
+
+          communication_ids = [
+              'prior_communication_sent',
+              'prior_communication_channel',
+              'prior_communication_destination_verified',
+              'prior_communication_alternative_channel_agreed',
+              'prior_communication_message_consultable',
+              'prior_communication_content_sufficient',
+              'prior_communication_first_date',
+          ]
+          for field in communication_ids:
+              matches = by_id.get(field) or []
+              if len(matches) != 1:
+                  raise SystemExit(f"M33.3: se esperaba una {field} y se encontraron {len(matches)}")
+
+          send = by_id['prior_communication_sent'][0]
+          if send.get('options') != ['Sí', 'No', 'No sé']:
+              raise SystemExit(f"M33.3: opciones de envío inesperadas: {send.get('options')!r}")
+          for field in [
+              'prior_communication_channel',
+              'prior_communication_destination_verified',
+              'prior_communication_alternative_channel_agreed',
+              'prior_communication_message_consultable',
+              'prior_communication_content_sufficient',
+          ]:
+              if by_id[field][0].get('show_if') != {'field': 'prior_communication_sent', 'equals': 'Sí'}:
+                  raise SystemExit(f"M33.3: condición inesperada en {field}: {by_id[field][0].get('show_if')!r}")
+          if by_id['prior_communication_first_date'][0].get('show_if') != {'field': 'small_obligation_two_notices', 'equals': 'Sí'}:
+              raise SystemExit("M33.3: la primera fecha de pequeña cuantía no depende de la regla de dos avisos")
+
+          transition_ids = [
+              'identity_theft_correction_requested',
+              'identity_theft_security_noncompliance_verified',
+              'identity_theft_security_noncompliance_support',
+              'identity_theft_security_instrument_authority',
+              'identity_theft_security_instrument_reference',
+              'identity_theft_security_requirement_tested',
+              'identity_theft_security_instrument_applicable',
+          ]
+          for field in transition_ids:
+              matches = by_id.get(field) or []
+              if len(matches) != 1:
+                  raise SystemExit(f"M33.3: se esperaba una {field} y se encontraron {len(matches)}")
+          if by_id['identity_theft_correction_requested'][0].get('show_if') != {'field': 'identity_theft', 'equals': 'Sí'}:
+              raise SystemExit("M33.3: solicitud de corrección Ley 2573 no depende de identity_theft=Sí")
+          if by_id['identity_theft_security_noncompliance_verified'][0].get('show_if') != {'field': 'identity_theft', 'equals': 'Sí'}:
+              raise SystemExit("M33.3: verificación de seguridad Ley 2573 no depende de identity_theft=Sí")
+          for field in [
+              'identity_theft_security_noncompliance_support',
+              'identity_theft_security_instrument_authority',
+              'identity_theft_security_instrument_reference',
+              'identity_theft_security_requirement_tested',
+              'identity_theft_security_instrument_applicable',
+          ]:
+              if by_id[field][0].get('show_if') != {'field': 'identity_theft_security_noncompliance_verified', 'equals': 'Sí'}:
+                  raise SystemExit(f"M33.3: {field} no depende de incumplimiento de seguridad verificado=Sí")
+          if by_id['identity_theft_correction_requested'][0].get('options') != ['Sí', 'No', 'No sé']:
+              raise SystemExit("M33.3: opciones inesperadas en solicitud de corrección Ley 2573")
+          if by_id['identity_theft_security_noncompliance_verified'][0].get('options') != ['Sí', 'No', 'No sé']:
+              raise SystemExit("M33.3: opciones inesperadas en verificación de seguridad Ley 2573")
+          if by_id['identity_theft_security_noncompliance_support'][0].get('options') != ['Completo', 'Parcial', 'No', 'No sé']:
+              raise SystemExit("M33.3: opciones inesperadas en soporte de seguridad Ley 2573")
+          if by_id['identity_theft_security_instrument_applicable'][0].get('options') != ['Sí', 'No', 'No sé']:
+              raise SystemExit("M33.3: opciones inesperadas en aplicabilidad del instrumento de seguridad")
+          authority_options = by_id['identity_theft_security_instrument_authority'][0].get('options') or []
+          if 'Superintendencia Financiera de Colombia' not in authority_options or 'Superintendencia de Industria y Comercio' not in authority_options:
+              raise SystemExit("M33.3: catálogo de autoridades de seguridad incompleto")
+
+          send_date = by_id.get('prior_communication_date') or []
+          if len(send_date) != 1 or 'envío' not in str(send_date[0].get('label') or '').casefold():
+              raise SystemExit("M33.3: prior_communication_date no está presentada como fecha de envío")
+          if interview.get('interview_standard') != 'M33.3':
+              raise SystemExit(f"M33.3: estándar de entrevista no activo: {interview.get('interview_standard')!r}")
+          if len(questions) < 67:
+              raise SystemExit(f"M33.3: entrevista CO-CD-001 incompleta; solo {len(questions)} preguntas activas")
+
+          print(
+              f"Entrevista runtime CO-CD-001 verificada: {len(questions)} preguntas; "
+              "suplantación, comunicación previa, transición Ley 2573 e instrumento oficial de seguridad se sirven una sola vez bajo M33.3."
+          )
+          PY
       - name: Smoke producción demostrativa M33.1
+        env:
+          LEGAL_RUNTIME_DIR: ${{ runner.temp }}/legalaiz-public-demo-runtime
         run: python tools/public_demo_smoke.py
 
   visual-docx:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -115,22 +232,39 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends libreoffice-writer poppler-utils fonts-dejavu-core fonts-liberation
-      - name: Generar muestras con fábricas activas
-        run: python scripts/generate_m32_1_visual_samples.py --output "$RUNNER_TEMP/m32-1-visual/samples"
+      - name: Generar portafolio visual M33.0 sobre runtime M33.1
+        env:
+          LEGAL_RUNTIME_DIR: ${{ runner.temp }}/legalaiz-visual-runtime
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/document-visual/samples"
+          mkdir -p "$ROOT/historical" "$ROOT/contracts" "$ROOT/procedural" "$ROOT/wave3"
+          python scripts/generate_m32_1_visual_samples.py --output "$ROOT/historical"
+          python scripts/generate_m33_0_contractual_samples.py --output "$ROOT/contracts"
+          python scripts/generate_m33_0_procedural_samples.py --output "$ROOT/procedural"
+          python scripts/generate_m33_0_wave3_samples.py --output "$ROOT/wave3"
+          test "$(find "$ROOT/contracts" -maxdepth 1 -name '*_M33_0.docx' -type f | wc -l | tr -d ' ')" -eq 4
+          test "$(find "$ROOT/procedural" -maxdepth 1 -name '*_M33_0.docx' -type f | wc -l | tr -d ' ')" -eq 27
+          test "$(find "$ROOT/wave3" -maxdepth 1 -name '*_M33_0.docx' -type f | wc -l | tr -d ' ')" -eq 22
+          test "$(find "$ROOT" -name '*_M33_0.docx' -type f | wc -l | tr -d ' ')" -eq 53
+          python scripts/audit_m33_2_editorial_portfolio.py \
+            --samples "$ROOT" \
+            --output "$RUNNER_TEMP/document-visual/m33-2-editorial-audit.json"
       - name: Convertir DOCX a PDF y rasterizar todas las páginas
         env:
           HOME: ${{ runner.temp }}/lo-home
         run: |
           set -euo pipefail
-          SAMPLES="$RUNNER_TEMP/m32-1-visual/samples"
-          RENDERED="$RUNNER_TEMP/m32-1-visual/rendered"
-          PROFILE="$RUNNER_TEMP/m32-1-visual/lo-profile"
+          SAMPLES="$RUNNER_TEMP/document-visual/samples"
+          RENDERED="$RUNNER_TEMP/document-visual/rendered"
+          PROFILE="$RUNNER_TEMP/document-visual/lo-profile"
           mkdir -p "$HOME" "$RENDERED" "$PROFILE"
-          for docx in "$SAMPLES"/*.docx; do
+          while IFS= read -r -d '' docx; do
+            group="$(basename "$(dirname "$docx")")"
             stem="$(basename "${docx%.docx}")"
-            out="$RENDERED/$stem"
+            out="$RENDERED/$group/$stem"
             mkdir -p "$out"
-            libreoffice --headless "-env:UserInstallation=file://$PROFILE-$stem" --convert-to pdf --outdir "$out" "$docx"
+            libreoffice --headless "-env:UserInstallation=file://$PROFILE-$group-$stem" --convert-to pdf --outdir "$out" "$docx"
             pdf="$out/$stem.pdf"
             test -s "$pdf"
             pages="$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')"
@@ -139,15 +273,19 @@ jobs:
             pdftoppm -png -r 120 "$pdf" "$out/page"
             rendered_pages="$(find "$out" -maxdepth 1 -name 'page-*.png' -type f | wc -l | tr -d ' ')"
             test "$rendered_pages" -eq "$pages"
-            printf '%s\t%s\n' "$stem" "$pages" >> "$RENDERED/page-counts.tsv"
-          done
-          test "$(find "$RENDERED" -name 'page-*.png' -type f | wc -l)" -ge 2
+            printf '%s/%s\t%s\n' "$group" "$stem" "$pages" >> "$RENDERED/page-counts.tsv"
+          done < <(find "$SAMPLES" -name '*.docx' -type f -print0 | sort -z)
+          test "$(find "$RENDERED" -name 'page-*.png' -type f | wc -l)" -ge 53
+          test "$(grep -c '_M33_0' "$RENDERED/page-counts.tsv")" -eq 53
+          python scripts/check_rendered_blank_pages.py "$RENDERED"
+          python scripts/check_m33_2_sparse_signature_tails.py "$RENDERED" \
+            --output "$RENDERED/m33-2-sparse-signature-tails.json"
           cat "$RENDERED/page-counts.tsv"
       - name: Conservar evidencia renderizada
         uses: actions/upload-artifact@v4
         with:
-          name: m32-1-evidencia-visual-docx
-          path: ${{ runner.temp }}/m32-1-visual
+          name: m33-0-evidencia-visual-docx
+          path: ${{ runner.temp }}/document-visual
           if-no-files-found: error
           retention-days: 30
 
