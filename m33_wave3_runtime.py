@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-"""Runtime M33.0 completo hasta M33.3."""
+"""Runtime M33.0 completo hasta M33.4 para trazabilidad normativa CO-CD-001."""
 
 from m33_3_consumer_calendar_finalize import finalize_consumer_calendar_m33_3
 from m33_3_cross_calendar_finalize import (
@@ -10,6 +10,7 @@ from m33_3_cross_calendar_finalize import (
 from m33_3_habeas_communication_finalize import finalize_habeas_communication_m33_3
 from m33_3_habeas_law2573_transition import finalize_law2573_transition
 from m33_3_habeas_permanence_finalize import finalize_habeas_permanence_m33_3
+from m33_4_habeas_source_finalize import finalize_habeas_sources_m33_4
 from m33_consumer_legal_finalize import finalize_consumer_specs
 from m33_consumer_release_polish import finalize_consumer_release_polish
 from m33_debt_layout_polish import finalize_debt_layout_polish
@@ -56,6 +57,7 @@ def document_specs_m33_all(case_id, code, answers, result, product, generated_at
         habeas_specs = finalize_habeas_permanence_m33_3(habeas_specs, result)
         habeas_specs = finalize_habeas_communication_m33_3(habeas_specs, answers, result)
         habeas_specs = finalize_law2573_transition(habeas_specs, answers, result)
+        habeas_specs = finalize_habeas_sources_m33_4(habeas_specs, answers, result)
         return _polish_habeas_client_presentation(habeas_specs)
     if code == "CO-CD-003":
         consumer_specs = finalize_consumer_specs(specs, answers, result)
