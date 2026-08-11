@@ -6,6 +6,9 @@ Se aplica después del estilo contractual M33.2 y únicamente al contrato labora
 No modifica texto, fuente, márgenes, tablas, reglas ni conclusiones jurídicas: reduce
 la respiración vertical de 6 a 4 pt y compacta el encabezado de firmas para evitar
 una cola de firma escasa provocada por cláusulas sustantivas más extensas.
+
+El preflight técnico final permanece a cargo de ``build_m33_presentation``, que conoce
+si el archivo es borrador o ``approval_candidate`` y aplica el perfil correcto.
 """
 
 from pathlib import Path
@@ -13,7 +16,6 @@ from pathlib import Path
 from docx import Document
 from docx.shared import Pt
 
-from document_standard_v33 import audit_docx_legal_standard
 from m33_2_contract_style_finalize import CLAUSE_BEFORE_PT, PARAGRAPH_AFTER_PT
 
 EMPLOYMENT_PRODUCT = "CO-LA-002"
@@ -66,13 +68,6 @@ def finalize_contract_pagination(path: str | Path, *, product_code: str) -> dict
             clauses_compacted += 1
 
     document.save(target)
-    report = audit_docx_legal_standard(target)
-    if not report.get("valid"):
-        raise ValueError(
-            "CO-LA-002 no supera auditoría tras ajuste de paginación: "
-            f"{report.get('findings')}"
-        )
-
     return {
         "applied": True,
         "profile": "M33.2-employment-pagination",
