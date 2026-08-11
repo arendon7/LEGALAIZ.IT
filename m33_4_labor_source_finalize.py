@@ -16,6 +16,32 @@ _CONTROL_MARKER = "m33_4_labor_source_control"
 _PARAMETER_SENSITIVE_KINDS = {"calculation", "claim", "labor_diagnostic"}
 
 
+def _transport_aid_usage(value):
+    """Normaliza monto o respuesta histórica Sí/No sin lanzar errores de conversión."""
+    if value is None:
+        return False
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, (int, float)):
+        return float(value) != 0
+
+    text = str(value).strip().casefold()
+    if text in {"", "no", "false", "0", "no aplica", "n/a", "ninguno"}:
+        return False
+    if text in {"sí", "si", "yes", "true"}:
+        return True
+
+    normalized = text.replace("$", "").replace("cop", "").replace(" ", "")
+    if normalized.count(",") == 1 and "." not in normalized:
+        normalized = normalized.replace(",", ".")
+    else:
+        normalized = normalized.replace(".", "").replace(",", ".")
+    try:
+        return float(normalized) != 0
+    except ValueError:
+        return None
+
+
 def _parameter_lines(control: dict) -> list[str]:
     lines = [
         (
@@ -117,7 +143,7 @@ def finalize_labor_sources_m33_4(specs: list[dict], answers: dict, result: dict)
             "parameter_sensitive": kind in _PARAMETER_SENSITIVE_KINDS,
             "period_start": str(answers.get("start_date") or ""),
             "period_end": str(answers.get("end_date") or ""),
-            "transport_aid_used": bool(float(answers.get("transport_aid") or 0)),
+            "transport_aid_used": _transport_aid_usage(answers.get("transport_aid")),
             "wage_status": (
                 parameter_control.get("wage_current_status")
                 if kind in _PARAMETER_SENSITIVE_KINDS
