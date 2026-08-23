@@ -440,7 +440,7 @@ class ConservativeNarrativeProvider:
                     legal_relevance="HIGH",
                 )
             rent_match = re.search(
-                r"(?:canon|arriendo|renta)\s*(?:de|mensual|:)?\s*\$?\s*([0-9][0-9.,]{2,})",
+                r"(?:canon(?:\s+de\s+(?:arriendo|arrendamiento))?|arriendo|renta)\s*(?:mensual(?:mente)?\s*)?(?:de|es|:)?\s*\$?\s*([0-9][0-9.,]{2,})",
                 folded,
             )
             if rent_match:
