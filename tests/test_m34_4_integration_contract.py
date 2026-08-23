@@ -11,7 +11,7 @@ class M344IntegrationContractTests(unittest.TestCase):
         cls.index = (ROOT / "app" / "index.html").read_text(encoding="utf-8")
         cls.js = (ROOT / "app" / "modules" / "recommendation_m34_4.js").read_text(encoding="utf-8")
         cls.css = (ROOT / "app" / "modules" / "recommendation_m34_4.css").read_text(encoding="utf-8")
-        cls.run = (ROOT / "run.py").read_text(encoding="utf-8")
+        cls.run_source = (ROOT / "run.py").read_text(encoding="utf-8")
         cls.handler = (ROOT / "legalai_platform" / "http_handler_m34_4.py").read_text(encoding="utf-8")
         cls.routes = (ROOT / "legalai_platform" / "routes" / "m34_4_recommendation_routes.py").read_text(encoding="utf-8")
         cls.engine = (ROOT / "legalai_platform" / "recommendation_m34_4.py").read_text(encoding="utf-8")
@@ -29,7 +29,7 @@ class M344IntegrationContractTests(unittest.TestCase):
         )
 
     def test_runtime_activates_incremental_m344_handler(self):
-        self.assertIn("from legalai_platform.http_handler_m34_4 import Handler", self.run)
+        self.assertIn("from legalai_platform.http_handler_m34_4 import Handler", self.run_source)
         self.assertIn("http_handler_m34_3 import Handler as BaseHandler", self.handler)
         self.assertIn("return super().do_POST()", self.handler)
         self.assertIn("self.require_origin()", self.handler)
