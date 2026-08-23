@@ -41,6 +41,7 @@ jobs:
           node --input-type=module --check < app/modules/public_demo_m33.js
           node --input-type=module --check < app/modules/fact_review_m34_2.js
           node --input-type=module --check < app/modules/adaptive_questions_m34_3.js
+          node --input-type=module --check < app/modules/recommendation_m34_4.js
           grep -q 'demo_form_data_m32.css' app/index.html
           grep -q 'demo_form_data_m32.js' app/index.html
           grep -q 'public_demo_m33.css' app/index.html
@@ -49,6 +50,8 @@ jobs:
           grep -q 'fact_review_m34_2.js' app/index.html
           grep -q 'adaptive_questions_m34_3.css' app/index.html
           grep -q 'adaptive_questions_m34_3.js' app/index.html
+          grep -q 'recommendation_m34_4.css' app/index.html
+          grep -q 'recommendation_m34_4.js' app/index.html
           node --input-type=module <<'NODE'
           import fs from 'node:fs';
 
@@ -112,6 +115,7 @@ jobs:
           fi
           python tools/m34_2_http_smoke.py
           python tools/m34_3_http_smoke.py
+          python tools/m34_4_http_smoke.py
       - name: Smoke producción demostrativa M33.1
         run: python tools/public_demo_smoke.py
 
