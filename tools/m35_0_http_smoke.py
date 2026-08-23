@@ -77,6 +77,24 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
+def register_client(client: Client, label: str) -> dict:
+    suffix = uuid.uuid4().hex[:10]
+    registered = client.post(
+        "/api/auth/register",
+        {
+            "name": f"Cliente Smoke {label}",
+            "email": f"m35-{label.lower()}-{suffix}@example.test",
+            "password": "M35!Demo-Segura_2026#Ax7",
+            "consent": True,
+        },
+        expected=201,
+    )
+    client.csrf = str(registered.get("csrf_token") or "")
+    require(bool(client.csrf), f"Registro {label} no devolvió CSRF")
+    require(registered.get("user", {}).get("role") == "client", f"Registro {label} no creó rol client")
+    return registered
+
+
 def answer_for(question: dict):
     answer_type = question.get("answer_type")
     options = question.get("options") or []
@@ -154,20 +172,12 @@ def main() -> int:
     require(denied.get("code") == "AUTH_REQUIRED", "El claim anónimo debe fallar por autenticación")
 
     account = Client()
-    suffix = uuid.uuid4().hex[:10]
-    registered = account.post(
-        "/api/auth/register",
-        {
-            "name": "Cliente Smoke M35",
-            "email": f"m35-{suffix}@example.test",
-            "password": "M35!Demo-Segura_2026#Ax7",
-            "consent": True,
-        },
-        expected=201,
-    )
-    account.csrf = str(registered.get("csrf_token") or "")
-    require(bool(account.csrf), "Registro M35 no devolvió CSRF")
-    require(registered.get("user", {}).get("role") == "client", "Registro público no creó rol client")
+    register_client(account, "Owner")
+    csrf = account.csrf
+    account.csrf = ""
+    csrf_denied = account.post("/api/m35/intake/claim", {"recovery_code": code}, expected=403)
+    require(csrf_denied.get("code") == "CSRF_FAILED", "El claim sin CSRF debe fallar")
+    account.csrf = csrf
 
     claimed = account.post("/api/m35/intake/claim", {"recovery_code": code}, expected=201)
     require(claimed.get("decision_id") == decision_id, "El handoff perdió decision_id")
@@ -192,13 +202,19 @@ def main() -> int:
     require(repeated.get("draft_id") == claimed.get("draft_id"), "Reclaim creó otro draft")
     require(repeated.get("idempotent") is True, "Reclaim debería ser idempotente")
 
+    intruder = Client()
+    register_client(intruder, "Intruder")
+    stolen = intruder.post("/api/m35/intake/claim", {"recovery_code": code}, expected=409)
+    require(stolen.get("code") == "HANDOFF_CONFLICT", "Otra cuenta no fue bloqueada")
+
     unavailable = anonymous.post("/api/m34/intake/recover", {"recovery_code": code}, expected=422)
     require(unavailable.get("code") == "INTAKE_VALIDATION", "El código transferido siguió recuperable como intake anónimo")
 
     print(
         "M35.0 HTTP smoke PASS · "
         f"product={claimed.get('product_code')} decision={decision_id} "
-        f"handoff={claimed.get('handoff_id')} idempotent={repeated.get('idempotent')}"
+        f"handoff={claimed.get('handoff_id')} csrf=blocked theft=blocked "
+        f"idempotent={repeated.get('idempotent')}"
     )
     return 0
 
