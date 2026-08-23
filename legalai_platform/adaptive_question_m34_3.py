@@ -561,6 +561,8 @@ class AdaptiveIntakeStore(IntelligentIntakeStore):
             if len(normalized) != len(set(normalized)) or any(item not in allowed for item in normalized):
                 raise ValueError("La selección contiene una opción inválida.")
             return normalized
+        if isinstance(value, str) and _is_uncertain_value(value):
+            return "UNCERTAIN"
         if answer_type == "boolean":
             if isinstance(value, bool):
                 return value
