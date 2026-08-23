@@ -67,6 +67,7 @@ class FactConfirmationM342Tests(unittest.TestCase):
         self.assertEqual(confirmed["provenance"], "USER_CONFIRMED")
         self.assertEqual(confirmed["confirmation_status"], "CONFIRMED_BY_USER")
         self.assertEqual(confirmed["value"], candidate["value"])
+        self.assertEqual(confirmed["normalized_value"], candidate["normalized_value"])
         self.assertFalse(fact_is_decision_usable(original))
         self.assertTrue(fact_is_decision_usable(confirmed))
 
@@ -86,6 +87,36 @@ class FactConfirmationM342Tests(unittest.TestCase):
         self.assertEqual(original["confirmation_status"], "SUPERSEDED")
         self.assertEqual(confirmed["value"], "La notificación llegó a una dirección antigua")
         self.assertTrue(fact_is_decision_usable(confirmed))
+
+    def test_edit_money_preserves_structured_shape_and_normalized_currency(self):
+        created, state = self._create_and_extract(
+            "Me despidieron el 15/08/2026. Mi salario era $2.500.000 y no me pagaron la liquidación. Quiero reclamar."
+        )
+        candidate = next(fact for fact in state["facts"] if fact["fact_type"] == "employment.compensation_basis")
+        result = self.store.confirm_fact_decisions(
+            self.con,
+            created["recovery_code"],
+            [{"fact_id": candidate["fact_id"], "action": "EDIT", "value": "$ 3.100.000"}],
+        )
+        confirmed = next(fact for fact in result["facts"] if fact.get("source_reference") == candidate["fact_id"])
+        self.assertIsInstance(confirmed["value"], dict)
+        self.assertEqual(confirmed["value"]["amount_cop"], 3100000)
+        self.assertEqual(confirmed["value"]["frequency"], "UNCONFIRMED")
+        self.assertEqual(confirmed["normalized_value"], {"amount_cop": 3100000, "currency": "COP"})
+
+    def test_edit_list_preserves_list_shape(self):
+        created, state = self._create_and_extract(
+            "Me despidieron y no me pagaron liquidación, cesantías ni vacaciones. Quiero reclamar."
+        )
+        candidate = next(fact for fact in state["facts"] if fact["fact_type"] == "employment.pending_concepts")
+        result = self.store.confirm_fact_decisions(
+            self.con,
+            created["recovery_code"],
+            [{"fact_id": candidate["fact_id"], "action": "EDIT", "value": "liquidación, vacaciones"}],
+        )
+        confirmed = next(fact for fact in result["facts"] if fact.get("source_reference") == candidate["fact_id"])
+        self.assertEqual(confirmed["value"], ["liquidación", "vacaciones"])
+        self.assertEqual(confirmed["normalized_value"], ["liquidación", "vacaciones"])
 
     def test_dispute_keeps_machine_candidate_but_never_makes_it_usable(self):
         created, state = self._create_and_extract(
