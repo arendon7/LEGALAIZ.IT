@@ -188,6 +188,17 @@ Permite corregir el relato utilizando el mismo código. Una edición futura inva
 - [ ] auditoría visual DOCX verde;
 - [ ] generación documental, RBAC, Studio y aprobaciones no se modifican.
 
+## Certificación de PR apilado
+
+El workflow canónico del repositorio se activa automáticamente para `pull_request` únicamente cuando la base es `main`. Como M34.1 se revisa apilado sobre M34.0 para mantener un diff pequeño y auditable, la certificación de un SHA M34.1 se realiza sin alterar sus bytes de código:
+
+1. retarget temporal del PR M34.1 a `main`;
+2. commit/synchronize sobre el mismo branch para activar el workflow;
+3. certificación del SHA exacto mediante suite completa, smoke y visual DOCX;
+4. retorno del PR a `m34/intelligent-journey-foundation` para revisión apilada.
+
+La evidencia siempre debe citar el SHA probado y el workflow run correspondiente. El cambio temporal de base no equivale a merge ni vuelve canónica la rama.
+
 ## Próxima subiteración: M34.2
 
 M34.2 añadirá `FactExtractionService` con salida JSON estricta hacia el Legal Fact Model. Sólo entonces la pantalla posterior podrá evolucionar de «Tu descripción quedó guardada» a **«Esto es lo que entendimos»**, mostrando hechos candidatos editables y diferenciando expresamente:
