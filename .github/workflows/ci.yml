@@ -39,10 +39,13 @@ jobs:
           node --input-type=module --check < app/modules/demo_form_values_m32.js
           node --input-type=module --check < app/modules/demo_form_data_m32.js
           node --input-type=module --check < app/modules/public_demo_m33.js
+          node --input-type=module --check < app/modules/fact_review_m34_2.js
           grep -q 'demo_form_data_m32.css' app/index.html
           grep -q 'demo_form_data_m32.js' app/index.html
           grep -q 'public_demo_m33.css' app/index.html
           grep -q 'public_demo_m33.js' app/index.html
+          grep -q 'fact_review_m34_2.css' app/index.html
+          grep -q 'fact_review_m34_2.js' app/index.html
           node --input-type=module <<'NODE'
           import fs from 'node:fs';
 
@@ -92,12 +95,19 @@ jobs:
           python run.py --lan --no-browser > /tmp/legalaiz.log 2>&1 &
           PID=$!
           trap 'kill $PID || true' EXIT
+          READY=0
           for i in {1..30}; do
-            python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/api/live', timeout=2).read()" && exit 0 || true
+            if python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/api/live', timeout=2).read()"; then
+              READY=1
+              break
+            fi
             sleep 1
           done
-          cat /tmp/legalaiz.log
-          exit 1
+          if [ "$READY" -ne 1 ]; then
+            cat /tmp/legalaiz.log
+            exit 1
+          fi
+          python tools/m34_2_http_smoke.py
       - name: Smoke producción demostrativa M33.1
         run: python tools/public_demo_smoke.py
 
