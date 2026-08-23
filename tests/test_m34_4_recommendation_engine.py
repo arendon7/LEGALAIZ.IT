@@ -137,6 +137,8 @@ class M344RecommendationEngineTests(unittest.TestCase):
             serialized = json.dumps(public, ensure_ascii=False).lower()
             if "fit_score" in serialized or "signal_score" in serialized or '"score"' in serialized:
                 failures.append(f"{code}: score numérico filtrado a salida pública")
+            if "matched_fact_ids" in serialized or "matched_fact_types" in serialized:
+                failures.append(f"{code}: metadata de hechos filtrada a salida pública")
         if failures:
             self.fail("\n".join(failures))
 
@@ -218,7 +220,7 @@ class M344RecommendationStoreTests(unittest.TestCase):
         self.con.commit()
         return created
 
-    def test_same_inputs_reuse_exact_decision_id(self):
+    def test_same_inputs_reuse_exact_decision_id_and_keep_fingerprint_private(self):
         created = self._ready_session()
         first = self.store.recommend(self.con, created["recovery_code"], self.adaptive, self.recommendation)
         self.con.commit()
@@ -226,18 +228,28 @@ class M344RecommendationStoreTests(unittest.TestCase):
         self.assertEqual(first["decision_id"], second["decision_id"])
         self.assertFalse(first["idempotent"])
         self.assertTrue(second["idempotent"])
-        self.assertEqual(first["input_fingerprint"], second["input_fingerprint"])
+        self.assertNotIn("input_fingerprint", first)
+        self.assertNotIn("input_fingerprint", second)
+        row = self.store._active_row(self.con, created["recovery_code"])
+        payload = self.store._decrypt(row)
+        decisions = payload["m34_4"]["decisions"]
+        self.assertEqual(len(decisions), 1)
+        self.assertTrue(decisions[0].get("input_fingerprint"))
 
     def test_decision_record_keeps_internal_ranking_encrypted_but_public_result_strips_it(self):
         created = self._ready_session()
         result = self.store.recommend(self.con, created["recovery_code"], self.adaptive, self.recommendation)
         self.con.commit()
         self.assertNotIn("_internal", result)
+        self.assertNotIn("input_fingerprint", result)
+        self.assertNotIn("matched_fact_ids", result.get("primary", {}))
+        self.assertNotIn("matched_fact_types", result.get("primary", {}))
         row = self.store._active_row(self.con, created["recovery_code"])
         payload = self.store._decrypt(row)
         records = payload["m34_4"]["decisions"]
         self.assertEqual(len(records), 1)
         self.assertIn("_internal", records[0]["result"])
+        self.assertTrue(records[0].get("input_fingerprint"))
         self.assertEqual(records[0]["decision_id"], result["decision_id"])
 
 
