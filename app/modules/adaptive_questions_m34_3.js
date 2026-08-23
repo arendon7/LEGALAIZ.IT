@@ -21,27 +21,31 @@ function semanticProgress(step) {
   return `<span class="m343-progress">${missing === 1 ? 'Nos falta 1 dato importante' : `Nos faltan ${missing} datos importantes`} para poder pasar al siguiente análisis.</span>`;
 }
 
+function unknownChoice() {
+  return '<label class="m343-unknown"><input type="checkbox" data-m343-unknown><span>No sé o no tengo este dato ahora</span></label>';
+}
+
 function inputFor(question) {
   const options = question.options || [];
   if (question.answer_type === 'select' || question.answer_type === 'boolean') {
-    return `<fieldset class="m343-options"><legend class="sr-only">${esc(question.prompt)}</legend>${options.map((item,index)=>`<label class="m343-option"><input type="radio" name="m343-answer" value="${esc(item.value)}" ${index===0?'':''} required><span>${esc(item.label)}</span></label>`).join('')}</fieldset>`;
+    return `<fieldset class="m343-options"><legend class="sr-only">${esc(question.prompt)}</legend>${options.map(item=>`<label class="m343-option"><input type="radio" name="m343-answer" value="${esc(item.value)}" required><span>${esc(item.label)}</span></label>`).join('')}</fieldset>`;
   }
   if (question.answer_type === 'multiselect') {
     return `<fieldset class="m343-options"><legend class="sr-only">${esc(question.prompt)}</legend>${options.map(item=>`<label class="m343-option"><input type="checkbox" name="m343-answer" value="${esc(item.value)}"><span>${esc(item.label)}</span></label>`).join('')}</fieldset>`;
   }
   if (question.answer_type === 'date') {
-    return '<label class="m343-field"><span>Fecha</span><input class="input" type="date" data-m343-value required></label>';
+    return `<label class="m343-field"><span>Fecha</span><input class="input" type="date" data-m343-value></label>${unknownChoice()}`;
   }
   if (question.answer_type === 'money_cop') {
-    return '<label class="m343-field"><span>Valor aproximado en pesos colombianos</span><input class="input" type="text" inputmode="numeric" autocomplete="off" placeholder="Ej. 1.800.000" data-m343-value required></label>';
+    return `<label class="m343-field"><span>Valor aproximado en pesos colombianos</span><input class="input" type="text" inputmode="numeric" autocomplete="off" placeholder="Ej. 1.800.000" data-m343-value></label>${unknownChoice()}`;
   }
   if (question.answer_type === 'number') {
-    return '<label class="m343-field"><span>Valor</span><input class="input" type="number" data-m343-value required></label>';
+    return `<label class="m343-field"><span>Valor</span><input class="input" type="number" data-m343-value></label>${unknownChoice()}`;
   }
   if (question.answer_type === 'textarea') {
-    return '<label class="m343-field"><span>Respuesta</span><textarea class="input m343-textarea" maxlength="1200" data-m343-value required></textarea></label>';
+    return `<label class="m343-field"><span>Respuesta</span><textarea class="input m343-textarea" maxlength="1200" data-m343-value></textarea></label>${unknownChoice()}`;
   }
-  return '<label class="m343-field"><span>Respuesta</span><input class="input" type="text" maxlength="1200" autocomplete="off" data-m343-value required></label>';
+  return `<label class="m343-field"><span>Respuesta</span><input class="input" type="text" maxlength="1200" autocomplete="off" data-m343-value></label>${unknownChoice()}`;
 }
 
 function questionTitle(action) {
@@ -115,9 +119,10 @@ function collectValue(form, question) {
     if (!values.length) throw new Error('Selecciona al menos una opción para continuar.');
     return values;
   }
+  if (form.querySelector('[data-m343-unknown]')?.checked) return 'UNCERTAIN';
   const field = form.querySelector('[data-m343-value]');
   const value = String(field?.value || '').trim();
-  if (!value) throw new Error('Completa este dato para continuar.');
+  if (!value) throw new Error('Completa este dato o selecciona “No sé”.');
   return value;
 }
 
@@ -169,6 +174,15 @@ document.addEventListener('submit', event => {
   if (event.target?.id !== 'm343-question-form') return;
   event.preventDefault();
   submitAnswer(event.target);
+});
+
+document.addEventListener('change', event => {
+  if (!event.target?.matches?.('[data-m343-unknown]')) return;
+  const form = event.target.closest('form');
+  const field = form?.querySelector('[data-m343-value]');
+  if (!field) return;
+  field.disabled = event.target.checked;
+  if (event.target.checked) field.value = '';
 });
 
 document.addEventListener('click', event => {
