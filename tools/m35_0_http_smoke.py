@@ -108,7 +108,7 @@ def recommended_consumer_intake(client: Client) -> tuple[str, str]:
         "Compré un producto defectuoso y quiero reclamar la garantía. "
         "Pagué con tarjeta de crédito y necesito revisar qué puedo solicitar."
     )
-    started = client.post("/api/m34/intake/start", {"problem_statement": narrative}, expected=200)
+    started = client.post("/api/m34/intake/start", {"problem_statement": narrative}, expected=201)
     code = started.get("recovery_code")
     require(bool(code), "No se recibió recovery code M34")
 
