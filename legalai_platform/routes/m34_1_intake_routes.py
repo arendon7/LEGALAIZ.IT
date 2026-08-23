@@ -1,10 +1,19 @@
 from __future__ import annotations
 
+from functools import lru_cache
+from hashlib import sha256
+
 import core_v11 as core
-from legalai_platform.runtime_registry import INTELLIGENT_INTAKE, OBSERVABILITY, RATE_LIMITER
+from legalai_platform.intelligent_intake_m34_1 import IntelligentIntakeStore
+from legalai_platform.runtime_registry import INFRA, OBSERVABILITY, RATE_LIMITER
 
 
 PREFIX = "/api/m34/intake"
+
+
+@lru_cache(maxsize=1)
+def intelligent_intake() -> IntelligentIntakeStore:
+    return IntelligentIntakeStore(INFRA.crypto)
 
 
 def _client_context(handler) -> tuple[str, str]:
@@ -45,6 +54,12 @@ def _safe_observe(event: str, **fields) -> None:
         pass
 
 
+def _open_store():
+    con = core.db()
+    intelligent_intake().create_schema(con)
+    return con, intelligent_intake()
+
+
 def handle_m34_1_intake_post(handler, path: str) -> bool:
     if not (path == PREFIX or path.startswith(PREFIX + "/")):
         return False
@@ -57,12 +72,9 @@ def handle_m34_1_intake_post(handler, path: str) -> bool:
         if path == f"{PREFIX}/start":
             if not _rate_limit(handler, "start", 12, 300):
                 return True
-            con = core.db()
+            con, store = _open_store()
             try:
-                result = INTELLIGENT_INTAKE.create(
-                    con,
-                    str(data.get("problem_statement") or ""),
-                )
+                result = store.create(con, str(data.get("problem_statement") or ""))
                 con.commit()
             finally:
                 con.close()
@@ -71,7 +83,7 @@ def handle_m34_1_intake_post(handler, path: str) -> bool:
                 "m34_intake_started",
                 intake_id=result["id"],
                 stage=result["stage"],
-                ip_hash=__import__("hashlib").sha256(ip.encode("utf-8")).hexdigest()[:16] if ip else "",
+                ip_hash=sha256(ip.encode("utf-8")).hexdigest()[:16] if ip else "",
             )
             handler.send_json(result, 201)
             return True
@@ -79,12 +91,9 @@ def handle_m34_1_intake_post(handler, path: str) -> bool:
         if path == f"{PREFIX}/recover":
             if not _rate_limit(handler, "recover", 10, 300):
                 return True
-            con = core.db()
+            con, store = _open_store()
             try:
-                result = INTELLIGENT_INTAKE.recover(
-                    con,
-                    str(data.get("recovery_code") or ""),
-                )
+                result = store.recover(con, str(data.get("recovery_code") or ""))
                 con.commit()
             finally:
                 con.close()
@@ -99,9 +108,9 @@ def handle_m34_1_intake_post(handler, path: str) -> bool:
         if path == f"{PREFIX}/problem":
             if not _rate_limit(handler, "update", 20, 300):
                 return True
-            con = core.db()
+            con, store = _open_store()
             try:
-                result = INTELLIGENT_INTAKE.update_problem(
+                result = store.update_problem(
                     con,
                     str(data.get("recovery_code") or ""),
                     str(data.get("problem_statement") or ""),
@@ -135,4 +144,4 @@ def handle_m34_1_intake_post(handler, path: str) -> bool:
         return True
 
 
-__all__ = ["PREFIX", "handle_m34_1_intake_post"]
+__all__ = ["PREFIX", "handle_m34_1_intake_post", "intelligent_intake"]
