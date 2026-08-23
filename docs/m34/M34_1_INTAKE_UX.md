@@ -162,42 +162,50 @@ Permite corregir el relato utilizando el mismo código. Una edición futura inva
 
 ### Funcionales
 
-- [ ] una persona anónima puede guardar una descripción válida;
-- [ ] puede recuperar el mismo relato con el código;
-- [ ] puede editarlo sin crear otra sesión;
-- [ ] puede elegir el orientador determinístico sin guardar relato;
-- [ ] puede llegar al catálogo de 11 productos;
-- [ ] el resto de rutas públicas mantiene compatibilidad.
+- [x] una persona anónima puede guardar una descripción válida;
+- [x] puede recuperar el mismo relato con el código;
+- [x] puede editarlo sin crear otra sesión;
+- [x] puede elegir el orientador determinístico sin guardar relato;
+- [x] puede llegar al catálogo de 11 productos;
+- [x] el resto de rutas públicas mantiene compatibilidad.
 
 ### Seguridad
 
-- [ ] el relato no aparece en columnas de texto claro de la tabla M34;
-- [ ] el código no se almacena en texto claro;
-- [ ] código inválido/expirado falla cerrado;
-- [ ] payload alterado falla integridad;
-- [ ] rate limiting activo;
-- [ ] secretos no aparecen en URL;
-- [ ] relato/código no se escriben en observabilidad.
+- [x] el relato no aparece en columnas de texto claro de la tabla M34;
+- [x] el código no se almacena en texto claro;
+- [x] código inválido/expirado falla cerrado;
+- [x] payload alterado falla integridad;
+- [x] rate limiting activo;
+- [x] secretos no aparecen en URL;
+- [x] relato/código no se escriben en observabilidad.
 
 ### No regresión
 
-- [ ] M34.0 sigue validando 11 productos / >=473 preguntas / >=273 reglas;
-- [ ] suite completa verde;
-- [ ] smoke HTTP verde;
-- [ ] smoke de producción demostrativa verde;
-- [ ] auditoría visual DOCX verde;
-- [ ] generación documental, RBAC, Studio y aprobaciones no se modifican.
+- [x] M34.0 sigue validando 11 productos / >=473 preguntas / >=273 reglas;
+- [x] suite completa verde;
+- [x] smoke HTTP verde;
+- [x] smoke de producción demostrativa verde;
+- [x] auditoría visual DOCX verde;
+- [x] generación documental, RBAC, Studio y aprobaciones no se modifican.
 
-## Certificación de PR apilado
+## Evidencia de certificación técnica
 
-El workflow canónico del repositorio se activa automáticamente para `pull_request` únicamente cuando la base es `main`. Como M34.1 se revisa apilado sobre M34.0 para mantener un diff pequeño y auditable, la certificación de un SHA M34.1 se realiza sin alterar sus bytes de código:
+La rama M34.1 fue certificada sobre el SHA exacto:
 
-1. retarget temporal del PR M34.1 a `main`;
-2. commit/synchronize sobre el mismo branch para activar el workflow;
-3. certificación del SHA exacto mediante suite completa, smoke y visual DOCX;
-4. retorno del PR a `m34/intelligent-journey-foundation` para revisión apilada.
+`31fa1e06b76b6824a0360cb37f2f4a42f6702dec`
 
-La evidencia siempre debe citar el SHA probado y el workflow run correspondiente. El cambio temporal de base no equivale a merge ni vuelve canónica la rama.
+Workflow: `Validación LegalAIZ.it` — run #683 (`32658236494`).
+
+Resultado: **SUCCESS**.
+
+- sintaxis: PASS;
+- suite completa unittest/integration: PASS;
+- interfaz y datos demo: PASS;
+- smoke HTTP: PASS;
+- smoke producción demostrativa M33.1: PASS;
+- visual DOCX: PASS.
+
+Esta certificación prueba integración técnica y no equivale a aprobación jurídica sustantiva ni autorización de producción jurídica real.
 
 ## Próxima subiteración: M34.2
 
