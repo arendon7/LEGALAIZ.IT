@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import datetime, timezone
+import json
 import re
 import unicodedata
 import uuid
@@ -19,6 +20,10 @@ MAX_EXTRACTED_FACTS = 32
 MAX_CANDIDATE_PRODUCTS = 3
 MAX_RISK_SIGNALS = 8
 MAX_CONTRADICTIONS = 8
+MAX_FACT_VALUE_JSON_CHARS = 4000
+MAX_PROVIDER_ID_CHARS = 120
+MAX_PROVIDER_MODE_CHARS = 80
+MAX_SOURCE_REFERENCE_CHARS = 256
 
 
 def utc_iso() -> str:
@@ -60,6 +65,16 @@ def _parse_cop_amount(value: str) -> int | None:
     if amount <= 0 or amount > 10**15:
         return None
     return amount
+
+
+def _bounded_json_value(value: Any, label: str) -> Any:
+    try:
+        serialized = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    except (TypeError, ValueError) as exc:
+        raise ValueError(f"El proveedor devolvió un valor no serializable para {label}") from exc
+    if len(serialized) > MAX_FACT_VALUE_JSON_CHARS:
+        raise ValueError(f"El valor estructurado excede el límite permitido para {label}")
+    return value
 
 
 class FactExtractionProvider(Protocol):
@@ -239,7 +254,10 @@ class ConservativeNarrativeProvider:
                 {
                     "product_code": code,
                     "signal_score": round(min(0.95, 0.45 + 0.1 * count), 2),
-                    "reason_codes": [re.sub(r"[^a-z0-9]+", "_", item).strip("_") for item in matched],
+                    "reason_codes": [
+                        re.sub(r"[^a-z0-9]+", "_", item).strip("_")
+                        for item in matched
+                    ],
                     "status": "TOPIC_SIGNAL_ONLY",
                 }
             )
@@ -482,19 +500,33 @@ class FactExtractionService:
 
     @property
     def descriptor(self) -> ProviderDescriptor:
-        return ProviderDescriptor(
+        descriptor = ProviderDescriptor(
             provider_id=str(self.provider.provider_id),
             provider_mode=str(self.provider.provider_mode),
             ai_enabled=bool(self.provider.ai_enabled),
         )
+        if not re.fullmatch(r"[A-Za-z0-9._:-]{3,120}", descriptor.provider_id):
+            raise ValueError("El identificador del proveedor de extracción no es válido.")
+        if not re.fullmatch(r"[A-Z0-9_:-]{3,80}", descriptor.provider_mode):
+            raise ValueError("El modo del proveedor de extracción no es válido.")
+        return descriptor
 
     def _fact_from_candidate(self, candidate: Mapping[str, Any], source_reference: str) -> dict[str, Any]:
+        if not isinstance(candidate, Mapping):
+            raise ValueError("El extractor produjo un hecho candidato con formato inválido.")
         fact_type = str(candidate.get("fact_type") or "").strip()
         if fact_type not in self.allowed_fact_types:
             raise ValueError(f"El extractor produjo un tipo de hecho no permitido: {fact_type}")
         if "value" not in candidate:
             raise ValueError(f"El extractor omitió el valor para {fact_type}")
+        if not source_reference or len(source_reference) > MAX_SOURCE_REFERENCE_CHARS:
+            raise ValueError("La referencia de origen de la extracción no es válida.")
 
+        value = _bounded_json_value(candidate.get("value"), fact_type)
+        normalized_value = _bounded_json_value(
+            candidate.get("normalized_value", value),
+            f"{fact_type}.normalized_value",
+        )
         confidence = candidate.get("confidence")
         if isinstance(confidence, bool) or not isinstance(confidence, (int, float)):
             raise ValueError(f"Confianza inválida para {fact_type}")
@@ -502,11 +534,12 @@ class FactExtractionService:
         if not 0 <= confidence <= 1:
             raise ValueError(f"Confianza fuera de rango para {fact_type}")
 
+        descriptor = self.descriptor
         fact = {
             "fact_id": "fact_ai_" + uuid.uuid4().hex[:16],
             "fact_type": fact_type,
-            "value": candidate.get("value"),
-            "normalized_value": candidate.get("normalized_value", candidate.get("value")),
+            "value": value,
+            "normalized_value": normalized_value,
             "provenance": "AI_INFERRED",
             "confirmation_status": "UNCONFIRMED",
             "criticality": str(candidate.get("criticality") or "MEDIUM"),
@@ -516,7 +549,7 @@ class FactExtractionService:
             "legal_relevance": str(candidate.get("legal_relevance") or "MEDIUM"),
             "created_at": utc_iso(),
             "updated_at": utc_iso(),
-            "notes": f"Candidato estructurado por {self.provider.provider_id}; requiere confirmación humana.",
+            "notes": f"Candidato estructurado por {descriptor.provider_id}; requiere confirmación humana.",
         }
         errors = validate_legal_fact(fact)
         if errors:
@@ -527,8 +560,9 @@ class FactExtractionService:
         problem = str(problem_statement or "").strip()
         if not problem:
             raise ValueError("No hay un relato disponible para analizar.")
-        if not source_reference:
-            raise ValueError("La extracción requiere una referencia de origen.")
+        if not source_reference or len(source_reference) > MAX_SOURCE_REFERENCE_CHARS:
+            raise ValueError("La extracción requiere una referencia de origen válida.")
+        descriptor = self.descriptor
 
         raw = self.provider.extract(problem, set(self.allowed_fact_types))
         if not isinstance(raw, Mapping):
@@ -561,11 +595,17 @@ class FactExtractionService:
             reason_codes = candidate.get("reason_codes") or []
             if not isinstance(reason_codes, list) or any(not isinstance(item, str) for item in reason_codes):
                 raise ValueError(f"Razones de producto inválidas para {code}")
+            safe_reasons: list[str] = []
+            for reason in reason_codes[:6]:
+                reason = str(reason).strip()
+                if not re.fullmatch(r"[a-z0-9_]{1,80}", reason):
+                    raise ValueError(f"Código de razón inválido para {code}")
+                safe_reasons.append(reason)
             candidate_products.append(
                 {
                     "product_code": code,
                     "signal_score": round(float(score), 4),
-                    "reason_codes": reason_codes[:6],
+                    "reason_codes": safe_reasons,
                     "status": "TOPIC_SIGNAL_ONLY",
                 }
             )
@@ -588,11 +628,15 @@ class FactExtractionService:
             confidence = risk.get("confidence", 0)
             if isinstance(confidence, bool) or not isinstance(confidence, (int, float)) or not 0 <= float(confidence) <= 1:
                 raise ValueError(f"Confianza de riesgo inválida para {code}")
+            try:
+                signal_count = max(1, int(risk.get("signal_count") or 1))
+            except (TypeError, ValueError) as exc:
+                raise ValueError(f"Conteo de señal de riesgo inválido para {code}") from exc
             risk_signals.append(
                 {
                     "code": code,
                     "basis": str(risk.get("basis") or "STRUCTURED_EXTRACTION")[:80],
-                    "signal_count": max(1, int(risk.get("signal_count") or 1)),
+                    "signal_count": signal_count,
                     "confidence": round(float(confidence), 4),
                     "status": "UNCONFIRMED_SIGNAL",
                 }
@@ -602,12 +646,16 @@ class FactExtractionService:
         if not isinstance(contradictions, list) or len(contradictions) > MAX_CONTRADICTIONS:
             raise ValueError("La cantidad de contradicciones no es válida.")
         safe_contradictions: list[dict[str, str]] = []
+        seen_contradictions: set[str] = set()
         for item in contradictions:
             if not isinstance(item, Mapping):
                 raise ValueError("Contradicción inválida.")
             code = str(item.get("code") or "").strip()
-            if not code or not re.match(r"^[A-Z0-9_]{3,80}$", code):
+            if not code or not re.fullmatch(r"[A-Z0-9_]{3,80}", code):
                 raise ValueError("Código de contradicción inválido.")
+            if code in seen_contradictions:
+                continue
+            seen_contradictions.add(code)
             safe_contradictions.append(
                 {
                     "code": code,
@@ -615,7 +663,6 @@ class FactExtractionService:
                 }
             )
 
-        descriptor = self.descriptor
         return {
             "schema_version": EXTRACTION_SCHEMA_VERSION,
             "provider": {
