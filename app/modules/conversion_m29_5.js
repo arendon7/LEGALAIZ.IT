@@ -173,6 +173,11 @@ function savedIntakeContent(esc) {
   </section>`;
 }
 
+function resumeIntakeContent() {
+  if (intakeState.editing || intakeState.session) return '';
+  return `<details class="m341-resume"><summary>Ya empecé antes y tengo un código</summary><form id="m341-recover-form" class="m341-resume-form"><label class="sr-only" for="m341-recovery-code">Código de continuidad</label><input class="input" id="m341-recovery-code" autocomplete="off" spellcheck="false" maxlength="27" placeholder="XXXXXX-XXXXXX-XXXXXX-XXXXXX" required><button class="btn secondary" type="submit">Retomar</button></form><div id="m341-recover-status" class="m341-status" role="status" aria-live="polite"></div></details>`;
+}
+
 function storyIntakeContent(esc) {
   const existing = intakeState.session?.problem_statement || '';
   if (intakeState.session && !intakeState.editing) return savedIntakeContent(esc);
@@ -185,8 +190,7 @@ function storyIntakeContent(esc) {
     <div class="m341-problem-hint"><strong>Si puedes, incluye quién interviene, qué ocurrió, cuándo pasó y qué quieres lograr.</strong><span id="m341-count">${existing.length}/8.000</span></div>
     <div class="m341-actions"><button class="btn gold" type="submit">${intakeState.editing?'Guardar corrección':'Guardar y continuar'}</button>${intakeState.editing?'<button class="btn ghost" type="button" data-m341-cancel-edit>Cancelar</button>':'<button class="btn secondary" type="button" data-m341-mode="finder">Prefiero responder preguntas</button>'}</div>
     <div id="m341-intake-status" class="m341-status" role="status" aria-live="polite"></div>
-    ${!intakeState.editing?`<details class="m341-resume"><summary>Ya empecé antes y tengo un código</summary><form id="m341-recover-form" class="m341-resume-form"><label class="sr-only" for="m341-recovery-code">Código de continuidad</label><input class="input" id="m341-recovery-code" autocomplete="off" spellcheck="false" maxlength="27" placeholder="XXXXXX-XXXXXX-XXXXXX-XXXXXX" required><button class="btn secondary" type="submit">Retomar</button></form><div id="m341-recover-status" class="m341-status" role="status" aria-live="polite"></div></details>`:''}
-  </form>`;
+  </form>${resumeIntakeContent()}`;
 }
 
 function finderContent(esc) {
@@ -270,6 +274,7 @@ export function createConversionExperience({ app, esc, api, go, toast, shell, pa
       intakeState.session = result;
       intakeState.recoveryCode = code;
       intakeState.editing = false;
+      intakeState.mode = 'story';
       finderPage();
       toast('Diagnóstico recuperado.');
     } catch (error) {
