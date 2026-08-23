@@ -15,6 +15,8 @@ from legalai_platform.m34_intelligent_journey import (
 MIN_PROBLEM_CHARS = 20
 MAX_PROBLEM_CHARS = 8000
 MAX_FACT_DECISIONS = 64
+MAX_USER_CORRECTION_CHARS = 2000
+MAX_USER_LIST_ITEMS = 20
 
 
 def utc_iso() -> str:
@@ -307,13 +309,76 @@ class IntelligentIntakeStore:
         }
 
     @staticmethod
-    def _confirmed_fact(candidate: dict, value, action: str) -> dict:
+    def _normalize_user_correction(candidate: dict, raw_value):
+        original = candidate.get("value")
+        if isinstance(original, list):
+            if isinstance(raw_value, list):
+                items = [str(item).strip() for item in raw_value]
+            else:
+                items = [item.strip() for item in str(raw_value or "").split(",")]
+            items = [item for item in items if item]
+            if not items or len(items) > MAX_USER_LIST_ITEMS:
+                raise ValueError("La corrección de la lista no tiene un formato válido.")
+            if any(len(item) > 200 for item in items):
+                raise ValueError("Uno de los valores corregidos es demasiado largo.")
+            return items, items
+
+        if isinstance(original, dict):
+            if "amount_cop" in original:
+                amount_source = raw_value.get("amount_cop") if isinstance(raw_value, dict) else raw_value
+                digits = "".join(ch for ch in str(amount_source or "") if ch.isdigit())
+                if not digits:
+                    raise ValueError("La corrección del valor monetario debe contener una cifra.")
+                amount = int(digits)
+                if amount <= 0 or amount > 10**15:
+                    raise ValueError("La corrección del valor monetario está fuera del rango permitido.")
+                corrected = dict(original)
+                corrected["amount_cop"] = amount
+                normalized = dict(candidate.get("normalized_value") or {})
+                normalized.update({"amount_cop": amount, "currency": "COP"})
+                return corrected, normalized
+            if not isinstance(raw_value, dict):
+                raise ValueError("Este dato estructurado debe conservar su formato original.")
+            serialized = json.dumps(raw_value, ensure_ascii=False, sort_keys=True)
+            if len(serialized) > MAX_USER_CORRECTION_CHARS:
+                raise ValueError("La corrección estructurada es demasiado extensa.")
+            return raw_value, raw_value
+
+        if isinstance(original, bool):
+            if isinstance(raw_value, bool):
+                return raw_value, raw_value
+            folded = str(raw_value or "").strip().lower()
+            if folded in {"si", "sí", "true", "1"}:
+                return True, True
+            if folded in {"no", "false", "0"}:
+                return False, False
+            raise ValueError("La corrección debe indicar sí o no.")
+
+        if isinstance(original, (int, float)) and not isinstance(original, bool):
+            try:
+                number = float(raw_value)
+            except (TypeError, ValueError) as exc:
+                raise ValueError("La corrección debe ser numérica.") from exc
+            if abs(number) > 10**15:
+                raise ValueError("La corrección numérica está fuera del rango permitido.")
+            value = int(number) if isinstance(original, int) and number.is_integer() else number
+            return value, value
+
+        corrected = " ".join(str(raw_value or "").strip().split())
+        if not corrected:
+            raise ValueError("La corrección no puede quedar vacía.")
+        if len(corrected) > MAX_USER_CORRECTION_CHARS:
+            raise ValueError("La corrección es demasiado extensa.")
+        return corrected, corrected
+
+    @staticmethod
+    def _confirmed_fact(candidate: dict, value, normalized_value, action: str) -> dict:
         now = utc_iso()
         fact = {
             "fact_id": "fact_user_" + uuid.uuid4().hex[:16],
             "fact_type": candidate["fact_type"],
             "value": value,
-            "normalized_value": value,
+            "normalized_value": normalized_value,
             "provenance": "USER_CONFIRMED",
             "confirmation_status": "CONFIRMED_BY_USER",
             "criticality": candidate.get("criticality") or "MEDIUM",
@@ -379,13 +444,16 @@ class IntelligentIntakeStore:
             if action == "EDIT":
                 if "value" not in decision:
                     raise ValueError("La corrección requiere un nuevo valor.")
-                value = decision.get("value")
+                value, normalized_value = self._normalize_user_correction(candidate, decision.get("value"))
             else:
                 value = candidate.get("value")
+                normalized_value = candidate.get("normalized_value", value)
 
             candidate["confirmation_status"] = "SUPERSEDED"
             candidate["updated_at"] = now
-            new_confirmed.append(self._confirmed_fact(candidate, value, action))
+            new_confirmed.append(
+                self._confirmed_fact(candidate, value, normalized_value, action)
+            )
 
         facts.extend(new_confirmed)
         remaining = [
