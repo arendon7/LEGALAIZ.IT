@@ -63,6 +63,53 @@ class PromotionAttemptProvider:
         }
 
 
+class BadMetadataProvider:
+    provider_id = "provider id with spaces and secrets"
+    provider_mode = "unsafe mode"
+    ai_enabled = True
+
+    def extract(self, problem_statement, allowed_fact_types):
+        return {"facts": [], "candidate_products": [], "risk_signals": [], "contradictions": []}
+
+
+class OversizedValueProvider:
+    provider_id = "test.oversized"
+    provider_mode = "TEST"
+    ai_enabled = True
+
+    def extract(self, problem_statement, allowed_fact_types):
+        return {
+            "facts": [{
+                "fact_type": "goal.requested_outcome",
+                "value": "x" * 5000,
+                "confidence": 0.8,
+                "criticality": "MEDIUM",
+                "legal_relevance": "MEDIUM",
+            }],
+            "candidate_products": [],
+            "risk_signals": [],
+            "contradictions": [],
+        }
+
+
+class UnsafeReasonProvider:
+    provider_id = "test.unsafe-reason"
+    provider_mode = "TEST"
+    ai_enabled = True
+
+    def extract(self, problem_statement, allowed_fact_types):
+        return {
+            "facts": [],
+            "candidate_products": [{
+                "product_code": "CO-LA-001",
+                "signal_score": 0.7,
+                "reason_codes": ["raw narrative must not be copied here"],
+            }],
+            "risk_signals": [],
+            "contradictions": [],
+        }
+
+
 class FactExtractionM342Tests(unittest.TestCase):
     def test_local_provider_extracts_only_candidates_not_decision_facts(self):
         service = FactExtractionService(ConservativeNarrativeProvider())
@@ -105,6 +152,27 @@ class FactExtractionM342Tests(unittest.TestCase):
     def test_unknown_risk_fails_closed(self):
         with self.assertRaisesRegex(ValueError, "Señal de riesgo no soportada"):
             FactExtractionService(UnknownRiskProvider()).extract(
+                "Tengo un problema jurídico suficientemente descrito para esta prueba.",
+                "intake:INT-TEST:problem_statement",
+            )
+
+    def test_invalid_provider_metadata_fails_before_provider_output_is_trusted(self):
+        with self.assertRaisesRegex(ValueError, "identificador del proveedor"):
+            FactExtractionService(BadMetadataProvider()).extract(
+                "Tengo un problema jurídico suficientemente descrito para esta prueba.",
+                "intake:INT-TEST:problem_statement",
+            )
+
+    def test_oversized_fact_value_fails_closed(self):
+        with self.assertRaisesRegex(ValueError, "excede el límite"):
+            FactExtractionService(OversizedValueProvider()).extract(
+                "Tengo un problema jurídico suficientemente descrito para esta prueba.",
+                "intake:INT-TEST:problem_statement",
+            )
+
+    def test_reason_codes_must_be_codes_not_free_form_narrative(self):
+        with self.assertRaisesRegex(ValueError, "Código de razón inválido"):
+            FactExtractionService(UnsafeReasonProvider()).extract(
                 "Tengo un problema jurídico suficientemente descrito para esta prueba.",
                 "intake:INT-TEST:problem_statement",
             )
