@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://legalaiz.it/schemas/m34/fact-extraction-result.schema.json",
+  "title": "LegalAIZ.it M34.2 Fact Extraction Result",
+  "description": "Strict extraction envelope. Facts are machine-structured candidates and must remain unconfirmed until a separate human confirmation event is recorded.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "provider",
+    "facts",
+    "candidate_products",
+    "risk_signals",
+    "contradictions",
+    "requires_user_confirmation",
+    "next_action",
+    "notice"
+  ],
+  "properties": {
+    "schema_version": {"const": "34.2.0"},
+    "provider": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "mode", "ai_enabled"],
+      "properties": {
+        "id": {"type": "string", "minLength": 3, "maxLength": 120},
+        "mode": {"type": "string", "minLength": 3, "maxLength": 80},
+        "ai_enabled": {"type": "boolean"}
+      }
+    },
+    "facts": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {"$ref": "legal_fact.schema.json"}
+    },
+    "candidate_products": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["product_code", "signal_score", "reason_codes", "status"],
+        "properties": {
+          "product_code": {"type": "string", "pattern": "^CO-[A-Z]{2}-[0-9]{3}$"},
+          "signal_score": {"type": "number", "minimum": 0, "maximum": 1},
+          "reason_codes": {
+            "type": "array",
+            "maxItems": 6,
+            "items": {"type": "string", "maxLength": 80}
+          },
+          "status": {"const": "TOPIC_SIGNAL_ONLY"}
+        }
+      }
+    },
+    "risk_signals": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "basis", "signal_count", "confidence", "status"],
+        "properties": {
+          "code": {"type": "string", "minLength": 3, "maxLength": 80},
+          "basis": {"type": "string", "minLength": 3, "maxLength": 80},
+          "signal_count": {"type": "integer", "minimum": 1},
+          "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+          "status": {"const": "UNCONFIRMED_SIGNAL"}
+        }
+      }
+    },
+    "contradictions": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "status"],
+        "properties": {
+          "code": {"type": "string", "pattern": "^[A-Z0-9_]{3,80}$"},
+          "status": {"const": "UNCONFIRMED_SIGNAL"}
+        }
+      }
+    },
+    "requires_user_confirmation": {"type": "boolean"},
+    "next_action": {"enum": ["CONFIRM_FACTS", "ASK_MORE"]},
+    "notice": {"type": "string", "minLength": 20, "maxLength": 1000}
+  }
+}
