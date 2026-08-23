@@ -298,10 +298,16 @@ class ExplainableRecommendationEngine:
 
     @staticmethod
     def _public_evaluation(evaluation: Mapping[str, Any], *, compact: bool = False) -> dict[str, Any]:
+        private_keys = {
+            "failed_reasons",
+            "escalation_reasons",
+            "matched_fact_ids",
+            "matched_fact_types",
+        }
         public = {
             key: value
             for key, value in evaluation.items()
-            if not str(key).startswith("_internal") and key not in {"failed_reasons", "escalation_reasons"}
+            if not str(key).startswith("_internal") and key not in private_keys
         }
         if compact:
             return {
@@ -431,6 +437,8 @@ class ExplainableRecommendationEngine:
                         "rank": list(item["_internal_rank"][:-1]),
                         "failed_reason_codes": [reason["reason_code"] for reason in item["failed_reasons"]],
                         "escalation_reason_codes": [reason["reason_code"] for reason in item["escalation_reasons"]],
+                        "matched_fact_ids": list(item["matched_fact_ids"]),
+                        "matched_fact_types": list(item["matched_fact_types"]),
                     }
                     for item in sorted(evaluations, key=lambda value: value["_internal_rank"], reverse=True)
                 ]
@@ -478,7 +486,6 @@ class RecommendationStore(AdaptiveIntakeStore):
         result.pop("_internal", None)
         result["decision_id"] = record["decision_id"]
         result["decided_at"] = record["decided_at"]
-        result["input_fingerprint"] = record["input_fingerprint"]
         result["idempotent"] = bool(record.get("idempotent"))
         return result
 
