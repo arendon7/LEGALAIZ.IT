@@ -14,9 +14,9 @@ from typing import Any, Mapping
 import uuid
 
 import core_v11 as core
-from legalai_platform.approval_desk_operations import ApprovalDeskOperations, OperationsIntegrityError
-from legalai_platform.approval_desk_workspace import ApprovalDeskError, PermissionDenied
-from legalai_platform.approval_notification_center import ApprovalNotificationCenter, NotificationIntegrityError
+from legalai_platform.approval_desk_operations import ApprovalDeskOperations
+from legalai_platform.approval_desk_workspace import PermissionDenied
+from legalai_platform.approval_notification_center import ApprovalNotificationCenter
 from legalai_platform.fulfillment_intake_m36_0 import FulfillmentIntakeCenter, FulfillmentIntakeError
 
 
@@ -243,6 +243,14 @@ class ProfessionalAssignmentCenter:
                 notified = _decode_ids(existing.get("notified_desk_ids_json"))
                 if set(completed) - set(desk_ids) or set(notified) - set(desk_ids):
                     raise ProfessionalAssignmentError("ASSIGNMENT_LEDGER_INVALID", "El ledger contiene mesas ajenas al intake actual.", 422)
+                if existing.get("state") == "COMPLETE":
+                    if set(completed) != set(desk_ids) or set(notified) != set(desk_ids):
+                        raise ProfessionalAssignmentError(
+                            "ASSIGNMENT_LEDGER_INVALID",
+                            "Una asignación marcada COMPLETE no conserva cobertura total.",
+                            422,
+                        )
+                    return self._public(existing, intake, specialist, qa, desk_ids, completed, notified, idempotent=True)
             else:
                 assignment_id = "ASN-" + uuid.uuid4().hex[:14].upper()
                 now = core.now()
@@ -318,7 +326,7 @@ class ProfessionalAssignmentCenter:
                 },
             )
             con.commit()
-            return self._public(row, intake, specialist, qa, desk_ids, completed, notified, idempotent=bool(existing and existing.get("state") == "COMPLETE"))
+            return self._public(row, intake, specialist, qa, desk_ids, completed, notified, idempotent=False)
         finally:
             con.close()
 
