@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class M353IntegrationContractTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.run = (ROOT / "run.py").read_text(encoding="utf-8")
+        cls.run_source = (ROOT / "run.py").read_text(encoding="utf-8")
         cls.handler = (ROOT / "legalai_platform" / "http_handler_m35_3.py").read_text(encoding="utf-8")
         cls.routes = (ROOT / "legalai_platform" / "routes" / "m35_3_activation_routes.py").read_text(encoding="utf-8")
         cls.center = (ROOT / "legalai_platform" / "case_activation_m35_3.py").read_text(encoding="utf-8")
@@ -17,7 +17,7 @@ class M353IntegrationContractTests(unittest.TestCase):
         cls.css = (ROOT / "app" / "modules" / "case_activation_m35_3.css").read_text(encoding="utf-8")
 
     def test_runtime_is_incremental_on_certified_m352_handler(self):
-        self.assertIn("from legalai_platform.http_handler_m35_3 import Handler", self.run)
+        self.assertIn("from legalai_platform.http_handler_m35_3 import Handler", self.run_source)
         self.assertIn("from legalai_platform.http_handler_m35_2 import Handler as BaseHandler", self.handler)
         self.assertIn("return super().do_GET()", self.handler)
         self.assertNotIn("def do_POST", self.handler)
