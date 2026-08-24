@@ -110,6 +110,8 @@ jobs:
           LEGAL_REQUIRE_MFA_ROLES: ''
           LEGAL_GITHUB_LITE_ASSETS: 'true'
         run: |
+          LEGAL_DEMO_PASSWORD="$(python -c 'import secrets; print(secrets.token_urlsafe(32))')"
+          export LEGAL_DEMO_PASSWORD
           python run.py --lan --no-browser > /tmp/legalaiz.log 2>&1 &
           PID=$!
           trap 'kill $PID || true' EXIT
@@ -132,6 +134,7 @@ jobs:
           python tools/m35_1_http_smoke.py
           python tools/m35_2_http_smoke.py
           python tools/m35_3_http_smoke.py
+          python tools/m36_0_http_smoke.py
       - name: Smoke producción demostrativa M33.1
         run: python tools/public_demo_smoke.py
 
