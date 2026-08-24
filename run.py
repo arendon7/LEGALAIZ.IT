@@ -22,6 +22,7 @@ from legalai_platform.runtime_registry import *  # noqa: F401,F403,E402
 from legalai_platform.release_metadata import RELEASE_NAME, PUBLIC_DEMO_MODE, MILESTONE  # noqa: E402
 from legalai_platform.application_services import *  # noqa: F401,F403,E402
 import legalai_platform.application_services as _application_services  # noqa: E402
+from legalai_platform.m36_3_journey_guard import install_m36_3_delivery_guard  # noqa: E402
 from legalai_platform.http_handler_m36_3 import Handler  # noqa: E402
 # from legalai_platform.http_handler_m36_2 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m36_1 import Handler  # compatibility marker
@@ -66,6 +67,9 @@ from legalai_platform.http_handler_m36_3 import Handler  # noqa: E402
 # LEGAL_BOOTSTRAP_ADMIN_EMAIL
 # UPDATE users SET active=0 WHERE lower(email) LIKE '%@demo.legalaiz.it'
 # "code": "internal_error"
+
+
+install_m36_3_delivery_guard(M24_CASE_JOURNEY)
 
 
 _original_m31_case_demo_summary = M31_CASE_DEMO.summary
