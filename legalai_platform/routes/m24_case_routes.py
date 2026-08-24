@@ -21,6 +21,19 @@ def _requires_m36_controlled_delivery(con, case_id: str) -> bool:
         return False
 
 
+def _requires_m37_controlled_followup(con, case_id: str) -> bool:
+    """Prevent the legacy M24 endpoint from bypassing the M37 append-only ledger."""
+    try:
+        row = con.execute(
+            "SELECT state FROM m37_followup_enrollment WHERE case_id=? LIMIT 1",
+            (case_id,),
+        ).fetchone()
+        return bool(row and str(row[0] or "") in {"PREPARED", "ACTIVE"})
+    except Exception:
+        # Historical databases without M37 keep their previous M24 behavior.
+        return False
+
+
 def handle_m24_case_get(handler, path, user):
     prefix = "/api/m24/case-journeys"
     if not path.startswith(prefix):
@@ -72,6 +85,15 @@ def handle_m24_case_post(handler, path, user):
                 user,
             )
         else:
+            if _requires_m37_controlled_followup(con, case_id):
+                handler.send_json(
+                    {
+                        "error": "Este expediente ingresó al seguimiento M37 y sus actividades sólo pueden modificarse mediante la compuerta controlada M37.0.",
+                        "code": "M37_CONTROLLED_FOLLOWUP_REQUIRED",
+                    },
+                    409,
+                )
+                return True
             result = M24_CASE_JOURNEY.update_follow_up(
                 con,
                 case_id,
