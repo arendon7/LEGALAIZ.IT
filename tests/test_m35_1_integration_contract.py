@@ -66,7 +66,8 @@ class M351IntegrationContractTests(unittest.TestCase):
 
     def test_direct_product_visit_remains_valid_without_handoff(self):
         self.assertIn("A direct product visit without an M35 handoff is a normal path", self.js)
-        self.assertIn("No existe un diagnóstico transferido", self.js)
+        self.assertIn("diagnóstico transferido", self.js)
+        self.assertIn("NO_TRANSFERRED_INTAKE", self.js)
         self.assertNotIn("location.href", self.js)
 
     def test_offer_is_explicitly_sandbox_and_not_commercially_approved(self):
