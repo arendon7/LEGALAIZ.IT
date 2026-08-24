@@ -181,6 +181,13 @@ jobs:
           stop_server
           start_server /tmp/legalaiz-m37-1.log
           python tools/m37_1_http_smoke.py
+
+          # M37.2 recorre nuevamente entrega + seguimiento y prueba fechas registradas,
+          # recordatorios in-app e idempotencia sin calcular ni afirmar términos legales.
+          # El reinicio sólo limpia el rate limiter in-memory y conserva la política real.
+          stop_server
+          start_server /tmp/legalaiz-m37-2.log
+          python tools/m37_2_http_smoke.py
       - name: Smoke producción demostrativa M33.1
         run: python tools/public_demo_smoke.py
 
