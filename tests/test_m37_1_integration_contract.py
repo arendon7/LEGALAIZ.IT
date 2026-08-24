@@ -31,6 +31,27 @@ class M371IntegrationContractTests(unittest.TestCase):
         self.assertIn("return super().do_GET()", handler)
         self.assertIn("return super().do_POST()", handler)
 
+    def test_runtime_factory_reuses_platform_encrypted_object_store(self):
+        route = self.read("legalai_platform/routes/m37_1_evidence_routes.py")
+        config = self.read("config/m37/evidence_contracts.json")
+        self.assertIn("INFRA.objects", route)
+        self.assertIn("EvidenceIntakeCenter(followup_center(), MALWARE_SCANNER, INFRA.objects)", route)
+        self.assertIn('"encrypted_object_store_required": true', config)
+        engine = self.read("legalai_platform/evidence_intake_m37_1.py")
+        self.assertIn("self.object_store.put", engine)
+        self.assertIn("self.object_store.get", engine)
+        self.assertIn("self.object_store.is_reference", engine)
+        self.assertNotIn("write_bytes(body)", engine)
+
+    def test_download_decrypts_through_store_and_never_serves_ciphertext_path(self):
+        route = self.read("legalai_platform/routes/m37_1_evidence_routes.py")
+        engine = self.read("legalai_platform/evidence_intake_m37_1.py")
+        self.assertIn("body, name, mime_type, public = center.download", route)
+        self.assertIn("handler.send_bytes(body, mime_type, filename=name)", route)
+        self.assertNotIn("handler.send_file", route)
+        self.assertIn("data = self.object_store.get(con, reference)", engine)
+        self.assertIn("return data, core.safe_filename", engine)
+
     def test_upload_is_multipart_single_file_and_content_type_is_untrusted(self):
         route = self.read("legalai_platform/routes/m37_1_evidence_routes.py")
         engine = self.read("legalai_platform/evidence_intake_m37_1.py")
@@ -41,13 +62,14 @@ class M371IntegrationContractTests(unittest.TestCase):
         self.assertNotIn("mime_type = claimed_content_type", engine)
         self.assertIn("_validate_file", engine)
 
-    def test_malware_scan_and_exact_hash_revalidation_are_mandatory(self):
+    def test_malware_scan_and_object_integrity_revalidation_are_mandatory(self):
         engine = self.read("legalai_platform/evidence_intake_m37_1.py")
         self.assertIn("self.malware_scanner.scan", engine)
-        self.assertIn("_sha256_file", engine)
-        self.assertIn("EVIDENCE_FILE_TAMPERED", engine)
+        self.assertIn("self.object_store.get", engine)
+        self.assertIn("EVIDENCE_OBJECT_TAMPERED", engine)
         self.assertIn("EVIDENCE_SCAN_UNAVAILABLE", engine)
         self.assertIn("not_scanned_local", engine)
+        self.assertIn("plaintext_sha256", engine)
 
     def test_file_policy_excludes_active_docx_and_unbounded_zip_expansion(self):
         engine = self.read("legalai_platform/evidence_intake_m37_1.py")
@@ -82,11 +104,11 @@ class M371IntegrationContractTests(unittest.TestCase):
         self.assertIn('"legal_sufficiency_verified_by_review": false', config)
         self.assertIn('"legal_effect_verified_by_review": false', config)
 
-    def test_public_model_excludes_paths_hashes_actor_ids_and_scan_details(self):
+    def test_public_model_excludes_object_refs_hashes_actor_ids_and_scan_details(self):
         engine = self.read("legalai_platform/evidence_intake_m37_1.py")
         public_section = engine[engine.index("def _public_item") : engine.index("def upload")]
-        self.assertNotIn('"file_path"', public_section)
-        self.assertNotIn('"sha256"', public_section)
+        self.assertNotIn('"object_ref"', public_section)
+        self.assertNotIn('"plaintext_sha256"', public_section)
         self.assertNotIn('"uploader_id"', public_section)
         self.assertNotIn('"reviewer_id"', public_section)
         self.assertNotIn('"scan_engine"', public_section)
@@ -100,7 +122,7 @@ class M371IntegrationContractTests(unittest.TestCase):
             "message_to_client=",
             "problem_statement",
             "answers=",
-            "file_path=",
+            "object_ref=",
             "scan_detail=",
             "payment_intent_id=",
         ):
@@ -116,6 +138,14 @@ class M371IntegrationContractTests(unittest.TestCase):
         route = self.read("legalai_platform/routes/m37_1_evidence_routes.py")
         self.assertIn('parts[4] == "review"', route)
 
+    def test_reviews_are_append_only_with_explicit_monotonic_sequence(self):
+        engine = self.read("legalai_platform/evidence_intake_m37_1.py")
+        self.assertIn("sequence INTEGER NOT NULL", engine)
+        self.assertIn("UNIQUE(evidence_id,sequence)", engine)
+        self.assertIn("ORDER BY sequence DESC LIMIT 1", engine)
+        self.assertIn("MAX(sequence)", engine)
+        self.assertNotIn("UPDATE m37_evidence_review", engine)
+
     def test_evidence_events_reuse_m37_chain_and_do_not_store_review_message(self):
         engine = self.read("legalai_platform/evidence_intake_m37_1.py")
         self.assertIn("self.followup._append_event", engine)
@@ -124,6 +154,16 @@ class M371IntegrationContractTests(unittest.TestCase):
         review_event = engine[engine.index('"EVIDENCE_REVIEW_RECORDED"'):engine.index("task_after", engine.index('"EVIDENCE_REVIEW_RECORDED"'))]
         self.assertIn('"message_present": bool(message)', review_event)
         self.assertNotIn('"message_to_client": message', review_event)
+
+    def test_storage_quotas_are_explicit_and_checked_before_object_write(self):
+        config = self.read("config/m37/evidence_contracts.json")
+        engine = self.read("legalai_platform/evidence_intake_m37_1.py")
+        for marker in ("max_items_per_case", "max_items_per_task", "max_total_bytes_per_case"):
+            self.assertIn(f'"{marker}"', config)
+            self.assertIn(marker, engine)
+        quota_pos = engine.index("self._check_quota")
+        store_pos = engine.index("self.object_store.put", quota_pos)
+        self.assertLess(quota_pos, store_pos)
 
     def test_m371_has_no_close_escalate_or_external_delivery_actions(self):
         route = self.read("legalai_platform/routes/m37_1_evidence_routes.py")
