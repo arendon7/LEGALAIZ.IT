@@ -85,7 +85,9 @@ NDA_CATEGORY_LABELS = {
     "secretos_empresariales": "Secretos empresariales",
     "otra": "Otra información definida por las partes",
 }
-PERSONAL_DATA = {"no": "No", "si_generales": "Sí", "si_sensibles": "Sí", "no_se": "No sé"}
+# Runtime CO-EM-004 does not offer an unknown value for personal_data. Therefore
+# M34 `no_se` deliberately has no mapping and is re-asked during fulfillment.
+PERSONAL_DATA = {"no": "No", "si_generales": "Sí", "si_sensibles": "Sí"}
 PRIOR_CLAIM = {"PRIOR_CLAIM_ASSERTED": "Sí", "NO_PRIOR_CLAIM": "No"}
 CONSUMER_REQUEST_MODE = {
     "GARANTIA": "Garantía legal",
