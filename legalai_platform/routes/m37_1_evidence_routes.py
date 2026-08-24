@@ -6,6 +6,7 @@ from urllib.parse import unquote
 
 from legalai_platform.approval_desk_workspace import PermissionDenied
 from legalai_platform.evidence_intake_m37_1 import EvidenceIntakeCenter, EvidenceIntakeError
+from legalai_platform.post_delivery_followup_m37_0 import PostDeliveryFollowUpError
 from legalai_platform.routes.m37_0_post_delivery_followup_routes import followup_center
 from legalai_platform.runtime_registry import INFRA, MALWARE_SCANNER, OBSERVABILITY, RATE_LIMITER
 
@@ -63,6 +64,8 @@ def _rate_limit(handler, user: dict, action: str, limit: int, window: int) -> bo
 
 def _error(handler, exc: Exception) -> bool:
     if isinstance(exc, EvidenceIntakeError):
+        handler.send_json({"error": str(exc), "code": exc.code}, exc.status)
+    elif isinstance(exc, PostDeliveryFollowUpError):
         handler.send_json({"error": str(exc), "code": exc.code}, exc.status)
     elif isinstance(exc, PermissionDenied):
         handler.send_json({"error": str(exc), "code": "PERMISSION_DENIED"}, 403)
