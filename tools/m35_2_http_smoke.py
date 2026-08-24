@@ -173,7 +173,8 @@ def main() -> int:
     require(paid_order.get("status") == "Pagado (sandbox)", "La orden no quedó Pagado (sandbox)")
     require(not case_list(client.get("/api/cases", expected=200)), "El pago creó automáticamente un caso, violando el segundo consentimiento")
 
-    # The historical generic case endpoint must fail closed as well.
+    # The historical generic case endpoint is intentionally kept on its legacy
+    # ValueError -> HTTP 400 mapping. M35.2 still fails closed and does not create a case.
     legacy_case = client.post(
         "/api/cases",
         {
@@ -182,7 +183,7 @@ def main() -> int:
             "title": "Intento de bypass M35.2",
             "order_id": linked["order_id"],
         },
-        expected=409,
+        expected=400,
     )
     require("checkout trazable" in str(legacy_case.get("error") or "").lower(), "El endpoint genérico de casos no quedó bloqueado")
     require(not case_list(client.get("/api/cases", expected=200)), "El intento legacy creó un caso")
