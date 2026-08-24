@@ -110,23 +110,38 @@ jobs:
           LEGAL_REQUIRE_MFA_ROLES: ''
           LEGAL_GITHUB_LITE_ASSETS: 'true'
         run: |
+          set -euo pipefail
           LEGAL_DEMO_PASSWORD="$(python -c 'import secrets; print(secrets.token_urlsafe(32))')"
           export LEGAL_DEMO_PASSWORD
-          python run.py --lan --no-browser > /tmp/legalaiz.log 2>&1 &
-          PID=$!
-          trap 'kill $PID || true' EXIT
-          READY=0
-          for i in {1..30}; do
-            if python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/api/live', timeout=2).read()"; then
-              READY=1
-              break
+
+          start_server() {
+            local logfile="$1"
+            python run.py --lan --no-browser > "$logfile" 2>&1 &
+            PID=$!
+            READY=0
+            for i in {1..30}; do
+              if python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/api/live', timeout=2).read()"; then
+                READY=1
+                break
+              fi
+              sleep 1
+            done
+            if [ "$READY" -ne 1 ]; then
+              cat "$logfile"
+              return 1
             fi
-            sleep 1
-          done
-          if [ "$READY" -ne 1 ]; then
-            cat /tmp/legalaiz.log
-            exit 1
-          fi
+          }
+
+          stop_server() {
+            if [ -n "${PID:-}" ]; then
+              kill "$PID" 2>/dev/null || true
+              wait "$PID" 2>/dev/null || true
+              PID=""
+            fi
+          }
+
+          trap stop_server EXIT
+          start_server /tmp/legalaiz.log
           python tools/m34_2_http_smoke.py
           python tools/m34_3_http_smoke.py
           python tools/m34_4_http_smoke.py
@@ -136,6 +151,14 @@ jobs:
           python tools/m35_3_http_smoke.py
           python tools/m36_0_http_smoke.py
           python tools/m36_1_http_smoke.py
+
+          # M36.2 necesita autenticar dos roles reales (admin + especialista).
+          # Reiniciamos sólo el proceso para obtener una ventana limpia del rate limiter
+          # 12/300, manteniendo LEGAL_RUNTIME_DIR, SQLite, archivos y la misma clave demo.
+          # No se desactiva ni se amplía la política de autenticación.
+          stop_server
+          start_server /tmp/legalaiz-m36-2.log
+          python tools/m36_2_http_smoke.py
       - name: Smoke producción demostrativa M33.1
         run: python tools/public_demo_smoke.py
 
