@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from functools import lru_cache
 from hashlib import sha256
+import json
 
 import core_v11 as core
 from legalai_platform.commerce_case_m35_2 import CommerceCaseTraceabilityStore, CommerceTraceError
@@ -74,6 +75,36 @@ def _public_finalize(result: dict) -> tuple[dict, dict]:
         "title": result.pop("_title", ""),
     }
     return result, private
+
+
+def _json_object(value) -> dict:
+    if isinstance(value, dict):
+        return value
+    try:
+        parsed = json.loads(value or "{}")
+    except (TypeError, json.JSONDecodeError):
+        return {}
+    return parsed if isinstance(parsed, dict) else {}
+
+
+def _pending_case_snapshot(con, user_id: str, case_id: str, product_code: str) -> tuple[dict, int]:
+    row = con.execute(
+        "SELECT id,product_code,title,owner_id,answers,result FROM cases WHERE id=? AND owner_id=?",
+        (case_id, user_id),
+    ).fetchone()
+    if not row or str(row["product_code"] or "") != product_code:
+        raise CommerceTraceError("CASE_TRACE_BROKEN", "El expediente pendiente no coincide con el vínculo comercial.", 409)
+    count = int(
+        con.execute(
+            "SELECT COUNT(*) FROM documents WHERE case_id=? AND kind!='audit'",
+            (case_id,),
+        ).fetchone()[0]
+    )
+    return {
+        "answers": _json_object(row["answers"]),
+        "result": _json_object(row["result"]),
+        "title": str(row["title"] or product_code),
+    }, count
 
 
 def handle_m35_2_commerce_get(handler, path: str, user: dict) -> bool:
@@ -208,8 +239,8 @@ def handle_m35_2_commerce_post(handler, path: str, user: dict) -> bool:
             handler.send_json(public, 200 if result.get("idempotent") else 201)
             return True
 
-        # FINALIZE: first commit economic/case state. Physical document generation
-        # runs afterwards; a renderer failure must not erase a confirmed checkout.
+        # FINALIZE phase A: commit verified commercial/case linkage. Document
+        # generation and M24 reconciliation happen only after that durable state.
         con = core.db()
         try:
             raw = store.finalize_case_record(
@@ -223,20 +254,57 @@ def handle_m35_2_commerce_post(handler, path: str, user: dict) -> bool:
         finally:
             con.close()
 
+        existing_documents = 0
         if public.get("idempotent"):
-            handler.send_json({**public, "documents_ready": public.get("state") == "CASE_CREATED"}, 200)
-            return True
+            if public.get("state") != "CASE_CREATED_DOCUMENTS_PENDING":
+                handler.send_json({**public, "documents_ready": public.get("state") == "CASE_CREATED"}, 200)
+                return True
+            # A previous attempt already created the exact case. Resume from the
+            # immutable case snapshot rather than creating another case or order.
+            con = core.db()
+            try:
+                private, existing_documents = _pending_case_snapshot(
+                    con,
+                    user["id"],
+                    public["case_id"],
+                    public["product_code"],
+                )
+            finally:
+                con.close()
+            public["idempotent"] = False
+            public["resumed"] = True
 
         case_id = public["case_id"]
         try:
-            documents = core.generate_case_documents(
-                case_id,
-                public["product_code"],
-                private["answers"],
-                private["result"],
-                actor=user["id"],
-                note="Generación inicial desde M35.2 — checkout sandbox trazable",
-            )
+            # If a previous attempt committed documents but failed during M24
+            # reconciliation, reuse them. generate_case_documents is invoked only
+            # when there is no materialized non-audit document for the case.
+            if existing_documents < 1:
+                con = core.db()
+                try:
+                    _, existing_documents = _pending_case_snapshot(
+                        con,
+                        user["id"],
+                        case_id,
+                        public["product_code"],
+                    )
+                finally:
+                    con.close()
+            if existing_documents < 1:
+                documents = core.generate_case_documents(
+                    case_id,
+                    public["product_code"],
+                    private["answers"],
+                    private["result"],
+                    actor=user["id"],
+                    note="Generación inicial desde M35.2 — checkout sandbox trazable",
+                )
+                documents_count = len(documents or [])
+            else:
+                documents_count = existing_documents
+
+            # FINALIZE phase C: documents already exist. Re-verify signed payment
+            # evidence inside mark_materialized and only then reconcile M24 to GENERADO.
             con = core.db()
             try:
                 delivery = DELIVERY.summary(con, case_id)
@@ -245,7 +313,7 @@ def handle_m35_2_commerce_post(handler, path: str, user: dict) -> bool:
                     user["id"],
                     public["link_id"],
                     case_id,
-                    len(documents or []),
+                    documents_count,
                     delivery,
                 )
                 con.commit()
@@ -256,7 +324,7 @@ def handle_m35_2_commerce_post(handler, path: str, user: dict) -> bool:
                 **finalized,
                 "case_id": case_id,
                 "documents_ready": True,
-                "documents_count": len(documents or []),
+                "documents_count": documents_count,
                 "document_delivery": delivery,
             }
             _observe(
@@ -265,10 +333,33 @@ def handle_m35_2_commerce_post(handler, path: str, user: dict) -> bool:
                 order_id=public.get("order_id"),
                 case_id=case_id,
                 product_code=public.get("product_code"),
-                documents_count=len(documents or []),
+                documents_count=documents_count,
+                resumed=bool(public.get("resumed")),
                 user_id=user["id"],
             )
-            handler.send_json(result, 201)
+            handler.send_json(result, 200 if public.get("resumed") else 201)
+            return True
+        except CommerceTraceError as exc:
+            _observe(
+                "m35_commerce_case_reconciliation_blocked",
+                link_id=public.get("link_id"),
+                order_id=public.get("order_id"),
+                case_id=case_id,
+                product_code=public.get("product_code"),
+                code=exc.code,
+                user_id=user["id"],
+            )
+            handler.send_json(
+                {
+                    **public,
+                    "documents_ready": False,
+                    "state": "CASE_CREATED_DOCUMENTS_PENDING",
+                    "error": str(exc),
+                    "code": exc.code,
+                    "notice": "El expediente permanece registrado, pero la reconciliación final quedó bloqueada y no se crearán duplicados.",
+                },
+                exc.status,
+            )
             return True
         except Exception as exc:
             _observe(
