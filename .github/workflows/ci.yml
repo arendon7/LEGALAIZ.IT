@@ -159,6 +159,14 @@ jobs:
           stop_server
           start_server /tmp/legalaiz-m36-2.log
           python tools/m36_2_http_smoke.py
+
+          # M36.3 vuelve a recorrer asignación, aprobaciones y entrega con varios roles
+          # y un segundo cliente. Se reinicia sólo el proceso para aislar el limitador
+          # in-memory; se conservan runtime, SQLite y credenciales efímeras. La política
+          # real de login 12/300 permanece intacta y no admite bypass de CI.
+          stop_server
+          start_server /tmp/legalaiz-m36-3.log
+          python tools/m36_3_http_smoke.py
       - name: Smoke producción demostrativa M33.1
         run: python tools/public_demo_smoke.py
 
