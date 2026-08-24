@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from hashlib import sha256
 from io import BytesIO
 import json
 from pathlib import Path
@@ -7,6 +8,7 @@ import sqlite3
 from tempfile import TemporaryDirectory
 from types import SimpleNamespace
 import unittest
+import uuid
 from zipfile import ZipFile
 
 import core_v11 as core
@@ -43,17 +45,65 @@ class FakeScanner:
         return SimpleNamespace(status="clean", engine="fake", detail="ok")
 
 
+class FakeEncryptedObjectStore:
+    """Test double that preserves the encrypted-store trust boundary."""
+
+    def __init__(self):
+        self.objects = {}
+
+    def create_schema(self, con):
+        return None
+
+    @staticmethod
+    def is_reference(value):
+        return bool(value and str(value).startswith("lzobj://"))
+
+    def put(self, con, namespace, original_name, data, content_type, owner_id=None):
+        object_id = "OBJ-" + uuid.uuid4().hex[:20].upper()
+        reference = f"lzobj://{object_id}"
+        plain = bytes(data)
+        # The test double does not implement crypto, but never stores plaintext bytes as its
+        # persisted representation. Integrity is checked before returning plaintext.
+        cipher = b"TEST-ENC\x00" + plain[::-1]
+        self.objects[reference] = {
+            "plaintext": plain,
+            "ciphertext": cipher,
+            "ciphertext_sha256": sha256(cipher).hexdigest(),
+        }
+        return {
+            "id": object_id,
+            "reference": reference,
+            "plaintext_sha256": sha256(plain).hexdigest(),
+            "ciphertext_sha256": sha256(cipher).hexdigest(),
+            "size_bytes": len(plain),
+            "encrypted": True,
+        }
+
+    def get(self, con, reference):
+        item = self.objects.get(reference)
+        if not item:
+            raise FileNotFoundError("objeto no registrado")
+        if sha256(item["ciphertext"]).hexdigest() != item["ciphertext_sha256"]:
+            raise ValueError("ciphertext alterado")
+        return item["plaintext"]
+
+    def tamper(self, reference):
+        self.objects[reference]["ciphertext"] = b"tampered"
+
+
 def pdf_bytes(text=b"support"):
     return b"%PDF-1.4\n" + text + b"\n%%EOF\n"
 
 
-def docx_bytes(*, active=False):
+def docx_bytes(*, active=False, embedded=False):
     stream = BytesIO()
     with ZipFile(stream, "w") as archive:
         archive.writestr("[Content_Types].xml", "<Types/>")
         archive.writestr("word/document.xml", "<w:document/>")
         if active:
             archive.writestr("word/vbaProject.bin", b"macro")
+        if embedded:
+            archive.writestr("word/embeddings/object1.bin", b"ole")
     return stream.getvalue()
 
 
@@ -62,7 +112,6 @@ class M371EvidenceIntakeTests(unittest.TestCase):
         self.tmp = TemporaryDirectory()
         root = Path(self.tmp.name)
         self.db_path = root / "m371.db"
-        self.evidence_root = root / "evidence"
         self.journey = M24CaseJourneyCenter(core.ROOT)
         install_m37_0_followup_guard(self.journey)
         con = self.db()
@@ -114,11 +163,12 @@ class M371EvidenceIntakeTests(unittest.TestCase):
         started = self.followup.start(CLIENT, CASE_ID, START_CONFIRMATION)
         self.task_id = started["tasks"][0]["follow_up_id"]
         self.scanner = FakeScanner()
+        self.objects = FakeEncryptedObjectStore()
         self.center = EvidenceIntakeCenter(
             self.followup,
             self.scanner,
+            self.objects,
             db_factory=self.db,
-            evidence_root=self.evidence_root,
         )
 
     def tearDown(self):
@@ -146,33 +196,41 @@ class M371EvidenceIntakeTests(unittest.TestCase):
     def upload(self, actor=CLIENT, filename="radicado.pdf", body=None):
         return self.center.upload(actor, CASE_ID, self.task_id, filename, body or pdf_bytes(), "application/octet-stream")
 
-    def test_contract_is_fail_closed_and_matches_canonical_upload_limit(self):
-        self.assertEqual(self.center.validate_contract(), {"valid": True, "types": 5, "max_file_bytes": core.MAX_UPLOAD})
+    def new_center(self, scanner):
+        return EvidenceIntakeCenter(self.followup, scanner, FakeEncryptedObjectStore(), db_factory=self.db)
+
+    def test_contract_is_fail_closed_and_requires_encrypted_store(self):
+        validation = self.center.validate_contract()
+        self.assertEqual(validation["types"], 5)
+        self.assertEqual(validation["max_file_bytes"], core.MAX_UPLOAD)
+        self.assertEqual(validation["max_items_per_case"], 30)
         governance = self.center.contract["governance"]
+        self.assertTrue(governance["encrypted_object_store_required"])
         self.assertFalse(governance["upload_completes_task"])
         self.assertFalse(governance["review_completes_task"])
-        self.assertTrue(governance["immutable_files"])
-        self.assertTrue(governance["append_only_reviews"])
 
-    def test_pdf_upload_is_immutable_scanned_and_does_not_complete_task(self):
+    def test_pdf_upload_uses_encrypted_reference_and_does_not_complete_task(self):
         before = self.task_status()
-        result = self.upload()
+        body = pdf_bytes()
+        result = self.upload(body=body)
         self.assertEqual(result["state"], "RECEIVED")
         self.assertEqual(result["file_kind"], "PDF")
         self.assertEqual(result["mime_type"], "application/pdf")
         self.assertEqual(result["review"]["status"], "PENDING_REVIEW")
-        self.assertTrue(result["integrity"]["stored_file_intact"])
+        self.assertTrue(result["integrity"]["encrypted_at_rest"])
+        self.assertTrue(result["integrity"]["stored_object_intact"])
         self.assertFalse(result["governance"]["upload_completed_task"])
         self.assertFalse(result["claimed_content_type_trusted"])
         self.assertEqual(self.task_status(), before)
         self.assertEqual(len(self.scanner.calls), 1)
         row = self.rows("m37_evidence_item")[0]
-        self.assertEqual(len(row["sha256"]), 64)
-        self.assertTrue(Path(row["file_path"]).is_file())
+        self.assertTrue(row["object_ref"].startswith("lzobj://"))
+        self.assertEqual(len(row["plaintext_sha256"]), 64)
+        stored = self.objects.objects[row["object_ref"]]
+        self.assertNotEqual(stored["ciphertext"], body)
         public_raw = json.dumps(result).lower()
-        self.assertNotIn("sha256", public_raw)
-        self.assertNotIn("file_path", public_raw)
-        self.assertNotIn(str(row["uploader_id"]).lower(), public_raw)
+        for forbidden in ("plaintext_sha256", "object_ref", "uploader_id", "ciphertext"):
+            self.assertNotIn(forbidden, public_raw)
 
     def test_invalid_extension_or_signature_is_rejected_without_persistence(self):
         for filename, body, code in (
@@ -184,28 +242,29 @@ class M371EvidenceIntakeTests(unittest.TestCase):
                 with self.assertRaises(EvidenceIntakeError) as caught:
                     self.center.upload(CLIENT, CASE_ID, self.task_id, filename, body)
                 self.assertEqual(caught.exception.code, code)
-        self.center.ensure_schema(self.db())
         self.assertEqual(self.rows("m37_evidence_item"), [])
+        self.assertEqual(self.objects.objects, {})
 
-    def test_docx_rejects_active_or_embedded_content(self):
-        with self.assertRaises(EvidenceIntakeError) as caught:
-            self.center.upload(CLIENT, CASE_ID, self.task_id, "macro.docx", docx_bytes(active=True))
-        self.assertEqual(caught.exception.code, "EVIDENCE_DOCX_ACTIVE_CONTENT")
+    def test_docx_rejects_active_and_embedded_content(self):
+        for body in (docx_bytes(active=True), docx_bytes(embedded=True)):
+            with self.assertRaises(EvidenceIntakeError) as caught:
+                self.center.upload(CLIENT, CASE_ID, self.task_id, "unsafe.docx", body)
+            self.assertEqual(caught.exception.code, "EVIDENCE_DOCX_ACTIVE_CONTENT")
         clean = self.center.upload(CLIENT, CASE_ID, self.task_id, "clean.docx", docx_bytes())
         self.assertEqual(clean["file_kind"], "DOCX")
 
     def test_malware_or_unavailable_scanner_fails_closed(self):
-        blocked = EvidenceIntakeCenter(self.followup, FakeScanner("blocked"), db_factory=self.db, evidence_root=Path(self.tmp.name) / "blocked")
+        blocked = self.new_center(FakeScanner("blocked"))
         with self.assertRaises(EvidenceIntakeError) as caught:
             blocked.upload(CLIENT, CASE_ID, self.task_id, "x.pdf", pdf_bytes())
         self.assertEqual(caught.exception.code, "EVIDENCE_MALWARE_BLOCKED")
-        unavailable = EvidenceIntakeCenter(self.followup, FakeScanner("unavailable"), db_factory=self.db, evidence_root=Path(self.tmp.name) / "unavailable")
+        unavailable = self.new_center(FakeScanner("unavailable"))
         with self.assertRaises(EvidenceIntakeError) as caught:
             unavailable.upload(CLIENT, CASE_ID, self.task_id, "x.pdf", pdf_bytes())
         self.assertEqual(caught.exception.code, "EVIDENCE_SCAN_UNAVAILABLE")
 
     def test_local_demo_scan_state_is_transparent_not_called_clean(self):
-        local = EvidenceIntakeCenter(self.followup, FakeScanner("local"), db_factory=self.db, evidence_root=Path(self.tmp.name) / "local")
+        local = self.new_center(FakeScanner("local"))
         result = local.upload(CLIENT, CASE_ID, self.task_id, "x.pdf", pdf_bytes())
         self.assertTrue(result["security_scan"]["local_demo_unscanned"])
         self.assertFalse(result["security_scan"]["external_scan_completed"])
@@ -257,16 +316,10 @@ class M371EvidenceIntakeTests(unittest.TestCase):
         self.assertFalse(review["legal_effect_verified"])
         self.assertEqual(self.task_status(), before)
         rows = self.rows("m37_evidence_review")
-        self.assertEqual(len(rows), 1)
-        second = self.center.review(
-            SPECIALIST,
-            CASE_ID,
-            item["evidence_id"],
-            "ACKNOWLEDGED_FOR_FOLLOWUP",
-            "",
-        )
+        self.assertEqual([row["sequence"] for row in rows], [1])
+        second = self.center.review(SPECIALIST, CASE_ID, item["evidence_id"], "ACKNOWLEDGED_FOR_FOLLOWUP", "")
         self.assertEqual(second["review_count"], 2)
-        self.assertEqual(len(self.rows("m37_evidence_review")), 2)
+        self.assertEqual([row["sequence"] for row in self.rows("m37_evidence_review")], [1, 2])
 
     def test_identical_review_retry_is_idempotent(self):
         item = self.upload()
@@ -284,10 +337,10 @@ class M371EvidenceIntakeTests(unittest.TestCase):
                     self.center.review(SPECIALIST, CASE_ID, item["evidence_id"], disposition, "corto")
                 self.assertEqual(caught.exception.code, "EVIDENCE_REVIEW_MESSAGE_REQUIRED")
 
-    def test_file_tampering_blocks_detail_download_and_review(self):
+    def test_encrypted_object_tampering_blocks_detail_download_and_review(self):
         item = self.upload()
         row = self.rows("m37_evidence_item")[0]
-        Path(row["file_path"]).write_bytes(b"tampered")
+        self.objects.tamper(row["object_ref"])
         for operation in (
             lambda: self.center.detail(CLIENT, CASE_ID),
             lambda: self.center.download(CLIENT, CASE_ID, item["evidence_id"]),
@@ -295,7 +348,16 @@ class M371EvidenceIntakeTests(unittest.TestCase):
         ):
             with self.assertRaises(EvidenceIntakeError) as caught:
                 operation()
-            self.assertEqual(caught.exception.code, "EVIDENCE_FILE_TAMPERED")
+            self.assertEqual(caught.exception.code, "EVIDENCE_OBJECT_TAMPERED")
+
+    def test_download_returns_exact_plaintext_after_integrity_check(self):
+        body = pdf_bytes(b"exact bytes")
+        item = self.upload(body=body)
+        data, name, mime_type, public = self.center.download(CLIENT, CASE_ID, item["evidence_id"])
+        self.assertEqual(data, body)
+        self.assertEqual(name, "radicado.pdf")
+        self.assertEqual(mime_type, "application/pdf")
+        self.assertEqual(public["evidence_id"], item["evidence_id"])
 
     def test_upload_and_review_events_share_m37_chain_without_review_message(self):
         item = self.upload(filename="../../radicado.pdf")
@@ -327,6 +389,15 @@ class M371EvidenceIntakeTests(unittest.TestCase):
         after = self.followup.detail(CLIENT, CASE_ID)
         self.assertEqual(before["metrics"]["completed"], after["metrics"]["completed"])
         self.assertEqual(before["close_readiness"], after["close_readiness"])
+
+    def test_task_quota_fails_before_object_persistence(self):
+        self.center.contract["max_items_per_task"] = 1
+        self.upload(body=pdf_bytes(b"one"))
+        object_count = len(self.objects.objects)
+        with self.assertRaises(EvidenceIntakeError) as caught:
+            self.upload(filename="two.pdf", body=pdf_bytes(b"two"))
+        self.assertEqual(caught.exception.code, "EVIDENCE_TASK_ITEM_QUOTA")
+        self.assertEqual(len(self.objects.objects), object_count)
 
 
 if __name__ == "__main__":
