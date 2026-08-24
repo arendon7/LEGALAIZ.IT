@@ -399,7 +399,14 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
         )
         return {"link_id": row["id"], "payment_intent": intent, "idempotent": False}
 
-    def verify_payment(self, con, user_id: str, row: Mapping[str, Any], order: Mapping[str, Any]) -> PaymentVerification:
+    def _verify_payment_evidence(
+        self,
+        con,
+        user_id: str,
+        row: Mapping[str, Any],
+        order: Mapping[str, Any],
+        allowed_order_statuses: set[str],
+    ) -> PaymentVerification:
         intent_id = str(row.get("payment_intent_id") or "")
         if not intent_id:
             raise CommerceTraceError("PAYMENT_INTENT_REQUIRED", "El checkout vinculado no tiene un intento de pago verificable.", 409)
@@ -408,7 +415,7 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
             raise CommerceTraceError("PAYMENT_INTENT_NOT_FOUND", "El intento de pago ya no está disponible.", 409)
         if intent.get("user_id") != user_id or intent.get("order_id") != order.get("id"):
             raise CommerceTraceError("PAYMENT_TRACE_BROKEN", "El pago no pertenece a la orden vinculada.", 409)
-        if intent.get("status") != "succeeded" or order.get("status") not in PAID_ORDER_STATUSES:
+        if intent.get("status") != "succeeded" or order.get("status") not in allowed_order_statuses:
             raise CommerceTraceError("PAYMENT_NOT_CONFIRMED", "El pago sandbox todavía no está confirmado.", 409)
         if int(intent.get("amount") or -1) != int(order.get("total") or 0) or (intent.get("currency") or "COP") != (order.get("currency") or "COP"):
             raise CommerceTraceError("PAYMENT_AMOUNT_MISMATCH", "El importe del pago no coincide con la orden.", 409)
@@ -416,6 +423,9 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
         if verified.get("errors") or int(verified.get("checked") or 0) < 2 or verified.get("valid") != verified.get("checked"):
             raise CommerceTraceError("PAYMENT_EVENT_INTEGRITY_FAILED", "No fue posible verificar íntegramente los eventos del pago sandbox.", 409)
         return PaymentVerification(True, int(verified["checked"]), intent_id)
+
+    def verify_payment(self, con, user_id: str, row: Mapping[str, Any], order: Mapping[str, Any]) -> PaymentVerification:
+        return self._verify_payment_evidence(con, user_id, row, order, PAID_ORDER_STATUSES)
 
     def finalize_case_record(self, con, user: Mapping[str, Any], link_id: str, case_consent: bool) -> dict[str, Any]:
         self.create_schema(con)
@@ -495,8 +505,7 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
             "create_from_m35_commerce",
             {"order_id": order["id"], "commerce_link_id": row["id"], "risk": result.get("risk")},
         )
-        completed_order = self.self_service.attach_case(con, user_id, order["id"], case_id, trace_context=True)
-        journey = self.case_journey.bootstrap_paid_generation(con, case_id, completed_order, user)
+        self.self_service.attach_case(con, user_id, order["id"], case_id, trace_context=True)
         con.execute("DELETE FROM service_drafts WHERE id=? AND user_id=?", (row["draft_id"], user_id))
         now = utc_iso()
         con.execute(
@@ -512,7 +521,7 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
             "m35_commerce_link",
             row["id"],
             "case_created",
-            {"case_id": case_id, "order_id": order["id"], "journey_state": journey.get("current_state")},
+            {"case_id": case_id, "order_id": order["id"], "journey_state": "PENDING_DOCUMENT_MATERIALIZATION"},
         )
         return {
             "idempotent": False,
@@ -521,18 +530,37 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
             "case_id": case_id,
             "product_code": row["product_code"],
             "state": "CASE_CREATED_DOCUMENTS_PENDING",
-            "journey_state": journey.get("current_state"),
+            "journey_state": "PENDING_DOCUMENT_MATERIALIZATION",
             "payment_verified": True,
             "_answers": answers,
             "_result": result,
             "_title": draft.get("title") or product.get("title") or row["product_code"],
         }
 
-    def mark_materialized(self, con, user_id: str, link_id: str, case_id: str, documents_count: int, delivery: Mapping[str, Any] | None) -> dict[str, Any]:
+    def mark_materialized(
+        self,
+        con,
+        user_id: str,
+        link_id: str,
+        case_id: str,
+        documents_count: int,
+        delivery: Mapping[str, Any] | None,
+    ) -> dict[str, Any]:
         self.create_schema(con)
         row = self._owned_link(con, user_id, link_id)
         if row.get("case_id") != case_id:
             raise CommerceTraceError("CASE_TRACE_BROKEN", "El expediente no coincide con el vínculo comercial.", 409)
+        if int(documents_count or 0) < 1:
+            raise CommerceTraceError("DOCUMENTS_NOT_MATERIALIZED", "El expediente aún no tiene documentos materializados.", 409)
+        order = self.self_service.get_order(con, user_id, row["order_id"])
+        if not order or self._order_snapshot(order) != row["order_snapshot_sha256"]:
+            raise CommerceTraceError("ORDER_TRACE_BROKEN", "La orden ya no coincide con el snapshot certificado.", 409)
+        self._verify_payment_evidence(con, user_id, row, order, PAID_ORDER_STATUSES | {"Completada"})
+        actor_row = con.execute("SELECT * FROM users WHERE id=?", (user_id,)).fetchone()
+        if not actor_row:
+            raise CommerceTraceError("USER_NOT_FOUND", "La cuenta vinculada al expediente ya no está disponible.", 409)
+        actor = dict(actor_row)
+        journey = self.case_journey.bootstrap_paid_generation(con, case_id, order, actor)
         now = utc_iso()
         con.execute(
             "UPDATE m35_commerce_case_links SET state='CASE_CREATED',updated_at=? WHERE id=?",
@@ -544,10 +572,19 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
             "m35_commerce_link",
             row["id"],
             "documents_materialized",
-            {"case_id": case_id, "documents": int(documents_count), "delivery_ready": bool(delivery)},
+            {
+                "case_id": case_id,
+                "documents": int(documents_count),
+                "delivery_ready": bool(delivery),
+                "journey_state": journey.get("current_state"),
+            },
         )
         order = self.self_service.get_order(con, user_id, row["order_id"])
-        return {"idempotent": False, **self._public_link({**row, "state": "CASE_CREATED"}, order)}
+        return {
+            "idempotent": False,
+            **self._public_link({**row, "state": "CASE_CREATED"}, order),
+            "journey_state": journey.get("current_state"),
+        }
 
 
 __all__ = [
