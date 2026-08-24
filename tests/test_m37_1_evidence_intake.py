@@ -16,7 +16,11 @@ from legalai_platform.approval_desk_workspace import PermissionDenied
 from legalai_platform.evidence_intake_m37_1 import EvidenceIntakeCenter, EvidenceIntakeError
 from legalai_platform.m24_case_journey import M24CaseJourneyCenter
 from legalai_platform.m37_0_journey_guard import install_m37_0_followup_guard
-from legalai_platform.post_delivery_followup_m37_0 import PostDeliveryFollowUpCenter, START_CONFIRMATION
+from legalai_platform.post_delivery_followup_m37_0 import (
+    PostDeliveryFollowUpCenter,
+    PostDeliveryFollowUpError,
+    START_CONFIRMATION,
+)
 from legalai_platform.operational_security import EICAR
 
 
@@ -62,8 +66,6 @@ class FakeEncryptedObjectStore:
         object_id = "OBJ-" + uuid.uuid4().hex[:20].upper()
         reference = f"lzobj://{object_id}"
         plain = bytes(data)
-        # The test double does not implement crypto, but never stores plaintext bytes as its
-        # persisted representation. Integrity is checked before returning plaintext.
         cipher = b"TEST-ENC\x00" + plain[::-1]
         self.objects[reference] = {
             "plaintext": plain,
@@ -164,12 +166,7 @@ class M371EvidenceIntakeTests(unittest.TestCase):
         self.task_id = started["tasks"][0]["follow_up_id"]
         self.scanner = FakeScanner()
         self.objects = FakeEncryptedObjectStore()
-        self.center = EvidenceIntakeCenter(
-            self.followup,
-            self.scanner,
-            self.objects,
-            db_factory=self.db,
-        )
+        self.center = EvidenceIntakeCenter(self.followup, self.scanner, self.objects, db_factory=self.db)
 
     def tearDown(self):
         self.tmp.cleanup()
@@ -280,31 +277,32 @@ class M371EvidenceIntakeTests(unittest.TestCase):
             self.upload()
         self.assertEqual(caught.exception.code, "EVIDENCE_FOLLOWUP_NOT_ACTIVE")
 
-    def test_cross_tenant_access_is_hidden(self):
+    def test_cross_tenant_access_is_hidden_by_parent_followup_boundary(self):
         item = self.upload()
-        with self.assertRaises(EvidenceIntakeError) as caught:
-            self.center.detail(OTHER, CASE_ID)
-        self.assertEqual(caught.exception.status, 404)
-        with self.assertRaises(EvidenceIntakeError) as caught:
-            self.center.download(OTHER, CASE_ID, item["evidence_id"])
-        self.assertEqual(caught.exception.status, 404)
+        for operation in (
+            lambda: self.center.detail(OTHER, CASE_ID),
+            lambda: self.center.download(OTHER, CASE_ID, item["evidence_id"]),
+        ):
+            with self.assertRaises(PostDeliveryFollowUpError) as caught:
+                operation()
+            self.assertEqual(caught.exception.code, "FOLLOWUP_NOT_AVAILABLE")
+            self.assertEqual(caught.exception.status, 404)
 
-    def test_client_and_unassigned_specialist_cannot_review(self):
+    def test_client_cannot_review_and_unassigned_specialist_is_hidden(self):
         item = self.upload()
-        for actor in (CLIENT, OTHER_SPECIALIST):
-            with self.subTest(actor=actor["id"]):
-                with self.assertRaises((PermissionDenied, EvidenceIntakeError)):
-                    self.center.review(actor, CASE_ID, item["evidence_id"], "ACKNOWLEDGED_FOR_FOLLOWUP")
+        with self.assertRaises(PermissionDenied):
+            self.center.review(CLIENT, CASE_ID, item["evidence_id"], "ACKNOWLEDGED_FOR_FOLLOWUP")
+        with self.assertRaises(PostDeliveryFollowUpError) as caught:
+            self.center.review(OTHER_SPECIALIST, CASE_ID, item["evidence_id"], "ACKNOWLEDGED_FOR_FOLLOWUP")
+        self.assertEqual(caught.exception.code, "FOLLOWUP_NOT_AVAILABLE")
+        self.assertEqual(caught.exception.status, 404)
         self.assertEqual(self.rows("m37_evidence_review"), [])
 
     def test_assigned_specialist_review_is_append_only_and_not_legal_verification(self):
         item = self.upload()
         before = self.task_status()
         result = self.center.review(
-            SPECIALIST,
-            CASE_ID,
-            item["evidence_id"],
-            "NEEDS_CLARIFICATION",
+            SPECIALIST, CASE_ID, item["evidence_id"], "NEEDS_CLARIFICATION",
             "Aporta una constancia donde sea visible la fecha de radicación.",
         )
         self.assertFalse(result["idempotent"])
@@ -315,8 +313,7 @@ class M371EvidenceIntakeTests(unittest.TestCase):
         self.assertFalse(review["legal_sufficiency_verified"])
         self.assertFalse(review["legal_effect_verified"])
         self.assertEqual(self.task_status(), before)
-        rows = self.rows("m37_evidence_review")
-        self.assertEqual([row["sequence"] for row in rows], [1])
+        self.assertEqual([row["sequence"] for row in self.rows("m37_evidence_review")], [1])
         second = self.center.review(SPECIALIST, CASE_ID, item["evidence_id"], "ACKNOWLEDGED_FOR_FOLLOWUP", "")
         self.assertEqual(second["review_count"], 2)
         self.assertEqual([row["sequence"] for row in self.rows("m37_evidence_review")], [1, 2])
@@ -362,18 +359,14 @@ class M371EvidenceIntakeTests(unittest.TestCase):
     def test_upload_and_review_events_share_m37_chain_without_review_message(self):
         item = self.upload(filename="../../radicado.pdf")
         self.center.review(
-            SPECIALIST,
-            CASE_ID,
-            item["evidence_id"],
-            "NEEDS_CLARIFICATION",
+            SPECIALIST, CASE_ID, item["evidence_id"], "NEEDS_CLARIFICATION",
             "Necesitamos una constancia con sello o número visible.",
         )
         con = self.db()
         try:
             integrity = self.followup.verify_chain(con, CASE_ID)
             events = [dict(row) for row in con.execute(
-                "SELECT event_type,payload_json FROM m37_followup_event WHERE case_id=? ORDER BY sequence",
-                (CASE_ID,),
+                "SELECT event_type,payload_json FROM m37_followup_event WHERE case_id=? ORDER BY sequence", (CASE_ID,),
             ).fetchall()]
         finally:
             con.close()
