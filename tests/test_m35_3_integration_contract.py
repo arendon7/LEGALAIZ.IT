@@ -43,7 +43,9 @@ class M353IntegrationContractTests(unittest.TestCase):
             self.assertIn(marker, self.center)
 
     def test_public_activation_model_excludes_legal_payload_and_integrity_secrets(self):
-        public_segment = self.center[self.center.index("return {"):]
+        marker = 'return {\n            "schema": "legalai_m35_3_case_activation_v1"'
+        self.assertIn(marker, self.center)
+        public_segment = self.center[self.center.index(marker):]
         for forbidden in (
             '"answers"',
             '"result"',
