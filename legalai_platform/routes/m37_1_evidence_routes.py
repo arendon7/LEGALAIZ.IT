@@ -7,7 +7,7 @@ from urllib.parse import unquote
 from legalai_platform.approval_desk_workspace import PermissionDenied
 from legalai_platform.evidence_intake_m37_1 import EvidenceIntakeCenter, EvidenceIntakeError
 from legalai_platform.routes.m37_0_post_delivery_followup_routes import followup_center
-from legalai_platform.runtime_registry import MALWARE_SCANNER, OBSERVABILITY, RATE_LIMITER
+from legalai_platform.runtime_registry import INFRA, MALWARE_SCANNER, OBSERVABILITY, RATE_LIMITER
 
 
 PREFIX = "/api/m37/evidence"
@@ -15,7 +15,7 @@ PREFIX = "/api/m37/evidence"
 
 @lru_cache(maxsize=1)
 def evidence_center() -> EvidenceIntakeCenter:
-    return EvidenceIntakeCenter(followup_center(), MALWARE_SCANNER)
+    return EvidenceIntakeCenter(followup_center(), MALWARE_SCANNER, INFRA.objects)
 
 
 def _parts(path: str) -> list[str]:
@@ -99,7 +99,7 @@ def handle_m37_1_evidence_get(handler, path: str, user: dict) -> bool:
         if len(parts) == 5 and parts[0] == "cases" and parts[2] == "items" and parts[4] == "download":
             if not _rate_limit(handler, user, "download", 60, 300):
                 return True
-            target, name, public = center.download(user, parts[1], parts[3])
+            body, name, mime_type, public = center.download(user, parts[1], parts[3])
             _observe(
                 "m37_evidence_download_requested",
                 actor_id=user.get("id"),
@@ -107,9 +107,10 @@ def handle_m37_1_evidence_get(handler, path: str, user: dict) -> bool:
                 case_id=parts[1],
                 evidence_id=parts[3],
                 file_kind=public.get("file_kind"),
+                size_bytes=len(body),
                 ip_hash=_ip_hash(handler),
             )
-            handler.send_file(target, download_name=name)
+            handler.send_bytes(body, mime_type, filename=name)
             return True
         handler.send_json({"error": "Ruta M37.1 no encontrada.", "code": "M37_1_NOT_FOUND"}, 404)
         return True
@@ -133,7 +134,7 @@ def handle_m37_1_evidence_post(handler, path: str, user: dict) -> bool:
         if len(parts) == 5 and parts[0] == "cases" and parts[2] == "tasks" and parts[4] == "upload":
             if not _rate_limit(handler, user, "upload", 20, 300):
                 return True
-            fields, files = handler.read_multipart()
+            _fields, files = handler.read_multipart()
             if len(files) != 1:
                 handler.send_json(
                     {"error": "Debe adjuntar exactamente un soporte por solicitud.", "code": "EVIDENCE_SINGLE_FILE_REQUIRED"},
@@ -159,9 +160,10 @@ def handle_m37_1_evidence_post(handler, path: str, user: dict) -> bool:
                 file_kind=payload.get("file_kind"),
                 size_bytes=payload.get("size_bytes"),
                 scan_status=(payload.get("security_scan") or {}).get("status"),
+                idempotent=payload.get("idempotent"),
                 ip_hash=_ip_hash(handler),
             )
-            handler.send_json(payload, 201)
+            handler.send_json(payload, 200 if payload.get("idempotent") else 201)
             return True
         if len(parts) == 5 and parts[0] == "cases" and parts[2] == "items" and parts[4] == "review":
             if not _rate_limit(handler, user, "review", 60, 300):
