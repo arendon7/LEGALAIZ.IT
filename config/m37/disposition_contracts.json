@@ -27,7 +27,7 @@
   "limits": {
     "internal_reason_min": 30,
     "internal_reason_max": 2000,
-    "client_summary_min": 20,
+    "client_summary_min": 30,
     "client_summary_max": 1200
   },
   "governance": {
@@ -35,6 +35,8 @@
     "admin_may_close_without_specialist": false,
     "escalation_may_be_recorded_by_admin": true,
     "client_may_dispose_case": false,
+    "internal_reason_exposed_to_client": false,
+    "m24_transition_uses_client_summary_only": true,
     "close_requires_m37_0_close_readiness": true,
     "close_requires_evidence_review_resolution": true,
     "close_requires_no_active_reminders": true,
