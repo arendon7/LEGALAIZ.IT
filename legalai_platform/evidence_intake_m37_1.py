@@ -2,17 +2,16 @@ from __future__ import annotations
 
 """M37.1 — controlled evidence intake and review boundary.
 
-The layer accepts support files only for an ACTIVE M37.0 follow-up task. Files
-are immutable, malware-scanned and hash-checked. A professional review records
-an intake disposition but deliberately does not verify authenticity, legal
-sufficiency, legal effect, authority receipt, deadline compliance or task
-completion.
+Support files are accepted only for an ACTIVE M37.0 task, scanned before
+persistence and stored through the platform encrypted object store. A review is
+an append-only intake classification, never a declaration of authenticity,
+evidentiary sufficiency, authority receipt, deadline compliance, legal effect
+or task completion.
 """
 
 from hashlib import sha256
 from io import BytesIO
 import json
-import os
 from pathlib import Path
 import re
 from typing import Any, Mapping
@@ -40,10 +39,6 @@ class EvidenceIntakeError(RuntimeError):
         self.status = status
 
 
-def _canonical_json(value: Any) -> str:
-    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
-
-
 def _safe_id(value: Any, field: str) -> str:
     text = str(value or "").strip()
     if not text or len(text) > 120 or not re.fullmatch(r"[A-Za-z0-9._-]+", text):
@@ -55,31 +50,22 @@ def _sha256_bytes(data: bytes) -> str:
     return sha256(data).hexdigest()
 
 
-def _sha256_file(path: Path) -> str:
-    digest = sha256()
-    with path.open("rb") as stream:
-        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
-
-
 class EvidenceIntakeCenter:
-    """Immutable evidence files plus append-only professional intake reviews."""
+    """Encrypted immutable evidence objects plus append-only intake reviews."""
 
     def __init__(
         self,
         followup: PostDeliveryFollowUpCenter,
         malware_scanner,
+        object_store,
         *,
         db_factory=None,
-        evidence_root: str | Path | None = None,
         contract_path: str | Path | None = None,
     ):
         self.followup = followup
         self.malware_scanner = malware_scanner
+        self.object_store = object_store
         self.db_factory = db_factory or core.db
-        self.evidence_root = Path(evidence_root or (core.RUNTIME / "m37-evidence")).resolve()
-        self.evidence_root.mkdir(parents=True, exist_ok=True)
         self.contract_path = Path(contract_path or (core.ROOT / "config" / "m37" / "evidence_contracts.json"))
         self.contract = json.loads(self.contract_path.read_text(encoding="utf-8"))
         self.validate_contract()
@@ -95,12 +81,11 @@ class EvidenceIntakeCenter:
               uploader_id TEXT NOT NULL,
               uploader_role TEXT NOT NULL,
               original_name TEXT NOT NULL,
-              stored_name TEXT NOT NULL,
-              file_path TEXT NOT NULL,
               file_kind TEXT NOT NULL,
               mime_type TEXT NOT NULL,
               size_bytes INTEGER NOT NULL,
-              sha256 TEXT NOT NULL,
+              object_ref TEXT NOT NULL UNIQUE,
+              plaintext_sha256 TEXT NOT NULL,
               scan_status TEXT NOT NULL,
               scan_engine TEXT NOT NULL,
               state TEXT NOT NULL CHECK(state='RECEIVED'),
@@ -114,18 +99,25 @@ class EvidenceIntakeCenter:
               id TEXT PRIMARY KEY,
               evidence_id TEXT NOT NULL,
               case_id TEXT NOT NULL,
+              sequence INTEGER NOT NULL,
               reviewer_id TEXT NOT NULL,
               reviewer_role TEXT NOT NULL,
               disposition TEXT NOT NULL CHECK(disposition IN (
                 'ACKNOWLEDGED_FOR_FOLLOWUP','NEEDS_CLARIFICATION','NOT_RELEVANT_TO_TASK'
               )),
               message_to_client TEXT NOT NULL DEFAULT '',
-              created_at TEXT NOT NULL
+              created_at TEXT NOT NULL,
+              UNIQUE(evidence_id,sequence)
             );
             CREATE INDEX IF NOT EXISTS idx_m37_evidence_review_item
-              ON m37_evidence_review(evidence_id,created_at,id);
+              ON m37_evidence_review(evidence_id,sequence);
             """
         )
+
+    def _ensure_schemas(self, con) -> None:
+        self.followup.ensure_schema(con)
+        self.ensure_schema(con)
+        self.object_store.create_schema(con)
 
     def validate_contract(self) -> dict[str, Any]:
         payload = self.contract
@@ -133,6 +125,13 @@ class EvidenceIntakeCenter:
             raise EvidenceIntakeError("EVIDENCE_CONTRACT_INVALID", "M37.1 usa un contrato de evidencia desconocido.", 500)
         if int(payload.get("max_file_bytes") or 0) != int(core.MAX_UPLOAD):
             raise EvidenceIntakeError("EVIDENCE_SIZE_POLICY_DRIFT", "M37.1 debe respetar el límite canónico de carga.", 500)
+        quotas = (
+            int(payload.get("max_items_per_case") or 0),
+            int(payload.get("max_items_per_task") or 0),
+            int(payload.get("max_total_bytes_per_case") or 0),
+        )
+        if quotas[0] < 1 or quotas[1] < 1 or quotas[1] > quotas[0] or quotas[2] < int(payload["max_file_bytes"]):
+            raise EvidenceIntakeError("EVIDENCE_QUOTA_POLICY_INVALID", "Las cuotas M37.1 no son coherentes.", 500)
         if set(payload.get("review_dispositions") or []) != set(REVIEW_DISPOSITIONS):
             raise EvidenceIntakeError("EVIDENCE_REVIEW_POLICY_DRIFT", "Las disposiciones M37.1 no coinciden con el contrato.", 500)
         allowed = payload.get("allowed_types") or {}
@@ -151,9 +150,21 @@ class EvidenceIntakeCenter:
         }
         if any(governance.get(key) is not False for key in false_keys):
             raise EvidenceIntakeError("EVIDENCE_GOVERNANCE_INVALID", "M37.1 no puede convertir recepción o revisión en una conclusión jurídica.", 500)
+        if governance.get("encrypted_object_store_required") is not True:
+            raise EvidenceIntakeError("EVIDENCE_ENCRYPTION_REQUIRED", "M37.1 exige almacenamiento cifrado de objetos.", 500)
         if governance.get("immutable_files") is not True or governance.get("append_only_reviews") is not True:
             raise EvidenceIntakeError("EVIDENCE_IMMUTABILITY_REQUIRED", "M37.1 exige archivos inmutables y revisiones append-only.", 500)
-        return {"valid": True, "types": len(allowed), "max_file_bytes": int(payload["max_file_bytes"])}
+        for method in ("create_schema", "put", "get", "is_reference"):
+            if not callable(getattr(self.object_store, method, None)):
+                raise EvidenceIntakeError("EVIDENCE_OBJECT_STORE_INVALID", "El object store M37.1 no implementa el contrato cifrado requerido.", 500)
+        return {
+            "valid": True,
+            "types": len(allowed),
+            "max_file_bytes": int(payload["max_file_bytes"]),
+            "max_items_per_case": quotas[0],
+            "max_items_per_task": quotas[1],
+            "max_total_bytes_per_case": quotas[2],
+        }
 
     def _allowed_by_extension(self, filename: str) -> tuple[str, dict[str, Any]]:
         suffix = Path(str(filename or "")).suffix.casefold()
@@ -191,7 +202,7 @@ class EvidenceIntakeCenter:
         except BadZipFile as exc:
             raise EvidenceIntakeError("EVIDENCE_DOCX_INVALID", "El archivo no corresponde a un DOCX válido.", 422) from exc
 
-    def _validate_file(self, filename: str, data: bytes) -> tuple[str, str, str]:
+    def _validate_file(self, filename: str, data: bytes) -> tuple[str, str, str, bytes]:
         if not isinstance(data, (bytes, bytearray)):
             raise EvidenceIntakeError("EVIDENCE_FILE_INVALID", "No se recibió un archivo binario válido.", 400)
         body = bytes(data)
@@ -220,11 +231,10 @@ class EvidenceIntakeCenter:
                 body.decode("utf-8")
             except UnicodeDecodeError as exc:
                 raise EvidenceIntakeError("EVIDENCE_TEXT_ENCODING", "El TXT debe estar codificado en UTF-8.", 422) from exc
-        return kind, str(spec["mime_type"]), safe
+        return kind, str(spec["mime_type"]), safe, body
 
     def _followup_context(self, con, actor: Mapping[str, Any], case_id: str, *, writable: bool) -> tuple[dict[str, Any], dict[str, Any]]:
-        self.followup.ensure_schema(con)
-        self.ensure_schema(con)
+        self._ensure_schemas(con)
         case = self.followup._require_access(con, case_id, actor)
         self.followup._delivery(con, case_id)
         enrollment = self.followup._enrollment(con, case_id)
@@ -254,78 +264,61 @@ class EvidenceIntakeCenter:
             raise EvidenceIntakeError("EVIDENCE_TASK_DRIFT", "La actividad dejó de coincidir con el contrato M37.", 422)
         return value
 
+    def _check_quota(self, con, case_id: str, follow_up_id: str, incoming_bytes: int) -> None:
+        case_count = int(con.execute("SELECT COUNT(*) FROM m37_evidence_item WHERE case_id=?", (case_id,)).fetchone()[0])
+        task_count = int(con.execute(
+            "SELECT COUNT(*) FROM m37_evidence_item WHERE case_id=? AND follow_up_id=?",
+            (case_id, follow_up_id),
+        ).fetchone()[0])
+        total_bytes = int(con.execute(
+            "SELECT COALESCE(SUM(size_bytes),0) FROM m37_evidence_item WHERE case_id=?",
+            (case_id,),
+        ).fetchone()[0])
+        if case_count >= int(self.contract["max_items_per_case"]):
+            raise EvidenceIntakeError("EVIDENCE_CASE_ITEM_QUOTA", "El expediente alcanzó el máximo de soportes admitidos en M37.1.", 409)
+        if task_count >= int(self.contract["max_items_per_task"]):
+            raise EvidenceIntakeError("EVIDENCE_TASK_ITEM_QUOTA", "La actividad alcanzó el máximo de soportes admitidos en M37.1.", 409)
+        if total_bytes + int(incoming_bytes) > int(self.contract["max_total_bytes_per_case"]):
+            raise EvidenceIntakeError("EVIDENCE_CASE_BYTES_QUOTA", "El expediente alcanzó el límite total de almacenamiento de soportes.", 409)
+
     @staticmethod
     def _item(con, case_id: str, evidence_id: str) -> dict[str, Any]:
-        row = con.execute(
-            "SELECT * FROM m37_evidence_item WHERE id=? AND case_id=?",
-            (evidence_id, case_id),
-        ).fetchone()
+        row = con.execute("SELECT * FROM m37_evidence_item WHERE id=? AND case_id=?", (evidence_id, case_id)).fetchone()
         if not row:
             raise EvidenceIntakeError("EVIDENCE_NOT_AVAILABLE", "El soporte no está disponible.", 404)
         return dict(row)
 
-    def _path(self, row: Mapping[str, Any]) -> Path:
-        target = Path(str(row.get("file_path") or "")).resolve()
-        if target == self.evidence_root or self.evidence_root not in target.parents:
-            raise EvidenceIntakeError("EVIDENCE_PATH_INVALID", "La ruta interna del soporte no es válida.", 422)
-        if not target.is_file():
-            raise EvidenceIntakeError("EVIDENCE_FILE_MISSING", "El soporte almacenado ya no está disponible.", 422)
-        if target.is_symlink():
-            raise EvidenceIntakeError("EVIDENCE_PATH_INVALID", "El soporte no puede ser un enlace simbólico.", 422)
-        return target
-
-    def _verify_file(self, row: Mapping[str, Any]) -> Path:
-        target = self._path(row)
-        if target.stat().st_size != int(row.get("size_bytes") or -1):
-            raise EvidenceIntakeError("EVIDENCE_FILE_TAMPERED", "El tamaño del soporte ya no coincide con el registro de recepción.", 422)
-        if _sha256_file(target) != str(row.get("sha256") or ""):
-            raise EvidenceIntakeError("EVIDENCE_FILE_TAMPERED", "El soporte ya no coincide con el hash registrado.", 422)
-        return target
-
-    def _write_immutable(self, case_id: str, evidence_id: str, safe_name: str, data: bytes) -> Path:
-        folder = (self.evidence_root / _safe_id(case_id, "case_id") / _safe_id(evidence_id, "evidence_id")).resolve()
-        if self.evidence_root not in folder.parents:
-            raise EvidenceIntakeError("EVIDENCE_PATH_INVALID", "No fue posible construir una ruta segura para el soporte.", 422)
-        folder.mkdir(parents=True, exist_ok=False)
+    def _verify_content(self, con, row: Mapping[str, Any]) -> bytes:
+        reference = str(row.get("object_ref") or "")
+        if not reference or not self.object_store.is_reference(reference):
+            raise EvidenceIntakeError("EVIDENCE_OBJECT_REFERENCE_INVALID", "La referencia cifrada del soporte es inválida.", 422)
         try:
-            os.chmod(folder, 0o700)
-        except OSError:
-            pass
-        target = (folder / safe_name).resolve()
-        if target.parent != folder:
-            raise EvidenceIntakeError("EVIDENCE_PATH_INVALID", "El nombre del soporte no es seguro.", 422)
-        temp = folder / ".upload.tmp"
-        try:
-            with temp.open("xb") as stream:
-                stream.write(data)
-                stream.flush()
-                os.fsync(stream.fileno())
-            os.replace(temp, target)
-            try:
-                os.chmod(target, 0o600)
-            except OSError:
-                pass
-            return target
-        except Exception:
-            temp.unlink(missing_ok=True)
-            target.unlink(missing_ok=True)
-            try:
-                folder.rmdir()
-            except OSError:
-                pass
-            raise
+            data = self.object_store.get(con, reference)
+        except FileNotFoundError as exc:
+            raise EvidenceIntakeError("EVIDENCE_OBJECT_MISSING", "El objeto cifrado ya no está disponible.", 422) from exc
+        except (ValueError, RuntimeError) as exc:
+            raise EvidenceIntakeError("EVIDENCE_OBJECT_TAMPERED", "El objeto cifrado no superó la verificación de integridad.", 422) from exc
+        if len(data) != int(row.get("size_bytes") or -1) or _sha256_bytes(data) != str(row.get("plaintext_sha256") or ""):
+            raise EvidenceIntakeError("EVIDENCE_OBJECT_TAMPERED", "El contenido descifrado no coincide con el registro M37.1.", 422)
+        return data
 
     @staticmethod
     def _latest_review(con, evidence_id: str) -> dict[str, Any] | None:
         row = con.execute(
-            """SELECT * FROM m37_evidence_review WHERE evidence_id=?
-               ORDER BY created_at DESC,id DESC LIMIT 1""",
+            "SELECT * FROM m37_evidence_review WHERE evidence_id=? ORDER BY sequence DESC LIMIT 1",
             (evidence_id,),
         ).fetchone()
         return dict(row) if row else None
 
+    @staticmethod
+    def _next_review_sequence(con, evidence_id: str) -> int:
+        return int(con.execute(
+            "SELECT COALESCE(MAX(sequence),0)+1 FROM m37_evidence_review WHERE evidence_id=?",
+            (evidence_id,),
+        ).fetchone()[0])
+
     def _public_item(self, con, row: Mapping[str, Any]) -> dict[str, Any]:
-        self._verify_file(row)
+        self._verify_content(con, row)
         review = self._latest_review(con, str(row.get("id") or ""))
         review_count = int(con.execute(
             "SELECT COUNT(*) FROM m37_evidence_review WHERE evidence_id=?",
@@ -369,7 +362,7 @@ class EvidenceIntakeCenter:
                 "external_scan_completed": scan_status == "clean",
                 "local_demo_unscanned": scan_status == "not_scanned_local",
             },
-            "integrity": {"stored_file_intact": True},
+            "integrity": {"encrypted_at_rest": True, "stored_object_intact": True},
             "review": review_public,
             "review_count": review_count,
             "download_url": f"/api/m37/evidence/cases/{row.get('case_id')}/items/{row.get('id')}/download",
@@ -393,34 +386,43 @@ class EvidenceIntakeCenter:
     ) -> dict[str, Any]:
         case_id = _safe_id(case_id, "case_id")
         follow_up_id = _safe_id(follow_up_id, "follow_up_id")
-        file_kind, mime_type, safe_name = self._validate_file(filename, data)
-        try:
-            scan = self.malware_scanner.scan(safe_name, bytes(data))
-        except ValueError as exc:
-            raise EvidenceIntakeError("EVIDENCE_MALWARE_BLOCKED", str(exc), 422) from exc
-        except RuntimeError as exc:
-            raise EvidenceIntakeError("EVIDENCE_SCAN_UNAVAILABLE", str(exc), 503) from exc
-        evidence_id = f"EVD-{uuid.uuid4().hex[:16].upper()}"
-        digest = _sha256_bytes(bytes(data))
         con = self.db_factory()
-        target: Path | None = None
+        object_meta: dict[str, Any] | None = None
         try:
             case, enrollment = self._followup_context(con, actor, case_id, writable=True)
             task = self._task(con, case_id, follow_up_id, enrollment)
+            file_kind, mime_type, safe_name, body = self._validate_file(filename, data)
+            self._check_quota(con, case_id, follow_up_id, len(body))
+            try:
+                scan = self.malware_scanner.scan(safe_name, body)
+            except ValueError as exc:
+                raise EvidenceIntakeError("EVIDENCE_MALWARE_BLOCKED", str(exc), 422) from exc
+            except RuntimeError as exc:
+                raise EvidenceIntakeError("EVIDENCE_SCAN_UNAVAILABLE", str(exc), 503) from exc
+            evidence_id = f"EVD-{uuid.uuid4().hex[:16].upper()}"
+            digest = _sha256_bytes(body)
+            original_name = Path(str(filename or safe_name)).name[:255]
+            object_meta = self.object_store.put(
+                con,
+                f"m37-evidence/{case_id}",
+                original_name,
+                body,
+                mime_type,
+                owner_id=str(case.get("owner_id") or ""),
+            )
+            if object_meta.get("plaintext_sha256") != digest or int(object_meta.get("size_bytes") or -1) != len(body):
+                raise EvidenceIntakeError("EVIDENCE_OBJECT_WRITE_MISMATCH", "El object store no confirmó el mismo contenido recibido.", 500)
             before_status = str(task.get("status") or "")
-            target = self._write_immutable(case_id, evidence_id, safe_name, bytes(data))
-            if _sha256_file(target) != digest:
-                raise EvidenceIntakeError("EVIDENCE_WRITE_INTEGRITY_FAILED", "El soporte no conservó el mismo hash al almacenarse.", 500)
             now = core.now()
             con.execute(
                 """INSERT INTO m37_evidence_item
-                   (id,case_id,follow_up_id,uploader_id,uploader_role,original_name,stored_name,file_path,file_kind,mime_type,
-                    size_bytes,sha256,scan_status,scan_engine,state,created_at)
-                   VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                   (id,case_id,follow_up_id,uploader_id,uploader_role,original_name,file_kind,mime_type,size_bytes,
+                    object_ref,plaintext_sha256,scan_status,scan_engine,state,created_at)
+                   VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
                 (
                     evidence_id, case_id, follow_up_id, str(actor.get("id") or ""), str(actor.get("role") or ""),
-                    Path(str(filename or safe_name)).name[:255], safe_name, str(target), file_kind, mime_type,
-                    len(data), digest, str(scan.status), str(scan.engine), STATE_RECEIVED, now,
+                    original_name, file_kind, mime_type, len(body), str(object_meta["reference"]), digest,
+                    str(scan.status), str(scan.engine), STATE_RECEIVED, now,
                 ),
             )
             self.followup._append_event(
@@ -432,9 +434,10 @@ class EvidenceIntakeCenter:
                     "evidence_id": evidence_id,
                     "follow_up_id": follow_up_id,
                     "file_kind": file_kind,
-                    "size_bytes": len(data),
+                    "size_bytes": len(body),
                     "evidence_sha256": digest,
                     "scan_status": str(scan.status),
+                    "encrypted_at_rest": True,
                     "task_status_before": before_status,
                     "task_status_changed": False,
                     "authenticity_verified": False,
@@ -442,10 +445,7 @@ class EvidenceIntakeCenter:
                     "legal_effect_verified": False,
                 },
             )
-            after = con.execute(
-                "SELECT status FROM m24_case_follow_up WHERE id=? AND case_id=?",
-                (follow_up_id, case_id),
-            ).fetchone()
+            after = con.execute("SELECT status FROM m24_case_follow_up WHERE id=? AND case_id=?", (follow_up_id, case_id)).fetchone()
             if not after or str(after[0] or "") != before_status:
                 raise EvidenceIntakeError("EVIDENCE_TASK_MUTATION_DETECTED", "La recepción del soporte alteró indebidamente la actividad de seguimiento.", 500)
             con.commit()
@@ -458,12 +458,13 @@ class EvidenceIntakeCenter:
                 con.rollback()
             except Exception:
                 pass
-            if target is not None:
-                parent = target.parent
-                target.unlink(missing_ok=True)
+            if object_meta and object_meta.get("stored_path"):
                 try:
-                    parent.rmdir()
-                except OSError:
+                    path = Path(str(object_meta["stored_path"])).resolve()
+                    base = Path(getattr(self.object_store, "base", path.parent)).resolve()
+                    if path.is_file() and (path.parent == base or base in path.parents):
+                        path.unlink(missing_ok=True)
+                except Exception:
                     pass
             raise
         finally:
@@ -503,26 +504,21 @@ class EvidenceIntakeCenter:
             self._require_reviewer(case, actor)
             row = self._item(con, case_id, evidence_id)
             self._task(con, case_id, str(row.get("follow_up_id") or ""), enrollment)
-            self._verify_file(row)
-            task_before = con.execute(
-                "SELECT status FROM m24_case_follow_up WHERE id=? AND case_id=?",
-                (str(row["follow_up_id"]), case_id),
-            ).fetchone()[0]
+            self._verify_content(con, row)
+            task_before = con.execute("SELECT status FROM m24_case_follow_up WHERE id=? AND case_id=?", (str(row["follow_up_id"]), case_id)).fetchone()[0]
             latest = self._latest_review(con, evidence_id)
             if latest and str(latest.get("disposition") or "") == disposition and str(latest.get("message_to_client") or "") == message:
                 result = self._public_item(con, row)
                 result["idempotent"] = True
                 return result
+            sequence = self._next_review_sequence(con, evidence_id)
             review_id = f"EVR-{uuid.uuid4().hex[:16].upper()}"
             now = core.now()
             con.execute(
                 """INSERT INTO m37_evidence_review
-                   (id,evidence_id,case_id,reviewer_id,reviewer_role,disposition,message_to_client,created_at)
-                   VALUES(?,?,?,?,?,?,?,?)""",
-                (
-                    review_id, evidence_id, case_id, str(actor.get("id") or ""), str(actor.get("role") or ""),
-                    disposition, message, now,
-                ),
+                   (id,evidence_id,case_id,sequence,reviewer_id,reviewer_role,disposition,message_to_client,created_at)
+                   VALUES(?,?,?,?,?,?,?,?,?)""",
+                (review_id, evidence_id, case_id, sequence, str(actor.get("id") or ""), str(actor.get("role") or ""), disposition, message, now),
             )
             self.followup._append_event(
                 con,
@@ -533,6 +529,7 @@ class EvidenceIntakeCenter:
                     "evidence_id": evidence_id,
                     "follow_up_id": str(row.get("follow_up_id") or ""),
                     "review_id": review_id,
+                    "review_sequence": sequence,
                     "disposition": disposition,
                     "message_present": bool(message),
                     "task_status_changed": False,
@@ -541,10 +538,7 @@ class EvidenceIntakeCenter:
                     "legal_effect_verified": False,
                 },
             )
-            task_after = con.execute(
-                "SELECT status FROM m24_case_follow_up WHERE id=? AND case_id=?",
-                (str(row["follow_up_id"]), case_id),
-            ).fetchone()[0]
+            task_after = con.execute("SELECT status FROM m24_case_follow_up WHERE id=? AND case_id=?", (str(row["follow_up_id"]), case_id)).fetchone()[0]
             if str(task_after or "") != str(task_before or ""):
                 raise EvidenceIntakeError("EVIDENCE_REVIEW_TASK_MUTATION_DETECTED", "La revisión del soporte alteró indebidamente la actividad.", 500)
             con.commit()
@@ -564,11 +558,8 @@ class EvidenceIntakeCenter:
         case_id = _safe_id(case_id, "case_id")
         con = self.db_factory()
         try:
-            case, enrollment = self._followup_context(con, actor, case_id, writable=False)
-            rows = [dict(row) for row in con.execute(
-                "SELECT * FROM m37_evidence_item WHERE case_id=? ORDER BY created_at,id",
-                (case_id,),
-            ).fetchall()]
+            case, _enrollment = self._followup_context(con, actor, case_id, writable=False)
+            rows = [dict(row) for row in con.execute("SELECT * FROM m37_evidence_item WHERE case_id=? ORDER BY created_at,id", (case_id,)).fetchall()]
             items = [self._public_item(con, row) for row in rows]
             pending = sum(1 for item in items if item["review"]["status"] == "PENDING_REVIEW")
             clarification = sum(1 for item in items if item["review"].get("disposition") == "NEEDS_CLARIFICATION")
@@ -577,15 +568,22 @@ class EvidenceIntakeCenter:
                 "schema_version": SCHEMA_VERSION,
                 "case_id": case_id,
                 "product_code": str(case.get("product_code") or ""),
-                "followup_enrollment_id": str(enrollment.get("id") or ""),
                 "items": items,
                 "metrics": {
                     "evidence_items": len(items),
+                    "total_bytes": sum(int(item.get("size_bytes") or 0) for item in items),
                     "pending_review": pending,
                     "needs_clarification": clarification,
                 },
+                "limits": {
+                    "max_file_bytes": int(self.contract["max_file_bytes"]),
+                    "max_items_per_case": int(self.contract["max_items_per_case"]),
+                    "max_items_per_task": int(self.contract["max_items_per_task"]),
+                    "max_total_bytes_per_case": int(self.contract["max_total_bytes_per_case"]),
+                },
                 "notice": str(self.contract.get("notice") or ""),
                 "governance": {
+                    "encrypted_object_store": True,
                     "files_immutable": True,
                     "reviews_append_only": True,
                     "upload_completes_task": False,
@@ -600,23 +598,18 @@ class EvidenceIntakeCenter:
         finally:
             con.close()
 
-    def download(self, actor: dict[str, Any], case_id: str, evidence_id: str) -> tuple[Path, str, dict[str, Any]]:
+    def download(self, actor: dict[str, Any], case_id: str, evidence_id: str) -> tuple[bytes, str, str, dict[str, Any]]:
         case_id = _safe_id(case_id, "case_id")
         evidence_id = _safe_id(evidence_id, "evidence_id")
         con = self.db_factory()
         try:
             self._followup_context(con, actor, case_id, writable=False)
             row = self._item(con, case_id, evidence_id)
-            target = self._verify_file(row)
+            data = self._verify_content(con, row)
             public = self._public_item(con, row)
-            return target, core.safe_filename(str(row.get("original_name") or "soporte"), fallback="soporte"), public
+            return data, core.safe_filename(str(row.get("original_name") or "soporte"), fallback="soporte"), str(row.get("mime_type") or "application/octet-stream"), public
         finally:
             con.close()
 
 
-__all__ = [
-    "EvidenceIntakeCenter",
-    "EvidenceIntakeError",
-    "REVIEW_DISPOSITIONS",
-    "SCHEMA_VERSION",
-]
+__all__ = ["EvidenceIntakeCenter", "EvidenceIntakeError", "REVIEW_DISPOSITIONS", "SCHEMA_VERSION"]
