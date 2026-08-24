@@ -192,13 +192,22 @@ class PostDeliveryFollowUpCenter:
 
     def _validate_live_tasks(self, product_code: str, followups: list[dict[str, Any]]) -> list[str]:
         contracts = self._task_contracts(product_code)
-        labels = [str(item.get("action_label") or "") for item in followups]
-        if labels != list(contracts):
+        by_label: dict[str, dict[str, Any]] = {}
+        for item in followups:
+            label = str(item.get("action_label") or "")
+            if not label or label in by_label:
+                raise PostDeliveryFollowUpError(
+                    "FOLLOWUP_TASK_DRIFT",
+                    "Las actividades M24 contienen etiquetas vacías o duplicadas.",
+                    422,
+                )
+            by_label[label] = item
+        if set(by_label) != set(contracts):
             raise PostDeliveryFollowUpError("FOLLOWUP_TASK_DRIFT", "Las actividades M24 no coinciden con el contrato M37.0 vigente.", 422)
-        ids = [str(item.get("id") or "") for item in followups]
-        if any(not item for item in ids) or len(ids) != len(set(ids)):
+        ordered_ids = [str(by_label[label].get("id") or "") for label in contracts]
+        if any(not item for item in ordered_ids) or len(ordered_ids) != len(set(ordered_ids)):
             raise PostDeliveryFollowUpError("FOLLOWUP_TASK_IDS_INVALID", "Las actividades M24 no tienen identificadores íntegros.", 422)
-        return ids
+        return ordered_ids
 
     @staticmethod
     def _event_candidate(row: Mapping[str, Any]) -> dict[str, Any]:
@@ -309,7 +318,6 @@ class PostDeliveryFollowUpCenter:
                 "legal_deadline_verified": False,
             },
         )
-        con.commit()
 
     def start(self, actor: dict[str, Any], case_id: str, confirmation: str) -> dict[str, Any]:
         case_id = _safe_id(case_id, "case_id")
@@ -386,9 +394,6 @@ class PostDeliveryFollowUpCenter:
                         actor,
                     )
                 except Exception:
-                    # If M24 did not commit the transition, remove the empty PREPARED
-                    # enrollment. If it did commit and the process failed afterwards,
-                    # the retry path below will reconcile it instead.
                     refreshed = self.journey.detail(con, case_id, actor).get("current_state")
                     if refreshed == "ENTREGADO":
                         con.execute("DELETE FROM m37_followup_enrollment WHERE case_id=? AND state='PREPARED'", (case_id,))
@@ -401,6 +406,7 @@ class PostDeliveryFollowUpCenter:
             if not enrollment or str(enrollment.get("state") or "") != STATE_PREPARED:
                 raise PostDeliveryFollowUpError("FOLLOWUP_PREPARED_MISSING", "No existe preparación M37.0 recuperable.", 422)
             self._finalize_start(con, enrollment, actor)
+            con.commit()
             result = self._detail_from_open_connection(con, actor, case_id)
             result["idempotent"] = False
             return result
