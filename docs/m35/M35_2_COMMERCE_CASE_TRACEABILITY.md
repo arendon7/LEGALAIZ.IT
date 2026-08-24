@@ -1,6 +1,6 @@
 # M35.2 — Commerce → Case Traceability Bridge
 
-Estado: **candidato técnico listo para certificación CI sobre SHA limpio**. No autoriza pagos reales, precios comerciales definitivos ni producción jurídica real. La evidencia de certificación del SHA final se registra en el PR para evitar modificar el commit después del gate.
+Estado: **candidato técnico en recertificación CI**. No autoriza pagos reales, precios comerciales definitivos ni producción jurídica real. La evidencia del SHA finalmente certificado se registra en el PR para evitar modificar el commit después del gate.
 
 ## Objetivo
 
@@ -35,6 +35,8 @@ M35.2 reutiliza:
 18. M24 sólo avanza a `GENERADO` después de comprobar que existen documentos vinculados.
 19. Antes de cerrar `CASE_CREATED`, M35.2 vuelve a verificar intent, importe, ownership y cadena SHA/HMAC del pago sandbox.
 20. Observabilidad registra IDs/estados/conteos, no relato, respuestas, recovery code ni hashes de snapshots.
+21. El frontend nunca incorpora marcadores de estado dentro del `case_id`; la navegación al expediente usa siempre `/caso/<case_id>`.
+22. Un checkout en `CASE_CREATED_DOCUMENTS_PENDING` no se trata como expediente terminado: permanece accesible, oculta la apertura prematura y ofrece un reintento explícito sobre el mismo vínculo.
 
 ## Ledger
 
@@ -84,7 +86,7 @@ El expediente ya conserva de forma durable `answers` y `result`, por lo que el r
 
 Esta secuencia mantiene la regla histórica de M24: un expediente no puede declararse `GENERADO` sin documentos vinculados.
 
-## Recovery e idempotencia
+## Recovery e idempotencia backend
 
 Si un intento ya creó el expediente pero no terminó Fase B o C:
 
@@ -95,6 +97,23 @@ Si un intento ya creó el expediente pero no terminó Fase B o C:
 - nunca inserta un segundo expediente ni una segunda orden;
 - una vez `CASE_CREATED`, los siguientes `finalize` son lecturas idempotentes del vínculo terminado.
 
+## Recovery frontend alcanzable
+
+El frontend mantiene una distinción expresa entre `Completada` en `checkout_orders` y `CASE_CREATED` en el ledger M35.2. La orden puede estar vinculada al expediente mientras sus documentos continúan pendientes.
+
+Cuando el ledger informa `CASE_CREATED_DOCUMENTS_PENDING`:
+
+1. no ejecuta un segundo pago;
+2. no redirige automáticamente al workspace del expediente;
+3. oculta la acción legacy de “Abrir expediente” mientras el recovery está pendiente;
+4. muestra `Reintentar preparación de documentos`;
+5. llama nuevamente a `finalize` con el mismo `link_id`;
+6. si el backend sigue devolviendo `documents_ready=false`, permanece en checkout y conserva la posibilidad de reintento;
+7. sólo cuando `documents_ready=true` limpia el estado local y navega a `#/caso/<case_id>`;
+8. no utiliza query strings como parte del identificador del caso.
+
+Este contrato hace alcanzable desde UI la recuperación que ya estaba protegida por el backend y evita que un estado incompleto parezca finalizado.
+
 ## Compatibilidad con APIs legacy
 
 - Un producto visitado directamente, sin handoff M35, conserva el flujo legacy.
@@ -102,19 +121,20 @@ Si un intento ya creó el expediente pero no terminó Fase B o C:
 - El guard de creación genérica de `/api/cases` falla cerrado para órdenes M35.2. Por compatibilidad con el handler histórico, ese bypass se traduce como HTTP `400`; los conflictos de estado de las rutas nativas `/api/m35/commerce/*` usan `409 Conflict` cuando corresponde.
 - Ninguno de esos endpoints legacy puede materializar un segundo expediente para una orden M35.2.
 
-## QA y evidencia pre-certificación
+## Evidencia histórica y recertificación
 
-El gate de pre-certificación **#709** sobre `d5b7a1816d41de16d28608476e9285fe1f2fb758` quedó verde antes de la limpieza final:
+El gate **#710** sobre `ae109cef50bfa73e8a4dd70d4dee9c9da850e6bd` quedó completamente verde:
 
-- 295/295 pruebas Python PASS;
+- 299/299 pruebas Python PASS;
 - sintaxis y assets JS PASS;
 - 11 productos y 473 preguntas conservados;
-- M34.2, M34.3, M34.4, M35.0 y M35.1 HTTP smoke PASS;
-- M35.2 HTTP smoke PASS con pago firmado verificado, bypasses legacy bloqueados, una sola orden, un solo expediente y 2 documentos materializados;
+- M34.2, M34.3, M34.4, M35.0, M35.1 y M35.2 HTTP smoke PASS;
+- M35.2 comprobó pago firmado, bypasses legacy bloqueados, una sola orden, un solo expediente y 2 documentos materializados;
 - M33.1 public-demo smoke 8/8 PASS;
-- visual-docx PASS.
+- visual-docx PASS;
+- artifact visual `9504294637`, digest `sha256:3f1a865b1a9188e56baa01bcd9b68e1b300f1ae45b9a8ef597bd415831653cd2`.
 
-Esta evidencia es **pre-certificación** porque el SHA limpio posterior incorpora únicamente regresión de recovery y eliminación de archivos temporales. La certificación formal exige un nuevo run verde sobre ese SHA exacto.
+Después de ese gate, una revisión frontend adicional detectó el caso límite de recovery descrito arriba. Por ello, #710 se conserva como evidencia histórica del SHA anterior, pero **no se usa como certificación del head actual**. La cabeza con el fix de recovery debe superar nuevamente todo el workflow antes de considerarse certificada.
 
 ## Límites actuales
 
