@@ -20,6 +20,16 @@ class M363IntegrationContractTests(unittest.TestCase):
         self.assertIn("http_handler_m36_2 import Handler as BaseHandler", handler)
         self.assertIn("m36-3-controlled-delivery-gate", run)
 
+    def test_incremental_handler_uses_real_path_and_csrf_contracts(self):
+        handler = self.read("legalai_platform/http_handler_m36_3.py")
+        self.assertIn("from urllib.parse import urlparse", handler)
+        self.assertIn("path = urlparse(self.path).path", handler)
+        self.assertNotIn("self._path()", handler)
+        self.assertIn("self.require_csrf()", handler)
+        self.assertNotIn("self.require_csrf(user)", handler)
+        self.assertIn("return super().do_GET()", handler)
+        self.assertIn("return super().do_POST()", handler)
+
     def test_internal_m24_singleton_guard_is_installed(self):
         run = self.read("run.py")
         guard = self.read("legalai_platform/m36_3_journey_guard.py")
@@ -40,7 +50,7 @@ class M363IntegrationContractTests(unittest.TestCase):
         handler = self.read("legalai_platform/http_handler_m36_3.py")
         self.assertIn("self.require_origin()", handler)
         self.assertIn("self.require_user()", handler)
-        self.assertIn("self.require_csrf(user)", handler)
+        self.assertIn("self.require_csrf()", handler)
         route = self.read("legalai_platform/routes/m36_3_controlled_delivery_routes.py")
         self.assertIn('parts[2] != "deliver"', route)
         self.assertIn("delivery_center().deliver", route)
