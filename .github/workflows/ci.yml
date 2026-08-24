@@ -136,6 +136,7 @@ jobs:
           python tools/m35_3_http_smoke.py
           python tools/m36_0_http_smoke.py
           python tools/m36_1_http_smoke.py
+          python tools/m36_2_http_smoke.py
       - name: Smoke producción demostrativa M33.1
         run: python tools/public_demo_smoke.py
 
