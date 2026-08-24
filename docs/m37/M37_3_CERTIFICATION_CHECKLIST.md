@@ -2,6 +2,8 @@
 
 Estado: **NO CERTIFICADO** hasta un workflow verde sobre el SHA exacto candidato.
 
+PR de certificación: `#37`.
+
 ## Lifecycle y gobernanza
 
 - [x] M37.0 conserva bloqueo legacy de `CERRADO`/`ESCALADO`.
