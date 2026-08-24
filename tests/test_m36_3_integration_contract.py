@@ -108,6 +108,21 @@ class M363IntegrationContractTests(unittest.TestCase):
         self.assertIn('"automatic_legal_approval": False', engine)
         self.assertIn('"automatic_qa_approval": False', engine)
 
+    def test_ci_runs_m363_after_m362_with_fresh_process_only(self):
+        workflow = self.read(".github/workflows/ci.yml")
+        m362 = workflow.index("python tools/m36_2_http_smoke.py")
+        restart = workflow.index("start_server /tmp/legalaiz-m36-3.log")
+        m363 = workflow.index("python tools/m36_3_http_smoke.py")
+        self.assertLess(m362, restart)
+        self.assertLess(restart, m363)
+        between = workflow[m362:m363]
+        self.assertIn("stop_server", between)
+        self.assertIn("misma clave", between)
+        self.assertIn("12/300", between)
+        self.assertNotIn("RATE_LIMIT_DISABLE", workflow)
+        self.assertNotIn("LOGIN_RATE_LIMIT", workflow)
+        self.assertNotIn("LEGAL_DISABLE_RATE", workflow)
+
 
 if __name__ == "__main__":
     unittest.main()
