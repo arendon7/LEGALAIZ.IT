@@ -65,7 +65,7 @@ def main() -> int:
             "title": draft.get("title") or "Caso consumidor M35.1",
             "result": draft.get("result") or {},
         },
-        expected=200,
+        expected=201,
     )
     repeated = account.post(
         "/api/m35/fulfillment/prepare",
