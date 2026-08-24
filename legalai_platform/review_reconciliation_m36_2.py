@@ -24,6 +24,7 @@ SCHEMA_VERSION = "36.2.0"
 SYSTEM_ACTOR_ID = "system-m36-2"
 SYSTEM_ACTOR_ROLE = "system"
 SYSTEM_ACTOR_NAME = "LegalAIZ.it · M36.2"
+FULFILLMENT_REVIEW_STATE = "EN_REVISION_JURIDICA"
 OBSERVED_DESK_STATES = frozenset({"changes_required", "rejected", "findings_pending"})
 REVIEW_DESK_STATES = frozenset({
     "draft",
@@ -134,8 +135,12 @@ class ReviewLifecycleReconciler:
         if not row:
             raise ReviewReconciliationError("FULFILLMENT_NOT_FOUND", "El expediente no tiene intake M36.0 verificable.", 404)
         value = dict(row)
-        if str(value.get("state") or "") != "READY_FOR_REVIEW":
-            raise ReviewReconciliationError("FULFILLMENT_NOT_READY", "El intake M36.0 no está listo para revisión.", 422)
+        if str(value.get("state") or "") != FULFILLMENT_REVIEW_STATE:
+            raise ReviewReconciliationError(
+                "FULFILLMENT_NOT_READY",
+                "El intake M36.0 no acredita el ingreso canónico a revisión jurídica.",
+                422,
+            )
         return value
 
     @staticmethod
@@ -662,4 +667,5 @@ __all__ = [
     "ReviewReconciliationError",
     "SCHEMA_VERSION",
     "SYSTEM_ACTOR_ID",
+    "FULFILLMENT_REVIEW_STATE",
 ]
