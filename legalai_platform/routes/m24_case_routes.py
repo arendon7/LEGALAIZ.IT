@@ -22,7 +22,7 @@ def _requires_m36_controlled_delivery(con, case_id: str) -> bool:
 
 
 def _requires_m37_controlled_followup(con, case_id: str) -> bool:
-    """Prevent the legacy M24 endpoint from bypassing the M37 append-only ledger."""
+    """Return True once the exact case has entered the controlled M37 lifecycle."""
     try:
         row = con.execute(
             "SELECT state FROM m37_followup_enrollment WHERE case_id=? LIMIT 1",
@@ -71,6 +71,15 @@ def handle_m24_case_post(handler, path, user):
                     {
                         "error": "Este expediente ingresó al flujo M36 y sólo puede entregarse mediante la compuerta controlada M36.3.",
                         "code": "M36_CONTROLLED_DELIVERY_REQUIRED",
+                    },
+                    409,
+                )
+                return True
+            if target in {"CERRADO", "ESCALADO"} and _requires_m37_controlled_followup(con, case_id):
+                handler.send_json(
+                    {
+                        "error": "Este expediente ingresó al seguimiento M37. El cierre o escalamiento requiere la compuerta de lifecycle M37 correspondiente.",
+                        "code": "M37_LIFECYCLE_CONTROL_REQUIRED",
                     },
                     409,
                 )
