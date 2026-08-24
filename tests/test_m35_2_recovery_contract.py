@@ -10,6 +10,7 @@ class M352RecoveryContractTests(unittest.TestCase):
     def setUpClass(cls):
         cls.routes = (ROOT / "legalai_platform" / "routes" / "m35_2_commerce_routes.py").read_text(encoding="utf-8")
         cls.store = (ROOT / "legalai_platform" / "commerce_case_m35_2.py").read_text(encoding="utf-8")
+        cls.frontend = (ROOT / "app" / "modules" / "commerce_case_m35_2.js").read_text(encoding="utf-8")
 
     def test_pending_case_is_resumed_from_same_durable_case_snapshot(self):
         self.assertIn('public.get("state") != "CASE_CREATED_DOCUMENTS_PENDING"', self.routes)
@@ -53,6 +54,26 @@ class M352RecoveryContractTests(unittest.TestCase):
         ]
         self.assertNotIn("/api/cases", retry_branch)
         self.assertNotIn("create_case", retry_branch)
+
+    def test_frontend_never_embeds_pending_marker_inside_case_id(self):
+        self.assertNotIn("?m352_documents=pending", self.frontend)
+        self.assertIn("location.hash = `#/caso/${encodeURIComponent(finalized.case_id)}`", self.frontend)
+        self.assertIn("PENDING_DOCUMENTS_STATE = 'CASE_CREATED_DOCUMENTS_PENDING'", self.frontend)
+
+    def test_frontend_pending_state_offers_retry_before_completed_case_redirect(self):
+        self.assertIn("data-m352-retry-finalize", self.frontend)
+        self.assertIn("Reintentar preparación de documentos", self.frontend)
+        pending_branch = "if (link.state === PENDING_DOCUMENTS_STATE) return retryPendingDocuments(link);"
+        completed_branch = "if (order.status === 'Completada' && order.case_id) return go(`/caso/${encodeURIComponent(order.case_id)}`);"
+        self.assertIn(pending_branch, self.frontend)
+        self.assertIn(completed_branch, self.frontend)
+        self.assertLess(self.frontend.index(pending_branch), self.frontend.index(completed_branch))
+        retry_start = self.frontend.index("async function retryPendingDocuments")
+        retry_end = self.frontend.index("async function tracedPayOrFinalize", retry_start)
+        retry = self.frontend[retry_start:retry_end]
+        self.assertIn("FINALIZE_PATH", retry)
+        self.assertIn("finalized.documents_ready === false", retry)
+        self.assertIn("finishIntoCase(link, finalized)", retry)
 
 
 if __name__ == "__main__":
