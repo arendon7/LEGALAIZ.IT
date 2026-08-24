@@ -16,6 +16,7 @@ MATERIALIZED_JOURNEY_STATES = {
     "ENTREGADO",
     "EN_SEGUIMIENTO",
     "CERRADO",
+    "ESCALADO",
 }
 
 
@@ -44,6 +45,15 @@ class CaseActivationCenter:
         self.payments = payments
 
     @staticmethod
+    def _table_exists(con, name: str) -> bool:
+        return bool(
+            con.execute(
+                "SELECT 1 FROM sqlite_master WHERE type='table' AND name=?",
+                (name,),
+            ).fetchone()
+        )
+
+    @staticmethod
     def _case(con, user_id: str, case_id: str):
         return con.execute(
             """SELECT id,product_code,title,risk,status,owner_id,review_status,created_at,updated_at
@@ -51,8 +61,9 @@ class CaseActivationCenter:
             (case_id, user_id),
         ).fetchone()
 
-    @staticmethod
-    def _link(con, user_id: str, case_id: str):
+    def _link(self, con, user_id: str, case_id: str):
+        if not self._table_exists(con, "m35_commerce_case_links"):
+            return None
         return con.execute(
             """SELECT id,user_id,product_code,service_level,order_id,payment_intent_id,case_id,state,
                       checkout_consent_at,case_consent_at,created_at,updated_at
@@ -62,14 +73,25 @@ class CaseActivationCenter:
             (user_id, case_id),
         ).fetchone()
 
-    @staticmethod
-    def _journey(con, case_id: str):
+    def _journey(self, con, case_id: str):
+        if not self._table_exists(con, "m24_case_journey"):
+            return None
         return con.execute(
             """SELECT case_id,product_code,current_state,legal_approver_id,qa_approver_id,
                       delivery_actor_id,created_at,updated_at
                FROM m24_case_journey WHERE case_id=?""",
             (case_id,),
         ).fetchone()
+
+    def _generated_transition_exists(self, con, case_id: str) -> bool:
+        if not self._table_exists(con, "m24_case_transition"):
+            return False
+        return bool(
+            con.execute(
+                "SELECT 1 FROM m24_case_transition WHERE case_id=? AND to_state='GENERADO' LIMIT 1",
+                (case_id,),
+            ).fetchone()
+        )
 
     @staticmethod
     def _document_count(con, case_id: str) -> int:
@@ -123,6 +145,14 @@ class CaseActivationCenter:
                 "route": "",
                 "tab": "documentos" if journey_state == "APROBADO_QA" else "seguimiento",
             }
+        if journey_state == "ESCALADO":
+            return {
+                "code": "ESCALATED_REVIEW",
+                "title": "El expediente requiere revisión profesional",
+                "detail": "Existe una escalación operativa. Consulta el estado de revisión antes de usar cualquier documento fuera de la plataforma.",
+                "route": "",
+                "tab": "revision",
+            }
         if review_included or risk == "red":
             return {
                 "code": "WAIT_FOR_REVIEW",
@@ -159,14 +189,26 @@ class CaseActivationCenter:
         link = dict(link_row)
         if link.get("product_code") != case.get("product_code") or link.get("case_id") != case_id:
             raise CaseActivationError("CASE_TRACE_BROKEN", "El expediente no coincide con su vínculo comercial.")
+        if not str(link.get("checkout_consent_at") or "").strip():
+            raise CaseActivationError("CHECKOUT_CONSENT_TRACE_MISSING", "No existe evidencia del consentimiento de checkout.")
+        if not str(link.get("case_consent_at") or "").strip():
+            raise CaseActivationError("CASE_CONSENT_TRACE_MISSING", "No existe evidencia del consentimiento para crear el expediente.")
 
         order = self.self_service.get_order(con, user_id, link["order_id"])
         if not order:
             raise CaseActivationError("ORDER_TRACE_BROKEN", "La orden vinculada al expediente no está disponible.")
         if order.get("case_id") != case_id or order.get("product_code") != case.get("product_code"):
             raise CaseActivationError("ORDER_CASE_MISMATCH", "La orden no coincide con el expediente vinculado.")
+        if order.get("status") != "Completada":
+            raise CaseActivationError("ORDER_NOT_COMPLETED", "La orden vinculada al expediente no está completada.")
         if not self.self_service.requires_m35_trace(order):
             raise CaseActivationError("ORDER_TRACE_FLAG_MISSING", "La orden perdió su marca de continuidad trazable.")
+        service_level = str(link.get("service_level") or "")
+        if service_level != str(order.get("service_mode") or ""):
+            raise CaseActivationError("SERVICE_LEVEL_MISMATCH", "El nivel de servicio no coincide entre orden y vínculo comercial.")
+        expected_review = service_level == "solucion_revisada"
+        if bool(order.get("review_selected")) != expected_review:
+            raise CaseActivationError("REVIEW_SELECTION_MISMATCH", "La selección de revisión no coincide con el nivel adquirido.")
 
         intent_id = str(link.get("payment_intent_id") or "")
         if not intent_id:
@@ -201,14 +243,18 @@ class CaseActivationCenter:
                 raise CaseActivationError("DOCUMENT_TRACE_BROKEN", "El expediente se marcó como activado sin documentos materializados.")
             if not journey:
                 raise CaseActivationError("JOURNEY_TRACE_MISSING", "El expediente activado no conserva recorrido operativo M24.")
+            if str(journey.get("product_code") or "") != str(case.get("product_code") or ""):
+                raise CaseActivationError("JOURNEY_PRODUCT_MISMATCH", "El recorrido operativo no corresponde al producto del expediente.")
             journey_state = str(journey.get("current_state") or "")
             if journey_state not in MATERIALIZED_JOURNEY_STATES:
                 raise CaseActivationError("JOURNEY_NOT_RECONCILED", "El recorrido operativo aún no acredita la materialización documental.")
+            if not self._generated_transition_exists(con, case_id):
+                raise CaseActivationError("GENERATED_HISTORY_MISSING", "El recorrido no conserva evidencia histórica de generación documental.")
             activation_status = "ACTIVE"
         else:
             raise CaseActivationError("ACTIVATION_STATE_INVALID", "El vínculo comercial no está en un estado de activación válido.")
 
-        review_included = bool(order.get("review_selected")) or link.get("service_level") == "solucion_revisada"
+        review_included = bool(order.get("review_selected"))
         next_step = self._next_step(
             activation_status,
             journey_state,
@@ -216,7 +262,6 @@ class CaseActivationCenter:
             str(case.get("risk") or ""),
             str(order.get("id") or ""),
         )
-        service_level = str(link.get("service_level") or order.get("service_mode") or "")
 
         return {
             "schema": "legalai_m35_3_case_activation_v1",
@@ -261,6 +306,7 @@ class CaseActivationCenter:
             "notices": [
                 "Este comprobante corresponde exclusivamente a un pago sandbox y no acredita un cargo real.",
                 "La activación del expediente no equivale a aprobación jurídica, entrega ni garantía de resultado.",
+                "Los controles internos de calidad y liberación documental son independientes del nivel comercial adquirido.",
             ],
         }
 
