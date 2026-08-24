@@ -26,23 +26,14 @@ class Handler(BaseHandler):
         path = urlparse(self.path).path
         if not (path == PREFIX or path.startswith(PREFIX + "/")):
             return super().do_POST()
-        try:
-            if not self.require_origin():
-                return
-            user = self.require_user()
-            if not user:
-                return
-            if not self.require_csrf():
-                return
-            return handle_m37_2_timing_post(self, path, user)
-        except Exception:
-            return self.send_json(
-                {
-                    "error": "No fue posible completar la operación temporal.",
-                    "code": "TIMING_INTERNAL_ERROR",
-                },
-                500,
-            )
+        if not self.require_origin():
+            return
+        user = self.require_user()
+        if not user:
+            return
+        if not self.require_csrf():
+            return
+        return handle_m37_2_timing_post(self, path, user)
 
 
 __all__ = ["Handler"]
