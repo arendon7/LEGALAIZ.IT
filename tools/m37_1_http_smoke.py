@@ -125,9 +125,10 @@ def main() -> int:
     require(fake.get("code") == "EVIDENCE_SIGNATURE_MISMATCH", "M37.1 confió en extensión sin firma real")
 
     body = b"%PDF-1.4\nconstancia de radicacion smoke\n%%EOF\n"
+    upload_path = f"/api/m37/evidence/cases/{case_id}/tasks/{task_id}/upload"
     uploaded = multipart_post(
         owner,
-        f"/api/m37/evidence/cases/{case_id}/tasks/{task_id}/upload",
+        upload_path,
         "../../constancia_radicacion.pdf",
         body,
         content_type="application/octet-stream",
@@ -135,6 +136,7 @@ def main() -> int:
     )
     evidence_id = str(uploaded.get("evidence_id") or "")
     require(bool(evidence_id), "M37.1 no devolvió evidence_id")
+    require(uploaded.get("idempotent") is False, "Primer upload M37.1 se marcó idempotente")
     require(uploaded.get("filename") == "constancia_radicacion.pdf", "M37.1 no neutralizó el nombre de archivo")
     require(uploaded.get("file_kind") == "PDF", "M37.1 clasificó mal el PDF")
     require(uploaded.get("mime_type") == "application/pdf", "M37.1 confió en Content-Type declarado")
@@ -143,6 +145,19 @@ def main() -> int:
     require(uploaded.get("governance", {}).get("upload_completed_task") is False, "M37.1 completó tarea por upload")
     require(uploaded.get("governance", {}).get("authenticity_verified") is False, "M37.1 inventó autenticidad")
     require(uploaded.get("security_scan", {}).get("local_demo_unscanned") is True, "M37.1 demo local no transparentó ausencia de escáner externo")
+
+    repeated_upload = multipart_post(
+        owner,
+        upload_path,
+        "../../constancia_radicacion.pdf",
+        body,
+        content_type="application/octet-stream",
+        expected=200,
+    )
+    require(repeated_upload.get("idempotent") is True, "Retry exacto M37.1 no fue idempotente")
+    require(repeated_upload.get("evidence_id") == evidence_id, "Retry exacto M37.1 creó otro evidence_id")
+    after_retry = owner.get(f"/api/m37/evidence/cases/{case_id}", expected=200)
+    require((after_retry.get("metrics") or {}).get("evidence_items") == 1, "Retry exacto M37.1 duplicó el soporte")
 
     followup_after_upload = owner.get(f"/api/m37/follow-up/cases/{case_id}", expected=200)
     task_after_upload = next(item for item in followup_after_upload.get("tasks") or [] if item.get("follow_up_id") == task_id)
@@ -201,9 +216,11 @@ def main() -> int:
     require(final_task.get("status") == task_status_before, "Review M37.1 alteró el estado M24 de la tarea")
     require(final_followup.get("m24_current_state") == "EN_SEGUIMIENTO", "M37.1 cerró o escaló automáticamente")
 
-    raw = json.dumps({"upload": uploaded, "review": reviewed, "detail": detail}, ensure_ascii=False).lower()
+    raw = json.dumps({"upload": uploaded, "retry": repeated_upload, "review": reviewed, "detail": detail}, ensure_ascii=False).lower()
     for forbidden in (
         "file_path",
+        "object_ref",
+        "plaintext_sha256",
         "sha256",
         "uploader_id",
         "reviewer_id",
@@ -218,8 +235,9 @@ def main() -> int:
     print(
         "M37.1 HTTP smoke PASS · "
         f"case={case_id} desks={len(desk_ids)} evidence=1 review=NEEDS_CLARIFICATION "
-        f"m24={final_followup.get('m24_current_state')} task_unchanged=true local_scan_transparent=true "
-        "authenticity_verified=false legal_sufficiency_verified=false auto_close=false cross_tenant=hidden idempotent=true"
+        f"m24={final_followup.get('m24_current_state')} task_unchanged=true upload_idempotent=true "
+        "local_scan_transparent=true authenticity_verified=false legal_sufficiency_verified=false "
+        "auto_close=false cross_tenant=hidden review_idempotent=true"
     )
     return 0
 
