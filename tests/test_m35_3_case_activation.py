@@ -60,6 +60,13 @@ def memory_db():
           created_at TEXT NOT NULL,
           updated_at TEXT NOT NULL
         );
+        CREATE TABLE m24_case_transition(
+          id TEXT PRIMARY KEY,
+          case_id TEXT NOT NULL,
+          from_state TEXT,
+          to_state TEXT NOT NULL,
+          created_at TEXT NOT NULL
+        );
         CREATE TABLE m35_commerce_case_links(
           id TEXT PRIMARY KEY,
           user_id TEXT NOT NULL,
@@ -192,6 +199,10 @@ class M353CaseActivationTests(unittest.TestCase):
                ) VALUES(?,?, 'GENERADO',NULL,NULL,NULL,?,?)""",
             (self.case_id, "CO-CD-003", now, now),
         )
+        self.con.execute(
+            "INSERT INTO m24_case_transition(id,case_id,from_state,to_state,created_at) VALUES('TR-M353-1',?,'LISTO_PARA_GENERAR','GENERADO',?)",
+            (self.case_id, now),
+        )
         self.con.commit()
 
     def tearDown(self):
@@ -250,9 +261,30 @@ class M353CaseActivationTests(unittest.TestCase):
         exc = self.assert_code("NOT_M35_COMMERCE_CASE", lambda: self.center.build(self.con, "USR-A", "LZ-LEGACY"))
         self.assertEqual(exc.status, 404)
 
+    def test_legacy_schema_without_m35_table_is_a_clean_not_applicable_result(self):
+        con = sqlite3.connect(":memory:")
+        con.row_factory = sqlite3.Row
+        con.execute(
+            """CREATE TABLE cases(
+                 id TEXT PRIMARY KEY,product_code TEXT,title TEXT,risk TEXT,status TEXT,owner_id TEXT,
+                 review_status TEXT,created_at TEXT,updated_at TEXT
+               )"""
+        )
+        con.execute(
+            "INSERT INTO cases VALUES('LZ-OLD','CO-CD-003','Legacy','green','Abierto','USR-A','Pendiente','x','x')"
+        )
+        try:
+            with self.assertRaises(CaseActivationError) as ctx:
+                self.center.build(con, "USR-A", "LZ-OLD")
+            self.assertEqual(ctx.exception.code, "NOT_M35_COMMERCE_CASE")
+            self.assertEqual(ctx.exception.status, 404)
+        finally:
+            con.close()
+
     def test_tampered_signed_payment_event_blocks_positive_activation(self):
         self.con.execute(
-            "UPDATE payment_sandbox_events SET signature='tampered' WHERE intent_id=? LIMIT 1",
+            """UPDATE payment_sandbox_events SET signature='tampered'
+               WHERE id=(SELECT id FROM payment_sandbox_events WHERE intent_id=? ORDER BY created_at,id LIMIT 1)""",
             (self.intent_id,),
         )
         self.assert_code("PAYMENT_EVENT_INTEGRITY_FAILED", lambda: self.center.build(self.con, "USR-A", self.case_id))
@@ -263,6 +295,22 @@ class M353CaseActivationTests(unittest.TestCase):
             (self.order_id,),
         )
         self.assert_code("SANDBOX_RECEIPT_MISSING", lambda: self.center.build(self.con, "USR-A", self.case_id))
+
+    def test_missing_checkout_or_case_consent_trace_blocks_activation(self):
+        self.con.execute("UPDATE m35_commerce_case_links SET checkout_consent_at='' WHERE id=?", (self.link_id,))
+        self.assert_code("CHECKOUT_CONSENT_TRACE_MISSING", lambda: self.center.build(self.con, "USR-A", self.case_id))
+        self.con.execute("UPDATE m35_commerce_case_links SET checkout_consent_at='x',case_consent_at='' WHERE id=?", (self.link_id,))
+        self.assert_code("CASE_CONSENT_TRACE_MISSING", lambda: self.center.build(self.con, "USR-A", self.case_id))
+
+    def test_service_level_or_review_selection_mismatch_blocks_activation(self):
+        self.con.execute("UPDATE checkout_orders SET service_mode='documento_personalizado' WHERE id=?", (self.order_id,))
+        self.assert_code("SERVICE_LEVEL_MISMATCH", lambda: self.center.build(self.con, "USR-A", self.case_id))
+        self.con.execute("UPDATE checkout_orders SET service_mode='solucion_revisada',review_selected=0 WHERE id=?", (self.order_id,))
+        self.assert_code("REVIEW_SELECTION_MISMATCH", lambda: self.center.build(self.con, "USR-A", self.case_id))
+
+    def test_incomplete_order_status_blocks_activation(self):
+        self.con.execute("UPDATE checkout_orders SET status='Pagado (sandbox)' WHERE id=?", (self.order_id,))
+        self.assert_code("ORDER_NOT_COMPLETED", lambda: self.center.build(self.con, "USR-A", self.case_id))
 
     def test_case_created_without_documents_fails_closed(self):
         self.con.execute("DELETE FROM documents WHERE case_id=?", (self.case_id,))
@@ -275,6 +323,16 @@ class M353CaseActivationTests(unittest.TestCase):
     def test_unreconciled_journey_fails_closed(self):
         self.con.execute("UPDATE m24_case_journey SET current_state='INICIADO' WHERE case_id=?", (self.case_id,))
         self.assert_code("JOURNEY_NOT_RECONCILED", lambda: self.center.build(self.con, "USR-A", self.case_id))
+
+    def test_generated_state_without_generated_transition_fails_closed(self):
+        self.con.execute("DELETE FROM m24_case_transition WHERE case_id=?", (self.case_id,))
+        self.assert_code("GENERATED_HISTORY_MISSING", lambda: self.center.build(self.con, "USR-A", self.case_id))
+
+    def test_escalated_state_remains_valid_only_with_generated_history(self):
+        self.con.execute("UPDATE m24_case_journey SET current_state='ESCALADO' WHERE case_id=?", (self.case_id,))
+        result = self.center.build(self.con, "USR-A", self.case_id)
+        self.assertEqual(result["activation_status"], "ACTIVE")
+        self.assertEqual(result["next_step"]["code"], "ESCALATED_REVIEW")
 
     def test_pending_materialization_is_visible_but_never_called_active(self):
         self.con.execute(
