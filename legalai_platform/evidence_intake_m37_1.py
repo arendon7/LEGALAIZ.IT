@@ -95,6 +95,8 @@ class EvidenceIntakeCenter:
               ON m37_evidence_item(case_id,created_at);
             CREATE INDEX IF NOT EXISTS idx_m37_evidence_task
               ON m37_evidence_item(case_id,follow_up_id,created_at);
+            CREATE INDEX IF NOT EXISTS idx_m37_evidence_exact_retry
+              ON m37_evidence_item(case_id,follow_up_id,original_name,plaintext_sha256,size_bytes);
             CREATE TABLE IF NOT EXISTS m37_evidence_review(
               id TEXT PRIMARY KEY,
               evidence_id TEXT NOT NULL,
@@ -288,6 +290,16 @@ class EvidenceIntakeCenter:
             raise EvidenceIntakeError("EVIDENCE_NOT_AVAILABLE", "El soporte no está disponible.", 404)
         return dict(row)
 
+    @staticmethod
+    def _exact_retry(con, case_id: str, follow_up_id: str, original_name: str, digest: str, size_bytes: int) -> dict[str, Any] | None:
+        row = con.execute(
+            """SELECT * FROM m37_evidence_item
+               WHERE case_id=? AND follow_up_id=? AND original_name=? AND plaintext_sha256=? AND size_bytes=?
+               ORDER BY created_at,id LIMIT 1""",
+            (case_id, follow_up_id, original_name, digest, int(size_bytes)),
+        ).fetchone()
+        return dict(row) if row else None
+
     def _verify_content(self, con, row: Mapping[str, Any]) -> bytes:
         reference = str(row.get("object_ref") or "")
         if not reference or not self.object_store.is_reference(reference):
@@ -392,6 +404,15 @@ class EvidenceIntakeCenter:
             case, enrollment = self._followup_context(con, actor, case_id, writable=True)
             task = self._task(con, case_id, follow_up_id, enrollment)
             file_kind, mime_type, safe_name, body = self._validate_file(filename, data)
+            digest = _sha256_bytes(body)
+            original_name = Path(str(filename or safe_name)).name[:255]
+            existing = self._exact_retry(con, case_id, follow_up_id, original_name, digest, len(body))
+            if existing:
+                self._verify_content(con, existing)
+                result = self._public_item(con, existing)
+                result["claimed_content_type_trusted"] = False
+                result["idempotent"] = True
+                return result
             self._check_quota(con, case_id, follow_up_id, len(body))
             try:
                 scan = self.malware_scanner.scan(safe_name, body)
@@ -400,8 +421,6 @@ class EvidenceIntakeCenter:
             except RuntimeError as exc:
                 raise EvidenceIntakeError("EVIDENCE_SCAN_UNAVAILABLE", str(exc), 503) from exc
             evidence_id = f"EVD-{uuid.uuid4().hex[:16].upper()}"
-            digest = _sha256_bytes(body)
-            original_name = Path(str(filename or safe_name)).name[:255]
             object_meta = self.object_store.put(
                 con,
                 f"m37-evidence/{case_id}",
@@ -435,7 +454,6 @@ class EvidenceIntakeCenter:
                     "follow_up_id": follow_up_id,
                     "file_kind": file_kind,
                     "size_bytes": len(body),
-                    "evidence_sha256": digest,
                     "scan_status": str(scan.status),
                     "encrypted_at_rest": True,
                     "task_status_before": before_status,
@@ -452,6 +470,7 @@ class EvidenceIntakeCenter:
             row = self._item(con, case_id, evidence_id)
             result = self._public_item(con, row)
             result["claimed_content_type_trusted"] = False
+            result["idempotent"] = False
             return result
         except Exception:
             try:
