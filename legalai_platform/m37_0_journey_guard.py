@@ -1,10 +1,12 @@
 from __future__ import annotations
 
-"""Defense-in-depth guard for M37.0 controlled M24 follow-up updates.
+"""Defense-in-depth guards for M37.0 controlled M24 follow-up operations.
 
-Once a case is enrolled in M37.0, M24 remains the canonical task store, but all
+Once a case is enrolled in M37.0, M24 remains the canonical task store, but task
 mutations must pass through the M37 control layer so an append-only M37 event is
-recorded. Historical/non-enrolled cases preserve the legacy M24 behavior.
+recorded. M37.0 also reserves closure/escalation for a later controlled M37
+phase instead of leaving a legacy transition bypass. Historical/non-enrolled
+cases preserve the previous M24 behavior.
 """
 
 from contextvars import ContextVar
@@ -12,6 +14,7 @@ from typing import Any, Callable
 
 
 _ALLOWED_CASE: ContextVar[str | None] = ContextVar("m37_0_allowed_case", default=None)
+_RESERVED_LIFECYCLE_TARGETS = frozenset({"CERRADO", "ESCALADO"})
 
 
 def _is_controlled_case(con, case_id: str) -> bool:
@@ -26,21 +29,33 @@ def _is_controlled_case(con, case_id: str) -> bool:
 
 
 def install_m37_0_followup_guard(journey) -> None:
-    """Install an idempotent guard on the runtime M24 singleton."""
+    """Install idempotent task and lifecycle guards on the runtime M24 singleton."""
     if bool(getattr(journey, "_m37_0_followup_guard_installed", False)):
         return
-    original: Callable[..., Any] = journey.update_follow_up
+    original_update: Callable[..., Any] = journey.update_follow_up
+    original_transition: Callable[..., Any] = journey.transition
 
-    def guarded(con, case_id, follow_up_id, status, note, actor):
+    def guarded_update(con, case_id, follow_up_id, status, note, actor):
         normalized_case = str(case_id or "")
         if _is_controlled_case(con, normalized_case) and _ALLOWED_CASE.get() != normalized_case:
             raise PermissionError(
                 "Este expediente ingresó a M37 y sus actividades sólo pueden actualizarse mediante el seguimiento controlado."
             )
-        return original(con, case_id, follow_up_id, status, note, actor)
+        return original_update(con, case_id, follow_up_id, status, note, actor)
 
-    journey._m37_0_original_update_follow_up = original
-    journey.update_follow_up = guarded
+    def guarded_transition(con, case_id, target, reason, evidence, confirmation, actor):
+        normalized_case = str(case_id or "")
+        normalized_target = str(target or "").upper().strip()
+        if _is_controlled_case(con, normalized_case) and normalized_target in _RESERVED_LIFECYCLE_TARGETS:
+            raise PermissionError(
+                "El cierre o escalamiento de un expediente enrolado en M37 requiere la compuerta de lifecycle M37 correspondiente."
+            )
+        return original_transition(con, case_id, target, reason, evidence, confirmation, actor)
+
+    journey._m37_0_original_update_follow_up = original_update
+    journey._m37_0_original_transition = original_transition
+    journey.update_follow_up = guarded_update
+    journey.transition = guarded_transition
     journey._m37_0_followup_guard_installed = True
 
 
@@ -53,7 +68,7 @@ def controlled_follow_up_update(
     note: str,
     actor: dict[str, Any],
 ):
-    """Call M24 under an exact-case authorization context owned by M37.0."""
+    """Call M24 task mutation under an exact-case authorization context owned by M37.0."""
     normalized_case = str(case_id or "")
     token = _ALLOWED_CASE.set(normalized_case)
     try:
