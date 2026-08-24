@@ -279,8 +279,50 @@ class ReviewLifecycleReconciler:
         return dict(row) if row else None
 
     @staticmethod
-    def _changed_since_event(event: dict[str, Any] | None, fingerprint: str) -> bool:
-        return bool(event and str(event.get("evidence_fingerprint") or "") != fingerprint)
+    def _review_material(snapshot: Mapping[str, Any]) -> dict[str, Any]:
+        """Keep only substantive review evidence; operational notes/priority are excluded."""
+        desks = []
+        for item in snapshot.get("desks") or []:
+            desks.append({
+                "desk_id": item.get("desk_id"),
+                "document_id": item.get("document_id"),
+                "workflow_status": item.get("workflow_status"),
+                "revision_id": item.get("revision_id"),
+                "revision_sha256": item.get("revision_sha256"),
+                "revision_number": item.get("revision_number"),
+                "legal_decision": item.get("legal_decision"),
+                "legal_actor_id": item.get("legal_actor_id"),
+                "legal_record_hash": item.get("legal_record_hash"),
+                "qa_decision": item.get("qa_decision"),
+                "qa_actor_id": item.get("qa_actor_id"),
+                "qa_record_hash": item.get("qa_record_hash"),
+                "release_id": item.get("release_id"),
+                "release_record_hash": item.get("release_record_hash"),
+                "open_findings": item.get("open_findings"),
+                "approval_audit_last_hash": item.get("approval_audit_last_hash"),
+            })
+        return {
+            "case_id": snapshot.get("case_id"),
+            "product_code": snapshot.get("product_code"),
+            "fulfillment_intake_id": snapshot.get("fulfillment_intake_id"),
+            "assignment_id": snapshot.get("assignment_id"),
+            "specialist_id": snapshot.get("specialist_id"),
+            "qa_id": snapshot.get("qa_id"),
+            "desks": desks,
+            "aggregate": snapshot.get("aggregate"),
+        }
+
+    @classmethod
+    def _changed_since_event(cls, event: dict[str, Any] | None, current_snapshot: Mapping[str, Any]) -> bool:
+        if not event:
+            return False
+        try:
+            previous_snapshot = json.loads(event.get("evidence_json") or "{}")
+        except (TypeError, json.JSONDecodeError):
+            return False
+        if not isinstance(previous_snapshot, dict):
+            return False
+        return _fingerprint(cls._review_material(previous_snapshot)) != _fingerprint(cls._review_material(current_snapshot))
 
     def _proposed_path(
         self,
@@ -288,7 +330,7 @@ class ReviewLifecycleReconciler:
         case_id: str,
         current: str,
         aggregate: str,
-        fingerprint: str,
+        evidence_snapshot: Mapping[str, Any],
     ) -> tuple[list[str], list[str]]:
         blockers: list[str] = []
         if current not in M24_REVIEW_STATES:
@@ -303,7 +345,7 @@ class ReviewLifecycleReconciler:
             observation = self._last_event_to(con, case_id, "OBSERVADO")
             if not observation:
                 return [], ["OBSERVATION_BASELINE_MISSING"]
-            if not self._changed_since_event(observation, fingerprint):
+            if not self._changed_since_event(observation, evidence_snapshot):
                 return [], ["CORRECTION_EVIDENCE_NOT_CHANGED"]
             return ["CORREGIDO", "EN_REVISION_JURIDICA"], blockers
         if current == "CORREGIDO":
@@ -367,7 +409,7 @@ class ReviewLifecycleReconciler:
             case_id,
             current,
             str(aggregate["aggregate_state"]),
-            evidence_fingerprint,
+            snapshot,
         )
         return {
             "case_id": case_id,
