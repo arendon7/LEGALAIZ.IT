@@ -10,15 +10,18 @@ from legalai_platform.post_delivery_followup_m37_0 import PostDeliveryFollowUpEr
 from legalai_platform.routes.m37_0_post_delivery_followup_routes import followup_center
 from legalai_platform.routes.m37_1_evidence_routes import evidence_center
 from legalai_platform.runtime_registry import OBSERVABILITY, RATE_LIMITER
-from legalai_platform.timing_reminders_m37_2 import TimingReminderCenter, TimingReminderError
+from legalai_platform.timing_reminders_m37_2_hardening import (
+    HardenedTimingReminderCenter,
+    TimingReminderError,
+)
 
 
 PREFIX = "/api/m37/timing"
 
 
 @lru_cache(maxsize=1)
-def timing_center() -> TimingReminderCenter:
-    return TimingReminderCenter(followup_center(), evidence_center())
+def timing_center() -> HardenedTimingReminderCenter:
+    return HardenedTimingReminderCenter(followup_center(), evidence_center())
 
 
 def _parts(path: str) -> list[str]:
