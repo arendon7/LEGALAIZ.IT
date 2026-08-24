@@ -219,7 +219,7 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
             raise CommerceTraceError("NO_TRANSFERRED_INTAKE", "No existe un diagnóstico transferido para esta solución.", 404)
         if handoff["status"] == "CASE_CREATED":
             raise CommerceTraceError("CASE_ALREADY_CREATED", "Este diagnóstico ya fue convertido en expediente.", 409)
-        if handoff["status"] not in {"FULFILLMENT_STARTED", "CHECKOUT_STARTED"}:
+        if handoff["status"] not in {"FULFILLMENT_STARTED", "ORDER_CREATED"}:
             raise CommerceTraceError("FULFILLMENT_NOT_READY", "Completa primero la continuidad del formulario antes del checkout.", 409)
 
         draft = self.self_service.get_draft(con, user_id, handoff["draft_id"])
@@ -293,7 +293,7 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
                 now,
             ),
         )
-        con.execute("UPDATE m35_intake_handoffs SET status='CHECKOUT_STARTED',updated_at=? WHERE id=?", (now, handoff["id"]))
+        con.execute("UPDATE m35_intake_handoffs SET status='ORDER_CREATED',updated_at=? WHERE id=?", (now, handoff["id"]))
         core.audit(
             con,
             user_id,
