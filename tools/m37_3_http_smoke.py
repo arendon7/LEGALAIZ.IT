@@ -139,6 +139,7 @@ def main() -> int:
     require(disposition.get("target") == "CERRADO" and disposition.get("status") == "COMPLETED", "M37.3 no completó disposición de cierre")
     require(disposition.get("client_summary") == CLOSE_PUBLIC, "M37.3 perdió resumen visible")
     require((disposition.get("governance") or {}).get("legal_success_verified") is False, "M37.3 convirtió cierre en éxito jurídico")
+    require((closed.get("governance") or {}).get("internal_reason_exposed") is False, "M37.3 marcó la razón interna como expuesta")
     require((closed.get("governance") or {}).get("automatic_close") is False, "M37.3 presentó cierre como automático")
 
     retry = specialist.post(f"/api/m37/disposition/cases/{case_id}/close", close_payload, expected=200)
@@ -149,6 +150,7 @@ def main() -> int:
     raw_close = json.dumps(owner_closed, ensure_ascii=False)
     require(CLOSE_INTERNAL not in raw_close, "M37.3 expuso razón interna al cliente")
     require((owner_closed.get("disposition") or {}).get("client_summary") == CLOSE_PUBLIC, "Cliente no recibió resumen de disposición")
+    require((owner_closed.get("governance") or {}).get("internal_reason_exposed") is False, "Cliente recibió una semántica de exposición interna incorrecta")
     final_followup = owner.get(f"/api/m37/follow-up/cases/{case_id}", expected=200)
     require(final_followup.get("lifecycle") == "CLOSED", "M37.0 no reflejó cierre M37.3")
     require(final_followup.get("m24_current_state") == "CERRADO", "M37.0/M24 divergieron tras cierre M37.3")
@@ -173,11 +175,11 @@ def main() -> int:
     require(escalated.get("m24_current_state") == "ESCALADO", "Admin no pudo escalar contingencia M37.3")
     require((escalated.get("disposition") or {}).get("target") == "ESCALADO", "M37.3 perdió target de escalamiento")
     require((escalated.get("escalation_gate") or {}).get("requires_close_readiness") is False, "M37.3 hizo depender escalamiento del cierre")
+    require((escalated.get("governance") or {}).get("internal_reason_exposed") is False, "M37.3 marcó razón interna de escalamiento como expuesta")
     require((escalated.get("governance") or {}).get("automatic_escalation") is False, "M37.3 presentó escalamiento como automático")
 
     raw = json.dumps({"closed": closed, "retry": retry, "escalated": escalated}, ensure_ascii=False).lower()
     for forbidden in (
-        "internal_reason",
         CLOSE_INTERNAL.lower(),
         ESC_INTERNAL.lower(),
         "intent_hash",
@@ -193,7 +195,8 @@ def main() -> int:
     print(
         "M37.3 HTTP smoke PASS · "
         f"close_case={case_id} desks={len(desk_ids)} evidence_reviewed=true reminder_resolved=true "
-        "close=CERRADO close_idempotent=true client_summary_only=true legal_success=false cross_tenant=hidden "
+        "close=CERRADO close_idempotent=true client_summary_only=true internal_reason_exposed=false "
+        "legal_success=false cross_tenant=hidden "
         f"escalate_case={case2_id} escalate=ESCALADO close_readiness_required=false auto_close=false auto_escalation=false"
     )
     return 0
