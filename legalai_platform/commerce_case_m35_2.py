@@ -34,22 +34,11 @@ def _canonical_sha256(payload: Mapping[str, Any]) -> str:
     return sha256(raw.encode("utf-8")).hexdigest()
 
 
-def _decode_json(value: Any, default: Any) -> Any:
-    if value in (None, ""):
-        return default
-    if isinstance(value, (dict, list)):
-        return value
-    try:
-        return json.loads(value)
-    except (TypeError, json.JSONDecodeError):
-        return default
-
-
 class CommerceCaseTraceabilityStore(FulfillmentContextStore):
     """Puente fail-closed entre fulfillment, checkout sandbox, pago y expediente.
 
-    La tabla M35.2 contiene sólo identificadores internos, estados y hashes de
-    integridad. No duplica el relato M34 ni las respuestas del formulario.
+    El ledger M35.2 contiene sólo identificadores internos, estados y hashes de
+    integridad. No duplica relato, respuestas jurídicas ni datos personales.
     """
 
     def __init__(self, crypto, self_service, offer_provider, payments, case_journey, retention_hours: int = 72):
@@ -87,6 +76,8 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
             );
             CREATE INDEX IF NOT EXISTS idx_m35_commerce_user_product
               ON m35_commerce_case_links(user_id,product_code,created_at DESC);
+            CREATE INDEX IF NOT EXISTS idx_m35_commerce_handoff
+              ON m35_commerce_case_links(handoff_id,created_at DESC);
             CREATE INDEX IF NOT EXISTS idx_m35_commerce_order
               ON m35_commerce_case_links(order_id);
             """
@@ -127,8 +118,8 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
             "product_code": row["product_code"],
             "service_level": row["service_level"],
             "order_id": row["order_id"],
-            "payment_intent_id": row.get("payment_intent_id") if isinstance(row, dict) else row["payment_intent_id"],
-            "case_id": row.get("case_id") if isinstance(row, dict) else row["case_id"],
+            "payment_intent_id": row.get("payment_intent_id"),
+            "case_id": row.get("case_id"),
             "state": row["state"],
             "schema_version": SCHEMA_VERSION,
         }
@@ -138,17 +129,21 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
             payload["currency"] = order.get("currency") or "COP"
         return payload
 
+    def _active_link_for_handoff(self, con, handoff_id: str):
+        return con.execute(
+            """SELECT * FROM m35_commerce_case_links
+               WHERE handoff_id=? AND state!='INVALIDATED'
+               ORDER BY created_at DESC LIMIT 1""",
+            (handoff_id,),
+        ).fetchone()
+
     def context_for_product(self, con, user_id: str, product_code: str) -> dict[str, Any]:
         self.create_schema(con)
         code = str(product_code or "").upper().strip()
         handoff = self._owned_handoff(con, user_id, code)
         if not handoff:
             return {"linked": False, "product_code": code, "schema_version": SCHEMA_VERSION}
-        row = con.execute(
-            """SELECT * FROM m35_commerce_case_links
-               WHERE user_id=? AND handoff_id=? ORDER BY created_at DESC LIMIT 1""",
-            (user_id, handoff["id"]),
-        ).fetchone()
+        row = self._active_link_for_handoff(con, handoff["id"])
         payload = {
             "linked": True,
             "product_code": code,
@@ -210,6 +205,8 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
         ).fetchone()
         if existing:
             row = dict(existing)
+            if row["state"] == "INVALIDATED":
+                raise CommerceTraceError("IDEMPOTENCY_INVALIDATED", "La clave corresponde a un checkout invalidado; usa una nueva clave.", 409)
             if row["product_code"] != code or row["service_level"] != level_id:
                 raise CommerceTraceError("IDEMPOTENCY_CONFLICT", "La clave de idempotencia ya fue usada con otro checkout.", 409)
             order = self.self_service.get_order(con, user_id, row["order_id"])
@@ -228,6 +225,22 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
         draft = self.self_service.get_draft(con, user_id, handoff["draft_id"])
         if not draft or draft.get("product_code") != code:
             raise CommerceTraceError("DRAFT_NOT_AVAILABLE", "El borrador vinculado no está disponible.", 409)
+        current_draft_hash = self._draft_snapshot(draft)
+
+        active = self._active_link_for_handoff(con, handoff["id"])
+        if active:
+            row = dict(active)
+            order = self.self_service.get_order(con, user_id, row["order_id"])
+            if not order:
+                raise CommerceTraceError("ORDER_TRACE_BROKEN", "La orden activa ya no está disponible.", 409)
+            if row["draft_snapshot_sha256"] == current_draft_hash and row["service_level"] == level_id:
+                return {"idempotent": True, **self._public_link(row, order)}
+            raise CommerceTraceError(
+                "ACTIVE_CHECKOUT_EXISTS",
+                "Ya existe un checkout para una versión anterior del formulario o nivel de servicio. Invalídalo antes de continuar.",
+                409,
+            )
+
         answers = draft.get("answers") or {}
         result = core.diagnose(code, answers, strict=True)
         if result.get("validation_errors"):
@@ -249,6 +262,7 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
             {**result, "service_level": level_id},
             review_selected=review_selected,
             service_level=level_id,
+            trace_context={"handoff_id": handoff["id"]},
         )
         if int(order.get("total") or 0) != int(level.get("price") or 0) or (order.get("currency") or "COP") != "COP":
             raise CommerceTraceError("PRICE_SNAPSHOT_MISMATCH", "La orden no coincide con el precio canónico del nivel seleccionado.", 409)
@@ -271,7 +285,7 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
                 code,
                 level_id,
                 idem,
-                self._draft_snapshot(draft),
+                current_draft_hash,
                 self._order_snapshot(order),
                 order["id"],
                 now,
@@ -300,6 +314,48 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
             raise CommerceTraceError("COMMERCE_LINK_NOT_FOUND", "No encontramos el checkout vinculado.", 404)
         return dict(row)
 
+    def invalidate_checkout(self, con, user_id: str, link_id: str) -> dict[str, Any]:
+        self.create_schema(con)
+        row = self._owned_link(con, user_id, link_id)
+        if row["state"] == "INVALIDATED":
+            order = self.self_service.get_order(con, user_id, row["order_id"])
+            return {"idempotent": True, **self._public_link(row, order)}
+        if row.get("case_id"):
+            raise CommerceTraceError("CASE_ALREADY_CREATED", "El checkout ya fue convertido en expediente.", 409)
+        if row.get("payment_intent_id"):
+            raise CommerceTraceError(
+                "PAYMENT_INTENT_ALREADY_CREATED",
+                "El checkout ya tiene un intento de pago y no puede invalidarse mediante edición simple.",
+                409,
+            )
+        order = self.self_service.get_order(con, user_id, row["order_id"])
+        if not order or order.get("status") != "Pendiente":
+            raise CommerceTraceError("ORDER_NOT_INVALIDATABLE", "La orden ya no puede invalidarse desde el formulario.", 409)
+        now = utc_iso()
+        con.execute(
+            "UPDATE checkout_orders SET status='Cancelada (M35.2)',updated_at=? WHERE id=? AND user_id=?",
+            (now, row["order_id"], user_id),
+        )
+        con.execute(
+            "UPDATE m35_commerce_case_links SET state='INVALIDATED',updated_at=? WHERE id=?",
+            (now, row["id"]),
+        )
+        con.execute(
+            "UPDATE m35_intake_handoffs SET status='FULFILLMENT_STARTED',updated_at=? WHERE id=?",
+            (now, row["handoff_id"]),
+        )
+        core.audit(
+            con,
+            user_id,
+            "m35_commerce_link",
+            row["id"],
+            "checkout_invalidated",
+            {"order_id": row["order_id"], "product_code": row["product_code"]},
+        )
+        changed = {**row, "state": "INVALIDATED"}
+        order = self.self_service.get_order(con, user_id, row["order_id"])
+        return {"idempotent": False, **self._public_link(changed, order)}
+
     def create_linked_payment_intent(
         self,
         con,
@@ -310,6 +366,8 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
     ) -> dict[str, Any]:
         self.create_schema(con)
         row = self._owned_link(con, user_id, link_id)
+        if row["state"] == "INVALIDATED":
+            raise CommerceTraceError("CHECKOUT_INVALIDATED", "El checkout fue invalidado y no admite pago.", 409)
         if row.get("case_id"):
             raise CommerceTraceError("CASE_ALREADY_CREATED", "La orden ya fue convertida en expediente.", 409)
         order = self.self_service.get_order(con, user_id, row["order_id"])
@@ -365,6 +423,8 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
         if not case_consent:
             raise CommerceTraceError("CASE_CONSENT_REQUIRED", "Confirma que deseas crear el expediente con la información validada.", 400)
         row = self._owned_link(con, user_id, link_id)
+        if row["state"] == "INVALIDATED":
+            raise CommerceTraceError("CHECKOUT_INVALIDATED", "El checkout fue invalidado y no puede crear un expediente.", 409)
         if row.get("case_id"):
             order = self.self_service.get_order(con, user_id, row["order_id"])
             return {"idempotent": True, **self._public_link(row, order)}
@@ -380,13 +440,13 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
         if self._draft_snapshot(draft) != row["draft_snapshot_sha256"]:
             raise CommerceTraceError(
                 "DRAFT_CHANGED_AFTER_CHECKOUT",
-                "El formulario cambió después del checkout. Reconfirma el nivel de servicio antes de crear el expediente.",
+                "El formulario cambió después del checkout. Invalida la orden antes del pago y genera un nuevo checkout.",
                 409,
             )
 
         level = self._offer_level(row["product_code"], row["service_level"])
         if int(level.get("price") or 0) != int(order.get("total") or 0):
-            raise CommerceTraceError("PRICE_CHANGED_AFTER_CHECKOUT", "El precio canónico cambió después del checkout; genera una nueva orden.", 409)
+            raise CommerceTraceError("PRICE_CHANGED_AFTER_CHECKOUT", "El precio canónico cambió después del checkout; se requiere reconciliación comercial.", 409)
 
         answers = draft.get("answers") or {}
         result = core.diagnose(row["product_code"], answers, strict=True)
@@ -435,7 +495,7 @@ class CommerceCaseTraceabilityStore(FulfillmentContextStore):
             "create_from_m35_commerce",
             {"order_id": order["id"], "commerce_link_id": row["id"], "risk": result.get("risk")},
         )
-        completed_order = self.self_service.attach_case(con, user_id, order["id"], case_id)
+        completed_order = self.self_service.attach_case(con, user_id, order["id"], case_id, trace_context=True)
         journey = self.case_journey.bootstrap_paid_generation(con, case_id, completed_order, user)
         con.execute("DELETE FROM service_drafts WHERE id=? AND user_id=?", (row["draft_id"], user_id))
         now = utc_iso()
