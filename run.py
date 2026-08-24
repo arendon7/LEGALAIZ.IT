@@ -23,7 +23,9 @@ from legalai_platform.release_metadata import RELEASE_NAME, PUBLIC_DEMO_MODE, MI
 from legalai_platform.application_services import *  # noqa: F401,F403,E402
 import legalai_platform.application_services as _application_services  # noqa: E402
 from legalai_platform.m36_3_journey_guard import install_m36_3_delivery_guard  # noqa: E402
-from legalai_platform.http_handler_m36_3 import Handler  # noqa: E402
+from legalai_platform.m37_0_journey_guard import install_m37_0_followup_guard  # noqa: E402
+from legalai_platform.http_handler_m37_0 import Handler  # noqa: E402
+# from legalai_platform.http_handler_m36_3 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m36_2 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m36_1 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m36_0 import Handler  # compatibility marker
@@ -63,6 +65,7 @@ from legalai_platform.http_handler_m36_3 import Handler  # noqa: E402
 # m36-1-professional-assignment-handoff
 # m36-2-review-lifecycle-reconciliation
 # m36-3-controlled-delivery-gate
+# m37-0-post-delivery-followup-foundation
 # LEGAL_ALLOW_DEMO_ACCOUNTS
 # LEGAL_BOOTSTRAP_ADMIN_EMAIL
 # UPDATE users SET active=0 WHERE lower(email) LIKE '%@demo.legalaiz.it'
@@ -70,6 +73,7 @@ from legalai_platform.http_handler_m36_3 import Handler  # noqa: E402
 
 
 install_m36_3_delivery_guard(M24_CASE_JOURNEY)
+install_m37_0_followup_guard(M24_CASE_JOURNEY)
 
 
 _original_m31_case_demo_summary = M31_CASE_DEMO.summary
