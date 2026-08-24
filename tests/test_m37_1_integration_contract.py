@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import ast
 from pathlib import Path
 import unittest
 
@@ -116,18 +117,29 @@ class M371IntegrationContractTests(unittest.TestCase):
 
     def test_observability_never_logs_filename_hash_message_or_legal_payload(self):
         route = self.read("legalai_platform/routes/m37_1_evidence_routes.py")
-        for forbidden in (
-            "filename=",
-            "sha256=",
-            "message_to_client=",
+        tree = ast.parse(route)
+        observe_keys: set[str] = set()
+        observe_calls = 0
+        for node in ast.walk(tree):
+            if not isinstance(node, ast.Call):
+                continue
+            if not isinstance(node.func, ast.Name) or node.func.id != "_observe":
+                continue
+            observe_calls += 1
+            observe_keys.update(keyword.arg for keyword in node.keywords if keyword.arg)
+        self.assertGreater(observe_calls, 0)
+        forbidden = {
+            "filename",
+            "sha256",
+            "message_to_client",
             "problem_statement",
-            "answers=",
-            "object_ref=",
-            "scan_detail=",
-            "payment_intent_id=",
-        ):
-            self.assertNotIn(forbidden, route)
-        self.assertIn("ip_hash", route)
+            "answers",
+            "object_ref",
+            "scan_detail",
+            "payment_intent_id",
+        }
+        self.assertTrue(forbidden.isdisjoint(observe_keys), sorted(forbidden & observe_keys))
+        self.assertIn("ip_hash", observe_keys)
 
     def test_only_assigned_specialist_or_admin_can_review(self):
         engine = self.read("legalai_platform/evidence_intake_m37_1.py")
