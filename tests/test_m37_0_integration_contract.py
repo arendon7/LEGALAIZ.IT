@@ -51,10 +51,12 @@ class M370IntegrationContractTests(unittest.TestCase):
 
     def test_m370_requires_m363_delivery_and_reuses_m24_tasks(self):
         engine = self.read("legalai_platform/post_delivery_followup_m37_0.py")
+        guard = self.read("legalai_platform/m37_0_journey_guard.py")
         self.assertIn("m36_controlled_delivery", engine)
         self.assertIn('"DELIVERED_IN_APP"', engine)
         self.assertIn("m24_case_follow_up", engine)
-        self.assertIn("self.journey.update_follow_up", self.read("legalai_platform/m37_0_journey_guard.py"))
+        self.assertIn("original_update: Callable[..., Any] = journey.update_follow_up", guard)
+        self.assertIn("return journey.update_follow_up(", guard)
         self.assertNotIn("CREATE TABLE IF NOT EXISTS m37_followup_task", engine)
 
     def test_operational_checkpoint_never_claims_verified_legal_deadline(self):
