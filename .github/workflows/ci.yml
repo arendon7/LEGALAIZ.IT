@@ -45,6 +45,7 @@ jobs:
           node --input-type=module --check < app/modules/account_handoff_m35_0.js
           node --input-type=module --check < app/modules/fulfillment_bridge_m35_1.js
           node --input-type=module --check < app/modules/commerce_case_m35_2.js
+          node --input-type=module --check < app/modules/case_activation_m35_3.js
           grep -q 'demo_form_data_m32.css' app/index.html
           grep -q 'demo_form_data_m32.js' app/index.html
           grep -q 'public_demo_m33.css' app/index.html
@@ -61,6 +62,8 @@ jobs:
           grep -q 'fulfillment_bridge_m35_1.js' app/index.html
           grep -q 'commerce_case_m35_2.css' app/index.html
           grep -q 'commerce_case_m35_2.js' app/index.html
+          grep -q 'case_activation_m35_3.css' app/index.html
+          grep -q 'case_activation_m35_3.js' app/index.html
           node --input-type=module <<'NODE'
           import fs from 'node:fs';
 
@@ -128,6 +131,7 @@ jobs:
           python tools/m35_0_http_smoke.py
           python tools/m35_1_http_smoke.py
           python tools/m35_2_http_smoke.py
+          python tools/m35_3_http_smoke.py
       - name: Smoke producción demostrativa M33.1
         run: python tools/public_demo_smoke.py
 
