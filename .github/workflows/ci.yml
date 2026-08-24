@@ -167,6 +167,13 @@ jobs:
           stop_server
           start_server /tmp/legalaiz-m36-3.log
           python tools/m36_3_http_smoke.py
+
+          # M37.0 vuelve a crear un expediente entregado y prueba inicio + tareas con
+          # cliente/admin. Reiniciamos sólo el proceso: misma SQLite/runtime/clave demo,
+          # pero ventana in-memory limpia. La política real de login 12/300 sigue intacta.
+          stop_server
+          start_server /tmp/legalaiz-m37-0.log
+          python tools/m37_0_http_smoke.py
       - name: Smoke producción demostrativa M33.1
         run: python tools/public_demo_smoke.py
 
