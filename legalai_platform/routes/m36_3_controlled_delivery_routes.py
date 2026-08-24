@@ -74,11 +74,21 @@ def _error(handler, exc: Exception) -> bool:
     return True
 
 
+def _conceal_case_permission(handler, exc: Exception, parts: list[str]) -> bool:
+    if isinstance(exc, PermissionDenied) and len(parts) >= 2 and parts[0] == "cases":
+        handler.send_json(
+            {"error": "La entrega controlada todavía no está disponible.", "code": "DELIVERY_NOT_AVAILABLE"},
+            404,
+        )
+        return True
+    return False
+
+
 def handle_m36_3_delivery_get(handler, path: str, user: dict) -> bool:
     if not (path == PREFIX or path.startswith(PREFIX + "/")):
         return False
+    parts = _parts(path)
     try:
-        parts = _parts(path)
         center = delivery_center()
         if not parts:
             if not _rate_limit(handler, user, "queue", 60, 300):
@@ -132,6 +142,8 @@ def handle_m36_3_delivery_get(handler, path: str, user: dict) -> bool:
             error_class=exc.__class__.__name__,
             ip_hash=_ip_hash(handler),
         )
+        if _conceal_case_permission(handler, exc, parts):
+            return True
         return _error(handler, exc)
 
 
