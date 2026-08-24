@@ -10,7 +10,7 @@ La operación es una saga recuperable:
 
 1. M36.2 debe acreditar ``delivery_gate_ready``;
 2. se verifican todas las liberaciones M32;
-3. se crea un paquete determinístico y se registra ``PREPARED``;
+3. se crea un paquete estable para ese snapshot y se registra ``PREPARED``;
 4. M24 pasa a ``ENTREGADO`` con la confirmación canónica;
 5. el ledger M36.3 se finaliza como ``DELIVERED_IN_APP``.
 
@@ -207,9 +207,11 @@ class ControlledDeliveryCenter:
             raise ControlledDeliveryError("NO_RELEASED_DOCUMENTS", "No existen documentos liberados para entrega.", 422)
         if str(case.get("product_code") or "") != str(assessment.get("product_code") or ""):
             raise ControlledDeliveryError("PRODUCT_TRACE_MISMATCH", "La revisión y el expediente corresponden a productos distintos.", 422)
+        if str(fulfillment.get("product_code") or "") != str(case.get("product_code") or ""):
+            raise ControlledDeliveryError("FULFILLMENT_PRODUCT_MISMATCH", "El intake M36 no corresponde al producto del expediente.", 422)
         return case, fulfillment, assignment, assessment
 
-    def _collect_releases(self, actor: dict[str, Any], case_id: str, assessment: Mapping[str, Any]) -> tuple[list[dict[str, Any]], list[tuple[str, bytes]]]:
+    def _collect_releases(self, actor: dict[str, Any], assessment: Mapping[str, Any]) -> tuple[list[dict[str, Any]], list[tuple[str, bytes]]]:
         snapshot: list[dict[str, Any]] = []
         files: list[tuple[str, bytes]] = []
         used_names: set[str] = set()
@@ -225,6 +227,9 @@ class ControlledDeliveryCenter:
             digest = _sha256_bytes(body)
             if digest != str(release.get("sha256") or ""):
                 raise ControlledDeliveryError("RELEASE_HASH_MISMATCH", "Una copia liberada no coincide con su hash aprobado.", 422)
+            release_record_hash = str(release.get("release_record_hash") or "")
+            if len(release_record_hash) != 64:
+                raise ControlledDeliveryError("RELEASE_RECORD_INVALID", "La liberación no conserva un registro íntegro verificable.", 422)
             name = core.safe_filename(str(release.get("filename") or source.name), fallback="documento_final.docx")
             if name in used_names:
                 name = core.safe_filename(f"{desk_id}_{name}", fallback=f"{desk_id}.docx")
@@ -235,7 +240,7 @@ class ControlledDeliveryCenter:
                 "release_id": str(release.get("release_id") or ""),
                 "revision_id": str(release.get("revision_id") or ""),
                 "sha256": digest,
-                "release_record_hash": str(release.get("release_record_hash") or ""),
+                "release_record_hash": release_record_hash,
                 "filename": name,
                 "size_bytes": len(body),
             })
@@ -259,11 +264,7 @@ class ControlledDeliveryCenter:
             "prepared_at": prepared_at,
             "delivery_channel": "IN_APP",
             "files": [
-                {
-                    "name": item["filename"],
-                    "sha256": item["sha256"],
-                    "size_bytes": item["size_bytes"],
-                }
+                {"name": item["filename"], "sha256": item["sha256"], "size_bytes": item["size_bytes"]}
                 for item in snapshot
             ],
             "controls": {
@@ -318,16 +319,20 @@ class ControlledDeliveryCenter:
             "No constituye garantía de resultado jurídico ni representación judicial.\n"
         ).encode("utf-8")
         temporary = target.with_suffix(target.suffix + ".tmp")
-        with ZipFile(temporary, "w") as archive:
-            for name, body in sorted(files, key=lambda value: value[0]):
-                archive.writestr(_zip_info(f"documentos_finales/{name}"), body)
-            archive.writestr(_zip_info("MANIFEST.json"), manifest_raw)
-            archive.writestr(
-                _zip_info("CONSTANCIA_PUESTA_A_DISPOSICION.json"),
-                json.dumps(receipt, ensure_ascii=False, indent=2, sort_keys=True).encode("utf-8"),
-            )
-            archive.writestr(_zip_info("LEEME.txt"), readme)
-        temporary.replace(target)
+        try:
+            with ZipFile(temporary, "w") as archive:
+                for name, body in sorted(files, key=lambda value: value[0]):
+                    archive.writestr(_zip_info(f"documentos_finales/{name}"), body)
+                archive.writestr(_zip_info("MANIFEST.json"), manifest_raw)
+                archive.writestr(
+                    _zip_info("CONSTANCIA_PUESTA_A_DISPOSICION.json"),
+                    json.dumps(receipt, ensure_ascii=False, indent=2, sort_keys=True).encode("utf-8"),
+                )
+                archive.writestr(_zip_info("LEEME.txt"), readme)
+            temporary.replace(target)
+        finally:
+            if temporary.exists():
+                temporary.unlink(missing_ok=True)
         return target, _sha256_file(target), manifest_sha
 
     def _verify_package_row(self, row: Mapping[str, Any]) -> Path:
@@ -345,10 +350,15 @@ class ControlledDeliveryCenter:
                 manifest = json.loads(manifest_raw)
                 if manifest.get("delivery_id") != row["id"] or manifest.get("case_id") != row["case_id"]:
                     raise ControlledDeliveryError("DELIVERY_MANIFEST_MISMATCH", "El manifiesto no corresponde al delivery registrado.", 422)
-                for item in manifest.get("files") or []:
+                items = manifest.get("files") or []
+                if not isinstance(items, list) or len(items) != int(row.get("release_count") or 0):
+                    raise ControlledDeliveryError("DELIVERY_MANIFEST_COVERAGE_INVALID", "El manifiesto no cubre todas las liberaciones registradas.", 422)
+                names: set[str] = set()
+                for item in items:
                     name = core.safe_filename(item.get("name"), fallback="")
-                    if not name:
-                        raise ControlledDeliveryError("DELIVERY_MANIFEST_INVALID", "El manifiesto contiene un nombre inválido.", 422)
+                    if not name or name in names:
+                        raise ControlledDeliveryError("DELIVERY_MANIFEST_INVALID", "El manifiesto contiene nombres inválidos o duplicados.", 422)
+                    names.add(name)
                     body = archive.read(f"documentos_finales/{name}")
                     if _sha256_bytes(body) != str(item.get("sha256") or "") or len(body) != int(item.get("size_bytes") or -1):
                         raise ControlledDeliveryError("DELIVERY_FILE_TAMPERED", "Un documento del paquete no conserva su integridad.", 422)
@@ -363,7 +373,11 @@ class ControlledDeliveryCenter:
             expected = json.loads(row.get("release_snapshot_json") or "[]")
         except (TypeError, json.JSONDecodeError) as exc:
             raise ControlledDeliveryError("RELEASE_SNAPSHOT_INVALID", "El snapshot de liberaciones no puede verificarse.", 422) from exc
-        if not isinstance(expected, list) or self._release_snapshot_sha(expected) != str(row.get("release_snapshot_sha256") or ""):
+        if (
+            not isinstance(expected, list)
+            or len(expected) != int(row.get("release_count") or 0)
+            or self._release_snapshot_sha(expected) != str(row.get("release_snapshot_sha256") or "")
+        ):
             raise ControlledDeliveryError("RELEASE_SNAPSHOT_TAMPERED", "El snapshot de liberaciones cambió.", 422)
         for item in expected:
             desk_id = _safe_id(item.get("desk_id"), "desk_id")
@@ -375,6 +389,7 @@ class ControlledDeliveryCenter:
                 str(release.get("release_id") or "") != str(item.get("release_id") or "")
                 or str(release.get("revision_id") or "") != str(item.get("revision_id") or "")
                 or str(release.get("sha256") or "") != str(item.get("sha256") or "")
+                or str(release.get("release_record_hash") or "") != str(item.get("release_record_hash") or "")
                 or _sha256_file(source) != str(item.get("sha256") or "")
             ):
                 raise ControlledDeliveryError("RELEASE_SNAPSHOT_DRIFT", "Las liberaciones actuales no coinciden con las preparadas para entrega.", 422)
@@ -402,22 +417,31 @@ class ControlledDeliveryCenter:
             and evidence.get("source") == "m36_3_controlled_delivery"
             and evidence.get("delivery_id") == row.get("id")
             and evidence.get("package_sha256") == row.get("package_sha256")
+            and evidence.get("manifest_sha256") == row.get("manifest_sha256")
+            and evidence.get("release_snapshot_sha256") == row.get("release_snapshot_sha256")
             and int(evidence.get("release_count") or 0) == int(row.get("release_count") or 0)
+            and evidence.get("channel") == "IN_APP"
+            and evidence.get("download_confirmed") is False
+            and evidence.get("external_notification_sent") is False
         )
 
     def _finalize_after_m24(self, con, row: Mapping[str, Any], actor: Mapping[str, Any]) -> dict[str, Any]:
         transition = self._latest_delivery_transition(con, str(row["case_id"]))
         if not self._transition_matches_delivery(transition, row):
             raise ControlledDeliveryError("M24_DELIVERY_EVIDENCE_MISMATCH", "M24 no conserva la transición de entrega correspondiente a este paquete.", 422)
+        transition_actor = str(transition.get("actor_id") or "")
+        transition_at = str(transition.get("created_at") or "")
+        if not transition_actor or not transition_at:
+            raise ControlledDeliveryError("M24_DELIVERY_EVIDENCE_MISMATCH", "La transición M24 de entrega no conserva actor y fecha verificables.", 422)
         now = core.now()
         con.execute(
             """UPDATE m36_controlled_delivery
                SET state=?,delivered_by=?,delivered_at=?,m24_transition_id=?,updated_at=? WHERE id=?""",
-            (STATE_DELIVERED, str(actor.get("id") or row.get("prepared_by") or ""), transition["id"], now, now, row["id"]),
+            (STATE_DELIVERED, transition_actor, transition_at, transition["id"], now, row["id"]),
         )
         core.audit(
             con,
-            str(actor.get("id") or row.get("prepared_by") or ""),
+            str(actor.get("id") or transition_actor),
             "m36_controlled_delivery",
             row["id"],
             "delivered_in_app",
@@ -426,6 +450,8 @@ class ControlledDeliveryCenter:
                 "package_sha256": row["package_sha256"],
                 "release_count": int(row["release_count"]),
                 "m24_transition_id": transition["id"],
+                "delivery_actor_id": transition_actor,
+                "finalized_by": str(actor.get("id") or ""),
                 "channel": "IN_APP",
                 "external_notification_sent": False,
             },
@@ -445,7 +471,7 @@ class ControlledDeliveryCenter:
     ) -> dict[str, Any]:
         delivery_id = "DLV-" + uuid.uuid4().hex[:14].upper()
         prepared_at = core.now()
-        snapshot, files = self._collect_releases(actor, str(case["id"]), assessment)
+        snapshot, files = self._collect_releases(actor, assessment)
         snapshot_sha = self._release_snapshot_sha(snapshot)
         manifest = self._public_manifest(delivery_id, case, snapshot, prepared_at)
         package_name = core.safe_filename(
@@ -466,7 +492,7 @@ class ControlledDeliveryCenter:
                      id,case_id,owner_id,product_code,fulfillment_intake_id,assignment_id,state,
                      package_name,package_path,package_sha256,manifest_sha256,release_snapshot_json,
                      release_snapshot_sha256,release_count,prepared_by,prepared_at,created_at,updated_at
-                   ) VALUES(?,?,?,?,?,?,?, ?,?,?,?,?, ?,?,?,?,?,?)""",
+                   ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
                 (
                     delivery_id,
                     case["id"],
@@ -494,18 +520,14 @@ class ControlledDeliveryCenter:
                 "m36_controlled_delivery",
                 delivery_id,
                 "delivery_prepared",
-                {
-                    "case_id": case["id"],
-                    "release_count": len(snapshot),
-                    "package_sha256": package_sha,
-                    "channel": "IN_APP",
-                },
+                {"case_id": case["id"], "release_count": len(snapshot), "package_sha256": package_sha, "channel": "IN_APP"},
             )
             con.commit()
         except Exception:
-            # Una carrera puede haber insertado el UNIQUE(case_id). Si existe un
-            # delivery concurrente, se conserva ese ledger y se elimina sólo el
-            # paquete huérfano de este intento.
+            try:
+                con.rollback()
+            except Exception:
+                pass
             existing = self._row(con, str(case["id"]))
             if existing:
                 try:
@@ -513,9 +535,20 @@ class ControlledDeliveryCenter:
                 except OSError:
                     pass
                 return existing
+            try:
+                target.unlink(missing_ok=True)
+            except OSError:
+                pass
             raise
         row = con.execute("SELECT * FROM m36_controlled_delivery WHERE id=?", (delivery_id,)).fetchone()
         return dict(row)
+
+    @staticmethod
+    def _assert_prepared_trace(row: Mapping[str, Any], fulfillment: Mapping[str, Any], assignment: Mapping[str, Any], assessment: Mapping[str, Any]) -> None:
+        if row.get("fulfillment_intake_id") != fulfillment.get("id") or row.get("assignment_id") != assignment.get("id"):
+            raise ControlledDeliveryError("PREPARED_TRACE_DRIFT", "La trazabilidad M36 cambió después de preparar la entrega.", 422)
+        if int(row.get("release_count") or 0) != int(assessment.get("desk_count") or 0):
+            raise ControlledDeliveryError("PREPARED_COVERAGE_DRIFT", "La cobertura documental cambió después de preparar la entrega.", 422)
 
     def deliver(self, actor: dict[str, Any], case_id: str, confirmation: str) -> dict[str, Any]:
         self._require_admin(actor)
@@ -546,6 +579,8 @@ class ControlledDeliveryCenter:
                     return self._public(finalized, con, idempotent=True)
                 if journey.get("current_state") != "APROBADO_QA":
                     raise ControlledDeliveryError("M24_DELIVERY_STATE_INVALID", "El journey cambió después de preparar la entrega.", 422)
+                _, fulfillment, assignment, assessment = self._preflight(actor, case_id, con)
+                self._assert_prepared_trace(existing, fulfillment, assignment, assessment)
                 row = existing
             else:
                 case, fulfillment, assignment, assessment = self._preflight(actor, case_id, con)
@@ -615,9 +650,6 @@ class ControlledDeliveryCenter:
             if not row or row["state"] != STATE_DELIVERED:
                 raise ControlledDeliveryError("DELIVERY_NOT_AVAILABLE", "La entrega controlada todavía no está disponible.", 404)
             target = self._verify_package_row(row)
-            # Para un cliente no usamos workspace.released_path(), porque M32.5
-            # restringe su workspace a profesionales. La integridad post-entrega
-            # se acredita por el paquete inmutable + snapshot fuente registrado.
             event_id = "DLA-" + uuid.uuid4().hex[:14].upper()
             now = core.now()
             con.execute(
