@@ -117,7 +117,7 @@ class M363IntegrationContractTests(unittest.TestCase):
         self.assertLess(restart, m363)
         between = workflow[m362:m363]
         self.assertIn("stop_server", between)
-        self.assertIn("misma clave", between)
+        self.assertIn("credenciales efímeras", between)
         self.assertIn("12/300", between)
         self.assertNotIn("RATE_LIMIT_DISABLE", workflow)
         self.assertNotIn("LOGIN_RATE_LIMIT", workflow)
