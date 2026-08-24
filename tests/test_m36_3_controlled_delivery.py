@@ -35,6 +35,7 @@ def digest(body: bytes) -> str:
 class FakeWorkspace:
     def __init__(self, root: Path):
         self.root = root
+        self.root.mkdir(parents=True, exist_ok=True)
         self.releases = {}
         for index, desk_id in enumerate(DESKS, 1):
             body = f"released-document-{index}".encode("utf-8")
@@ -150,9 +151,6 @@ class M363ControlledDeliveryTests(unittest.TestCase):
         root = Path(self.tmp.name)
         self.db_path = root / "m363.db"
         self.delivery_root = root / "deliveries"
-        self.workspace = FakeWorkspace(root / "released")
-        (root / "released").mkdir(exist_ok=True)
-        # Re-create files after directory creation for platforms that require it.
         self.workspace = FakeWorkspace(root / "released")
         self.reconciler = FakeReconciler()
         self.journey = FakeJourney()
