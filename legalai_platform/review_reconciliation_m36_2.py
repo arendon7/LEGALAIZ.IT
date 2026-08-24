@@ -2,11 +2,10 @@ from __future__ import annotations
 
 """M36.2 — reconciliación verificable entre la Mesa M32 y el journey M24.
 
-La capa NO crea decisiones jurídicas ni QA. Agrega evidencia de todos los desks
-M32 de un expediente y, mediante una acción administrativa explícita, registra
-en M24 únicamente hitos que ya están acreditados por decisiones humanas
-inmutables. Las transiciones derivadas se atribuyen a ``system-m36-2`` y
-conservan por separado los identificadores de los aprobadores reales M32.
+M36.2 no crea decisiones jurídicas ni QA. Agrega evidencia de todos los desks
+M32 de un expediente y registra en M24 únicamente hitos que ya están acreditados
+por decisiones humanas inmutables. Las transiciones derivadas usan el actor
+``system-m36-2`` y conservan por separado los aprobadores humanos fuente.
 """
 
 from hashlib import sha256
@@ -27,23 +26,16 @@ SYSTEM_ACTOR_NAME = "LegalAIZ.it · M36.2"
 FULFILLMENT_REVIEW_STATE = "EN_REVISION_JURIDICA"
 OBSERVED_DESK_STATES = frozenset({"changes_required", "rejected", "findings_pending"})
 REVIEW_DESK_STATES = frozenset({
-    "draft",
-    "legal_pending",
-    "qa_pending",
-    "ready_to_release",
-    "released",
-    "changes_required",
-    "rejected",
-    "findings_pending",
+    "draft", "legal_pending", "qa_pending", "ready_to_release", "released",
+    "changes_required", "rejected", "findings_pending",
 })
 M24_REVIEW_STATES = frozenset({
-    "EN_REVISION_JURIDICA",
-    "OBSERVADO",
-    "CORREGIDO",
-    "APROBADO_JURIDICAMENTE",
-    "EN_QA",
-    "APROBADO_QA",
-    "ESCALADO",
+    "EN_REVISION_JURIDICA", "OBSERVADO", "CORREGIDO", "APROBADO_JURIDICAMENTE",
+    "EN_QA", "APROBADO_QA", "ESCALADO",
+})
+RECONCILIABLE_TARGETS = frozenset({
+    "OBSERVADO", "CORREGIDO", "EN_REVISION_JURIDICA", "APROBADO_JURIDICAMENTE",
+    "EN_QA", "APROBADO_QA", "ESCALADO",
 })
 
 
@@ -80,7 +72,7 @@ def _decode_list(raw: Any, field: str) -> list[str]:
 
 
 class ReviewLifecycleReconciler:
-    """Aggregate immutable M32 evidence and reconcile M24 without impersonation."""
+    """Agrega evidencia M32 y reconcilia M24 sin impersonar aprobadores."""
 
     def __init__(
         self,
@@ -128,10 +120,7 @@ class ReviewLifecycleReconciler:
 
     @staticmethod
     def _fulfillment(con, case_id: str) -> dict[str, Any]:
-        row = con.execute(
-            "SELECT * FROM m36_fulfillment_intake WHERE case_id=?",
-            (case_id,),
-        ).fetchone()
+        row = con.execute("SELECT * FROM m36_fulfillment_intake WHERE case_id=?", (case_id,)).fetchone()
         if not row:
             raise ReviewReconciliationError("FULFILLMENT_NOT_FOUND", "El expediente no tiene intake M36.0 verificable.", 404)
         value = dict(row)
@@ -145,10 +134,7 @@ class ReviewLifecycleReconciler:
 
     @staticmethod
     def _assignment(con, case_id: str, fulfillment_id: str) -> dict[str, Any]:
-        row = con.execute(
-            "SELECT * FROM m36_professional_assignment WHERE case_id=?",
-            (case_id,),
-        ).fetchone()
+        row = con.execute("SELECT * FROM m36_professional_assignment WHERE case_id=?", (case_id,)).fetchone()
         if not row:
             raise ReviewReconciliationError("ASSIGNMENT_NOT_FOUND", "El expediente no tiene asignación M36.1.", 404)
         value = dict(row)
@@ -175,6 +161,7 @@ class ReviewLifecycleReconciler:
         operations_audit = self.operations.verify_chain(desk_id)
         if not operations_audit.get("valid"):
             raise ReviewReconciliationError("OPERATIONS_CHAIN_INVALID", "La cadena operativa M32.6 no es íntegra.", 422)
+
         operation_state = self.operations.state(actor, desk_id).get("operations") or {}
         assigned_specialist = str((operation_state.get("assigned_specialist") or {}).get("id") or "")
         assigned_qa = str((operation_state.get("assigned_qa") or {}).get("id") or "")
@@ -182,33 +169,60 @@ class ReviewLifecycleReconciler:
             raise ReviewReconciliationError("ASSIGNMENT_DRIFT", "Los responsables M32.6 no coinciden con M36.1.", 422)
 
         current_id = str((detail.get("case") or {}).get("current_revision_id") or "")
-        current = next((item for item in detail.get("revisions") or [] if str(item.get("revision_id") or "") == current_id), None)
+        current = next(
+            (item for item in detail.get("revisions") or [] if str(item.get("revision_id") or "") == current_id),
+            None,
+        )
         if not current:
             raise ReviewReconciliationError("CURRENT_REVISION_MISSING", "Una mesa no tiene revisión vigente verificable.", 422)
         status = str(detail.get("workflow_status") or "")
         if status not in REVIEW_DESK_STATES:
             raise ReviewReconciliationError("DESK_STATE_UNSUPPORTED", f"Estado M32 no reconciliable: {status or 'vacío'}.", 422)
-        legal = (current.get("approvals") or {}).get("legal") or {}
-        qa = (current.get("approvals") or {}).get("qa") or {}
+
+        approvals = current.get("approvals") or {}
+        legal = approvals.get("legal") or {}
+        qa = approvals.get("qa") or {}
         legal_decision = str(legal.get("decision") or "")
         qa_decision = str(qa.get("decision") or "")
         legal_actor = str((legal.get("actor") or {}).get("id") or "")
         qa_actor = str((qa.get("actor") or {}).get("id") or "")
         revision_sha = str(current.get("sha256") or "")
-        if legal_decision == "approve":
-            if legal_actor != specialist_id or str(legal.get("revision_id") or "") != current_id or str(legal.get("sha256") or "") != revision_sha:
-                raise ReviewReconciliationError("LEGAL_APPROVAL_MISMATCH", "Una aprobación jurídica no corresponde al especialista o hash vigentes.", 422)
+
+        if legal_decision == "approve" and (
+            legal_actor != specialist_id
+            or str(legal.get("revision_id") or "") != current_id
+            or str(legal.get("sha256") or "") != revision_sha
+        ):
+            raise ReviewReconciliationError(
+                "LEGAL_APPROVAL_MISMATCH",
+                "Una aprobación jurídica no corresponde al especialista o hash vigentes.",
+                422,
+            )
         if qa_decision == "approve":
-            if qa_actor != qa_id or str(qa.get("revision_id") or "") != current_id or str(qa.get("sha256") or "") != revision_sha:
-                raise ReviewReconciliationError("QA_APPROVAL_MISMATCH", "Una aprobación QA no corresponde al responsable o hash vigentes.", 422)
+            if (
+                qa_actor != qa_id
+                or str(qa.get("revision_id") or "") != current_id
+                or str(qa.get("sha256") or "") != revision_sha
+            ):
+                raise ReviewReconciliationError(
+                    "QA_APPROVAL_MISMATCH",
+                    "Una aprobación QA no corresponde al responsable o hash vigentes.",
+                    422,
+                )
             if legal_decision != "approve" or legal_actor == qa_actor:
-                raise ReviewReconciliationError("DUAL_APPROVAL_INVALID", "La aprobación QA no conserva la secuencia y separación exigidas.", 422)
+                raise ReviewReconciliationError(
+                    "DUAL_APPROVAL_INVALID",
+                    "La aprobación QA no conserva la secuencia y separación exigidas.",
+                    422,
+                )
+
         release = detail.get("release") or {}
         if release and (
             str(release.get("revision_id") or "") != current_id
             or str(release.get("sha256") or "") != revision_sha
         ):
             raise ReviewReconciliationError("RELEASE_MISMATCH", "La liberación M32 no corresponde a la revisión vigente.", 422)
+
         return {
             "desk_id": desk_id,
             "document_id": str((detail.get("case") or {}).get("document_id") or ""),
@@ -263,14 +277,6 @@ class ReviewLifecycleReconciler:
         }
 
     @staticmethod
-    def _last_event(con, case_id: str) -> dict[str, Any] | None:
-        row = con.execute(
-            "SELECT * FROM m36_review_reconciliation_event WHERE case_id=? ORDER BY sequence DESC LIMIT 1",
-            (case_id,),
-        ).fetchone()
-        return dict(row) if row else None
-
-    @staticmethod
     def _last_event_to(con, case_id: str, target: str) -> dict[str, Any] | None:
         row = con.execute(
             "SELECT * FROM m36_review_reconciliation_event WHERE case_id=? AND to_state=? ORDER BY sequence DESC LIMIT 1",
@@ -280,7 +286,7 @@ class ReviewLifecycleReconciler:
 
     @staticmethod
     def _review_material(snapshot: Mapping[str, Any]) -> dict[str, Any]:
-        """Keep only substantive review evidence; operational notes/priority are excluded."""
+        """Material jurídico-documental; excluye churn puramente operativo M32.6."""
         desks = []
         for item in snapshot.get("desks") or []:
             desks.append({
@@ -332,47 +338,59 @@ class ReviewLifecycleReconciler:
         aggregate: str,
         evidence_snapshot: Mapping[str, Any],
     ) -> tuple[list[str], list[str]]:
-        blockers: list[str] = []
         if current not in M24_REVIEW_STATES:
             return [], ["M24_STATE_OUTSIDE_REVIEW_RECONCILIATION"]
-        if aggregate == "OBSERVED":
-            if current in {"EN_REVISION_JURIDICA", "EN_QA"}:
-                return ["OBSERVADO"], blockers
-            if current in {"APROBADO_JURIDICAMENTE", "APROBADO_QA"}:
-                return ["ESCALADO"], ["EVIDENCE_REGRESSION_AFTER_APPROVAL"]
-            return [], blockers
+
+        # OBSERVADO es un estado de control: primero se compara contra la
+        # fotografía que originó la observación. Churn operativo no acredita
+        # corrección y una evidencia distinta que siga observada tampoco.
         if current == "OBSERVADO":
             observation = self._last_event_to(con, case_id, "OBSERVADO")
             if not observation:
                 return [], ["OBSERVATION_BASELINE_MISSING"]
             if not self._changed_since_event(observation, evidence_snapshot):
                 return [], ["CORRECTION_EVIDENCE_NOT_CHANGED"]
-            return ["CORREGIDO", "EN_REVISION_JURIDICA"], blockers
+            if aggregate == "OBSERVED":
+                return [], ["OBSERVATION_STILL_ACTIVE"]
+            return ["CORREGIDO", "EN_REVISION_JURIDICA"], []
+
         if current == "CORREGIDO":
-            return ["EN_REVISION_JURIDICA"], blockers
+            return ["EN_REVISION_JURIDICA"], []
         if current == "ESCALADO":
             return [], ["ESCALATION_REQUIRES_EXPLICIT_RESOLUTION"]
+
+        if aggregate == "OBSERVED":
+            if current in {"EN_REVISION_JURIDICA", "EN_QA"}:
+                return ["OBSERVADO"], []
+            if current in {"APROBADO_JURIDICAMENTE", "APROBADO_QA"}:
+                return ["ESCALADO"], ["EVIDENCE_REGRESSION_AFTER_APPROVAL"]
+            return [], []
 
         if aggregate == "LEGAL_REVIEW":
             if current in {"APROBADO_JURIDICAMENTE", "EN_QA", "APROBADO_QA"}:
                 if "ESCALADO" in self.journey.ALLOWED.get(current, set()):
                     return ["ESCALADO"], ["EVIDENCE_REGRESSION_AFTER_APPROVAL"]
-            return [], blockers
+            return [], []
+
         if aggregate == "LEGAL_APPROVED":
             if current == "EN_REVISION_JURIDICA":
-                return ["APROBADO_JURIDICAMENTE", "EN_QA"], blockers
+                return ["APROBADO_JURIDICAMENTE", "EN_QA"], []
             if current == "APROBADO_JURIDICAMENTE":
-                return ["EN_QA"], blockers
-            return [], blockers
+                return ["EN_QA"], []
+            if current == "APROBADO_QA" and "ESCALADO" in self.journey.ALLOWED.get(current, set()):
+                return ["ESCALADO"], ["EVIDENCE_REGRESSION_AFTER_APPROVAL"]
+            return [], []
+
         if aggregate == "QA_APPROVED":
             if current == "EN_REVISION_JURIDICA":
-                return ["APROBADO_JURIDICAMENTE", "EN_QA", "APROBADO_QA"], blockers
+                return ["APROBADO_JURIDICAMENTE", "EN_QA", "APROBADO_QA"], []
             if current == "APROBADO_JURIDICAMENTE":
-                return ["EN_QA", "APROBADO_QA"], blockers
+                return ["EN_QA", "APROBADO_QA"], []
             if current == "EN_QA":
-                return ["APROBADO_QA"], blockers
-            return [], blockers
-        return [], blockers
+                return ["APROBADO_QA"], []
+            return [], []
+
+        return [], []
 
     def _collect(self, actor: dict[str, Any], case_id: str, con) -> dict[str, Any]:
         self._require_admin(actor)
@@ -385,10 +403,12 @@ class ReviewLifecycleReconciler:
         notified = _decode_list(assignment.get("notified_desk_ids_json"), "notified_desk_ids_json")
         if not desk_ids or set(completed) != set(desk_ids) or set(notified) != set(desk_ids):
             raise ReviewReconciliationError("ASSIGNMENT_COVERAGE_INVALID", "M36.1 no conserva cobertura completa del intake.", 422)
+
         specialist_id = _safe_id(assignment.get("specialist_id"), "specialist_id")
         qa_id = _safe_id(assignment.get("qa_id"), "qa_id")
         if specialist_id == qa_id:
             raise ReviewReconciliationError("SEPARATION_OF_DUTIES_INVALID", "M36.1 no conserva separación especialista/QA.", 422)
+
         desks = [self._desk_evidence(actor, case_id, desk_id, specialist_id, qa_id) for desk_id in desk_ids]
         aggregate = self._aggregate(desks, specialist_id, qa_id)
         snapshot = {
@@ -448,8 +468,7 @@ class ReviewLifecycleReconciler:
             "reconciliation_needed": bool(collected["proposed_path"]),
             "blockers": list(collected["blockers"]),
             "delivery_gate_ready": bool(
-                aggregate["release_complete"]
-                and collected["m24_current_state"] == "APROBADO_QA"
+                aggregate["release_complete"] and collected["m24_current_state"] == "APROBADO_QA"
             ),
             "desks": [
                 {
@@ -478,8 +497,7 @@ class ReviewLifecycleReconciler:
     def assess(self, actor: dict[str, Any], case_id: str) -> dict[str, Any]:
         con = self.db_factory()
         try:
-            collected = self._collect(actor, case_id, con)
-            return self._public_assessment(collected)
+            return self._public_assessment(self._collect(actor, case_id, con))
         finally:
             con.close()
 
@@ -563,11 +581,9 @@ class ReviewLifecycleReconciler:
             raise ReviewReconciliationError("M24_TRANSITION_INVALID", f"M24 no permite {current} → {target}.", 422)
         if target == "ENTREGADO":
             raise ReviewReconciliationError("DELIVERY_OUT_OF_SCOPE", "M36.2 no puede registrar entrega.", 422)
-        if target not in {
-            "OBSERVADO", "CORREGIDO", "EN_REVISION_JURIDICA", "APROBADO_JURIDICAMENTE",
-            "EN_QA", "APROBADO_QA", "ESCALADO",
-        }:
+        if target not in RECONCILIABLE_TARGETS:
             raise ReviewReconciliationError("TARGET_OUT_OF_SCOPE", "El hito solicitado está fuera de M36.2.", 422)
+
         aggregate = collected["aggregate"]
         legal_approver = str(journey_row["legal_approver_id"] or "") or None
         qa_approver = str(journey_row["qa_approver_id"] or "") or None
@@ -582,6 +598,7 @@ class ReviewLifecycleReconciler:
             qa_approver = str(collected["qa_id"])
             if legal_approver == qa_approver:
                 raise ReviewReconciliationError("DUAL_APPROVAL_INVALID", "Los aprobadores jurídico y QA no pueden coincidir.", 422)
+
         now = core.now()
         con.execute(
             """UPDATE m24_case_journey
@@ -593,10 +610,7 @@ class ReviewLifecycleReconciler:
             "aggregate_state": aggregate["aggregate_state"],
             "evidence_fingerprint": collected["evidence_fingerprint"],
             "desk_count": len(collected["desks"]),
-            "initiated_by": {
-                "id": initiated_by.get("id"),
-                "role": initiated_by.get("role"),
-            },
+            "initiated_by": {"id": initiated_by.get("id"), "role": initiated_by.get("role")},
             "human_legal_approver_id": legal_approver,
             "human_qa_approver_id": qa_approver,
             "automatic_delivery": False,
@@ -606,7 +620,8 @@ class ReviewLifecycleReconciler:
                  id,case_id,from_state,to_state,actor_id,actor_role,actor_name,reason,evidence_json,created_at
                ) VALUES(?,?,?,?,?,?,?,?,?,?)""",
             (
-                str(uuid.uuid4()), case_id, current, target, SYSTEM_ACTOR_ID, SYSTEM_ACTOR_ROLE, SYSTEM_ACTOR_NAME,
+                str(uuid.uuid4()), case_id, current, target,
+                SYSTEM_ACTOR_ID, SYSTEM_ACTOR_ROLE, SYSTEM_ACTOR_NAME,
                 "Reconciliación técnica de evidencia humana M32 ya registrada, sin crear una nueva decisión profesional.",
                 _canonical_json(evidence), now,
             ),
@@ -652,6 +667,7 @@ class ReviewLifecycleReconciler:
                 public = self._public_assessment(collected)
                 public.update({"reconciled": False, "applied_transitions": [], "idempotent": True})
                 return public
+
             chain = self._verify_event_chain(con, case_id)
             if not chain["valid"]:
                 raise ReviewReconciliationError("RECONCILIATION_CHAIN_INVALID", "La cadena M36.2 está alterada.", 422)
@@ -663,6 +679,7 @@ class ReviewLifecycleReconciler:
             except Exception:
                 con.rollback()
                 raise
+
             refreshed = self._collect(actor, case_id, con)
             public = self._public_assessment(refreshed)
             public.update({
