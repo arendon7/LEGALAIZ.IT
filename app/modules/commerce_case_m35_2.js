@@ -6,6 +6,7 @@ const ORDER_PATH = '/api/m35/commerce/order';
 const PAYMENT_PATH = '/api/m35/commerce/payment-intent';
 const INVALIDATE_PATH = '/api/m35/commerce/invalidate';
 const FINALIZE_PATH = '/api/m35/commerce/finalize';
+const PENDING_DOCUMENTS_STATE = 'CASE_CREATED_DOCUMENTS_PENDING';
 const contexts = new Map();
 let originalStartCheckout = null;
 let originalPayCheckout = null;
@@ -41,6 +42,14 @@ function clearOrderKeys(code) {
     const key = sessionStorage.key(i) || '';
     if (key.startsWith(`legalaiz.m352.orderKey:${code}:`)) sessionStorage.removeItem(key);
   }
+}
+function finishIntoCase(link, finalized) {
+  localStorage.removeItem(draftKey(link.product_code));
+  clearOrderKeys(link.product_code);
+  state.wizard = null;
+  state.checkoutOrder = null;
+  location.hash = `#/caso/${encodeURIComponent(finalized.case_id)}`;
+  location.reload();
 }
 
 async function contextFor(code, force = false) {
@@ -107,16 +116,37 @@ async function enhanceCheckout() {
     const link = await linkedOrder(orderId);
     if (!link) return;
     const card = document.querySelector('.checkout-action-card');
-    if (!card || card.querySelector('.m352-checkout-trace')) return;
+    if (!card) return;
     const order = await api(`/api/checkout/orders/${encodeURIComponent(orderId)}`);
-    const paid = ['Pagado (sandbox)'].includes(order.status);
+    const pendingDocuments = link.state === PENDING_DOCUMENTS_STATE;
+    const paid = order.status === 'Pagado (sandbox)';
     const completed = order.status === 'Completada' && order.case_id;
+
+    if (pendingDocuments) {
+      for (const control of card.querySelectorAll('[data-action="go"][data-route^="/caso/"]')) {
+        control.hidden = true;
+        control.setAttribute('aria-hidden', 'true');
+      }
+    }
+
+    const existing = card.querySelector('.m352-checkout-trace');
+    if (existing) existing.remove();
     const consent = paid && !completed
       ? `<label class="m352-consent m352-case-consent"><input type="checkbox" data-m352-case-consent><span><b>Confirmo la creación del expediente.</b><small>Usaremos exactamente la versión del formulario vinculada a este checkout.</small></span></label>`
       : '';
+    const recovery = pendingDocuments
+      ? `<button type="button" class="btn gold btn-block" data-m352-retry-finalize data-order-id="${esc(orderId)}">Reintentar preparación de documentos</button><small>El pago y el expediente ya están registrados. Este reintento no crea otra orden ni otro caso.</small>`
+      : '';
+    const message = pendingDocuments
+      ? 'El expediente ya fue creado, pero la materialización documental quedó pendiente. Puedes reanudarla sobre el mismo expediente.'
+      : completed
+        ? 'La orden ya está vinculada al expediente.'
+        : paid
+          ? 'El pago sandbox está confirmado. Crear el expediente requiere una acción separada.'
+          : 'El pago se registrará mediante un intento sandbox firmado antes de habilitar el expediente.';
     card.insertAdjacentHTML(
       'afterbegin',
-      `<div class="m352-checkout-trace"><span>Continuidad protegida M35.2</span><p>${completed ? 'La orden ya está vinculada al expediente.' : paid ? 'El pago sandbox está confirmado. Crear el expediente requiere una acción separada.' : 'El pago se registrará mediante un intento sandbox firmado antes de habilitar el expediente.'}</p>${consent}</div>`,
+      `<div class="m352-checkout-trace ${pendingDocuments ? 'pending' : ''}"><span>Continuidad protegida M35.2</span><p>${esc(message)}</p>${consent}${recovery}</div>`,
     );
   } catch {
     // Never fall back to legacy behavior because enhancement failed; override handles it.
@@ -177,6 +207,20 @@ function providerFor(method) {
   return 'sandbox_card';
 }
 
+async function retryPendingDocuments(link) {
+  const finalized = await api(FINALIZE_PATH, {
+    method:'POST',
+    body:JSON.stringify({ link_id:link.link_id, case_consent:true }),
+  });
+  if (finalized.documents_ready === false) {
+    toast('El expediente sigue registrado, pero la preparación documental continúa pendiente.', 'danger');
+    window.dispatchEvent(new HashChangeEvent('hashchange'));
+    return;
+  }
+  toast('Documentos preparados sobre el mismo expediente.');
+  finishIntoCase(link, finalized);
+}
+
 async function tracedPayOrFinalize(orderId, method) {
   let link;
   try {
@@ -192,6 +236,7 @@ async function tracedPayOrFinalize(orderId, method) {
   }
   try {
     const order = await api(`/api/checkout/orders/${encodeURIComponent(orderId)}`);
+    if (link.state === PENDING_DOCUMENTS_STATE) return retryPendingDocuments(link);
     if (order.status === 'Completada' && order.case_id) return go(`/caso/${encodeURIComponent(order.case_id)}`);
     const paid = order.status === 'Pagado (sandbox)';
     if (!paid) {
@@ -226,15 +271,16 @@ async function tracedPayOrFinalize(orderId, method) {
       method:'POST',
       body:JSON.stringify({ link_id:link.link_id, case_consent:true }),
     });
-    localStorage.removeItem(draftKey(link.product_code));
-    clearOrderKeys(link.product_code);
-    state.wizard = null;
-    state.checkoutOrder = null;
-    const suffix = finalized.documents_ready === false ? '?m352_documents=pending' : '';
-    location.hash = `#/caso/${encodeURIComponent(finalized.case_id)}${suffix}`;
-    location.reload();
+    if (finalized.documents_ready === false) {
+      toast('El expediente quedó registrado, pero la preparación documental requiere reintento.', 'danger');
+      document.querySelector('.m352-checkout-trace')?.remove();
+      window.dispatchEvent(new HashChangeEvent('hashchange'));
+      return;
+    }
+    finishIntoCase(link, finalized);
   } catch (error) {
     toast(error.message || 'No fue posible completar la transición trazable.', 'danger');
+    document.querySelector('.m352-checkout-trace')?.remove();
     window.dispatchEvent(new HashChangeEvent('hashchange'));
   }
 }
@@ -283,10 +329,17 @@ function schedule() {
 }
 
 document.addEventListener('click', event => {
-  const button = event.target.closest('[data-m352-invalidate]');
-  if (button) {
+  const invalidate = event.target.closest('[data-m352-invalidate]');
+  if (invalidate) {
     event.preventDefault();
-    invalidateCheckout(button);
+    invalidateCheckout(invalidate);
+    return;
+  }
+  const retry = event.target.closest('[data-m352-retry-finalize]');
+  if (retry) {
+    event.preventDefault();
+    retry.disabled = true;
+    tracedPayOrFinalize(retry.dataset.orderId || checkoutFromPath(), '').finally(() => { if (retry.isConnected) retry.disabled = false; });
   }
 });
 window.addEventListener('hashchange', schedule);
