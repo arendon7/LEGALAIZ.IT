@@ -20,6 +20,7 @@ from legalai_platform.runtime_registry import (
 PREFIX = "/api/m35/commerce"
 ORDER_PATH = f"{PREFIX}/order"
 PAYMENT_PATH = f"{PREFIX}/payment-intent"
+INVALIDATE_PATH = f"{PREFIX}/invalidate"
 FINALIZE_PATH = f"{PREFIX}/finalize"
 CONTEXT_PREFIX = f"{PREFIX}/context/"
 ORDER_LOOKUP_PREFIX = f"{PREFIX}/order/"
@@ -112,7 +113,7 @@ def handle_m35_2_commerce_get(handler, path: str, user: dict) -> bool:
 
 
 def handle_m35_2_commerce_post(handler, path: str, user: dict) -> bool:
-    if path not in {ORDER_PATH, PAYMENT_PATH, FINALIZE_PATH}:
+    if path not in {ORDER_PATH, PAYMENT_PATH, INVALIDATE_PATH, FINALIZE_PATH}:
         return False
     if not _rate_limit(handler, user, path.rsplit("/", 1)[-1], 20, 300):
         return True
@@ -148,6 +149,24 @@ def handle_m35_2_commerce_post(handler, path: str, user: dict) -> bool:
                 ip_hash=sha256(ip.encode("utf-8")).hexdigest()[:16] if ip else "",
             )
             handler.send_json(result, 200 if result.get("idempotent") else 201)
+            return True
+
+        if path == INVALIDATE_PATH:
+            con = core.db()
+            try:
+                result = store.invalidate_checkout(con, user["id"], data.get("link_id"))
+                con.commit()
+            finally:
+                con.close()
+            _observe(
+                "m35_commerce_checkout_invalidated",
+                link_id=result.get("link_id"),
+                order_id=result.get("order_id"),
+                product_code=result.get("product_code"),
+                idempotent=bool(result.get("idempotent")),
+                user_id=user["id"],
+            )
+            handler.send_json(result, 200)
             return True
 
         if path == PAYMENT_PATH:
@@ -189,8 +208,8 @@ def handle_m35_2_commerce_post(handler, path: str, user: dict) -> bool:
             handler.send_json(public, 200 if result.get("idempotent") else 201)
             return True
 
-        # FINALIZE: first commit the economic/case ledger. Document generation runs
-        # afterwards and can fail without erasing a confirmed payment or case.
+        # FINALIZE: first commit economic/case state. Physical document generation
+        # runs afterwards; a renderer failure must not erase a confirmed checkout.
         con = core.db()
         try:
             raw = store.finalize_case_record(
@@ -301,6 +320,7 @@ def handle_m35_2_commerce_post(handler, path: str, user: dict) -> bool:
 __all__ = [
     "CONTEXT_PREFIX",
     "FINALIZE_PATH",
+    "INVALIDATE_PATH",
     "ORDER_LOOKUP_PREFIX",
     "ORDER_PATH",
     "PAYMENT_PATH",
