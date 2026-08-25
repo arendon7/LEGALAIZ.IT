@@ -1,0 +1,30 @@
+{
+  "schema": "legalaiz-v1-rc7-external-attestation-policy-v1",
+  "schema_version": 1,
+  "bundle_schema": "legalaiz-v1-external-evidence-bundle-v1",
+  "control_source": "config/v1/evidence_execution_plan.json",
+  "attestation_source": "config/v1/production_attestations.json",
+  "runtime_actor_roles": [
+    "admin",
+    "qa",
+    "specialist",
+    "platform",
+    "security",
+    "operations",
+    "legal_privacy",
+    "legal_qa",
+    "commerce"
+  ],
+  "release_ratifier_roles": ["admin", "qa"],
+  "event_types": ["EVIDENCE_REGISTERED", "REVIEW_APPROVED", "RELEASE_RATIFIED", "REVOKED"],
+  "governance": {
+    "append_only": true,
+    "hash_chain_required": true,
+    "bundle_integrity_rechecked_on_read": true,
+    "registration_is_not_approval": true,
+    "review_is_not_release_ratification": true,
+    "executor_reviewer_ratifier_actor_ids_must_be_distinct": true,
+    "static_attestation_registry_is_not_mutated_at_runtime": true,
+    "runtime_verification_does_not_authorize_release": true
+  }
+}
