@@ -10,7 +10,8 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from legalai_platform.release_readiness_v1_rc9 import assess_release_readiness
+from legalai_platform.release_readiness_v1_rc8 import assess_release_readiness
+from legalai_platform.release_readiness_v1_rc9 import assess_release_readiness as assess_rc9_release_readiness
 
 
 def main() -> int:
@@ -27,14 +28,22 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    report = assess_release_readiness(ROOT)
+    baseline = assess_release_readiness(ROOT)
+    report = assess_rc9_release_readiness(ROOT)
     print(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True))
 
+    baseline_candidate = baseline["code_release_candidate"]
     candidate = report["code_release_candidate"]
     real = report["real_legal_production"]
     commercial = report["commercial_v1"]
     governance = report["governance"]
 
+    if candidate["ready"] and not baseline_candidate["ready"]:
+        print(
+            "V1 READINESS FAIL: RC9 no puede declarar un candidato listo si el baseline RC8 no está listo.",
+            file=sys.stderr,
+        )
+        return 2
     if not candidate["ready"]:
         print("V1 READINESS FAIL: el stack no cumple los gates de release candidate de código.", file=sys.stderr)
         return 2
