@@ -87,7 +87,7 @@ class EvidenceExecutionRunbook:
         waves = self._waves()
         wave_index = {ref: index for index, refs in enumerate(waves, 1) for ref in refs}
         packets: list[dict[str, Any]] = []
-        for sequence, ref in enumerate(ref for wave in waves for ref in wave, 1):
+        for sequence, ref in enumerate((ref for wave in waves for ref in wave), 1):
             packet = dict(self.ledger.task_packet(ref))
             packet.pop("evidence_ref", None)
             packet.update({
