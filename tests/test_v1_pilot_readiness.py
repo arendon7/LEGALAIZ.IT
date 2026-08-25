@@ -57,7 +57,7 @@ class V1PilotReadinessTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temp = tempfile.TemporaryDirectory()
         base = Path(self.temp.name)
-        self.clock = [datetime(2026, 8, 25, 12, 0, tzinfo=UTC)]
+        self.clock = [datetime(2026, 8, 26, 12, 0, tzinfo=UTC)]
         self.pilot = PilotAuthorizationDossier(
             ROOT,
             dossier_path=base / "pilot.jsonl",
@@ -231,11 +231,38 @@ class V1PilotReadinessTests(unittest.TestCase):
         report = self.gate.evaluate(production_env())
         self.assertEqual(report["state"], "READY_FOR_SYNTHETIC_CONTROLLED_PILOT")
         self.assertTrue(report["readiness"]["technical_preparation_ready"])
+        self.assertTrue(report["readiness"]["pilot_window_active"])
         self.assertTrue(report["readiness"]["pilot_mode_ready"])
         self.assertFalse(report["readiness"]["execution_requested"])
         self.assertTrue(report["readiness"]["safe_execution_claim"])
         self.assertTrue(report["release_metadata"]["SYNTHETIC_DATA_ONLY"])
         self.assertFalse(report["release_metadata"]["REAL_PRODUCTION_AUTHORIZED"])
+
+    def test_upcoming_pilot_can_be_prepared_but_not_executed_early(self):
+        self._complete_external()
+        self._register_plan()
+        self._approve_all()
+        self.clock[0] = datetime(2026, 8, 25, 12, 0, tzinfo=UTC)
+        report = self.gate.evaluate(production_env())
+        self.assertEqual(report["state"], "READY_AWAITING_PILOT_WINDOW")
+        self.assertTrue(report["readiness"]["technical_preparation_ready"])
+        self.assertFalse(report["readiness"]["pilot_window_active"])
+        self.assertFalse(report["readiness"]["pilot_mode_ready"])
+        env = production_env()
+        env["LEGAL_PILOT_EXECUTION_REQUESTED"] = "true"
+        blocked = self.gate.evaluate(env)
+        self.assertEqual(blocked["state"], "BLOCKED_UNSAFE_PILOT_EXECUTION_CLAIM")
+
+    def test_expired_plan_preserves_history_but_blocks_execution_readiness(self):
+        self._complete_external()
+        self._register_plan()
+        self._approve_all()
+        self.clock[0] = datetime(2026, 9, 16, 12, 0, tzinfo=UTC)
+        report = self.gate.evaluate(production_env())
+        self.assertEqual(report["state"], "BLOCKED_PILOT_WINDOW_EXPIRED")
+        self.assertTrue(report["pilot"]["ready"])
+        self.assertEqual(report["pilot"]["active_plan"]["window_status"], "EXPIRED")
+        self.assertFalse(report["readiness"]["pilot_mode_ready"])
 
     def test_execution_request_before_readiness_is_explicitly_blocked(self):
         env = production_env()
