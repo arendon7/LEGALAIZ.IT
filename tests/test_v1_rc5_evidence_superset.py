@@ -74,10 +74,15 @@ class V1RC5EvidenceSupersetTests(unittest.TestCase):
         self.assertFalse(summary["ready"])
         self.assertEqual(summary["integrity"], "invalid_policy")
 
-    def test_release_audit_cli_uses_rc5_superset_gate(self) -> None:
-        source = (ROOT / "tools" / "v1_release_readiness_audit.py").read_text(encoding="utf-8")
-        self.assertIn("from legalai_platform.release_readiness_v1_rc5 import assess_release_readiness", source)
-        self.assertNotIn("from legalai_platform.release_readiness_v1 import assess_release_readiness", source)
+    def test_release_audit_chain_preserves_rc5_superset_gate(self) -> None:
+        cli_source = (ROOT / "tools" / "v1_release_readiness_audit.py").read_text(encoding="utf-8")
+        rc6_source = (ROOT / "legalai_platform" / "release_readiness_v1_rc6.py").read_text(encoding="utf-8")
+        self.assertIn("from legalai_platform.release_readiness_v1_rc6 import assess_release_readiness", cli_source)
+        self.assertIn(
+            "from legalai_platform.release_readiness_v1_rc5 import assess_release_readiness as assess_rc5_release_readiness",
+            rc6_source,
+        )
+        self.assertNotIn("from legalai_platform.release_readiness_v1 import assess_release_readiness", cli_source)
 
     def test_rc5_does_not_add_a_runtime_activation_endpoint(self) -> None:
         run_source = (ROOT / "run.py").read_text(encoding="utf-8")
