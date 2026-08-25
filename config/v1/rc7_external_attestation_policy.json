@@ -15,6 +15,7 @@
     "legal_qa",
     "commerce"
   ],
+  "registration_roles": ["admin", "qa", "specialist"],
   "release_ratifier_roles": ["admin", "qa"],
   "event_types": ["EVIDENCE_REGISTERED", "REVIEW_APPROVED", "RELEASE_RATIFIED", "REVOKED"],
   "governance": {
@@ -23,7 +24,7 @@
     "bundle_integrity_rechecked_on_read": true,
     "registration_is_not_approval": true,
     "review_is_not_release_ratification": true,
-    "executor_reviewer_ratifier_actor_ids_must_be_distinct": true,
+    "executor_registrar_reviewer_ratifier_actor_ids_must_be_distinct": true,
     "static_attestation_registry_is_not_mutated_at_runtime": true,
     "runtime_verification_does_not_authorize_release": true
   }
