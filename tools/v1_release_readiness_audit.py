@@ -18,12 +18,12 @@ def main() -> int:
     parser.add_argument(
         "--require-real-production",
         action="store_true",
-        help="Return non-zero unless real legal production is fully evidenced and authorized.",
+        help="Return non-zero unless real legal production is fully evidenced and human-authorized.",
     )
     parser.add_argument(
         "--require-commercial-v1",
         action="store_true",
-        help="Return non-zero unless real legal production and real payments are fully evidenced and authorized.",
+        help="Return non-zero unless real legal production and real payments are fully evidenced and human-authorized.",
     )
     args = parser.parse_args()
 
@@ -38,8 +38,17 @@ def main() -> int:
     if not candidate["ready"]:
         print("V1 READINESS FAIL: el stack no cumple los gates de release candidate de código.", file=sys.stderr)
         return 2
+    if governance["authorization_state_inconsistent"]:
+        print(
+            "V1 READINESS FAIL: el estado de autorización y su decisión versionada son inconsistentes.",
+            file=sys.stderr,
+        )
+        return 3
     if governance["unauthorized_promotion_detected"]:
-        print("V1 READINESS FAIL: se detectó una promoción no autorizada de producción/pagos.", file=sys.stderr)
+        print(
+            "V1 READINESS FAIL: se detectó una autorización activa sin procedencia humana versionada válida.",
+            file=sys.stderr,
+        )
         return 3
     if args.require_real_production and not real["ready"]:
         print(
@@ -59,7 +68,8 @@ def main() -> int:
     print(
         "V1 READINESS PASS · "
         f"candidate={candidate['status']} real={real['status']} commercial={commercial['status']} "
-        "production_auto_authorized=false payments_auto_authorized=false"
+        "production_auto_authorized=false payments_auto_authorized=false "
+        "authorization_provenance=versioned-human-decision"
     )
     return 0
 

@@ -1,6 +1,6 @@
 {
   "schema": "legalaiz-v1-release-readiness-contract-v1",
-  "schema_version": 1,
+  "schema_version": 2,
   "candidate_lineage": {
     "canonical_baseline": "M33.1",
     "integrated_head": "M37.3",
@@ -67,12 +67,30 @@
   ],
   "attestation_registry": "config/v1/production_attestations.json",
   "verified_attestation_status": "VERIFIED_EXTERNAL_EVIDENCE",
+  "authorization_decision_registry": "config/v1/authorization_decisions.json",
+  "authorization_decision_schema": "legalaiz-v1-authorization-decisions-v1",
+  "authorization_decisions": {
+    "real_legal_production": {
+      "metadata_gate": "REAL_PRODUCTION_AUTHORIZED",
+      "required_status": "AUTHORIZED_VERSIONED_HUMAN_DECISION",
+      "required_source": "VERSIONED_HUMAN_RELEASE_DECISION",
+      "blocker": "REAL_PRODUCTION_AUTHORIZATION_DECISION"
+    },
+    "commercial_v1": {
+      "metadata_gate": "REAL_PAYMENTS_AUTHORIZED",
+      "required_status": "AUTHORIZED_VERSIONED_HUMAN_DECISION",
+      "required_source": "VERSIONED_HUMAN_COMMERCIAL_DECISION",
+      "blocker": "REAL_PAYMENTS_AUTHORIZATION_DECISION"
+    }
+  },
   "governance": {
     "code_ci_can_authorize_real_production": false,
     "code_ci_can_authorize_real_payments": false,
     "missing_attestation_fails_closed": true,
     "verified_attestation_requires_evidence_ref": true,
     "release_candidate_is_not_production_authorization": true,
-    "human_legal_and_qa_approval_remain_required": true
+    "human_legal_and_qa_approval_remain_required": true,
+    "authorization_decision_requires_evidence_ref": true,
+    "authorization_decision_is_versioned": true
   }
 }
