@@ -37,6 +37,19 @@ def _count_collection_items(payload: Any) -> int:
     return sum(len(value) for value in payload.values() if isinstance(value, list))
 
 
+def _count_questions(interviews: Any) -> int:
+    if not isinstance(interviews, dict):
+        return 0
+    total = 0
+    for interview in interviews.values():
+        if not isinstance(interview, dict):
+            continue
+        questions = interview.get("questions")
+        if isinstance(questions, list):
+            total += len(questions)
+    return total
+
+
 def _check(key: str, passed: bool, detail: str) -> ReadinessCheck:
     return ReadinessCheck(key=key, passed=bool(passed), detail=detail)
 
@@ -104,7 +117,7 @@ def assess_release_readiness(root: Path | None = None) -> dict[str, Any]:
     production_example = _read_text(root / "config" / ".env.production.example")
 
     product_count = len(interviews) if isinstance(interviews, dict) else 0
-    question_count = _count_collection_items(interviews)
+    question_count = _count_questions(interviews)
     rule_count = _count_collection_items(rules)
     floors = contract["portfolio_floor"]
 
