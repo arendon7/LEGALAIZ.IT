@@ -71,6 +71,23 @@ def _attestation_index(payload: Any) -> dict[str, dict[str, Any]]:
     return indexed
 
 
+def _decision_index(payload: Any) -> dict[str, dict[str, Any]]:
+    if not isinstance(payload, dict):
+        return {}
+    rows = payload.get("decisions")
+    if not isinstance(rows, list):
+        return {}
+    indexed: dict[str, dict[str, Any]] = {}
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        decision_id = str(row.get("id") or "").strip()
+        if not decision_id or decision_id in indexed:
+            continue
+        indexed[decision_id] = row
+    return indexed
+
+
 def _verified_attestation(
     indexed: dict[str, dict[str, Any]],
     attestation_id: str,
@@ -92,24 +109,70 @@ def _metadata_snapshot(names: Iterable[str]) -> dict[str, bool]:
     return {name: _metadata_gate(name) for name in names}
 
 
+def _authorization_state(
+    indexed_decisions: dict[str, dict[str, Any]],
+    decision_id: str,
+    spec: dict[str, Any],
+) -> dict[str, Any]:
+    row = indexed_decisions.get(decision_id) or {}
+    metadata_gate = str(spec["metadata_gate"])
+    metadata_authorized = _metadata_gate(metadata_gate)
+    status = str(row.get("status") or "").strip()
+    source = str(row.get("source") or "").strip()
+    evidence_ref = str(row.get("evidence_ref") or "").strip()
+
+    required_status = str(spec["required_status"])
+    required_source = str(spec["required_source"])
+    provenance_valid = bool(
+        metadata_authorized
+        and status == required_status
+        and source == required_source
+        and evidence_ref
+    )
+    pending_consistent = bool(
+        not metadata_authorized
+        and status == "NOT_AUTHORIZED"
+        and source == "NOT_AUTHORIZED"
+        and not evidence_ref
+    )
+    state_consistent = provenance_valid or pending_consistent
+    unauthorized_promotion = bool(metadata_authorized and not provenance_valid)
+
+    return {
+        "metadata_gate": metadata_gate,
+        "metadata_authorized": metadata_authorized,
+        "decision_status": status or "MISSING",
+        "source": source or "MISSING",
+        "evidence_present": bool(evidence_ref),
+        "provenance_valid": provenance_valid,
+        "state_consistent": state_consistent,
+        "unauthorized_promotion": unauthorized_promotion,
+    }
+
+
 def assess_release_readiness(root: Path | None = None) -> dict[str, Any]:
-    """Evalúa readiness sin activar producción ni confiar en variables de entorno para promoverla.
+    """Evalúa readiness sin activar producción ni confiar en CI para promoverla.
 
     La evaluación distingue tres estados:
     1. código acumulado apto como release candidate;
     2. producción jurídica real;
     3. V1 comercial con pagos reales.
 
-    La CI puede acreditar únicamente el primero. Los otros dos exigen metadata explícita
-    y evidencia externa trazable en el registro de attestations.
+    La CI puede acreditar únicamente el primero. Los otros dos exigen metadata explícita,
+    evidencia externa trazable y una decisión humana versionada con referencia de evidencia.
     """
 
     root = Path(root or ROOT)
     contract = _load_json(root / "config" / "v1" / "release_readiness_contract.json")
+
     attestation_path = root / str(contract["attestation_registry"])
     attestations = _load_json(attestation_path) if attestation_path.exists() else {}
     indexed_attestations = _attestation_index(attestations)
     verified_status = str(contract["verified_attestation_status"])
+
+    decision_path = root / str(contract["authorization_decision_registry"])
+    decisions = _load_json(decision_path) if decision_path.exists() else {}
+    indexed_decisions = _decision_index(decisions)
 
     interviews = _load_json(root / "data" / "interviews.json")
     rules = _load_json(root / "data" / "rules.json")
@@ -120,6 +183,11 @@ def assess_release_readiness(root: Path | None = None) -> dict[str, Any]:
     question_count = _count_questions(interviews)
     rule_count = _count_collection_items(rules)
     floors = contract["portfolio_floor"]
+
+    decision_schema_expected = str(contract["authorization_decision_schema"])
+    decision_schema_actual = str(decisions.get("schema") or "") if isinstance(decisions, dict) else ""
+    expected_decision_ids = set(contract["authorization_decisions"])
+    actual_decision_ids = set(indexed_decisions)
 
     code_checks: list[ReadinessCheck] = [
         _check(
@@ -147,23 +215,35 @@ def assess_release_readiness(root: Path | None = None) -> dict[str, Any]:
             str(contract["candidate_lineage"]["required_runtime_handler"]) in run_source,
             "runtime incremental activo en M37.3",
         ),
+        _check(
+            "authorization_decision_registry_schema",
+            decision_schema_actual == decision_schema_expected,
+            f"schema={decision_schema_actual or 'MISSING'} expected={decision_schema_expected}",
+        ),
+        _check(
+            "authorization_decision_registry_complete",
+            actual_decision_ids == expected_decision_ids,
+            f"decisions={sorted(actual_decision_ids)} expected={sorted(expected_decision_ids)}",
+        ),
     ]
 
     for marker in contract["candidate_lineage"]["required_runtime_markers"]:
+        marker_present = str(marker) in run_source
         code_checks.append(
             _check(
                 f"runtime_marker:{marker}",
-                str(marker) in run_source,
-                "marker de linaje acumulado presente" if str(marker) in run_source else "marker faltante",
+                marker_present,
+                "marker de linaje acumulado presente" if marker_present else "marker faltante",
             )
         )
 
     for literal in contract["production_profile_code_controls"]:
+        literal_present = str(literal) in production_example
         code_checks.append(
             _check(
                 f"production_profile_control:{literal.split('=', 1)[0]}",
-                str(literal) in production_example,
-                "control declarado en perfil de producción" if str(literal) in production_example else "control ausente",
+                literal_present,
+                "control declarado en perfil de producción" if literal_present else "control ausente",
             )
         )
 
@@ -200,24 +280,45 @@ def assess_release_readiness(root: Path | None = None) -> dict[str, Any]:
         for attestation_id in commercial_attestation_ids
     }
 
+    decision_specs = contract["authorization_decisions"]
+    real_authorization = _authorization_state(
+        indexed_decisions,
+        "real_legal_production",
+        decision_specs["real_legal_production"],
+    )
+    commercial_authorization = _authorization_state(
+        indexed_decisions,
+        "commercial_v1",
+        decision_specs["commercial_v1"],
+    )
+
     real_blockers = [name for name, value in real_metadata.items() if not value]
     real_blockers.extend(attestation_id for attestation_id, value in real_attestation_state.items() if not value)
+    if not real_authorization["provenance_valid"]:
+        real_blockers.append(str(decision_specs["real_legal_production"]["blocker"]))
+
     commercial_blockers = [name for name, value in commercial_metadata.items() if not value]
     commercial_blockers.extend(
         attestation_id for attestation_id, value in commercial_attestation_state.items() if not value
     )
+    if not commercial_authorization["provenance_valid"]:
+        commercial_blockers.append(str(decision_specs["commercial_v1"]["blocker"]))
 
     real_ready = code_candidate_ready and not real_blockers
     commercial_ready = real_ready and not commercial_blockers
 
     governance = contract["governance"]
     unauthorized_promotion_detected = bool(
-        (real_ready and not bool(governance["code_ci_can_authorize_real_production"]))
-        or (commercial_ready and not bool(governance["code_ci_can_authorize_real_payments"]))
+        real_authorization["unauthorized_promotion"]
+        or commercial_authorization["unauthorized_promotion"]
+    )
+    authorization_state_inconsistent = bool(
+        not real_authorization["state_consistent"]
+        or not commercial_authorization["state_consistent"]
     )
 
     return {
-        "schema": "legalaiz-v1-release-readiness-report-v1",
+        "schema": "legalaiz-v1-release-readiness-report-v2",
         "canonical_release": {
             "milestone": str(release_metadata.MILESTONE),
             "version": str(release_metadata.VERSION),
@@ -239,6 +340,7 @@ def assess_release_readiness(root: Path | None = None) -> dict[str, Any]:
             "status": "REAL_PRODUCTION_READY" if real_ready else "REAL_PRODUCTION_BLOCKED",
             "metadata_gates": real_metadata,
             "attestations_verified": real_attestation_state,
+            "authorization_decision": real_authorization,
             "blockers": real_blockers,
         },
         "commercial_v1": {
@@ -246,6 +348,7 @@ def assess_release_readiness(root: Path | None = None) -> dict[str, Any]:
             "status": "COMMERCIAL_V1_READY" if commercial_ready else "COMMERCIAL_V1_BLOCKED",
             "metadata_gates": commercial_metadata,
             "attestations_verified": commercial_attestation_state,
+            "authorization_decision": commercial_authorization,
             "blockers": ([] if real_ready else ["REAL_LEGAL_PRODUCTION_NOT_READY"]) + commercial_blockers,
         },
         "governance": {
@@ -256,9 +359,22 @@ def assess_release_readiness(root: Path | None = None) -> dict[str, Any]:
                 governance["human_legal_and_qa_approval_remain_required"]
             ),
             "missing_attestation_fails_closed": bool(governance["missing_attestation_fails_closed"]),
+            "authorization_decision_requires_evidence_ref": bool(
+                governance["authorization_decision_requires_evidence_ref"]
+            ),
+            "authorization_decision_is_versioned": bool(governance["authorization_decision_is_versioned"]),
+            "code_ci_can_authorize_real_production": bool(
+                governance["code_ci_can_authorize_real_production"]
+            ),
+            "code_ci_can_authorize_real_payments": bool(governance["code_ci_can_authorize_real_payments"]),
+            "authorization_state_inconsistent": authorization_state_inconsistent,
             "unauthorized_promotion_detected": unauthorized_promotion_detected,
         },
     }
 
 
-__all__ = ["ReadinessCheck", "assess_release_readiness"]
+__all__ = [
+    "ReadinessCheck",
+    "_authorization_state",
+    "assess_release_readiness",
+]

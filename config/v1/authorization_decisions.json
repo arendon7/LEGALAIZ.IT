@@ -1,0 +1,18 @@
+{
+  "schema": "legalaiz-v1-authorization-decisions-v1",
+  "schema_version": 1,
+  "decisions": [
+    {
+      "id": "real_legal_production",
+      "status": "NOT_AUTHORIZED",
+      "source": "NOT_AUTHORIZED",
+      "evidence_ref": null
+    },
+    {
+      "id": "commercial_v1",
+      "status": "NOT_AUTHORIZED",
+      "source": "NOT_AUTHORIZED",
+      "evidence_ref": null
+    }
+  ]
+}
