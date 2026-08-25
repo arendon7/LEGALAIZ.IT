@@ -255,12 +255,13 @@ class V1PilotReadinessTests(unittest.TestCase):
 
     def test_expired_plan_preserves_history_but_blocks_execution_readiness(self):
         self._complete_external()
-        self._register_plan()
+        self._register_plan(ends_on="2026-08-30")
         self._approve_all()
-        self.clock[0] = datetime(2026, 9, 16, 12, 0, tzinfo=UTC)
+        self.clock[0] = datetime(2026, 8, 31, 12, 0, tzinfo=UTC)
         report = self.gate.evaluate(production_env())
         self.assertEqual(report["state"], "BLOCKED_PILOT_WINDOW_EXPIRED")
         self.assertTrue(report["pilot"]["ready"])
+        self.assertTrue(report["readiness"]["technical_preparation_ready"])
         self.assertEqual(report["pilot"]["active_plan"]["window_status"], "EXPIRED")
         self.assertFalse(report["readiness"]["pilot_mode_ready"])
 
