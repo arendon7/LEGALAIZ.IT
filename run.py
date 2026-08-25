@@ -24,7 +24,8 @@ from legalai_platform.application_services import *  # noqa: F401,F403,E402
 import legalai_platform.application_services as _application_services  # noqa: E402
 from legalai_platform.m36_3_journey_guard import install_m36_3_delivery_guard  # noqa: E402
 from legalai_platform.m37_0_journey_guard import install_m37_0_followup_guard  # noqa: E402
-from legalai_platform.http_handler_m37_3 import Handler  # noqa: E402
+from legalai_platform.http_handler_release_v1 import Handler  # noqa: E402
+# from legalai_platform.http_handler_m37_3 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m37_2 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m37_1 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m37_0 import Handler  # compatibility marker
@@ -72,6 +73,7 @@ from legalai_platform.http_handler_m37_3 import Handler  # noqa: E402
 # m37-1-evidence-intake-review-boundary
 # m37-2-recorded-dates-reminder-boundary
 # m37-3-professional-disposition-gate
+# v1-r0-release-readiness-gate
 # LEGAL_ALLOW_DEMO_ACCOUNTS
 # LEGAL_BOOTSTRAP_ADMIN_EMAIL
 # UPDATE users SET active=0 WHERE lower(email) LIKE '%@demo.legalaiz.it'
