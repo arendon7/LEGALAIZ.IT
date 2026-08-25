@@ -107,10 +107,15 @@ class V1RC6EvidenceExecutionPackTests(unittest.TestCase):
         self.assertFalse(governance["code_ci_can_authorize_real_production"])
         self.assertFalse(governance["code_ci_can_authorize_real_payments"])
 
-    def test_cli_consumes_rc6_gate(self) -> None:
-        source = (ROOT / "tools" / "v1_release_readiness_audit.py").read_text(encoding="utf-8")
-        self.assertIn("from legalai_platform.release_readiness_v1_rc6 import assess_release_readiness", source)
-        self.assertNotIn("from legalai_platform.release_readiness_v1_rc5 import assess_release_readiness", source)
+    def test_release_audit_chain_preserves_rc6_gate(self) -> None:
+        cli_source = (ROOT / "tools" / "v1_release_readiness_audit.py").read_text(encoding="utf-8")
+        rc7_source = (ROOT / "legalai_platform" / "release_readiness_v1_rc7.py").read_text(encoding="utf-8")
+        self.assertIn("from legalai_platform.release_readiness_v1_rc7 import assess_release_readiness", cli_source)
+        self.assertIn(
+            "from legalai_platform.release_readiness_v1_rc6 import assess_release_readiness as assess_rc6_release_readiness",
+            rc7_source,
+        )
+        self.assertNotIn("from legalai_platform.release_readiness_v1_rc5 import assess_release_readiness", cli_source)
 
     def test_rc6_does_not_expose_runtime_activation_endpoint(self) -> None:
         run_source = (ROOT / "run.py").read_text(encoding="utf-8")
