@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from legalai_platform.evidence_orchestration_v1_rc8 import (
+from legalai_platform.evidence_orchestration_v1_rc8_1 import (
     EvidenceAuditDossier,
     EvidenceCampaignError,
     EvidenceCampaignLedger,
@@ -115,9 +115,9 @@ def main() -> int:
         elif args.command == "abort":
             _print(ledger.abort_campaign(args.campaign, reason_code=args.reason_code, actor=_actor(args)))
         else:
-            parser.error("Comando RC8 desconocido.")
+            parser.error("Comando RC8.1 desconocido.")
     except EvidenceCampaignError as exc:
-        print(f"RC8 CAMPAIGN ERROR: {exc}", file=sys.stderr)
+        print(f"RC8.1 CAMPAIGN ERROR: {exc}", file=sys.stderr)
         return 2
     return 0
 
