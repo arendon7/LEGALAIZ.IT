@@ -56,12 +56,13 @@ def _trusted_proxy_configured(value: str | None) -> bool:
 
 
 def prepare_deployment_environment() -> None:
-    """Normaliza variables administradas por el proveedor antes de cargar el runtime.
+    """Normaliza variables del proveedor y bloquea un profile production inseguro.
 
     Render publica RENDER_EXTERNAL_URL automáticamente. La usamos como origen
     público si no existe una configuración explícita. Para cifrado, Render genera
     un secreto opaco; se deriva determinísticamente una llave AES de 32 bytes sin
-    registrar ni persistir el secreto fuente.
+    registrar ni persistir el secreto fuente. El perfil local/demo queda intacto;
+    sólo `LEGAL_PROFILE=production` activa la compuerta V1-RC1 de arranque.
     """
     external_url = str(os.environ.get("RENDER_EXTERNAL_URL", "")).strip()
     if external_url and not str(os.environ.get("LEGAL_PUBLIC_BASE_URL", "")).strip():
@@ -72,6 +73,8 @@ def prepare_deployment_environment() -> None:
         derived = sha256(seed.encode("utf-8")).digest()
         encoded = base64.urlsafe_b64encode(derived).decode("ascii").rstrip("=")
         os.environ["LEGAL_MASTER_KEY"] = encoded
+
+    assert_production_startup_environment()
 
 
 def production_startup_report(environ: Mapping[str, str] | None = None) -> dict:
