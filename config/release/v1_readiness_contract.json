@@ -1,0 +1,56 @@
+{
+  "schema": "legalai_v1_release_readiness_contract_v1",
+  "schema_version": 1,
+  "purpose": "Evaluate evidence required before real legal production without activating production or payments.",
+  "portfolio_floor": {
+    "products": 11,
+    "questions": 473
+  },
+  "required_runtime_markers": [
+    "m34-1-intelligent-intake-ux",
+    "m34-2-structured-fact-extraction-confirmation",
+    "m34-3-adaptive-question-sufficiency",
+    "m34-4-explainable-recommendation",
+    "m35-0-account-case-handoff",
+    "m35-1-fulfillment-context-offer",
+    "m35-2-commerce-case-traceability",
+    "m35-3-case-activation-purchase-confirmation",
+    "m36-0-fulfillment-intake-bridge",
+    "m36-1-professional-assignment-handoff",
+    "m36-2-review-lifecycle-reconciliation",
+    "m36-3-controlled-delivery-gate",
+    "m37-0-post-delivery-followup-foundation",
+    "m37-1-evidence-intake-review-boundary",
+    "m37-2-recorded-dates-reminder-boundary",
+    "m37-3-professional-disposition-gate"
+  ],
+  "required_repository_evidence": {
+    "postgres_certification_tool": "tools/postgres_certify.py",
+    "postgres_schema_export_tool": "tools/export_postgres_schema.py",
+    "postgres_migration_tool": "tools/migrate_sqlite_to_postgres.py",
+    "postgres_runbook": "deploy/PREPRODUCTION_RUNBOOK_M31_4.md",
+    "postgres_requirements": "requirements-postgres.txt"
+  },
+  "external_attestations": {
+    "postgres_external_certified": "LEGAL_POSTGRES_EXTERNAL_CERTIFIED",
+    "postgres_backup_restore_certified": "LEGAL_POSTGRES_BACKUP_RESTORE_CERTIFIED",
+    "postgres_migration_certified": "LEGAL_POSTGRES_MIGRATION_CERTIFIED",
+    "durable_object_storage_certified": "LEGAL_OBJECT_STORAGE_EXTERNAL_CERTIFIED",
+    "monitoring_certified": "LEGAL_MONITORING_EXTERNAL_CERTIFIED",
+    "incident_response_certified": "LEGAL_INCIDENT_RESPONSE_CERTIFIED",
+    "security_review_certified": "LEGAL_SECURITY_REVIEW_CERTIFIED",
+    "privacy_governance_approved": "LEGAL_PRIVACY_GOVERNANCE_APPROVED",
+    "legal_operations_approved": "LEGAL_LEGAL_OPERATIONS_APPROVED",
+    "qa_operations_approved": "LEGAL_QA_OPERATIONS_APPROVED",
+    "real_payment_provider_certified": "LEGAL_REAL_PAYMENT_PROVIDER_CERTIFIED"
+  },
+  "durable_object_storage_backends": [
+    "s3-encrypted",
+    "managed-encrypted"
+  ],
+  "notices": {
+    "assessment": "This gate is evidence-only and cannot authorize real legal production by itself.",
+    "payments": "Real payment readiness is assessed separately from legal-platform readiness.",
+    "human": "Technical readiness never substitutes legal specialist, QA, privacy or security approvals."
+  }
+}

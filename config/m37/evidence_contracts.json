@@ -1,0 +1,35 @@
+{
+  "schema": "legalai_m37_1_evidence_contracts_v1",
+  "jurisdiction": "Colombia",
+  "max_file_bytes": 10485760,
+  "max_items_per_case": 30,
+  "max_items_per_task": 10,
+  "max_total_bytes_per_case": 104857600,
+  "allowed_types": {
+    "PDF": {"extensions": [".pdf"], "mime_type": "application/pdf"},
+    "PNG": {"extensions": [".png"], "mime_type": "image/png"},
+    "JPEG": {"extensions": [".jpg", ".jpeg"], "mime_type": "image/jpeg"},
+    "DOCX": {"extensions": [".docx"], "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"},
+    "TEXT": {"extensions": [".txt"], "mime_type": "text/plain"}
+  },
+  "review_dispositions": [
+    "ACKNOWLEDGED_FOR_FOLLOWUP",
+    "NEEDS_CLARIFICATION",
+    "NOT_RELEVANT_TO_TASK"
+  ],
+  "governance": {
+    "upload_completes_task": false,
+    "review_completes_task": false,
+    "authenticity_verified_by_upload": false,
+    "authenticity_verified_by_review": false,
+    "legal_sufficiency_verified_by_review": false,
+    "legal_effect_verified_by_review": false,
+    "automatic_close": false,
+    "automatic_escalation": false,
+    "malware_scan_required_outside_local": true,
+    "encrypted_object_store_required": true,
+    "immutable_files": true,
+    "append_only_reviews": true
+  },
+  "notice": "La recepción o revisión de un soporte no acredita autenticidad, integridad de origen, valor probatorio, suficiencia jurídica, cumplimiento de un término, recepción por una autoridad o producción de un efecto jurídico. Estas conclusiones requieren una valoración jurídica expresa y, cuando corresponda, verificación de fuentes o constancias externas."
+}

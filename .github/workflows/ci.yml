@@ -39,10 +39,31 @@ jobs:
           node --input-type=module --check < app/modules/demo_form_values_m32.js
           node --input-type=module --check < app/modules/demo_form_data_m32.js
           node --input-type=module --check < app/modules/public_demo_m33.js
+          node --input-type=module --check < app/modules/fact_review_m34_2.js
+          node --input-type=module --check < app/modules/adaptive_questions_m34_3.js
+          node --input-type=module --check < app/modules/recommendation_m34_4.js
+          node --input-type=module --check < app/modules/account_handoff_m35_0.js
+          node --input-type=module --check < app/modules/fulfillment_bridge_m35_1.js
+          node --input-type=module --check < app/modules/commerce_case_m35_2.js
+          node --input-type=module --check < app/modules/case_activation_m35_3.js
           grep -q 'demo_form_data_m32.css' app/index.html
           grep -q 'demo_form_data_m32.js' app/index.html
           grep -q 'public_demo_m33.css' app/index.html
           grep -q 'public_demo_m33.js' app/index.html
+          grep -q 'fact_review_m34_2.css' app/index.html
+          grep -q 'fact_review_m34_2.js' app/index.html
+          grep -q 'adaptive_questions_m34_3.css' app/index.html
+          grep -q 'adaptive_questions_m34_3.js' app/index.html
+          grep -q 'recommendation_m34_4.css' app/index.html
+          grep -q 'recommendation_m34_4.js' app/index.html
+          grep -q 'account_handoff_m35_0.css' app/index.html
+          grep -q 'account_handoff_m35_0.js' app/index.html
+          grep -q 'fulfillment_bridge_m35_1.css' app/index.html
+          grep -q 'fulfillment_bridge_m35_1.js' app/index.html
+          grep -q 'commerce_case_m35_2.css' app/index.html
+          grep -q 'commerce_case_m35_2.js' app/index.html
+          grep -q 'case_activation_m35_3.css' app/index.html
+          grep -q 'case_activation_m35_3.js' app/index.html
           node --input-type=module <<'NODE'
           import fs from 'node:fs';
 
@@ -89,15 +110,91 @@ jobs:
           LEGAL_REQUIRE_MFA_ROLES: ''
           LEGAL_GITHUB_LITE_ASSETS: 'true'
         run: |
-          python run.py --lan --no-browser > /tmp/legalaiz.log 2>&1 &
-          PID=$!
-          trap 'kill $PID || true' EXIT
-          for i in {1..30}; do
-            python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/api/live', timeout=2).read()" && exit 0 || true
-            sleep 1
-          done
-          cat /tmp/legalaiz.log
-          exit 1
+          set -euo pipefail
+          LEGAL_DEMO_PASSWORD="$(python -c 'import secrets; print(secrets.token_urlsafe(32))')"
+          export LEGAL_DEMO_PASSWORD
+
+          start_server() {
+            local logfile="$1"
+            python run.py --lan --no-browser > "$logfile" 2>&1 &
+            PID=$!
+            READY=0
+            for i in {1..30}; do
+              if python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/api/live', timeout=2).read()"; then
+                READY=1
+                break
+              fi
+              sleep 1
+            done
+            if [ "$READY" -ne 1 ]; then
+              cat "$logfile"
+              return 1
+            fi
+          }
+
+          stop_server() {
+            if [ -n "${PID:-}" ]; then
+              kill "$PID" 2>/dev/null || true
+              wait "$PID" 2>/dev/null || true
+              PID=""
+            fi
+          }
+
+          trap stop_server EXIT
+          start_server /tmp/legalaiz.log
+          python tools/m34_2_http_smoke.py
+          python tools/m34_3_http_smoke.py
+          python tools/m34_4_http_smoke.py
+          python tools/m35_0_http_smoke.py
+          python tools/m35_1_http_smoke.py
+          python tools/m35_2_http_smoke.py
+          python tools/m35_3_http_smoke.py
+          python tools/m36_0_http_smoke.py
+          python tools/m36_1_http_smoke.py
+
+          # M36.2 necesita autenticar dos roles reales (admin + especialista).
+          # Reiniciamos sólo el proceso para obtener una ventana limpia del rate limiter
+          # 12/300, manteniendo LEGAL_RUNTIME_DIR, SQLite, archivos y la misma clave demo.
+          # No se desactiva ni se amplía la política de autenticación.
+          stop_server
+          start_server /tmp/legalaiz-m36-2.log
+          python tools/m36_2_http_smoke.py
+
+          # M36.3 vuelve a recorrer asignación, aprobaciones y entrega con varios roles
+          # y un segundo cliente. Se reinicia sólo el proceso para aislar el limitador
+          # in-memory; se conservan runtime, SQLite y credenciales efímeras. La política
+          # real de login 12/300 permanece intacta y no admite bypass de CI.
+          stop_server
+          start_server /tmp/legalaiz-m36-3.log
+          python tools/m36_3_http_smoke.py
+
+          # M37.0 vuelve a crear un expediente entregado y prueba inicio + tareas con
+          # cliente/admin. Reiniciamos sólo el proceso: misma SQLite/runtime/clave demo,
+          # pero ventana in-memory limpia. La política real de login 12/300 sigue intacta.
+          stop_server
+          start_server /tmp/legalaiz-m37-0.log
+          python tools/m37_0_http_smoke.py
+
+          # M37.1 recorre nuevamente revisión dual, entrega, seguimiento, upload y review
+          # con cliente + especialista. El reinicio conserva estado durable y credenciales,
+          # pero aísla el rate limiter in-memory sin debilitar la política real 12/300.
+          stop_server
+          start_server /tmp/legalaiz-m37-1.log
+          python tools/m37_1_http_smoke.py
+
+          # M37.2 recorre nuevamente entrega + seguimiento y prueba fechas registradas,
+          # recordatorios in-app e idempotencia sin calcular ni afirmar términos legales.
+          # El reinicio sólo limpia el rate limiter in-memory y conserva la política real.
+          stop_server
+          start_server /tmp/legalaiz-m37-2.log
+          python tools/m37_2_http_smoke.py
+
+          # M37.3 recorre cierre profesional controlado y escalamiento de contingencias,
+          # consumiendo M37.0-M37.2 sin convertir cierre en éxito jurídico ni automatizar lifecycle.
+          # Se reinicia sólo el proceso para aislar el rate limiter in-memory.
+          stop_server
+          start_server /tmp/legalaiz-m37-3.log
+          python tools/m37_3_http_smoke.py
       - name: Smoke producción demostrativa M33.1
         run: python tools/public_demo_smoke.py
 

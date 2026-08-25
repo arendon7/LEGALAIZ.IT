@@ -22,7 +22,26 @@ from legalai_platform.runtime_registry import *  # noqa: F401,F403,E402
 from legalai_platform.release_metadata import RELEASE_NAME, PUBLIC_DEMO_MODE, MILESTONE  # noqa: E402
 from legalai_platform.application_services import *  # noqa: F401,F403,E402
 import legalai_platform.application_services as _application_services  # noqa: E402
-from legalai_platform.http_handler_m33_0 import Handler  # noqa: E402
+from legalai_platform.m36_3_journey_guard import install_m36_3_delivery_guard  # noqa: E402
+from legalai_platform.m37_0_journey_guard import install_m37_0_followup_guard  # noqa: E402
+from legalai_platform.http_handler_release_v1 import Handler  # noqa: E402
+# from legalai_platform.http_handler_m37_3 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m37_2 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m37_1 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m37_0 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m36_3 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m36_2 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m36_1 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m36_0 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m35_3 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m35_2 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m35_1 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m35_0 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m34_4 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m34_3 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m34_2 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m34_1 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m33_0 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m32_9 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m32_8 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m32_7 import Handler  # compatibility marker
@@ -38,10 +57,31 @@ from legalai_platform.http_handler_m33_0 import Handler  # noqa: E402
 # m32-9-contact-governance
 # m33-0-public-demo-integration
 # m33-1-render-deployment-hardening
+# m34-1-intelligent-intake-ux
+# m34-2-structured-fact-extraction-confirmation
+# m34-3-adaptive-question-sufficiency
+# m34-4-explainable-recommendation
+# m35-0-account-case-handoff
+# m35-1-fulfillment-context-offer
+# m35-2-commerce-case-traceability
+# m35-3-case-activation-purchase-confirmation
+# m36-0-fulfillment-intake-bridge
+# m36-1-professional-assignment-handoff
+# m36-2-review-lifecycle-reconciliation
+# m36-3-controlled-delivery-gate
+# m37-0-post-delivery-followup-foundation
+# m37-1-evidence-intake-review-boundary
+# m37-2-recorded-dates-reminder-boundary
+# m37-3-professional-disposition-gate
+# v1-r0-release-readiness-gate
 # LEGAL_ALLOW_DEMO_ACCOUNTS
 # LEGAL_BOOTSTRAP_ADMIN_EMAIL
 # UPDATE users SET active=0 WHERE lower(email) LIKE '%@demo.legalaiz.it'
 # "code": "internal_error"
+
+
+install_m36_3_delivery_guard(M24_CASE_JOURNEY)
+install_m37_0_followup_guard(M24_CASE_JOURNEY)
 
 
 _original_m31_case_demo_summary = M31_CASE_DEMO.summary
