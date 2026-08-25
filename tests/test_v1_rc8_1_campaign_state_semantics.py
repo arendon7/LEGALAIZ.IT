@@ -11,6 +11,7 @@ from unittest.mock import patch
 from legalai_platform.evidence_execution_plan_v1 import EvidenceExecutionPlan
 from legalai_platform.evidence_orchestration_v1_rc8_1 import (
     STATE_SCHEMA,
+    EvidenceCampaignError,
     EvidenceCampaignLedger,
 )
 
@@ -67,7 +68,7 @@ class V1RC81CampaignStateSemanticsTests(unittest.TestCase):
         with TemporaryDirectory() as temp:
             with patch.dict(os.environ, {"LEGAL_RUNTIME_DIR": temp}, clear=False):
                 ledger, campaign_id = self._create(temp)
-                with self.assertRaisesRegex(Exception, "Dependencias no verificadas"):
+                with self.assertRaisesRegex(EvidenceCampaignError, "Dependencias no verificadas"):
                     ledger.start_control(
                         campaign_id,
                         dependent["ref"],
