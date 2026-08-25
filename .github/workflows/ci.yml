@@ -178,12 +178,17 @@ jobs:
           start_server /tmp/legalaiz-m36-2.log
           python tools/m36_2_http_smoke.py
 
-          # M36.3 recorre asignación, aprobaciones y entrega con varios roles.
+          # M36.3 vuelve a recorrer asignación, aprobaciones y entrega con varios roles
+          # y un segundo cliente. Se reinicia sólo el proceso para aislar el limitador
+          # in-memory; se conservan runtime, SQLite y credenciales efímeras. La política
+          # real de login 12/300 permanece intacta y no admite bypass de CI.
           stop_server
           start_server /tmp/legalaiz-m36-3.log
           python tools/m36_3_http_smoke.py
 
-          # M37.0 inicia y actualiza seguimiento controlado sin bypass M24.
+          # M37.0 vuelve a crear un expediente entregado y prueba inicio + tareas con
+          # cliente/admin. Reiniciamos sólo el proceso: misma SQLite/runtime/clave demo,
+          # pero ventana in-memory limpia. La política real de login 12/300 sigue intacta.
           stop_server
           start_server /tmp/legalaiz-m37-0.log
           python tools/m37_0_http_smoke.py
