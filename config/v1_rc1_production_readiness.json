@@ -1,0 +1,72 @@
+{
+  "schema": "legalaizit-v1-rc1-production-readiness-v1",
+  "candidate": "V1-RC1",
+  "title": "Production Readiness Gate",
+  "startup": {
+    "profile": "production",
+    "app_env": "production",
+    "required_true": [
+      "LEGAL_SECURE_COOKIES",
+      "LEGAL_REQUIRE_ORIGIN_CHECK",
+      "LEGAL_TRUST_PROXY",
+      "LEGAL_OBJECT_ENCRYPTION",
+      "LEGAL_VOLUME_ENCRYPTION_CONFIRMED",
+      "LEGAL_POSTGRES_EXTERNAL_CERTIFIED"
+    ],
+    "required_false": [
+      "LEGAL_ALLOW_DEMO_ACCOUNTS",
+      "LEGAL_PUBLIC_DEMO_MODE"
+    ],
+    "database_backend": "postgresql",
+    "malware_scanner": "clamav",
+    "required_mfa_roles": ["admin", "specialist"],
+    "managed_secret_any": [
+      "LEGAL_MASTER_KEY",
+      "LEGAL_MASTER_KEY_FILE",
+      "LEGAL_MASTER_KEY_SEED"
+    ],
+    "required_non_secret_values": [
+      "LEGAL_PUBLIC_BASE_URL",
+      "LEGAL_TRUSTED_PROXY_IPS",
+      "DATABASE_URL"
+    ]
+  },
+  "external_attestations": [
+    "postgres_runtime",
+    "tls_certificate",
+    "monitoring_alerts",
+    "restore_drill_production",
+    "load_test",
+    "pentest",
+    "privacy_approval",
+    "incident_drill",
+    "mac_windows_validation",
+    "rollback_drill"
+  ],
+  "commercial_launch": {
+    "required_true": [
+      "LEGAL_PRODUCTION_LAUNCH_AUTHORIZED",
+      "LEGAL_REAL_PAYMENTS_AUTHORIZED",
+      "LEGAL_EXTERNAL_COMMUNICATIONS_AUTHORIZED",
+      "LEGAL_LEGAL_PORTFOLIO_FINAL_APPROVED",
+      "LEGAL_QA_PORTFOLIO_FINAL_APPROVED",
+      "LEGAL_PRIVACY_FINAL_APPROVED"
+    ],
+    "payment_provider_env": "LEGAL_PAYMENT_PROVIDER",
+    "disallowed_payment_providers": ["", "sandbox", "disabled", "none"],
+    "communications_provider_env": "LEGAL_COMMUNICATION_PROVIDER",
+    "disallowed_communications_providers": ["", "sandbox", "disabled", "none"],
+    "release_metadata": {
+      "REAL_PRODUCTION_AUTHORIZED": true,
+      "REAL_PAYMENTS_AUTHORIZED": true,
+      "SYNTHETIC_DATA_ONLY": false
+    }
+  },
+  "principles": [
+    "Un perfil production inseguro no debe iniciar el servidor.",
+    "Un entorno técnicamente seguro no equivale a autorización comercial.",
+    "Ninguna variable de entorno puede sobreescribir por sí sola una prohibición de release metadata.",
+    "Pagos y comunicaciones externas permanecen deshabilitados hasta que exista proveedor real validado y autorización expresa.",
+    "La aprobación jurídica, QA y privacidad son compuertas humanas separadas de CI."
+  ]
+}
