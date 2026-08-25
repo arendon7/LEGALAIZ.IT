@@ -54,8 +54,9 @@ def handle_release_readiness_get(handler, path: str, user: dict) -> bool:
         )
         return True
 
-    con = core.db()
+    con = None
     try:
+        con = core.db()
         payload = readiness_center().assess(con)
     except Exception:
         _observe("v1_release_readiness_failed", actor_role=user.get("role"), ip_hash=_ip_hash(handler))
@@ -68,7 +69,8 @@ def handle_release_readiness_get(handler, path: str, user: dict) -> bool:
         )
         return True
     finally:
-        con.close()
+        if con is not None:
+            con.close()
 
     readiness = payload.get("readiness") or {}
     _observe(
