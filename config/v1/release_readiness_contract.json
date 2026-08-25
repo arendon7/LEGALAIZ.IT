@@ -1,0 +1,78 @@
+{
+  "schema": "legalaiz-v1-release-readiness-contract-v1",
+  "schema_version": 1,
+  "candidate_lineage": {
+    "canonical_baseline": "M33.1",
+    "integrated_head": "M37.3",
+    "required_runtime_handler": "from legalai_platform.http_handler_m37_3 import Handler",
+    "required_runtime_markers": [
+      "m34-1-intelligent-intake-ux",
+      "m34-2-structured-fact-extraction-confirmation",
+      "m34-3-adaptive-question-sufficiency",
+      "m34-4-explainable-recommendation",
+      "m35-0-account-case-handoff",
+      "m35-1-fulfillment-context-offer",
+      "m35-2-commerce-case-traceability",
+      "m35-3-case-activation-purchase-confirmation",
+      "m36-0-fulfillment-intake-bridge",
+      "m36-1-professional-assignment-handoff",
+      "m36-2-review-lifecycle-reconciliation",
+      "m36-3-controlled-delivery-gate",
+      "m37-0-post-delivery-followup-foundation",
+      "m37-1-evidence-intake-review-boundary",
+      "m37-2-recorded-dates-reminder-boundary",
+      "m37-3-professional-disposition-gate"
+    ]
+  },
+  "portfolio_floor": {
+    "products": 11,
+    "questions": 473,
+    "rules": 273
+  },
+  "production_profile_code_controls": [
+    "LEGAL_PROFILE=production",
+    "LEGAL_APP_ENV=production",
+    "LEGAL_SECURE_COOKIES=true",
+    "LEGAL_REQUIRE_ORIGIN_CHECK=true",
+    "LEGAL_DATABASE_BACKEND=postgresql",
+    "LEGAL_OBJECT_ENCRYPTION=true",
+    "LEGAL_REQUIRE_MFA_ROLES=admin,specialist",
+    "LEGAL_MALWARE_SCANNER=clamav",
+    "LEGAL_ALLOW_DEMO_ACCOUNTS=false"
+  ],
+  "real_production_metadata_gates": [
+    "REAL_PRODUCTION_AUTHORIZED",
+    "POSTGRES_EXTERNAL_CERTIFIED",
+    "POSTGRES_BACKUP_RESTORE_CERTIFIED",
+    "POSTGRES_MIGRATION_CERTIFIED"
+  ],
+  "commercial_v1_metadata_gates": [
+    "REAL_PAYMENTS_AUTHORIZED"
+  ],
+  "real_production_attestations": [
+    "postgres_external_certification",
+    "postgres_backup_restore_exercise",
+    "postgres_migration_certification",
+    "persistent_object_storage_certification",
+    "managed_secrets_rotation_certification",
+    "privileged_mfa_operational_verification",
+    "malware_scanner_operational_verification",
+    "monitoring_alerting_incident_response",
+    "privacy_data_protection_go_live_review",
+    "legal_qa_operating_model_signoff",
+    "disaster_recovery_restore_exercise"
+  ],
+  "commercial_v1_attestations": [
+    "real_payment_provider_certification"
+  ],
+  "attestation_registry": "config/v1/production_attestations.json",
+  "verified_attestation_status": "VERIFIED_EXTERNAL_EVIDENCE",
+  "governance": {
+    "code_ci_can_authorize_real_production": false,
+    "code_ci_can_authorize_real_payments": false,
+    "missing_attestation_fails_closed": true,
+    "verified_attestation_requires_evidence_ref": true,
+    "release_candidate_is_not_production_authorization": true,
+    "human_legal_and_qa_approval_remain_required": true
+  }
+}
