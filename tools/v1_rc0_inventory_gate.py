@@ -32,19 +32,37 @@ def main() -> int:
     if isinstance(products, dict):
         catalog_codes = set(products)
     elif isinstance(products, list):
-        catalog_codes = {str(item.get("code") or item.get("product_code") or "") for item in products if isinstance(item, dict)}
+        catalog_codes = {
+            str(item.get("code") or item.get("product_code") or "")
+            for item in products
+            if isinstance(item, dict)
+        }
     else:
         raise SystemExit("RC0: data/products.json tiene una forma inesperada")
-    if not product_codes.issubset(catalog_codes):
-        missing = sorted(product_codes - catalog_codes)
-        raise SystemExit(f"RC0: productos de entrevista ausentes del catálogo: {missing}")
+    if product_codes != catalog_codes:
+        raise SystemExit(
+            "RC0: catálogo e entrevistas no cubren exactamente el mismo portafolio: "
+            f"missing={sorted(product_codes - catalog_codes)} extra={sorted(catalog_codes - product_codes)}"
+        )
 
-    contract_codes = set((contracts.get("products") or contracts).keys()) if isinstance(contracts, dict) else set()
+    if not isinstance(contracts, dict) or not isinstance(contracts.get("contracts"), list):
+        raise SystemExit("RC0: config/m34/product_contracts.json no conserva el esquema contracts[]")
+    contract_codes = {
+        str(item.get("product_code") or "")
+        for item in contracts["contracts"]
+        if isinstance(item, dict)
+    }
     if contract_codes != product_codes:
         raise SystemExit(
             "RC0: los contratos M34 no cubren exactamente el portafolio fuente: "
             f"missing={sorted(product_codes - contract_codes)} extra={sorted(contract_codes - product_codes)}"
         )
+
+    floors = contracts.get("compatibility_floors") or {}
+    expected_floors = {"products": 11, "questions": 473, "rules": 273}
+    for key, expected in expected_floors.items():
+        if int(floors.get(key) or 0) < expected:
+            raise SystemExit(f"RC0: compatibility_floors.{key} bajó de {expected} a {floors.get(key)!r}")
 
     required_paths = [
         ROOT / "legalai_platform" / "legal_source_registry.py",
@@ -71,7 +89,7 @@ def main() -> int:
     print(
         "V1-RC0 inventory PASS · "
         f"products={len(product_codes)} questions={question_count} rules={rule_count} "
-        "m33_4_sources=present m34_contracts=exact m37_disposition=present"
+        "floors=11/473/273 m33_4_sources=present m34_contracts=exact m37_disposition=present"
     )
     return 0
 
