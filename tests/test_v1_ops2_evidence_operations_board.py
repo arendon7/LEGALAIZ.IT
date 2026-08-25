@@ -170,12 +170,17 @@ class V1OPS2EvidenceOperationsBoardTests(unittest.TestCase):
             payload = json.loads(plan_path.read_text(encoding="utf-8"))
             payload["notice"] = str(payload.get("notice") or "") + " ops2-drift"
             plan_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-            with self.assertRaises(EvidenceOperationsBoardError):
-                EvidenceOperationsBoard(
-                    root,
-                    campaign_id=event["campaign_id"],
-                    ledger_path=ledger_path,
-                ).build()
+            board = EvidenceOperationsBoard(
+                root,
+                campaign_id=event["campaign_id"],
+                ledger_path=ledger_path,
+            ).build()
+        self.assertEqual(board["campaign"]["status"], "BLOCKED")
+        self.assertFalse(board["campaign"]["plan_hash_current"])
+        self.assertIn("PLAN_DRIFT", board["campaign"]["global_blockers"])
+        self.assertTrue(all(row["work_status"] == "PLAN_DRIFT" for row in board["controls"]))
+        self.assertFalse(board["summary"]["release_authorized"])
+        self.assertFalse(board["summary"]["commercial_authorized"])
 
     def test_tampered_campaign_ledger_fails_closed(self) -> None:
         with TemporaryDirectory() as temp:
