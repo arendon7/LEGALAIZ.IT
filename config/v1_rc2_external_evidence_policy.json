@@ -1,0 +1,67 @@
+{
+  "schema": "legalaizit-v1-rc2-external-evidence-policy-v1",
+  "candidate": "V1-RC2",
+  "assurance": "hardened_v1_rc2",
+  "runtime_roles": ["admin", "specialist", "qa"],
+  "release_ratifier_roles": ["admin", "qa"],
+  "controls": {
+    "postgres_runtime": {
+      "domain": "platform_security",
+      "domain_approver_roles": ["admin", "qa"],
+      "max_validity_days": 90
+    },
+    "tls_certificate": {
+      "domain": "platform_security",
+      "domain_approver_roles": ["admin", "qa"],
+      "max_validity_days": 90
+    },
+    "monitoring_alerts": {
+      "domain": "platform_security",
+      "domain_approver_roles": ["admin", "qa"],
+      "max_validity_days": 90
+    },
+    "restore_drill_production": {
+      "domain": "platform_security",
+      "domain_approver_roles": ["admin", "qa"],
+      "max_validity_days": 180
+    },
+    "load_test": {
+      "domain": "qa_release",
+      "domain_approver_roles": ["admin", "qa"],
+      "max_validity_days": 90
+    },
+    "pentest": {
+      "domain": "security_assurance",
+      "domain_approver_roles": ["admin", "qa"],
+      "max_validity_days": 180
+    },
+    "privacy_approval": {
+      "domain": "legal_privacy",
+      "domain_approver_roles": ["admin", "specialist"],
+      "max_validity_days": 180
+    },
+    "incident_drill": {
+      "domain": "platform_security",
+      "domain_approver_roles": ["admin", "qa"],
+      "max_validity_days": 180
+    },
+    "mac_windows_validation": {
+      "domain": "qa_release",
+      "domain_approver_roles": ["admin", "qa"],
+      "max_validity_days": 90
+    },
+    "rollback_drill": {
+      "domain": "platform_security",
+      "domain_approver_roles": ["admin", "qa"],
+      "max_validity_days": 180
+    }
+  },
+  "principles": [
+    "Los plazos de vigencia son controles operativos internos de release, no términos legales ni certificaciones regulatorias.",
+    "La evidencia debe existir fuera de respuestas públicas y su SHA-256 debe coincidir con el registrado.",
+    "Aprobar un dominio y ratificar release requieren actores distintos.",
+    "Revocar o reemplazar evidencia se registra como un nuevo evento; no se reescribe historia.",
+    "Un registro M7 legacy puede conservarse para trazabilidad, pero no satisface por sí solo la compuerta V1-RC2.",
+    "Ningún evento de evidencia modifica release_metadata ni habilita pagos o comunicaciones externas."
+  ]
+}
