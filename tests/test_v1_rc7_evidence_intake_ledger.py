@@ -357,10 +357,15 @@ class V1RC7EvidenceIntakeLedgerTests(unittest.TestCase):
         self.assertNotIn("external_attestation_dossier_v1_rc7", run_source)
         self.assertNotIn("external_evidence_bundle_v1", run_source)
 
-    def test_cli_consumes_rc7_gate(self) -> None:
-        source = (ROOT / "tools" / "v1_release_readiness_audit.py").read_text(encoding="utf-8")
-        self.assertIn("from legalai_platform.release_readiness_v1_rc7 import assess_release_readiness", source)
-        self.assertNotIn("from legalai_platform.release_readiness_v1_rc6 import assess_release_readiness", source)
+    def test_release_audit_chain_preserves_rc7_gate(self) -> None:
+        cli_source = (ROOT / "tools" / "v1_release_readiness_audit.py").read_text(encoding="utf-8")
+        rc8_source = (ROOT / "legalai_platform" / "release_readiness_v1_rc8.py").read_text(encoding="utf-8")
+        self.assertIn("from legalai_platform.release_readiness_v1_rc8 import assess_release_readiness", cli_source)
+        self.assertIn(
+            "from legalai_platform.release_readiness_v1_rc7 import assess_release_readiness as assess_rc7_release_readiness",
+            rc8_source,
+        )
+        self.assertNotIn("from legalai_platform.release_readiness_v1_rc6 import assess_release_readiness", cli_source)
 
 
 if __name__ == "__main__":

@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from legalai_platform.release_readiness_v1_rc7 import assess_release_readiness
+from legalai_platform.release_readiness_v1_rc8 import assess_release_readiness
 
 
 def main() -> int:
@@ -68,6 +68,7 @@ def main() -> int:
     superset = report["assurance_superset"]
     execution = report["evidence_execution_pack"]
     runtime = report["runtime_external_evidence"]
+    orchestration = report["evidence_orchestration"]
     rc2_bundle = runtime["rc2_bundle_gate"]
     rc4_ledger = runtime["rc4_attestation_ledger"]
     print(
@@ -77,7 +78,9 @@ def main() -> int:
         f"execution_plan={execution['controls']} pending={execution['pending']} "
         f"rc2_bundles={rc2_bundle['bundle_validated']}/{rc2_bundle['total']} "
         f"rc4_runtime_verified={rc4_ledger['passed']}/{rc4_ledger['total']} "
-        "production_auto_authorized=false payments_auto_authorized=false "
+        f"orchestration={orchestration['controls']} campaigns={orchestration['campaigns']} "
+        f"evidence_verified={orchestration['verified']}/{orchestration['controls']} "
+        "evidence_complete_is_authorization=false production_auto_authorized=false payments_auto_authorized=false "
         "runtime_registry_mutation=false authorization_provenance=versioned-human-decision"
     )
     return 0
