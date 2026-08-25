@@ -7,9 +7,27 @@ from legalai_platform.deployment_environment import prepare_deployment_environme
 
 prepare_deployment_environment()
 
+# La compuerta se instala antes de importar core_v11 para que todos los puntos
+# históricos que usan ``from docx_builder import build_docx`` reciban la versión
+# protegida. La instalación es idempotente y conserva la firma del constructor.
 from legalai_platform.document_release_gate import install_docx_release_gate
 
 install_docx_release_gate()
+
+# M33.2 añade, después de la compuerta técnica, las capas editoriales por familia.
+# Cada wrapper vuelve a ejecutar el preflight sobre el DOCX ya formateado para que
+# Jurídico y QA gobiernen exactamente los bytes que podrían liberarse.
+from m33_2_procedural_reference_format import install_m33_2_procedural_format_gate
+from m33_2_analytical_reference_format import install_m33_2_analytical_format_gate
+from m33_2_operational_reference_format import install_m33_2_operational_format_gate
+from m33_2_special_reference_format import install_m33_2_special_format_gate
+from m33_2_special_pagination_finalize import install_m33_2_special_pagination_gate
+
+install_m33_2_procedural_format_gate()
+install_m33_2_analytical_format_gate()
+install_m33_2_operational_format_gate()
+install_m33_2_special_format_gate()
+install_m33_2_special_pagination_gate()
 
 from core_v11 import *  # noqa: F401,F403,E402
 import core_v11 as core  # noqa: E402
@@ -19,10 +37,45 @@ import threading
 import webbrowser
 import signal
 from legalai_platform.runtime_registry import *  # noqa: F401,F403,E402
+import legalai_platform.runtime_registry as _runtime_registry  # noqa: E402
 from legalai_platform.release_metadata import RELEASE_NAME, PUBLIC_DEMO_MODE, MILESTONE  # noqa: E402
 from legalai_platform.application_services import *  # noqa: F401,F403,E402
 import legalai_platform.application_services as _application_services  # noqa: E402
-from legalai_platform.http_handler_m33_0 import Handler  # noqa: E402
+from legalai_platform.runtime_m33_overrides import activate_m33_contract_factories  # noqa: E402
+from legalai_platform.m36_3_journey_guard import install_m36_3_delivery_guard  # noqa: E402
+from legalai_platform.m37_0_journey_guard import install_m37_0_followup_guard  # noqa: E402
+
+# La Fábrica Documental M33.0–M33.4 se activa sobre el mismo runtime que consume
+# el journey M34–M37. Conserva aliases históricos y no sustituye los centros M24+.
+activate_m33_contract_factories(
+    _runtime_registry,
+    application_services=_application_services,
+    target_namespace=globals(),
+)
+
+# Las compuertas de entrega y seguimiento se instalan después de la activación M33
+# sobre el M24_CASE_JOURNEY canónico, evitando que un override posterior deje un
+# objeto sin protección de lifecycle.
+install_m36_3_delivery_guard(M24_CASE_JOURNEY)
+install_m37_0_followup_guard(M24_CASE_JOURNEY)
+
+from legalai_platform.http_handler_m37_3 import Handler  # noqa: E402
+# from legalai_platform.http_handler_m37_2 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m37_1 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m37_0 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m36_3 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m36_2 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m36_1 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m36_0 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m35_3 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m35_2 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m35_1 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m35_0 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m34_4 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m34_3 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m34_2 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m34_1 import Handler  # compatibility marker
+# from legalai_platform.http_handler_m33_0 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m32_9 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m32_8 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m32_7 import Handler  # compatibility marker
@@ -37,7 +90,27 @@ from legalai_platform.http_handler_m33_0 import Handler  # noqa: E402
 # m32-8-transactional-communications
 # m32-9-contact-governance
 # m33-0-public-demo-integration
+# m33-0-document-standard
 # m33-1-render-deployment-hardening
+# m33-2-reference-format-families
+# m33-3-colombian-calendar-and-habeas-guards
+# m33-4-official-source-traceability
+# m34-1-intelligent-intake-ux
+# m34-2-structured-fact-extraction-confirmation
+# m34-3-adaptive-question-sufficiency
+# m34-4-explainable-recommendation
+# m35-0-account-case-handoff
+# m35-1-fulfillment-context-offer
+# m35-2-commerce-case-traceability
+# m35-3-case-activation-purchase-confirmation
+# m36-0-fulfillment-intake-bridge
+# m36-1-professional-assignment-handoff
+# m36-2-review-lifecycle-reconciliation
+# m36-3-controlled-delivery-gate
+# m37-0-post-delivery-followup-foundation
+# m37-1-evidence-intake-review-boundary
+# m37-2-recorded-dates-reminder-boundary
+# m37-3-professional-disposition-gate
 # LEGAL_ALLOW_DEMO_ACCOUNTS
 # LEGAL_BOOTSTRAP_ADMIN_EMAIL
 # UPDATE users SET active=0 WHERE lower(email) LIKE '%@demo.legalaiz.it'
@@ -114,6 +187,7 @@ def main():
 
     for sig in (signal.SIGTERM, signal.SIGINT):
         signal.signal(sig, stop_server)
+
     try:
         OBSERVABILITY.write("server_started", host=host, port=port, profile=SETTINGS.profile, version=VERSION)
         server.serve_forever(poll_interval=0.5)
