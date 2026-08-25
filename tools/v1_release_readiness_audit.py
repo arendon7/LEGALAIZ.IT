@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from legalai_platform.release_readiness_v1 import assess_release_readiness
+from legalai_platform.release_readiness_v1_rc5 import assess_release_readiness
 
 
 def main() -> int:
@@ -65,11 +65,13 @@ def main() -> int:
         )
         return 5
 
+    superset = report["assurance_superset"]
     print(
         "V1 READINESS PASS · "
         f"candidate={candidate['status']} real={real['status']} commercial={commercial['status']} "
+        f"rc2={superset['rc2_control_count']} rc4={superset['rc4_attestation_count']} "
         "production_auto_authorized=false payments_auto_authorized=false "
-        "authorization_provenance=versioned-human-decision"
+        "authorization_provenance=versioned-human-decision assurance=rc4-plus-rc2"
     )
     return 0
 
