@@ -144,6 +144,7 @@ class V1OPS4PrivateExecutionDispatchGuardTests(unittest.TestCase):
             packets = sorted((output / "controls").glob("*.md"))
             self.assertEqual(result["dispatchable_count"], preflight["dispatchable_count"])
             self.assertEqual(result["files_written"], preflight["dispatchable_count"] + 2)
+            self.assertTrue(result["snapshot_revalidated_before_publish"])
             self.assertEqual(len(packets), preflight["dispatchable_count"])
             self.assertEqual(manifest["schema"], DISPATCH_MANIFEST_SCHEMA)
             self.assertEqual(manifest["controls"], preflight["dispatchable_count"])
@@ -181,6 +182,23 @@ class V1OPS4PrivateExecutionDispatchGuardTests(unittest.TestCase):
         self.assertIn("current_board_sha256", manifest)
         for row in manifest["packets"]:
             self.assertNotIn("sha256", json.dumps(row).lower())
+
+    def test_state_change_during_materialization_discards_temporary_dispatch(self) -> None:
+        with TemporaryDirectory() as temp, patch.dict(os.environ, {"LEGAL_RUNTIME_DIR": temp}, clear=False):
+            ledger, _, pack, _ = self._fixture(temp)
+            guard = self._guard(ledger)
+            initial = guard.preflight(pack)
+            stale = dict(initial)
+            stale["dispatch_allowed"] = False
+            stale["source_board_current"] = False
+            stale["current_board_sha256"] = "f" * 64
+            stale["blockers"] = ["STALE_SOURCE_BOARD"]
+            output = Path(temp) / "dispatch"
+            with patch.object(guard, "preflight", side_effect=[initial, stale]):
+                with self.assertRaisesRegex(PrivateDispatchGuardError, "STATE_CHANGED_DURING_DISPATCH"):
+                    guard.write(pack, output)
+            self.assertFalse(output.exists())
+            self.assertEqual(list(Path(temp).glob(".ops4-*")), [])
 
     def test_preflight_and_write_never_mutate_campaign_ledger(self) -> None:
         with TemporaryDirectory() as temp, patch.dict(os.environ, {"LEGAL_RUNTIME_DIR": temp}, clear=False):

@@ -4,7 +4,6 @@ import json
 import os
 from pathlib import Path, PurePosixPath
 import shutil
-import stat
 import tempfile
 from typing import Any
 
@@ -168,7 +167,10 @@ class PrivateExecutionDispatchGuard:
                 resolved.relative_to(root)
             except ValueError as exc:
                 raise PrivateDispatchGuardError("Un packet OPS3 escapa del directorio privado.") from exc
-            body = resolved.read_text(encoding="utf-8")
+            try:
+                body = resolved.read_text(encoding="utf-8")
+            except (OSError, UnicodeError) as exc:
+                raise PrivateDispatchGuardError(f"Packet privado ilegible para {ref}.") from exc
             bindings = (
                 f"- Campaña: `{manifest['campaign_id']}`",
                 f"- Control: `{ref}`",
@@ -236,10 +238,11 @@ class PrivateExecutionDispatchGuard:
             row for row in board["controls"]
             if board_current and not blockers and str(row["work_status"]) in DISPATCHABLE_STATUSES
         ]
+        dispatchable_refs = {str(item["control_ref"]) for item in dispatchable}
         nondispatchable = [
             {"control_ref": row["control_ref"], "wave": row["wave"], "status": row["work_status"]}
             for row in board["controls"]
-            if row["control_ref"] not in {item["control_ref"] for item in dispatchable}
+            if str(row["control_ref"]) not in dispatchable_refs
         ]
         return {
             "schema": PREFLIGHT_SCHEMA,
@@ -265,6 +268,18 @@ class PrivateExecutionDispatchGuard:
             "evidence_mutated": False,
             "release_authorization_changed": False,
         }
+
+    @staticmethod
+    def _assert_dispatch_snapshot_unchanged(initial: dict[str, Any], final: dict[str, Any]) -> None:
+        if (
+            not bool(final.get("dispatch_allowed"))
+            or str(final.get("source_board_sha256") or "") != str(initial.get("source_board_sha256") or "")
+            or str(final.get("current_board_sha256") or "") != str(initial.get("current_board_sha256") or "")
+            or final.get("dispatchable_controls") != initial.get("dispatchable_controls")
+        ):
+            raise PrivateDispatchGuardError(
+                "STATE_CHANGED_DURING_DISPATCH: la campaña/board cambió durante la materialización; descarte el temporal y regenere OPS3/OPS4."
+            )
 
     def write(self, pack_dir: str | Path, output_dir: str | Path) -> dict[str, Any]:
         source_root, manifest, packet_paths = self._load_pack(pack_dir)
@@ -342,6 +357,9 @@ class PrivateExecutionDispatchGuard:
             with os.fdopen(fd, "w", encoding="utf-8") as handle:
                 handle.write(notice)
 
+            final_preflight = self.preflight(source_root)
+            self._assert_dispatch_snapshot_unchanged(preflight, final_preflight)
+
             os.replace(temp_dir, target)
             os.chmod(target, 0o700)
             os.chmod(target / "controls", 0o700)
@@ -359,6 +377,7 @@ class PrivateExecutionDispatchGuard:
             "dispatchable_count": len(selected),
             "files_written": len(selected) + 2,
             "source_board_current": True,
+            "snapshot_revalidated_before_publish": True,
             "contains_personal_data_in_private_files": True,
             "personal_data_echoed_to_summary": False,
             "network_delivery_performed": False,
