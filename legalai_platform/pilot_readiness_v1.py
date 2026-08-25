@@ -153,7 +153,8 @@ class PilotAuthorizationDossier:
             raise PilotReadinessError("La aprobación jurídica debe pertenecer a specialist.")
         if set(approvals.get("qa") or []) != {"qa"}:
             raise PilotReadinessError("La aprobación QA debe pertenecer a qa.")
-        if not set(self.policy.get("ratifier_roles") or []).issubset({"admin", "qa"}):
+        ratifiers = set(self.policy.get("ratifier_roles") or [])
+        if not ratifiers or not ratifiers.issubset({"admin", "qa"}):
             raise PilotReadinessError("Los roles de ratificación de piloto son inválidos.")
 
     def _load_product_codes(self) -> tuple[str, ...]:
@@ -292,6 +293,16 @@ class PilotAuthorizationDossier:
     @staticmethod
     def _plan_hash(plan: PilotPlan) -> str:
         return _digest(plan.as_dict())
+
+    def _window_status(self, plan: PilotPlan) -> str:
+        today = self.now_factory().astimezone(UTC).date()
+        starts = _parse_date(plan.starts_on, "starts_on")
+        ends = _parse_date(plan.ends_on, "ends_on")
+        if today < starts:
+            return "UPCOMING"
+        if today > ends:
+            return "EXPIRED"
+        return "ACTIVE"
 
     def _active_plan_from_rows(self, rows: list[dict[str, Any]]) -> tuple[dict[str, Any], PilotPlan] | None:
         registered: dict[str, dict[str, Any]] = {}
@@ -479,6 +490,7 @@ class PilotAuthorizationDossier:
             str(row.get("plan_hash") or "") == plan_hash and str(row.get("event_type") or "") == "PILOT_RATIFIED"
             for row in rows
         )
+        window_status = self._window_status(plan)
         return {
             "schema": "legalaizit-v1-pilot-dossier-summary-v1",
             "integrity": "valid",
@@ -488,6 +500,7 @@ class PilotAuthorizationDossier:
                 "mode": plan.mode,
                 "starts_on": plan.starts_on,
                 "ends_on": plan.ends_on,
+                "window_status": window_status,
                 "max_users": plan.max_users,
                 "max_tenants": plan.max_tenants,
                 "product_count": len(plan.product_codes),
@@ -533,6 +546,8 @@ class V1PilotReadinessGate:
         pilot = self.dossier.summary()
         plan = pilot.get("active_plan") or {}
         mode = str(plan.get("mode") or "")
+        window_status = str(plan.get("window_status") or "")
+        window_active = window_status == "ACTIVE"
         technical_ready = bool(rc2.get("ready_for_controlled_production_validation"))
         governance_ready = bool(pilot.get("integrity") == "valid" and pilot.get("ready"))
         preparation_ready = bool(technical_ready and governance_ready)
@@ -575,9 +590,9 @@ class V1PilotReadinessGate:
 
         real_client_blockers = [row["key"] for row in [*real_client_checks, *payment_checks, *communication_checks] if not row["passed"]]
         if mode == "SYNTHETIC_CONTROLLED":
-            mode_ready = bool(preparation_ready and metadata.get("SYNTHETIC_DATA_ONLY") is True)
+            mode_ready = bool(preparation_ready and window_active and metadata.get("SYNTHETIC_DATA_ONLY") is True)
         elif mode == "REAL_CLIENT_CONTROLLED":
-            mode_ready = bool(preparation_ready and not real_client_blockers)
+            mode_ready = bool(preparation_ready and window_active and not real_client_blockers)
         else:
             mode_ready = False
 
@@ -589,6 +604,10 @@ class V1PilotReadinessGate:
             state = "BLOCKED_RC2_ASSURANCE"
         elif not governance_ready:
             state = "BLOCKED_PILOT_GOVERNANCE"
+        elif window_status == "UPCOMING":
+            state = "READY_AWAITING_PILOT_WINDOW"
+        elif window_status == "EXPIRED":
+            state = "BLOCKED_PILOT_WINDOW_EXPIRED"
         elif mode == "SYNTHETIC_CONTROLLED" and mode_ready:
             state = "READY_FOR_SYNTHETIC_CONTROLLED_PILOT"
         elif mode == "REAL_CLIENT_CONTROLLED" and real_client_blockers:
@@ -612,6 +631,7 @@ class V1PilotReadinessGate:
             "release_metadata": metadata,
             "readiness": {
                 "technical_preparation_ready": preparation_ready,
+                "pilot_window_active": window_active,
                 "pilot_mode_ready": mode_ready,
                 "execution_requested": execution_requested,
                 "safe_execution_claim": safe_execution_claim,
