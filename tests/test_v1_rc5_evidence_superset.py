@@ -76,8 +76,13 @@ class V1RC5EvidenceSupersetTests(unittest.TestCase):
 
     def test_release_audit_chain_preserves_rc5_superset_gate(self) -> None:
         cli_source = (ROOT / "tools" / "v1_release_readiness_audit.py").read_text(encoding="utf-8")
+        rc7_source = (ROOT / "legalai_platform" / "release_readiness_v1_rc7.py").read_text(encoding="utf-8")
         rc6_source = (ROOT / "legalai_platform" / "release_readiness_v1_rc6.py").read_text(encoding="utf-8")
-        self.assertIn("from legalai_platform.release_readiness_v1_rc6 import assess_release_readiness", cli_source)
+        self.assertIn("from legalai_platform.release_readiness_v1_rc7 import assess_release_readiness", cli_source)
+        self.assertIn(
+            "from legalai_platform.release_readiness_v1_rc6 import assess_release_readiness as assess_rc6_release_readiness",
+            rc7_source,
+        )
         self.assertIn(
             "from legalai_platform.release_readiness_v1_rc5 import assess_release_readiness as assess_rc5_release_readiness",
             rc6_source,
