@@ -16,7 +16,11 @@ from legalai_platform.evidence_orchestration_v1_rc8 import (
     EvidenceCampaignIntegrityError,
     EvidenceCampaignLedger,
 )
-from legalai_platform.release_readiness_v1_rc8 import assess_release_readiness
+from legalai_platform.release_readiness_v1_rc8 import (
+    RC8_CAMPAIGN_LEDGER_INTEGRITY,
+    RC8_ORCHESTRATION_BLOCKER,
+    assess_release_readiness,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -108,6 +112,43 @@ class V1RC8EvidenceOrchestrationTests(unittest.TestCase):
             row["actor"]["id"] = "tampered.actor"
             path.write_text(json.dumps(row) + "\n", encoding="utf-8")
             self.assertFalse(ledger.verify_chain()["valid"])
+
+    def test_runtime_ledger_tampering_blocks_go_live_but_not_code_candidate(self) -> None:
+        with TemporaryDirectory() as temp:
+            runtime = Path(temp)
+            with patch.dict(os.environ, {"LEGAL_RUNTIME_DIR": temp}, clear=False):
+                ledger = EvidenceCampaignLedger(ROOT)
+                ledger.create_campaign(
+                    environment_fingerprint=ENV_FINGERPRINT,
+                    source_revision=SOURCE_REVISION,
+                    actor=MANAGER,
+                )
+                row = json.loads(ledger.path.read_text(encoding="utf-8").strip())
+                row["actor"]["id"] = "tampered.actor"
+                ledger.path.write_text(json.dumps(row) + "\n", encoding="utf-8")
+                report = assess_release_readiness(ROOT)
+        candidate = report["code_release_candidate"]
+        self.assertTrue(candidate["ready"], candidate)
+        self.assertEqual(candidate["status"], "RC_CODE_READY")
+        self.assertEqual(report["evidence_orchestration"]["campaign_ledger_integrity"], "invalid")
+        self.assertIn(RC8_CAMPAIGN_LEDGER_INTEGRITY, report["real_legal_production"]["blockers"])
+        self.assertFalse(report["real_legal_production"]["ready"])
+        self.assertFalse(report["commercial_v1"]["ready"])
+        self.assertTrue(report["governance"]["runtime_campaign_ledger_integrity_is_not_code_readiness"])
+        self.assertTrue(report["governance"]["runtime_campaign_ledger_integrity_is_required_for_go_live"])
+
+    def test_structural_orchestration_failure_blocks_code_candidate(self) -> None:
+        with patch(
+            "legalai_platform.release_readiness_v1_rc8.EvidenceCampaignLedger",
+            side_effect=EvidenceCampaignError("invalid-policy"),
+        ):
+            report = assess_release_readiness(ROOT)
+        candidate = report["code_release_candidate"]
+        self.assertFalse(candidate["ready"])
+        self.assertEqual(candidate["status"], "RC_CODE_BLOCKED")
+        self.assertIn(RC8_ORCHESTRATION_BLOCKER, report["real_legal_production"]["blockers"])
+        self.assertFalse(report["real_legal_production"]["ready"])
+        self.assertFalse(report["commercial_v1"]["ready"])
 
     def test_dependencies_are_read_from_rc6_and_block_start_until_verified(self) -> None:
         plan = EvidenceExecutionPlan(ROOT).plan
