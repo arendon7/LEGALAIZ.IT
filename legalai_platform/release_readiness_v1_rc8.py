@@ -14,6 +14,7 @@ from legalai_platform.release_readiness_v1_rc7 import assess_release_readiness a
 
 ROOT = Path(__file__).resolve().parents[1]
 RC8_ORCHESTRATION_BLOCKER = "RC8_EVIDENCE_ORCHESTRATION_INVALID"
+RC8_CAMPAIGN_LEDGER_INTEGRITY = "RC8_CAMPAIGN_LEDGER_INTEGRITY"
 
 
 def _empty_orchestration(error: str) -> dict[str, Any]:
@@ -33,8 +34,29 @@ def _empty_orchestration(error: str) -> dict[str, Any]:
     }
 
 
+def _block_real_and_commercial(report: dict[str, Any], blocker: str) -> None:
+    real = report["real_legal_production"]
+    real["blockers"] = list(dict.fromkeys(list(real.get("blockers") or []) + [blocker]))
+    real["ready"] = False
+    real["status"] = "REAL_PRODUCTION_BLOCKED"
+
+    commercial = report["commercial_v1"]
+    commercial["blockers"] = list(
+        dict.fromkeys(["REAL_LEGAL_PRODUCTION_NOT_READY"] + list(commercial.get("blockers") or []))
+    )
+    commercial["ready"] = False
+    commercial["status"] = "COMMERCIAL_V1_BLOCKED"
+
+
 def assess_release_readiness(root: Path | None = None) -> dict[str, Any]:
-    """RC8 añade orquestación auditable sin convertir coordinación en autorización."""
+    """RC8 añade orquestación auditable sin convertir coordinación en autorización.
+
+    La estructura versionada de RC8 forma parte de la calidad del candidato de
+    código. La integridad del ledger runtime es un gate operativo separado: si
+    se altera, el código puede seguir siendo un candidato válido, pero el go-live
+    debe permanecer fail-closed hasta reparar o reemplazar el ledger mediante el
+    procedimiento de gobierno correspondiente.
+    """
 
     root = Path(root or ROOT)
     report = deepcopy(assess_rc7_release_readiness(root))
@@ -51,8 +73,7 @@ def assess_release_readiness(root: Path | None = None) -> dict[str, Any]:
             if row.get("event_type") == "CAMPAIGN_CREATED" and str(row.get("campaign_id") or "")
         })
         structural = bool(
-            integrity.get("valid")
-            and len(packets) == 22
+            len(packets) == 22
             and len(packet_refs) == len(set(packet_refs)) == 22
             and not packet_evidence
             and audit.get("control_count") == 22
@@ -89,25 +110,16 @@ def assess_release_readiness(root: Path | None = None) -> dict[str, Any]:
             "passed": orchestration["task_packets"] == 22 and not orchestration["task_packets_embed_evidence"],
             "detail": f"task_packets={orchestration['task_packets']} embedded_evidence={orchestration['task_packets_embed_evidence']}",
         },
-        {
-            "key": "rc8_campaign_ledger_integrity",
-            "passed": orchestration["campaign_ledger_integrity"] == "valid",
-            "detail": f"campaign_ledger_integrity={orchestration['campaign_ledger_integrity']}",
-        },
     ])
     candidate["checks"] = checks
     candidate["ready"] = all(bool(row.get("passed")) for row in checks)
     candidate["status"] = "RC_CODE_READY" if candidate["ready"] else "RC_CODE_BLOCKED"
 
     if not candidate["ready"]:
-        real = report["real_legal_production"]
-        real["blockers"] = list(dict.fromkeys(list(real.get("blockers") or []) + [RC8_ORCHESTRATION_BLOCKER]))
-        real["ready"] = False
-        real["status"] = "REAL_PRODUCTION_BLOCKED"
-        commercial = report["commercial_v1"]
-        commercial["blockers"] = list(dict.fromkeys(["REAL_LEGAL_PRODUCTION_NOT_READY"] + list(commercial.get("blockers") or [])))
-        commercial["ready"] = False
-        commercial["status"] = "COMMERCIAL_V1_BLOCKED"
+        _block_real_and_commercial(report, RC8_ORCHESTRATION_BLOCKER)
+
+    if orchestration["campaign_ledger_integrity"] != "valid":
+        _block_real_and_commercial(report, RC8_CAMPAIGN_LEDGER_INTEGRITY)
 
     report["schema"] = "legalaiz-v1-release-readiness-report-v6"
     report["evidence_orchestration"] = orchestration
@@ -122,8 +134,14 @@ def assess_release_readiness(root: Path | None = None) -> dict[str, Any]:
     governance["campaign_cannot_mutate_release_metadata"] = True
     governance["campaign_cannot_authorize_real_production"] = True
     governance["campaign_cannot_authorize_real_payments"] = True
+    governance["runtime_campaign_ledger_integrity_is_not_code_readiness"] = True
+    governance["runtime_campaign_ledger_integrity_is_required_for_go_live"] = True
 
     return report
 
 
-__all__ = ["RC8_ORCHESTRATION_BLOCKER", "assess_release_readiness"]
+__all__ = [
+    "RC8_CAMPAIGN_LEDGER_INTEGRITY",
+    "RC8_ORCHESTRATION_BLOCKER",
+    "assess_release_readiness",
+]
