@@ -1,0 +1,33 @@
+{
+  "schema": "legalaiz-v1-rc10-audit-custody-export-policy-v1",
+  "schema_version": 1,
+  "canonical_files": [
+    "audit-pack.json",
+    "audit-pack.md",
+    "custody-manifest.json"
+  ],
+  "payload_files": [
+    "audit-pack.json",
+    "audit-pack.md"
+  ],
+  "governance": {
+    "export_is_derived_not_source_of_truth": true,
+    "export_does_not_mutate_runtime_ledgers": true,
+    "export_does_not_mutate_release_metadata": true,
+    "export_does_not_register_evidence": true,
+    "export_does_not_approve_or_ratify_evidence": true,
+    "export_does_not_authorize_real_production": true,
+    "export_does_not_authorize_real_payments": true,
+    "only_redacted_audit_pack_files_are_hashed": true,
+    "evidence_artifact_hashes_remain_forbidden": true,
+    "actor_identifiers_remain_forbidden": true,
+    "environment_fingerprint_remains_forbidden": true,
+    "authorization_evidence_reference_remains_forbidden": true,
+    "canonical_bundle_is_immutable": true,
+    "existing_invalid_bundle_is_never_overwritten": true,
+    "envelope_digest_is_not_a_digital_signature": true,
+    "external_anchor_required_for_non_repudiation": true,
+    "retention_period_is_organization_defined": true,
+    "retention_period_is_not_a_legal_conclusion": true
+  }
+}
