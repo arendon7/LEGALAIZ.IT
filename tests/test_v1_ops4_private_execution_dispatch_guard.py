@@ -177,7 +177,10 @@ class V1OPS4PrivateExecutionDispatchGuardTests(unittest.TestCase):
             self._guard(ledger).write(pack, output)
             manifest = json.loads((output / "dispatch-manifest.json").read_text(encoding="utf-8"))
         self.assertFalse(manifest["packet_hashes_persisted"])
-        self.assertNotIn("sha256", json.dumps(manifest).lower())
+        self.assertIn("source_board_sha256", manifest)
+        self.assertIn("current_board_sha256", manifest)
+        for row in manifest["packets"]:
+            self.assertNotIn("sha256", json.dumps(row).lower())
 
     def test_preflight_and_write_never_mutate_campaign_ledger(self) -> None:
         with TemporaryDirectory() as temp, patch.dict(os.environ, {"LEGAL_RUNTIME_DIR": temp}, clear=False):
