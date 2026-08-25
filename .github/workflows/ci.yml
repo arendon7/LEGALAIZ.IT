@@ -19,7 +19,7 @@ permissions:
 jobs:
   smoke:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -33,7 +33,21 @@ jobs:
       - name: Validar sintaxis
         run: python -m compileall -q .
       - name: Validar integridad y generación documental
-        run: python -m unittest discover -s tests -p 'test_*.py' -v
+        env:
+          LEGAL_RUNTIME_DIR: ${{ runner.temp }}/legalaiz-test-runtime
+        run: |
+          set -o pipefail
+          python -m unittest discover -s tests -p 'test_*.py' -v 2>&1 | tee "$RUNNER_TEMP/legalaiz-unittest.log"
+      - name: Conservar diagnóstico de pruebas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagnostico-unittest-${{ github.run_id }}
+          path: ${{ runner.temp }}/legalaiz-unittest.log
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Validar inventario combinado V1-RC0
+        run: python tools/v1_rc0_inventory_gate.py
       - name: Validar interfaz y datos demo
         run: |
           node --input-type=module --check < app/modules/demo_form_values_m32.js
@@ -97,11 +111,11 @@ jobs:
           }
 
           if (Object.keys(interviews).length !== 11) failures.push(`Se esperaban 11 productos y se encontraron ${Object.keys(interviews).length}`);
-          if (questionCount < 473) failures.push(`La cobertura de formularios bajó de 473 a ${questionCount} preguntas`);
+          if (questionCount < 473) failures.push(`La cobertura fuente de formularios bajó de 473 a ${questionCount} preguntas`);
           if (failures.length) throw new Error(failures.join('\n'));
-          console.log(`Datos demo verificados: 11 productos, ${questionCount} preguntas, ${answerCount} respuestas visibles.`);
+          console.log(`Fuente histórica verificada: 11 productos, ${questionCount} preguntas, ${answerCount} respuestas demo visibles antes de overlays runtime.`);
           NODE
-      - name: Smoke HTTP
+      - name: Smoke HTTP combinado M33.3 + M34-M37
         env:
           LEGAL_PROFILE: local
           LEGAL_APP_ENV: demo
@@ -141,7 +155,12 @@ jobs:
           }
 
           trap stop_server EXIT
-          start_server /tmp/legalaiz.log
+          start_server /tmp/legalaiz-rc0.log
+
+          # Primero demostramos que la integración sirve la profundidad jurídica M33.3
+          # sobre el mismo runtime que luego recorre el journey M34-M37.
+          python tools/v1_rc0_m33_runtime_smoke.py
+
           python tools/m34_2_http_smoke.py
           python tools/m34_3_http_smoke.py
           python tools/m34_4_http_smoke.py
@@ -153,54 +172,44 @@ jobs:
           python tools/m36_1_http_smoke.py
 
           # M36.2 necesita autenticar dos roles reales (admin + especialista).
-          # Reiniciamos sólo el proceso para obtener una ventana limpia del rate limiter
-          # 12/300, manteniendo LEGAL_RUNTIME_DIR, SQLite, archivos y la misma clave demo.
-          # No se desactiva ni se amplía la política de autenticación.
+          # Reiniciamos sólo el proceso para una ventana limpia del rate limiter 12/300,
+          # conservando LEGAL_RUNTIME_DIR, SQLite, archivos y la misma clave demo.
           stop_server
           start_server /tmp/legalaiz-m36-2.log
           python tools/m36_2_http_smoke.py
 
-          # M36.3 vuelve a recorrer asignación, aprobaciones y entrega con varios roles
-          # y un segundo cliente. Se reinicia sólo el proceso para aislar el limitador
-          # in-memory; se conservan runtime, SQLite y credenciales efímeras. La política
-          # real de login 12/300 permanece intacta y no admite bypass de CI.
+          # M36.3 recorre asignación, aprobaciones y entrega con varios roles.
           stop_server
           start_server /tmp/legalaiz-m36-3.log
           python tools/m36_3_http_smoke.py
 
-          # M37.0 vuelve a crear un expediente entregado y prueba inicio + tareas con
-          # cliente/admin. Reiniciamos sólo el proceso: misma SQLite/runtime/clave demo,
-          # pero ventana in-memory limpia. La política real de login 12/300 sigue intacta.
+          # M37.0 inicia y actualiza seguimiento controlado sin bypass M24.
           stop_server
           start_server /tmp/legalaiz-m37-0.log
           python tools/m37_0_http_smoke.py
 
-          # M37.1 recorre nuevamente revisión dual, entrega, seguimiento, upload y review
-          # con cliente + especialista. El reinicio conserva estado durable y credenciales,
-          # pero aísla el rate limiter in-memory sin debilitar la política real 12/300.
+          # M37.1 valida intake/review de evidencia y aislamiento cross-tenant.
           stop_server
           start_server /tmp/legalaiz-m37-1.log
           python tools/m37_1_http_smoke.py
 
-          # M37.2 recorre nuevamente entrega + seguimiento y prueba fechas registradas,
-          # recordatorios in-app e idempotencia sin calcular ni afirmar términos legales.
-          # El reinicio sólo limpia el rate limiter in-memory y conserva la política real.
+          # M37.2 valida fechas registradas y recordatorios operativos sin términos legales.
           stop_server
           start_server /tmp/legalaiz-m37-2.log
           python tools/m37_2_http_smoke.py
 
-          # M37.3 recorre cierre profesional controlado y escalamiento de contingencias,
-          # consumiendo M37.0-M37.2 sin convertir cierre en éxito jurídico ni automatizar lifecycle.
-          # Se reinicia sólo el proceso para aislar el rate limiter in-memory.
+          # M37.3 valida cierre profesional y escalamiento controlado, nunca automáticos.
           stop_server
           start_server /tmp/legalaiz-m37-3.log
           python tools/m37_3_http_smoke.py
       - name: Smoke producción demostrativa M33.1
+        env:
+          LEGAL_RUNTIME_DIR: ${{ runner.temp }}/legalaiz-public-demo-runtime
         run: python tools/public_demo_smoke.py
 
   visual-docx:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -212,22 +221,39 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends libreoffice-writer poppler-utils fonts-dejavu-core fonts-liberation
-      - name: Generar muestras con fábricas activas
-        run: python scripts/generate_m32_1_visual_samples.py --output "$RUNNER_TEMP/m32-1-visual/samples"
+      - name: Generar portafolio visual M33 sobre runtime integrado RC0
+        env:
+          LEGAL_RUNTIME_DIR: ${{ runner.temp }}/legalaiz-visual-runtime
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/document-visual/samples"
+          mkdir -p "$ROOT/historical" "$ROOT/contracts" "$ROOT/procedural" "$ROOT/wave3"
+          python scripts/generate_m32_1_visual_samples.py --output "$ROOT/historical"
+          python scripts/generate_m33_0_contractual_samples.py --output "$ROOT/contracts"
+          python scripts/generate_m33_0_procedural_samples.py --output "$ROOT/procedural"
+          python scripts/generate_m33_0_wave3_samples.py --output "$ROOT/wave3"
+          test "$(find "$ROOT/contracts" -maxdepth 1 -name '*_M33_0.docx' -type f | wc -l | tr -d ' ')" -eq 4
+          test "$(find "$ROOT/procedural" -maxdepth 1 -name '*_M33_0.docx' -type f | wc -l | tr -d ' ')" -eq 27
+          test "$(find "$ROOT/wave3" -maxdepth 1 -name '*_M33_0.docx' -type f | wc -l | tr -d ' ')" -eq 22
+          test "$(find "$ROOT" -name '*_M33_0.docx' -type f | wc -l | tr -d ' ')" -eq 53
+          python scripts/audit_m33_2_editorial_portfolio.py \
+            --samples "$ROOT" \
+            --output "$RUNNER_TEMP/document-visual/m33-2-editorial-audit.json"
       - name: Convertir DOCX a PDF y rasterizar todas las páginas
         env:
           HOME: ${{ runner.temp }}/lo-home
         run: |
           set -euo pipefail
-          SAMPLES="$RUNNER_TEMP/m32-1-visual/samples"
-          RENDERED="$RUNNER_TEMP/m32-1-visual/rendered"
-          PROFILE="$RUNNER_TEMP/m32-1-visual/lo-profile"
+          SAMPLES="$RUNNER_TEMP/document-visual/samples"
+          RENDERED="$RUNNER_TEMP/document-visual/rendered"
+          PROFILE="$RUNNER_TEMP/document-visual/lo-profile"
           mkdir -p "$HOME" "$RENDERED" "$PROFILE"
-          for docx in "$SAMPLES"/*.docx; do
+          while IFS= read -r -d '' docx; do
+            group="$(basename "$(dirname "$docx")")"
             stem="$(basename "${docx%.docx}")"
-            out="$RENDERED/$stem"
+            out="$RENDERED/$group/$stem"
             mkdir -p "$out"
-            libreoffice --headless "-env:UserInstallation=file://$PROFILE-$stem" --convert-to pdf --outdir "$out" "$docx"
+            libreoffice --headless "-env:UserInstallation=file://$PROFILE-$group-$stem" --convert-to pdf --outdir "$out" "$docx"
             pdf="$out/$stem.pdf"
             test -s "$pdf"
             pages="$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')"
@@ -236,15 +262,19 @@ jobs:
             pdftoppm -png -r 120 "$pdf" "$out/page"
             rendered_pages="$(find "$out" -maxdepth 1 -name 'page-*.png' -type f | wc -l | tr -d ' ')"
             test "$rendered_pages" -eq "$pages"
-            printf '%s\t%s\n' "$stem" "$pages" >> "$RENDERED/page-counts.tsv"
-          done
-          test "$(find "$RENDERED" -name 'page-*.png' -type f | wc -l)" -ge 2
+            printf '%s/%s\t%s\n' "$group" "$stem" "$pages" >> "$RENDERED/page-counts.tsv"
+          done < <(find "$SAMPLES" -name '*.docx' -type f -print0 | sort -z)
+          test "$(find "$RENDERED" -name 'page-*.png' -type f | wc -l)" -ge 53
+          test "$(grep -c '_M33_0' "$RENDERED/page-counts.tsv")" -eq 53
+          python scripts/check_rendered_blank_pages.py "$RENDERED"
+          python scripts/check_m33_2_sparse_signature_tails.py "$RENDERED" \
+            --output "$RENDERED/m33-2-sparse-signature-tails.json"
           cat "$RENDERED/page-counts.tsv"
       - name: Conservar evidencia renderizada
         uses: actions/upload-artifact@v4
         with:
-          name: m32-1-evidencia-visual-docx
-          path: ${{ runner.temp }}/m32-1-visual
+          name: v1-rc0-evidencia-visual-docx
+          path: ${{ runner.temp }}/document-visual
           if-no-files-found: error
           retention-days: 30
 
