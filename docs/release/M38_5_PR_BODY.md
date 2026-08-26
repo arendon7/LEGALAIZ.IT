@@ -1,1 +1,0 @@
-M38.5 corrige la coherencia del dashboard cliente: entrega no equivale a cierre, seguimiento tiene estado propio y el home prioriza acciones continuables mediante un orden UX determinista. No añade backend ni scoring jurídico. Incluye pruebas y documentación. Certificación canónica pendiente.
