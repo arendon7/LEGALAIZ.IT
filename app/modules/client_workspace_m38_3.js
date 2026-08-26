@@ -78,7 +78,8 @@ function safeDownloadUrl(payload, caseId) {
 
 function deliveryMarkup(payload, caseId) {
   const count = Math.max(0, Math.min(100, Number(payload.document_count) || 0));
-  const date = dateText(payload.delivered_at || payload.prepared_at || '');
+  const rawDate = payload.delivered_at || payload.prepared_at || '';
+  const date = rawDate ? dateText(rawDate) : '';
   const downloadUrl = safeDownloadUrl(payload, caseId);
   const governance = payload.governance || {};
   const approved = payload.state === 'DELIVERED_IN_APP' && governance.dual_human_approval_preserved === true;
