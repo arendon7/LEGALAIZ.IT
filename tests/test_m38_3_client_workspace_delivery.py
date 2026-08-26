@@ -23,7 +23,8 @@ class ClientWorkspaceDeliveryM383Tests(unittest.TestCase):
         self.assertIn('await api(`${DELIVERY_PREFIX}/${encodeURIComponent(caseId)}`)', JS)
         self.assertNotIn("method:'POST'", JS)
         self.assertNotIn('method: \'POST\'', JS)
-        self.assertNotIn('/deliver', JS)
+        self.assertNotIn('confirmation:', JS)
+        self.assertNotIn('confirmation_phrase', JS)
         self.assertNotIn('require_csrf', JS)
         self.assertIn('payload = center.detail(user, parts[1])', ROUTE)
 
@@ -39,6 +40,8 @@ class ClientWorkspaceDeliveryM383Tests(unittest.TestCase):
         self.assertIn('governance.dual_human_approval_preserved === true', JS)
         self.assertIn('if (!approved || !downloadUrl || count < 1)', JS)
         self.assertIn('value === expected ? value :', JS)
+        self.assertIn("const rawDate = payload.delivered_at || payload.prepared_at || '';", JS)
+        self.assertIn("const date = rawDate ? dateText(rawDate) : '';", JS)
         self.assertIn('Descargar paquete final', JS)
         self.assertIn('href="${esc(downloadUrl)}"', JS)
 
