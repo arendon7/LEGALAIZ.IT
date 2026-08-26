@@ -251,7 +251,10 @@ async function optionalGet(path) {
 
 async function loadCase(caseId, force = false) {
   if (!caseId || inFlight.has(caseId)) return;
-  if (!force && models.has(caseId)) return mount(models.get(caseId));
+  if (!force && models.has(caseId)) {
+    if (!document.querySelector('[data-m384-followup]')) mount(models.get(caseId));
+    return;
+  }
   inFlight.add(caseId);
   try {
     const followup = await api(`${FOLLOWUP_PREFIX}/${encodeURIComponent(caseId)}`);
