@@ -1,0 +1,1 @@
+Scope M38.5 cerrado. El siguiente cambio de la rama debe ser únicamente correctivo si CI falla.
