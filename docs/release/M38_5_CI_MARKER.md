@@ -1,0 +1,1 @@
+Head congelado para CI. No añadir cambios de alcance.
