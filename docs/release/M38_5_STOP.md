@@ -1,1 +1,0 @@
-No añadir más cambios de alcance antes de CI.
