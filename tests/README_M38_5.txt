@@ -1,0 +1,1 @@
+M38.5 añade regresiones específicas en tests/test_m38_5_client_home_attention.py. La certificación válida requiere además la suite canónica completa, inventario, demo, journey HTTP, demo pública y QA visual documental sobre el mismo SHA.
