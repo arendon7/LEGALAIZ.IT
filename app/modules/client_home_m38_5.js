@@ -130,8 +130,6 @@ function enhanceClientShell() {
   const approval = document.querySelector('.approval-mini');
   if (approval && approval.dataset.m385ClientCopy !== '1') {
     approval.innerHTML = '<span class="approval-dot"></span><div><b>Contenido jurídico controlado</b><p>Cada solución indica cuándo requiere revisión profesional antes de utilizar un resultado.</p></div>';
-    approval.classList.remove('pending');
-    approval.classList.add('approved');
     approval.dataset.m385ClientCopy = '1';
   }
 }
@@ -139,7 +137,7 @@ function enhanceClientShell() {
 function enhanceAccountDialog() {
   if (state.user?.role !== 'client') return;
   const deployment = state.config?.deployment || {};
-  const localDemo = (deployment.profile || 'local') === 'local' && deployment.app_env !== 'pilot-local';
+  const localDemo = deployment.profile === 'local' && deployment.app_env !== 'pilot-local';
   if (localDemo) return;
   const root = document.getElementById('dialog-root');
   const note = root?.querySelector('.demo-note');
