@@ -17,6 +17,10 @@ from docx import Document
 
 from document_standard_v33 import STANDARD_VERSION, audit_docx_legal_standard
 from docx_builder import build_docx
+from legalai_platform.contract_composition_coverage import (
+    ContractCompositionCoverageError,
+    assert_contractual_docx_coverage,
+)
 from m33_2_contract_pagination_finalize import finalize_contract_pagination
 from m33_2_contract_style_finalize import finalize_contract_style
 from m33_2_reference_format import apply_m33_2_reference_format
@@ -172,6 +176,23 @@ def build_m33_presentation(
             f"({mode}): {technical['findings']}"
         )
     evidence["technical_preflight"] = technical
+
+    if mode == APPROVAL_CANDIDATE_MODE:
+        try:
+            contractual_coverage = assert_contractual_docx_coverage(
+                target,
+                product_code=product_code,
+                sections=rendered_sections,
+            )
+        except ContractCompositionCoverageError as exc:
+            try:
+                target.unlink()
+            except OSError:
+                pass
+            raise ValueError(f"DOCX bloqueado por cobertura contractual M38.7: {exc}") from exc
+        if contractual_coverage.get("applicable"):
+            evidence["contractual_coverage"] = contractual_coverage
+
     return evidence
 
 
