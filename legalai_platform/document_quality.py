@@ -70,6 +70,31 @@ def _duplicate_paragraphs(document: Document) -> list[str]:
     return [text[:160] for text, count in Counter(normalized).items() if count > 1]
 
 
+def _duplicates(values: list[str]) -> list[str]:
+    return sorted(value for value, count in Counter(values).items() if value and count > 1)
+
+
+def _validate_content_types(root: ET.Element, errors: list[str]) -> None:
+    defaults: list[str] = []
+    overrides: list[str] = []
+    for child in list(root):
+        local = child.tag.rsplit("}", 1)[-1]
+        if local == "Default":
+            defaults.append(str(child.attrib.get("Extension") or "").casefold())
+        elif local == "Override":
+            overrides.append(str(child.attrib.get("PartName") or ""))
+    duplicate_defaults = _duplicates(defaults)
+    duplicate_overrides = _duplicates(overrides)
+    if duplicate_defaults:
+        errors.append(
+            "[Content_Types].xml contiene extensiones Default duplicadas: " + ", ".join(duplicate_defaults) + "."
+        )
+    if duplicate_overrides:
+        errors.append(
+            "[Content_Types].xml contiene PartName Override duplicados: " + ", ".join(duplicate_overrides) + "."
+        )
+
+
 def validate_docx(path: str | Path, expected_product: str | None = None) -> dict:
     """Validate a DOCX as an OOXML package and as an editable Word document.
 
@@ -99,7 +124,13 @@ def validate_docx(path: str | Path, expected_product: str | None = None) -> dict
             corrupt_part = package.testzip()
             if corrupt_part:
                 errors.append(f"La parte OOXML {corrupt_part} no supera la comprobación CRC.")
-            names = set(package.namelist())
+
+            entry_names = package.namelist()
+            duplicate_entries = _duplicates(entry_names)
+            if duplicate_entries:
+                errors.append("El paquete OOXML contiene entradas ZIP duplicadas: " + ", ".join(duplicate_entries) + ".")
+
+            names = set(entry_names)
             metrics["package_parts"] = len(names)
             missing = sorted(REQUIRED_OOXML_PARTS - names)
             if missing:
@@ -113,9 +144,19 @@ def validate_docx(path: str | Path, expected_product: str | None = None) -> dict
                 except ET.ParseError as exc:
                     errors.append(f"XML inválido en {name}: {exc}.")
                     continue
+
+                if name == "[Content_Types].xml":
+                    _validate_content_types(root, errors)
+
                 if not name.endswith(".rels"):
                     continue
-                for rel in root.findall(f"{{{RELATIONSHIP_NS}}}Relationship"):
+
+                relationships = root.findall(f"{{{RELATIONSHIP_NS}}}Relationship")
+                duplicate_rel_ids = _duplicates([str(rel.attrib.get("Id") or "") for rel in relationships])
+                if duplicate_rel_ids:
+                    errors.append(f"IDs de relación OOXML duplicados en {name}: " + ", ".join(duplicate_rel_ids) + ".")
+
+                for rel in relationships:
                     if str(rel.attrib.get("TargetMode", "")).casefold() == "external":
                         continue
                     target = rel.attrib.get("Target", "")
