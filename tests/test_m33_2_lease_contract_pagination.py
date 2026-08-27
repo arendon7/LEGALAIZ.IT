@@ -69,12 +69,12 @@ class LeaseContractPaginationTests(unittest.TestCase):
             self.assertTrue(sizes)
             self.assertTrue(all(abs(size - 11) < 0.01 for size in sizes))
 
-    def test_services_contract_remains_byte_identical(self):
+    def test_non_profile_contract_remains_byte_identical(self):
         with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp) / "services.docx"
+            path = Path(tmp) / "nda.docx"
             self._sample(path)
             before = hashlib.sha256(path.read_bytes()).hexdigest()
-            result = finalize_contract_pagination(path, product_code="CO-EM-003")
+            result = finalize_contract_pagination(path, product_code="CO-EM-004")
             after = hashlib.sha256(path.read_bytes()).hexdigest()
             self.assertFalse(result["applied"])
             self.assertEqual(before, after)
