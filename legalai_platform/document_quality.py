@@ -18,6 +18,8 @@ REQUIRED_OOXML_PARTS = {
     "word/styles.xml",
 }
 RELATIONSHIP_NS = "http://schemas.openxmlformats.org/package/2006/relationships"
+CONTENT_TYPES_NS = "http://schemas.openxmlformats.org/package/2006/content-types"
+DOCX_MAIN_CONTENT_TYPE = "application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"
 UNRESOLVED_PATTERNS = (
     re.compile(r"\{\{[^{}]+\}\}"),
     re.compile(r"\$\{[^{}]+\}"),
@@ -32,10 +34,15 @@ SOFT_SENTINELS = (
 
 
 def _relationship_target(rels_path: str, target: str) -> str:
-    """Resolve an internal OOXML relationship target to a package part."""
+    """Resolve an internal OOXML relationship target to a package part.
+
+    ``lstrip('./')`` must not be used here: it can erase the leading ``../`` of
+    a path that escaped the package root. We normalize first and remove only the
+    single OPC root slash when the relationship target is package-absolute.
+    """
     target = str(target or "").split("#", 1)[0]
     if target.startswith("/"):
-        return posixpath.normpath(target.lstrip("/"))
+        return posixpath.normpath(target)[1:]
     if rels_path == "_rels/.rels":
         base = ""
     else:
@@ -43,7 +50,89 @@ def _relationship_target(rels_path: str, target: str) -> str:
         if owner.endswith(".rels"):
             owner = owner[:-5]
         base = posixpath.dirname(owner)
-    return posixpath.normpath(posixpath.join(base, target)).lstrip("./")
+    return posixpath.normpath(posixpath.join(base, target))
+
+
+def _unsafe_package_name(name: str) -> str | None:
+    """Return a reason when a ZIP entry is ambiguous or unsafe as an OPC part."""
+    if not name:
+        return "nombre vacío"
+    if name.startswith("/"):
+        return "ruta absoluta"
+    if "\\" in name:
+        return "separador inverso no permitido en OPC"
+    # ZIP directory entries are not OOXML parts. They may exist harmlessly, so
+    # validate their path segments after removing the trailing slash.
+    candidate = name[:-1] if name.endswith("/") else name
+    if not candidate:
+        return "entrada de directorio raíz inválida"
+    segments = candidate.split("/")
+    if any(segment in {"", ".", ".."} for segment in segments):
+        return "segmento de ruta vacío, '.' o '..'"
+    return None
+
+
+def _validate_content_types(package: ZipFile, names: set[str], errors: list[str]) -> None:
+    """Validate OPC content-type declarations required for an ordinary DOCX."""
+    part = "[Content_Types].xml"
+    if part not in names:
+        return
+    try:
+        root = ET.fromstring(package.read(part))
+    except ET.ParseError:
+        # The generic XML pass reports the parse error with its exact location.
+        return
+
+    expected_root = f"{{{CONTENT_TYPES_NS}}}Types"
+    if root.tag != expected_root:
+        errors.append("[Content_Types].xml no usa el elemento raíz Types del espacio de nombres OPC esperado.")
+        return
+
+    defaults: set[str] = set()
+    overrides: set[str] = set()
+    main_content_type: str | None = None
+    for child in root:
+        if child.tag == f"{{{CONTENT_TYPES_NS}}}Default":
+            extension = str(child.attrib.get("Extension") or "").strip()
+            content_type = str(child.attrib.get("ContentType") or "").strip()
+            key = extension.casefold()
+            if not extension or not content_type:
+                errors.append("[Content_Types].xml contiene un Default sin Extension o ContentType.")
+                continue
+            if key in defaults:
+                errors.append(f"[Content_Types].xml contiene un Default duplicado para la extensión {extension}.")
+            defaults.add(key)
+        elif child.tag == f"{{{CONTENT_TYPES_NS}}}Override":
+            part_name = str(child.attrib.get("PartName") or "").strip()
+            content_type = str(child.attrib.get("ContentType") or "").strip()
+            if not part_name or not content_type:
+                errors.append("[Content_Types].xml contiene un Override sin PartName o ContentType.")
+                continue
+            if not part_name.startswith("/"):
+                errors.append(f"[Content_Types].xml contiene un PartName no absoluto: {part_name}.")
+                continue
+            normalized_part = posixpath.normpath(part_name)
+            if normalized_part != part_name or normalized_part.startswith("/../") or "\\" in part_name:
+                errors.append(f"[Content_Types].xml contiene un PartName inseguro o ambiguo: {part_name}.")
+                continue
+            key = part_name.casefold()
+            if key in overrides:
+                errors.append(f"[Content_Types].xml contiene un Override duplicado o con colisión de mayúsculas: {part_name}.")
+            overrides.add(key)
+            package_name = part_name[1:]
+            if package_name not in names:
+                errors.append(f"[Content_Types].xml declara una parte inexistente: {part_name}.")
+            if key == "/word/document.xml":
+                main_content_type = content_type
+
+    if main_content_type is None:
+        errors.append("[Content_Types].xml no declara /word/document.xml mediante Override.")
+    elif main_content_type != DOCX_MAIN_CONTENT_TYPE:
+        errors.append(
+            "[Content_Types].xml declara un ContentType no válido para el documento principal DOCX: "
+            + main_content_type
+            + "."
+        )
 
 
 def _document_text(document: Document) -> str:
@@ -82,6 +171,7 @@ def validate_docx(path: str | Path, expected_product: str | None = None) -> dict
     metrics = {
         "bytes": file_path.stat().st_size if file_path.is_file() else 0,
         "package_parts": 0,
+        "package_entries": 0,
         "paragraphs": 0,
         "tables": 0,
         "characters": 0,
@@ -99,14 +189,35 @@ def validate_docx(path: str | Path, expected_product: str | None = None) -> dict
             corrupt_part = package.testzip()
             if corrupt_part:
                 errors.append(f"La parte OOXML {corrupt_part} no supera la comprobación CRC.")
-            names = set(package.namelist())
+
+            entries = [info.filename for info in package.infolist()]
+            metrics["package_entries"] = len(entries)
+            exact_counts = Counter(entries)
+            exact_duplicates = sorted(name for name, count in exact_counts.items() if count > 1)
+            if exact_duplicates:
+                errors.append("El paquete OOXML contiene entradas ZIP duplicadas: " + ", ".join(exact_duplicates[:10]))
+
+            case_groups: dict[str, set[str]] = {}
+            for name in entries:
+                case_groups.setdefault(name.casefold(), set()).add(name)
+                unsafe_reason = _unsafe_package_name(name)
+                if unsafe_reason:
+                    errors.append(f"Entrada OOXML insegura o ambigua {name!r}: {unsafe_reason}.")
+            case_collisions = [sorted(values) for values in case_groups.values() if len(values) > 1]
+            if case_collisions:
+                rendered = "; ".join(" / ".join(values) for values in case_collisions[:10])
+                errors.append("El paquete OOXML contiene colisiones de nombres por mayúsculas/minúsculas: " + rendered)
+
+            names = set(entries)
             metrics["package_parts"] = len(names)
             missing = sorted(REQUIRED_OOXML_PARTS - names)
             if missing:
                 errors.append("Faltan partes OOXML obligatorias: " + ", ".join(missing))
 
+            _validate_content_types(package, names, errors)
+
             for name in sorted(names):
-                if not (name.endswith(".xml") or name.endswith(".rels")):
+                if name.endswith("/") or not (name.endswith(".xml") or name.endswith(".rels")):
                     continue
                 try:
                     root = ET.fromstring(package.read(name))
@@ -118,9 +229,12 @@ def validate_docx(path: str | Path, expected_product: str | None = None) -> dict
                 for rel in root.findall(f"{{{RELATIONSHIP_NS}}}Relationship"):
                     if str(rel.attrib.get("TargetMode", "")).casefold() == "external":
                         continue
-                    target = rel.attrib.get("Target", "")
+                    target = str(rel.attrib.get("Target") or "")
+                    if "\\" in target:
+                        errors.append(f"Relación interna insegura o inválida en {name}: {target}.")
+                        continue
                     resolved = _relationship_target(name, target)
-                    if not resolved or resolved.startswith("../"):
+                    if not target or not resolved or resolved == ".." or resolved.startswith("../") or resolved.startswith("/"):
                         errors.append(f"Relación interna insegura o inválida en {name}: {target}.")
                     elif resolved not in names:
                         errors.append(f"Relación rota en {name}: no existe {resolved}.")
