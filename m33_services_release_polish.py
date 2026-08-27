@@ -15,6 +15,7 @@ from typing import Any
 from legalai_platform.legal_source_registry import build_legal_source_manifest, source_control_lines
 from legalai_platform.services_substantive_source_pack import SERVICES_SUBSTANTIVE_SOURCE_IDS
 from m33_services_instrument_finalize import compose_services_m33_instrument
+from m38_7_services_fact_fidelity import apply_services_fact_fidelity
 
 
 def _read(data: dict, path: str, default=None):
@@ -194,7 +195,7 @@ def compose_services_m33_release(answers: dict) -> dict[str, Any]:
     maturity["services_substantive_source_ids"] = list(SERVICES_SUBSTANTIVE_SOURCE_IDS)
     if nature == "legal_person":
         maturity["contractor_legal_person_framework"] = "commercial_contract_with_personnel_labor_safeguards"
-    return composition
+    return apply_services_fact_fidelity(composition, answers)
 
 
 __all__ = ["compose_services_m33_release"]
