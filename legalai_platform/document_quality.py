@@ -18,6 +18,7 @@ REQUIRED_OOXML_PARTS = {
     "word/styles.xml",
 }
 RELATIONSHIP_NS = "http://schemas.openxmlformats.org/package/2006/relationships"
+CONTENT_TYPES_NS = "http://schemas.openxmlformats.org/package/2006/content-types"
 UNRESOLVED_PATTERNS = (
     re.compile(r"\{\{[^{}]+\}\}"),
     re.compile(r"\$\{[^{}]+\}"),
@@ -44,6 +45,69 @@ def _relationship_target(rels_path: str, target: str) -> str:
             owner = owner[:-5]
         base = posixpath.dirname(owner)
     return posixpath.normpath(posixpath.join(base, target)).lstrip("./")
+
+
+def _content_type_errors(package: ZipFile, names: set[str]) -> list[str]:
+    """Validate OPC content-type declarations that Word may otherwise repair.
+
+    A technically readable ZIP can still be repaired by Microsoft Word when its
+    [Content_Types].xml contains duplicate declarations, dangling overrides or
+    package parts without a matching content type. Those repairs are especially
+    undesirable for a document factory because the approved bytes would no longer
+    be the bytes the user ultimately edits.
+    """
+    path = "[Content_Types].xml"
+    if path not in names:
+        return []  # the required-part check reports the canonical error
+
+    errors: list[str] = []
+    try:
+        root = ET.fromstring(package.read(path))
+    except ET.ParseError:
+        return []  # the generic XML parser reports the parse error once
+
+    expected_tag = f"{{{CONTENT_TYPES_NS}}}Types"
+    if root.tag != expected_tag:
+        errors.append("[Content_Types].xml no usa el elemento Types/namespace OPC esperado.")
+        return errors
+
+    defaults: dict[str, str] = {}
+    overrides: dict[str, str] = {}
+    for node in list(root):
+        if node.tag == f"{{{CONTENT_TYPES_NS}}}Default":
+            extension = str(node.attrib.get("Extension") or "").strip().lower()
+            content_type = str(node.attrib.get("ContentType") or "").strip()
+            if not extension or not content_type:
+                errors.append("Existe una declaración Default incompleta en [Content_Types].xml.")
+                continue
+            if extension in defaults:
+                errors.append(f"Declaración Default duplicada para la extensión .{extension}.")
+            else:
+                defaults[extension] = content_type
+        elif node.tag == f"{{{CONTENT_TYPES_NS}}}Override":
+            raw_part = str(node.attrib.get("PartName") or "").strip()
+            content_type = str(node.attrib.get("ContentType") or "").strip()
+            if not raw_part.startswith("/") or not content_type:
+                errors.append("Existe una declaración Override incompleta o con PartName inválido.")
+                continue
+            part = posixpath.normpath(raw_part.lstrip("/"))
+            if not part or part.startswith("../"):
+                errors.append(f"Override inseguro o inválido en [Content_Types].xml: {raw_part}.")
+                continue
+            if part in overrides:
+                errors.append(f"Declaración Override duplicada para /{part}.")
+            else:
+                overrides[part] = content_type
+            if part not in names:
+                errors.append(f"Override huérfano en [Content_Types].xml: no existe {part}.")
+
+    for name in sorted(names):
+        if name == path or name.endswith("/"):
+            continue
+        extension = name.rsplit(".", 1)[-1].lower() if "." in name else ""
+        if name not in overrides and extension not in defaults:
+            errors.append(f"La parte OOXML {name} no tiene tipo de contenido declarado.")
+    return errors
 
 
 def _document_text(document: Document) -> str:
@@ -99,11 +163,20 @@ def validate_docx(path: str | Path, expected_product: str | None = None) -> dict
             corrupt_part = package.testzip()
             if corrupt_part:
                 errors.append(f"La parte OOXML {corrupt_part} no supera la comprobación CRC.")
-            names = set(package.namelist())
+
+            package_names = package.namelist()
+            duplicate_parts = sorted(name for name, count in Counter(package_names).items() if count > 1)
+            if duplicate_parts:
+                errors.append(
+                    "El paquete DOCX contiene partes OOXML duplicadas: " + ", ".join(duplicate_parts[:20])
+                )
+            names = set(package_names)
             metrics["package_parts"] = len(names)
             missing = sorted(REQUIRED_OOXML_PARTS - names)
             if missing:
                 errors.append("Faltan partes OOXML obligatorias: " + ", ".join(missing))
+
+            errors.extend(_content_type_errors(package, names))
 
             for name in sorted(names):
                 if not (name.endswith(".xml") or name.endswith(".rels")):
