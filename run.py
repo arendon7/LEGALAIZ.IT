@@ -44,6 +44,7 @@ import legalai_platform.application_services as _application_services  # noqa: E
 from legalai_platform.runtime_m33_overrides import activate_m33_contract_factories  # noqa: E402
 from legalai_platform.m36_3_journey_guard import install_m36_3_delivery_guard  # noqa: E402
 from legalai_platform.m37_0_journey_guard import install_m37_0_followup_guard  # noqa: E402
+from legalai_platform.enterprise_tenancy_m39_1 import ensure_schema as ensure_enterprise_tenancy_schema  # noqa: E402
 
 # La Fábrica Documental M33.0–M33.4 se activa sobre el mismo runtime que consume
 # el journey M34–M37. Conserva aliases históricos y no sustituye los centros M24+.
@@ -59,7 +60,8 @@ activate_m33_contract_factories(
 install_m36_3_delivery_guard(M24_CASE_JOURNEY)
 install_m37_0_followup_guard(M24_CASE_JOURNEY)
 
-from legalai_platform.http_handler_m37_3 import Handler  # noqa: E402
+from legalai_platform.http_handler_m39_1 import Handler  # noqa: E402
+# from legalai_platform.http_handler_m37_3 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m37_2 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m37_1 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m37_0 import Handler  # compatibility marker
@@ -111,6 +113,7 @@ from legalai_platform.http_handler_m37_3 import Handler  # noqa: E402
 # m37-1-evidence-intake-review-boundary
 # m37-2-recorded-dates-reminder-boundary
 # m37-3-professional-disposition-gate
+# m39-1-enterprise-tenancy
 # LEGAL_ALLOW_DEMO_ACCOUNTS
 # LEGAL_BOOTSTRAP_ADMIN_EMAIL
 # UPDATE users SET active=0 WHERE lower(email) LIKE '%@demo.legalaiz.it'
@@ -143,6 +146,16 @@ def authenticate(*args, **kwargs):
         _application_services.SETTINGS = previous
 
 
+def _bootstrap_enterprise_tenancy() -> None:
+    """Provisiona M39.1 al arrancar; los endpoints conservan un ensure defensivo."""
+    con = core.db()
+    try:
+        ensure_enterprise_tenancy_schema(con)
+        con.commit()
+    finally:
+        con.close()
+
+
 def _bootstrap_public_demo() -> None:
     if not PUBLIC_DEMO_MODE:
         return
@@ -155,6 +168,7 @@ def _bootstrap_public_demo() -> None:
 
 def main():
     init_db()
+    _bootstrap_enterprise_tenancy()
     _bootstrap_public_demo()
     port = int(os.environ.get("LEGAL_PORT") or os.environ.get("PORT") or PORT)
     host = os.environ.get("LEGAL_HOST", HOST).strip() or HOST
