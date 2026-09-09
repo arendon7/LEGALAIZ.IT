@@ -1,0 +1,1 @@
+Active workstream: M39.2 canonical convergence and repository cleanup, followed by M40 Legal AI Copilot.
