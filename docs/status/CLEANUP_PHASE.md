@@ -1,1 +1,0 @@
-Current phase: inventory and dependency verification. No deletion approved.
