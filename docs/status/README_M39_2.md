@@ -1,1 +1,0 @@
-M39.2 documentation index is maintained under docs/status and docs/roadmap.
