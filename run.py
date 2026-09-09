@@ -59,7 +59,8 @@ activate_m33_contract_factories(
 install_m36_3_delivery_guard(M24_CASE_JOURNEY)
 install_m37_0_followup_guard(M24_CASE_JOURNEY)
 
-from legalai_platform.http_handler_m37_3 import Handler  # noqa: E402
+from legalai_platform.http_handler_m39_1 import Handler  # noqa: E402
+# from legalai_platform.http_handler_m37_3 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m37_2 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m37_1 import Handler  # compatibility marker
 # from legalai_platform.http_handler_m37_0 import Handler  # compatibility marker
@@ -111,6 +112,7 @@ from legalai_platform.http_handler_m37_3 import Handler  # noqa: E402
 # m37-1-evidence-intake-review-boundary
 # m37-2-recorded-dates-reminder-boundary
 # m37-3-professional-disposition-gate
+# m39-1-enterprise-tenancy
 # LEGAL_ALLOW_DEMO_ACCOUNTS
 # LEGAL_BOOTSTRAP_ADMIN_EMAIL
 # UPDATE users SET active=0 WHERE lower(email) LIKE '%@demo.legalaiz.it'
