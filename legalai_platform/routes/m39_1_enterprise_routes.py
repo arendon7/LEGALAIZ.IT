@@ -56,6 +56,17 @@ def _send_error(handler, exc: TenancyError):
     return handler.send_json(exc.public(), exc.status)
 
 
+def _audit(con, user: dict, organization_id: str, action: str, detail: dict) -> None:
+    core.audit(
+        con,
+        user.get("id"),
+        "enterprise_organization",
+        organization_id,
+        action,
+        detail,
+    )
+
+
 def handle_m39_1_enterprise_get(handler, path: str, user: dict):
     if not (path == PREFIX or path.startswith(PREFIX + "/")):
         return False
@@ -124,6 +135,18 @@ def handle_m39_1_enterprise_post(handler, path: str, user: dict):
                 owner_user_id=payload.get("owner_user_id", ""),
                 created_by=user["id"],
             )
+            organization = result["organization"]
+            owner_membership = result["owner_membership"]
+            _audit(
+                con,
+                user,
+                organization["id"],
+                "enterprise.organization.created",
+                {
+                    "owner_user_id": owner_membership["user_id"],
+                    "owner_membership_id": owner_membership["id"],
+                },
+            )
             con.commit()
             return handler.send_json(result, 201)
 
@@ -141,6 +164,17 @@ def handle_m39_1_enterprise_post(handler, path: str, user: dict):
                 role=role,
                 created_by=user["id"],
             )
+            _audit(
+                con,
+                user,
+                organization_id,
+                "enterprise.membership.created",
+                {
+                    "membership_id": membership["id"],
+                    "user_id": membership["user_id"],
+                    "role": membership["role"],
+                },
+            )
             con.commit()
             return handler.send_json({"membership": membership}, 201)
 
@@ -156,11 +190,25 @@ def handle_m39_1_enterprise_post(handler, path: str, user: dict):
                 raise TenancyError("La organización solicitada no está disponible.", code="ORGANIZATION_NOT_FOUND", status=404)
             if action == "deactivate":
                 membership = deactivate_membership(con, membership_id=membership_id, changed_by=user["id"])
+                audit_action = "enterprise.membership.deactivated"
             else:
                 role = str(payload.get("role") or target.get("role") or "member").strip().lower()
                 if not actor_can_manage_memberships(user.get("role", ""), (management.get("membership") or {}).get("role"), role) and user.get("role") != "admin":
                     raise TenancyError("No puede asignar ese rol empresarial.", code="TENANCY_FORBIDDEN", status=403)
                 membership = reactivate_membership(con, membership_id=membership_id, role=role, changed_by=user["id"])
+                audit_action = "enterprise.membership.reactivated"
+            _audit(
+                con,
+                user,
+                organization_id,
+                audit_action,
+                {
+                    "membership_id": membership["id"],
+                    "user_id": membership["user_id"],
+                    "role": membership["role"],
+                    "status": membership["status"],
+                },
+            )
             con.commit()
             return handler.send_json({"membership": membership})
 
