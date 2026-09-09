@@ -1,1 +1,0 @@
-M39.2 is non-destructive until dependency audit completes.
