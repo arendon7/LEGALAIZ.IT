@@ -1,50 +1,89 @@
 # LegalAIZ.it — Roadmap M40 Legal AI Copilot
 
 ## Objetivo
-Integrar inteligencia artificial conversacional y documental sin debilitar la trazabilidad, la confirmación de hechos, el aislamiento, la revisión humana ni la aprobación dual existentes.
+Integrar inteligencia artificial conversacional, jurídica y documental sin debilitar la trazabilidad, la confirmación de hechos, el aislamiento por organización/expediente, la revisión humana ni la aprobación dual existentes.
+
+M40 inicia únicamente desde una base M39.2 certificada y convergida. La IA se añade como capa gobernada; no reemplaza los controles deterministas ya certificados.
+
+## Arquitectura de referencia M40.0
+
+`AI Gateway → Policy Engine → Context Builder → Provider → Structured Output → Validator → Audit`
+
+El registro de auditoría deberá poder asociar, según aplique:
+- usuario y rol;
+- organización/tenant;
+- expediente;
+- documento/revisión;
+- proveedor y modelo;
+- versión de prompt/política;
+- fuentes utilizadas;
+- hash o referencia segura de inputs;
+- salida estructurada;
+- confianza/estado de validación cuando exista una métrica definida;
+- acción propuesta/ejecutada;
+- confirmación humana requerida y obtenida.
+
+La observabilidad no debe convertir payload sensible en telemetría expuesta.
 
 ## M40.0 — AI Governance & Provider Gateway
 - gateway único de proveedores/modelos;
+- abstracción desacoplada para no amarrar el producto a un proveedor;
 - políticas por rol, organización, expediente y documento;
 - construcción de contexto mínimo autorizado;
-- structured outputs validados;
-- auditoría de modelo, versión de prompt, fuentes, hashes y acciones;
-- presupuestos y límites de consumo;
-- ninguna salida de IA equivale a aprobación jurídica.
+- structured outputs validados por esquema;
+- control de prompt/versionado;
+- presupuestos, límites de consumo, timeout, circuit breaker y fallback;
+- auditoría trazable de fuentes, hashes y acciones;
+- ninguna salida de IA equivale a aprobación jurídica o QA.
 
-## M40.1 — Copiloto de orientación
-- conversación inicial;
-- extracción de hechos candidata;
-- confirmación/disputa;
+## M40.1 — Copiloto de orientación/intake
+- conversación inicial guiada;
+- extracción de hechos candidatos;
+- separación entre hecho inferido, hecho confirmado y hecho disputado;
+- confirmación/disputa explícita;
 - preguntas adaptativas;
-- explicación de la ruta sugerida.
+- explicación comprensible de la ruta sugerida;
+- escalamiento cuando falten hechos materiales o la incertidumbre sea jurídicamente relevante.
 
 ## M40.2 — Copiloto del expediente
 - resumen trazable;
-- faltantes y contradicciones;
-- cronología;
+- faltantes, contradicciones y cronología;
 - riesgos y próximos pasos;
-- preguntas sobre documentos y tareas dentro del tenant autorizado.
+- preguntas sobre documentos, evidencias y tareas dentro del tenant autorizado;
+- ninguna lectura cross-tenant;
+- ninguna alteración silenciosa del expediente.
 
 ## M40.3 — Copiloto documental
-- explicar cláusulas;
-- detectar inconsistencias;
+- explicar cláusulas y consecuencias;
+- detectar inconsistencias internas y contra hechos confirmados;
+- identificar variables incompletas, cláusulas ausentes y obligaciones contradictorias;
 - proponer redacción alternativa;
 - comparar hechos del expediente contra el documento;
-- generar revisión hija, nunca sobrescribir una revisión aprobada.
+- citar fuentes cuando la propuesta dependa de derecho positivo o interpretación jurídica.
 
-## M40.4 — Copiloto profesional
+Invariante documental:
+
+`Documento Vn aprobado → propuesta IA → diff visible → Vn+1 borrador → revisión humana → Legal → QA → aprobación`
+
+La IA nunca sobrescribe silenciosamente una revisión aprobada ni convierte una propuesta en versión final sin los gates existentes.
+
+## M40.4 — Copiloto profesional/revisor
 - revisión 360 para especialista;
-- inconsistencias, fuentes, hechos sin soporte, cláusulas ausentes y alertas;
-- propuestas de corrección sometidas a revisión humana.
+- inconsistencias, fuentes, hechos sin soporte y cláusulas ausentes;
+- alertas de fechas, valores, partes, anexos y firmas;
+- detección de posibles fuentes desactualizadas;
+- propuestas de corrección con diff y justificación;
+- ninguna autoaprobación Legal o QA.
 
 ## M40.5 — RAG jurídico
-- fuentes oficiales priorizadas;
+- prioridad a fuentes oficiales colombianas;
 - autoridad, norma, artículo, fecha de consulta, vigencia y localizador;
-- separación entre norma, interpretación, hecho, riesgo y recomendación;
-- fail-closed ante fuente insuficiente o desactualizada.
+- distinción visible entre **NORMA / INTERPRETACIÓN / HECHO / RIESGO / RECOMENDACIÓN**;
+- tratamiento explícito de derogatorias, modificaciones y conflictos de vigencia;
+- fail-closed o escalamiento cuando la fuente sea insuficiente, no verificable o potencialmente desactualizada.
 
 ## M40.6 — Orquestación especializada
+Agentes previstos:
 - Intake Agent;
 - Fact Agent;
 - Legal Research Agent;
@@ -53,26 +92,61 @@ Integrar inteligencia artificial conversacional y documental sin debilitar la tr
 - QA Agent;
 - Case Agent.
 
-Los agentes no pueden saltarse RBAC, confirmación de hechos, gates documentales ni aprobación humana.
+Ningún agente puede saltarse RBAC, tenant isolation, confirmación de hechos, reglas jurídicas deterministas, gates documentales, auditoría ni aprobación humana.
 
 ## M40.7 — UX conversacional
 - copiloto contextual por pantalla;
+- conversación coherente con el estado del expediente;
 - acciones sugeridas con confirmación explícita;
-- citas y procedencia visibles;
-- accesibilidad y móvil.
+- citas/procedencia visibles cuando aplique;
+- explicación de qué hizo la IA y qué requiere revisión;
+- accesibilidad, responsive y experiencia móvil;
+- diseño que acompañe al usuario sin ocultar los controles jurídicos.
 
-## M40.8 — Evaluación
+## M40.8 — Evaluación legal y adversarial
 - benchmark por los 11 productos;
-- casos adversariales;
-- alucinación, conflicto de fuentes, prompt injection y fuga cross-tenant;
-- comparación entre proveedores/modelos.
+- golden cases y casos límite;
+- alucinación y citas inexistentes;
+- conflicto de fuentes y vigencia;
+- prompt injection e instrucciones contenidas en documentos subidos;
+- fuga cross-tenant;
+- hechos inventados o promovidos sin confirmación;
+- propuestas documentales contradictorias;
+- comparación controlada entre proveedores/modelos;
+- regresión contra resultados deterministas y documentos certificados.
 
 ## M40.9 — Hardening y piloto
 - observabilidad sin payload sensible;
-- control de costos y latencia;
+- control de costos, latencia y disponibilidad;
 - circuit breakers y fallback;
-- runbooks;
-- gates específicos para piloto.
+- rate limits y presupuestos por contexto;
+- runbooks e incident response;
+- métricas de escalamiento y corrección humana;
+- gates específicos para piloto controlado.
 
-## Compatibilidad futura con IDE/agentes locales
-La arquitectura M40.0 deberá exponer contratos desacoplados para permitir posteriormente ejecución y pruebas desde entornos como Visual Studio Code u otros IDE/agentes, sin convertir esas herramientas en fuente de verdad ni permitir que omitan las políticas de LegalAIZ.it.
+## Guardrails transversales
+Ningún proveedor, modelo o agente puede:
+- promover hechos no confirmados;
+- saltarse RBAC o aislamiento;
+- leer contexto no autorizado;
+- sobrescribir revisiones aprobadas;
+- aprobar Legal o QA;
+- inventar normas, artículos, sentencias, autoridades, fechas o citas;
+- activar pagos, comunicaciones o producción por sí mismo;
+- exponer secretos o payload sensible en logs.
+
+## Integración futura con IDE y robots
+
+La integración con Visual Studio Code, Antigravity u otros IDE/agentes se aborda **después de estabilizar M40.0–M40.4**.
+
+La arquitectura deberá permitir que esos entornos consuman contratos explícitos del AI Gateway y tooling de pruebas, no que accedan directamente a secretos, bases de datos o flujos privilegiados.
+
+Usos futuros previstos:
+- ejecutar suites y benchmarks M40 desde el IDE;
+- probar proveedores/modelos con fixtures controlados;
+- correr robots de desarrollo y QA con permisos acotados;
+- inspeccionar trazas, decisiones y diffs sin exponer payload sensible;
+- reproducir fallos con datasets sanitizados;
+- mantener GitHub/CI y los gates de LegalAIZ.it como fuente de certificación.
+
+El IDE o robot nunca será la fuente canónica del estado jurídico, documental o de producción.
