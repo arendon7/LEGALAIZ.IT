@@ -1,0 +1,1 @@
+Dependency-level cleanup audit pending execution; no destructive cleanup is authorized until references are verified.
