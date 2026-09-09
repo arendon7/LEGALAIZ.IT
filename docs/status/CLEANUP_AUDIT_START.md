@@ -1,0 +1,1 @@
+Audit start marker. Candidate removals must be verified against active code, tests, tooling and release controls.
