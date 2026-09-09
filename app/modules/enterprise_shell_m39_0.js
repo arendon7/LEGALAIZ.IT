@@ -41,6 +41,10 @@ function routeLabel(path = currentPath()) {
   return TITLE_LABELS[path] || 'Espacio jurídico';
 }
 
+function setText(node, value) {
+  if (node && node.textContent !== value) node.textContent = value;
+}
+
 function enhanceTopbar() {
   const brand = document.querySelector('.topbar .brand-button');
   if (brand && brand.dataset.m390EnterpriseBrand !== '1') {
@@ -51,10 +55,8 @@ function enhanceTopbar() {
 
   const context = document.querySelector('.workspace-context');
   if (context && currentPath() === '/') {
-    const group = context.querySelector('span');
-    const page = context.querySelector('b');
-    if (group) group.textContent = 'Meridiano Empresas';
-    if (page) page.textContent = 'Inicio';
+    setText(context.querySelector('span'), 'Meridiano Empresas');
+    setText(context.querySelector('b'), 'Inicio');
   }
 
   const accountRole = document.querySelector('.account-copy span');
@@ -71,20 +73,20 @@ function enhanceSidebar() {
     brandCopy.dataset.m390EnterpriseCopy = '1';
   }
 
-  const primary = document.querySelector('.sidebar-primary[data-route="/nuevo"] b');
-  if (primary) primary.textContent = 'Iniciar asunto';
+  setText(document.querySelector('.sidebar-primary[data-route="/nuevo"] b'), 'Iniciar asunto');
 
   document.querySelectorAll('.nav-group').forEach(group => {
     const label = group.querySelector('.nav-label');
-    const mapped = GROUP_LABELS[String(label?.textContent || '').trim()];
-    if (label && mapped) label.textContent = mapped;
+    const current = String(label?.textContent || '').trim();
+    const mapped = GROUP_LABELS[current];
+    if (label && mapped) setText(label, mapped);
   });
 
   document.querySelectorAll('.side-nav .nav-link').forEach(link => {
     const route = String(link.getAttribute('href') || '').replace(/^#/, '');
     const mapped = NAV_LABELS[route];
     const text = link.querySelector('span:last-child');
-    if (mapped && text) text.textContent = mapped;
+    if (mapped && text) setText(text, mapped);
   });
 
   const sidebarBottom = document.querySelector('.sidebar-bottom');
@@ -102,7 +104,8 @@ export function applyEnterpriseShell() {
   document.documentElement.dataset.m390Enterprise = '1';
   enhanceTopbar();
   enhanceSidebar();
-  document.title = `Meridiano Empresas · ${routeLabel()}`;
+  const title = `Meridiano Empresas · ${routeLabel()}`;
+  if (document.title !== title) document.title = title;
 }
 
 let scheduled = false;
