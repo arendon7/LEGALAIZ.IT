@@ -52,6 +52,19 @@ def _require_management(con, user: dict, organization_id: str, target_role: str 
     return {"global_admin": False, "membership": membership}
 
 
+def _require_membership_desk_access(con, user: dict, organization_id: str) -> dict:
+    """Autoriza antes de consultar la membresía objetivo para evitar enumeración lateral."""
+    visible = _visible_organization(con, user, organization_id)
+    if not visible:
+        raise TenancyError("La organización solicitada no está disponible.", code="ORGANIZATION_NOT_FOUND", status=404)
+    if user.get("role") == "admin":
+        return {"global_admin": True, "membership": None, "visible": visible}
+    membership = visible.get("membership") or {}
+    if membership.get("role") not in {"owner", "admin"}:
+        raise TenancyError("No tiene permisos para administrar estas membresías.", code="TENANCY_FORBIDDEN", status=403)
+    return {"global_admin": False, "membership": membership, "visible": visible}
+
+
 def _send_error(handler, exc: TenancyError):
     return handler.send_json(exc.public(), exc.status)
 
@@ -87,15 +100,9 @@ def handle_m39_1_enterprise_get(handler, path: str, user: dict):
         match = _MEMBERS_RE.fullmatch(path)
         if match:
             organization_id = match.group(1)
-            visible = _visible_organization(con, user, organization_id)
-            if not visible:
-                raise TenancyError("La organización solicitada no está disponible.", code="ORGANIZATION_NOT_FOUND", status=404)
-            if user.get("role") != "admin":
-                membership = visible.get("membership") or {}
-                if membership.get("role") not in {"owner", "admin"}:
-                    raise TenancyError("No tiene permisos para consultar las membresías.", code="TENANCY_FORBIDDEN", status=403)
+            access = _require_membership_desk_access(con, user, organization_id)
             return handler.send_json({
-                "organization": visible["organization"],
+                "organization": access["visible"]["organization"],
                 "memberships": list_memberships(con, organization_id),
             })
 
@@ -181,19 +188,27 @@ def handle_m39_1_enterprise_post(handler, path: str, user: dict):
         match = _MEMBERSHIP_ACTION_RE.fullmatch(path)
         if match:
             organization_id, membership_id, action = match.groups()
+            access = _require_membership_desk_access(con, user, organization_id)
             memberships = list_memberships(con, organization_id)
             target = next((item for item in memberships if item["id"] == membership_id), None)
             if not target:
                 raise TenancyError("La membresía no existe.", code="MEMBERSHIP_NOT_FOUND", status=404)
-            management = _require_management(con, user, organization_id, target.get("role", "member"))
-            if not management:
-                raise TenancyError("La organización solicitada no está disponible.", code="ORGANIZATION_NOT_FOUND", status=404)
+            if user.get("role") != "admin" and not actor_can_manage_memberships(
+                user.get("role", ""),
+                (access.get("membership") or {}).get("role"),
+                target.get("role", "member"),
+            ):
+                raise TenancyError("No tiene permisos para administrar esa membresía.", code="TENANCY_FORBIDDEN", status=403)
             if action == "deactivate":
                 membership = deactivate_membership(con, membership_id=membership_id, changed_by=user["id"])
                 audit_action = "enterprise.membership.deactivated"
             else:
                 role = str(payload.get("role") or target.get("role") or "member").strip().lower()
-                if not actor_can_manage_memberships(user.get("role", ""), (management.get("membership") or {}).get("role"), role) and user.get("role") != "admin":
+                if user.get("role") != "admin" and not actor_can_manage_memberships(
+                    user.get("role", ""),
+                    (access.get("membership") or {}).get("role"),
+                    role,
+                ):
                     raise TenancyError("No puede asignar ese rol empresarial.", code="TENANCY_FORBIDDEN", status=403)
                 membership = reactivate_membership(con, membership_id=membership_id, role=role, changed_by=user["id"])
                 audit_action = "enterprise.membership.reactivated"
