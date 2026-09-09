@@ -1,0 +1,91 @@
+{
+  "schema": "legalaiz-v1-production-attestations-v1",
+  "schema_version": 1,
+  "notice": "Este registro no contiene secretos ni autoriza producción. Cada estado VERIFIED_EXTERNAL_EVIDENCE exige evidencia externa identificable, revisión independiente y trazabilidad de aprobación.",
+  "attestations": [
+    {
+      "id": "postgres_external_certification",
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "evidence_ref": null,
+      "owner_role": "platform",
+      "scope": "Instancia PostgreSQL administrada, TLS, aislamiento, privilegios y persistencia verificados fuera del repositorio."
+    },
+    {
+      "id": "postgres_backup_restore_exercise",
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "evidence_ref": null,
+      "owner_role": "platform",
+      "scope": "Backup y restauración completos ensayados sobre infraestructura equivalente a producción."
+    },
+    {
+      "id": "postgres_migration_certification",
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "evidence_ref": null,
+      "owner_role": "platform",
+      "scope": "Migración desde el estado vigente validada con integridad, rollback y reconciliación."
+    },
+    {
+      "id": "persistent_object_storage_certification",
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "evidence_ref": null,
+      "owner_role": "platform",
+      "scope": "Almacenamiento persistente de objetos, cifrado, retención, recuperación y control de acceso certificados."
+    },
+    {
+      "id": "managed_secrets_rotation_certification",
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "evidence_ref": null,
+      "owner_role": "security",
+      "scope": "Secretos administrados, rotación, mínimo privilegio y ausencia de secretos versionados verificados."
+    },
+    {
+      "id": "privileged_mfa_operational_verification",
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "evidence_ref": null,
+      "owner_role": "security",
+      "scope": "MFA real para administración y especialistas verificado con cuentas no sintéticas y procedimiento de recuperación."
+    },
+    {
+      "id": "malware_scanner_operational_verification",
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "evidence_ref": null,
+      "owner_role": "security",
+      "scope": "Scanner antimalware real disponible, actualizado y fail-closed en el entorno objetivo."
+    },
+    {
+      "id": "monitoring_alerting_incident_response",
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "evidence_ref": null,
+      "owner_role": "operations",
+      "scope": "Monitoreo, alertas, retención de logs, escalamiento e incident response ensayados."
+    },
+    {
+      "id": "privacy_data_protection_go_live_review",
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "evidence_ref": null,
+      "owner_role": "legal_privacy",
+      "scope": "Revisión de tratamiento de datos personales, finalidades, encargados, retención, derechos y transferencias aplicables."
+    },
+    {
+      "id": "legal_qa_operating_model_signoff",
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "evidence_ref": null,
+      "owner_role": "legal_qa",
+      "scope": "Modelo operativo humano para revisión jurídica, QA, segregación de funciones, escalamiento y auditoría aprobado."
+    },
+    {
+      "id": "disaster_recovery_restore_exercise",
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "evidence_ref": null,
+      "owner_role": "operations",
+      "scope": "Recuperación ante desastre ensayada con objetivos documentados de recuperación y verificación post-restore."
+    },
+    {
+      "id": "real_payment_provider_certification",
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "evidence_ref": null,
+      "owner_role": "commerce",
+      "scope": "Proveedor de pagos real, webhooks, conciliación, idempotencia, reembolsos y manejo de fallos certificados antes de cobros reales."
+    }
+  ]
+}

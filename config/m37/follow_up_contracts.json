@@ -1,0 +1,100 @@
+{
+  "schema": "legalai_m37_0_follow_up_contracts_v1",
+  "jurisdiction": "Colombia",
+  "timing_policy": {
+    "kind": "OPERATIONAL_CHECKPOINT",
+    "is_legal_deadline": false,
+    "legal_deadline_verified": false,
+    "notice": "Las fechas de esta etapa son puntos de control operativos. No constituyen términos legales, judiciales, administrativos ni contractuales verificados. Todo término jurídico debe validarse separadamente con la norma vigente, la autoridad competente, la fecha de radicación o notificación y los hechos del expediente."
+  },
+  "products": {
+    "CO-LA-001": {
+      "tasks": [
+        {"label_exact": "Radicar reclamación laboral con liquidación, soportes y constancia de entrega.", "kind": "PRIMARY_ACTION", "required_for_close": true},
+        {"label_exact": "Conservar constancia de radicación", "kind": "EVIDENCE_PRESERVATION", "required_for_close": true},
+        {"label_exact": "Verificar pago o respuesta integral", "kind": "STATUS_CHECK", "required_for_close": true},
+        {"label_exact": "Actualizar valores e intereses cuando corresponda", "kind": "ONGOING_CONTROL", "required_for_close": true}
+      ]
+    },
+    "CO-LA-002": {
+      "tasks": [
+        {"label_exact": "Firmar el contrato y anexos antes del inicio o de la modificación de condiciones.", "kind": "PRIMARY_ACTION", "required_for_close": true},
+        {"label_exact": "Verificar firma de ambas partes", "kind": "EVIDENCE_PRESERVATION", "required_for_close": true},
+        {"label_exact": "Confirmar afiliaciones y SG-SST", "kind": "STATUS_CHECK", "required_for_close": true},
+        {"label_exact": "Entregar funciones, políticas y activos con evidencia", "kind": "ONGOING_CONTROL", "required_for_close": true}
+      ]
+    },
+    "CO-EM-003": {
+      "tasks": [
+        {"label_exact": "Firmar contrato y anexos de alcance, entregables, pagos, datos y propiedad intelectual.", "kind": "PRIMARY_ACTION", "required_for_close": true},
+        {"label_exact": "Conservar versión firmada", "kind": "EVIDENCE_PRESERVATION", "required_for_close": true},
+        {"label_exact": "Activar cronograma y responsables", "kind": "STATUS_CHECK", "required_for_close": true},
+        {"label_exact": "Registrar cambios y aceptaciones por escrito", "kind": "ONGOING_CONTROL", "required_for_close": true}
+      ]
+    },
+    "CO-EM-004": {
+      "tasks": [
+        {"label_exact": "Firmar el acuerdo antes de revelar información o permitir acceso a desarrollos, datos o sistemas.", "kind": "PRIMARY_ACTION", "required_for_close": true},
+        {"label_exact": "Inventariar información protegida", "kind": "EVIDENCE_PRESERVATION", "required_for_close": true},
+        {"label_exact": "Limitar accesos", "kind": "STATUS_CHECK", "required_for_close": true},
+        {"label_exact": "Registrar devoluciones, destrucción o conservación autorizada", "kind": "ONGOING_CONTROL", "required_for_close": true}
+      ]
+    },
+    "CO-AR-001": {
+      "tasks": [
+        {"label_exact": "Firmar contrato, inventario y acta de entrega; conservar soportes de pagos y estado del inmueble.", "kind": "PRIMARY_ACTION", "required_for_close": true},
+        {"label_exact": "Firmar inventario con registro fotográfico", "kind": "EVIDENCE_PRESERVATION", "required_for_close": true},
+        {"label_exact": "Registrar medidores y llaves", "kind": "STATUS_CHECK", "required_for_close": true},
+        {"label_exact": "Conservar comprobantes de canon y servicios", "kind": "ONGOING_CONTROL", "required_for_close": true}
+      ]
+    },
+    "CO-SA-001": {
+      "tasks": [
+        {"label_exact": "Radicar petición o reclamo por canal oficial y conservar número, fecha y anexos.", "kind": "PRIMARY_ACTION", "required_for_close": true},
+        {"label_exact": "Conservar constancia de radicación", "kind": "EVIDENCE_PRESERVATION", "required_for_close": true},
+        {"label_exact": "Monitorear continuidad y autorizaciones", "kind": "STATUS_CHECK", "required_for_close": true},
+        {"label_exact": "Actualizar historia clínica y soportes", "kind": "ONGOING_CONTROL", "required_for_close": true}
+      ]
+    },
+    "CO-CD-001": {
+      "tasks": [
+        {"label_exact": "Radicar reclamación ante fuente y operador con soportes completos y solicitud precisa.", "kind": "PRIMARY_ACTION", "required_for_close": true},
+        {"label_exact": "Conservar radicado", "kind": "EVIDENCE_PRESERVATION", "required_for_close": true},
+        {"label_exact": "Consultar historia del reporte", "kind": "STATUS_CHECK", "required_for_close": true},
+        {"label_exact": "Comparar respuesta con pagos, comunicaciones y permanencia", "kind": "ONGOING_CONTROL", "required_for_close": true}
+      ]
+    },
+    "CO-CD-003": {
+      "tasks": [
+        {"label_exact": "Radicar reclamación directa y conservar prueba de compra, entrega, defecto y comunicaciones.", "kind": "PRIMARY_ACTION", "required_for_close": true},
+        {"label_exact": "Conservar radicado y evidencia", "kind": "EVIDENCE_PRESERVATION", "required_for_close": true},
+        {"label_exact": "Custodiar el producto cuando corresponda", "kind": "STATUS_CHECK", "required_for_close": true},
+        {"label_exact": "Notificar también al emisor del medio de pago si aplica reversión", "kind": "ONGOING_CONTROL", "required_for_close": true}
+      ]
+    },
+    "CO-CD-004": {
+      "tasks": [
+        {"label_exact": "Firmar acuerdo, pagaré y carta de instrucciones; entregar copias y activar cronograma de pagos.", "kind": "PRIMARY_ACTION", "required_for_close": true},
+        {"label_exact": "Entregar copia firmada", "kind": "EVIDENCE_PRESERVATION", "required_for_close": true},
+        {"label_exact": "Registrar cada abono", "kind": "STATUS_CHECK", "required_for_close": true},
+        {"label_exact": "Actualizar saldo y custodiar el título", "kind": "ONGOING_CONTROL", "required_for_close": true}
+      ]
+    },
+    "CO-TR-001": {
+      "tasks": [
+        {"label_exact": "Conservar informe, fuentes consultadas, fecha de verificación y matriz de coincidencia.", "kind": "PRIMARY_ACTION", "required_for_close": true},
+        {"label_exact": "Archivar capturas y fuentes", "kind": "EVIDENCE_PRESERVATION", "required_for_close": true},
+        {"label_exact": "Confirmar identificación exacta del sistema", "kind": "STATUS_CHECK", "required_for_close": true},
+        {"label_exact": "Actualizar el análisis si cambian registros oficiales", "kind": "ONGOING_CONTROL", "required_for_close": true}
+      ]
+    },
+    "CO-TR-002": {
+      "tasks": [
+        {"label_exact": "Radicar petición con solicitud de expediente, prueba de notificación y actualización de registros.", "kind": "PRIMARY_ACTION", "required_for_close": true},
+        {"label_exact": "Conservar constancia de radicación", "kind": "EVIDENCE_PRESERVATION", "required_for_close": true},
+        {"label_exact": "Consultar SIMIT y organismo de tránsito", "kind": "STATUS_CHECK", "required_for_close": true},
+        {"label_exact": "Verificar fechas de detección, validación, envío y notificación", "kind": "ONGOING_CONTROL", "required_for_close": true}
+      ]
+    }
+  }
+}

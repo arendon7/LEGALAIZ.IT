@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://legalaiz.it/schemas/m34/legal-fact.schema.json",
+  "title": "LegalAIZ.it M34 Legal Fact",
+  "description": "A traceable fact candidate used by the intelligent journey. AI output is evidence about what may have been stated or extracted; it is never silently promoted to a confirmed fact or legal conclusion.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "fact_id",
+    "fact_type",
+    "value",
+    "provenance",
+    "confirmation_status",
+    "criticality",
+    "source_reference"
+  ],
+  "properties": {
+    "fact_id": {
+      "type": "string",
+      "minLength": 3,
+      "pattern": "^fact_[A-Za-z0-9_-]+$"
+    },
+    "fact_type": {
+      "type": "string",
+      "minLength": 3,
+      "pattern": "^[a-z][a-z0-9_]*(\\.[a-z][a-z0-9_]*)+$"
+    },
+    "value": {},
+    "normalized_value": {},
+    "provenance": {
+      "type": "string",
+      "enum": [
+        "USER_ASSERTED",
+        "DOCUMENT_EXTRACTED",
+        "AI_INFERRED",
+        "RULE_DERIVED",
+        "USER_CONFIRMED",
+        "LEGAL_REVIEWED",
+        "DISPUTED"
+      ]
+    },
+    "confirmation_status": {
+      "type": "string",
+      "enum": [
+        "UNCONFIRMED",
+        "CONFIRMED_BY_USER",
+        "CONFIRMED_BY_LEGAL_REVIEW",
+        "DISPUTED",
+        "SUPERSEDED"
+      ]
+    },
+    "criticality": {
+      "type": "string",
+      "enum": ["LOW", "MEDIUM", "HIGH", "BLOCKING"]
+    },
+    "source_reference": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true,
+      "default": []
+    },
+    "extraction_confidence": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "legal_relevance": {
+      "type": ["string", "null"],
+      "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL", null]
+    },
+    "created_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "notes": {
+      "type": ["string", "null"],
+      "maxLength": 2000
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"provenance": {"const": "AI_INFERRED"}},
+        "required": ["provenance"]
+      },
+      "then": {
+        "properties": {
+          "confirmation_status": {
+            "enum": ["UNCONFIRMED", "DISPUTED", "SUPERSEDED"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"provenance": {"const": "DOCUMENT_EXTRACTED"}},
+        "required": ["provenance"]
+      },
+      "then": {
+        "properties": {
+          "confirmation_status": {
+            "enum": ["UNCONFIRMED", "CONFIRMED_BY_USER", "CONFIRMED_BY_LEGAL_REVIEW", "DISPUTED", "SUPERSEDED"]
+          }
+        }
+      }
+    }
+  ]
+}

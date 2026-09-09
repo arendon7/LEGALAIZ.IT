@@ -1,13 +1,17 @@
 import { dateText, esc, humanize, icons, riskClass, riskLabels, state } from '../core.js';
 
-const closedPattern = /cerrado|finalizado|entregado/i;
+const closedPattern = /cerrado|finalizado/i;
+const followUpPattern = /seguimiento/i;
+const deliveredPattern = /entregad/i;
 const reviewPattern = /revisi|aprob|qa/i;
 const documentPattern = /document|borrador|generad/i;
 
 export function friendlyCaseState(item = {}) {
   const raw = `${item.status || ''} ${item.review_status || ''}`.toLowerCase();
   if (closedPattern.test(raw)) return { key:'closed', label:'Finalizado', detail:'El expediente conserva sus documentos e historial.', progress:100, visual:'case-closed.svg', cls:'success' };
-  if (/aprobad|listo|entregado/.test(raw)) return { key:'ready', label:'Documento listo', detail:'Revisa la versión disponible y los pasos de entrega.', progress:90, visual:'case-ready.svg', cls:'success' };
+  if (followUpPattern.test(raw)) return { key:'followup', label:'En seguimiento', detail:'La entrega ya ocurrió y el expediente conserva próximos pasos por gestionar.', progress:95, visual:'case-ready.svg', cls:'blue' };
+  if (deliveredPattern.test(raw)) return { key:'delivered', label:'Documentos entregados', detail:'Consulta la entrega y organiza las actuaciones posteriores del expediente.', progress:92, visual:'case-ready.svg', cls:'success' };
+  if (/aprobad|listo/.test(raw)) return { key:'ready', label:'Documento listo', detail:'Revisa la versión disponible y los pasos de entrega.', progress:90, visual:'case-ready.svg', cls:'success' };
   if (reviewPattern.test(raw) || item.risk === 'red') return { key:'review', label:'En revisión', detail:'Un especialista debe validar información, riesgos o documentos.', progress:70, visual:'case-review.svg', cls:item.risk === 'red' ? 'danger':'warning' };
   if (documentPattern.test(raw)) return { key:'document', label:'Preparando documentos', detail:'La información se está convirtiendo en documentos revisables.', progress:55, visual:'case-active.svg', cls:'blue' };
   return { key:'active', label:'En progreso', detail:'Completa información y soportes para continuar.', progress:30, visual:'case-active.svg', cls:'blue' };
@@ -16,6 +20,8 @@ export function friendlyCaseState(item = {}) {
 export function nextCaseAction(item = {}) {
   const stage = friendlyCaseState(item);
   if (stage.key === 'closed') return { title:'Consulta el historial', text:'Tus documentos y decisiones permanecen disponibles.', tab:'actividad', button:'Ver historial' };
+  if (stage.key === 'followup') return { title:'Continúa los próximos pasos', text:'Registra actuaciones, soportes y referencias operativas del seguimiento.', tab:'seguimiento', button:'Ver seguimiento' };
+  if (stage.key === 'delivered') return { title:'Organiza lo que sigue después de la entrega', text:'Consulta tus documentos y activa o continúa el seguimiento cuando corresponda.', tab:'seguimiento', button:'Ver siguientes pasos' };
   if (stage.key === 'ready') return { title:'Revisa el documento disponible', text:'Confirma datos, versión y condiciones antes de descargar o usar.', tab:'documentos', button:'Ver documentos' };
   if (stage.key === 'review') return { title:'Consulta el estado de la revisión', text:item.risk === 'red' ? 'El caso no debe liberarse hasta resolver los bloqueos.' : 'Revisa observaciones y decisiones registradas.', tab:'revision', button:'Ver revisión' };
   if (stage.key === 'document') return { title:'Verifica los documentos', text:'Comprueba que los datos coincidan con los soportes.', tab:'documentos', button:'Ver documentos' };
@@ -29,9 +35,9 @@ export function filterCases(items = [], filter = 'Activos') {
   if (filter === 'Todos') return items;
   return items.filter(item => {
     const key = friendlyCaseState(item).key;
-    if (filter === 'Activos') return ['active','document'].includes(key);
+    if (filter === 'Activos') return ['active','document','followup'].includes(key);
     if (filter === 'Revisión') return key === 'review';
-    if (filter === 'Listos') return key === 'ready';
+    if (filter === 'Listos') return ['ready','delivered'].includes(key);
     if (filter === 'Finalizados') return key === 'closed';
     return true;
   });
@@ -80,7 +86,7 @@ export function clientReviewPanel(detail={}, journey=null) {
 
 export function clientFollowUpPanel(detail={}, journey=null) {
   const followUps=journey?.follow_ups||[];
-  return `<section class="section-grid"><div class="card span-7"><div class="card-header"><div><h2>Siguientes pasos</h2><p>Acciones posteriores para que no pierdas el seguimiento del caso.</p></div></div>${followUps.length?`<div class="follow-up-list">${followUps.map(item=>`<div class="follow-up-item"><div><b>${esc(item.action_label)}</b><small>${esc(item.due_at?dateText(item.due_at):'Fecha por definir')} · ${esc(humanize(item.effective_status))}</small>${item.note?`<p>${esc(item.note)}</p>`:''}</div></div>`).join('')}</div>`:emptyState({visual:'next-step.svg',title:'Aún no hay actividades posteriores',text:'Las acciones de seguimiento aparecerán cuando el documento o la solución se entregue.'})}</div><aside class="card span-5 m292-help-panel"><img src="/assets/brand-visuals/internal/support-center.svg" alt=""><h3>¿Qué debes conservar?</h3><ul><li>Constancia de envío o radicación.</li><li>Respuestas y comunicaciones recibidas.</li><li>Fechas de vencimiento o seguimiento.</li></ul></aside></section>`;
+  return `<section class="section-grid"><div class="card span-7"><div class="card-header"><div><h2>Siguientes pasos</h2><p>Acciones posteriores para que no pierdas el seguimiento del caso.</p></div></div>${followUps.length?`<div class="follow-up-list">${followUps.map(item=>`<div class="follow-up-item"><div><b>${esc(item.action_label)}</b><small>${esc(item.due_at?dateText(item.due_at):'Fecha por definir')} · ${esc(humanize(item.effective_status))}</small>${item.note?`<p>${esc(item.note)}</p>`:''}</div></div>`).join('')}</div>`:emptyState({visual:'next-step.svg',title:'Aún no hay actividades posteriores',text:'Las acciones de seguimiento aparecerán cuando el documento o la solución se entregue.'})}</div><aside class="card span-5 m292-help-panel"><img src="/assets/brand-visuals/internal/support-center.svg" alt=""><h3>¿Qué debes conservar?</h3><ul><li>Constancia de envío o radicación.</li><li>Respuestas y comunicaciones recibidas.</li><li>Fechas relevantes y recordatorios operativos.</li></ul><div class="legal-notice"><b>Importante.</b> Las fechas de esta vista son referencias operativas y no sustituyen la verificación de términos legales aplicables.</div></aside></section>`;
 }
 
 export function friendlyDocumentState(doc={}) {

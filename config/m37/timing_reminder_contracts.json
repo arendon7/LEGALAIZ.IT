@@ -1,0 +1,43 @@
+{
+  "schema": "legalai_m37_2_timing_reminder_contracts_v1",
+  "jurisdiction": "Colombia",
+  "timezone": "America/Bogota",
+  "date_event_types": [
+    "ACTION_PERFORMED",
+    "AUTHORITY_RECEIPT_REPORTED",
+    "NOTICE_RECEIVED",
+    "RESPONSE_RECEIVED",
+    "OTHER_RELEVANT_EVENT"
+  ],
+  "provenance": [
+    "USER_ASSERTED",
+    "PROFESSIONAL_RECORDED"
+  ],
+  "reminder_actions": [
+    "ACKNOWLEDGED",
+    "CANCELLED"
+  ],
+  "max_date_records_per_task": 30,
+  "max_reminders_per_task": 20,
+  "max_future_reminder_days": 366,
+  "minimum_event_date": "1900-01-01",
+  "governance": {
+    "m24_due_at_is_operational_checkpoint_only": true,
+    "date_record_is_legal_deadline": false,
+    "date_record_legal_deadline_verified": false,
+    "evidence_reference_verifies_date": false,
+    "professional_record_verifies_legal_deadline": false,
+    "reminder_is_legal_deadline": false,
+    "reminder_acknowledgement_completes_task": false,
+    "reminder_due_completes_task": false,
+    "automatic_external_notification": false,
+    "automatic_task_completion": false,
+    "automatic_close": false,
+    "automatic_escalation": false,
+    "business_calendar_calculation": false,
+    "statutory_deadline_calculation": false,
+    "date_records_append_only": true,
+    "reminder_events_append_only": true
+  },
+  "notice": "Las fechas registradas y los recordatorios de M37.2 son referencias operativas. No constituyen ni verifican términos legales, vencimientos normativos, recepción efectiva por una autoridad, autenticidad de soportes o efectos jurídicos. Cualquier término legal requiere una valoración jurídica expresa basada en los hechos y fuentes aplicables."
+}

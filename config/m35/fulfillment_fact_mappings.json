@@ -1,0 +1,78 @@
+{
+  "schema_version": "35.1.0",
+  "project": "LegalAIZ.it",
+  "jurisdiction": "CO",
+  "purpose": "Explicit, fail-closed bridge from decision-usable M34 triage facts to the canonical fulfillment interviews. A mapping may prefill an editable answer only when semantic equivalence is curated; otherwise the fact is explicitly NO_SAFE_MAP.",
+  "policies": {
+    "allowed_statuses": ["EXACT", "TRANSFORM_REQUIRED", "NO_SAFE_MAP"],
+    "allowed_sources": ["USER_ASSERTED", "USER_CONFIRMED", "LEGAL_REVIEWED", "RULE_DERIVED"],
+    "never_reuse_unconfirmed_ai": true,
+    "never_map_fulfillment_only_facts": true,
+    "local_user_answer_wins": true,
+    "prefill_is_editable": true,
+    "no_identifier_inference": true,
+    "no_numeric_range_guessing": true,
+    "no_narrative_copy": true
+  },
+  "mappings": [
+    {"product_code":"CO-TR-001","fact_type":"traffic.comparendo_or_case_reference","status":"NO_SAFE_MAP","reason":"El triage sólo confirma si existe una referencia; fulfillment exige el número concreto."},
+    {"product_code":"CO-TR-001","fact_type":"traffic.authority","status":"NO_SAFE_MAP","reason":"El triage pregunta si la autoridad es conocida; fulfillment exige identificarla por nombre."},
+    {"product_code":"CO-TR-001","fact_type":"traffic.procedural_stage","status":"NO_SAFE_MAP","reason":"Las categorías de triage son más amplias que el estado procesal verificable de fulfillment."},
+    {"product_code":"CO-TR-001","fact_type":"goal.requested_outcome","status":"NO_SAFE_MAP","reason":"El objetivo de orientación no sustituye ninguna actuación o pretensión concreta del formulario SAST."},
+
+    {"product_code":"CO-TR-002","fact_type":"traffic.comparendo_or_case_reference","status":"NO_SAFE_MAP","reason":"El triage no recopila el número concreto del comparendo."},
+    {"product_code":"CO-TR-002","fact_type":"traffic.notification_status","status":"NO_SAFE_MAP","reason":"La existencia de notificación no equivale a la trazabilidad documental y cronológica exigida por fulfillment."},
+    {"product_code":"CO-TR-002","fact_type":"traffic.knowledge_date","status":"EXACT","target_question_id":"first_knowledge_date","transform":"DATE_ISO","reason":"Ambos campos representan la fecha de conocimiento efectivo de la actuación."},
+    {"product_code":"CO-TR-002","fact_type":"traffic.procedural_stage","status":"NO_SAFE_MAP","reason":"La etapa resumida de triage no determina por sí sola el estado procesal específico del formulario."},
+    {"product_code":"CO-TR-002","fact_type":"goal.requested_outcome","status":"NO_SAFE_MAP","reason":"El objetivo general no reemplaza la pretensión y actuaciones específicas del producto."},
+
+    {"product_code":"CO-LA-001","fact_type":"employment.relationship_scope","status":"NO_SAFE_MAP","reason":"El triage clasifica la naturaleza general del vínculo; fulfillment reconstruye hechos laborales específicos."},
+    {"product_code":"CO-LA-001","fact_type":"employment.start_date","status":"EXACT","target_question_id":"start_date","transform":"DATE_ISO","reason":"Fecha de inicio/ingreso del mismo vínculo laboral."},
+    {"product_code":"CO-LA-001","fact_type":"employment.end_date","status":"EXACT","target_question_id":"end_date","transform":"DATE_ISO","reason":"Fecha de terminación o corte del mismo vínculo laboral."},
+    {"product_code":"CO-LA-001","fact_type":"employment.compensation_basis","status":"TRANSFORM_REQUIRED","target_question_id":"monthly_salary","transform":"MONEY_COP_TO_NUMBER","reason":"La remuneración base de triage puede prellenar el salario mensual, pero permanece editable y debe verificarse con soportes."},
+    {"product_code":"CO-LA-001","fact_type":"employment.pending_concepts","status":"NO_SAFE_MAP","reason":"Fulfillment cuantifica cada acreencia por separado; una lista preliminar no debe fabricar días, períodos ni valores."},
+    {"product_code":"CO-LA-001","fact_type":"goal.requested_outcome","status":"NO_SAFE_MAP","reason":"La finalidad general no reemplaza las pretensiones laborales y controles del expediente."},
+
+    {"product_code":"CO-LA-002","fact_type":"employment.need_type","status":"NO_SAFE_MAP","reason":"El triage distingue laboral vs independiente; el campo need_type de fulfillment define modalidad laboral permanente, temporal u obra/labor."},
+    {"product_code":"CO-LA-002","fact_type":"employment.start_date","status":"EXACT","target_question_id":"start_date","transform":"DATE_ISO","reason":"Fecha de inicio de la misma relación que se formalizará."},
+    {"product_code":"CO-LA-002","fact_type":"employment.role","status":"TRANSFORM_REQUIRED","target_question_id":"job_title","transform":"TEXT_MIN_3","reason":"La función/cargo expresada por el usuario puede reutilizarse como denominación editable del cargo si tiene longitud suficiente."},
+    {"product_code":"CO-LA-002","fact_type":"employment.compensation_basis","status":"TRANSFORM_REQUIRED","target_question_id":"monthly_salary","transform":"MONEY_COP_TO_NUMBER","reason":"La remuneración base puede prellenar el salario mensual acordado, sujeto a verificación final."},
+
+    {"product_code":"CO-EM-003","fact_type":"services.object","status":"TRANSFORM_REQUIRED","target_question_id":"object","transform":"TEXT_MIN_20","reason":"El servicio descrito puede reutilizarse como objeto sólo si ya tiene precisión mínima suficiente."},
+    {"product_code":"CO-EM-003","fact_type":"services.autonomy","status":"NO_SAFE_MAP","reason":"Fulfillment evalúa subordinación mediante varias señales concretas; una categoría agregada no debe responderlas automáticamente."},
+    {"product_code":"CO-EM-003","fact_type":"services.fees","status":"TRANSFORM_REQUIRED","target_question_id":"fees","transform":"MONEY_COP_TO_NUMBER","reason":"El valor aproximado de honorarios puede prellenar el campo económico editable del contrato."},
+    {"product_code":"CO-EM-003","fact_type":"services.term","status":"NO_SAFE_MAP","reason":"El triage usa rangos; fulfillment exige duración concreta y no se permite inferir un número de meses."},
+
+    {"product_code":"CO-EM-004","fact_type":"confidentiality.relationship","status":"TRANSFORM_REQUIRED","target_question_id":"relationship_context","transform":"NDA_RELATIONSHIP_TO_RUNTIME","reason":"Sólo valores con equivalencia explícita se traducen; negociación/alianza sin equivalencia exacta se repreguntan."},
+    {"product_code":"CO-EM-004","fact_type":"confidentiality.information_categories","status":"TRANSFORM_REQUIRED","target_question_id":"info_categories","transform":"NDA_CATEGORIES_TO_TEXT","reason":"Las categorías seleccionadas se expanden a sus etiquetas humanas sin añadir categorías no afirmadas."},
+    {"product_code":"CO-EM-004","fact_type":"ip.relevant_scope","status":"NO_SAFE_MAP","reason":"Fulfillment distingue creación, activos preexistentes, licencias y otros supuestos en preguntas separadas."},
+    {"product_code":"CO-EM-004","fact_type":"data.personal_data_involved","status":"TRANSFORM_REQUIRED","target_question_id":"personal_data","transform":"PERSONAL_DATA_TO_YES_NO_UNKNOWN","reason":"El formulario sólo necesita confirmar si se incluyen datos personales; el detalle sensible continúa en preguntas posteriores."},
+
+    {"product_code":"CO-AR-001","fact_type":"lease.property_use","status":"NO_SAFE_MAP","reason":"El triage se usa para determinar si el producto residencial aplica; fulfillment debe volver a confirmar uso y condiciones concretas sin inferirlas."},
+    {"product_code":"CO-AR-001","fact_type":"lease.rent","status":"TRANSFORM_REQUIRED","target_question_id":"rent","transform":"MONEY_COP_TO_NUMBER","reason":"El canon mensual aproximado puede prellenar el canon editable y será verificado antes del documento."},
+    {"product_code":"CO-AR-001","fact_type":"lease.term","status":"NO_SAFE_MAP","reason":"El triage usa intervalos y fulfillment exige meses concretos; no se adivina un plazo dentro del rango."},
+
+    {"product_code":"CO-CD-001","fact_type":"credit_data.reporter_or_source","status":"NO_SAFE_MAP","reason":"El triage recopila el tipo de entidad; fulfillment requiere la fuente u operador concreto y su evidencia."},
+    {"product_code":"CO-CD-001","fact_type":"credit_data.obligation_reference","status":"NO_SAFE_MAP","reason":"El triage sólo confirma capacidad de identificar la obligación; no contiene la referencia exigida por fulfillment."},
+    {"product_code":"CO-CD-001","fact_type":"credit_data.report_status","status":"NO_SAFE_MAP","reason":"Las categorías preliminares no son equivalentes uno a uno a la clasificación jurídica detallada del formulario."},
+    {"product_code":"CO-CD-001","fact_type":"credit_data.prior_claim_status","status":"TRANSFORM_REQUIRED","target_question_id":"prior_claim","transform":"PRIOR_CLAIM_TO_YES_NO","reason":"La existencia de un reclamo previo sí puede reutilizarse; la respuesta incierta se vuelve a preguntar."},
+    {"product_code":"CO-CD-001","fact_type":"goal.requested_outcome","status":"NO_SAFE_MAP","reason":"El objetivo general no sustituye la actuación principal ni la pretensión detallada de hábeas data."},
+
+    {"product_code":"CO-CD-003","fact_type":"consumer.transaction","status":"NO_SAFE_MAP","reason":"Producto/servicio/digital de triage no identifica de forma suficiente el tipo específico de bien o servicio adquirido."},
+    {"product_code":"CO-CD-003","fact_type":"consumer.issue_type","status":"TRANSFORM_REQUIRED","target_question_id":"request_mode","transform":"CONSUMER_ISSUE_TO_REQUEST_MODE","reason":"Garantía, retracto y reversión tienen equivalencia explícita; otras categorías se repreguntan para evitar sobrerrecomendación."},
+    {"product_code":"CO-CD-003","fact_type":"consumer.transaction_date","status":"EXACT","target_question_id":"purchase_date","transform":"DATE_ISO","reason":"Fecha de compra o celebración del contrato en ambos flujos."},
+    {"product_code":"CO-CD-003","fact_type":"consumer.requested_remedy","status":"NO_SAFE_MAP","reason":"La reparación/cambio/devolución solicitada no equivale necesariamente al mecanismo jurídico principal del formulario."},
+    {"product_code":"CO-CD-003","fact_type":"payment.method","status":"NO_SAFE_MAP","reason":"El medio de pago de triage no se reutiliza hasta contar con una pregunta runtime con semántica idéntica y opciones verificadas."},
+
+    {"product_code":"CO-CD-004","fact_type":"debt.origin","status":"NO_SAFE_MAP","reason":"El origen preliminar no reemplaza la identificación del título, negocio y documento fuente exigidos por fulfillment."},
+    {"product_code":"CO-CD-004","fact_type":"debt.amount","status":"NO_SAFE_MAP","reason":"El saldo aproximado de triage no equivale al saldo total que se pretende cobrar después de abonos, intereses y cargos."},
+    {"product_code":"CO-CD-004","fact_type":"debt.due_date","status":"NO_SAFE_MAP","reason":"El triage confirma vencimiento en términos generales; fulfillment debe reconstruir exigibilidad y fechas concretas."},
+    {"product_code":"CO-CD-004","fact_type":"debt.support","status":"NO_SAFE_MAP","reason":"El triage admite múltiples soportes; fulfillment exige identificar el documento principal y validar sus características."},
+
+    {"product_code":"CO-SA-001","fact_type":"health.entity","status":"TRANSFORM_REQUIRED","target_question_id":"entity_type","transform":"HEALTH_ENTITY_TO_RUNTIME","reason":"El tipo de entidad destinataria tiene equivalencias explícitas para EPS, IPS, gestor farmacéutico y otra."},
+    {"product_code":"CO-SA-001","fact_type":"health.need","status":"TRANSFORM_REQUIRED","target_question_id":"request_type","transform":"HEALTH_NEED_TO_RUNTIME","reason":"Las necesidades de triage se agrupan únicamente cuando corresponden de forma explícita a una categoría runtime."},
+    {"product_code":"CO-SA-001","fact_type":"health.urgency","status":"NO_SAFE_MAP","reason":"La urgencia de triage es una señal de seguridad/escalamiento y no debe convertirse en una respuesta clínica o jurídica de fulfillment."},
+    {"product_code":"CO-SA-001","fact_type":"health.prior_request_status","status":"NO_SAFE_MAP","reason":"El triage distingue sin respuesta, negada y parcial; no se colapsa esa información en un simple sí/no sin campo equivalente."},
+    {"product_code":"CO-SA-001","fact_type":"goal.requested_outcome","status":"NO_SAFE_MAP","reason":"El objetivo general no sustituye la pretensión específica de salud ni sus soportes."}
+  ]
+}

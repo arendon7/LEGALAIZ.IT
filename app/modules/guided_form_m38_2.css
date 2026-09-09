@@ -1,0 +1,24 @@
+.m382-form-contract{margin:18px 0 22px;padding:22px;border:1px solid rgba(37,99,235,.18);border-radius:20px;background:linear-gradient(135deg,rgba(247,245,241,.96),rgba(255,255,255,.98));box-shadow:0 14px 34px rgba(13,19,36,.06)}
+.m382-form-contract-head{max-width:860px}
+.m382-form-contract-head h2{margin:5px 0 8px;font-size:clamp(1.2rem,2vw,1.55rem);line-height:1.25;color:#0D1324}
+.m382-form-contract-head p{margin:0;color:#4b5563;line-height:1.65}
+.m382-form-contract-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+.m382-form-contract-grid>div{display:grid;gap:6px;min-height:104px;padding:15px;border:1px solid rgba(13,19,36,.08);border-radius:15px;background:rgba(255,255,255,.82)}
+.m382-form-contract-grid b{color:#0D1324;font-size:.94rem}
+.m382-form-contract-grid span{color:#5b6472;font-size:.86rem;line-height:1.5}
+.m382-question-meta{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:5px 0 10px}
+.m382-field-status,.m382-prefill-status{display:inline-flex;align-items:center;min-height:24px;padding:3px 8px;border-radius:999px;font-size:.72rem;font-weight:700;letter-spacing:.01em}
+.m382-field-status.required{background:rgba(37,99,235,.10);color:#1d4ed8}
+.m382-field-status.optional{background:rgba(168,174,184,.16);color:#5f6670}
+.m382-prefill-status{background:rgba(201,169,110,.16);color:#7b5a22}
+.question.m382-prefilled-question{border-color:rgba(201,169,110,.38);box-shadow:inset 3px 0 0 rgba(201,169,110,.7)}
+.m382-help-button{width:auto!important;min-width:0!important;padding:4px 9px!important;border-radius:999px!important;font-size:.72rem!important;font-weight:700!important;line-height:1.2!important}
+.m382-footer-note{flex:1 1 100%;margin:0 0 10px;color:#667085;font-size:.78rem;line-height:1.5}
+.m382-review-guide{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.9fr);gap:22px;margin:0 0 22px;padding:20px;border:1px solid rgba(201,169,110,.34);border-radius:18px;background:#F7F5F1}
+.m382-review-guide h3{margin:5px 0 8px;color:#0D1324;font-size:1.15rem}
+.m382-review-guide p{margin:0;color:#565f6d;line-height:1.6}
+.m382-review-guide ul{display:grid;gap:8px;margin:0;padding-left:20px;color:#3f4855;font-size:.88rem;line-height:1.5}
+.m382-review-boundary{grid-column:1/-1;padding-top:14px!important;border-top:1px solid rgba(13,19,36,.10);font-size:.82rem!important}
+@media (max-width:900px){.m382-form-contract-grid{grid-template-columns:1fr}.m382-form-contract-grid>div{min-height:0}.m382-review-guide{grid-template-columns:1fr}.m382-review-boundary{grid-column:auto}}
+@media (max-width:640px){.m382-form-contract{margin:14px 0 18px;padding:17px;border-radius:16px}.m382-question-meta{margin-top:7px}.wizard-main>.wizard-footer{flex-wrap:wrap}.wizard-main>.wizard-footer>.button-group{width:100%}.wizard-main>.wizard-footer>.button-group .btn{flex:1}.m382-review-guide{padding:16px;border-radius:15px}}
+@media (prefers-reduced-motion:reduce){.m382-form-contract,.m382-question-meta,.m382-review-guide{scroll-behavior:auto;transition:none!important;animation:none!important}}

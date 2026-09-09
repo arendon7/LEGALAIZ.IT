@@ -1,0 +1,58 @@
+{
+  "schema": "legalaizit-v1-pilot-readiness-policy-v1",
+  "candidate": "V1-PILOT-READINESS",
+  "title": "Controlled Pilot Readiness Gate",
+  "max_duration_days": 45,
+  "max_users": 25,
+  "max_tenants": 5,
+  "modes": {
+    "SYNTHETIC_CONTROLLED": {
+      "data_scope": "SYNTHETIC_ONLY",
+      "payment_modes": ["DISABLED", "SANDBOX_ONLY"],
+      "communication_modes": ["DISABLED"]
+    },
+    "REAL_CLIENT_CONTROLLED": {
+      "data_scope": "REAL_CLIENT_DATA",
+      "payment_modes": ["DISABLED", "SANDBOX_ONLY", "REAL_PROVIDER"],
+      "communication_modes": ["DISABLED", "REAL_PROVIDER"]
+    }
+  },
+  "required_approvals": {
+    "legal": ["specialist"],
+    "qa": ["qa"],
+    "privacy": ["admin", "specialist"],
+    "security_operations": ["admin", "qa"]
+  },
+  "ratifier_roles": ["admin", "qa"],
+  "separation": {
+    "approval_pairs": [["legal", "qa"]],
+    "ratifier_distinct_from": ["legal", "qa"]
+  },
+  "real_client_release_metadata": {
+    "REAL_PRODUCTION_AUTHORIZED": true,
+    "SYNTHETIC_DATA_ONLY": false
+  },
+  "real_payment_release_metadata": {
+    "REAL_PAYMENTS_AUTHORIZED": true
+  },
+  "real_payment_env": {
+    "authorization": "LEGAL_REAL_PAYMENTS_AUTHORIZED",
+    "provider": "LEGAL_PAYMENT_PROVIDER",
+    "disallowed_providers": ["", "sandbox", "disabled", "none"]
+  },
+  "real_communications_env": {
+    "authorization": "LEGAL_EXTERNAL_COMMUNICATIONS_AUTHORIZED",
+    "provider": "LEGAL_COMMUNICATION_PROVIDER",
+    "disallowed_providers": ["", "sandbox", "disabled", "none"]
+  },
+  "execution_request_env": "LEGAL_PILOT_EXECUTION_REQUESTED",
+  "principles": [
+    "La preparación técnica para piloto no equivale a autorización de producción comercial.",
+    "El plan de piloto debe ser explícito, acotado, aprobado y ratificado antes de cualquier ejecución.",
+    "Jurídico y QA deben ser actores distintos.",
+    "El ratificador final debe ser distinto de los aprobadores jurídico y QA.",
+    "Un piloto con clientes reales exige release metadata compatible; ninguna variable de entorno puede sobreescribirla.",
+    "Pagos o comunicaciones reales sólo pueden usarse si el plan los declara y las compuertas específicas están satisfechas.",
+    "La compuerta no cambia flags, proveedores, datos ni estado productivo; sólo evalúa evidencia y bloqueos."
+  ]
+}

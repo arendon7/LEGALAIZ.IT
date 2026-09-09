@@ -4,6 +4,36 @@ import core_v11 as core
 from legalai_platform.runtime_registry import M24_CASE_JOURNEY
 
 
+def _requires_m36_controlled_delivery(con, case_id: str) -> bool:
+    """Return True only when this exact case already entered the M36 fulfillment path.
+
+    Older cases created before M36 remain compatible. Once a case has an M36.0
+    intake, `ENTREGADO` must be produced only by the controlled M36.3 gate.
+    """
+    try:
+        return bool(con.execute(
+            "SELECT 1 FROM m36_fulfillment_intake WHERE case_id=? LIMIT 1",
+            (case_id,),
+        ).fetchone())
+    except Exception:
+        # The table is absent on historical databases that have never executed
+        # M36.0. That is not evidence that a current M36 case may bypass M36.3.
+        return False
+
+
+def _requires_m37_controlled_followup(con, case_id: str) -> bool:
+    """Return True once the exact case has entered the controlled M37 lifecycle."""
+    try:
+        row = con.execute(
+            "SELECT state FROM m37_followup_enrollment WHERE case_id=? LIMIT 1",
+            (case_id,),
+        ).fetchone()
+        return bool(row and str(row[0] or "") in {"PREPARED", "ACTIVE"})
+    except Exception:
+        # Historical databases without M37 keep their previous M24 behavior.
+        return False
+
+
 def handle_m24_case_get(handler, path, user):
     prefix = "/api/m24/case-journeys"
     if not path.startswith(prefix):
@@ -35,16 +65,44 @@ def handle_m24_case_post(handler, path, user):
     con = core.db()
     try:
         if action == "transition":
+            target = str(data.get("target_state") or "").upper().strip()
+            if target == "ENTREGADO" and _requires_m36_controlled_delivery(con, case_id):
+                handler.send_json(
+                    {
+                        "error": "Este expediente ingresó al flujo M36 y sólo puede entregarse mediante la compuerta controlada M36.3.",
+                        "code": "M36_CONTROLLED_DELIVERY_REQUIRED",
+                    },
+                    409,
+                )
+                return True
+            if target in {"CERRADO", "ESCALADO"} and _requires_m37_controlled_followup(con, case_id):
+                handler.send_json(
+                    {
+                        "error": "Este expediente ingresó al seguimiento M37. El cierre o escalamiento requiere la compuerta de lifecycle M37 correspondiente.",
+                        "code": "M37_LIFECYCLE_CONTROL_REQUIRED",
+                    },
+                    409,
+                )
+                return True
             result = M24_CASE_JOURNEY.transition(
                 con,
                 case_id,
-                data.get("target_state"),
+                target,
                 data.get("reason"),
                 data.get("evidence") or {},
                 data.get("confirmation") or "",
                 user,
             )
         else:
+            if _requires_m37_controlled_followup(con, case_id):
+                handler.send_json(
+                    {
+                        "error": "Este expediente ingresó al seguimiento M37 y sus actividades sólo pueden modificarse mediante la compuerta controlada M37.0.",
+                        "code": "M37_CONTROLLED_FOLLOWUP_REQUIRED",
+                    },
+                    409,
+                )
+                return True
             result = M24_CASE_JOURNEY.update_follow_up(
                 con,
                 case_id,

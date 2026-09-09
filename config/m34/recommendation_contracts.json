@@ -1,0 +1,188 @@
+{
+  "schema_version": "34.4.0",
+  "project": "LegalAIZ.it",
+  "jurisdiction": "CO",
+  "purpose": "Deterministic, explainable product-fit decisions after M34.3 sufficiency. These contracts select a LegalAIZ.it solution; they do not predict legal outcomes or replace the underlying legal rules and professional review gates.",
+  "decision_outcomes": ["RECOMMEND", "ASK_MORE", "ESCALATE", "OUT_OF_SCOPE"],
+  "eligibility_states": ["PASS", "CONDITIONAL", "FAIL"],
+  "max_alternatives": 2,
+  "public_score_policy": "NEVER_EXPOSE_NUMERIC_FIT_SCORE",
+  "contracts": [
+    {
+      "product_code": "CO-LA-001",
+      "public_title": "Revisar y reclamar mi liquidación laboral",
+      "fit_statement": "Esta solución está diseñada para revisar el cierre de una relación laboral privada, los conceptos pendientes y una eventual reclamación documentada.",
+      "reason_fact_types": ["employment.relationship_scope", "employment.start_date", "employment.end_date", "employment.pending_concepts", "goal.requested_outcome"],
+      "reason_templates": [
+        "La información disponible describe una relación de trabajo cuyo cierre o liquidación necesita revisión.",
+        "Ya contamos con las fechas principales y los conceptos que indicas como pendientes.",
+        "El objetivo informado es compatible con revisar valores y estructurar una reclamación laboral."
+      ],
+      "catalog_checks": [
+        {"fact_type": "employment.relationship_scope", "operator": "EQ", "value": "empleo_publico", "effect": "FAIL", "reason_code": "PUBLIC_EMPLOYMENT_OUTSIDE_PRODUCT", "public_message": "Este producto está diseñado para relaciones laborales privadas y no debe usarse para asumir reglas propias del empleo público."},
+        {"fact_type": "employment.relationship_scope", "operator": "EQ", "value": "contrato_servicios", "effect": "CONDITIONAL", "reason_code": "SERVICE_RELATIONSHIP_NEEDS_NATURE_REVIEW", "public_message": "El vínculo fue descrito como prestación de servicios. Antes de tratarlo como una liquidación laboral debe revisarse la naturaleza real de la relación."}
+      ],
+      "includes": ["revisión estructurada de acreencias y conceptos pendientes", "organización de hechos, fechas y soportes relevantes", "borrador documental de reclamación según el caso"],
+      "not_included": ["representación judicial", "garantía sobre reconocimiento o pago", "decisión definitiva sobre la existencia de un contrato realidad"],
+      "review_requirement": "CASE_SPECIFIC_REVIEW_EXPECTED"
+    },
+    {
+      "product_code": "CO-LA-002",
+      "public_title": "Crear un contrato de trabajo completo",
+      "fit_statement": "Esta solución está diseñada para formalizar una relación laboral en Colombia con modalidad, funciones, remuneración y condiciones coherentes con la realidad del cargo.",
+      "reason_fact_types": ["employment.need_type", "employment.start_date", "employment.role", "employment.compensation_basis"],
+      "reason_templates": [
+        "La necesidad informada corresponde a formalizar una relación de trabajo.",
+        "Ya están identificados los elementos mínimos del cargo, inicio y remuneración para continuar el diseño contractual.",
+        "La solución permite completar después las condiciones específicas del vínculo mediante el formulario de fulfillment."
+      ],
+      "catalog_checks": [
+        {"fact_type": "employment.need_type", "operator": "EQ", "value": "servicio_independiente", "effect": "FAIL", "reason_code": "INDEPENDENT_SERVICE_NOT_EMPLOYMENT", "public_message": "La necesidad fue descrita como un servicio independiente; no corresponde forzarla dentro de un contrato de trabajo."}
+      ],
+      "includes": ["contrato de trabajo personalizado", "selección guiada de condiciones laborales", "controles de coherencia y revisión según riesgo"],
+      "not_included": ["afiliaciones o trámites operativos ante terceros", "liquidación de una relación ya terminada", "garantía sobre contingencias laborales futuras"],
+      "review_requirement": "RISK_BASED"
+    },
+    {
+      "product_code": "CO-EM-003",
+      "public_title": "Contratar o prestar servicios con reglas claras",
+      "fit_statement": "Esta solución organiza una relación de servicios independientes alrededor del objeto, autonomía, honorarios, plazo, entregables y controles contractuales.",
+      "reason_fact_types": ["services.object", "services.autonomy", "services.fees", "services.term"],
+      "reason_templates": [
+        "La situación se refiere a una prestación de servicios con objeto y contraprestación identificables.",
+        "La información disponible permite revisar si el nivel de autonomía es compatible con el producto.",
+        "El plazo y los honorarios ya están dentro del conjunto mínimo para continuar el diseño contractual."
+      ],
+      "catalog_checks": [
+        {"fact_type": "services.autonomy", "operator": "EQ", "value": "horario_subordinacion", "effect": "ESCALATE", "reason_code": "SUBORDINATION_SIGNAL_REQUIRES_REVIEW", "public_message": "Se describieron horario, órdenes permanentes o subordinación. No es responsable recomendar automáticamente un contrato de prestación de servicios sin revisar la naturaleza real de la relación.", "alternative_codes": ["CO-LA-002"]}
+      ],
+      "includes": ["contrato de prestación de servicios", "alcance, entregables, aceptación y pagos", "cláusulas de autonomía, responsabilidad, terminación y módulos aplicables"],
+      "not_included": ["simulación de una relación independiente cuando existe subordinación", "asesoría sectorial regulatoria no incluida en el producto", "garantía de inexistencia de contingencia laboral"],
+      "review_requirement": "RISK_BASED"
+    },
+    {
+      "product_code": "CO-EM-004",
+      "public_title": "Proteger información, desarrollos y secretos empresariales",
+      "fit_statement": "Esta solución está orientada a proteger información confidencial, propiedad intelectual, datos y desarrollos dentro de una relación empresarial o profesional.",
+      "reason_fact_types": ["confidentiality.relationship", "confidentiality.information_categories", "ip.relevant_scope", "data.personal_data_involved"],
+      "reason_templates": [
+        "La relación descrita requiere reglas expresas sobre información que será compartida o creada.",
+        "Ya se identificaron las categorías de información y el alcance de propiedad intelectual relevante.",
+        "La existencia o ausencia de datos personales forma parte del alcance que debe controlar el documento."
+      ],
+      "catalog_checks": [],
+      "includes": ["obligaciones de confidencialidad", "tratamiento contractual de propiedad intelectual y materiales preexistentes", "módulos de datos y tecnología cuando correspondan"],
+      "not_included": ["registro de derechos ante autoridades", "auditoría técnica de ciberseguridad", "concepto regulatorio sectorial especializado"],
+      "review_requirement": "RISK_BASED"
+    },
+    {
+      "product_code": "CO-AR-001",
+      "public_title": "Arrendar una vivienda con un contrato completo",
+      "fit_statement": "Esta solución está diseñada específicamente para un arrendamiento de vivienda urbana, con canon, término, inventario, entrega, garantías y terminación.",
+      "reason_fact_types": ["lease.property_use", "lease.rent", "lease.term"],
+      "reason_templates": [
+        "El uso informado del inmueble es compatible con la solución de vivienda urbana.",
+        "El canon y el término están dentro de los datos mínimos para estructurar el contrato.",
+        "Los datos identificadores y la dirección exacta pueden completarse después al preparar el documento."
+      ],
+      "catalog_checks": [
+        {"fact_type": "lease.property_use", "operator": "IN", "values": ["mixto", "comercial"], "effect": "FAIL", "reason_code": "NON_RESIDENTIAL_LEASE_OUTSIDE_PRODUCT", "public_message": "El producto actual es para vivienda urbana. Un uso comercial o mixto requiere otra estructura contractual y no debe forzarse dentro de esta solución."}
+      ],
+      "includes": ["contrato de arrendamiento de vivienda urbana", "canon, término, obligaciones, servicios e inventario", "módulos de entrega, garantías, terminación y restitución"],
+      "not_included": ["arrendamiento comercial o exclusivamente empresarial", "proceso judicial de restitución", "estudio de títulos o concepto urbanístico"],
+      "review_requirement": "CASE_SPECIFIC_REVIEW_EXPECTED"
+    },
+    {
+      "product_code": "CO-CD-001",
+      "public_title": "Corregir o revisar un reporte en centrales de riesgo",
+      "fit_statement": "Esta solución organiza un reclamo de hábeas data financiero o crediticio a partir del reporte, la obligación, actuaciones previas y el resultado buscado.",
+      "reason_fact_types": ["credit_data.obligation_reference", "credit_data.report_status", "credit_data.prior_claim_status", "goal.requested_outcome"],
+      "reason_templates": [
+        "La situación se refiere a información financiera o crediticia que deseas revisar, corregir o actualizar.",
+        "Ya se identificó el estado del reporte y si existe una reclamación previa.",
+        "El objetivo informado permite orientar la actuación documental que corresponde dentro del producto."
+      ],
+      "catalog_checks": [],
+      "includes": ["organización del reclamo y sus soportes", "borrador de comunicación o reclamación aplicable", "trazabilidad de hechos y actuaciones previas"],
+      "not_included": ["garantía de eliminación del reporte", "representación en litigio", "reconstrucción probatoria de identidad o fraude no acreditado"],
+      "review_requirement": "CASE_SPECIFIC_REVIEW_EXPECTED"
+    },
+    {
+      "product_code": "CO-CD-003",
+      "public_title": "Reclamar por una compra o servicio que salió mal",
+      "fit_statement": "Esta solución identifica y estructura la ruta documental de consumo según el problema, la transacción, la fecha, el remedio buscado y el medio de pago.",
+      "reason_fact_types": ["consumer.transaction", "consumer.issue_type", "consumer.transaction_date", "consumer.requested_remedy", "payment.method"],
+      "reason_templates": [
+        "La situación corresponde a una relación de consumo con un problema y remedio identificables.",
+        "La fecha de la transacción y el medio de pago permiten revisar la ruta aplicable sin asumir resultados.",
+        "El producto puede distinguir entre garantía, retracto, reversión u otra reclamación de consumo según los hechos."
+      ],
+      "catalog_checks": [],
+      "includes": ["clasificación guiada de la reclamación de consumo", "organización de hechos, fechas, pagos y soportes", "borrador documental compatible con la ruta identificada"],
+      "not_included": ["garantía de devolución o reembolso", "representación ante autoridad o juez", "conclusión automática sobre vencimientos cuando falten hechos"],
+      "review_requirement": "RISK_BASED"
+    },
+    {
+      "product_code": "CO-CD-004",
+      "public_title": "Formalizar una deuda y un acuerdo de pago",
+      "fit_statement": "Esta solución organiza una obligación y permite documentar saldo, vencimiento, soportes, acuerdo de pago, pagaré y gestión prejurídica según corresponda.",
+      "reason_fact_types": ["debt.origin", "debt.amount", "debt.due_date", "debt.support"],
+      "reason_templates": [
+        "La situación describe una obligación o saldo que se quiere documentar o gestionar.",
+        "El monto, vencimiento y soporte de la deuda ya están dentro de los hechos mínimos para orientar el producto.",
+        "La solución permite diferenciar después entre acuerdo, pagaré y gestión de cobro según las respuestas completas."
+      ],
+      "catalog_checks": [],
+      "includes": ["estructura de acuerdo de pago y obligaciones", "módulos de pagaré o cobro prejurídico cuando correspondan", "trazabilidad del saldo, fechas y soportes"],
+      "not_included": ["declaración automática de exigibilidad judicial", "representación ejecutiva o litigiosa", "garantía de recuperación de cartera"],
+      "review_requirement": "CASE_SPECIFIC_REVIEW_EXPECTED"
+    },
+    {
+      "product_code": "CO-SA-001",
+      "public_title": "Solicitar atención, continuidad o respuesta de una entidad de salud",
+      "fit_statement": "Esta solución organiza una solicitud o derecho de petición ante una EPS o IPS, teniendo en cuenta la necesidad, urgencia, actuaciones previas y resultado buscado.",
+      "reason_fact_types": ["health.entity", "health.need", "health.urgency", "health.prior_request_status", "goal.requested_outcome"],
+      "reason_templates": [
+        "La situación involucra una necesidad frente a una EPS, IPS u otra entidad del sistema de salud incluida en el producto.",
+        "La urgencia y las solicitudes previas ya fueron identificadas para decidir si la automatización puede continuar.",
+        "El objetivo informado es compatible con estructurar una petición o solicitud documentada."
+      ],
+      "catalog_checks": [],
+      "includes": ["borrador de derecho de petición o solicitud aplicable", "organización de antecedentes, urgencia y soportes", "identificación de señales que exigen revisión profesional"],
+      "not_included": ["representación en tutela o proceso judicial", "diagnóstico médico", "garantía de autorización, entrega o prestación del servicio"],
+      "review_requirement": "CASE_SPECIFIC_REVIEW_EXPECTED"
+    },
+    {
+      "product_code": "CO-TR-001",
+      "public_title": "Verificar un sistema de fotodetección y su soporte oficial",
+      "fit_statement": "Esta solución está orientada a verificar la actuación asociada a un sistema automático o semiautomático de detección y organizar la evidencia oficial relevante.",
+      "reason_fact_types": ["traffic.comparendo_or_case_reference", "traffic.authority", "traffic.procedural_stage", "goal.requested_outcome"],
+      "reason_templates": [
+        "La situación se concentra en verificar el sistema o soporte de una fotodetección.",
+        "La autoridad, referencia y etapa de la actuación ya están identificadas.",
+        "La solución se limita a verificar y documentar; una coincidencia no equivale por sí sola a nulidad o revocatoria."
+      ],
+      "catalog_checks": [],
+      "includes": ["organización de datos del comparendo y autoridad", "verificación guiada de fuentes y soportes disponibles", "documentación de hallazgos sin convertir coincidencias en conclusiones automáticas"],
+      "not_included": ["declaración automática de nulidad", "garantía de revocatoria o devolución", "representación administrativa o judicial"],
+      "review_requirement": "RISK_BASED"
+    },
+    {
+      "product_code": "CO-TR-002",
+      "public_title": "Reclamar una fotomulta que no me notificaron correctamente",
+      "fit_statement": "Esta solución está diseñada para revisar la notificación, conocimiento y etapa de una fotodetección o comparendo y estructurar la actuación documental procedente.",
+      "reason_fact_types": ["traffic.comparendo_or_case_reference", "traffic.notification_status", "traffic.knowledge_date", "traffic.procedural_stage", "goal.requested_outcome"],
+      "reason_templates": [
+        "La situación se refiere específicamente a la notificación o conocimiento de una fotodetección o comparendo.",
+        "Ya están identificadas la fecha de conocimiento y la etapa del trámite para orientar la actuación.",
+        "El producto permite auditar la notificación y pedir el expediente o las correcciones que procedan, sin anticipar el resultado."
+      ],
+      "catalog_checks": [
+        {"fact_type": "traffic.notification_status", "operator": "EQ", "value": "NOTIFIED", "effect": "CONDITIONAL", "reason_code": "NOTIFICATION_ASSERTED_AS_RECEIVED", "public_message": "Indicaste que sí recibiste notificación. El producto puede seguir siendo útil para revisar el trámite, pero no debe presentarse como un caso claro de falta de notificación."}
+      ],
+      "includes": ["revisión estructurada de notificación y expediente", "organización de fechas, autoridad y etapa", "borrador de solicitud o reclamación según la información confirmada"],
+      "not_included": ["garantía de anulación del comparendo", "declaración automática de violación del debido proceso", "representación administrativa o judicial"],
+      "review_requirement": "RISK_BASED"
+    }
+  ]
+}

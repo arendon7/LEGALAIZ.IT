@@ -1,0 +1,55 @@
+{
+  "schema": "legalai_m37_3_professional_disposition_contracts_v1",
+  "schema_version": "37.3.0",
+  "close_confirmation": "CERRAR SEGUIMIENTO",
+  "escalate_confirmation": "ESCALAR SEGUIMIENTO",
+  "close_roles": ["specialist"],
+  "escalate_roles": ["specialist", "admin"],
+  "close_reason_codes": [
+    "FOLLOW_UP_SCOPE_COMPLETED"
+  ],
+  "escalate_reason_codes": [
+    "LEGAL_REVIEW_REQUIRED",
+    "NEW_RISK_OR_FACT",
+    "FACT_OR_EVIDENCE_CONTRADICTION",
+    "AUTHORITY_OR_PROCEDURAL_ISSUE",
+    "OUT_OF_FOLLOW_UP_SCOPE",
+    "OTHER_PROFESSIONAL_CONCERN"
+  ],
+  "close_blockers": [
+    "FOLLOW_UP_NOT_ACTIVE",
+    "M24_NOT_IN_FOLLOW_UP",
+    "REQUIRED_TASKS_NOT_COMPLETED",
+    "EVIDENCE_PENDING_REVIEW",
+    "EVIDENCE_NEEDS_CLARIFICATION",
+    "ACTIVE_REMINDER"
+  ],
+  "limits": {
+    "internal_reason_min": 30,
+    "internal_reason_max": 2000,
+    "client_summary_min": 30,
+    "client_summary_max": 1200
+  },
+  "governance": {
+    "close_requires_assigned_specialist": true,
+    "admin_may_close_without_specialist": false,
+    "escalation_may_be_recorded_by_admin": true,
+    "client_may_dispose_case": false,
+    "internal_reason_exposed_to_client": false,
+    "m24_transition_uses_client_summary_only": true,
+    "close_requires_m37_0_close_readiness": true,
+    "close_requires_evidence_review_resolution": true,
+    "close_requires_no_active_reminders": true,
+    "escalation_requires_close_readiness": false,
+    "disposition_is_legal_success": false,
+    "disposition_verifies_external_effect": false,
+    "disposition_verifies_evidence_authenticity": false,
+    "disposition_verifies_legal_deadline": false,
+    "automatic_close": false,
+    "automatic_escalation": false,
+    "external_notification": false,
+    "immutable_intent": true,
+    "append_only_events": true
+  },
+  "notice": "CERRADO significa que el alcance de seguimiento contratado fue concluido de forma expresa y trazable; no acredita éxito jurídico, cumplimiento de una autoridad, autenticidad de soportes ni efecto legal externo. ESCALADO significa que el expediente requiere una nueva intervención o revisión controlada; no constituye por sí mismo una conclusión jurídica de fondo."
+}

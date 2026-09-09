@@ -1,0 +1,53 @@
+{
+  "schema": "legalaiz-v1-rc9-evidence-audit-pack-policy-v1",
+  "schema_version": 1,
+  "expected_control_count": 22,
+  "expected_framework_counts": {
+    "RC2": 10,
+    "RC4": 12
+  },
+  "formats": [
+    "json",
+    "markdown"
+  ],
+  "forbidden_output_keys": [
+    "actor",
+    "actors",
+    "evidence_event_id",
+    "evidence_path",
+    "bundle_path",
+    "manifest_path",
+    "environment_fingerprint",
+    "password",
+    "passwords",
+    "token",
+    "tokens",
+    "api_key",
+    "api_keys",
+    "secret",
+    "secrets",
+    "credential",
+    "credentials",
+    "private_key",
+    "private_keys",
+    "connection_string"
+  ],
+  "governance": {
+    "read_only": true,
+    "deterministic_snapshot": true,
+    "evidence_payloads_forbidden": true,
+    "evidence_artifact_hashes_forbidden": true,
+    "actor_identifiers_forbidden": true,
+    "environment_fingerprint_forbidden": true,
+    "authorization_evidence_reference_forbidden": true,
+    "control_statuses_are_derived_not_written": true,
+    "campaign_state_is_derived_not_written": true,
+    "audit_pack_cannot_execute_controls": true,
+    "audit_pack_cannot_register_evidence": true,
+    "audit_pack_cannot_approve_or_ratify_evidence": true,
+    "audit_pack_cannot_mutate_release_metadata": true,
+    "audit_pack_cannot_authorize_real_production": true,
+    "audit_pack_cannot_authorize_real_payments": true,
+    "evidence_complete_is_not_release_authorization": true
+  }
+}

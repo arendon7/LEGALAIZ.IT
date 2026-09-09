@@ -1,0 +1,32 @@
+{
+  "schema": "legalaiz-v1-rc8-evidence-campaign-policy-v1",
+  "schema_version": 1,
+  "campaign_schema": "legalaiz-v1-rc8-evidence-campaign-v1",
+  "event_types": [
+    "CAMPAIGN_CREATED",
+    "CONTROL_STARTED",
+    "EVIDENCE_LINKED",
+    "CONTROL_REVIEW_READY",
+    "CONTROL_BLOCKED",
+    "CAMPAIGN_ABORTED"
+  ],
+  "manager_roles": ["admin", "qa", "operations", "platform"],
+  "governance": {
+    "append_only": true,
+    "hash_chain_required": true,
+    "campaign_pins_exact_plan_hash": true,
+    "campaign_pins_source_revision": true,
+    "environment_fingerprint_required": true,
+    "campaign_events_are_coordination_only": true,
+    "evidence_link_is_not_evidence_registration": true,
+    "review_ready_is_not_review_approval": true,
+    "evidence_complete_is_not_release_authorization": true,
+    "dependencies_are_read_from_execution_plan_only": true,
+    "control_equivalence_is_never_inferred": true,
+    "campaign_cannot_mutate_evidence_ledgers": true,
+    "campaign_cannot_mutate_release_metadata": true,
+    "campaign_cannot_authorize_real_production": true,
+    "campaign_cannot_authorize_real_payments": true,
+    "secrets_forbidden": true
+  }
+}
