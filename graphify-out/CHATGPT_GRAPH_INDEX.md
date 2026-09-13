@@ -1,0 +1,90 @@
+# LegalAIZ.it · índice compacto Graphify
+
+> Archivo generado. Sirve para orientar la exploración; verificar siempre contra el código y el SHA vigente.
+
+- Nodos: **9229**
+- Relaciones: **24496**
+
+## Archivos más conectados
+- `runtime_registry.py` — grado 201
+- `main.js` — grado 171
+- `core_v11.py` — grado 116
+- `http_handler.py` — grado 97
+- `m33_wave3_runtime.py` — grado 96
+- `expanded_documents.py` — grado 74
+- `playbook_maturity.py` — grado 61
+- `approval_desk_workspace.py` — grado 59
+- `core.js` — grado 57
+- `approval_desk_m32_5.js` — grado 47
+- `legal_source_registry.py` — grado 47
+- `client_followup_m38_4.js` — grado 46
+- `application_services.py` — grado 46
+- `m33_procedural_composition.py` — grado 45
+- `test_m33_4_portfolio_source_coverage.py` — grado 44
+- `m33_lease_legal_finalize.py` — grado 43
+- `docx_builder.py` — grado 40
+- `generate_m33_0_procedural_samples.py` — grado 40
+- `contractual_maturity.py` — grado 40
+- `m33_nda_legal_finalize.py` — grado 40
+- `m33_wave3_composition.py` — grado 39
+- `pilot_center_m30_1.js` — grado 38
+- `m33_document_presentation.py` — grado 38
+- `m33_debt_legal_finalize.py` — grado 35
+- `approval_operations_m32_6.js` — grado 33
+- `fact_review_m34_2.js` — grado 33
+- `run.py` — grado 33
+- `pilot_governance_m30_3.js` — grado 32
+- `legalai_runtime_modules/complete_legal_models_v215.py` — grado 32
+- `runtime_m33_overrides.py` — grado 32
+- `m33_sast_legal_finalize.py` — grado 32
+- `commerce_case_m35_2.js` — grado 31
+- `pilot_documents.py` — grado 31
+- `evidence_orchestration_v1_rc8.py` — grado 30
+- `m33_2_procedural_reference_format.py` — grado 29
+- `m33_employment_legal_finalize.py` — grado 29
+- `conversion_m29_5.js` — grado 28
+- `approval_desk_operations.py` — grado 28
+- `approval_notification_center.py` — grado 28
+- `test_m33_0_procedural_wave.py` — grado 28
+
+## Símbolos más conectados
+- `esc()` — grado 205
+- `sha256()` — grado 178
+- `document_specs_m33_all()` — grado 96
+- `api()` — grado 94
+- `ApprovalDeskWorkspace` — grado 83
+- `build_docx()` — grado 79
+- `ApprovalDeskOperations` — grado 75
+- `db()` — grado 71
+- `document_specs()` — grado 70
+- `.do_GET()` — grado 70
+- `ApprovalDeskError` — grado 70
+- `PermissionDenied` — grado 66
+- `ApprovalNotificationCenter` — grado 64
+- `toast()` — grado 61
+- `Any` — grado 60
+- `.do_POST()` — grado 57
+- `section()` — grado 57
+- `dateText()` — grado 54
+- `PostDeliveryFollowUpCenter` — grado 54
+- `EvidenceCampaignLedger` — grado 49
+- `ExternalEvidenceDossier` — grado 49
+- `EvidenceExecutionPlan` — grado 48
+- `build_legal_source_manifest()` — grado 47
+- `compose_nda_m33_final()` — grado 45
+- `humanize()` — grado 44
+- `compose_services_m33_release()` — grado 44
+- `CoEm003DocumentFactoryV243` — grado 44
+- `EvidenceOperationsBoard` — grado 42
+- `M24CaseJourneyCenter` — grado 42
+- `val()` — grado 42
+- `get_legal_source()` — grado 41
+- `AdaptiveQuestionEngine` — grado 40
+- `ContactGovernance` — grado 40
+- `Client` — grado 40
+- `IntelligentIntakeStore` — grado 39
+- `ControlledDeliveryCenter` — grado 39
+- `compose_lease_m33_final()` — grado 39
+- `ReviewLifecycleReconciler` — grado 38
+- `M31CaseDemoCenter` — grado 38
+- `CoLa001DocumentFactoryV252` — grado 38
