@@ -1,0 +1,337 @@
+{
+  "schema_version": "34.0.0",
+  "project": "LegalAIZ.it",
+  "jurisdiction": "CO",
+  "baseline_commit": "ea0d8171db040e090e7fc9a1efdb04dc652670d8",
+  "purpose": "Declarative bridge between human problems, Legal Fact Model, existing interviews/rules and the M34 recommendation journey. It does not replace the documentary factory or legal rules.",
+  "compatibility_floors": {
+    "products": 11,
+    "questions": 473,
+    "rules": 273
+  },
+  "decision_outcomes": [
+    "RECOMMEND",
+    "ASK_MORE",
+    "ESCALATE",
+    "OUT_OF_SCOPE"
+  ],
+  "contracts": [
+    {
+      "product_code": "CO-TR-001",
+      "public_name": "Chequeo SAST + inscripción verificada",
+      "vertical": "Tránsito",
+      "human_problem": "Quiero verificar una actuación asociada a un sistema automático o semiautomático de detección y saber qué ruta documental corresponde.",
+      "runtime": {
+        "interview_source": "data/interviews.json",
+        "interview_key": "CO-TR-001",
+        "rules_source": "data/rules.json",
+        "rules_key": "CO-TR-001"
+      },
+      "advanced_library": {
+        "package": "app/assets/advanced-legal-library/CO-TR-001/PAQUETE_PRODUCTO.json",
+        "interview": "app/assets/advanced-legal-library/CO-TR-001/ENTREVISTA.json",
+        "rules": "app/assets/advanced-legal-library/CO-TR-001/REGLAS.json",
+        "sources": "app/assets/advanced-legal-library/CO-TR-001/FUENTES.json"
+      },
+      "minimum_recommendation_facts": [
+        "person.requester_identity",
+        "traffic.comparendo_or_case_reference",
+        "traffic.authority",
+        "traffic.procedural_stage",
+        "goal.requested_outcome"
+      ],
+      "critical_fact_domains": ["traffic.deadlines", "traffic.enforcement", "traffic.evidence", "traffic.authority"],
+      "blocking_risks": ["DEADLINE_RISK", "LITIGATION_ACTIVE", "FACT_CONTRADICTION", "INSUFFICIENT_INFORMATION", "PROFESSIONAL_REVIEW_REQUIRED"],
+      "review_policy": "risk_based"
+    },
+    {
+      "product_code": "CO-TR-002",
+      "public_name": "Fotomulta no notificada",
+      "vertical": "Tránsito",
+      "human_problem": "Conocí una fotodetección o comparendo y necesito revisar la notificación, el expediente y la ruta administrativa aplicable.",
+      "runtime": {
+        "interview_source": "data/interviews.json",
+        "interview_key": "CO-TR-002",
+        "rules_source": "data/rules.json",
+        "rules_key": "CO-TR-002"
+      },
+      "advanced_library": {
+        "package": "app/assets/advanced-legal-library/CO-TR-002/PAQUETE_PRODUCTO.json",
+        "interview": "app/assets/advanced-legal-library/CO-TR-002/ENTREVISTA.json",
+        "rules": "app/assets/advanced-legal-library/CO-TR-002/REGLAS.json",
+        "sources": "app/assets/advanced-legal-library/CO-TR-002/FUENTES.json"
+      },
+      "minimum_recommendation_facts": [
+        "person.requester_identity",
+        "traffic.comparendo_or_case_reference",
+        "traffic.notification_status",
+        "traffic.knowledge_date",
+        "traffic.procedural_stage",
+        "goal.requested_outcome"
+      ],
+      "critical_fact_domains": ["traffic.notification", "traffic.deadlines", "traffic.enforcement", "traffic.evidence"],
+      "blocking_risks": ["DEADLINE_RISK", "LITIGATION_ACTIVE", "FACT_CONTRADICTION", "INSUFFICIENT_INFORMATION"],
+      "review_policy": "risk_based"
+    },
+    {
+      "product_code": "CO-LA-001",
+      "public_name": "Liquidación laboral + reclamación",
+      "vertical": "Laboral",
+      "human_problem": "Terminó o está terminando una relación laboral privada y necesito revisar valores pendientes y preparar una reclamación documentada.",
+      "runtime": {
+        "interview_source": "data/interviews.json",
+        "interview_key": "CO-LA-001",
+        "rules_source": "data/rules.json",
+        "rules_key": "CO-LA-001"
+      },
+      "advanced_library": {
+        "package": "app/assets/advanced-legal-library/CO-LA-001/PAQUETE_PRODUCTO.json",
+        "interview": "app/assets/advanced-legal-library/CO-LA-001/ENTREVISTA.json",
+        "rules": "app/assets/advanced-legal-library/CO-LA-001/REGLAS.json",
+        "sources": "app/assets/advanced-legal-library/CO-LA-001/FUENTES.json"
+      },
+      "minimum_recommendation_facts": [
+        "employment.relationship_scope",
+        "employment.start_date",
+        "employment.end_date",
+        "employment.compensation_basis",
+        "employment.pending_concepts",
+        "goal.requested_outcome"
+      ],
+      "critical_fact_domains": ["employment.relationship_nature", "employment.termination", "employment.compensation", "employment.special_protection", "employment.active_dispute"],
+      "blocking_risks": ["LITIGATION_ACTIVE", "HIGH_VALUE", "FACT_CONTRADICTION", "INSUFFICIENT_INFORMATION", "PROFESSIONAL_REVIEW_REQUIRED"],
+      "review_policy": "case_specific_review_expected"
+    },
+    {
+      "product_code": "CO-LA-002",
+      "public_name": "Contrato de trabajo personalizado",
+      "vertical": "Laboral",
+      "human_problem": "Necesito formalizar correctamente una relación de trabajo en Colombia y seleccionar la modalidad y condiciones coherentes con la realidad del cargo.",
+      "runtime": {
+        "interview_source": "data/interviews.json",
+        "interview_key": "CO-LA-002",
+        "rules_source": "data/rules.json",
+        "rules_key": "CO-LA-002"
+      },
+      "advanced_library": {
+        "package": "app/assets/advanced-legal-library/CO-LA-002/PAQUETE_PRODUCTO.json",
+        "interview": "app/assets/advanced-legal-library/CO-LA-002/ENTREVISTA.json",
+        "rules": "app/assets/advanced-legal-library/CO-LA-002/REGLAS.json",
+        "sources": "app/assets/advanced-legal-library/CO-LA-002/FUENTES.json"
+      },
+      "minimum_recommendation_facts": [
+        "party.employer",
+        "party.worker",
+        "employment.need_type",
+        "employment.start_date",
+        "employment.role",
+        "employment.compensation_basis"
+      ],
+      "critical_fact_domains": ["employment.modality", "employment.age_or_special_regime", "employment.work_location", "employment.working_time", "employment.special_protection"],
+      "blocking_risks": ["OUT_OF_JURISDICTION", "REGULATORY_COMPLEXITY", "MINOR_OR_VULNERABLE_PERSON", "FACT_CONTRADICTION", "PROFESSIONAL_REVIEW_REQUIRED"],
+      "review_policy": "risk_based"
+    },
+    {
+      "product_code": "CO-EM-003",
+      "public_name": "Contrato de prestación de servicios",
+      "vertical": "Empresarial",
+      "human_problem": "Necesito contratar o prestar servicios independientes con alcance, entregables, pagos y autonomía claramente definidos.",
+      "runtime": {
+        "interview_source": "data/interviews.json",
+        "interview_key": "CO-EM-003",
+        "rules_source": "data/rules.json",
+        "rules_key": "CO-EM-003"
+      },
+      "advanced_library": {
+        "package": "app/assets/advanced-legal-library/CO-EM-003/PAQUETE_PRODUCTO.json",
+        "interview": "app/assets/advanced-legal-library/CO-EM-003/ENTREVISTA.json",
+        "rules": "app/assets/advanced-legal-library/CO-EM-003/REGLAS.json",
+        "sources": "app/assets/advanced-legal-library/CO-EM-003/FUENTES.json"
+      },
+      "minimum_recommendation_facts": [
+        "party.client",
+        "party.contractor",
+        "services.object",
+        "services.autonomy",
+        "services.fees",
+        "services.term"
+      ],
+      "critical_fact_domains": ["services.autonomy", "services.subordination_signals", "services.regulated_scope", "services.acceptance", "services.data_and_ip"],
+      "blocking_risks": ["REGULATORY_COMPLEXITY", "FACT_CONTRADICTION", "OUT_OF_CATALOG", "PROFESSIONAL_REVIEW_REQUIRED"],
+      "review_policy": "risk_based"
+    },
+    {
+      "product_code": "CO-EM-004",
+      "public_name": "Confidencialidad y propiedad intelectual",
+      "vertical": "Empresarial",
+      "human_problem": "Necesito proteger información confidencial, secretos, propiedad intelectual y datos dentro de una relación empresarial o profesional.",
+      "runtime": {
+        "interview_source": "data/interviews.json",
+        "interview_key": "CO-EM-004",
+        "rules_source": "data/rules.json",
+        "rules_key": "CO-EM-004"
+      },
+      "advanced_library": {
+        "package": "app/assets/advanced-legal-library/CO-EM-004/PAQUETE_PRODUCTO.json",
+        "interview": "app/assets/advanced-legal-library/CO-EM-004/ENTREVISTA.json",
+        "rules": "app/assets/advanced-legal-library/CO-EM-004/REGLAS.json",
+        "sources": "app/assets/advanced-legal-library/CO-EM-004/FUENTES.json"
+      },
+      "minimum_recommendation_facts": [
+        "party.discloser",
+        "party.recipient",
+        "confidentiality.relationship",
+        "confidentiality.information_categories",
+        "ip.relevant_scope",
+        "data.personal_data_involved"
+      ],
+      "critical_fact_domains": ["confidentiality.scope", "ip.preexisting_materials", "ip.transfer_or_license", "data.sensitive_data", "technology.ai_use"],
+      "blocking_risks": ["PERSONAL_DATA_SENSITIVE", "REGULATORY_COMPLEXITY", "FACT_CONTRADICTION", "PROFESSIONAL_REVIEW_REQUIRED"],
+      "review_policy": "risk_based"
+    },
+    {
+      "product_code": "CO-AR-001",
+      "public_name": "Arrendamiento de vivienda urbana",
+      "vertical": "Inmobiliario",
+      "human_problem": "Necesito celebrar un arrendamiento residencial urbano con canon, garantías, inventario, entrega y terminación coherentes.",
+      "runtime": {
+        "interview_source": "data/interviews.json",
+        "interview_key": "CO-AR-001",
+        "rules_source": "data/rules.json",
+        "rules_key": "CO-AR-001"
+      },
+      "advanced_library": {
+        "package": "app/assets/advanced-legal-library/CO-AR-001/PAQUETE_PRODUCTO.json",
+        "interview": "app/assets/advanced-legal-library/CO-AR-001/ENTREVISTA.json",
+        "rules": "app/assets/advanced-legal-library/CO-AR-001/REGLAS.json",
+        "sources": "app/assets/advanced-legal-library/CO-AR-001/FUENTES.json"
+      },
+      "minimum_recommendation_facts": [
+        "party.lessor",
+        "party.tenant",
+        "lease.property",
+        "lease.property_use",
+        "lease.rent",
+        "lease.term"
+      ],
+      "critical_fact_domains": ["lease.use", "lease.title_or_authority", "lease.habitability", "lease.rent_limit", "lease.guarantees", "lease.active_dispute"],
+      "blocking_risks": ["LITIGATION_ACTIVE", "REGULATORY_COMPLEXITY", "FACT_CONTRADICTION", "OUT_OF_CATALOG", "PROFESSIONAL_REVIEW_REQUIRED"],
+      "review_policy": "case_specific_review_expected"
+    },
+    {
+      "product_code": "CO-CD-001",
+      "public_name": "Centrales de riesgo y hábeas data",
+      "vertical": "Datos, consumo y financiero",
+      "human_problem": "Necesito revisar, corregir o reclamar información crediticia o un reporte y organizar la evidencia y la actuación previa correspondiente.",
+      "runtime": {
+        "interview_source": "data/interviews.json",
+        "interview_key": "CO-CD-001",
+        "rules_source": "data/rules.json",
+        "rules_key": "CO-CD-001"
+      },
+      "advanced_library": {
+        "package": "app/assets/advanced-legal-library/CO-CD-001/PAQUETE_PRODUCTO.json",
+        "interview": "app/assets/advanced-legal-library/CO-CD-001/ENTREVISTA.json",
+        "rules": "app/assets/advanced-legal-library/CO-CD-001/REGLAS.json",
+        "sources": "app/assets/advanced-legal-library/CO-CD-001/FUENTES.json"
+      },
+      "minimum_recommendation_facts": [
+        "credit_data.reporter_or_source",
+        "credit_data.obligation_reference",
+        "credit_data.report_status",
+        "credit_data.prior_claim_status",
+        "goal.requested_outcome"
+      ],
+      "critical_fact_domains": ["credit_data.identity_theft", "credit_data.prior_communication", "credit_data.deadlines", "credit_data.payment_or_extinction", "credit_data.prior_claim"],
+      "blocking_risks": ["DEADLINE_RISK", "FACT_CONTRADICTION", "DOCUMENT_CONTRADICTION", "INSUFFICIENT_INFORMATION", "PROFESSIONAL_REVIEW_REQUIRED"],
+      "review_policy": "case_specific_review_expected"
+    },
+    {
+      "product_code": "CO-CD-003",
+      "public_name": "Garantía, retracto y reversión del pago",
+      "vertical": "Consumo",
+      "human_problem": "Tengo un problema con una compra o servicio y necesito identificar si corresponde garantía, retracto, reversión u otra reclamación de consumo.",
+      "runtime": {
+        "interview_source": "data/interviews.json",
+        "interview_key": "CO-CD-003",
+        "rules_source": "data/rules.json",
+        "rules_key": "CO-CD-003"
+      },
+      "advanced_library": {
+        "package": "app/assets/advanced-legal-library/CO-CD-003/PAQUETE_PRODUCTO.json",
+        "interview": "app/assets/advanced-legal-library/CO-CD-003/ENTREVISTA.json",
+        "rules": "app/assets/advanced-legal-library/CO-CD-003/REGLAS.json",
+        "sources": "app/assets/advanced-legal-library/CO-CD-003/FUENTES.json"
+      },
+      "minimum_recommendation_facts": [
+        "consumer.supplier",
+        "consumer.transaction",
+        "consumer.issue_type",
+        "consumer.transaction_date",
+        "consumer.requested_remedy",
+        "payment.method"
+      ],
+      "critical_fact_domains": ["consumer.deadlines", "consumer.channel", "consumer.goods_or_service", "consumer.prior_claim", "payment.trace"],
+      "blocking_risks": ["DEADLINE_RISK", "REGULATORY_COMPLEXITY", "FACT_CONTRADICTION", "INSUFFICIENT_INFORMATION", "PROFESSIONAL_REVIEW_REQUIRED"],
+      "review_policy": "risk_based"
+    },
+    {
+      "product_code": "CO-CD-004",
+      "public_name": "Cobro, acuerdo de pago y pagaré",
+      "vertical": "Civil, comercial y cartera",
+      "human_problem": "Necesito documentar o gestionar una deuda, un cobro prejurídico o un acuerdo de pago con soportes y condiciones claras.",
+      "runtime": {
+        "interview_source": "data/interviews.json",
+        "interview_key": "CO-CD-004",
+        "rules_source": "data/rules.json",
+        "rules_key": "CO-CD-004"
+      },
+      "advanced_library": {
+        "package": "app/assets/advanced-legal-library/CO-CD-004/PAQUETE_PRODUCTO.json",
+        "interview": "app/assets/advanced-legal-library/CO-CD-004/ENTREVISTA.json",
+        "rules": "app/assets/advanced-legal-library/CO-CD-004/REGLAS.json",
+        "sources": "app/assets/advanced-legal-library/CO-CD-004/FUENTES.json"
+      },
+      "minimum_recommendation_facts": [
+        "debt.creditor",
+        "debt.debtor",
+        "debt.origin",
+        "debt.amount",
+        "debt.due_date",
+        "debt.support"
+      ],
+      "critical_fact_domains": ["debt.existence", "debt.amount", "debt.enforceability", "debt.security", "debt.active_dispute", "debt.deadlines"],
+      "blocking_risks": ["LITIGATION_ACTIVE", "HIGH_VALUE", "DEADLINE_RISK", "FACT_CONTRADICTION", "DOCUMENT_CONTRADICTION", "PROFESSIONAL_REVIEW_REQUIRED"],
+      "review_policy": "case_specific_review_expected"
+    },
+    {
+      "product_code": "CO-SA-001",
+      "public_name": "Derecho de petición a EPS o IPS",
+      "vertical": "Salud y constitucional",
+      "human_problem": "Necesito pedir información, documentos o una actuación a una EPS o IPS y organizar la urgencia, antecedentes y soportes del caso.",
+      "runtime": {
+        "interview_source": "data/interviews.json",
+        "interview_key": "CO-SA-001",
+        "rules_source": "data/rules.json",
+        "rules_key": "CO-SA-001"
+      },
+      "advanced_library": {
+        "package": "app/assets/advanced-legal-library/CO-SA-001/PAQUETE_PRODUCTO.json",
+        "interview": "app/assets/advanced-legal-library/CO-SA-001/ENTREVISTA.json",
+        "rules": "app/assets/advanced-legal-library/CO-SA-001/REGLAS.json",
+        "sources": "app/assets/advanced-legal-library/CO-SA-001/FUENTES.json"
+      },
+      "minimum_recommendation_facts": [
+        "health.requester",
+        "health.entity",
+        "health.need",
+        "health.urgency",
+        "health.prior_request_status",
+        "goal.requested_outcome"
+      ],
+      "critical_fact_domains": ["health.urgency", "health.vulnerability", "health.prior_request", "health.deadlines", "health.active_proceeding"],
+      "blocking_risks": ["DEADLINE_RISK", "MINOR_OR_VULNERABLE_PERSON", "LITIGATION_ACTIVE", "INSUFFICIENT_INFORMATION", "PROFESSIONAL_REVIEW_REQUIRED"],
+      "review_policy": "case_specific_review_expected"
+    }
+  ]
+}

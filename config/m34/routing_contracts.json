@@ -1,0 +1,65 @@
+{
+  "schema_version": "34.3.0",
+  "project": "LegalAIZ.it",
+  "jurisdiction": "CO",
+  "purpose": "Neutral problem routing before legal recommendation. Routing narrows the product space but never creates a legal fact or recommendation.",
+  "broad_question": {
+    "question_id": "m34_route_topic",
+    "kind": "ROUTING",
+    "prompt": "¿De qué trata principalmente tu situación?",
+    "why_asked": "Esto nos permite hacer sólo las preguntas jurídicas que pueden ser relevantes para tu situación.",
+    "answer_type": "select",
+    "options": [
+      {"value": "laboral", "label": "Trabajo o relación laboral", "product_codes": ["CO-LA-001", "CO-LA-002"]},
+      {"value": "empresarial", "label": "Servicios, contratos o confidencialidad", "product_codes": ["CO-EM-003", "CO-EM-004"]},
+      {"value": "vivienda", "label": "Arrendamiento de vivienda", "product_codes": ["CO-AR-001"]},
+      {"value": "datos_credito", "label": "Centrales de riesgo o datos crediticios", "product_codes": ["CO-CD-001"]},
+      {"value": "consumo", "label": "Compra, garantía, retracto o pago", "product_codes": ["CO-CD-003"]},
+      {"value": "deuda", "label": "Deuda, cobro o acuerdo de pago", "product_codes": ["CO-CD-004"]},
+      {"value": "salud", "label": "EPS, IPS o atención en salud", "product_codes": ["CO-SA-001"]},
+      {"value": "transito", "label": "Tránsito, comparendo o fotodetección", "product_codes": ["CO-TR-001", "CO-TR-002"]},
+      {"value": "otro", "label": "Otro asunto", "product_codes": []}
+    ]
+  },
+  "disambiguators": [
+    {
+      "question_id": "m34_route_laboral",
+      "kind": "ROUTING",
+      "applies_when": ["CO-LA-001", "CO-LA-002"],
+      "prompt": "¿Qué necesitas resolver principalmente sobre la relación laboral?",
+      "why_asked": "Distingue una terminación o liquidación de la formalización de una relación de trabajo.",
+      "answer_type": "select",
+      "options": [
+        {"value": "terminacion_liquidacion", "label": "Terminó o está terminando y necesito revisar pagos o reclamar", "product_codes": ["CO-LA-001"]},
+        {"value": "formalizar_contrato", "label": "Quiero formalizar una relación de trabajo", "product_codes": ["CO-LA-002"]},
+        {"value": "no_se", "label": "No estoy seguro", "product_codes": ["CO-LA-001", "CO-LA-002"]}
+      ]
+    },
+    {
+      "question_id": "m34_route_empresarial",
+      "kind": "ROUTING",
+      "applies_when": ["CO-EM-003", "CO-EM-004"],
+      "prompt": "¿Qué necesitas organizar principalmente?",
+      "why_asked": "Distingue la contratación de servicios independientes de la protección de información y propiedad intelectual.",
+      "answer_type": "select",
+      "options": [
+        {"value": "servicios", "label": "Alcance, entregables, honorarios y autonomía de un servicio", "product_codes": ["CO-EM-003"]},
+        {"value": "confidencialidad_ip", "label": "Confidencialidad, secretos, datos o propiedad intelectual", "product_codes": ["CO-EM-004"]},
+        {"value": "no_se", "label": "No estoy seguro", "product_codes": ["CO-EM-003", "CO-EM-004"]}
+      ]
+    },
+    {
+      "question_id": "m34_route_transito",
+      "kind": "ROUTING",
+      "applies_when": ["CO-TR-001", "CO-TR-002"],
+      "prompt": "¿Qué aspecto necesitas revisar principalmente?",
+      "why_asked": "Distingue el control sobre el sistema de detección de los problemas de notificación y trámite del comparendo.",
+      "answer_type": "select",
+      "options": [
+        {"value": "sistema_deteccion", "label": "El sistema, dispositivo o condiciones de la fotodetección", "product_codes": ["CO-TR-001"]},
+        {"value": "notificacion_tramite", "label": "La notificación, conocimiento o trámite del comparendo", "product_codes": ["CO-TR-002"]},
+        {"value": "no_se", "label": "No estoy seguro", "product_codes": ["CO-TR-001", "CO-TR-002"]}
+      ]
+    }
+  ]
+}

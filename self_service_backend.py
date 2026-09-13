@@ -81,6 +81,28 @@ class SelfServiceCenter:
             out["review_selected"] = bool(out["review_selected"])
         return out
 
+    @staticmethod
+    def requires_m35_trace(order) -> bool:
+        return bool((order or {}).get("detail", {}).get("commerce_trace_required"))
+
+    @staticmethod
+    def _missing_table_error(exc: Exception) -> bool:
+        text = str(exc).lower()
+        return "no such table" in text or ("does not exist" in text and "m35_intake_handoffs" in text)
+
+    def _active_m35_handoff(self, con, user_id, product_code):
+        try:
+            return con.execute(
+                """SELECT id,status FROM m35_intake_handoffs
+                   WHERE user_id=? AND product_code=? AND status!='CANCELLED'
+                   ORDER BY created_at DESC LIMIT 1""",
+                (user_id, product_code),
+            ).fetchone()
+        except Exception as exc:
+            if self._missing_table_error(exc):
+                return None
+            raise
+
     def save_draft(self, con, user_id, product_code, answers, current_step=0, title="", result=None):
         if product_code not in self.products:
             raise ValueError("Producto no encontrado.")
@@ -145,10 +167,20 @@ class SelfServiceCenter:
         )
         return bool(cur.rowcount)
 
-    def create_order(self, con, user_id, product_code, result, review_selected=False, service_level=None):
+    def create_order(self, con, user_id, product_code, result, review_selected=False, service_level=None, trace_context=None):
         public = self.portal.product(product_code)
         if not public:
             raise ValueError("Producto no encontrado.")
+        active_handoff = self._active_m35_handoff(con, user_id, product_code)
+        trace_context = trace_context or {}
+        if active_handoff:
+            if not trace_context:
+                raise ValueError("Este diagnóstico debe continuar por el checkout trazable M35.2.")
+            if str(trace_context.get("handoff_id") or "") != str(active_handoff["id"]):
+                raise ValueError("El checkout no corresponde al diagnóstico transferido.")
+        elif trace_context:
+            raise ValueError("No existe un diagnóstico transferido que autorice este checkout trazable.")
+
         result = result or {}
         requested_level = str(service_level or result.get("service_level") or "").strip().lower()
         if requested_level not in {"", "documento_personalizado", "solucion_revisada"}:
@@ -172,6 +204,7 @@ class SelfServiceCenter:
             "service_level": requested_level,
             "risk": result.get("risk"),
             "environment": "Pago simulado de prototipo; no realiza cargo real.",
+            "commerce_trace_required": bool(active_handoff),
         }
         con.execute(
             """INSERT INTO checkout_orders(
@@ -211,6 +244,8 @@ class SelfServiceCenter:
         order = self.get_order(con, user_id, order_id)
         if not order:
             raise ValueError("Orden no encontrada.")
+        if self.requires_m35_trace(order):
+            raise ValueError("Esta orden exige un intento de pago sandbox trazable M35.2.")
         if order["status"] == "Pagado (simulado)":
             return order
         allowed = {"Tarjeta de prueba", "PSE de prueba", "Continuar sin cobro"}
@@ -225,10 +260,12 @@ class SelfServiceCenter:
         )
         return self.get_order(con, user_id, order_id)
 
-    def attach_case(self, con, user_id, order_id, case_id):
+    def attach_case(self, con, user_id, order_id, case_id, trace_context=False):
         order = self.get_order(con, user_id, order_id)
         if not order:
             raise ValueError("Orden no encontrada.")
+        if self.requires_m35_trace(order) and not trace_context:
+            raise ValueError("Esta orden sólo puede convertirse en expediente mediante el ledger M35.2.")
         if order["status"] not in {"Pagado (simulado)", "Pagado (sandbox)"}:
             raise ValueError("La orden debe confirmarse antes de generar el expediente.")
         con.execute(

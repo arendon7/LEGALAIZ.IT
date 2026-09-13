@@ -9,6 +9,7 @@ import re
 import uuid
 
 from docx_builder import build_docx
+from document_standard_v33 import STANDARD_VERSION, validate_rendered_sections
 
 
 def utc_iso() -> str:
@@ -23,7 +24,7 @@ class CanonicalGenerationCenter:
     """Puerta única para generación primaria desde plantillas canónicas.
 
     La aprobación dual de una plantilla no basta. Se exige también fuente verificada,
-    trazabilidad completa y decisión final de publicación vigente para el producto.
+    trazabilidad completa, decisión final de publicación y conformidad documental M33.0.
     """
 
     def __init__(self, root: Path, factory, traceability, canonical, normative, products: list[dict]):
@@ -156,7 +157,8 @@ class CanonicalGenerationCenter:
             "reasons": reasons,
             "traceability_gate": trace_gate,
             "published_templates": len(published_templates),
-            "notice": "La generación primaria solo se habilita cuando todas las puertas recaen sobre fuentes, bloques y revisiones vigentes.",
+            "document_standard": STANDARD_VERSION,
+            "notice": "La generación primaria solo se habilita cuando todas las puertas recaen sobre fuentes, bloques y revisiones vigentes; la salida final queda además sujeta al preflight documental M33.0.",
         }
         raw = json.dumps(gate, ensure_ascii=False, sort_keys=True, default=str)
         gate["snapshot_sha256"] = sha256(raw.encode("utf-8")).hexdigest()
@@ -172,6 +174,7 @@ class CanonicalGenerationCenter:
                 "average_score": round(sum(x["score"] for x in rows) / max(1, len(rows))),
                 "blocked": sum(not x["ready"] for x in rows),
             },
+            "document_standard": STANDARD_VERSION,
             "notice": "En la base demostrativa ninguna solución debe aparecer lista mientras no se incorporen y aprueben los originales jurídicos.",
         }
 
@@ -193,6 +196,12 @@ class CanonicalGenerationCenter:
         for tpl in templates:
             content = tpl["content"]
             preview = self.factory.render(content, answers)
+            semantic_qa = validate_rendered_sections(preview["sections"], product_code=case["product_code"])
+            if not semantic_qa["valid"]:
+                raise ValueError(
+                    "Generación primaria bloqueada por estándar documental "
+                    f"{STANDARD_VERSION} en {tpl['template_id']}: {semantic_qa['errors']}"
+                )
             filename = safe_name(
                 f"{case['product_code']}_{case_id}_{content.get('filename_suffix', content['kind'])}_canonico_r{tpl['revision_id']}.docx"
             )
@@ -207,8 +216,11 @@ class CanonicalGenerationCenter:
                     ("Revisión canónica", str(tpl["revision_id"])),
                     ("Hash de plantilla", tpl["content_hash"]),
                     ("Puerta de publicación", gate["snapshot_sha256"]),
+                    ("Estándar documental", STANDARD_VERSION),
                 ],
                 preview["sections"],
+                enforce_legal_standard=True,
+                product_code=case["product_code"],
             )
             digest = sha256(target.read_bytes()).hexdigest()
             existing = con.execute(
@@ -218,6 +230,8 @@ class CanonicalGenerationCenter:
             version = f"canonical-{tpl['revision_id']}"
             lineage = {
                 "generation_engine": "canonical-primary-v2.7",
+                "document_standard": STANDARD_VERSION,
+                "semantic_qa": semantic_qa,
                 "template_id": tpl["template_id"],
                 "template_revision_id": tpl["revision_id"],
                 "template_hash": tpl["content_hash"],
@@ -241,7 +255,7 @@ class CanonicalGenerationCenter:
                         tpl["template_id"],
                         tpl["revision_id"],
                         tpl["content_hash"],
-                        "Fuente y trazabilidad aprobadas para piloto controlado",
+                        f"Fuente, trazabilidad y estándar documental {STANDARD_VERSION} validados para piloto controlado",
                         "canonical-primary-v2.7",
                         json.dumps(lineage, ensure_ascii=False, sort_keys=True),
                         document_id,
@@ -269,7 +283,7 @@ class CanonicalGenerationCenter:
                         tpl["template_id"],
                         tpl["revision_id"],
                         tpl["content_hash"],
-                        "Fuente y trazabilidad aprobadas para piloto controlado",
+                        f"Fuente, trazabilidad y estándar documental {STANDARD_VERSION} validados para piloto controlado",
                         "canonical-primary-v2.7",
                         json.dumps(lineage, ensure_ascii=False, sort_keys=True),
                     ),
@@ -280,7 +294,7 @@ class CanonicalGenerationCenter:
                     document_id,
                     version,
                     now,
-                    f"Generación primaria v2.7 desde {tpl['template_id']} revisión {tpl['revision_id']} y puerta {gate['snapshot_sha256']}.",
+                    f"Generación primaria v2.7 con estándar {STANDARD_VERSION} desde {tpl['template_id']} revisión {tpl['revision_id']} y puerta {gate['snapshot_sha256']}.",
                     str(target),
                 ),
             )
@@ -293,6 +307,8 @@ class CanonicalGenerationCenter:
                     "sha256": digest,
                     "template_id": tpl["template_id"],
                     "revision_id": tpl["revision_id"],
+                    "document_standard": STANDARD_VERSION,
+                    "semantic_qa": semantic_qa,
                 }
             )
         run_id = "CGR-" + uuid.uuid4().hex[:14].upper()
@@ -314,12 +330,13 @@ class CanonicalGenerationCenter:
         con.execute("UPDATE cases SET updated_at=? WHERE id=?", (now, case_id))
         con.execute(
             "INSERT INTO activity(case_id,kind,text,created_at) VALUES(?,?,?,?)",
-            (case_id, "canonical_generation", f"Se generaron {len(created)} documentos desde la puerta canónica v2.7.", now),
+            (case_id, "canonical_generation", f"Se generaron {len(created)} documentos desde la puerta canónica v2.7 con estándar {STANDARD_VERSION}.", now),
         )
         return {
             "ok": True,
             "run_id": run_id,
             "case_id": case_id,
             "gate_sha256": gate["snapshot_sha256"],
+            "document_standard": STANDARD_VERSION,
             "documents": created,
         }
