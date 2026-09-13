@@ -2,11 +2,10 @@ from __future__ import annotations
 
 """M40.0 governed AI runtime controls.
 
-This module wraps the library-only M40.0 gateway with bounded execution controls:
-timeout contracts, cumulative provider budgets, circuit breaker/fallback, and an
-append-only audit ledger with hash chaining.  It does not expose HTTP routes,
-perform network calls by itself, mutate legal facts/cases/documents, or bypass
-human Legal/QA approvals.
+Adds bounded provider execution, cumulative budgets, circuit breaker/fallback and
+an append-only hash-chained audit ledger around the library-only M40.0 gateway.
+This module does not expose HTTP routes, perform network calls by itself, mutate
+legal state, approve Legal/QA, release documents or execute payments.
 """
 
 from dataclasses import dataclass
@@ -25,7 +24,6 @@ from legalai_platform.ai_gateway_m40_0 import (
     AI_GATEWAY_SCHEMA_VERSION,
     load_ai_gateway_policy,
 )
-
 
 _RUNTIME_USAGE_KEY = "_runtime_usage"
 _TERMINAL_RUNTIME_CODES = {"AI_BUDGET_EXCEEDED", "AI_USAGE_REQUIRED", "AI_USAGE_INVALID"}
@@ -64,18 +62,16 @@ class AIRuntimeLimits:
             circuit_recovery_seconds=int(runtime.get("circuit_recovery_seconds", 60)),
             max_fallback_providers=int(runtime.get("max_fallback_providers", 3)),
             external_provider_usage_required=bool(runtime.get("external_provider_usage_required", True)),
-            external_provider_timeout_contract_required=bool(
-                runtime.get("external_provider_timeout_contract_required", True)
-            ),
+            external_provider_timeout_contract_required=bool(runtime.get("external_provider_timeout_contract_required", True)),
         )
-        numeric = (
+        positive = (
             limits.default_timeout_ms,
             limits.max_timeout_ms,
             limits.max_provider_units_per_request,
             limits.circuit_failure_threshold,
             limits.circuit_recovery_seconds,
         )
-        if any(value <= 0 for value in numeric) or limits.max_fallback_providers < 0:
+        if any(value <= 0 for value in positive) or limits.max_fallback_providers < 0:
             raise AIGatewayError("La política runtime M40.0 contiene límites inválidos.", code="AI_RUNTIME_POLICY_INVALID")
         if limits.default_timeout_ms > limits.max_timeout_ms:
             raise AIGatewayError("El timeout por defecto supera el máximo permitido.", code="AI_RUNTIME_POLICY_INVALID")
@@ -119,21 +115,19 @@ class AICircuitBreaker:
             state.opened_at = self.monotonic()
 
     def snapshot(self, provider_id: str) -> dict[str, Any]:
+        allowed = self.allow(provider_id)
         state = self._state(provider_id)
-        return {
-            "consecutive_failures": state.consecutive_failures,
-            "open": state.opened_at is not None and not self.allow(provider_id),
-        }
+        return {"consecutive_failures": state.consecutive_failures, "open": not allowed}
 
 
 class AIAuditLedger:
-    """Append-only SQLite ledger containing only minimized execution metadata."""
+    """SQLite append-only ledger with database-level mutation guards and hash chain."""
 
     def __init__(self, database_path: str = ":memory:"):
         self.database_path = database_path
         self._connection = sqlite3.connect(database_path)
         self._connection.row_factory = sqlite3.Row
-        self._connection.execute(
+        self._connection.executescript(
             """
             CREATE TABLE IF NOT EXISTS ai_audit_ledger (
                 sequence INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -141,17 +135,24 @@ class AIAuditLedger:
                 previous_hash TEXT NOT NULL,
                 entry_hash TEXT NOT NULL UNIQUE,
                 payload_json TEXT NOT NULL
-            )
+            );
+            CREATE TRIGGER IF NOT EXISTS ai_audit_ledger_no_update
+            BEFORE UPDATE ON ai_audit_ledger
+            BEGIN
+                SELECT RAISE(ABORT, 'AI_AUDIT_APPEND_ONLY');
+            END;
+            CREATE TRIGGER IF NOT EXISTS ai_audit_ledger_no_delete
+            BEFORE DELETE ON ai_audit_ledger
+            BEGIN
+                SELECT RAISE(ABORT, 'AI_AUDIT_APPEND_ONLY');
+            END;
             """
         )
         self._connection.commit()
 
     def append(self, payload: Mapping[str, Any]) -> dict[str, Any]:
-        normalized = dict(payload)
-        payload_json = _canonical_json(normalized)
-        previous = self._connection.execute(
-            "SELECT entry_hash FROM ai_audit_ledger ORDER BY sequence DESC LIMIT 1"
-        ).fetchone()
+        payload_json = _canonical_json(dict(payload))
+        previous = self._connection.execute("SELECT entry_hash FROM ai_audit_ledger ORDER BY sequence DESC LIMIT 1").fetchone()
         previous_hash = str(previous["entry_hash"]) if previous else "GENESIS"
         entry_hash = sha256(f"{previous_hash}:{payload_json}".encode("utf-8")).hexdigest()
         cursor = self._connection.execute(
@@ -159,11 +160,7 @@ class AIAuditLedger:
             (previous_hash, entry_hash, payload_json),
         )
         self._connection.commit()
-        return {
-            "sequence": int(cursor.lastrowid),
-            "previous_hash": previous_hash,
-            "entry_hash": entry_hash,
-        }
+        return {"sequence": int(cursor.lastrowid), "previous_hash": previous_hash, "entry_hash": entry_hash}
 
     def entries(self) -> list[dict[str, Any]]:
         rows = self._connection.execute(
@@ -185,8 +182,7 @@ class AIAuditLedger:
         for entry in self.entries():
             if entry["previous_hash"] != previous_hash:
                 return False
-            payload_json = _canonical_json(entry["payload"])
-            expected = sha256(f"{previous_hash}:{payload_json}".encode("utf-8")).hexdigest()
+            expected = sha256(f"{previous_hash}:{_canonical_json(entry['payload'])}".encode("utf-8")).hexdigest()
             if entry["entry_hash"] != expected:
                 return False
             previous_hash = entry["entry_hash"]
@@ -197,7 +193,7 @@ class AIAuditLedger:
 
 
 class GovernedAIExecutor:
-    """Bounded execution layer for provider chains behind the M40.0 gateway."""
+    """Fail-closed runtime layer for provider chains behind AIGateway."""
 
     def __init__(
         self,
@@ -222,7 +218,7 @@ class GovernedAIExecutor:
 
     def _provider_descriptors(self, providers: Sequence[AIProvider]) -> list[AIProviderDescriptor]:
         descriptors = [self.gateway._descriptor(provider) for provider in providers]
-        ids = [descriptor.provider_id for descriptor in descriptors]
+        ids = [item.provider_id for item in descriptors]
         if len(ids) != len(set(ids)):
             raise AIGatewayError("La cadena de proveedores contiene identificadores duplicados.", code="AI_PROVIDER_CHAIN_INVALID")
         return descriptors
@@ -232,10 +228,7 @@ class GovernedAIExecutor:
         usage = clean.pop(_RUNTIME_USAGE_KEY, None)
         if usage is None:
             if descriptor.external and self.limits.external_provider_usage_required:
-                raise AIGatewayError(
-                    "El proveedor externo no reportó consumo verificable.",
-                    code="AI_USAGE_REQUIRED",
-                )
+                raise AIGatewayError("El proveedor externo no reportó consumo verificable.", code="AI_USAGE_REQUIRED")
             return clean, 0
         if not isinstance(usage, Mapping):
             raise AIGatewayError("El reporte de consumo del proveedor no es válido.", code="AI_USAGE_INVALID")
@@ -244,13 +237,7 @@ class GovernedAIExecutor:
             raise AIGatewayError("Las unidades de consumo del proveedor no son válidas.", code="AI_USAGE_INVALID")
         return clean, units
 
-    def _invoke(
-        self,
-        provider: AIProvider,
-        descriptor: AIProviderDescriptor,
-        context: Mapping[str, Any],
-        timeout_ms: int,
-    ) -> tuple[dict[str, Any], int, int]:
+    def _invoke(self, provider: AIProvider, descriptor: AIProviderDescriptor, context: Mapping[str, Any], timeout_ms: int) -> tuple[dict[str, Any], int, int]:
         started = self.monotonic()
         if descriptor.external:
             invoke_with_timeout = getattr(provider, "invoke_with_timeout", None)
@@ -267,18 +254,12 @@ class GovernedAIExecutor:
             raise AIGatewayError("El proveedor excedió el timeout permitido.", code="AI_PROVIDER_TIMEOUT")
         if not isinstance(raw, Mapping):
             raise AIGatewayError("El proveedor devolvió una salida no estructurada.", code="AI_OUTPUT_INVALID")
-        clean, usage_units = self._extract_usage(raw, descriptor)
-        return clean, usage_units, elapsed_ms
+        clean, units = self._extract_usage(raw, descriptor)
+        return clean, units, elapsed_ms
 
     @staticmethod
     def _attempt(provider_id: str, *, status: str, error_code: str | None = None, elapsed_ms: int = 0, units: int = 0) -> dict[str, Any]:
-        return {
-            "provider_id": provider_id,
-            "status": status,
-            "error_code": error_code,
-            "elapsed_ms": elapsed_ms,
-            "units": units,
-        }
+        return {"provider_id": provider_id, "status": status, "error_code": error_code, "elapsed_ms": elapsed_ms, "units": units}
 
     def _ledger_payload(
         self,
@@ -293,6 +274,7 @@ class GovernedAIExecutor:
         audit: Mapping[str, Any] | None = None,
         terminal_error_code: str | None = None,
     ) -> dict[str, Any]:
+        audit = audit or {}
         return {
             "schema_version": AI_GATEWAY_SCHEMA_VERSION,
             "event_type": "AI_GATEWAY_EXECUTION",
@@ -310,29 +292,19 @@ class GovernedAIExecutor:
             "attempts": [dict(item) for item in attempts],
             "total_units": total_units,
             "timeout_ms": timeout_ms,
-            "audit_id": (audit or {}).get("audit_id"),
-            "input_hash": (audit or {}).get("input_hash"),
-            "output_hash": (audit or {}).get("output_hash"),
+            "audit_id": audit.get("audit_id"),
+            "input_hash": audit.get("input_hash"),
+            "output_hash": audit.get("output_hash"),
             "terminal_error_code": terminal_error_code,
         }
 
-    def execute(
-        self,
-        request: AIRequest,
-        primary: AIProvider,
-        *,
-        fallbacks: Sequence[AIProvider] = (),
-        timeout_ms: int | None = None,
-    ) -> dict[str, Any]:
-        # Policy, tenancy and payload allowlisting happen before provider selection,
-        # so fallback can never be used to bypass an access denial.
+    def execute(self, request: AIRequest, primary: AIProvider, *, fallbacks: Sequence[AIProvider] = (), timeout_ms: int | None = None) -> dict[str, Any]:
         context = self.gateway.context_builder.build(request)
         timeout = self._timeout_ms(timeout_ms)
         if len(fallbacks) > self.limits.max_fallback_providers:
             raise AIGatewayError("La cadena excede el máximo de fallbacks permitido.", code="AI_PROVIDER_CHAIN_INVALID")
         providers = [primary, *fallbacks]
         descriptors = self._provider_descriptors(providers)
-
         attempts: list[dict[str, Any]] = []
         total_units = 0
         terminal_error: AIGatewayError | None = None
@@ -341,33 +313,17 @@ class GovernedAIExecutor:
             if not self.circuit.allow(descriptor.provider_id):
                 attempts.append(self._attempt(descriptor.provider_id, status="SKIPPED", error_code="AI_CIRCUIT_OPEN"))
                 continue
-
             elapsed_ms = 0
-            usage_units = 0
+            units = 0
             try:
-                raw, usage_units, elapsed_ms = self._invoke(provider, descriptor, context, timeout)
-                total_units += usage_units
+                raw, units, elapsed_ms = self._invoke(provider, descriptor, context, timeout)
+                total_units += units
                 if total_units > self.limits.max_provider_units_per_request:
-                    raise AIGatewayError(
-                        "La cadena de proveedores excedió el presupuesto máximo de la solicitud.",
-                        code="AI_BUDGET_EXCEEDED",
-                    )
+                    raise AIGatewayError("La cadena de proveedores excedió el presupuesto máximo de la solicitud.", code="AI_BUDGET_EXCEEDED")
                 result = self.gateway.output_validator.validate(raw, request)
-                audit = self.gateway.audit_builder.build(
-                    request=request,
-                    context=context,
-                    result=result,
-                    provider=descriptor,
-                )
+                audit = self.gateway.audit_builder.build(request=request, context=context, result=result, provider=descriptor)
                 self.circuit.record_success(descriptor.provider_id)
-                attempts.append(
-                    self._attempt(
-                        descriptor.provider_id,
-                        status="SUCCESS",
-                        elapsed_ms=elapsed_ms,
-                        units=usage_units,
-                    )
-                )
+                attempts.append(self._attempt(descriptor.provider_id, status="SUCCESS", elapsed_ms=elapsed_ms, units=units))
                 ledger_meta = self.ledger.append(
                     self._ledger_payload(
                         request=request,
@@ -394,29 +350,13 @@ class GovernedAIExecutor:
                 }
             except AIGatewayError as exc:
                 self.circuit.record_failure(descriptor.provider_id)
-                attempts.append(
-                    self._attempt(
-                        descriptor.provider_id,
-                        status="FAILED",
-                        error_code=exc.code,
-                        elapsed_ms=elapsed_ms,
-                        units=usage_units,
-                    )
-                )
+                attempts.append(self._attempt(descriptor.provider_id, status="FAILED", error_code=exc.code, elapsed_ms=elapsed_ms, units=units))
                 if exc.code in _TERMINAL_RUNTIME_CODES:
                     terminal_error = exc
                     break
-            except Exception as exc:  # provider exceptions are normalized; raw messages are never audited.
+            except Exception:
                 self.circuit.record_failure(descriptor.provider_id)
-                attempts.append(
-                    self._attempt(
-                        descriptor.provider_id,
-                        status="FAILED",
-                        error_code="AI_PROVIDER_FAILURE",
-                        elapsed_ms=elapsed_ms,
-                        units=usage_units,
-                    )
-                )
+                attempts.append(self._attempt(descriptor.provider_id, status="FAILED", error_code="AI_PROVIDER_FAILURE", elapsed_ms=elapsed_ms, units=units))
 
         error = terminal_error or AIGatewayError(
             "No fue posible obtener una salida válida de la cadena de proveedores.",
@@ -436,9 +376,4 @@ class GovernedAIExecutor:
         raise error
 
 
-__all__ = [
-    "AIAuditLedger",
-    "AICircuitBreaker",
-    "AIRuntimeLimits",
-    "GovernedAIExecutor",
-]
+__all__ = ["AIAuditLedger", "AICircuitBreaker", "AIRuntimeLimits", "GovernedAIExecutor"]
