@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import sqlite3
 import unittest
 
 from legalai_platform.ai_gateway_m40_0 import (
@@ -136,10 +137,7 @@ class M400RuntimeControlsTests(unittest.TestCase):
         execution = executor.execute(self.request(), primary, fallbacks=[fallback])
         self.assertEqual(primary.calls, 0)
         self.assertTrue(execution["runtime"]["fallback_used"])
-        self.assertEqual(
-            execution["runtime"]["attempts"][0]["error_code"],
-            "AI_PROVIDER_TIMEOUT_CONTRACT_REQUIRED",
-        )
+        self.assertEqual(execution["runtime"]["attempts"][0]["error_code"], "AI_PROVIDER_TIMEOUT_CONTRACT_REQUIRED")
 
     def test_external_usage_is_required_fail_closed(self):
         provider = ExternalProvider(include_usage=False)
@@ -200,10 +198,7 @@ class M400RuntimeControlsTests(unittest.TestCase):
         executor = GovernedAIExecutor()
         with self.assertRaises(AIGatewayError) as captured:
             executor.execute(
-                self.request(
-                    capability="DOCUMENT_ASSIST",
-                    payload={"document_text": "Documento privado"},
-                ),
+                self.request(capability="DOCUMENT_ASSIST", payload={"document_text": "Documento privado"}),
                 primary,
                 fallbacks=[fallback],
             )
@@ -262,11 +257,24 @@ class M400AuditLedgerTests(unittest.TestCase):
         self.assertEqual(len(payload["context_hash"]), 64)
         self.assertTrue(ledger.verify_chain())
 
-    def test_hash_chain_detects_out_of_band_tampering(self):
+    def test_database_guards_reject_update_and_delete(self):
+        ledger = AIAuditLedger()
+        ledger.append({"event_type": "ONE", "request_id": "REQ-1"})
+        with self.assertRaises(sqlite3.IntegrityError):
+            ledger._connection.execute("UPDATE ai_audit_ledger SET payload_json = '{}' WHERE sequence = 1")
+        ledger._connection.rollback()
+        with self.assertRaises(sqlite3.IntegrityError):
+            ledger._connection.execute("DELETE FROM ai_audit_ledger WHERE sequence = 1")
+        ledger._connection.rollback()
+        self.assertEqual(len(ledger.entries()), 1)
+        self.assertTrue(ledger.verify_chain())
+
+    def test_hash_chain_detects_privileged_tampering_after_guards_are_removed(self):
         ledger = AIAuditLedger()
         ledger.append({"event_type": "ONE", "request_id": "REQ-1"})
         ledger.append({"event_type": "TWO", "request_id": "REQ-2"})
         self.assertTrue(ledger.verify_chain())
+        ledger._connection.execute("DROP TRIGGER ai_audit_ledger_no_update")
         ledger._connection.execute(
             "UPDATE ai_audit_ledger SET payload_json = ? WHERE sequence = 1",
             ('{"event_type":"TAMPERED"}',),
