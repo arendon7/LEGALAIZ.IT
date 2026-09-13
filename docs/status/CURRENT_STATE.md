@@ -1,122 +1,129 @@
 # LegalAIZ.it — Current State
 
-Last reviewed: 2026-09-09
-Milestone: **M39.2 — Canonical Release Convergence & Repository Cleanup**
+Last reviewed: 2026-09-13  
+Milestone: **M40.0 — AI Governance & Provider Gateway**
 
-## 1. Canonical interpretation
+## 1. Canonical baseline
 
-`main` remains the formal published/canonical branch. The most advanced development candidate is the stacked M38/M39 lineage and must be converged deliberately; no blind mass merge is allowed.
+`main` is the formal canonical branch.
 
-Verified ancestry against `main` on 2026-09-09:
-- `main`: `ea0d8171db040e090e7fc9a1efdb04dc652670d8`;
-- advanced M39.2 line at the audited pre-consolidation point: 879 commits ahead, 0 behind;
-- merge base equals the `main` head above.
+Current certified baseline:
+- `main`: `60aa4a1a596e6b1550cd863482f25f19bd9381c8`;
+- M38/M39 canonical convergence: PR #99;
+- labor-source freshness hotfix: PR #100;
+- post-merge canonical CI: workflow `Validación LegalAIZ.it`, run #793, **success**;
+- smoke suite: **1,336 tests passed** on the converged baseline before M40 changes;
+- inventory gate: **11 products / 473 questions / 273 rules**;
+- `visual-docx`: **success**;
+- `graphify-context`: **success** on the `main` push.
 
-Verified stacked milestone chain:
-`M38.0 #76 → M38.1 #78 → M38.2 #80 → M38.3 #82 → M38.4 #84 → M38.5 #86 → M38.6 #88 → M38.7 #90 → M38.8 #92 → M39.0 #94 → M39.1 #96 → M39.2 #98`.
+M38.0–M39.2 stacked PRs were closed as superseded after convergence. Their Git history remains in `main`.
 
-No remote PR or branch was found for **M38.9, M38.10 or M38.11**. Work discussed or produced outside GitHub under those labels is non-canonical until independently revalidated and reintroduced on the certified line.
+No canonical remote PR or branch exists for **M38.9, M38.10 or M38.11**. Work previously discussed outside the canonical repository under those labels remains non-canonical unless independently revalidated and reintroduced.
 
-## 2. Verified advanced candidate
+## 2. M39.2 closure
 
-- M39.1 PR: #96.
-- M39.1 certified head previously verified: `c1a34283f27a55f025da3c56db2666f92cfedce8`.
-- M39.1 evidence: successful CI, including the core test gate and DOCX visual gate; the recorded smoke suite reached 1,336 passing tests.
-- M39.2 PR: #98, currently draft while certification is pending.
-- M39.2 branch: `release/m39-2-canonical-convergence-cleanup`.
-- M39.2 base branch: `release/m39-1-enterprise-tenancy`.
-- M39.2 base SHA: `c1a34283f27a55f025da3c56db2666f92cfedce8`.
-- Audited pre-consolidation M39.2 SHA: `32239dd1ad1aefd03a893768205cf46ffaea50e9`.
-- Exact-head certification of the post-consolidation SHA: **pending CI + visual DOCX gate**.
+M39.2 is closed. Its cleanup outcome was intentionally conservative:
+- redundant governance notes were consolidated;
+- common tracked debris was audited and not found;
+- historical/versioned runtime, tests, templates and tools were preserved when they still serve compatibility, QA, traceability or release controls;
+- no mass deletion by filename/version was performed;
+- the advanced M38/M39 line was converged to `main` through an explicit certified merge.
 
-## 3. Workflow state
+The evidence-backed cleanup policy remains in `docs/status/REPOSITORY_CLEANUP_INVENTORY.md`.
 
-`.github/workflows/ci.yml` has three entry modes:
-- `push` to `main`;
-- `pull_request` targeting `main`;
-- `workflow_dispatch`.
+## 3. Legal freshness gate — labor parameters 2026
 
-Its principal jobs include syntax/compile validation, the Python test suite, inventory/integrity gates, frontend/demo validation, integrated HTTP smoke coverage and a separate `visual-docx` job that generates, converts, rasterizes and audits the document portfolio.
+The first post-convergence `main` run correctly exposed an expired M33.4 legal-freshness window for the status of Decreto 1469 de 2025. The gate failed closed instead of silently reusing stale status.
 
-`.github/workflows/pages.yml` publishes the static public preview after successful `Validación LegalAIZ.it` on `main`, and also supports manual dispatch. M39.2 must not be treated as certified merely because M39.1 passed; the final M39.2 SHA requires its own run. If direct manual dispatch is unavailable from the active automation surface, a clearly labelled temporary PR to `main` may be used only as a CI anchor and must not be merged as a shortcut.
+After fresh official revalidation on 2026-09-13, PR #100:
+- preserved SMLMV 2026 at COP 1,750,905;
+- preserved transport aid 2026 at COP 249,095, subject to its factual/legal requirements;
+- recorded the current procedural status of Decreto 1469 de 2025 as operative pending a merits decision after revocation of the provisional suspension;
+- recorded `wage_status_verified_on = 2026-09-13`;
+- renewed the special 30-day review boundary to `wage_status_review_due_on = 2026-10-13`;
+- preserved fail-closed behavior after that date.
 
-## 4. Repository hygiene result
+**Mandatory next review:** the wage-decree procedural status must be revalidated again no later than **2026-10-13**. Do not extend or remove this time bomb without fresh official evidence.
 
-The exact tracked tree of the audited M39.2 SHA was searched for common debris. No tracked `.DS_Store`, `__pycache__`, `.pyc`, `.orig`, `.rej`, `.zip` or `node_modules` entries were found.
-
-`.gitignore` already blocks the principal local/generated categories, including Python caches, local environments, `.env`, secrets/certificates, runtime state, generated outputs, logs/databases, dependency/build directories, ZIP/backups/temp files, IDE metadata and operating-system artefacts.
-
-Consequently, M39.2 does **not** authorize broad deletion of versioned runtime, tests, templates, data, sources, migrations or tools. Historical/versioned naming is not evidence of obsolescence. The evidence-backed policy and candidates are maintained in `docs/status/REPOSITORY_CLEANUP_INVENTORY.md`.
-
-## 5. Product state to preserve
+## 4. Product state to preserve
 
 - 11 active legal products.
 - Advanced intake and guided navigation.
-- Structured fact extraction, confirmation and adaptive questions.
+- Structured fact extraction, explicit confirmation/dispute and adaptive questions.
 - Explainable recommendation, checkout/case creation and status surfaces.
 - Document Factory with controlled immutable revisions, comparison, DOCX generation and dual Legal/QA approval.
 - Studio Jurídico and professional reviewer workflows.
 - RBAC, tenant isolation, audit controls and enterprise hardening.
-- Regression, smoke and visual document gates.
+- Regression, HTTP smoke and visual document gates.
 
-No cleanup may reduce these capabilities or weaken source traceability, permissions, audit, document governance or Legal/QA approval.
+No M40 work may reduce these capabilities or weaken source traceability, permissions, audit, document governance or human approval.
 
-## 6. Scope / non-goals of M39.2
+## 5. M40.0 active workstream
 
-M39.2 includes:
-- canonical-state documentation;
-- evidence-backed repository hygiene;
-- consolidation of redundant governance notes;
-- branch/PR convergence planning;
-- certification on an exact final SHA.
+Active branch:
+`feature/m40-0-ai-governance-provider-gateway`
 
-M39.2 does not include:
-- architecture rewrites;
-- M40 AI functionality or live LLM calls;
-- redesign of contracts already certified merely for cleanup;
-- replacement of dual approval;
-- mass deletion by version number;
-- activation of real payments or communications;
-- promotion to commercial production.
+M40.0 adds AI as a governed layer over the certified deterministic stack. The reference architecture is:
 
-## 7. M39.2 exit gates
+`AI Gateway → Policy Engine → Context Builder → Provider → Structured Output → Validator → Audit`
 
-M39.2 closes only when:
-1. the cleanup inventory is evidence-backed;
-2. all retirements in the M39.2 diff are documented and non-functional or independently dependency-proven;
-3. the diff against M39.1 is minimal and coherent;
-4. an exact final SHA is fixed;
-5. core CI, HTTP smoke and applicable integrity gates are green on that SHA;
-6. DOCX visual QA is green on that SHA;
-7. the M38/M39 convergence route to `main` is explicit;
-8. local-only M38.9–M38.11 work is not represented as canonical.
+The first implementation slice is library-only and is designed to:
+- version AI policy explicitly;
+- separate public-preauth and tenant-scoped capabilities;
+- derive tenant access from the existing M39.1 `EnterpriseContext` rather than trusting a claimed organization id;
+- allowlist context by capability and reject secret-bearing keys;
+- provide a provider-neutral contract;
+- validate every structured provider action fail-closed;
+- force AI-proposed facts to remain `AI_INFERRED / UNCONFIRMED`;
+- preserve M34.2 fact extraction through a compatibility adapter;
+- record hashes, provider/model metadata, action types and source ids without persisting raw input/output in the audit record;
+- forbid AI confirmation, Legal approval, QA approval, document release, approved-revision overwrite, tenant mutation and payment execution.
 
-## 8. M40 entry guardrails
+This M40.0 slice is **not certified until its own PR and CI gates pass**.
 
-M40.0 starts only from a certified M39.2/converged baseline. No AI provider/model/agent may:
-- promote unconfirmed facts to confirmed facts;
-- bypass RBAC or tenant isolation;
-- silently overwrite an approved document revision;
+## 6. M40.0 non-goals for the current slice
+
+The current slice does not:
+- expose a new public HTTP endpoint;
+- call an external LLM/model provider;
+- store API keys or model credentials;
+- mutate cases or approved documents;
+- create autonomous agents;
+- perform legal research/RAG yet;
 - approve Legal or QA;
-- expose sensitive payloads through logs/observability;
-- autonomously activate payments, communications or production operations.
+- release documents;
+- execute payments or external communications;
+- authorize real legal/commercial production.
 
-The detailed sequence is maintained in `docs/roadmap/AI_COPILOT_ROADMAP.md`.
+## 7. M40 no-bypass invariants
 
-## 9. Immediate execution order
+No provider, model, copilot, agent or IDE integration may:
+- promote an AI-inferred or document-extracted fact to a confirmed fact without an explicit confirmation event;
+- treat disputed/superseded facts as certain;
+- invent legal-success probabilities as factual outcomes;
+- bypass RBAC or tenant isolation;
+- read private case/document context from a public-preauth scope;
+- silently overwrite an approved revision;
+- approve Legal or QA;
+- execute real payments, communications or production operations autonomously;
+- expose secrets, recovery codes, raw legal narratives or sensitive fact values through observability/audit.
 
-1. Consolidate and remove redundant M39.2 governance files.
-2. Fix the final M39.2 SHA.
-3. Run exact-head CI and DOCX visual QA.
-4. Review the final diff against M39.1.
-5. Converge the certified M38/M39 line to `main` through an explicit integration strategy.
-6. Close superseded stacked draft PRs only after successful convergence, preserving Git history.
-7. Start M40.0 from the certified/converged base.
+The detailed sequence remains in `docs/roadmap/AI_COPILOT_ROADMAP.md`.
 
-## 10. Deferred IDE / local-agent integration
+## 8. Immediate execution order
 
-Visual Studio Code, Antigravity or other local/IDE agents are deliberately deferred until the M40 gateway, permission model and audit contracts are stable. Future robots must consume governed AI/tool contracts, execute controlled fixtures/benchmarks and preserve GitHub/CI as the certification source of truth. They must not connect directly to secrets, databases or privileged production paths.
+1. Complete M40.0 policy/gateway/context/provider/validator/audit foundation.
+2. Run M40-specific adversarial tests plus the full regression suite.
+3. Run HTTP/inventory gates and DOCX visual QA even though this slice is library-only.
+4. Merge M40.0 only after exact-head CI is green.
+5. Require a green post-merge `main` push including `graphify-context`.
+6. Continue to M40.1 intake copilot by routing the existing M34.2 provider contract through the governed gateway, without changing fact-confirmation semantics.
 
-## 11. Commercial release rule
+## 9. Deferred IDE / local-agent integration
 
-Do not describe LegalAIZ.it as commercially production-live until external payments, communications and operational production gates are explicitly certified with real evidence.
+Visual Studio Code, Antigravity or other IDE/local agents remain deferred until the M40 gateway, provider, policy and audit contracts are stable. Future robots must consume governed contracts and controlled fixtures/benchmarks; they must not connect directly to secrets, databases or privileged production paths. GitHub/CI remains the certification source of truth.
+
+## 10. Commercial release rule
+
+Do not describe LegalAIZ.it as commercially production-live until external payments, communications and operational production gates are explicitly certified with real evidence. M40 AI functionality does not override those gates.
