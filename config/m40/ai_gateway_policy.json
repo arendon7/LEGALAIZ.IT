@@ -78,13 +78,25 @@
     "max_question_chars": 1200,
     "max_fact_value_json_chars": 4000
   },
+  "runtime": {
+    "default_timeout_ms": 15000,
+    "max_timeout_ms": 60000,
+    "max_provider_units_per_request": 12000,
+    "circuit_failure_threshold": 3,
+    "circuit_recovery_seconds": 60,
+    "max_fallback_providers": 3,
+    "external_provider_usage_required": true,
+    "external_provider_timeout_contract_required": true
+  },
   "audit": {
     "store_raw_input": false,
     "store_raw_output": false,
     "store_input_hash": true,
     "store_output_hash": true,
     "store_action_types_only": true,
-    "store_source_ids": true
+    "store_source_ids": true,
+    "append_only": true,
+    "hash_chain_required": true
   },
   "human_boundaries": {
     "ai_fact_requires_confirmation": true,
