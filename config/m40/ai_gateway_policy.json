@@ -1,0 +1,96 @@
+{
+  "schema_version": "40.0.0",
+  "policy_version": "M40.0-GOVERNED-GATEWAY-V1",
+  "access_scopes": {
+    "PUBLIC_PREAUTH": {
+      "capabilities": ["FACT_EXTRACTION", "INTAKE_ASSIST"],
+      "tenant_required": false,
+      "case_or_document_context_allowed": false
+    },
+    "TENANT": {
+      "capabilities": [
+        "FACT_EXTRACTION",
+        "INTAKE_ASSIST",
+        "CASE_ASSIST",
+        "DOCUMENT_ASSIST",
+        "REVIEW_ASSIST",
+        "LEGAL_RESEARCH"
+      ],
+      "tenant_required": true,
+      "case_or_document_context_allowed": true
+    }
+  },
+  "capability_payload_keys": {
+    "FACT_EXTRACTION": ["problem_statement", "source_reference", "allowed_fact_types"],
+    "INTAKE_ASSIST": ["facts", "risk_signals", "candidate_products", "question_context"],
+    "CASE_ASSIST": ["case_summary", "facts", "risk_signals", "document_metadata"],
+    "DOCUMENT_ASSIST": ["document_text", "facts", "clause_context", "source_material"],
+    "REVIEW_ASSIST": ["document_text", "facts", "source_material", "review_context"],
+    "LEGAL_RESEARCH": ["research_question", "facts", "jurisdiction", "source_material"]
+  },
+  "allowed_action_types": [
+    "PROPOSE_FACT",
+    "FLAG_RISK",
+    "SIGNAL_TOPIC",
+    "ASK_QUESTION",
+    "PROPOSE_TEXT",
+    "SUGGEST_SOURCE",
+    "NO_ACTION"
+  ],
+  "forbidden_action_types": [
+    "CONFIRM_FACT",
+    "APPROVE_LEGAL",
+    "APPROVE_QA",
+    "RELEASE_DOCUMENT",
+    "EXECUTE_PAYMENT",
+    "CHANGE_TENANT",
+    "OVERWRITE_APPROVED_REVISION"
+  ],
+  "forbidden_provider_output_keys": [
+    "decision_usable",
+    "legal_approved",
+    "qa_approved",
+    "payment_executed",
+    "release_authorized",
+    "tenant_override",
+    "approved_revision_overwrite"
+  ],
+  "sensitive_context_keys": [
+    "password",
+    "recovery_code",
+    "secret",
+    "token",
+    "api_key",
+    "authorization",
+    "cookie",
+    "master_key",
+    "database_url",
+    "payment_signature",
+    "card_number",
+    "cvv"
+  ],
+  "limits": {
+    "max_context_json_chars": 64000,
+    "max_output_json_chars": 96000,
+    "max_actions": 32,
+    "max_source_ids": 32,
+    "max_text_proposal_chars": 24000,
+    "max_question_chars": 1200,
+    "max_fact_value_json_chars": 4000
+  },
+  "audit": {
+    "store_raw_input": false,
+    "store_raw_output": false,
+    "store_input_hash": true,
+    "store_output_hash": true,
+    "store_action_types_only": true,
+    "store_source_ids": true
+  },
+  "human_boundaries": {
+    "ai_fact_requires_confirmation": true,
+    "legal_approval_must_be_human": true,
+    "qa_approval_must_be_human": true,
+    "approved_revision_overwrite_forbidden": true,
+    "production_payment_execution_forbidden": true
+  }
+}
