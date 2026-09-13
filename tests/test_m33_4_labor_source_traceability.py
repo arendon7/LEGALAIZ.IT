@@ -64,6 +64,8 @@ class LaborSourceTraceabilityM334Tests(unittest.TestCase):
             p["wage_current_status"],
         )
         self.assertIn("consejodeestado.gov.co", p["wage_status_url"])
+        self.assertEqual("2026-09-13", p["wage_status_verified_on"])
+        self.assertEqual("2026-10-13", p["wage_status_review_due_on"])
 
     def test_every_source_id_resolves_in_canonical_registry(self):
         answers, result = labor_fixture()
@@ -144,11 +146,14 @@ class LaborSourceTraceabilityM334Tests(unittest.TestCase):
 
     def test_current_wage_status_has_shorter_litigation_review_window(self):
         answers, result = labor_fixture()
-        current = evaluate_labor_parameters_m334(answers, result, as_of=date(2026, 9, 9))
+        current = evaluate_labor_parameters_m334(answers, result, as_of=date(2026, 10, 13))
         self.assertEqual("verified_annual_values", current["status"])
-        stale = evaluate_labor_parameters_m334(answers, result, as_of=date(2026, 9, 10))
+        self.assertEqual("2026-09-13", current["wage_status_verified_on"])
+        self.assertEqual("2026-10-13", current["wage_status_review_due_on"])
+        stale = evaluate_labor_parameters_m334(answers, result, as_of=date(2026, 10, 14))
         self.assertEqual("needs_parameter_reverification", stale["status"])
         self.assertTrue(any("estado procesal" in reason.casefold() for reason in stale["reasons"]))
+        self.assertTrue(any("13/10/2026" in reason for reason in stale["reasons"]))
 
     def test_inconsistent_30_day_indemnity_band_is_blocked(self):
         answers, result = labor_fixture()
@@ -164,6 +169,7 @@ class LaborSourceTraceabilityM334Tests(unittest.TestCase):
         for kind in ("calculation", "claim", "labor_diagnostic"):
             self.assertEqual("verified_annual_values", by_kind[kind]["labor_parameter_status_m334"])
             self.assertEqual("human_legal_and_qa_review_required", by_kind[kind]["release_gate_m334"])
+            self.assertEqual("2026-09-13", by_kind[kind]["labor_parameter_control_m334"]["wage_status_verified_on"])
         self.assertEqual("not_material_to_this_piece", by_kind["labor_deadline_calendar"]["labor_parameter_status_m334"])
 
     def test_structured_ids_urls_and_parameter_metadata_never_enter_public_sections(self):

@@ -187,7 +187,8 @@ LABOR_PARAMETERS_2026 = {
     "wage_status_decision_date": "2026-07-17",
     "wage_status_authority": "Consejo de Estado · Sección Segunda",
     "wage_status_url": "https://consejodeestado.gov.co/noticias/",
-    "wage_status_review_due_on": "2026-09-09",
+    "wage_status_verified_on": "2026-09-13",
+    "wage_status_review_due_on": "2026-10-13",
     "transport_decree": "Decreto 1470 de 2025",
     "transport_decree_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30055941",
     "valid_from": "2026-01-01",
@@ -234,8 +235,12 @@ def evaluate_labor_parameters_m334(
     elif end_date.year != p["year"]:
         reasons.append(f"El paquete de parámetros verificado corresponde a 2026 y no puede reutilizarse para {end_date.year}.")
 
-    if effective_date > date.fromisoformat(p["wage_status_review_due_on"]):
-        reasons.append("El estado procesal del Decreto 1469 de 2025 requiere revalidación posterior al corte especial del 09/09/2026.")
+    wage_status_review_due = date.fromisoformat(p["wage_status_review_due_on"])
+    if effective_date > wage_status_review_due:
+        reasons.append(
+            "El estado procesal del Decreto 1469 de 2025 requiere revalidación posterior al corte especial "
+            f"del {wage_status_review_due.strftime('%d/%m/%Y')}."
+        )
 
     for key in ("wage_decree_url", "wage_status_url", "transport_decree_url"):
         if not _official_parameter_url(p[key]):
@@ -317,6 +322,7 @@ def evaluate_labor_parameters_m334(
         "wage_status_decision_date": p["wage_status_decision_date"],
         "wage_status_authority": p["wage_status_authority"],
         "wage_status_url": p["wage_status_url"],
+        "wage_status_verified_on": p["wage_status_verified_on"],
         "wage_status_review_due_on": p["wage_status_review_due_on"],
         "transport_decree": p["transport_decree"],
         "transport_decree_url": p["transport_decree_url"],
